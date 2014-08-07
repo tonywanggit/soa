@@ -37,9 +37,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NewLife.Core">
-      <HintPath>..\..\LIB\NewLife.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,13 +58,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\ESB.Core\ESB.Core.csproj">
-      <Project>{3A6FD2E3-189B-4217-B619-D4B3064FD53E}</Project>
-      <Name>ESB.Core</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\..\Core\ESB.Core\ESB.Core.csproj">
+      <Project>{3a6fd2e3-189b-4217-b619-d4b3064fd53e}</Project>
+      <Name>ESB.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NewLife\NewLife.Core\NewLife.Core.csproj">
+      <Project>{5813c22e-eeb3-4dee-a45c-bb218041193a}</Project>
+      <Name>NewLife.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
