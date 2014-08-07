@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESBTestFramework", "Test\ESBTestFramework\ESBTestFramework.csproj", "{CDD25F6F-8C1E-4972-A231-2EB9FE1B7BFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.Core", "Core\ESB.Core\ESB.Core.csproj", "{3A6FD2E3-189B-4217-B619-D4B3064FD53E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,16 @@ Global
 		{CDD25F6F-8C1E-4972-A231-2EB9FE1B7BFF}.Release|Mixed Platforms.Build.0 = Release|x86
 		{CDD25F6F-8C1E-4972-A231-2EB9FE1B7BFF}.Release|x86.ActiveCfg = Release|x86
 		{CDD25F6F-8C1E-4972-A231-2EB9FE1B7BFF}.Release|x86.Build.0 = Release|x86
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
