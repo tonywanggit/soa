@@ -36,7 +36,7 @@ namespace ESB.Core.Registry
 
             String cometUri = String.Format("http://{0}/RegistryCenter/RegistryAsyncCenter.ashx?sessionId={1}", registryHost, m_SessionId);
             m_CometClient = new CometClient(cometUri);
-            m_CometClient.ReceiveNotify += new EventHandler<CometEventArgs>(m_CometClient_ReceiveNotify);
+            m_CometClient.OnReceiveNotify += new EventHandler<CometEventArgs>(m_CometClient_ReceiveNotify);
             m_CometClient.Connect();
 
             return esbConfig;

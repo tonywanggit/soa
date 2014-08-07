@@ -28,7 +28,6 @@ namespace Registry.WindowsService
                 RegistryCenter registryCenter = new RegistryCenter();
                 registryCenter.Start();
 
-                Console.WriteLine("注册中心服务正在监控：5555端口！");
                 Console.ReadKey();
             }
             catch (Exception ex)

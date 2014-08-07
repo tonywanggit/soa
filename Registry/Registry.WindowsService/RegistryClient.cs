@@ -10,6 +10,7 @@ namespace Registry.WindowsService
     {
         public Socket Socket { get; set; }
         public Byte[] ReceiveBuffer { get; set; }
+        public DateTime ReceiveDateTime { get; set; }
 
         public RegistryClient(Socket socket)
         {

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MonitorThread.cs" />
     <Compile Include="RegistryCenter.cs" />
     <Compile Include="RegistryClient.cs" />
     <Compile Include="RegistryService.cs">

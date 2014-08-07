@@ -24,6 +24,13 @@ namespace ESB.Core.Configuration
         /// 应用名称：用于计算依赖关系
         /// </summary>
         public String ApplicationName { get; set; }
+
+        public ConsumerConfig()
+        {
+            Registry = new List<RegistryItem>();
+            Reference = new List<ReferenceItem>();
+            ApplicationName = String.Empty;
+        }
     }
 
     /// <summary>

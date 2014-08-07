@@ -15,9 +15,10 @@ namespace ESBTestFramework
 
             //Console.ReadKey();
 
-            CometClient cometClient = new CometClient("http://localhost:8080/RegistryCenter/Demo.aspx");
-
+            CometClient cometClient = new CometClient("192.168.156.138:5555");
             cometClient.Connect();
+
+            Console.ReadKey();
         }
     }
 }
