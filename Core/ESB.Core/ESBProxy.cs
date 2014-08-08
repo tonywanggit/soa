@@ -23,26 +23,52 @@ namespace ESB.Core
         }
 
         private ConsumerConfig m_ConsumerConfig = null;
-        private ESBConfig m_EsbConfig = null;
+        /// <summary>
+        /// 消费者配置文件
+        /// </summary>
+        public ConsumerConfig ConsumerConfig
+        {
+            get { return m_ConsumerConfig; }
+        }
+        private ESBConfig m_ESBConfig = null;
+        /// <summary>
+        /// 消费者配置文件
+        /// </summary>
+        public ESBConfig ESBConfig
+        {
+            get { return m_ESBConfig; }
+            set {
+                lock (m_ESBConfig)
+                {
+                    m_ESBConfig = value;
+                }
+            }
+        }
+        /// <summary>
+        /// 注册中心客户端
+        /// </summary>
+        private RegistryConsumerClient m_RegistryClient = null;
 
-        private RegistryClient m_RegistryClient = null;
-
+        /// <summary>
+        /// ESBProxy构造函数
+        /// </summary>
         private ESBProxy()
         {
-            m_ConsumerConfig = new ConsumerConfig();
-            m_RegistryClient = new RegistryClient();
-            m_RegistryClient.RegistryNotify += new EventHandler<RegistryEventArgs>(m_RegistryClient_RegistryNotify);
-            m_EsbConfig = m_RegistryClient.ConnectTo("localhost:8080");
+            LoadConfig();
+            m_RegistryClient = new RegistryConsumerClient(this);
+            m_RegistryClient.Connect();
         }
 
         /// <summary>
-        /// 当注册中心发生变化时进行本地化操作
+        /// 加载配置文件：加载本地配置文件ConsumerConfig->ESBConfig
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void m_RegistryClient_RegistryNotify(object sender, RegistryEventArgs e)
+        private void LoadConfig()
         {
-            m_EsbConfig = e.ESBConfig;
+            m_ConsumerConfig = new ConsumerConfig();
+            m_ConsumerConfig.ApplicationName = "xxx";
+
+            m_ESBConfig = new ESBConfig();
+            m_ESBConfig.Registry.Add(new RegistryItem() { Uri = "", Load = 1 });
         }
 
         /// <summary>

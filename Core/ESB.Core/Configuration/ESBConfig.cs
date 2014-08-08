@@ -25,20 +25,6 @@ namespace ESB.Core.Configuration
             Monitor = new List<MonitorItem>();
         }
 
-        private static ESBConfig m_Instance;
-
-        public static ESBConfig GetInstance()
-        {
-            if (m_Instance != null) return m_Instance;
-
-            ESBConfig cfg = new ESBConfig();
-            cfg.Registry.Add(new RegistryItem() { Uri = "10.30.1.3", Load = 1 });
-
-
-            Interlocked.CompareExchange<ESBConfig>(ref m_Instance, cfg, null);
-            return m_Instance;
-        }
-
         /// <summary>
         /// 将配置对象序列化成XML
         /// </summary>

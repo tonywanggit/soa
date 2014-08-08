@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESB.Core.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace ESB.Core.Configuration
 
         /// <summary>
         /// 应用名称：用于计算依赖关系
+        /// ESB_CallCenter 为保留字：用于表示调用中心
         /// </summary>
         public String ApplicationName { get; set; }
 
@@ -30,6 +32,15 @@ namespace ESB.Core.Configuration
             Registry = new List<RegistryItem>();
             Reference = new List<ReferenceItem>();
             ApplicationName = String.Empty;
+        }
+
+        /// <summary>
+        /// 序列化成XML格式字符串
+        /// </summary>
+        /// <returns></returns>
+        public String ToXml()
+        {
+            return XmlUtil.SaveXmlFromObj<ConsumerConfig>(this);
         }
     }
 

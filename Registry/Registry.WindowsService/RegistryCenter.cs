@@ -5,16 +5,24 @@ using System.Text;
 using System.Net.Sockets;
 using System.Net;
 using NewLife.Log;
+using ESB.Core.Registry;
+using ESB.Core.Util;
 
 namespace Registry.WindowsService
 {
+    /// <summary>
+    /// 注册中心
+    /// </summary>
     internal class RegistryCenter
     {
         List<RegistryClient> m_RegistryClients = new List<RegistryClient>();
         TcpListener m_TcpListener;
         MonitorThread m_monitorThread;
+        MessageProcessor m_MessageProcessor;
 
-        public RegistryCenter() { }
+        public RegistryCenter() {
+            m_MessageProcessor = new MessageProcessor(this);
+        }
 
         public void Start()
         {
@@ -39,6 +47,7 @@ namespace Registry.WindowsService
 
                 RegistryClient registryClient = new RegistryClient(socket);
                 registryClient.ReceiveDateTime = DateTime.Now;
+                registryClient.RegistryClientType = RegistryClientType.AnKnown;
                 registryClient.ClearBuffer();
                 registryClient.Socket.BeginReceive(registryClient.ReceiveBuffer, 0, registryClient.ReceiveBuffer.Length
                     , SocketFlags.None, new AsyncCallback(ReceiveCallback), registryClient);
@@ -75,12 +84,16 @@ namespace Registry.WindowsService
 
                     Console.WriteLine("接收客户端：{0}发送的数据：{1}。", registryClient.Socket.RemoteEndPoint.ToString(), data);
 
+                    //解析来自客户端的类型
+                    RegistryMessage regMessage = XmlUtil.LoadObjFromXML<RegistryMessage>(data);
+                    registryClient.RegistryClientType = regMessage.ClientType;
+
                     registryClient.ClearBuffer();
                     registryClient.Socket.BeginReceive(registryClient.ReceiveBuffer, 0, registryClient.ReceiveBuffer.Length
                         , SocketFlags.None, new AsyncCallback(ReceiveCallback), registryClient);
 
-                    //--进行业务操作
-                    SendData(registryClient, "Hello From Server!");
+                    //--由消息处理器进行处理
+                    m_MessageProcessor.Process(registryClient, regMessage);
                 };
             }
             catch (Exception ex)
@@ -99,7 +112,7 @@ namespace Registry.WindowsService
         /// </summary>
         /// <param name="rsClient"></param>
         /// <param name="data"></param>
-        private void SendData(RegistryClient registryClient, String data)
+        public void SendData(RegistryClient registryClient, String data)
         {
             try
             {

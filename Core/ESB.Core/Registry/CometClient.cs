@@ -6,6 +6,7 @@ using System.Net;
 using System.IO;
 using System.Net.Sockets;
 using NewLife.Log;
+using ESB.Core.Util;
 
 namespace ESB.Core.Registry
 {
@@ -18,12 +19,14 @@ namespace ESB.Core.Registry
         private String m_IP = String.Empty;
         private Int32 m_Port = 0;
         private Byte[] m_RecvBuff;
+        private RegistryClientType m_ClientType;    //表明和监控中心通讯的客户端身份
         public event EventHandler<CometEventArgs> OnReceiveNotify; 
 
-        public CometClient(String uri)
+        public CometClient(String uri, RegistryClientType clientType)
         {
             m_IP = uri.Split(':')[0];
             m_Port = Int32.Parse(uri.Split(':')[1]);
+            m_ClientType = clientType;
         }
 
         /// <summary>
@@ -59,7 +62,7 @@ namespace ESB.Core.Registry
 
                 Console.WriteLine("与服务器成功建立连接！");
 
-                SendData("Hello From Client!");
+                ReceiveNotify(CometEventType.Connected, String.Empty);
 
             }
             catch (Exception ex)
@@ -97,13 +100,21 @@ namespace ESB.Core.Registry
         /// 向服务器发送数据
         /// </summary>
         /// <param name="message"></param>
-        private void SendData(String message)
+        public void SendData(String message)
         {
             try
             {
-                Console.WriteLine("发送数据：{0}", message);
+                RegistryMessage regMessage = new RegistryMessage()
+                {
+                    Action = RegistryMessageAction.Hello,
+                    ClientType = m_ClientType,
+                    MessageBody = message
+                };
 
-                Byte[] data = Encoding.UTF8.GetBytes(message);
+                String dataMessage = XmlUtil.SaveXmlFromObj<RegistryMessage>(regMessage);
+                Console.WriteLine("发送数据：{0}", dataMessage);
+
+                Byte[] data = Encoding.UTF8.GetBytes(dataMessage);
                 m_SocketClient.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), m_SocketClient);
             }
             catch (Exception ex)
@@ -178,6 +189,10 @@ namespace ESB.Core.Registry
     /// </summary>
     public enum CometEventType
     {
+        /// <summary>
+        /// 连接成功
+        /// </summary>
+        Connected,
         /// <summary>
         /// 与注册中心失去联系
         /// </summary>
