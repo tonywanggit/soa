@@ -66,6 +66,8 @@ namespace ESB.Core
         {
             m_ConsumerConfig = new ConsumerConfig();
             m_ConsumerConfig.ApplicationName = "xxx";
+            m_ConsumerConfig.Registry.Add(new RegistryItem() { Uri = "192.168.156.138:5555", Load = 1 });
+            m_ConsumerConfig.Reference.Add(new ReferenceItem() { ServiceName = "ESB_ASHX", Interface = "" }); 
 
             m_ESBConfig = new ESBConfig();
             m_ESBConfig.Registry.Add(new RegistryItem() { Uri = "", Load = 1 });

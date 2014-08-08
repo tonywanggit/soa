@@ -11,14 +11,10 @@ namespace ESBTestFramework
     {
         static void Main(string[] args)
         {
-            //ESBProxy esbProxy = ESBProxy.GetInstance();
-
-            //Console.ReadKey();
-
-            CometClient cometClient = new CometClient("192.168.156.138:5555");
-            cometClient.Connect();
+            ESBProxy esbProxy = ESBProxy.GetInstance();
 
             Console.ReadKey();
+
         }
     }
 }
