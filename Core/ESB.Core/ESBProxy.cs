@@ -74,7 +74,7 @@ namespace ESB.Core
         /// </summary>
         private void LoadConfig()
         {
-            m_ConfigurationManager = new ConfigurationManager();
+            m_ConfigurationManager = ConfigurationManager.GetInstance();
             m_ConsumerConfig = m_ConfigurationManager.LoadConsumerConfig();
             m_ESBConfig = m_ConfigurationManager.LoadESBConfig();
         }
@@ -97,7 +97,5 @@ namespace ESB.Core
 
             return EsbClient.DynamicalCallWebService(true, req).消息内容;
         }
-
-
     }
 }
