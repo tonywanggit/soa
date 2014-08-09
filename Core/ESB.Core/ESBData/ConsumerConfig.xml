@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ConsumerConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationName>xxx</ApplicationName>
+  <Registry>
+    <RegistryItem>
+      <Uri>192.168.156.138:5555</Uri>
+      <Load>1</Load>
+    </RegistryItem>
+  </Registry>
+  <Reference>
+    <ReferenceItem>
+      <ServiceName>ESB_ASHX</ServiceName>
+      <Interface />
+    </ReferenceItem>
+  </Reference>
+</ConsumerConfig>

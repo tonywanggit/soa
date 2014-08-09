@@ -6,6 +6,7 @@ using ESB.Core.Configuration;
 using System.Net;
 using System.IO;
 using ESB.Core.Util;
+using NewLife.Threading;
 
 namespace ESB.Core.Registry
 {
@@ -16,6 +17,7 @@ namespace ESB.Core.Registry
     {
         private CometClient m_CometClient = null;
         private ESBProxy m_ESBProxy = null;
+        private ConfigurationManager m_ConfigurationManager = null;
 
         /// <summary>
         /// 注册中心消费者客户端
@@ -24,6 +26,7 @@ namespace ESB.Core.Registry
         public RegistryConsumerClient(ESBProxy esbProxy)
         {
             m_ESBProxy = esbProxy;
+            m_ConfigurationManager = ConfigurationManager.GetInstance();
         }
 
         /// <summary>
@@ -50,14 +53,17 @@ namespace ESB.Core.Registry
         /// <param name="e"></param>
         void m_CometClient_OnReceiveNotify(object sender, CometEventArgs e)
         {
-            if (e.Type == CometEventType.ReceiveMessage)
+            if (e.Type == CometEventType.ReceiveMessage)    // 接收到来自服务器的配置信息
             {
                 m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(e.Response);
-
+                ThreadPoolX.QueueUserWorkItem(x =>
+                {
+                    m_ConfigurationManager.SaveESBConfig(m_ESBProxy.ESBConfig);
+                });
             }
-            else if (e.Type == CometEventType.Connected)
+            else if (e.Type == CometEventType.Connected)   // 当和服务器取得联系时发送消费者配置文件到服务端
             {
-                m_CometClient.SendData(m_ESBProxy.ConsumerConfig.ToXml());
+                m_CometClient.SendData(RegistryMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml());
             }
         }
 

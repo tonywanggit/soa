@@ -33,7 +33,7 @@ namespace ESB.Core.Configuration
         /// <summary>
         /// 配置管理器
         /// </summary>
-        public ConfigurationManager()
+        private ConfigurationManager()
         {
             FilePath = Config.GetConfig<String>("ESB.LocalDataPath");
 
@@ -133,7 +133,14 @@ namespace ESB.Core.Configuration
         /// <param name="consumerConfig"></param>
         public void SaveESBConfig(ESBConfig esbConfig)
         {
-            File.WriteAllText(ESBConfigPath, XmlUtil.SaveXmlFromObj<ESBConfig>(esbConfig));
+            try
+            {
+                File.WriteAllText(ESBConfigPath, XmlUtil.SaveXmlFromObj<ESBConfig>(esbConfig));
+            }
+            catch (Exception ex)
+            {
+                XTrace.WriteLine("序列化ESBConfig.xml文件失败：{0}", ex.ToString());
+            }
         }
     }
 }

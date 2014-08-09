@@ -7,6 +7,7 @@ using System.Net;
 using NewLife.Log;
 using ESB.Core.Registry;
 using ESB.Core.Util;
+using NewLife.Configuration;
 
 namespace Registry.WindowsService
 {
@@ -26,7 +27,9 @@ namespace Registry.WindowsService
 
         public void Start()
         {
-            IPEndPoint localep = new IPEndPoint(IPAddress.Parse("192.168.156.138"), 5555);
+            Int32 port = Config.GetConfig<Int32>("ESB.RegistryService.Port");
+
+            IPEndPoint localep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             m_TcpListener = new TcpListener(localep);
             m_TcpListener.Start(2000);
 

@@ -100,13 +100,13 @@ namespace ESB.Core.Registry
         /// 向服务器发送数据
         /// </summary>
         /// <param name="message"></param>
-        public void SendData(String message)
+        public void SendData(RegistryMessageAction action, String message)
         {
             try
             {
                 RegistryMessage regMessage = new RegistryMessage()
                 {
-                    Action = RegistryMessageAction.Hello,
+                    Action = action,
                     ClientType = m_ClientType,
                     MessageBody = message
                 };
