@@ -13,7 +13,7 @@ namespace Registry.WindowsService
     /// <summary>
     /// 注册中心
     /// </summary>
-    internal class RegistryCenter
+    public class RegistryCenter
     {
         List<RegistryClient> m_RegistryClients = new List<RegistryClient>();
         TcpListener m_TcpListener;

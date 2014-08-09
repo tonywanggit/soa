@@ -67,8 +67,8 @@ namespace ESB.Core.Registry
             }
             catch (Exception ex)
             {
-                XTrace.WriteLine("无法与服务器建立连接：" + ex.ToString());
-                throw;
+                String err = "无法与服务器建立连接：" + ex.ToString();
+                OnLostConnection(err);
             }
         }
 
@@ -146,7 +146,10 @@ namespace ESB.Core.Registry
         {
             try
             {
-                m_SocketClient.Shutdown(SocketShutdown.Both);
+                if (m_SocketClient.Connected)
+                {
+                    m_SocketClient.Shutdown(SocketShutdown.Both);
+                }
                 m_SocketClient.Close();
             }
             finally

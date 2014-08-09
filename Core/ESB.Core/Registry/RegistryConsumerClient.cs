@@ -40,6 +40,7 @@ namespace ESB.Core.Registry
                 m_CometClient = new CometClient(uri, RegistryClientType.Consumer);
 
             m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
+            m_CometClient.Connect();
         }
 
         /// <summary>
@@ -52,6 +53,7 @@ namespace ESB.Core.Registry
             if (e.Type == CometEventType.ReceiveMessage)
             {
                 m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(e.Response);
+
             }
             else if (e.Type == CometEventType.Connected)
             {

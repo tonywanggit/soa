@@ -7,8 +7,10 @@ using ESB.Core.Registry;
 
 namespace Registry.WindowsService
 {
-
-    internal class RegistryClient
+    /// <summary>
+    /// 对连接到注册中心的Socket进行封装
+    /// </summary>
+    public class RegistryClient
     {
         public Socket Socket { get; set; }
         public Byte[] ReceiveBuffer { get; set; }

@@ -9,6 +9,9 @@ using ESB.Core.Rpc;
 
 namespace ESB.Core
 {
+    /// <summary>
+    /// ESB代理类：以单例的形式对外部提供服务
+    /// </summary>
     public class ESBProxy
     {
         private static ESBProxy m_Instance = null;
@@ -19,6 +22,7 @@ namespace ESB.Core
 
             ESBProxy proxy = new ESBProxy();
             Interlocked.CompareExchange<ESBProxy>(ref m_Instance, proxy, null);
+
             return m_Instance;
         }
 
@@ -30,6 +34,7 @@ namespace ESB.Core
         {
             get { return m_ConsumerConfig; }
         }
+
         private ESBConfig m_ESBConfig = null;
         /// <summary>
         /// 消费者配置文件
@@ -50,6 +55,11 @@ namespace ESB.Core
         private RegistryConsumerClient m_RegistryClient = null;
 
         /// <summary>
+        /// 配置文件管理
+        /// </summary>
+        private ConfigurationManager m_ConfigurationManager = null;
+
+        /// <summary>
         /// ESBProxy构造函数
         /// </summary>
         private ESBProxy()
@@ -64,13 +74,9 @@ namespace ESB.Core
         /// </summary>
         private void LoadConfig()
         {
-            m_ConsumerConfig = new ConsumerConfig();
-            m_ConsumerConfig.ApplicationName = "xxx";
-            m_ConsumerConfig.Registry.Add(new RegistryItem() { Uri = "192.168.156.138:5555", Load = 1 });
-            m_ConsumerConfig.Reference.Add(new ReferenceItem() { ServiceName = "ESB_ASHX", Interface = "" }); 
-
-            m_ESBConfig = new ESBConfig();
-            m_ESBConfig.Registry.Add(new RegistryItem() { Uri = "", Load = 1 });
+            m_ConfigurationManager = new ConfigurationManager();
+            m_ConsumerConfig = m_ConfigurationManager.LoadConsumerConfig();
+            m_ESBConfig = m_ConfigurationManager.LoadESBConfig();
         }
 
         /// <summary>
