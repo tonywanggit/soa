@@ -7,6 +7,7 @@ using System.Messaging;
 using NewLife.Log;
 using XCode.DataAccessLayer;
 using System.Configuration;
+using ESB.Core.Entity;
 
 namespace Audit.WindowsService
 {
