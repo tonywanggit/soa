@@ -6,7 +6,6 @@ using NewLife.Configuration;
 using System.Messaging;
 using NewLife.Log;
 using XCode.DataAccessLayer;
-using JN.ESB.Entity;
 using System.Configuration;
 
 namespace Audit.WindowsService
