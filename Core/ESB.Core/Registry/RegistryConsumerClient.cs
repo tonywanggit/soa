@@ -58,11 +58,15 @@ namespace ESB.Core.Registry
             {
                 if (e.Type == CometEventType.ReceiveMessage)    // 接收到来自服务器的配置信息
                 {
-                    m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(e.Response);
-                    ThreadPoolX.QueueUserWorkItem(x =>
-                    {
-                        m_ConfigurationManager.SaveESBConfig(m_ESBProxy.ESBConfig);
-                    });
+                    RegistryMessage rm = XmlUtil.LoadObjFromXML<RegistryMessage>(e.Response);
+
+                    if(rm.Action == RegistryMessageAction.ServiceConfig){
+                        m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
+                        ThreadPoolX.QueueUserWorkItem(x =>
+                        {
+                            m_ConfigurationManager.SaveESBConfig(m_ESBProxy.ESBConfig);
+                        });
+                    }
                 }
                 else if (e.Type == CometEventType.Connected)   // 当和服务器取得联系时发送消费者配置文件到服务端
                 {

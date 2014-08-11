@@ -36,8 +36,8 @@ namespace Registry.WindowsService
             m_TcpListener.BeginAcceptSocket(new AsyncCallback(AcceptCallback), m_TcpListener);
             Console.WriteLine("注册中心服务正在监控：{0}端口！", port);
 
-            m_monitorThread = new MonitorThread(this);
-            m_monitorThread.Start();
+            //m_monitorThread = new MonitorThread(this);
+            //m_monitorThread.Start();
         }
 
         private void AcceptCallback(IAsyncResult ar)
@@ -119,9 +119,16 @@ namespace Registry.WindowsService
         {
             try
             {
-                Console.WriteLine("发送数据：{0}", data);
+                RegistryMessage rm = new RegistryMessage()
+                {
+                    Action = action,
+                    MessageBody = data
+                };
 
-                Byte[] msg = Encoding.UTF8.GetBytes(data);
+                String messageData = XmlUtil.SaveXmlFromObj<RegistryMessage>(rm);
+                Console.WriteLine("发送数据：{0}", messageData);
+
+                Byte[] msg = Encoding.UTF8.GetBytes(messageData);
                 registryClient.Socket.BeginSend(msg, 0, msg.Length, SocketFlags.None, new AsyncCallback(SendCallback), registryClient);
             }
             catch (Exception ex)

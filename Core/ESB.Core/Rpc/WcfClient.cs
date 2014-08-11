@@ -6,6 +6,7 @@ using ESB.Core.Entity;
 using System.Net;
 using System.IO;
 using System.Xml;
+using ESB.Core.Util;
 
 namespace ESB.Core.Rpc
 {

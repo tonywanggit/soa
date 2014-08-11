@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ESB.Core.Rpc
+namespace ESB.Core.Util
 {
     /// <summary>
     /// 通用工具类
