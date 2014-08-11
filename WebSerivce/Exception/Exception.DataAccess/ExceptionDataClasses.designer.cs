@@ -20,6 +20,7 @@ namespace JN.ESB.Exception
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
+    using JN.ESB.Core.Service.Common;
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EsbExceptionDb")]
@@ -37,9 +38,9 @@ namespace JN.ESB.Exception
     partial void Update异常信息对象(异常信息对象 instance);
     partial void Delete异常信息对象(异常信息对象 instance);
     #endregion
-		
-		public ExceptionDataClassesDataContext() : 
-				base(global::Exception.DataAccess.Properties.Settings.Default.EsbExceptionDbConnectionString, mappingSource)
+
+    public ExceptionDataClassesDataContext() :
+        base(EsbConfig.getConnStringByDBName("EsbExceptionDb"), mappingSource)
 		{
 			OnCreated();
 		}
