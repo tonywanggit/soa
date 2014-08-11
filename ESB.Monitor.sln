@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audit.WindowsService", "WindowService\Audit.WindowsService\Audit.WindowsService.csproj", "{E7963127-9A20-4D7D-9DB4-8CAC3238D65B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor.WindowsService", "WindowService\Audit.WindowsService\Monitor.WindowsService.csproj", "{E7963127-9A20-4D7D-9DB4-8CAC3238D65B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
