@@ -39,8 +39,8 @@
             // serviceInstaller1
             // 
             this.serviceInstaller1.Description = "MB企业服务总线日志处理服务";
-            this.serviceInstaller1.DisplayName = "MB.AuditWindowService";
-            this.serviceInstaller1.ServiceName = "MB.AuditWindowService";
+            this.serviceInstaller1.DisplayName = "MB.ESB.MonitorWindowService";
+            this.serviceInstaller1.ServiceName = "MB.ESB.MonitorWindowService";
             // 
             // ProjectInstaller
             // 

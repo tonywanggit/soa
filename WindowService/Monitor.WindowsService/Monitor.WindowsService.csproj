@@ -8,8 +8,8 @@
     <ProjectGuid>{E7963127-9A20-4D7D-9DB4-8CAC3238D65B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Audit.WindowsService</RootNamespace>
-    <AssemblyName>Audit.WindowsService</AssemblyName>
+    <RootNamespace>Monitor.WindowsService</RootNamespace>
+    <AssemblyName>Monitor.WindowsService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
