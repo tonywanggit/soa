@@ -1,0 +1,79 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxrp" Namespace="DevExpress.Web.ASPxRoundPanel" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxnb" Namespace="DevExpress.Web.ASPxNavBar" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%-- ASPxImage --%>
+<dxe:ASPxImage runat="server" SkinID="TopLeftCorner" Width="8" Height="65" ImageUrl="Demo/CaptionLeft.png" />
+<dxe:ASPxImage runat="server" SkinID="TopRightCorner" Width="8" Height="65" ImageUrl="Demo/CaptionRight.png" />
+<dxe:ASPxImage runat="server" SkinID="BottomLeftCorner" Width="6" Height="6" ImageUrl="Demo/BottomLeftCorner.png" />
+<dxe:ASPxImage runat="server" SkinID="BottomRightCorner" Width="6" Height="6" ImageUrl="Demo/BottomRightCorner.png" />
+<dxe:ASPxImage runat="server" SkinID="Copyright" Width="92" Height="40" ImageUrl="Demo/Copyright.png" />
+<%-- ASPxHyperLink --%>
+<dxe:ASPxHyperLink runat="server" SkinID="Logotype" ImageWidth="175px" ImageHeight="60px" />
+<%-- ASPxRoundPanel --%>
+<dxrp:ASPxRoundPanel runat="server" SkinID="Banner" Width="230px">
+    <ContentPaddings PaddingTop="29px" PaddingBottom="0px" PaddingLeft="6px" PaddingRight="6px" />
+    <NoHeaderTopLeftCorner Height="6px" Width="6px" Url="Demo/BannerTopLeftCorner.png" />
+    <NoHeaderTopRightCorner Height="6px" Width="6px" Url="Demo/BannerTopRightCorner.png" />
+    <BottomLeftCorner Height="6px" Width="6px" Url="Demo/BannerBottomLeftCorner.png" />
+    <BottomRightCorner Height="6px" Width="6px" Url="Demo/BannerBottomRightCorner.png" />
+    <Content BackColor="transparent">
+        <BackgroundImage Repeat="NoRepeat" VerticalPosition="top" HorizontalPosition="left" ImageUrl="Demo/BannerContent.gif" />
+    </Content>
+    <NoHeaderTopEdge BackColor="transparent">
+        <BackgroundImage Repeat="NoRepeat" VerticalPosition="top" HorizontalPosition="left" ImageUrl="Demo/BannerTopEdge.gif" />
+    </NoHeaderTopEdge>
+    <RightEdge BackColor="transparent">
+        <BackgroundImage Repeat="NoRepeat" VerticalPosition="top" HorizontalPosition="right" ImageUrl="Demo/BannerRightEdge.gif" />
+    </RightEdge>
+    <BottomEdge BackColor="transparent">
+        <BackgroundImage Repeat="NoRepeat" VerticalPosition="bottom" ImageUrl="Demo/BannerBottomEdge.gif" />
+    </BottomEdge>
+    <LeftEdge BackColor="transparent">
+        <BackgroundImage Repeat="NoRepeat" VerticalPosition="top" HorizontalPosition="left" ImageUrl="Demo/BannerLeftEdge.gif" />
+    </LeftEdge>
+</dxrp:ASPxRoundPanel>
+<%-- ASPxRoundPanel Navigation --%>
+<dxrp:ASPxRoundPanel SkinID="RoundPanelNavigation" runat="server" ShowDefaultImages="False" ShowHeader="False"
+	ImageFolder="~/App_Themes/Default/Demo/RoundPanelNavigation/">
+	<BottomRightCorner Height="5px" Url="~/App_Themes/Default/Demo/RoundPanelNavigation/rpBottomRightCorner.png" Width="5px" />
+	<BottomEdge BackColor="#DFDFDF">
+		<BackgroundImage HorizontalPosition="left" ImageUrl="~/App_Themes/Default/Demo/RoundPanelNavigation/rpContentBottomEdge.gif" Repeat="RepeatX" />
+	</BottomEdge>
+	<BottomLeftCorner Height="5px" Url="~/App_Themes/Default/Demo/RoundPanelNavigation/rpBottomLeftCorner.png" Width="5px" />
+	<RightEdge BackColor="#DFDFDF">
+		<BackgroundImage HorizontalPosition="right" ImageUrl="~/App_Themes/Default/Demo/RoundPanelNavigation/rpContentRightEdge.gif"
+		Repeat="RepeatY" />
+	</RightEdge>
+	<LeftEdge BackColor="#DFDFDF">
+		<BackgroundImage HorizontalPosition="left" ImageUrl="~/App_Themes/Default/Demo/RoundPanelNavigation/rpContentLeftEdge.gif"
+		Repeat="RepeatY" />
+	</LeftEdge>
+	<NoHeaderTopRightCorner Height="5px" Url="~/App_Themes/Default/Demo/RoundPanelNavigation/rpNoHeaderTopRightCorner.png" Width="5px" />
+	<NoHeaderTopEdge BackColor="#DFDFDF">
+		<BackgroundImage ImageUrl="~/App_Themes/Default/Demo/RoundPanelNavigation/rpNoHeaderTopEdge.gif" Repeat="RepeatX" VerticalPosition="top" />
+	</NoHeaderTopEdge>
+	<NoHeaderTopLeftCorner Height="5px" Url="~/App_Themes/Default/Demo/RoundPanelNavigation/rpNoHeaderTopLeftCorner.png" Width="5px" />
+	<ContentPaddings Padding="0px" />
+	<Border BorderWidth="0px" />
+</dxrp:ASPxRoundPanel>
+<%-- ASPxNavBar Navigation --%>
+<dxnb:ASPxNavBar SkinID="NavBarNavigation" runat="server" ImageFolder="~/App_Themes/Default/Demo/NavBarNavigation/"
+    CssFilePath="~/App_Themes/Default/Demo/NavBarNavigation/styles.css"
+    CssPostfix="DefaultNavigation" AutoCollapse="True" GroupSpacing="0px">
+    <CollapseImage Height="14px" Width="14px" Url="~/App_Themes/Default/Demo/NavBarNavigation/nbCollapse.png" />
+    <ExpandImage Height="0px" Width="0px" Url="~/App_Themes/Default/Demo/NavBarNavigation/nbExpand.gif" />
+    <GroupContentStyle ItemSpacing="3px"></GroupContentStyle>
+</dxnb:ASPxNavBar>
+<%-- ASPxRoundPanel GroupBox --%>
+<dxrp:ASPxRoundPanel SkinID="RoundPanelGroupBox" runat="server" ShowDefaultImages="False"
+    View="GroupBox" BackColor="White" GroupBoxCaptionOffsetX="17px">
+    <Border BorderColor="#A1A1A1" BorderStyle="Solid" BorderWidth="1px" />
+    <HeaderStyle BackColor="White" ForeColor="Black" />
+</dxrp:ASPxRoundPanel>
+<%-- ASPxMenu ChartDemoToolbar --%>
+<dxm:ASPxMenu runat="server" SkinID="ChartDemoToolbar" CssPostfix="DefaultChartDemoToolbar" CssFilePath="~/App_Themes/Default/Demo/ChartDemoToolbar/styles.css">
+    <SeparatorPaddings PaddingLeft="5px" PaddingRight="5px" />
+    <Paddings PaddingLeft="4px" PaddingRight="2px" />
+</dxm:ASPxMenu>

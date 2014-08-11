@@ -32,10 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NewLife.Core">
-      <HintPath>..\..\..\LIB\NewLife.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
     <Reference Include="System.ServiceModel" />
@@ -45,11 +43,17 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="XCode">
-      <HintPath>..\..\..\LIB\XCode.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\EsbConfig.cs" />
+    <Compile Include="Common\Settings.cs" />
+    <Compile Include="Common\UDDI对象.cs" />
+    <Compile Include="Common\UDDI访问.cs" />
+    <Compile Include="Common\日志.cs" />
+    <Compile Include="Common\服务状态.cs" />
+    <Compile Include="Common\服务类型.cs" />
+    <Compile Include="Common\请求类型.cs" />
+    <Compile Include="Common\错误类型.cs" />
     <Compile Include="Configuration\ConfigurationManager.cs" />
     <Compile Include="Configuration\ConsumerConfig.cs" />
     <Compile Include="Configuration\ESBConfig.cs" />
@@ -106,6 +110,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ESBData\ConsumerConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NewLife\NewLife.Core\NewLife.Core.csproj">
+      <Project>{5813c22e-eeb3-4dee-a45c-bb218041193a}</Project>
+      <Name>NewLife.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NewLife\NewLife.XCode\NewLife.XCode.csproj">
+      <Project>{b49aba5a-c5da-45f4-87f1-b435ec51d710}</Project>
+      <Name>NewLife.XCode</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

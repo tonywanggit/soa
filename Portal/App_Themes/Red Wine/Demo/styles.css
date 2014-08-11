@@ -1,0 +1,109 @@
+﻿body {
+    background-color: #44121E;
+    color: #171D2D;
+
+    background-image: url('Gradient.jpg'); 
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+.BannerLime a { color: #FBC1B9; }
+.BannerLime { color: #FBC1B9; }
+.BannerVersion { color: #CA8699; }
+.Copyright { color: #DC5779; }
+
+.Features b * { font-weight: normal; color: #DF719A; font-size: 16px; font-family: Tahoma; }
+.RootPage {
+    color: #F2F2F2;
+}
+.RootPage a { color: #F2F2F2; }
+/* Label for Appearance combobox */
+.lblSkins { color: #FFFFFF; }
+.Title h1.h1Blue { color: #680E39; }
+.Slogan { color: #EDE8E9!important; }
+.MainBanner { margin-right: 45px; margin-top: 38px!important; padding-bottom: 25px; }
+.MiniSlogan { color: #E4A0BC!important; }
+.ContentMargin { margin-left: 0px!important; }
+.HeaderPanel { padding-bottom: 45px!important; }
+
+/* Icon menu */
+.dxmMenu_Demo
+{
+	color: #FFFFFF;
+}
+.dxmMenuSeparator_Demo
+{
+    width: 1px!important;
+    height: 15px!important;
+	background-color: #FFFFFF;
+}
+.dxmMenu_Demo a
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+/* Header for TitleImage Area*/
+.DetailsPageHeader 
+{
+	background-image: url('PageHeader.gif');
+	background-position: left top;
+	background-repeat: repeat-x;
+    background-color: #DCABBC;
+    padding: 6px 5px 0px;
+    width: 100%;
+}
+.DetailsPageHeaderBottom {
+    height: 3px;
+    background-color: #DCACBD; 
+    border-bottom: solid 1px #C15D82;
+}
+.DetailsPageLeftEdgeHeader 
+{
+	width: 3px;
+	background-image: url('LeftEdgeHeader.gif');
+	background-position: left top;
+	background-repeat: repeat-y;
+    background-color: #DCABBC;
+}
+.DetailsPageRightEdgeHeader 
+{
+	width: 3px;
+	background-image: url('RightEdgeHeader.gif');
+	background-position:right top;
+	background-repeat: repeat-y;
+    background-color: #DCABBC;
+}
+.DetailsPageEdge { width: 3px!important; }
+.DetailsPageLeftEdge 
+{
+	width: 3px;
+	background-image: url('LeftEdgeContent.gif');
+	background-position: left top;
+	background-repeat: repeat-y;
+    background-color: #DCABBC;
+}
+.DetailsPageRightEdge 
+{
+	width: 3px;
+	background-image: url('RightEdgeContent.gif');
+	background-position:right top;
+	background-repeat: repeat-y;
+    background-color: #DCABBC;
+}
+.DetailsPageContent 
+{
+	color: #171D2D;
+    background-color: White;
+    padding: 30px;
+}
+.DetailsPageFooter {
+    width: 100%; 
+    background-color: White;
+    background-image: url('BottomEdgeContent.gif');
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+.DetailsSorceCodeArea {
+    width: 100%; 
+    padding-top: 21px;
+}

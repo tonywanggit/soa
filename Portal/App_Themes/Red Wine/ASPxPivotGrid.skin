@@ -1,0 +1,47 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPivotGrid" TagPrefix="dxwpg" %>
+<%@ Register Assembly="DevExpress.XtraPivotGrid.v9.1.Core, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraPivotGrid" TagPrefix="temp" %>
+<dxwpg:ASPxPivotGrid runat="server">
+	<Styles CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine">
+        <MenuStyle GutterWidth="0px" />   
+    </Styles>
+    <OptionsLoadingPanel Text="" />
+    <OptionsPager CurrentPageNumberFormat="{0}">
+        <AllButton>
+            <Image Height="19px" Width="24px" ></Image>
+        </AllButton>
+        <NextPageButton>
+            <Image Height="19px" Width="19px"></Image>
+        </NextPageButton>
+        <PrevPageButton>
+            <Image Height="19px" Width="19px"></Image>
+        </PrevPageButton>
+        <FirstPageButton>
+            <Image Height="19px" Width="23px"></Image>
+        </FirstPageButton>
+        <LastPageButton>
+            <Image Height="19px" Width="23px"></Image>
+        </LastPageButton>
+    </OptionsPager>
+    <Images ImageFolder="~/App_Themes/Red Wine/{0}/">        
+        <CustomizationFieldsClose Url="~/App_Themes/Red Wine/PivotGrid/pcCloseButton.png" Width="19px" Height="19px" />
+        <HeaderSortUp Url="~/App_Themes/Red Wine/PivotGrid/pgHeaderSortUp.png" Width="11px" Height="15px" />
+        <HeaderSortDown Url="~/App_Themes/Red Wine/PivotGrid/pgHeaderSortDown.png" Width="11px" Height="15px" />
+        <FilterWindowSizeGrip Url="~/App_Themes/Red Wine/PivotGrid/pgFilterResizer.png" Width="13px" Height="13px" />
+        <FieldValueCollapsed Url="~/App_Themes/Red Wine/PivotGrid/pgCollapsedButton.png" Width="15px" Height="15px" />
+        <FieldValueExpanded Url="~/App_Themes/Red Wine/PivotGrid/pgExpandedButton.png" Width="15px" Height="15px" />
+        <HeaderFilter Url="~/App_Themes/Red Wine/PivotGrid/pgFilterButton.png" Width="19px" Height="19px" />
+        <HeaderActiveFilter Url="~/App_Themes/Red Wine/PivotGrid/pgFilterButtonActive.png" Width="19px" Height="19px" />
+        <CustomizationFieldsBackground Url="~/App_Themes/Red Wine/PivotGrid/pcHeaderBack.gif" />
+		<SortByColumn Url="~/App_Themes/Red Wine/PivotGrid/pgSortByColumn.png" Width="15px" Height="14px" />
+    </Images>
+	<ImagesEditors>
+        <DropDownEditDropDown Url="~/App_Themes/Red Wine/Editors/edtDropDown.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtDropDownHottracked.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtDropDownDisabled.png" Width="7px" Height="7px" />
+        <CalendarFastNavPrevYear Url="~/App_Themes/Red Wine/Editors/edtCalendarFNPrevYear.png" Width="19px" Height="19px" />
+        <CalendarFastNavNextYear Url="~/App_Themes/Red Wine/Editors/edtCalendarFNNextYear.png" Width="19px" Height="19px" />
+        <SpinEditIncrement Url="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementDisabledImage.png" Width="7px" Height="6px" />
+        <SpinEditDecrement Url="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementDisabledImage.png" Width="7px" Height="7px" />
+        <SpinEditLargeIncrement Url="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncDisabledImage.png" Width="7px" Height="9px" />
+        <SpinEditLargeDecrement Url="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecDisabledImage.png" Width="7px" Height="9px" />
+    </ImagesEditors>
+</dxwpg:ASPxPivotGrid>

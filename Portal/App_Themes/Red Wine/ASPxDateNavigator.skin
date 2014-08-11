@@ -1,0 +1,12 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwschs" Namespace="DevExpress.Web.ASPxScheduler" Assembly="DevExpress.Web.ASPxScheduler.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxwschs:ASPxDateNavigator runat="server" 
+    CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine" 
+    ImageFolder="~/App_Themes/Red Wine/{0}/">
+    <Properties>
+    	<FastNavPrevYearImage Height="19px" Url="~/App_Themes/Red Wine/Editors/edtCalendarFNPrevYear.png" Width="19px" />
+		<FastNavNextYearImage Height="19px" Url="~/App_Themes/Red Wine/Editors/edtCalendarFNNextYear.png" Width="19px" />
+		<FooterStyle Spacing="17px"></FooterStyle>
+		<HeaderStyle Spacing="1px"></HeaderStyle>
+    </Properties>
+</dxwschs:ASPxDateNavigator>

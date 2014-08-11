@@ -1,0 +1,681 @@
+﻿.dxeLoadingDiv_Youthful
+{
+	background: White;
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+	cursor: wait;
+}
+.dxeLoadingPanel_Youthful
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxeLoadingPanel_Youthful td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+
+.dxeBase_Youthful
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+}
+/* -- ErrorFrame -- */
+.dxeErrorCell_Youthful, .dxeErrorCell_Youthful td
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: Red;
+}
+.dxeErrorCell_Youthful
+{
+	padding-left: 4px;
+	padding-right: 5px;
+}
+.dxeErrorFrame_Youthful
+{
+}
+.dxeErrorFrameWithoutError_Youthful
+{
+	border: 1px solid Red;
+}
+.dxeErrorFrameWithoutError_Youthful .dxeControlsCell_Youthful
+{
+	padding: 2px;
+}
+.dxeEditArea_Youthful
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	border: 1px solid #E5EECF;
+}
+/* -- Buttons -- */
+.dxeButtonEditButton_Youthful, .dxeCalendarButton_Youthful
+{
+	vertical-align: middle;
+	border: 0px;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxeButtonEditButton_Youthful, .dxeCalendarButton_Youthful, .dxeButtonEditButton_Youthful td.dx, .dxeCalendarButton_Youthful td.dx
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	text-align: center;
+}
+.dxeButtonEditButton_Youthful
+{
+	padding: 0px;
+	background-image: url( 'edtDropDownBack.gif' );
+	background-repeat: repeat-x;
+	background-position: top;
+	background-color: #8AB216;
+	color: White;
+}
+
+.dxeSpinIncButton_Youthful table.dxbebt, .dxeSpinDecButton_Youthful table.dxbebt
+{
+	width: 13px;
+}
+.dxeSpinLargeDecButton_Youthful table.dxbebt
+{
+	width: 13px;
+}
+.dxeSpinLargeIncButton_Youthful table.dxbebt
+{
+	width: 12px;
+}
+
+
+.dxeSpinIncButton_Youthful, .dxeSpinDecButton_Youthful
+{
+	padding: 2px 0px;
+}
+.dxeSpinLargeIncButton_Youthful, .dxeSpinLargeDecButton_Youthful
+{
+	padding: 0px 0px;
+}
+.dxeSpinLargeIncButton_Youthful
+{
+	padding-left: 1px;
+}
+
+.dxeSpinIncButton_Youthful
+{
+	border-bottom: Solid 1px #FFFFFF;
+}
+.dxeSpinDecButton_Youthful
+{
+	border-bottom-style: none;
+}
+.dxeSpinLargeDecButton_Youthful
+{
+}
+.dxeSpinLargeIncButton_Youthful
+{
+}
+
+.dxeButtonEditButton_Youthful table.dxbebt
+{
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.dxeCalendarButton_Youthful
+{
+	background-image: url( 'edtCalendarButtonBack.gif' );
+	background-repeat: repeat-x;
+	background-position: top;
+	background-color: #E5EECF;
+	padding: 4px 14px 5px 14px;
+	width: 30px;
+}
+.dxeCalendarButton_Youthful table.dxbebt
+{
+	width: 100%;
+}
+.dxeCalendarButton_Youthful td.dx
+{
+	text-align: center;
+	white-space: nowrap;
+}
+
+/* -- Pressed -- */
+.dxeCalendarButtonPressed_Youthful
+{
+	background: #ccd7b1;
+	border: 0px;
+}
+.dxeButtonEditButtonPressed_Youthful
+{
+	background: #F4921B;
+	border: 0px;
+}
+.dxeSpinLargeIncButtonPressed_Youthful
+{
+	border-left: 0px;
+}
+.dxeSpinLargeDecButtonPressed_Youthful
+{
+	border-right: 0px;
+}
+.dxeSpinIncButtonPressed_Youthful
+{
+	border-bottom: Solid 1px #FAFAFA;
+}
+.dxeSpinDecButtonPressed_Youthful
+{
+	border-bottom-style: none;
+}
+/* -- Hover -- */
+.dxeCalendarButtonHover_Youthful
+{
+	background: #f8fcf1;
+	border: 0px;
+}
+.dxeButtonEditButtonHover_Youthful
+{
+	background: #F4BD17;
+	border: 0px;
+}
+.dxeSpinIncButtonHover_Youthful
+{
+	border-bottom: Solid 1px #fafafa;
+}
+.dxeSpinDecButtonHover_Youthful
+{
+	border-bottom-style: none;
+}
+.dxeSpinLargeIncButtonHover_Youthful
+{
+}
+.dxeSpinLargeDecButtonHover_Youthful
+{
+}
+
+.dxeButtonEdit_Youthful
+{
+	border: Solid 1px #AFC185;
+	width: 170px;
+	background-color: White;
+}
+.dxeButtonEdit_Youthful .dxeEditArea_Youthful, .dxeButtonEdit_Youthful td.dxic
+{
+	width: 100%;
+}
+.dxeButtonEdit_Youthful td.dxic
+{
+	padding: 1px 2px 1px 1px;
+}
+.dxeTextBox_Youthful, .dxeMemo_Youthful
+{
+	border: Solid 1px #AFC185;
+}
+.dxeTextBox_Youthful td.dxic
+{
+	padding: 2px 3px 2px 2px;
+}
+.dxeTextBox_Youthful td.dxic
+{
+	width: 100%;
+}
+.dxeRadioButtonList_Youthful, .dxeRadioButtonList_Youthful table
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+}
+.dxeRadioButtonList_Youthful
+{
+	width: 170px;
+	border: Solid 1px #AFC185;
+}
+.dxeRadioButtonList_Youthful td.dxe
+{
+	padding: 6px;
+	padding-right: 0px;
+}
+.dxeRadioButtonList_Youthful label
+{
+	margin-right: 6px;
+}
+/* -- Memo -- */
+.dxeMemo_Youthful
+{
+	border: Solid 1px #AFC185;
+	background-color: White;
+	padding: 1px 1px 1px 4px;
+}
+.dxeMemoEditArea_Youthful
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+}
+.dxeMemo_Youthful td
+{
+	width: 100%;
+}
+
+/* -- Hyperlink -- */
+.dxeHyperlink_Youthful
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	font-weight: normal;
+	color: #7A9F0E;
+	text-decoration: underline;
+}
+a:hover.dxeHyperlink_Youthful
+{
+	color: #F4921B;
+}
+a:visited.dxeHyperlink_Youthful
+{
+	color: #9AA481;
+}
+/* -- ListBox -- */
+.dxeListBox_Youthful
+{
+	background-color: White;
+	border: Solid 1px #AFC185;
+	font-family: Tahoma;
+	font-size: 9pt;
+	height: 103px;
+	width: 70px;
+}
+.dxeListBox_Youthful div.dxlbd
+{
+	padding-top: 1px;
+	height: 102px;
+}
+.dxeListBoxItemRow_Youthful
+{
+	cursor: default;
+}
+.dxeListBoxItem_Youthful
+{
+	border-bottom: Solid 1px White;
+	border-right: Solid 1px White;
+	border-left: Solid 1px White;
+	color: Black;
+	font-family: Tahoma;
+	font-size: 9pt;
+	font-weight: normal;
+	padding: 2px 2px 3px 3px;
+	white-space: nowrap;
+	text-align: left;
+}
+.dxeListBoxItemHover_Youthful
+{
+	/* inherits dxeListBoxItem */
+	background-color: #F4BD17;
+	color: #FFFFFF;
+}
+.dxeListBoxItemSelected_Youthful
+{
+	/* inherits dxeListBoxItem */
+	background-color: #F4921B;
+	color: #FFFFFF;
+}
+.dxeListBox_Youthful td.dxeI, .dxeListBox_Youthful td.dxeIM, .dxeListBox_Youthful .dxeHIC
+{
+	border-right-width: 0px !important;
+}
+.dxeListBox_Youthful td.dxeIM
+{
+	width: 0;
+}
+.dxeListBox_Youthful td.dxeT
+{
+	width: 100%;
+	border-left-width: 0px !important;
+	padding-left: 0px !important;
+}
+.dxeListBox_Youthful td.dxeFTM, .dxeListBox_Youthful td.dxeTM, .dxeListBox_Youthful td.dxeLTM, .dxeListBox_Youthful .dxeHFC, .dxeListBox_Youthful .dxeHC, .dxeListBox_Youthful .dxeHLC
+{
+	overflow: hidden;
+}
+.dxeListBox_Youthful td.dxeFTM, .dxeListBox_Youthful td.dxeTM
+{
+	border-right-width: 0px !important;
+}
+.dxeListBox_Youthful td.dxeFTM, .dxeListBox_Youthful td.dxeTM, .dxeListBox_Youthful .dxeHFC, .dxeListBox_Youthful .dxeHC
+{
+	padding-right: 6px !important;
+}
+.dxeListBox_Youthful td.dxeLTM, .dxeListBox_Youthful td.dxeTM, .dxeListBox_Youthful .dxeHC, .dxeListBox_Youthful .dxeHLC
+{
+	padding-left: 6px !important;
+}
+.dxeListBox_Youthful td.dxeLTM, .dxeListBox_Youthful td.dxeTM
+{
+	border-left: 1px solid #cfcfcf !important;
+}
+.dxeListBox_Youthful td.dxeIM, .dxeListBox_Youthful td.dxeFTM, .dxeListBox_Youthful td.dxeTM, .dxeListBox_Youthful td.dxeLTM
+{
+	border-bottom: solid 1px #cfcfcf;
+}
+/*Header*/
+.dxeListBox_Youthful .dxeHD
+{
+	background-color: #8AB216;
+	border-bottom: solid 1px #AFC185;
+}
+.dxeListBox_Youthful .dxeHFC, .dxeListBox_Youthful .dxeHIC, .dxeListBox_Youthful .dxeHC, .dxeListBox_Youthful .dxeHLC
+{
+	padding-top: 4px;
+	padding-bottom: 3px;
+	color: White;
+	border-bottom-width: 0px;
+}
+.dxeListBox_Youthful .dxeHC, .dxeListBox_Youthful .dxeHLC
+{
+	border-left: solid 1px White;
+}
+.dxeListBox_Youthful .dxeHIC, .dxeListBox_Youthful .dxeHFC
+{
+	border-left: 1px solid #8AB216;
+}
+.dxeListBox_Youthful .dxeHFC, .dxeListBox_Youthful .dxeHC
+{
+	border-right-width: 0;
+}
+.dxeListBox_Youthful .dxeHLC
+{
+	border-right: solid 1px #8AB216;
+}
+
+/* -- Calendar -- */
+.dxeCalendar_Youthful
+{
+	color: #000000;
+	border: 0px;
+	background-color: #E5EECF;
+	font-weight: normal;
+}
+.dxeCalendar_Youthful .dxMonthGrid, .dxeCalendar_Youthful .dxMonthGridWithWeekNumbers
+{
+	padding: 0px 25px 6px;
+	cursor: default;
+	background: url(edtCalendarBack.gif) repeat-x;
+}
+.dxeCalendar_Youthful .dxMonthGridWithWeekNumbers
+{
+	padding-left: 8px;
+}
+.dxeCalendarDayHeader_Youthful
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	padding: 6px 4px 10px;
+}
+.dxeCalendarWeekNumber_Youthful
+{
+	font-family: Tahoma;
+	font-size: 8pt;
+	text-align: right;
+	padding: 5px 11px 2px 1px;
+	color: #B7C19B;
+}
+.dxeCalendarDay_Youthful
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	padding: 3px 5px;
+	text-align: center;
+}
+.dxeCalendarWeekend_Youthful /* inherits dxeCalendarDay */
+{
+	color: #C00000;
+}
+.dxeCalendarOtherMonth_Youthful /* inherits dxeCalendarDay */
+{
+	color: #A1B07F;
+}
+.dxeCalendarOutOfRange_Youthful /* inherits dxeCalendarDay */
+{
+	color: #c1c1c1;
+}
+.dxeCalendarToday_Youthful /* inherits dxeCalendarDay */
+{
+	border: solid 1px #F4BD17;
+	padding: 2px 4px;
+}
+.dxeCalendarSelected_Youthful /* inherits dxeCalendarDay */
+{
+	color: #DFEECB;
+	background-color: #F4921B;
+}
+.dxeCalendarHeader_Youthful
+{
+	background-color: #9CC525;
+	border-bottom: Solid 1px White;
+	padding: 5px 11px 4px;
+	padding-bottom: 5px;
+	color: White;
+}
+.dxeCalendarHeader_Youthful td.dxe
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	text-align: center;
+	color: #FFFFFF;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxeCalendarFooter_Youthful, .dxeCalendarFastNavFooter_Youthful
+{
+	color: #000000;
+	background: #9CC525;
+	padding: 10px 0px 11px;
+	border-top: Solid 1px White;
+}
+.dxeCalendarFastNav_Youthful
+{
+	border-top: Solid 5px #9CC525;
+	background-color: #FFFFFF;
+	padding: 0;
+}
+.dxeCalendarFastNavMonthArea_Youthful
+{
+	border-top: Solid 1px #FFFFFF;
+	border-bottom: Solid 1px #FFFFFF;
+	background: #E5EECF;
+	padding: 15px 12px;
+}
+.dxeCalendarFastNavYearArea_Youthful
+{
+	background: #D3E4A6;
+	padding: 10px 18px;
+}
+.dxeCalendarFastNavMonth_Youthful, .dxeCalendarFastNavYear_Youthful
+{
+	font: 9pt Tahoma;
+	color: #424c29;
+	padding: 3px 7px 3px 7px;
+	text-align: center;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxeCalendarFastNavYear_Youthful
+{
+}
+.dxeCalendarFastNavMonthSelected_Youthful, .dxeCalendarFastNavYearSelected_Youthful
+{
+	background: #f4921b;
+	color: white;
+}
+.dxeCalendarFastNavMonthHover_Youthful, .dxeCalendarFastNavYearHover_Youthful
+{
+	background: #f4bd17;
+	color: #FFFFFF;
+}
+/* Disabled */
+.dxeDisabled_Youthful, .dxeDisabled_Youthful td.dxe
+{
+	color: #cbdca2;
+	cursor: default;
+}
+a.dxeDisabled_Youthful, a.dxeDisabled_Youthful:hover
+{
+	color: #cbdca2;
+}
+.dxeButtonDisabled_Youthful, .dxeButtonDisabled_Youthful td.dxe
+{
+	color: #B5C58F;
+	background-image: url( 'edtDropDownBackDis.gif' );
+	background-color: #e5eecf;
+	cursor: default;
+}
+/* -- Button -- */
+.dxbButton_Youthful
+{
+	color: #000000;
+	font-size: 9pt;
+	font-family: Tahoma;
+	font-weight: normal;
+	vertical-align: middle;
+	background-color: #E5EECF;
+	border: Solid 1px #AFC185;
+	padding: 1px 1px 1px 1px;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxbButtonHover_Youthful
+{
+	color: #000000;
+	background-color: #F8FCF1;
+	border: Solid 1px #AFC185;
+}
+.dxbButtonChecked_Youthful
+{
+	color: #FFFFFF;
+	background-image: none;
+	background-color: #F4921B;
+	border: Solid 1px #F4921B;
+}
+.dxbButtonPressed_Youthful
+{
+	color: #000000;
+	background-color: #CCD7B1;
+	border: Solid 1px #AFC185;
+}
+.dxbButton_Youthful div.dxb
+{
+	padding: 2px 10px 3px 10px;
+}
+.dxbButton_Youthful div.dxbf
+{
+	padding: 1px 9px 2px 9px;
+	border: Dotted #000000 1px;
+}
+.dxbButton_Youthful div.dxb table
+{
+	color: #000000;
+	font-size: 9pt;
+	font-family: Tahoma;
+	font-weight: normal;
+}
+.dxbButton_Youthful div.dxb td.dxb
+{
+	background-color: transparent !important;
+	background-image: url( '' ) !important;
+	border-width: 0px !important;
+	padding: 0px !important;
+}
+/* Disabled */
+.dxbDisabled_Youthful
+{
+	border-color: #cbd7b0;
+	background-color: #e5eecf;
+	color: #b5c58f;
+	cursor: default;
+}
+.dxbDisabled_Youthful td.dxb
+{
+	color: #b5c58f;
+}
+
+/* -- FilterControl -- */
+.dxfcTable_Youthful
+{
+	border-collapse: separate !important;
+}
+.dxfcTable_Youthful td.dxfc
+{
+	padding: 0px 0px 0px 3px;
+	vertical-align: middle;
+	font: 9pt Tahoma;
+	color: Black;
+}
+a.dxfcPropertyName_Youthful
+{
+	white-space: nowrap !important;
+	color: Blue !important;
+}
+a.dxfcGroupType_Youthful
+{
+	white-space: nowrap !important;
+	padding: 0px 3px 0px 3px !important;
+	color: Red !important;
+}
+a.dxfcOperation_Youthful
+{
+	white-space: nowrap !important;
+	color: Green !important;
+}
+a.dxfcValue_Youthful
+{
+	white-space: nowrap !important;
+	color: Gray !important;
+}
+.dxfcImageButton_Youthful
+{
+	cursor: pointer;
+}
+
+.dxfcLoadingPanel_Youthful
+{
+	border: Solid 1px #9CC525;
+	background-color: White;
+	font: 9pt Tahoma;
+	color: Black;
+}
+.dxfcLoadingPanel_Youthful td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxfcLoadingDiv_Youthful
+{
+	background: white;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+.dxeMaskHint_Youthful
+{
+	background: #ffffe1;
+	border: solid 1px black;
+	padding: 2px 5px 3px;
+	color: Black;
+	font: 9pt Tahoma;
+}
+/* -- ProgressBar -- */
+.dxeProgressBar_Youthful, .dxeProgressBar_Youthful td
+{
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 9pt;
+	color: Black;
+}
+.dxeProgressBar_Youthful
+{
+	border: none;
+	background-color: #D3E4A6;
+}
+.dxeProgressBarIndicator_Youthful
+{
+	background-color: #F4BD17;
+}

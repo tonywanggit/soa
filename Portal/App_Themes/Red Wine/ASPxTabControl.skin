@@ -1,0 +1,8 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxtc" Namespace="DevExpress.Web.ASPxTabControl" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %> 
+<dxtc:ASPxTabControl runat="server" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine" ImageFolder="~/App_Themes/Red Wine/{0}/" LoadingPanelText="" TabSpacing="3px">
+    <Paddings Padding="2px" PaddingLeft="5px" PaddingRight="5px" />
+    <ContentStyle>
+        <Border BorderWidth="1px" BorderStyle="Solid" BorderColor="#A74768" />
+    </ContentStyle>
+</dxtc:ASPxTabControl>

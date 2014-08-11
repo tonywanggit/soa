@@ -1,0 +1,1860 @@
+﻿/* -- ASPxCallbackPanel -- */
+.dxcpLoadingPanel_RedWine
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxcpLoadingPanel_RedWine td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxcpLoadingDiv_RedWine
+{
+	background-color: Gray;
+	opacity: 0.01;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=1);
+}
+/* Disabled */
+.dxcpDisabled_RedWine
+{
+	color: #bcaab0;
+	cursor: default;
+}
+
+/* -- ASPxCloudControl -- */
+.dxccControl_RedWine a:hover
+{
+    text-decoration: underline;
+}
+.dxccControl_RedWine a
+{
+	text-decoration: none;
+	color: #8A0A37;
+}
+.dxccControl_RedWine
+{
+	font-family: Tahoma, Verdana, Arial;
+	text-decoration: none;
+	color: #8A0A37;
+	background-color: #FFFFFF;
+}
+/* Disabled */
+.dxccDisabled_RedWine
+{
+	color: #bcaab0;
+	cursor: default;
+}
+
+/* -- ASPxDataView -- */
+.dxdvControl_RedWine
+{
+	font: 10px Tahoma;
+	color: #000000;
+}
+.dxdvControlCell_RedWine
+{
+	padding: 0px;
+}
+.dxdvLoadingPanel_RedWine
+{
+}
+.dxdvLoadingPanel_RedWine td.dx
+{
+	padding: 0px;
+}
+.dxdvContent_RedWine
+{
+    padding: 20px 20px 20px 20px;
+    border-top: Solid 1px #BC758E;
+    border-bottom: Solid 1px #BC758E;    
+}
+.dxdvItem_RedWine, .dxdvFlowItem_RedWine
+{
+	font: 9pt Tahoma;
+	color: #B5486D;
+	border: Solid 1px #D5D5D5;
+	background-color: #EBEBEB;
+	padding: 20px;
+	height: 180px;
+	/*if IE*/	
+	height:expression("154px");
+}
+.dxdvFlowItem_RedWine
+{
+	float: left;
+	overflow: hidden;
+}
+.dxdvFlowItemsContainer_RedWine
+{
+}
+.dxdvEmptyItem_RedWine
+{
+	font: 9pt Tahoma;
+	color: #B5486D;
+	text-align: left;
+	vertical-align: top;
+	padding: 20px;
+	height: 180px;
+	/*if IE*/
+	height:expression("154px");
+}
+.dxdvPagerPanel_RedWine
+{
+    padding-top: 9px;
+    padding-bottom: 7px;
+    background-color: #F5ECF1;
+}
+.dxdvEmptyData_RedWine
+{
+	color: #E1ABBE;
+	padding: 12px 40px 12px 40px;
+}
+/* Disabled */
+.dxdvDisabled_RedWine
+{
+	color: #bcaab0;
+	cursor: default;
+}
+
+/* -- ASPxHeadline -- */
+.dxhlControl_RedWine 
+{
+	font: 9pt Tahoma;
+	color: #000000;
+}
+.dxhlContent_RedWine
+{
+    line-height: 120%!important;
+    font-family: Tahoma;
+    font-size: 9pt;
+	color: #000000;
+} 
+.dxhlDate_RedWine
+{
+	color: #8A0A37;
+	white-space: nowrap;
+	font-family: Tahoma;
+    font-size: 7pt;
+}
+.dxhlHeader_RedWine
+{
+	color: #8A0A37;
+	font-weight: normal;
+    line-height: 121%!important;
+    font-size: 12pt;
+    font-family: Tahoma;
+}
+.dxhlDateHeader_RedWine
+{
+    font-size: 7pt;
+    line-height: 121%!important;
+	color: #FFFFFF;
+	white-space: nowrap;
+	background-color: #8A0A37;
+	font-weight: normal;
+	padding: 3px 5px 3px 5px;
+}
+.dxhlLeftPanel_RedWine
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: #000000;
+	line-height: 121%!important;
+    text-align: right;
+}
+.dxhlRightPanel_RedWine
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: #000000;
+	line-height: 121%!important;
+}
+.dxhlLeftPanel_RedWine img,
+.dxhlRightPanel_RedWine img 
+{
+    margin-top: 5px;
+    border: Solid 1px #8A0A37!important;
+}
+
+.dxhlDateLeftPanel_RedWine
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: #8A0A37;
+	white-space: nowrap;
+}
+.dxhlDateRightPanel_RedWine
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: #8A0A37;
+	white-space: nowrap;
+}
+.dxhlTailDiv_RedWine
+{
+	font: 9pt Tahoma;
+	color: #8A0A37;
+}
+.dxhlTailDiv_RedWine a
+{
+	color: #8A0A37;
+}
+.dxhlTailDiv a:hover
+{
+    color: #BE458B;
+}
+.dxhlTailDiv_RedWine a:visited
+{
+    color: #928489;
+}
+.dxhlContent_RedWine a.dxhl
+{
+	color: #8A0A37;
+} 
+.dxhlContent_RedWine a.dxhl:hover
+{
+    color: #BE458B;
+}
+.dxhlContent_RedWine a.dxhl:visited
+{
+    color: #928489;
+}
+/* Disabled */
+.dxhlDisabled_RedWine
+{
+	color: #bcaab0;
+	cursor: default;
+}
+
+/* -- ASPxLoadingPanel -- */
+.dxlpLoadingPanel_RedWine 
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxlpLoadingPanel_RedWine  td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxlpLoadingDiv_RedWine 
+{
+	background-color: #777777;
+	opacity: 0.7;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=70);
+}
+
+/* -- ASPxMenu -- */
+.dxmControl_RedWine 
+{
+	font: 9pt Tahoma;
+	color: #000000;
+}
+.dxmControl_RedWine a, .dxmMenu_RedWine a, .dxmVerticalMenu_RedWine a, .dxmSubMenu_RedWine a
+{
+	color: #000000;
+	text-decoration: none;
+}
+.dxmLoadingPanel_RedWine
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxmLoadingPanel_RedWine td.dx
+{
+	background-color: #F2F2F2;
+	white-space: nowrap;
+	text-align: center;
+	padding: 6px 6px 6px 6px;
+}
+.dxmMenu_RedWine, .dxmVerticalMenu_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	background-color: #F27AA4;
+	border: Solid 1px #8A0A37;
+	padding: 1px;
+}
+.dxmMenu_RedWine
+{
+	background-image: url('mBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmVerticalMenu_RedWine
+{
+    background-color: #F5ECF1;
+    padding: 4px 4px 4px 4px;
+}
+.dxmMenuGutter_RedWine
+{
+}
+.dxmMenuSeparator_RedWine
+{
+    width: 2px!important;
+    background: transparent url('mSeparator.gif') center center repeat-y;
+}
+.dxmMenuVerticalSeparator_RedWine
+{
+	background: transparent url('mVerticalSeparator.gif') center center repeat-x;
+	height: 2px;
+}
+.dxmVerticalMenu_RedWine .dxmMenuSeparator_RedWine
+{
+    background-image: none!important;
+	background-color: #DDC1CE;
+}
+.dxmMenuItem_RedWine, .dxmMenuItemWithImage_RedWine, .dxmMenuItemWithPopOutImage_RedWine, .dxmMenuItemWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuItem_RedWine, .dxmVerticalMenuItemWithImage_RedWine, .dxmVerticalMenuItemWithPopOutImage_RedWine, .dxmVerticalMenuItemWithImageWithPopOutImage_RedWine, 
+.dxmMenuLargeItem_RedWine, .dxmMenuLargeItemWithImage_RedWine, .dxmMenuLargeItemWithPopOutImage_RedWine, .dxmMenuLargeItemWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuLargeItem_RedWine, .dxmVerticalMenuLargeItemWithImage_RedWine, .dxmVerticalMenuLargeItemWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemWithImageWithPopOutImage_RedWine
+{
+	font: 9pt Tahoma;
+	white-space: nowrap;
+}
+.dxmMenuItem_RedWine, .dxmMenuItemWithImage_RedWine, .dxmMenuItemWithPopOutImage_RedWine, .dxmMenuItemWithImageWithPopOutImage_RedWine,
+.dxmMenuLargeItem_RedWine, .dxmMenuLargeItemWithImage_RedWine, .dxmMenuLargeItemWithPopOutImage_RedWine, .dxmMenuLargeItemWithImageWithPopOutImage_RedWine
+{
+	color: #FFFFFF;
+	background-color: #F27AA4;
+
+	background-image: url('mItemBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmMenuItem_RedWine a, .dxmMenuItemWithImage_RedWine a, .dxmMenuItemWithPopOutImage_RedWine a, .dxmMenuItemWithImageWithPopOutImage_RedWine a,
+.dxmMenuLargeItem_RedWine a, .dxmMenuLargeItemWithImage_RedWine a, .dxmMenuLargeItemWithPopOutImage_RedWine a, .dxmMenuLargeItemWithImageWithPopOutImage_RedWine a
+{
+	color: #FFFFFF;
+}
+.dxmVerticalMenuItem_RedWine, .dxmVerticalMenuItemWithImage_RedWine, .dxmVerticalMenuItemWithPopOutImage_RedWine, .dxmVerticalMenuItemWithImageWithPopOutImage_RedWine, 
+.dxmVerticalMenuLargeItem_RedWine, .dxmVerticalMenuLargeItemWithImage_RedWine, .dxmVerticalMenuLargeItemWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemWithImageWithPopOutImage_RedWine
+{
+	color: #000000;
+	background-color: #F5ECF1;
+}
+.dxmMenuItem_RedWine, .dxmMenuItemWithImage_RedWine
+{
+	padding-top: 4px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+.dxmMenuItemWithPopOutImage_RedWine, .dxmMenuItemWithImageWithPopOutImage_RedWine
+{
+	padding-top: 4px;
+	padding-right: 10px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+}	
+.dxmVerticalMenuItem_RedWine
+{
+	padding-top: 5px;
+	padding-right: 13px;
+	padding-bottom: 6px;
+	padding-left: 8px;
+}
+.dxmVerticalMenuItemWithImage_RedWine
+{
+	padding-top: 5px;	
+	padding-right: 13px;	
+	padding-bottom: 6px;	
+	padding-left: 5px;	
+}
+.dxmVerticalMenuItemWithPopOutImage_RedWine
+{
+	padding-top: 5px;	
+	padding-right: 4px;
+	padding-bottom: 6px;	
+	padding-left: 8px;	
+}
+.dxmVerticalMenuItemWithImageWithPopOutImage_RedWine
+{
+	padding-top: 5px;	
+	padding-right: 4px;	
+	padding-bottom: 6px;	
+	padding-left: 5px;	
+}
+.dxmMenuLargeItem_RedWine, .dxmMenuLargeItemWithImage_RedWine
+{
+	padding-top: 4px;
+	padding-right: 23px;
+	padding-bottom: 4px;
+	padding-left: 22px;
+}
+.dxmMenuLargeItemWithPopOutImage_RedWine, .dxmMenuLargeItemWithImageWithPopOutImage_RedWine
+{
+	padding-top: 4px;
+	padding-right: 17px;
+	padding-bottom: 4px;
+	padding-left: 22px;
+}
+.dxmVerticalMenuLargeItem_RedWine, .dxmVerticalMenuLargeItemWithImage_RedWine
+{
+	padding-top: 7px;
+	padding-right: 16px;
+	padding-bottom: 8px;
+	padding-left: 13px;
+}
+.dxmVerticalMenuLargeItemWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemWithImageWithPopOutImage_RedWine
+{
+	padding-top: 7px;
+	padding-right: 3px;
+	padding-bottom: 8px;
+	padding-left: 13px;
+}
+.dxmMenuItemSelected_RedWine, .dxmMenuItemSelectedWithImage_RedWine, .dxmMenuItemSelectedWithPopOutImage_RedWine, .dxmMenuItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuItemSelected_RedWine, .dxmVerticalMenuItemSelectedWithImage_RedWine, .dxmVerticalMenuItemSelectedWithPopOutImage_RedWine, .dxmVerticalMenuItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmMenuLargeItemSelected_RedWine, .dxmMenuLargeItemSelectedWithImage_RedWine, .dxmMenuLargeItemSelectedWithPopOutImage_RedWine, .dxmMenuLargeItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuLargeItemSelected_RedWine, .dxmVerticalMenuLargeItemWithImageSelected_RedWine, .dxmVerticalMenuLargeItemSelectedWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemSelectedWithImageWithPopOutImage_RedWine
+{
+	border: Solid 1px #8A0A37;
+}
+.dxmMenuItemSelected_RedWine, .dxmMenuItemSelectedWithImage_RedWine, .dxmMenuItemSelectedWithPopOutImage_RedWine, .dxmMenuItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmMenuLargeItemSelected_RedWine, .dxmMenuLargeItemSelectedWithImage_RedWine, .dxmMenuLargeItemSelectedWithPopOutImage_RedWine, .dxmMenuLargeItemSelectedWithImageWithPopOutImage_RedWine
+{
+	background-color: #CB4F7B;
+
+	background-image: url('mItemSBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmVerticalMenuItemSelected_RedWine, .dxmVerticalMenuItemSelectedWithImage_RedWine, .dxmVerticalMenuItemSelectedWithPopOutImage_RedWine, .dxmVerticalMenuItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuLargeItemSelected_RedWine, .dxmVerticalMenuLargeItemWithImageSelected_RedWine, .dxmVerticalMenuLargeItemSelectedWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemSelectedWithImageWithPopOutImage_RedWine
+{
+    border-width: 0px;
+	color: #FFFFFF;
+	background-color: #8A0A37;
+}
+.dxmMenuItemSelected_RedWine, .dxmMenuItemSelectedWithImage_RedWine,
+.dxmMenuItemChecked_RedWine, .dxmMenuItemCheckedWithImage_RedWine,
+.dxmMenuItemHover_RedWine, .dxmMenuItemHoverWithImage_RedWine
+{
+	padding-top: 3px;
+	padding-right: 9px;
+	padding-bottom: 4px;
+	padding-left: 9px;
+}
+.dxmMenuItemSelectedWithPopOutImage_RedWine, .dxmMenuItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmMenuItemCheckedWithPopOutImage_RedWine, .dxmMenuItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmMenuItemHoverWithPopOutImage_RedWine, .dxmMenuItemHoverWithImageWithPopOutImage_RedWine
+{
+	padding-top: 3px;
+	padding-right: 9px;
+	padding-bottom: 3px;
+	padding-left: 9px;
+}	
+.dxmVerticalMenuItemSelected_RedWine,
+.dxmVerticalMenuItemChecked_RedWine,
+.dxmVerticalMenuItemHover_RedWine
+{
+	padding-top: 5px;
+	padding-right: 13px;
+	padding-bottom: 6px;
+	padding-left: 8px;
+}
+.dxmVerticalMenuItemSelectedWithImage_RedWine,
+.dxmVerticalMenuItemCheckedWithImage_RedWine,
+.dxmVerticalMenuItemHoverWithImage_RedWine
+{
+	padding-top: 5px;	
+	padding-right: 13px;	
+	padding-bottom: 6px;	
+	padding-left: 5px;	
+}
+.dxmVerticalMenuItemSelectedWithPopOutImage_RedWine,
+.dxmVerticalMenuItemCheckedWithPopOutImage_RedWine,
+.dxmVerticalMenuItemHoverWithPopOutImage_RedWine
+{
+	padding-top: 5px;	
+	padding-right: 1px;	
+	padding-bottom: 6px;	
+	padding-left: 8px;	
+}
+.dxmVerticalMenuItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuItemHoverWithImageWithPopOutImage_RedWine
+{
+	padding-top: 5px;	
+	padding-right: 1px;	
+	padding-bottom: 6px;	
+	padding-left: 5px;	
+}
+.dxmMenuLargeItemSelected_RedWine, .dxmMenuLargeItemSelectedWithImage_RedWine,
+.dxmMenuLargeItemChecked_RedWine, .dxmMenuLargeItemCheckedWithImage_RedWine,
+.dxmMenuLargeItemHover_RedWine, .dxmMenuLargeItemHoverWithImage_RedWine
+{
+	padding-top: 3px;
+	padding-right: 22px;
+	padding-bottom: 3px;
+	padding-left: 21px;
+}
+.dxmMenuLargeItemSelectedWithPopOutImage_RedWine, .dxmMenuLargeItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmMenuLargeItemCheckedWithPopOutImage_RedWine, .dxmMenuLargeItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmMenuLargeItemHoverWithPopOutImage_RedWine, .dxmMenuLargeItemHoverWithImageWithPopOutImage_RedWine
+{
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 21px;
+}
+.dxmVerticalMenuLargeSelectedItem_RedWine, .dxmVerticalMenuLargeSelectedItemWithImage_RedWine,
+.dxmVerticalMenuLargeCheckedItem_RedWine, .dxmVerticalMenuLargeCheckedItemWithImage_RedWine,
+.dxmVerticalMenuLargeHoverItem_RedWine, .dxmVerticalMenuLargeHoverItemWithImage_RedWine
+{
+	padding-top: 7px;
+	padding-right: 13px;
+	padding-bottom: 8px;
+	padding-left: 11px;
+}
+.dxmVerticalMenuLargeItemSelectedWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemSelectedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuLargeItemCheckedWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuLargeItemHoverWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemHoverWithImageWithPopOutImage_RedWine
+{
+	padding-top: 7px;
+	padding-right: 3px;
+	padding-bottom: 8px;
+	padding-left: 13px;
+}
+.dxmMenuItemChecked_RedWine, .dxmMenuItemCheckedWithImage_RedWine, .dxmMenuItemCheckedWithPopOutImage_RedWine, .dxmMenuItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuItemChecked_RedWine, .dxmVerticalMenuItemCheckedWithImage_RedWine, .dxmVerticalMenuItemCheckedWithPopOutImage_RedWine, .dxmVerticalMenuItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmMenuLargeItemChecked_RedWine, .dxmMenuLargeItemCheckedWithImage_RedWine, .dxmMenuLargeItemCheckedWithPopOutImage_RedWine, .dxmMenuLargeItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuLargeItemChecked_RedWine, .dxmVerticalMenuLargeItemWithImageChecked_RedWine, .dxmVerticalMenuLargeItemCheckedWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemCheckedWithImageWithPopOutImage_RedWine
+{
+	border: Solid 1px #8A0A37;
+}
+.dxmMenuItemChecked_RedWine, .dxmMenuItemCheckedWithImage_RedWine, .dxmMenuItemCheckedWithPopOutImage_RedWine, .dxmMenuItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmMenuLargeItemChecked_RedWine, .dxmMenuLargeItemCheckedWithImage_RedWine, .dxmMenuLargeItemCheckedWithPopOutImage_RedWine, .dxmMenuLargeItemCheckedWithImageWithPopOutImage_RedWine
+{
+	background-color: #CB4F7B;
+
+	background-image: url('mItemSBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmVerticalMenuItemChecked_RedWine, .dxmVerticalMenuItemCheckedWithImage_RedWine, .dxmVerticalMenuItemCheckedWithPopOutImage_RedWine, .dxmVerticalMenuItemCheckedWithImageWithPopOutImage_RedWine,
+.dxmVerticalMenuLargeItemChecked_RedWine, .dxmVerticalMenuLargeItemWithImageChecked_RedWine, .dxmVerticalMenuLargeItemCheckedWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemCheckedWithImageWithPopOutImage_RedWine
+{
+    border-width: 0px;
+	color: #FFFFFF;
+	background-color: #8A0A37;
+}
+.dxmMenuItemHover_RedWine, .dxmMenuItemHoverWithImage_RedWine, .dxmMenuItemHoverWithPopOutImage_RedWine, .dxmMenuItemHoverWithImageWithPopOutImage_RedWine, 
+.dxmVerticalMenuItemHover_RedWine, .dxmVerticalMenuItemHoverWithImage_RedWine, .dxmVerticalMenuItemHoverWithPopOutImage_RedWine, .dxmVerticalMenuItemHoverWithImageWithPopOutImage_RedWine, 
+.dxmMenuLargeItemHover_RedWine, .dxmMenuLargeItemHoverWithImage_RedWine, .dxmMenuLargeItemHoverWithPopOutImage_RedWine, .dxmMenuLargeItemHoverWithImageWithPopOutImage_RedWine, 
+.dxmVerticalMenuLargeItemHover_RedWine, .dxmVerticalMenuLargeItemHoverWithImage_RedWine, .dxmVerticalMenuLargeItemHoverWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemHoverWithImageWithPopOutImage_RedWine
+{
+	border: Solid 1px #8A0A37;
+}
+.dxmMenuItemHover_RedWine, .dxmMenuItemHoverWithImage_RedWine, .dxmMenuItemHoverWithPopOutImage_RedWine, .dxmMenuItemHoverWithImageWithPopOutImage_RedWine, 
+.dxmMenuLargeItemHover_RedWine, .dxmMenuLargeItemHoverWithImage_RedWine, .dxmMenuLargeItemHoverWithPopOutImage_RedWine, .dxmMenuLargeItemHoverWithImageWithPopOutImage_RedWine
+{
+	background-color: #D69BD3;
+
+	background-image: url('mItemHBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmVerticalMenuItemHover_RedWine, .dxmVerticalMenuItemHoverWithImage_RedWine, .dxmVerticalMenuItemHoverWithPopOutImage_RedWine, .dxmVerticalMenuItemHoverWithImageWithPopOutImage_RedWine, 
+.dxmVerticalMenuLargeItemHover_RedWine, .dxmVerticalMenuLargeItemHoverWithImage_RedWine, .dxmVerticalMenuLargeItemHoverWithPopOutImage_RedWine, .dxmVerticalMenuLargeItemHoverWithImageWithPopOutImage_RedWine
+{
+	color: #000000;
+    border-width: 0px;
+	background-color: #DBBBDA;
+}
+.dxmSubMenu_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: Solid 1px #8A0A37;
+	padding: 1px 1px 1px 1px;
+}
+.dxmSubMenuGutter_RedWine
+{
+	background-color: #EFEFEF;
+	
+	background-image: url('mGutterRightBorder.gif');
+	background-position: right top;
+	background-repeat: repeat-y;
+}
+.dxmSubMenuSeparator_RedWine
+{
+	background-color: #c6c6c6;
+}
+.dxmSubMenuItem_RedWine, .dxmSubMenuItemWithImage_RedWine, .dxmSubMenuItemWithPopOutImage_RedWine, .dxmSubMenuItemWithImageWithPopOutImage_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	white-space: nowrap;
+}
+.dxmSubMenuItem_RedWine, .dxmSubMenuItemWithImage_RedWine
+{
+	padding-top: 3px;
+	padding-right: 17px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+}
+.dxmSubMenuItemWithPopOutImage_RedWine, .dxmSubMenuItemWithImageWithPopOutImage_RedWine
+{
+	padding-top: 3px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+}
+.dxmSubMenuItemSelected_RedWine, .dxmSubMenuItemSelectedWithImage_RedWine, .dxmSubMenuItemSelectedWithPopOutImage_RedWine, .dxmSubMenuItemSelectedWithImageWithPopOutImage_RedWine
+{
+    background-image: none;
+	background-color: #8A0A37;
+	border: Solid 1px #8A0A37;
+	color: #FFFFFF;
+}
+.dxmSubMenuItemSelected_RedWine, .dxmSubMenuItemSelectedWithImage_RedWine
+{
+	padding-top: 2px;
+	padding-right: 16px;
+	padding-bottom: 3px;
+	padding-left: 7px;
+}
+.dxmSubMenuItemSelectedWithPopOutImage_RedWine, .dxmSubMenuItemSelectedWithImageWithPopOutImage_RedWine
+{
+	padding-top: 2px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 7px;
+}
+.dxmSubMenuItemChecked_RedWine, .dxmSubMenuItemCheckedWithImage_RedWine, .dxmSubMenuItemCheckedWithPopOutImage_RedWine, .dxmSubMenuItemCheckedWithImageWithPopOutImage_RedWine
+{
+}
+.dxmSubMenuItemChecked_RedWine, .dxmSubMenuItemCheckedWithImage_RedWine
+{
+}
+.dxmSubMenuItemCheckedWithPopOutImage_RedWine, .dxmSubMenuItemCheckedWithImageWithPopOutImage_RedWine
+{
+}
+.dxmSubMenuItemHover_RedWine, .dxmSubMenuItemHoverWithImage_RedWine, .dxmSubMenuItemHoverWithPopOutImage_RedWine, .dxmSubMenuItemHoverWithImageWithPopOutImage_RedWine
+{
+    background-image: none;
+
+	background-color: #DBBBDA;
+	border: Solid 1px #DBBBDA;
+	color: #000000;
+}
+.dxmSubMenuItemHover_RedWine, .dxmSubMenuItemHoverWithImage_RedWine
+{
+	padding-top: 2px;
+	padding-right: 16px;
+	padding-bottom: 3px;
+	padding-left: 7px;
+}
+.dxmSubMenuItemHoverWithPopOutImage_RedWine, .dxmSubMenuItemHoverWithImageWithPopOutImage_RedWine
+{
+	padding-top: 2px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 7px;
+}
+.dxmSubMenuBorderCorrector_RedWine
+{
+    position: absolute;
+    border: 0px;
+    padding: 0px;
+}
+/* Disabled */
+.dxmDisabled_RedWine
+{
+	color: #cdb9bf;
+	cursor: default;
+}
+
+/* -- ASPxNavBar -- */
+.dxnbControl_RedWine 
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	background-color: #F2F2F2;
+	padding: 0px;    
+}
+.dxnbControl_RedWine a
+{
+    color: #000000;
+}
+
+.dxnbLoadingPanel_RedWine
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxnbLoadingPanel_RedWine td.dx
+{
+	background-color: #F2F2F2;
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxnbGroupHeader_RedWine
+{
+	font: 9pt Tahoma;
+	color: #FFFFFF;
+	background-color: #D45582;
+	border: Solid 1px #8A0A37;
+	padding: 4px 4px 4px 8px;
+	
+	background-image: url('nbGroupHeaderBack.gif');
+	background-repeat: repeat-x;
+	background-position: top;
+}
+.dxnbGroupHeader_RedWine table.dxnb
+{
+	font: 9pt Tahoma;
+	color: #FFFFFF;
+}
+.dxnbGroupHeader_RedWine td.dxnb
+{
+	white-space: nowrap;
+}
+.dxnbGroupHeaderCollapsed_RedWine
+{
+	font: 9pt Tahoma;
+	color: #FFFFFF;
+	background-color: #D45582;
+	border: Solid 1px #8A0A37;
+	padding: 4px 4px 4px 8px;
+	
+	background-image: url('nbGroupHeaderBack.gif');
+	background-repeat: repeat-x;
+	background-position: top;
+}
+.dxnbGroupHeaderCollapsed_RedWine table.dxnb
+{
+	font: 9pt Tahoma;
+	color: #FFFFFF;
+}
+.dxnbGroupHeaderCollapsed_RedWine td.dxnb
+{
+	white-space: nowrap;
+}
+.dxnbGroupContent_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	border: Solid 1px #A9A9A9;
+	padding: 3px 4px 3px 4px;
+}
+.dxnbGroupContent_RedWine table.dxnb
+{
+    background-color: #D5D5D5;
+}
+.dxnbItem_RedWine, .dxnbLargeItem_RedWine, .dxnbBulletItem_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	background-color: #F2F2F2;
+    border-top: Solid 1px #F2F2F2;	
+    border-bottom: Solid 1px #F2F2F2;	
+}
+.dxnbItem_RedWine
+{
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 6px;
+	padding-left: 15px;
+}
+.dxnbLargeItem_RedWine
+{
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 6px;
+	padding-left: 15px;
+}
+.dxnbItemSelected_RedWine, .dxnbLargeItemSelected_RedWine, .dxnbBulletItemSelected_RedWine
+{
+	background-color: #8A0A37;
+	color: #FFFFFF;
+}
+.dxnbItemSelected_RedWine a, .dxnbLargeItemSelected_RedWine a, .dxnbBulletItemSelected_RedWine a
+{
+	color: #FFFFFF;
+}
+.dxnbItemSelected_RedWine
+{
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 6px;
+	padding-left: 15px;
+}
+.dxnbLargeItemSelected_RedWine
+{
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 6px;
+	padding-left: 15px;
+}
+.dxnbItemHover_RedWine, .dxnbLargeItemHover_RedWine, .dxnbBulletItemHover_RedWine
+{
+	background-color: #DBBBDA;
+	color: #000000;
+}
+.dxnbItemHover_RedWine a, .dxnbLargeItemHover_RedWine a, .dxnbBulletItemHover_RedWine a
+{
+	color: #000000;
+}
+.dxnbItemHover_RedWine
+{
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 6px;
+	padding-left: 15px;
+}
+.dxnbLargeItemHover_RedWine
+{
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 6px;
+	padding-left: 15px;
+}
+.dxnbGroupHeader_RedWine, .dxnbGroupHeaderCollapsed_RedWine
+{
+    text-align: left;
+}
+.dxnbItem_RedWine, .dxnbItemHover_RedWine, .dxnbItemSelected_RedWine,
+.dxnbBulletItem_RedWine, .dxnbBulletItemHover_RedWine, .dxnbBulletItemSelected_RedWine
+{
+    text-align: left;
+}
+.dxnbLargeItem_RedWine, .dxnbLargeItemHover_RedWine, .dxnbLargeItemSelected_RedWine
+{
+    text-align: center;
+}
+.dxnbGroupHeaderHover_RedWine
+{
+}
+.dxnbGroupHeaderCollapsedHover_RedWine
+{
+}
+/* Disabled */
+.dxnbDisabled_RedWine, .dxnbDisabled_RedWine td.dcnb
+{
+	color: #bdaab1;
+	cursor: default;
+}
+
+/* -- ASPxNewsControl -- */
+.dxncControl_RedWine 
+{
+	font: 9pt Tahoma;
+	background-color: White;
+}
+.dxncControlCell_RedWine 
+{
+	padding: 18px;
+}
+.dxncLoadingPanel_RedWine
+{
+}
+.dxncLoadingPanel_RedWine td.dx
+{
+	padding: 0px;
+}
+.dxncContent_RedWine
+{
+    padding: 20px 20px 20px 20px;
+    border-top: Solid 1px #BC758E;
+    border-bottom: Solid 1px #BC758E;    
+}
+.dxncPagerPanel_RedWine
+{
+    padding: 9px 100px 7px 100px;
+    background-color: #F5ECF1;
+}
+.dxncItem_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	padding: 12px 8px 12px 8px;
+}
+.dxncEmptyItem_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	padding: 12px 12px 12px 14px;
+}
+.dxncBackToTop_RedWine, .dxncBackToTop_RedWine a
+{
+    color: #8A0A37;
+}
+.dxncBackToTop_RedWine a:hover
+{
+    color: #BE458B;
+}
+.dxncBackToTop_RedWine a:visited
+{
+    color: #928489;
+}
+/* Headline */
+.dxncItemContent_RedWine
+{
+    line-height: 120%!important;
+    font-family: Tahoma;
+    font-size: 9pt;
+	color: #000000;
+} 
+.dxncItemDate_RedWine
+{
+	color: #8A0A37;
+	white-space: nowrap;
+	font-family: Tahoma;
+    font-size: 7pt;
+}
+.dxncItemHeader_RedWine
+{
+	color: #8A0A37;
+	font-weight: normal;
+    line-height: 121%!important;
+    font-size: 12pt;
+    font-family: Tahoma;
+}
+.dxncItemHeader_RedWine .dxncItemDate_RedWine 
+{
+    font-size: 7pt;
+    line-height: 121%!important;
+	color: #FFFFFF;
+	white-space: nowrap;
+	background-color: #8A0A37;
+	font-weight: normal;
+	padding: 3px 5px 3px 5px;
+}
+.dxncItemLeftPanel_RedWine
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: #000000;
+	line-height: 121%!important;
+    text-align: right;
+}
+.dxncItemRightPanel_RedWine
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: #000000;
+	line-height: 121%!important;
+}
+.dxncItemLeftPanel_RedWine img,
+.dxncItemRightPanel_RedWine img 
+{
+    margin-top: 5px;
+    border: Solid 1px #8A0A37!important;
+}
+.dxncItemDateLeftPanel_RedWine
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: #8A0A37;
+	white-space: nowrap;
+}
+.dxncItemDateRightPanel_RedWine
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	color: #8A0A37;
+	white-space: nowrap;
+}
+.dxncItemTailDiv_RedWine
+{
+	font: 9pt Tahoma;
+	color: #8A0A37;
+}
+.dxncItemTailDiv_RedWine a
+{
+	color: #8A0A37;
+}
+.dxncItemTailDiv_RedWine a:hover
+{
+    color: #BE458B;
+}
+.dxncItemTailDiv_RedWine a:visited
+{
+    color: #928489;
+}
+.dxncItemContent_RedWine a.dxhl
+{
+	color: #8A0A37;
+} 
+.dxncItemContent_RedWine a.dxhl:hover
+{
+    color: #BE458B;
+}
+.dxncItemContent_RedWine a.dxhl:visited
+{
+    color: #928489;
+}
+.dxncEmptyData_RedWine
+{
+	color: #E1ABBE;
+}
+/* Disabled */
+.dxncDisabled_RedWine, .dxncDisabled_RedWine span.dxhl,
+.dxncDisabled_RedWine a, .dxncDisabled_RedWine a:hover
+{
+	color: #bcaab0;
+	cursor: default;
+}
+
+/* -- ASPxPager -- */
+.dxpControl_RedWine
+{
+	font: 9pt Tahoma;
+	color: #8A0A37;
+	padding: 2px 2px 2px 2px;
+}
+.dxpButton_RedWine
+{
+	font: 9pt Tahoma;
+	color: #394EA2;
+	text-decoration: underline;
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+}
+.dxpButton_RedWine a
+{
+	font: 9pt Tahoma;
+	color: #394EA2;
+	text-decoration: underline;
+	white-space: nowrap;
+}
+.dxpDisabledButton_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	text-decoration: none;
+}
+.dxpPageNumber_RedWine
+{
+	font: 9pt Tahoma;
+	color: #8A0A37;
+	text-decoration: underline;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0px 5px 0px 5px;
+}
+.dxpPageNumber_RedWine a
+{
+	font: 9pt Tahoma;
+	color: #8A0A37;
+	text-decoration: underline;
+}
+.dxpCurrentPageNumber_RedWine
+{
+	font: 9pt Tahoma;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 0px 3px 0px 3px;
+	background-color: #8A0A37;
+}
+.dxpSummary_RedWine
+{
+	font: 9pt Tahoma;
+	color: #8A0A37;
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0px 4px 0px 4px;
+}
+.dxpSeparator_RedWine
+{
+	background-color: #8A0A37;
+}
+/* Disabled */
+.dxpDisabled_RedWine
+{
+	color: #bcaab0;
+	border-color: #bcaab0;
+	cursor: default;
+}
+
+/* -- ASPxPopupControl -- */
+.dxpcControl_RedWine
+{
+	font-size: 9pt;
+	font-family: Tahoma, Verdana, Arial;
+	cursor: default;
+	color: #000000;
+	background-color: #F5ECF1;
+	border: Solid 1px #8A0A37;
+}
+.dxpcControl_RedWine a
+{
+	color: #8A0A37;
+}
+.dxpcControl_RedWine a:hover
+{
+    color: #BE458B;
+}
+.dxpcControl_RedWine a:visited
+{
+    color: #928489;
+}
+.dxpcCloseButton_RedWine
+{
+	cursor: hand;
+	padding: 1px;
+	padding-right: 3px;
+}
+.dxpcCloseButtonHover_RedWine
+{
+}
+.dxpcContent_RedWine
+{
+	color: #000000;
+	background-color: #F5ECF1;
+	font-size: 9pt;
+	line-height: 128%;
+	font-family: Tahoma, Verdana, Arial;
+	white-space: normal;
+	border-width: 0px;
+	padding: 14px 20px 15px 20px;
+    vertical-align: top;    
+}
+.dxpcFooter_RedWine
+{
+	font-size: 9pt;
+	font-family: Tahoma, Verdana, Arial;
+	color: #9A6B82;
+	background-color: #EED8E3;
+	border-width: 0px;
+	border-top: Solid 1px #CB9FB4;
+}
+.dxpcFooter_RedWine td.dxpc
+{
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 9pt;
+	color: #9A6B82;
+	white-space: nowrap;
+	padding: 12px 21px 14px 20px;
+}
+.dxpcHeader_RedWine
+{
+    font-size: 9pt;
+    font-family: Tahoma, Verdana, Arial;
+	color: #FFFFFF;
+	background-color: #CA6EA4;
+	background-image: url('pcHeaderBack.gif');
+	background-repeat: repeat-x;
+	border-bottom: Solid 1px #972869;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+.dxpcHeader_RedWine td.dxpc
+{
+    font-size: 9pt;
+    font-family: Tahoma, Verdana, Arial;
+	color: #FFFFFF;
+	white-space: nowrap;
+	font-weight: normal;
+    padding: 4px 0px 5px 0px;
+}
+.dxpcModalBackground_RedWine
+{
+	background-color: #777777;
+	opacity: 0.7;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=70);
+}
+/* Disabled */
+.dxpcDisabled_RedWine
+{
+	color: #bcaab0;
+	cursor: default;
+}
+
+/* -- ASPxRoundPanel -- */
+.dxrpControl_RedWine td.dxrp
+{
+	font-size: 9pt;
+	color: #000000;	
+	font-family: Tahoma, Verdana, Arial;
+}
+/* Header */
+.dxrpHeader_RedWine td.dxrp
+{
+	font-family: Tahoma, Verdana, Arial;
+	color: #FFFFFF;
+	font-size: 12px;
+	padding: 0px;
+}
+/* Disabled */
+.dxrpDisabled_RedWine, .dxrpDisabled_RedWine td.dxrp
+{
+	color: #bcaab0;
+	cursor: default;
+}
+
+/* -- ASPxSiteMapControl -- */
+.dxsmControl_RedWine a
+{
+	color: #8A0A37;
+}
+.dxsmControl_RedWine a:hover
+{
+    text-decoration: underline;
+    color: #BE458B;
+}
+.dxsmControl_RedWine a:visited
+{
+    color: #928489;
+}
+
+.dxsmControl_RedWine 
+{	
+	color: #8A0A37;
+	background-color: #FFFFFF;
+	font-family: Tahoma, Arial;
+	font-size: 8pt;
+	border: 0px;	
+	text-decoration: none;
+}
+/* - Category Level - */
+.dxsmCategoryLevel_RedWine, .dxsmCategoryLevel_RedWine a
+{
+	color: #8A0A37;
+    font-weight: bold;
+    font-size: 13.5pt;
+    font-family: Tahoma;
+    text-decoration: none;
+}
+.dxsmCategoryLevel_RedWine
+{
+    white-space: nowrap;
+    padding: 0px 0px 5px 0px;
+
+    border-bottom: Solid 1px #8A0A37;    
+}
+ /*flow layout*/
+.dxsmLevelCategoryFlow_RedWine, .dxsmLevelCategoryFlow_RedWine a
+{
+    color: #8A0A37;    
+    font-weight: bold;
+    font-size: 13.5pt;
+    font-family: Tahoma, Verdana, Arial;	
+	text-decoration: underline;
+}
+/* - Level 0 - */
+.dxsmLevel0_RedWine, .dxsmLevel0_RedWine a, .dxsmLevel0Categorized_RedWine a, .dxsmLevel0Categorized_RedWine
+{
+    color: #8A0A37!important;
+    text-decoration: none!important;
+	font-weight: normal;
+    font-size: 12pt;
+	font-family: Tahoma, Arial;
+    text-decoration: none;
+}
+.dxsmLevel0_RedWine, .dxsmLevel0Categorized_RedWine
+{
+    white-space: nowrap;
+    padding: 0px 0px 1px 0px;
+}
+.dxsmLevel0_RedWine
+{
+    border-bottom: Solid 2px #C3C3C3;
+    padding: 0px 0px 1px 0px;
+}
+
+ /*flow layout*/
+.dxsmLevel0Flow_RedWine, .dxsmLevel0Flow_RedWine a, .dxsmLevel0CategorizedFlow_RedWine a, .dxsmLevel0CategorizedFlow_RedWine
+{
+    color: #8A0A37;    
+    font-family: Tahoma, Verdana, Arial;	
+    font-weight: normal;
+    font-size: 12pt;
+	text-decoration: underline;
+}
+.dxsmLevel0Flow_RedWine
+{
+    padding: 0px 0px 0px 0px;    
+}
+.dxsmLevel0Flow_RedWine
+{
+    text-decoration: none;    
+}
+
+/* - Level 1 - */
+.dxsmLevel1_RedWine, .dxsmLevel1_RedWine a, .dxsmLevel1Categorized_RedWine a, .dxsmLevel1Categorized_RedWine
+{    
+    color: #8A0A37;  
+    font-size: 9pt;
+	font-family: Tahoma, Arial;
+    text-decoration: none;    
+}
+.dxsmLevel1_RedWine, .dxsmLevel1Categorized_RedWine
+{
+    white-space: nowrap;  
+    padding: 0px 0px 0px 0px;
+}
+
+/*flow layout*/
+.dxsmLevel1Flow_RedWine, .dxsmLevel1Flow_RedWine a, .dxsmLevel1CategorizedFlow_RedWine, .dxsmLevel1CategorizedFlow_RedWine a
+{    
+    color: #8A0A37;    
+    font-family: Tahoma, Verdana, Arial;	
+    font-size: 9pt;
+	text-decoration: underline;
+}
+.dxsmLevel1Flow_RedWine
+{
+    text-decoration: none;
+    padding: 0px 0px 0px 0px;
+}
+
+/* - Level 2 - */
+.dxsmLevel2_RedWine, .dxsmLevel2_RedWine a, .dxsmLevel2Categorized_RedWine a, .dxsmLevel2Categorized_RedWine
+{    
+    color: #8A0A37;
+    font-size: 9pt;
+	font-family: Tahoma, Arial;
+    text-decoration: none;    
+}
+.dxsmLevel2_RedWine, .dxsmLevel2Categorized_RedWine
+{
+    white-space: nowrap;
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel2Flow_RedWine, .dxsmLevel2Flow_RedWine a
+{
+    color: #8A0A37;
+    font-size: 9pt;    
+    font-family: Tahoma, Verdana, Arial;	
+	text-decoration:underline;    
+}
+.dxsmLevel2Flow_RedWine
+{
+    padding: 0px 0px 0px 0px;
+}
+/* - Level 3 - */
+.dxsmLevel3_RedWine, .dxsmLevel3_RedWine a
+{    
+    color: #8A0A37;
+    font-size: 9pt;
+	font-family: Tahoma, Arial;
+    text-decoration: none;    
+}
+.dxsmLevel3_RedWine
+{
+    white-space: nowrap;        
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel3Flow_RedWine, .dxsmLevel3Flow_RedWine a
+{    
+    color: #8A0A37;
+    font-size: 9pt;
+    font-family: Tahoma, Verdana, Arial;	
+	text-decoration: underline;    
+}
+/* - Level 4 - */
+.dxsmLevel4_RedWine, .dxsmLevel4_RedWine a
+{    
+    color: #8A0A37;
+    font-size: 9pt;
+	font-family: Tahoma, Arial;
+    text-decoration: none;    
+}
+.dxsmLevel4_RedWine
+{
+    white-space: nowrap;
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel4Flow_RedWine, .dxsmLevel4Flow_RedWine a
+{
+    color: #8A0A37;
+    font-family: Tahoma, Verdana, Arial;	
+    font-size: 9pt;
+	text-decoration: underline;        
+}
+.dxsmLevel4Flow_RedWine
+{
+    padding: 0px 0px 0px 0px;        
+}
+/* - Other Levels - */
+.dxsmLevelOther_RedWine
+{    
+    color: #8A0A37;
+    font-size: 9pt;
+	font-family: Tahoma, Arial;
+    text-decoration: none;    
+}
+.dxsmLevelOther_RedWine
+{
+    white-space: nowrap;
+    padding: 0px 0px 0px 0px;            
+}
+/*flow layout*/
+.dxsmLevelOtherFlow_RedWine, .dxsmLevelOtherFlow_RedWine a
+{
+    color: #8A0A37;
+    font-family: Tahoma, Verdana, Arial;	
+    font-size: 9pt;
+	text-decoration: underline;            
+}
+/* Disabled */
+.dxsmDisabled_RedWine
+{
+	color: #808080;
+	cursor: default;
+}
+
+/* -- ASPxTabControl, ASPxPageControl -- */
+.dxtcControl_RedWine 
+{
+	font: 9pt Tahoma;
+	color: #000000;
+}
+.dxtcLoadingPanel_RedWine
+{
+}
+.dxtcLoadingPanel_RedWine td.dx
+{
+	padding: 0px;
+}
+
+/* Tab Hyperlink*/
+.dxtcTab_RedWine a, .dxtcTabWithTabPositionLeft_RedWine a, .dxtcTabWithTabPositionBottom_RedWine a, .dxtcTabWithTabPositionRight_RedWine a,
+.dxtcActiveTab_RedWine a, .dxtcActiveTabWithTabPositionBottom_RedWine a, .dxtcActiveTabWithTabPositionLeft_RedWine a, .dxtcActiveTabWithTabPositionRight_RedWine a,
+.dxtcTabHover_RedWine a, .dxtcTabHoverWithTabPositionBottom_RedWine a, .dxtcTabHoverWithTabPositionLeft_RedWine a, .dxtcTabHoverWithTabPositionRight_RedWine a
+{
+	text-decoration: none;
+	color: #000000;    
+}
+/* Active Tab */
+.dxtcActiveTab_RedWine, .dxtcActiveTabWithTabPositionBottom_RedWine,
+.dxtcActiveTabWithTabPositionLeft_RedWine, .dxtcActiveTabWithTabPositionRight_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	border: Solid 1px #A74768;
+	padding: 3px 9px 5px 10px;
+	background-color: #F2F2F2;
+
+	text-align: center;
+}
+.dxtcActiveTabWithTabPositionLeft_RedWine
+{
+	text-align: left;
+	padding: 4px 9px 6px 5px;
+}
+.dxtcActiveTabWithTabPositionRight_RedWine
+{
+	text-align: left;
+	padding: 4px 9px 6px 5px;
+}
+.dxtcActiveTab_RedWine table.dxtc, .dxtcActiveTabWithTabPositionBottom_RedWine table.dxtc,
+.dxtcActiveTabWithTabPositionLeft_RedWine table.dxtc, .dxtcActiveTabWithTabPositionRight_RedWine table.dxtc
+{
+	font: 9pt Tahoma;
+	color: #000000;    
+}
+.dxtcActiveTab_RedWine td.dxtc, .dxtcActiveTabWithTabPositionBottom_RedWine td.dxtc,
+.dxtcActiveTabWithTabPositionLeft_RedWine td.dxtc, .dxtcActiveTabWithTabPositionRight_RedWine td.dxtc
+{
+	white-space: nowrap;
+    background-color: transparent!important;
+    background-image: url('')!important;
+    border-width: 0px!important;
+    padding: 0px!important;
+}
+.dxtcActiveTabHover_RedWine
+{
+}
+/* Tab */
+.dxtcTab_RedWine, .dxtcTabWithTabPositionLeft_RedWine, 
+.dxtcTabWithTabPositionBottom_RedWine, .dxtcTabWithTabPositionRight_RedWine
+{
+	font: 9pt Tahoma;
+	color: #FFFFFF;
+    background-color: #BE7790;	
+	border: 0px;
+	padding: 4px 10px 6px 11px;
+
+	background-image: url('tcTabTopBack.gif');
+	background-repeat: repeat-x;
+	background-position: bottom;
+
+    text-align: center;
+}
+.dxtcTabWithTabPositionBottom_RedWine
+{
+    background-color: #BE7790;
+
+	background-image: url('tcTabBottomBack.gif');
+	background-repeat: repeat-x;
+	background-position: top;
+}
+.dxtcTabWithTabPositionLeft_RedWine
+{
+    text-align: left;
+	padding: 5px 10px 7px 6px;
+
+    background-color: #BE7790;
+    
+	background-image: url('tcTabLeftBack.gif');
+	background-repeat: repeat-y;
+	background-position: right top;
+}
+.dxtcTabWithTabPositionRight_RedWine
+{
+    text-align: left;
+	padding: 5px 10px 7px 6px;
+
+    background-color: #BE7790;
+    
+	background-image: url('tcTabRightBack.gif');
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+.dxtcTab_RedWine table.dxtc, .dxtcTabWithTabPositionBottom_RedWine table.dxtc, 
+.dxtcTabWithTabPositionLeft_RedWine table.dxtc, .dxtcTabWithTabPositionRight_RedWine table.dxtc
+{
+	font: 9pt Tahoma;
+	color: #FFFFFF;    
+}
+.dxtcTab_RedWine td.dxtc, .dxtcTabWithTabPositionBottom_RedWine td.dxtc, 
+.dxtcTabWithTabPositionLeft_RedWine td.dxtc, .dxtcTabWithTabPositionRight_RedWine td.dxtc
+{
+	white-space: nowrap;
+    background-color: transparent!important;
+    background-image: url('')!important;
+    border-width: 0px!important;
+    padding: 0px!important;
+}
+/* Hover */
+.dxtcTabHover_RedWine, .dxtcTabHoverWithTabPositionBottom_RedWine,
+.dxtcTabHoverWithTabPositionLeft_RedWine, .dxtcTabHoverWithTabPositionRight_RedWine
+{
+	background-color: #C894C6;
+    border: Solid 1px #6C2668;
+    padding: 3px 9px 6px 10px;
+    
+	background-image: url('tcTabTopHottrackedBack.gif');
+	background-repeat: repeat-x;
+	background-position: top;
+}
+.dxtcTabHoverWithTabPositionBottom_RedWine
+{
+	padding: 4px 9px 5px 10px;
+	background-image: url('tcTabBottomHottrackedBack.gif');
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+.dxtcTabHoverWithTabPositionLeft_RedWine
+{
+    padding: 4px 10px 6px 5px;
+	background-image: url('tcTabLeftHottrackedBack.gif');
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+.dxtcTabHoverWithTabPositionRight_RedWine
+{
+    padding: 4px 9px 6px 6px;
+	background-image: url('tcTabRightHottrackedBack.gif');
+	background-repeat: repeat-y;
+	background-position: right top;
+}
+.dxtcTabHover_RedWine td.dxtc, .dxtcTabHoverWithTabPositionBottom_RedWine td.dxtc,
+.dxtcTabHoverWithTabPositionLeft_RedWine td.dxtc, .dxtcTabHoverWithTabPositionRight_RedWine td.dxtc
+{
+	white-space: nowrap;
+    background-color: transparent!important;
+    background-image: none!important;
+    border-width: 0px!important;
+    padding: 0px!important;
+}
+
+.dxtcPageContent_RedWine, .dxtcPageContentWithTabPositionBottom_RedWine, 
+.dxtcPageContentWithTabPositionLeft_RedWine, .dxtcPageContentWithTabPositionRight_RedWine,
+.dxtcPageContentWithoutTabs_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	background-color: #F2F2F2;
+
+    border: Solid 1px #A9A9A9!important;
+    border-top-width: 0px!important;
+    vertical-align: top;
+}
+.dxtcPageContentWithTabPositionLeft_RedWine
+{
+    border: Solid 1px #A9A9A9!important;
+    border-left-width: 0px!important;
+}
+.dxtcPageContentWithTabPositionRight_RedWine
+{
+    border: Solid 1px #A9A9A9!important;
+    border-right-width: 0px!important;
+}
+.dxtcPageContentWithTabPositionBottom_RedWine
+{
+    border: Solid 1px #A9A9A9!important;
+    border-bottom-width: 0px!important;
+}
+.dxtcPageContentWithoutTabs_RedWine
+{
+	border: Solid 1px #A9A9A9!important;
+}
+.dxtcContent_RedWine
+{
+	font: 9pt Tahoma;
+	color: #000000;
+
+	background-color: #F2F2F2;
+	vertical-align: top;
+}
+.dxtcControl_RedWine td.dxtcTabsCell, .dxtcControl_RedWine td.dxtcTabsCellWithTabPositionBottom,
+.dxtcControl_RedWine td.dxtcTabsCellWithTabPositionLeft, .dxtcControl_RedWine td.dxtcTabsCellWithTabPositionRight 
+{
+    background-color: #BE7790;
+
+	background-image: url('tcTabTopBack.gif');
+	background-repeat: repeat-x;
+	background-position: bottom;
+	
+	border: Solid 1px #A74768;
+	border-bottom-width: 0px;
+}
+.dxtcControl_RedWine td.dxtcTabsCellWithTabPositionBottom
+{
+    background-color: #BE7790;
+    
+	background-image: url('tcTabBottomBack.gif');
+	background-repeat: repeat-x;
+	background-position: top;
+
+	border: Solid 1px #A74768;
+	border-top-width: 0px;
+}
+.dxtcControl_RedWine td.dxtcTabsCellWithTabPositionLeft
+{
+    background-color: #BE7790;
+    
+	background-image: url('tcTabLeftBack.gif');
+	background-repeat: repeat-y;
+	background-position: right top;
+
+	border: Solid 1px #A74768;
+	border-right-width: 0px;
+	
+	padding-left: 0px!important;
+}
+.dxtcControl_RedWine td.dxtcTabsCellWithTabPositionLeft table
+{
+	margin-left: 2px!important;
+}
+.dxtcControl_RedWine td.dxtcTabsCellWithTabPositionRight
+{
+    background-color: #BE7790;
+    
+	background-image: url('tcTabRightBack.gif');
+	background-repeat: repeat-y;
+	background-position: left top;
+
+	border: Solid 1px #A74768;
+	border-left-width: 0px;
+	
+	padding-right: 0px!important;
+}
+.dxtcControl_RedWine td.dxtcTabsCellWithTabPositionRight table
+{
+	margin-right: 2px!important;
+}
+/* Disabled */
+.dxtcDisabled_RedWine, .dxtcDisabled_RedWine table.dxtc
+{
+	color: #e590ae;
+	cursor: default;
+}
+
+/* -- ASPxTitleIndex -- */
+.dxtiControl_RedWine a
+{
+	color: #8A0A37;
+}
+.dxtiControl_RedWine a:hover
+{
+    text-decoration: underline;
+    color: #BE458B;
+}
+.dxtiControl_RedWine a:visited
+{
+    color: #928489;
+}
+
+.dxtiControl_RedWine 
+{
+	font: 9pt Tahoma;
+	color: #8A0A37;
+    text-decoration: none;
+    font-weight: normal;
+	background-color: #FFFFFF;
+	border: 0px;
+}
+.dxtiLoadingPanel_RedWine td.dx
+{
+	padding: 0px;
+}
+.dxtiItem_RedWine, .dxtiItem_RedWine a
+{
+    font-weight: normal;
+    text-decoration: none;
+	color: #8A0A37;
+	font: 9pt Tahoma;
+}
+.dxtiItem_RedWine
+{
+	white-space: nowrap;
+}
+.dxtiGroupHeader_RedWine, .dxtiGroupHeaderCategorized_RedWine
+{
+	font: 12pt Tahoma;
+
+	width: 1%; 
+	color: #FFFFFF; 
+	height: 1%; 
+	background-color: #8A0A37;
+    padding: 3px 16px 4px 7px; 
+}
+/* - GroupHeaderText - */
+.dxtiGroupHeaderText_RedWine
+{
+	color: #FFFFFF; 
+    text-decoration: none;
+    font-weight: normal;
+    padding-left: 0px;
+}
+.dxtiGroupHeaderTextCategorized_RedWine
+{
+    text-decoration: none;
+    font-weight: normal;
+}
+.dxtiGroupHeaderTextCategorized_RedWine
+{
+}
+/* - FilterBox - */
+.dxtiFilterBoxInfoText_RedWine
+{
+    text-decoration: none;
+    font-weight: normal;
+
+    font: 7pt Tahoma;
+
+    color: #727272;
+}
+.dxtiFilterBoxEdit_RedWine
+{
+    font-size: 9pt;
+    color: #000000;
+    background-color: #FFFFFF;
+    width: 193px;
+    border: Solid 1px #BC758E;
+    padding: 3px 5px 3px 5px;
+}
+.dxtiFilterBox_RedWine, .dxtiFilterBox_RedWine table
+{
+    color: #727272;
+    font-weight: normal;
+    text-decoration: none;
+    font: 9pt Tahoma;
+}
+.dxtiFilterBox_RedWine
+{
+    background-color: #EBEBEB;
+    padding: 13px;    
+    border: Solid 1px #D5D5D5;
+    border-top: 0px;
+    padding-top: 12px;
+    padding-bottom: 12px;    
+}
+/* - IndexPanel - */
+.dxtiIndexPanel_RedWine
+{
+    padding-bottom: 10px;
+    text-decoration: none;
+    border-bottom: Solid 1px #BC758E;
+}
+.dxtiIndexPanelItem_RedWine, .dxtiIndexPanelItem_RedWine a, .dxtiCurrentIndexPanelItem_RedWine
+{
+    color: #8A0A37;
+    text-decoration: none;
+}
+.dxtiIndexPanelItem_RedWine, .dxtiCurrentIndexPanelItem_RedWine
+{
+    padding: 2px 2px 2px 3px;
+}
+.dxtiCurrentIndexPanelItem_RedWine
+{
+    color: #FFFFFF;
+    background-color: #8A0A37;
+    padding: 2px 5px 2px 5px;
+}
+/* - BackToTop - */
+.dxtiBackToTop_RedWine, .dxtiBackToTop_RedWine a
+{
+    font-size: 7pt;
+    text-decoration: none;
+    color: #8A0A37;
+}
+.dxtiBackToTop_RedWine
+{
+    padding: 0px 0px 12px 98px;
+}
+/* Disabled */
+.dxtiDisabled_RedWine
+{
+	color: #bcaab0;
+	cursor: default;
+}
+/* -- ASPxUploadControl -- */
+.dxucControl_RedWine, .dxucEditArea_RedWine
+{
+    font-size: 10pt;
+    font-family: Tahoma, Verdana, Arial;    
+}
+.dxucErrorCell_RedWine
+{
+    font-size: 9pt;
+    font-family: Tahoma, Verdana, Arial;
+    color: Red;
+    text-align: left;
+}
+.dxucButton_RedWine, .dxucButton_RedWine a
+{
+    font-size: 10pt;
+    font-family: Tahoma, Verdana, Arial;
+    color: #394ea2;
+    cursor: pointer;
+    white-space: nowrap;
+}
+/* UploadControl - ProgressBar */
+.dxucProgressBar_RedWine, .dxucProgressBar_RedWine td
+{
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+   	color: Black;
+}
+.dxucProgressBar_RedWine
+{
+    border: Solid 1px #8A0A37;
+    background-color: #f7edf1;
+	background-image: url('ucProgressBack.gif');
+    background-repeat: repeat-x;    
+}
+.dxucProgressBarIndicator_RedWine
+{
+    background-color: #f275a1;
+	background-image: url('ucProgressIndicatorBack.gif');
+    background-repeat: repeat-x;    
+}

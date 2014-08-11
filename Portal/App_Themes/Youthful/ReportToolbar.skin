@@ -1,0 +1,23 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxxr" Namespace="DevExpress.XtraReports.Web" Assembly="DevExpress.XtraReports.v9.1.Web, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxxr:ReportToolbar runat="server" ItemSpacing="4px" SeparatorHeight="100%" SeparatorWidth="1px" Font-Names="Tahoma" Font-Size="9pt" BackColor="#D3E4A6">
+  <Styles CssPostfix="Youthful" CssFilePath="~/App_Themes/Youthful/{0}/styles.css">
+    <ButtonStyle VerticalAlign="Middle" HorizontalAlign="Center">
+      <BackgroundImage ImageUrl=" "/>
+	  <Paddings PaddingLeft="10px" PaddingTop="5px" PaddingRight="10px" PaddingBottom="5px"></Paddings>
+	  <HoverStyle BackColor="#F4BD17"/>
+	</ButtonStyle>
+    <TextBoxStyle>
+        <Margins MarginLeft="2px" MarginRight="2px" />
+    </TextBoxStyle>
+    <ComboBoxStyle>
+        <Margins MarginLeft="3px" MarginRight="3px" />
+    </ComboBoxStyle>
+    <LabelStyle ForeColor="Black">
+        <Margins MarginLeft="3px" MarginRight="3px" />
+    </LabelStyle>
+  </Styles>
+  <SeparatorPaddings PaddingLeft="4px" PaddingRight="4px"/>
+  <Images ImageFolder="~/App_Themes/Youthful/{0}/" />
+  <Paddings PaddingLeft="4px" PaddingTop="2px" PaddingRight="4px" PaddingBottom="2px"/>
+</dxxr:ReportToolbar>

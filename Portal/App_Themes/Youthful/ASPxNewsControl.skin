@@ -1,0 +1,31 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxnc" Namespace="DevExpress.Web.ASPxNewsControl" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxnc:ASPxNewsControl runat="server" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" CssPostfix="Youthful" ImageFolder="~/App_Themes/Youthful/{0}/" LoadingPanelImagePosition="Bottom">
+<ItemRightPanelStyle Spacing="7px" />
+<ItemLeftPanelStyle Spacing="7px" />
+<LoadingPanelStyle ImageSpacing="3px" />
+<ItemDateStyle Spacing="10px" />
+<ItemHeaderStyle Spacing="2px" />
+<LoadingPanelImage Url="~/App_Themes/Youthful/Web/tcLoading.gif" />
+<ItemSettings DateHorizontalPosition="OutsideLeft" TailPosition="KeepWithLastWord">
+<TailImage Align="Bottom" Height="11px" Url="~/App_Themes/Youthful/Web/hlTailImage.png" Width="16px" />
+</ItemSettings>
+    <PagerSettings>
+<AllButton>
+<Image Height="15px" Width="21px" ></Image>
+</AllButton>
+        <FirstPageButton Text="">
+<Image Height="15px" Width="21px"></Image>
+        </FirstPageButton>
+        <LastPageButton ImagePosition="Left" Text="">
+<Image Height="15px" Width="21px"></Image>
+        </LastPageButton>
+        <NextPageButton Text="">
+<Image Height="15px" Width="16px"></Image>
+        </NextPageButton>
+        <PrevPageButton Text="">
+<Image Height="15px" Width="16px"></Image>
+        </PrevPageButton>
+        <Summary AllPagesText="" Text="" />
+    </PagerSettings>
+</dxnc:ASPxNewsControl>

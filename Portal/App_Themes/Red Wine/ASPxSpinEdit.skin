@@ -1,0 +1,10 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxe:ASPxSpinEdit runat="server" Height="21px" ImageFolder="~/App_Themes/Red Wine/{0}/" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine">
+    <SpinButtons>
+        <LargeIncrementImage Url="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncDisabledImage.png" Width="7px" Height="9px" />
+        <DecrementImage Url="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementDisabledImage.png" Width="7px" Height="7px" />
+        <LargeDecrementImage Url="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecDisabledImage.png" Width="7px" Height="9px" />
+        <IncrementImage Url="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementDisabledImage.png" Width="7px" Height="6px" />
+    </SpinButtons>
+</dxe:ASPxSpinEdit>

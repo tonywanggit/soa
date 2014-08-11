@@ -1,0 +1,27 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxrp" Namespace="DevExpress.Web.ASPxRoundPanel" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxrp:ASPxRoundPanel BackColor="#E5EECF" runat="server" CssPostfix="Youthful" CssFilePath="~/App_Themes/Youthful/{0}/styles.css">
+    <Border BorderStyle="None" />
+    <ContentPaddings Padding="6px" PaddingBottom="6px" PaddingTop="4px" />
+    <HeaderStyle BackColor="#D3E4A6">
+        <BorderBottom BorderStyle="None" />
+        <Paddings PaddingBottom="13px" PaddingTop="0" />
+    </HeaderStyle>
+    <%-- Corners --%>
+    <TopLeftCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/Web/rpTopLeft.png" />
+    <TopRightCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/Web/rpTopRight.png" />
+    <NoHeaderTopLeftCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/Web/rpNoHeaderTopLeft.png" />
+    <NoHeaderTopRightCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/Web/rpNoHeaderTopRight.png" />
+    <BottomLeftCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/Web/rpBottomLeft.png" />
+    <BottomRightCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/Web/rpBottomRight.png" />
+    <%-- Header --%>
+    <HeaderLeftEdge>
+        <BackgroundImage VerticalPosition="bottom" ImageUrl="~/App_Themes/Youthful/Web/rpHeaderLeftEdge.gif" />
+    </HeaderLeftEdge>
+    <HeaderContent>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Youthful/Web/rpHeaderSeparator.gif" />
+    </HeaderContent>
+    <HeaderRightEdge>
+        <BackgroundImage ImageUrl="~/App_Themes/Youthful/Web/rpHeaderLeftEdge.gif" VerticalPosition="bottom" />
+    </HeaderRightEdge>
+</dxrp:ASPxRoundPanel>

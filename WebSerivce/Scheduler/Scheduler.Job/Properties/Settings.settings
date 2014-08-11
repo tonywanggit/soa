@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JN.ESB.Scheduler.Job.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="JN_ESB_Scheduler_Job_ESB_Core_Service_Bus_MainBus_ReceiveSendPort_EN" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/EsbCoreEN/Core_Service_Bus_MainBus_ReceiveSendPort_EN.asmx</Value>
+    </Setting>
+    <Setting Name="JN_ESB_Scheduler_Job_SCHD_SchedulerService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/EsbScheduler/SchedulerService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

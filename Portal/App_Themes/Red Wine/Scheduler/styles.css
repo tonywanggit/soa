@@ -1,0 +1,351 @@
+.dxscControl_RedWine
+{
+    background: #8a0a37;
+	border: solid 1px #8a0a37;
+}
+.dxscLoadingPanel_RedWine
+{
+}
+.dxscLoadingPanel_RedWine td.dx
+{
+    padding: 0;
+}
+.dxscLoadingDiv_RedWine
+{
+    cursor: wait;
+	background-color: Gray;
+	opacity: 0.01;
+	filter:alpha(opacity=1);
+    
+}
+
+/* Headers */
+.dxscDateHeader_RedWine, 
+.dxscAlternateDateHeader_RedWine,
+.dxscDayHeader_RedWine,
+.dxscDateCellHeader_RedWine,
+.dxscTodayCellHeader_RedWine,
+.dxscTimelineDateHeader_RedWine,
+.dxscHorizontalResourceHeader_RedWine,
+.dxscVerticalResourceHeader_RedWine
+{    
+    color: white;
+    background: #d04d7e;
+    border: solid 1px #8a0a37;
+    border-width: 0 1px 1px 0;
+    padding: 4px;
+	font: 9pt Tahoma;		
+	text-align: center;
+    vertical-align: top;
+    
+    cursor: default;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.dxscAlternateTimelineDateHeader_RedWine,
+.dxscAlternateDateHeader_RedWine
+{
+    background: url(CssImages/today.gif) repeat-x #ce71bb;    
+}
+.dxscDayHeader_RedWine
+{
+	border-width: 1px 1px 0 0;
+}
+.dxscDateCellHeader_RedWine
+{
+    border-width: 1px;
+}
+.dxscTodayCellHeader_RedWine
+{    
+	border-top-width: 1px;
+    background: url(CssImages/today.gif) repeat-x #ce71bb;
+}
+.dxscTimelineDateHeader_RedWine
+{
+    border-width: 1px 1px 1px 0;
+}
+.dxscHorizontalResourceHeader_RedWine
+{
+    border-width: 1px 1px 1px 0;
+    background: #a22d59;
+}
+.dxscVerticalResourceHeader_RedWine
+{
+    border-width: 1px 1px 0 0;
+    background: #a22d59;
+    white-space: normal;
+}
+.dxscSelectionBar_RedWine 
+{	
+    border-style: solid;
+	border-width: 0 1px 0 0;
+	height: 30px;
+}
+
+/* Corners */
+.dxscLeftTopCorner_RedWine, 
+.dxscRightTopCorner_RedWine
+{
+    background: #a22d59;
+	width: 1px;
+    border-style: solid;
+    border-color: #8a0a37;	
+	border-width: 0 0 1px;
+}
+.dxscLeftTopCorner_RedWine
+{    
+    border-width: 1px 1px 1px 0;
+    font: 8pt Tahoma;
+    text-align: center;
+    padding: 2px;
+    overflow: hidden;
+}
+
+/* Separators */
+.dxscGroupSeparatorVertical_RedWine, 
+.dxscGroupSeparatorHorizontal_RedWine
+{
+    background: white;
+    border: solid 1px #8a0a37;
+}
+
+.dxscGroupSeparatorVertical_RedWine
+{
+    width: 1px; 
+    border-width: 0 1px;
+}
+.dxscGroupSeparatorHorizontal_RedWine
+{
+	height: 1px;
+    border-width: 1px 0 0;
+    font-size: 1px;
+}
+
+/* Apts Area */
+.dxscAllDayArea_RedWine
+{
+    background: #e2a4ba;
+    border: solid 1px #8a0a37;
+    border-width: 0 1px 1px 0;
+}
+.dxscDateCellBody_RedWine 
+{
+	height: 100px;
+    border: solid 1px;
+    border-width: 0 1px 0 0;
+}
+.dxscTimeCellBody_RedWine
+{
+    border: solid 1px;
+	font: 9pt Tahoma;
+}
+.dxscTimelineCellBody_RedWine
+{
+	height: 300px;
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+}
+
+.dxscAppointment_RedWine
+{
+    color: black;
+    font: 8pt Tahoma;    
+    border: solid 1px #8a0a37;
+    padding: 0;
+	margin: 0;
+	cursor: default;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;	
+}
+.dxscAppointmentInnerBorders_RedWine
+{	
+    border: solid 1px #8a0a37;
+    padding: 0px;
+}
+.dxscAppointmentHorizontalSeparator_RedWine
+{
+	height: 1px;
+	width: 100%;
+	overflow: hidden;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+.dxscMoreButton_RedWine
+{
+    font: 8pt Tahoma;
+    color: black;
+    text-decoration: underline;
+    padding: 0;
+}
+
+/* Rulers */
+.dxscTimeRulerHoursItem_RedWine, .dxscTimeRulerMinuteItem_RedWine
+{
+    color: #b5486d;
+    background: #ebebeb;
+    border: solid 1px #cbcbcb;
+    border-width: 0px 1px 1px 0;
+	vertical-align: top;
+	white-space: nowrap;
+} 
+.dxscTimeRulerHoursItem_RedWine
+{
+    border-right-width: 0;
+    border-left-color: #cbcbcb;
+    font: 13pt Tahoma;
+	text-align: right;
+	width: 45px;
+    padding: 2px 4px 0px;
+}
+.dxscTimeRulerMinuteItem_RedWine
+{
+    border-left-width: 0px;
+	text-align: center;
+	width: 13px;
+	font: 8pt Tahoma;
+    padding: 4px;
+    padding-left: 1px;
+}
+
+.dxscTimeRulerHeaderHourItem_RedWine
+{
+    width: 55px;
+}	
+.dxscTimeRulerHeaderMinuteItem_RedWine
+{
+    width: 16px;
+}
+.dxscScrollHeaderItem_RedWine
+{
+    width: 16px;
+}
+
+
+/* Control elements */
+.dxscToolbar_RedWine
+{
+    border: none;
+    background: #aa1248;
+    padding: 3px 7px;    
+}
+.dxscResourceNavigator_RedWine 
+{    
+    background: #eed8e3;
+    padding: 7px;
+    border: solid 1px #8a0a37;
+}
+.dxscViewVisibleInterval_RedWine
+{    
+    color: #d8abbb;
+    font: 9pt Tahoma;
+    white-space: nowrap;
+}
+.dxscTooltip_RedWine 
+{
+    background: #f9f9cd;
+    padding: 4px 10px;
+    font: 8pt Tahoma;
+    color: #303030;
+    white-space: nowrap;
+}
+.dxscInplaceEditor_RedWine
+{
+	background: #fdfdfd;
+	border: solid 2px black;
+	padding: 0;
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxscControlAreaForm_RedWine
+{
+	font: 12pt Tahoma;
+	color: black;
+	background-color: #f5ecf1;
+	border: none;
+	white-space: normal;
+	padding: 9px 12px;
+}
+.dxscErrorInfo_RedWine
+{
+	background: #f1abab;
+	color: #853a3a;
+	padding: 10px;
+	border: solid 1px #8a0a37;
+	border-width: 1px 0;
+}
+
+/* Buttons */
+.dxscViewNavigatorButton_RedWine
+{    
+    border: solid 1px #8a0a37;
+    font: 9pt Tahoma;
+    color: white;
+    background: url(CssImages/vnBtnBack.gif) repeat-x left top #f0749f;
+    height: 19px;
+    padding: 0px 8px;    
+    cursor: pointer;
+    cursor: hand;
+}
+.dxscViewNavigatorButtonHover_RedWine
+{
+    background: url(CssImages/vnBtnBackH.gif) repeat-x left top #d69bd3;
+}
+.dxscViewNavigatorButtonPressed_RedWine
+{
+    background: url(CssImages/vnBtnBackP.gif) repeat-x left top #bd71b9;
+}
+
+.dxscResourceNavigatorButton_RedWine,
+.dxscNavigationButton_RedWine,
+.dxscDVTopMoreButton_RedWine,
+.dxscDVBottomMoreButton_RedWine
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.dxscSmartTagButton_RedWine 
+{
+    border: solid 1px black;
+    background: #ffffee;
+    padding: 4px 5px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.dxscViewSelectorButton_RedWine 
+{
+    background: url(CssImages/vsBtnBack.gif) repeat-x #f487ad;
+    color: white;
+	border: solid 1px #8a0a37;
+	border-width: 0 0 0 1px;
+	padding: 8px 18px 7px;
+	font: 9pt Tahoma;
+    cursor: pointer;
+    cursor: hand;
+}
+.dxscViewSelectorButtonHover_RedWine
+{
+    background: url(CssImages/vsBtnBackH.gif) repeat-x #d59cd2;
+}
+.dxscViewSelectorButtonChecked_RedWine,
+.dxscViewSelectorButtonPressed_RedWine
+{
+    background: url(CssImages/vsBtnBackP.gif) repeat-x #cf547f;
+}
+
+.dxscNoBorderButton_RedWine
+{
+	background: none;
+    cursor: pointer;
+    cursor: hand;
+    border: solid 1px #FDFDFD;
+}
+.dxscNoBorderButtonPressed_RedWine,
+.dxscNoBorderButtonHover_RedWine
+{
+    border-color: #A8A8A8;
+}

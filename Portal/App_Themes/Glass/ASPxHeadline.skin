@@ -1,0 +1,5 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxhl" Namespace="DevExpress.Web.ASPxHeadline" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxhl:ASPxHeadline runat="server" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass">
+<TailImage Width="12px" Height="7px" Url="~/App_Themes/Glass/Web/hlTail.gif"></TailImage>
+</dxhl:ASPxHeadline>

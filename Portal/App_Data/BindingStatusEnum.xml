@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BindingStatus>
+  <Binding Text="启用" Value="0" />
+  <Binding Text="停用" Value="1" />
+</BindingStatus>

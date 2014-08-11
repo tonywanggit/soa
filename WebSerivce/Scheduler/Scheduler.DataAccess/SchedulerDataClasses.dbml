@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="EsbSchedulerDB" Class="SchedulerDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=10.30.4.52;Initial Catalog=EsbSchedulerDB;Integrated Security=True" SettingsObjectName="JN.ESB.Scheduler.DataAccess.Properties.Settings" SettingsPropertyName="EsbSchedulerDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ESB_SCHD" Member="ESB_SCHD">
+    <Type Name="ESB_SCHD">
+      <Column Name="SCHD_ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TRIG_NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TRIG_GROUP" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_DESC" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="START_TIME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="END_TIME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_FREQ" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_HOST" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_TIME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_USER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_CRON" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="JOB_NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="HOST_NAME" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="ESB_SCHD_ESB_SCHD_EsbWS" Member="ESB_SCHD_EsbWS" ThisKey="SCHD_ID" OtherKey="SCHD_ID" Type="ESB_SCHD_EsbWS" />
+      <Association Name="ESB_SCHD_ESB_SCHD_HISTORY" Member="ESB_SCHD_HISTORY" ThisKey="SCHD_ID" OtherKey="SCHD_ID" Type="ESB_SCHD_HISTORY" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESB_SCHD_EsbWS" Member="ESB_SCHD_EsbWS">
+    <Type Name="ESB_SCHD_EsbWS">
+      <Column Name="OID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SCHD_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EntityID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="EntityName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MethodName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ParamString" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="true" />
+      <Column Name="ParamUrl" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="true" />
+      <Column Name="PassWord" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="true" />
+      <Association Name="ESB_SCHD_ESB_SCHD_EsbWS" Member="ESB_SCHD" ThisKey="SCHD_ID" OtherKey="SCHD_ID" Type="ESB_SCHD" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESB_SCHD_HISTORY" Member="ESB_SCHD_HISTORY">
+    <Type Name="ESB_SCHD_HISTORY">
+      <Column Name="OID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SCHD_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BEGIN_TIME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="END_TIME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CALL_STATUS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CALL_MEMO" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="ESB_SCHD_ESB_SCHD_HISTORY" Member="ESB_SCHD" ThisKey="SCHD_ID" OtherKey="SCHD_ID" Type="ESB_SCHD" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESB_SCHD_HISTORY_VIEW" Member="ESB_SCHD_HISTORY_VIEW">
+    <Type Name="ESB_SCHD_HISTORY_VIEW">
+      <Column Name="TRIG_NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TRIG_GROUP" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="BEGIN_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="false" />
+      <Column Name="END_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="false" />
+      <Column Name="CALL_STATUS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CALL_MEMO" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_HOST" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="OID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HOST_NAME" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESB_SCHD_VIEW" Member="ESB_SCHD_VIEW">
+    <Type Name="ESB_SCHD_VIEW">
+      <Column Name="TRIG_NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TRIG_GROUP" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_NAME" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_DESC" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="START_TIME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="END_TIME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_FREQ" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_HOST" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_TIME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_USER" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SCHD_CRON" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NEXT_FIRE_TIME" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PREV_FIRE_TIME" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SCHD_ID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TRIGGER_STATE" Type="System.String" DbType="VarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="HOST_NAME" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

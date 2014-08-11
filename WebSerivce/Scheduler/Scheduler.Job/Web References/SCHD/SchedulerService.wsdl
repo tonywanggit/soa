@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.jn.com/ESB/Scheduler" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.jn.com/ESB/Scheduler" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.jn.com/ESB/Scheduler">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="AddEsbWebServcieScheduler">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="scheduler" type="tns:ESB_SCHD" />
+            <s:element minOccurs="0" maxOccurs="1" name="esbWS" type="tns:ESB_SCHD_EsbWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ESB_SCHD">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRIG_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRIG_GROUP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_DESC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="START_TIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="END_TIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_FREQ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_HOST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_TIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_USER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_CRON" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JOB_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESB_SCHD_EsbWS" type="tns:ArrayOfESB_SCHD_EsbWS" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESB_SCHD_HISTORY" type="tns:ArrayOfESB_SCHD_HISTORY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfESB_SCHD_EsbWS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ESB_SCHD_EsbWS" nillable="true" type="tns:ESB_SCHD_EsbWS" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ESB_SCHD_EsbWS">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntityID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamString" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParamUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESB_SCHD" type="tns:ESB_SCHD" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfESB_SCHD_HISTORY">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ESB_SCHD_HISTORY" nillable="true" type="tns:ESB_SCHD_HISTORY" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ESB_SCHD_HISTORY">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCHD_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BEGIN_TIME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="END_TIME" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CALL_STATUS" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CALL_MEMO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESB_SCHD" type="tns:ESB_SCHD" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddEsbWebServcieSchedulerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateEsbWebServcieScheduler">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="scheduler" type="tns:ESB_SCHD" />
+            <s:element minOccurs="0" maxOccurs="1" name="esbWS" type="tns:ESB_SCHD_EsbWS" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEsbWebServcieSchedulerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteEsbWebServcieScheduler">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="schedID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteEsbWebServcieSchedulerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PauseQuartzWebServiceScheduler">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="schedID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PauseQuartzWebServiceSchedulerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ResumeQuartzWebServiceScheduler">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="schedID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResumeQuartzWebServiceSchedulerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddScheduleHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="history" type="tns:ESB_SCHD_HISTORY" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddScheduleHistoryResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddEsbWebServcieSchedulerSoapIn">
+    <wsdl:part name="parameters" element="tns:AddEsbWebServcieScheduler" />
+  </wsdl:message>
+  <wsdl:message name="AddEsbWebServcieSchedulerSoapOut">
+    <wsdl:part name="parameters" element="tns:AddEsbWebServcieSchedulerResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEsbWebServcieSchedulerSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEsbWebServcieScheduler" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEsbWebServcieSchedulerSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEsbWebServcieSchedulerResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEsbWebServcieSchedulerSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteEsbWebServcieScheduler" />
+  </wsdl:message>
+  <wsdl:message name="DeleteEsbWebServcieSchedulerSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteEsbWebServcieSchedulerResponse" />
+  </wsdl:message>
+  <wsdl:message name="PauseQuartzWebServiceSchedulerSoapIn">
+    <wsdl:part name="parameters" element="tns:PauseQuartzWebServiceScheduler" />
+  </wsdl:message>
+  <wsdl:message name="PauseQuartzWebServiceSchedulerSoapOut">
+    <wsdl:part name="parameters" element="tns:PauseQuartzWebServiceSchedulerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResumeQuartzWebServiceSchedulerSoapIn">
+    <wsdl:part name="parameters" element="tns:ResumeQuartzWebServiceScheduler" />
+  </wsdl:message>
+  <wsdl:message name="ResumeQuartzWebServiceSchedulerSoapOut">
+    <wsdl:part name="parameters" element="tns:ResumeQuartzWebServiceSchedulerResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddScheduleHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:AddScheduleHistory" />
+  </wsdl:message>
+  <wsdl:message name="AddScheduleHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:AddScheduleHistoryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SchedulerServiceSoap">
+    <wsdl:operation name="AddEsbWebServcieScheduler">
+      <wsdl:input message="tns:AddEsbWebServcieSchedulerSoapIn" />
+      <wsdl:output message="tns:AddEsbWebServcieSchedulerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEsbWebServcieScheduler">
+      <wsdl:input message="tns:UpdateEsbWebServcieSchedulerSoapIn" />
+      <wsdl:output message="tns:UpdateEsbWebServcieSchedulerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEsbWebServcieScheduler">
+      <wsdl:input message="tns:DeleteEsbWebServcieSchedulerSoapIn" />
+      <wsdl:output message="tns:DeleteEsbWebServcieSchedulerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PauseQuartzWebServiceScheduler">
+      <wsdl:input message="tns:PauseQuartzWebServiceSchedulerSoapIn" />
+      <wsdl:output message="tns:PauseQuartzWebServiceSchedulerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResumeQuartzWebServiceScheduler">
+      <wsdl:input message="tns:ResumeQuartzWebServiceSchedulerSoapIn" />
+      <wsdl:output message="tns:ResumeQuartzWebServiceSchedulerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddScheduleHistory">
+      <wsdl:input message="tns:AddScheduleHistorySoapIn" />
+      <wsdl:output message="tns:AddScheduleHistorySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SchedulerServiceSoap" type="tns:SchedulerServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddEsbWebServcieScheduler">
+      <soap:operation soapAction="http://www.jn.com/ESB/Scheduler/AddEsbWebServcieScheduler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEsbWebServcieScheduler">
+      <soap:operation soapAction="http://www.jn.com/ESB/Scheduler/UpdateEsbWebServcieScheduler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEsbWebServcieScheduler">
+      <soap:operation soapAction="http://www.jn.com/ESB/Scheduler/DeleteEsbWebServcieScheduler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PauseQuartzWebServiceScheduler">
+      <soap:operation soapAction="http://www.jn.com/ESB/Scheduler/PauseQuartzWebServiceScheduler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResumeQuartzWebServiceScheduler">
+      <soap:operation soapAction="http://www.jn.com/ESB/Scheduler/ResumeQuartzWebServiceScheduler" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddScheduleHistory">
+      <soap:operation soapAction="http://www.jn.com/ESB/Scheduler/AddScheduleHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SchedulerServiceSoap12" type="tns:SchedulerServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddEsbWebServcieScheduler">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Scheduler/AddEsbWebServcieScheduler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEsbWebServcieScheduler">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Scheduler/UpdateEsbWebServcieScheduler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEsbWebServcieScheduler">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Scheduler/DeleteEsbWebServcieScheduler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PauseQuartzWebServiceScheduler">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Scheduler/PauseQuartzWebServiceScheduler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResumeQuartzWebServiceScheduler">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Scheduler/ResumeQuartzWebServiceScheduler" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddScheduleHistory">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Scheduler/AddScheduleHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SchedulerService">
+    <wsdl:port name="SchedulerServiceSoap" binding="tns:SchedulerServiceSoap">
+      <soap:address location="http://localhost/EsbScheduler/SchedulerService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SchedulerServiceSoap12" binding="tns:SchedulerServiceSoap12">
+      <soap12:address location="http://localhost/EsbScheduler/SchedulerService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,23 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPivotGrid" TagPrefix="dxwpg" %>
+<%@ Register Assembly="DevExpress.XtraPivotGrid.v9.1.Core, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraPivotGrid" TagPrefix="temp" %>
+<dxwpg:ASPxPivotGrid runat="server">
+	<Images ImageFolder="~/App_Themes/Glass/{0}/">
+		<SortByColumn Url="~/App_Themes/Glass/PivotGrid/pgSortByColumn.png" Width="17px" Height="10px" />
+    </Images>
+	<Styles CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass">
+        <HeaderStyle>
+            <HoverStyle>
+                <BackgroundImage Repeat="RepeatX" ImageUrl="~/App_Themes/Glass/PivotGrid/pgHeaderBackHot.gif"></BackgroundImage>
+            </HoverStyle>
+            <BackgroundImage Repeat="RepeatX" ImageUrl="~/App_Themes/Glass/PivotGrid/pgHeaderBack.gif"></BackgroundImage>
+        </HeaderStyle>
+        <FilterAreaStyle>
+            <BackgroundImage Repeat="RepeatX" ImageUrl="~/App_Themes/Glass/PivotGrid/pgFilterAreaBack.gif"></BackgroundImage>
+        </FilterAreaStyle>   
+        <FilterButtonPanelStyle>
+            <BackgroundImage Repeat="RepeatX" ImageUrl="~/App_Themes/Glass/PivotGrid/pgFilterPanelBack.gif"></BackgroundImage>
+        </FilterButtonPanelStyle>   
+        <MenuStyle GutterWidth="0px"></MenuStyle>
+    </Styles>
+</dxwpg:ASPxPivotGrid>

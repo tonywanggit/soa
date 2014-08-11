@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="注册服务目录服务.asmx.cs" Class="JN.ESB.UDDI.Service.Registration.注册服务目录服务" %>

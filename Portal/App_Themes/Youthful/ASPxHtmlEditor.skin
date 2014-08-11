@@ -1,0 +1,40 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
+<dxhe:ASPxHtmlEditor runat="server" >
+    <Images>
+        <DialogFormCloseButton Height="13px" Width="13px" />
+    </Images>
+	<SettingsLoadingPanel Text="" />
+	<Styles CssPostfix="Youthful" CssFilePath="~/App_Themes/Youthful/{0}/styles.css">
+		<ViewArea>
+			<Border BorderStyle="Solid" BorderColor="#D3E4A6" BorderWidth="1px" />
+		</ViewArea>
+	</Styles>
+	<StylesToolbars>
+		<Toolbar ItemSpacing="4px" SeparatorHeight="100%" SeparatorWidth="1px" />
+	</StylesToolbars>
+	<Images ImageFolder="~/App_Themes/Youthful/{0}/"></Images>
+	<PartsRoundPanel>
+		<TopLeftCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpTopLeft.png" />
+	    <TopRightCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpTopRight.png" />
+	    <NoHeaderTopLeftCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpNoHeaderTopLeft.png" />
+	    <NoHeaderTopRightCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpNoHeaderTopRight.png" />
+	    <BottomLeftCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpBottomLeft.png" />
+	    <BottomRightCorner Height="8px" Width="8px" Url="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpBottomRight.png" />
+	    <%-- Header --%>
+	    <HeaderLeftEdge>
+	        <BackgroundImage VerticalPosition="bottom" ImageUrl="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpHeaderLeftEdge.gif" />
+	    </HeaderLeftEdge>
+	    <HeaderContent>
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpHeaderSeparator.gif" />
+	    </HeaderContent>
+	    <HeaderRightEdge>
+	        <BackgroundImage ImageUrl="~/App_Themes/Youthful/HtmlEditor/RoundPanel/herpHeaderLeftEdge.gif" VerticalPosition="bottom" />
+	    </HeaderRightEdge>
+	</PartsRoundPanel>
+	<StylesRoundPanel>            
+		<ControlStyle BackColor="#E5EECF">
+			<Border BorderStyle="None" />
+		</ControlStyle>
+	</StylesRoundPanel>	
+</dxhe:ASPxHtmlEditor>

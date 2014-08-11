@@ -1,0 +1,1696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.jn.com/ESB/UDDI" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.jn.com/ESB/UDDI" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.jn.com/ESB/UDDI">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="新增服务">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务管理员" type="tns:个人" />
+            <s:element minOccurs="0" maxOccurs="1" name="具体服务" type="tns:服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="个人">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="个人编码" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="姓名" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="电话" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="邮件地址" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="权限" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="帐号" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="服务">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="服务编码" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="个人编码" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="业务编码" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="服务名称" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="描述" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="服务种类" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="新增服务Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="新增服务提供者">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务提供者" type="tns:业务实体" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="业务实体">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="业务编码" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="业务名称" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="描述" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="新增服务提供者Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="新增服务地址">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务地址" type="tns:服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="服务地址">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="服务地址编码" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="服务编码" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="访问地址" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="描述" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="状态" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="绑定类型" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="方法名称" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="新增服务地址Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="新增服务管理员">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务管理员" type="tns:个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="新增服务管理员Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="新增服务约束">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务约束" type="tns:服务约束" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="服务约束">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="约束编码" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="服务地址编码" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="描述" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="示例" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="新增服务约束Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="查找绑定地址_关键字">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="关键字" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="查找绑定地址_关键字Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="查找绑定地址_关键字Result" type="tns:ArrayOf服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOf服务地址">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="服务地址" nillable="true" type="tns:服务地址" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="查找绑定服务地址_服务状态">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="状态" type="tns:服务状态" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="服务状态">
+        <s:restriction base="s:string">
+          <s:enumeration value="启用" />
+          <s:enumeration value="停用" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="查找绑定服务地址_服务状态Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="查找绑定服务地址_服务状态Result" type="tns:ArrayOf服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="查找绑定服务地址_服务类型">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="类型" type="tns:服务类型" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="服务类型">
+        <s:restriction base="s:string">
+          <s:enumeration value="WebService" />
+          <s:enumeration value="WCF" />
+          <s:enumeration value="File" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="查找绑定服务地址_服务类型Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="查找绑定服务地址_服务类型Result" type="tns:ArrayOf服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="查找服务管理员_关键字">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="关键字" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="查找服务管理员_关键字Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="查找服务管理员_关键字Result" type="tns:ArrayOf个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOf个人">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="个人" nillable="true" type="tns:个人" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="查找服务提供者_关键字">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="关键字" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="查找服务提供者_关键字Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="查找服务提供者_关键字Result" type="tns:ArrayOf业务实体" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOf业务实体">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="业务实体" nillable="true" type="tns:业务实体" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="查找具体服务_关键字">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="关键字" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="查找具体服务_关键字Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="查找具体服务_关键字Result" type="tns:ArrayOf服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOf服务">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="服务" nillable="true" type="tns:服务" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="获得绑定信息_服务地址编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="服务地址编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得绑定信息_服务地址编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得绑定信息_服务地址编码Result" type="tns:服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得绑定信息_具体服务">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="具体服务单元" type="tns:服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得绑定信息_具体服务Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得绑定信息_具体服务Result" type="tns:ArrayOf服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得绑定信息_服务名称">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务名称" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得绑定信息_服务名称Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得绑定信息_服务名称Result" type="tns:服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务提供者_具体服务">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="具体服务" type="tns:服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务提供者_具体服务Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得服务提供者_具体服务Result" type="tns:ArrayOf业务实体" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得管理员_具体绑定服务">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="绑定服务" type="tns:服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得管理员_具体绑定服务Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得管理员_具体绑定服务Result" type="tns:个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得管理员_管理员编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="管理员编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得管理员_管理员编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得管理员_管理员编码Result" type="tns:个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得管理员_管理员姓名">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="管理员姓名" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得管理员_管理员姓名Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得管理员_管理员姓名Result" type="tns:个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得系统管理员">
+        <s:complexType />
+      </s:element>
+      <s:element name="获得系统管理员Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得系统管理员Result" type="tns:ArrayOf个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得具体服务_绑定信息">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务绑定信息" type="tns:服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得具体服务_绑定信息Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得具体服务_绑定信息Result" type="tns:服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得具体服务_管理员">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务管理员" type="tns:个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得具体服务_管理员Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得具体服务_管理员Result" type="tns:ArrayOf服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得具体服务_服务提供者">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务提供者" type="tns:业务实体" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得具体服务_服务提供者Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得具体服务_服务提供者Result" type="tns:ArrayOf服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务约束_xFF3F_服务地址">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="绑定服务" type="tns:服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务约束_xFF3F_服务地址Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得服务约束_xFF3F_服务地址Result" type="tns:ArrayOf服务约束" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOf服务约束">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="服务约束" nillable="true" type="tns:服务约束" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="获得所有服务管理员">
+        <s:complexType />
+      </s:element>
+      <s:element name="获得所有服务管理员Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得所有服务管理员Result" type="tns:ArrayOf个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得所有服务提供者">
+        <s:complexType />
+      </s:element>
+      <s:element name="获得所有服务提供者Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得所有服务提供者Result" type="tns:ArrayOf业务实体" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务提供者">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="服务提供者编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务提供者Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得服务提供者Result" type="tns:业务实体" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="服务编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得服务Result" type="tns:服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务约束">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="约束编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得服务约束Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得服务约束Result" type="tns:服务约束" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得所有服务视图">
+        <s:complexType />
+      </s:element>
+      <s:element name="获得所有服务视图Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得所有服务视图Result" type="tns:ArrayOf服务视图" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOf服务视图">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="服务视图" nillable="true" type="tns:服务视图" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="服务视图">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="业务系统" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="业务系统描述" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="服务名称" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="服务描述" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="地址" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="状态" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="类型" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="方法名称" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="调用约束范例" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="删除绑定方法">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="绑定信息" type="tns:服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="删除绑定方法Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="删除服务管理员">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="管理员" type="tns:个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="删除服务管理员Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="删除服务提供者">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务提供者" type="tns:业务实体" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="删除服务提供者Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="删除具体服务">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="具体服务" type="tns:服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="删除具体服务Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="删除服务约束">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="具体服务约束" type="tns:服务约束" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="删除服务约束Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="修改服务管理员">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="管理员" type="tns:个人" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="修改服务管理员Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="修改服务提供者">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="服务提供者" type="tns:业务实体" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="修改服务提供者Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="修改具体服务">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="具体服务" type="tns:服务" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="修改具体服务Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="修改绑定方法">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="绑定信息" type="tns:服务地址" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="修改绑定方法Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="修改服务约束">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="具体服务约束" type="tns:服务约束" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="修改服务约束Response">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="新增服务SoapIn">
+    <wsdl:part name="parameters" element="tns:新增服务" />
+  </wsdl:message>
+  <wsdl:message name="新增服务SoapOut">
+    <wsdl:part name="parameters" element="tns:新增服务Response" />
+  </wsdl:message>
+  <wsdl:message name="新增服务提供者SoapIn">
+    <wsdl:part name="parameters" element="tns:新增服务提供者" />
+  </wsdl:message>
+  <wsdl:message name="新增服务提供者SoapOut">
+    <wsdl:part name="parameters" element="tns:新增服务提供者Response" />
+  </wsdl:message>
+  <wsdl:message name="新增服务地址SoapIn">
+    <wsdl:part name="parameters" element="tns:新增服务地址" />
+  </wsdl:message>
+  <wsdl:message name="新增服务地址SoapOut">
+    <wsdl:part name="parameters" element="tns:新增服务地址Response" />
+  </wsdl:message>
+  <wsdl:message name="新增服务管理员SoapIn">
+    <wsdl:part name="parameters" element="tns:新增服务管理员" />
+  </wsdl:message>
+  <wsdl:message name="新增服务管理员SoapOut">
+    <wsdl:part name="parameters" element="tns:新增服务管理员Response" />
+  </wsdl:message>
+  <wsdl:message name="新增服务约束SoapIn">
+    <wsdl:part name="parameters" element="tns:新增服务约束" />
+  </wsdl:message>
+  <wsdl:message name="新增服务约束SoapOut">
+    <wsdl:part name="parameters" element="tns:新增服务约束Response" />
+  </wsdl:message>
+  <wsdl:message name="查找绑定地址_关键字SoapIn">
+    <wsdl:part name="parameters" element="tns:查找绑定地址_关键字" />
+  </wsdl:message>
+  <wsdl:message name="查找绑定地址_关键字SoapOut">
+    <wsdl:part name="parameters" element="tns:查找绑定地址_关键字Response" />
+  </wsdl:message>
+  <wsdl:message name="查找绑定服务地址_服务状态SoapIn">
+    <wsdl:part name="parameters" element="tns:查找绑定服务地址_服务状态" />
+  </wsdl:message>
+  <wsdl:message name="查找绑定服务地址_服务状态SoapOut">
+    <wsdl:part name="parameters" element="tns:查找绑定服务地址_服务状态Response" />
+  </wsdl:message>
+  <wsdl:message name="查找绑定服务地址_服务类型SoapIn">
+    <wsdl:part name="parameters" element="tns:查找绑定服务地址_服务类型" />
+  </wsdl:message>
+  <wsdl:message name="查找绑定服务地址_服务类型SoapOut">
+    <wsdl:part name="parameters" element="tns:查找绑定服务地址_服务类型Response" />
+  </wsdl:message>
+  <wsdl:message name="查找服务管理员_关键字SoapIn">
+    <wsdl:part name="parameters" element="tns:查找服务管理员_关键字" />
+  </wsdl:message>
+  <wsdl:message name="查找服务管理员_关键字SoapOut">
+    <wsdl:part name="parameters" element="tns:查找服务管理员_关键字Response" />
+  </wsdl:message>
+  <wsdl:message name="查找服务提供者_关键字SoapIn">
+    <wsdl:part name="parameters" element="tns:查找服务提供者_关键字" />
+  </wsdl:message>
+  <wsdl:message name="查找服务提供者_关键字SoapOut">
+    <wsdl:part name="parameters" element="tns:查找服务提供者_关键字Response" />
+  </wsdl:message>
+  <wsdl:message name="查找具体服务_关键字SoapIn">
+    <wsdl:part name="parameters" element="tns:查找具体服务_关键字" />
+  </wsdl:message>
+  <wsdl:message name="查找具体服务_关键字SoapOut">
+    <wsdl:part name="parameters" element="tns:查找具体服务_关键字Response" />
+  </wsdl:message>
+  <wsdl:message name="获得绑定信息_服务地址编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得绑定信息_服务地址编码" />
+  </wsdl:message>
+  <wsdl:message name="获得绑定信息_服务地址编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得绑定信息_服务地址编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得绑定信息_具体服务SoapIn">
+    <wsdl:part name="parameters" element="tns:获得绑定信息_具体服务" />
+  </wsdl:message>
+  <wsdl:message name="获得绑定信息_具体服务SoapOut">
+    <wsdl:part name="parameters" element="tns:获得绑定信息_具体服务Response" />
+  </wsdl:message>
+  <wsdl:message name="获得绑定信息_服务名称SoapIn">
+    <wsdl:part name="parameters" element="tns:获得绑定信息_服务名称" />
+  </wsdl:message>
+  <wsdl:message name="获得绑定信息_服务名称SoapOut">
+    <wsdl:part name="parameters" element="tns:获得绑定信息_服务名称Response" />
+  </wsdl:message>
+  <wsdl:message name="获得服务提供者_具体服务SoapIn">
+    <wsdl:part name="parameters" element="tns:获得服务提供者_具体服务" />
+  </wsdl:message>
+  <wsdl:message name="获得服务提供者_具体服务SoapOut">
+    <wsdl:part name="parameters" element="tns:获得服务提供者_具体服务Response" />
+  </wsdl:message>
+  <wsdl:message name="获得管理员_具体绑定服务SoapIn">
+    <wsdl:part name="parameters" element="tns:获得管理员_具体绑定服务" />
+  </wsdl:message>
+  <wsdl:message name="获得管理员_具体绑定服务SoapOut">
+    <wsdl:part name="parameters" element="tns:获得管理员_具体绑定服务Response" />
+  </wsdl:message>
+  <wsdl:message name="获得管理员_管理员编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得管理员_管理员编码" />
+  </wsdl:message>
+  <wsdl:message name="获得管理员_管理员编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得管理员_管理员编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得管理员_管理员姓名SoapIn">
+    <wsdl:part name="parameters" element="tns:获得管理员_管理员姓名" />
+  </wsdl:message>
+  <wsdl:message name="获得管理员_管理员姓名SoapOut">
+    <wsdl:part name="parameters" element="tns:获得管理员_管理员姓名Response" />
+  </wsdl:message>
+  <wsdl:message name="获得系统管理员SoapIn">
+    <wsdl:part name="parameters" element="tns:获得系统管理员" />
+  </wsdl:message>
+  <wsdl:message name="获得系统管理员SoapOut">
+    <wsdl:part name="parameters" element="tns:获得系统管理员Response" />
+  </wsdl:message>
+  <wsdl:message name="获得具体服务_绑定信息SoapIn">
+    <wsdl:part name="parameters" element="tns:获得具体服务_绑定信息" />
+  </wsdl:message>
+  <wsdl:message name="获得具体服务_绑定信息SoapOut">
+    <wsdl:part name="parameters" element="tns:获得具体服务_绑定信息Response" />
+  </wsdl:message>
+  <wsdl:message name="获得具体服务_管理员SoapIn">
+    <wsdl:part name="parameters" element="tns:获得具体服务_管理员" />
+  </wsdl:message>
+  <wsdl:message name="获得具体服务_管理员SoapOut">
+    <wsdl:part name="parameters" element="tns:获得具体服务_管理员Response" />
+  </wsdl:message>
+  <wsdl:message name="获得具体服务_服务提供者SoapIn">
+    <wsdl:part name="parameters" element="tns:获得具体服务_服务提供者" />
+  </wsdl:message>
+  <wsdl:message name="获得具体服务_服务提供者SoapOut">
+    <wsdl:part name="parameters" element="tns:获得具体服务_服务提供者Response" />
+  </wsdl:message>
+  <wsdl:message name="获得服务约束_xFF3F_服务地址SoapIn">
+    <wsdl:part name="parameters" element="tns:获得服务约束_xFF3F_服务地址" />
+  </wsdl:message>
+  <wsdl:message name="获得服务约束_xFF3F_服务地址SoapOut">
+    <wsdl:part name="parameters" element="tns:获得服务约束_xFF3F_服务地址Response" />
+  </wsdl:message>
+  <wsdl:message name="获得所有服务管理员SoapIn">
+    <wsdl:part name="parameters" element="tns:获得所有服务管理员" />
+  </wsdl:message>
+  <wsdl:message name="获得所有服务管理员SoapOut">
+    <wsdl:part name="parameters" element="tns:获得所有服务管理员Response" />
+  </wsdl:message>
+  <wsdl:message name="获得所有服务提供者SoapIn">
+    <wsdl:part name="parameters" element="tns:获得所有服务提供者" />
+  </wsdl:message>
+  <wsdl:message name="获得所有服务提供者SoapOut">
+    <wsdl:part name="parameters" element="tns:获得所有服务提供者Response" />
+  </wsdl:message>
+  <wsdl:message name="获得服务提供者SoapIn">
+    <wsdl:part name="parameters" element="tns:获得服务提供者" />
+  </wsdl:message>
+  <wsdl:message name="获得服务提供者SoapOut">
+    <wsdl:part name="parameters" element="tns:获得服务提供者Response" />
+  </wsdl:message>
+  <wsdl:message name="获得服务SoapIn">
+    <wsdl:part name="parameters" element="tns:获得服务" />
+  </wsdl:message>
+  <wsdl:message name="获得服务SoapOut">
+    <wsdl:part name="parameters" element="tns:获得服务Response" />
+  </wsdl:message>
+  <wsdl:message name="获得服务约束SoapIn">
+    <wsdl:part name="parameters" element="tns:获得服务约束" />
+  </wsdl:message>
+  <wsdl:message name="获得服务约束SoapOut">
+    <wsdl:part name="parameters" element="tns:获得服务约束Response" />
+  </wsdl:message>
+  <wsdl:message name="获得所有服务视图SoapIn">
+    <wsdl:part name="parameters" element="tns:获得所有服务视图" />
+  </wsdl:message>
+  <wsdl:message name="获得所有服务视图SoapOut">
+    <wsdl:part name="parameters" element="tns:获得所有服务视图Response" />
+  </wsdl:message>
+  <wsdl:message name="删除绑定方法SoapIn">
+    <wsdl:part name="parameters" element="tns:删除绑定方法" />
+  </wsdl:message>
+  <wsdl:message name="删除绑定方法SoapOut">
+    <wsdl:part name="parameters" element="tns:删除绑定方法Response" />
+  </wsdl:message>
+  <wsdl:message name="删除服务管理员SoapIn">
+    <wsdl:part name="parameters" element="tns:删除服务管理员" />
+  </wsdl:message>
+  <wsdl:message name="删除服务管理员SoapOut">
+    <wsdl:part name="parameters" element="tns:删除服务管理员Response" />
+  </wsdl:message>
+  <wsdl:message name="删除服务提供者SoapIn">
+    <wsdl:part name="parameters" element="tns:删除服务提供者" />
+  </wsdl:message>
+  <wsdl:message name="删除服务提供者SoapOut">
+    <wsdl:part name="parameters" element="tns:删除服务提供者Response" />
+  </wsdl:message>
+  <wsdl:message name="删除具体服务SoapIn">
+    <wsdl:part name="parameters" element="tns:删除具体服务" />
+  </wsdl:message>
+  <wsdl:message name="删除具体服务SoapOut">
+    <wsdl:part name="parameters" element="tns:删除具体服务Response" />
+  </wsdl:message>
+  <wsdl:message name="删除服务约束SoapIn">
+    <wsdl:part name="parameters" element="tns:删除服务约束" />
+  </wsdl:message>
+  <wsdl:message name="删除服务约束SoapOut">
+    <wsdl:part name="parameters" element="tns:删除服务约束Response" />
+  </wsdl:message>
+  <wsdl:message name="修改服务管理员SoapIn">
+    <wsdl:part name="parameters" element="tns:修改服务管理员" />
+  </wsdl:message>
+  <wsdl:message name="修改服务管理员SoapOut">
+    <wsdl:part name="parameters" element="tns:修改服务管理员Response" />
+  </wsdl:message>
+  <wsdl:message name="修改服务提供者SoapIn">
+    <wsdl:part name="parameters" element="tns:修改服务提供者" />
+  </wsdl:message>
+  <wsdl:message name="修改服务提供者SoapOut">
+    <wsdl:part name="parameters" element="tns:修改服务提供者Response" />
+  </wsdl:message>
+  <wsdl:message name="修改具体服务SoapIn">
+    <wsdl:part name="parameters" element="tns:修改具体服务" />
+  </wsdl:message>
+  <wsdl:message name="修改具体服务SoapOut">
+    <wsdl:part name="parameters" element="tns:修改具体服务Response" />
+  </wsdl:message>
+  <wsdl:message name="修改绑定方法SoapIn">
+    <wsdl:part name="parameters" element="tns:修改绑定方法" />
+  </wsdl:message>
+  <wsdl:message name="修改绑定方法SoapOut">
+    <wsdl:part name="parameters" element="tns:修改绑定方法Response" />
+  </wsdl:message>
+  <wsdl:message name="修改服务约束SoapIn">
+    <wsdl:part name="parameters" element="tns:修改服务约束" />
+  </wsdl:message>
+  <wsdl:message name="修改服务约束SoapOut">
+    <wsdl:part name="parameters" element="tns:修改服务约束Response" />
+  </wsdl:message>
+  <wsdl:portType name="注册服务目录服务Soap">
+    <wsdl:operation name="新增服务">
+      <wsdl:input message="tns:新增服务SoapIn" />
+      <wsdl:output message="tns:新增服务SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="新增服务提供者">
+      <wsdl:input message="tns:新增服务提供者SoapIn" />
+      <wsdl:output message="tns:新增服务提供者SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="新增服务地址">
+      <wsdl:input message="tns:新增服务地址SoapIn" />
+      <wsdl:output message="tns:新增服务地址SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="新增服务管理员">
+      <wsdl:input message="tns:新增服务管理员SoapIn" />
+      <wsdl:output message="tns:新增服务管理员SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="新增服务约束">
+      <wsdl:input message="tns:新增服务约束SoapIn" />
+      <wsdl:output message="tns:新增服务约束SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定地址_关键字">
+      <wsdl:input message="tns:查找绑定地址_关键字SoapIn" />
+      <wsdl:output message="tns:查找绑定地址_关键字SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定服务地址_服务状态">
+      <wsdl:input message="tns:查找绑定服务地址_服务状态SoapIn" />
+      <wsdl:output message="tns:查找绑定服务地址_服务状态SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定服务地址_服务类型">
+      <wsdl:input message="tns:查找绑定服务地址_服务类型SoapIn" />
+      <wsdl:output message="tns:查找绑定服务地址_服务类型SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="查找服务管理员_关键字">
+      <wsdl:input message="tns:查找服务管理员_关键字SoapIn" />
+      <wsdl:output message="tns:查找服务管理员_关键字SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="查找服务提供者_关键字">
+      <wsdl:input message="tns:查找服务提供者_关键字SoapIn" />
+      <wsdl:output message="tns:查找服务提供者_关键字SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="查找具体服务_关键字">
+      <wsdl:input message="tns:查找具体服务_关键字SoapIn" />
+      <wsdl:output message="tns:查找具体服务_关键字SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_服务地址编码">
+      <wsdl:input message="tns:获得绑定信息_服务地址编码SoapIn" />
+      <wsdl:output message="tns:获得绑定信息_服务地址编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_具体服务">
+      <wsdl:input message="tns:获得绑定信息_具体服务SoapIn" />
+      <wsdl:output message="tns:获得绑定信息_具体服务SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_服务名称">
+      <wsdl:input message="tns:获得绑定信息_服务名称SoapIn" />
+      <wsdl:output message="tns:获得绑定信息_服务名称SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得服务提供者_具体服务">
+      <wsdl:input message="tns:获得服务提供者_具体服务SoapIn" />
+      <wsdl:output message="tns:获得服务提供者_具体服务SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_具体绑定服务">
+      <wsdl:input message="tns:获得管理员_具体绑定服务SoapIn" />
+      <wsdl:output message="tns:获得管理员_具体绑定服务SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_管理员编码">
+      <wsdl:input message="tns:获得管理员_管理员编码SoapIn" />
+      <wsdl:output message="tns:获得管理员_管理员编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_管理员姓名">
+      <wsdl:input message="tns:获得管理员_管理员姓名SoapIn" />
+      <wsdl:output message="tns:获得管理员_管理员姓名SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得系统管理员">
+      <wsdl:input message="tns:获得系统管理员SoapIn" />
+      <wsdl:output message="tns:获得系统管理员SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_绑定信息">
+      <wsdl:input message="tns:获得具体服务_绑定信息SoapIn" />
+      <wsdl:output message="tns:获得具体服务_绑定信息SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_管理员">
+      <wsdl:input message="tns:获得具体服务_管理员SoapIn" />
+      <wsdl:output message="tns:获得具体服务_管理员SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_服务提供者">
+      <wsdl:input message="tns:获得具体服务_服务提供者SoapIn" />
+      <wsdl:output message="tns:获得具体服务_服务提供者SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得服务约束_xFF3F_服务地址">
+      <wsdl:input name="获得服务约束_xFF3F_服务地址" message="tns:获得服务约束_xFF3F_服务地址SoapIn" />
+      <wsdl:output name="获得服务约束_xFF3F_服务地址" message="tns:获得服务约束_xFF3F_服务地址SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务管理员">
+      <wsdl:input message="tns:获得所有服务管理员SoapIn" />
+      <wsdl:output message="tns:获得所有服务管理员SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务提供者">
+      <wsdl:input message="tns:获得所有服务提供者SoapIn" />
+      <wsdl:output message="tns:获得所有服务提供者SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得服务提供者">
+      <wsdl:input message="tns:获得服务提供者SoapIn" />
+      <wsdl:output message="tns:获得服务提供者SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得服务">
+      <wsdl:input message="tns:获得服务SoapIn" />
+      <wsdl:output message="tns:获得服务SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得服务约束">
+      <wsdl:input message="tns:获得服务约束SoapIn" />
+      <wsdl:output message="tns:获得服务约束SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务视图">
+      <wsdl:input message="tns:获得所有服务视图SoapIn" />
+      <wsdl:output message="tns:获得所有服务视图SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="删除绑定方法">
+      <wsdl:input message="tns:删除绑定方法SoapIn" />
+      <wsdl:output message="tns:删除绑定方法SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="删除服务管理员">
+      <wsdl:input message="tns:删除服务管理员SoapIn" />
+      <wsdl:output message="tns:删除服务管理员SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="删除服务提供者">
+      <wsdl:input message="tns:删除服务提供者SoapIn" />
+      <wsdl:output message="tns:删除服务提供者SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="删除具体服务">
+      <wsdl:input message="tns:删除具体服务SoapIn" />
+      <wsdl:output message="tns:删除具体服务SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="删除服务约束">
+      <wsdl:input message="tns:删除服务约束SoapIn" />
+      <wsdl:output message="tns:删除服务约束SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="修改服务管理员">
+      <wsdl:input message="tns:修改服务管理员SoapIn" />
+      <wsdl:output message="tns:修改服务管理员SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="修改服务提供者">
+      <wsdl:input message="tns:修改服务提供者SoapIn" />
+      <wsdl:output message="tns:修改服务提供者SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="修改具体服务">
+      <wsdl:input message="tns:修改具体服务SoapIn" />
+      <wsdl:output message="tns:修改具体服务SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="修改绑定方法">
+      <wsdl:input message="tns:修改绑定方法SoapIn" />
+      <wsdl:output message="tns:修改绑定方法SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="修改服务约束">
+      <wsdl:input message="tns:修改服务约束SoapIn" />
+      <wsdl:output message="tns:修改服务约束SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="注册服务目录服务Soap" type="tns:注册服务目录服务Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="新增服务">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="新增服务提供者">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务提供者" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="新增服务地址">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务地址" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="新增服务管理员">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务管理员" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="新增服务约束">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务约束" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定地址_关键字">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/查找绑定地址_关键字" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定服务地址_服务状态">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/查找绑定服务地址_服务状态" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定服务地址_服务类型">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/查找绑定服务地址_服务类型" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找服务管理员_关键字">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/查找服务管理员_关键字" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找服务提供者_关键字">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/查找服务提供者_关键字" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找具体服务_关键字">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/查找具体服务_关键字" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_服务地址编码">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得绑定信息_服务地址编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_具体服务">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得绑定信息_具体服务" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_服务名称">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得绑定信息_服务名称" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务提供者_具体服务">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务提供者_具体服务" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_具体绑定服务">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得管理员_具体绑定服务" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_管理员编码">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得管理员_管理员编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_管理员姓名">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得管理员_管理员姓名" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得系统管理员">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得系统管理员" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_绑定信息">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得具体服务_绑定信息" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_管理员">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得具体服务_管理员" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_服务提供者">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得具体服务_服务提供者" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务约束_xFF3F_服务地址">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务约束＿服务地址" style="document" />
+      <wsdl:input name="获得服务约束_xFF3F_服务地址">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="获得服务约束_xFF3F_服务地址">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务管理员">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得所有服务管理员" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务提供者">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得所有服务提供者" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务提供者">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务提供者" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务约束">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务约束" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务视图">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/获得所有服务视图" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除绑定方法">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/删除绑定方法" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除服务管理员">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/删除服务管理员" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除服务提供者">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/删除服务提供者" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除具体服务">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/删除具体服务" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除服务约束">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/删除服务约束" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改服务管理员">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/修改服务管理员" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改服务提供者">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/修改服务提供者" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改具体服务">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/修改具体服务" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改绑定方法">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/修改绑定方法" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改服务约束">
+      <soap:operation soapAction="http://www.jn.com/ESB/UDDI/修改服务约束" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="注册服务目录服务Soap12" type="tns:注册服务目录服务Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="新增服务">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="新增服务提供者">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务提供者" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="新增服务地址">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务地址" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="新增服务管理员">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务管理员" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="新增服务约束">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/新增服务约束" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定地址_关键字">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/查找绑定地址_关键字" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定服务地址_服务状态">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/查找绑定服务地址_服务状态" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找绑定服务地址_服务类型">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/查找绑定服务地址_服务类型" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找服务管理员_关键字">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/查找服务管理员_关键字" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找服务提供者_关键字">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/查找服务提供者_关键字" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="查找具体服务_关键字">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/查找具体服务_关键字" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_服务地址编码">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得绑定信息_服务地址编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_具体服务">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得绑定信息_具体服务" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得绑定信息_服务名称">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得绑定信息_服务名称" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务提供者_具体服务">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务提供者_具体服务" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_具体绑定服务">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得管理员_具体绑定服务" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_管理员编码">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得管理员_管理员编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得管理员_管理员姓名">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得管理员_管理员姓名" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得系统管理员">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得系统管理员" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_绑定信息">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得具体服务_绑定信息" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_管理员">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得具体服务_管理员" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得具体服务_服务提供者">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得具体服务_服务提供者" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务约束_xFF3F_服务地址">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务约束＿服务地址" style="document" />
+      <wsdl:input name="获得服务约束_xFF3F_服务地址">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="获得服务约束_xFF3F_服务地址">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务管理员">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得所有服务管理员" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务提供者">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得所有服务提供者" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务提供者">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务提供者" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得服务约束">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得服务约束" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有服务视图">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/获得所有服务视图" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除绑定方法">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/删除绑定方法" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除服务管理员">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/删除服务管理员" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除服务提供者">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/删除服务提供者" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除具体服务">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/删除具体服务" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除服务约束">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/删除服务约束" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改服务管理员">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/修改服务管理员" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改服务提供者">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/修改服务提供者" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改具体服务">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/修改具体服务" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改绑定方法">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/修改绑定方法" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="修改服务约束">
+      <soap12:operation soapAction="http://www.jn.com/ESB/UDDI/修改服务约束" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="注册服务目录服务">
+    <wsdl:port name="注册服务目录服务Soap" binding="tns:注册服务目录服务Soap">
+      <soap:address location="http://localhost/EsbUDDI/%E6%B3%A8%E5%86%8C%E6%9C%8D%E5%8A%A1%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="注册服务目录服务Soap12" binding="tns:注册服务目录服务Soap12">
+      <soap12:address location="http://localhost/EsbUDDI/%E6%B3%A8%E5%86%8C%E6%9C%8D%E5%8A%A1%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

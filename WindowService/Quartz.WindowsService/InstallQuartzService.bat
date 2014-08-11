@@ -1,0 +1,1 @@
+sc create QuartzService binpath= D:\TonyCode\ESB\LIB\QuartzServer\Quartz.Server.Service.exe

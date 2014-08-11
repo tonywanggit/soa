@@ -1,0 +1,26 @@
+﻿#mainNotesContainer td {
+    vertical-align: top;
+}
+div.info h2 {
+    margin: 0 0 10px 0;
+}
+div.info table {
+    width: 100%;
+}
+div.info td.small {
+    text-align: left;
+    width: 1%;
+}
+div.info img {
+    margin-right: 2px;
+}
+div.info hr {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+div.info .message {
+    border: 1px solid #ececec;
+    background-color: #fefefe;
+    padding: 5px 8px;
+    margin-right: 10px;
+}

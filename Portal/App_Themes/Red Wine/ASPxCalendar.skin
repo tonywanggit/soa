@@ -1,0 +1,14 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxEditors.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
+<dxe:ASPxCalendar runat="server" ImageFolder="~/App_Themes/Red Wine/{0}/" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine">
+    <FastNavPrevYearImage Height="19px" Url="~/App_Themes/Red Wine/Editors/edtCalendarFNPrevYear.png" Width="19px" />
+    <FastNavNextYearImage Height="19px" Url="~/App_Themes/Red Wine/Editors/edtCalendarFNNextYear.png" Width="19px" />
+    <FooterStyle Spacing="17px"></FooterStyle>
+    <HeaderStyle Spacing="1px"></HeaderStyle>
+    <ValidationSettings>
+        <ErrorFrameStyle ImageSpacing="4px">
+        <ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+        </ErrorFrameStyle>
+        <ErrorImage Height="14px" Width="14px" Url="~/App_Themes/Red Wine/Editors/edtError.png"></ErrorImage>
+    </ValidationSettings>
+</dxe:ASPxCalendar>

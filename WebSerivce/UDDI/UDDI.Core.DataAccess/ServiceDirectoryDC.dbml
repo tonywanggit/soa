@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ServiceDirectoryDb" EntityNamespace="JN.ESB.UDDI.Core.DataAccess" ContextNamespace="JN.ESB.UDDI.Core.DataAccess" Class="ServiceDirectoryDCDataContext" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MESSQL2005CLS2\MES2;Initial Catalog=ServiceDirectoryDb;Integrated Security=True" SettingsObjectName="UDDI.Core.DataAccess.Properties.Settings" SettingsPropertyName="ServiceDirectoryDbConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BusinessEntity" Member="业务实体">
+    <Type Name="业务实体">
+      <Column Name="BusinessID" Member="业务编码" Storage="_BuinessID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BusinessName" Member="业务名称" Storage="_BuinessName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Member="描述" Storage="_Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="业务实体_服务" Member="服务" AccessModifier="Internal" ThisKey="业务编码" OtherKey="业务编码" Type="服务" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BusinessService" Member="服务">
+    <Type Name="服务">
+      <Column Name="ServiceID" Member="服务编码" Storage="_ServiceID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PersonalID" Member="个人编码" Storage="_PersoanlID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="BusinessID" Member="业务编码" Storage="_BusinessID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ServiceName" Member="服务名称" Storage="_ServiceName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Member="描述" Storage="_Description" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="Category" Member="服务种类" Storage="_Category" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="服务_服务地址" Member="服务地址" AccessModifier="Internal" ThisKey="服务编码" OtherKey="服务编码" Type="服务地址" />
+      <Association Name="个人_服务" Member="个人" AccessModifier="Internal" ThisKey="个人编码" OtherKey="个人编码" Type="个人" IsForeignKey="true" />
+      <Association Name="业务实体_服务" Member="业务实体" AccessModifier="Internal" ThisKey="业务编码" OtherKey="业务编码" Type="业务实体" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TModel" Member="服务约束">
+    <Type Name="服务约束">
+      <Column Name="ModelID" Member="约束编码" Storage="_ModelID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TemplateID" Member="服务地址编码" Storage="_TemplateID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Description" Member="描述" Storage="_Description" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="Example" Member="示例" Storage="_Example" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Association Name="服务地址_服务约束" Member="服务地址" AccessModifier="Internal" ThisKey="服务地址编码" OtherKey="服务地址编码" Type="服务地址" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BindingTemplate" Member="服务地址">
+    <Type Name="服务地址">
+      <Column Name="TemplateID" Member="服务地址编码" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ServiceID" Member="服务编码" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Address" Member="访问地址" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="Description" Member="描述" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="BindingStatus" Member="状态" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BindingType" Member="绑定类型" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MethodName" Member="方法名称" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Association Name="服务地址_服务约束" Member="服务约束" AccessModifier="Internal" ThisKey="服务地址编码" OtherKey="服务地址编码" Type="服务约束" />
+      <Association Name="服务_服务地址" Member="服务" AccessModifier="Internal" ThisKey="服务编码" OtherKey="服务编码" Type="服务" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Personal" Member="个人">
+    <Type Name="个人">
+      <Column Name="PersonalID" Member="个人编码" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PersonalName" Member="姓名" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Member="电话" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Mail" Member="邮件地址" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="permission" Member="权限" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PersonalAccount" Member="帐号" Type="System.String" CanBeNull="false" />
+      <Association Name="个人_服务" Member="服务" AccessModifier="Internal" ThisKey="个人编码" OtherKey="个人编码" Type="服务" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EsbView_UDDI" Member="服务视图">
+    <Type Name="服务视图">
+      <Column Name="业务系统" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="业务系统描述" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="服务名称" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="服务描述" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="地址" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="状态" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="类型" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="方法名称" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="调用约束范例" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

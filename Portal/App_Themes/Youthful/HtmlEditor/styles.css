@@ -1,0 +1,438 @@
+/* ----------------- Main ----------------- */
+/* Loading panel */
+.dxheLoadingDiv_Youthful
+{
+    background: white;
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+    cursor: wait;
+}
+.dxheLoadingPanel_Youthful
+{
+    font: 9pt Tahoma;
+    color: #303030;
+}
+.dxheLoadingPanel_Youthful td.dx
+{
+    white-space: nowrap;
+    text-align: center;
+    padding: 12px 12px 12px 12px;
+}
+
+.dxheControl_Youthful
+{
+	border: Solid 1px white
+}
+
+/* Area */
+.dxheContentArea_Youthful
+{
+    padding-top: 1px;
+	padding-bottom: 6px;
+    background-color: white;
+}
+.dxheViewArea_Youthful
+{
+    border: Solid 1px #D3E4A6;    
+}
+.dxheHtmlViewEdit_Youthful, .dxheDesignViewArea_Youthful, .dxhePreviewArea_Youthful 
+{
+    margin: 0px;
+    background-color: #FFFFFF;
+    background-image: none;
+    text-align: left;
+    font-size: smaller;
+    font: normal 12px Arial;
+}
+td.dxheHtmlViewEdit_Youthful, body.dxheDesignViewArea_Youthful, body.dxhePreviewArea_Youthful
+{
+    padding: 0px;
+    padding-left: 4px;
+    padding-bottom: 0px;
+}
+/* Status Bar */
+.dxheStatusBar_Youthful 
+{
+}
+.dxheStatusBarTab_Youthful 
+{    
+}
+.dxheStatusBarActiveTab_Youthful 
+{
+}
+
+/* ----------------- Dialog Forms ----------------- */
+#insertLinkForm .buttonsCell, #insertImageForm .buttonsCell, #pasteFromWordForm .buttonsCell
+{
+	background-color: #9CC525;
+	border-top: solid 1px white;
+
+    padding: 11px;
+}
+#insertLinkForm .captionIndent, #insertImageForm .captionIndent
+{
+	overflow: hidden;
+	height: 5px;
+}
+#insertLinkForm .contentCell, #insertImageForm .contentCell, #pasteFromWordForm .contentCell
+{
+	padding: 11px;
+}
+#insertLinkForm .typeRadionButtonListCell, #insertImageForm .typeRadionButtonListCell
+{
+	padding-bottom: 12px;
+}
+#insertLinkForm .separatorCell, #insertImageForm .separatorCell
+{
+	height: 7px;
+}
+#insertLinkForm .buttons, #insertImageForm .buttons
+{
+    padding-top: 3px;
+}
+#insertLinkForm .cancelButton, #insertImageForm .cancelButton, #pasteFromWordForm .cancelButton
+{
+    padding-left: 10px;
+}
+/* Insert Link Form */
+#insertLinkForm .displayPropertiesCell 
+{
+    font-weight: bold;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+#insertLinkForm .targetCheckBoxCell
+{
+    padding-top:10px;
+}
+#insertLinkForm .captionCell
+{
+    padding-right: 9px;
+    padding-top: 3px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+#insertLinkForm .inputCell
+{
+    vertical-align: middle;
+}
+/* Insert Image Form */
+#insertImageForm .fieldSeparator 
+{
+    height: 9px;
+}
+#insertImageForm .imagePreview
+{
+    padding: 10px 0px;
+    padding-top: 5px;
+}
+#insertImageForm .fromTheWeb
+{
+    width: 100%;
+}
+#insertImageForm .imagePreviewCell
+{
+    color: #878787;
+    border: dashed 1px white;
+    text-align:center;
+    width: 100%;
+    height: 170px;
+}
+#insertImageForm .imagePropertiesCell
+{
+    padding-left: 20px;
+    vertical-align:top;
+}
+#insertImageForm .moreOptionsCell
+{
+	padding-top: 11px;
+}
+#insertImageForm .radioButtonTable
+{
+	width: 317px;
+}
+#insertImageForm .saveToServerCheckBoxCell
+{
+    padding-top:0px;
+    padding-bottom: 13px;
+}
+/* Image Properties Form */
+#imagePropertiesForm .captionCell
+{
+    padding-right: 2px;
+}
+#imagePropertiesForm .imageSizeEditorsCell
+{
+    padding-top: 7px;
+    padding-bottom: 10px;
+}
+#imagePropertiesForm .pixelSizeCell
+{
+    padding-left: 7px;
+}
+#imagePropertiesForm .hSeparator
+{
+    width: 25px;
+    overflow: hidden;
+}
+#imagePropertiesForm .thumbnailFileNameArea
+{
+    padding-top: 8px;
+}
+/* IE, FireFox, WebKit*/
+#imagePropertiesForm .ckbWrapTextCell div
+{
+	margin-left: -4px;
+	padding-top: 2px;
+}
+/* Opera hack */
+@media not all and (-webkit-min-device-pixel-ratio) {   
+	#imagePropertiesForm .ckbWrapTextCell div
+	{
+		margin-left: 0px;
+	}
+}
+
+/* PasteFromWord Form */
+#pasteFromWordForm .pasteContainer
+{
+	width: 450px;
+	height: 300px;
+	border: none;
+	background-color: white;
+}
+#pasteFromWordForm .pasteContainerCell
+{
+	padding:0px;
+	padding-top: 10px;
+}
+#pasteFromWordForm .pasteContainerCell td
+{
+	border: Solid 1px #AFC185;
+}
+#pasteFromWordForm .checkBoxCell
+{
+	padding-top: 10px;
+}
+#pasteFromWordForm .contentCell 
+{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+/*----------------- Toolbars -----------------*/
+.dxtbSpacing_Youthful
+{
+	height: 1px;
+}
+.dxtbControl_Youthful 
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: white;
+}
+
+.dxtbMenu_Youthful
+{
+    color: Black;
+	background-color: #D3E4A6;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+	padding: 2px 4px 2px 4px;
+}
+.dxtbMenuSeparator_Youthful
+{
+    background-color: White;
+}
+.dxtbMenuItem_Youthful, .dxtbMenuItemWithImage_Youthful, .dxtbMenuItemWithPopOutImage_Youthful, .dxtbMenuItemWithImageWithPopOutImage_Youthful
+{
+    color: Black;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+	white-space: nowrap;
+	background-color: #D3E4A6;
+	border: 0px;	
+}
+.dxtbMenuItem_Youthful, .dxtbMenuItemWithImage_Youthful
+{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}
+.dxtbMenuItemWithPopOutImage_Youthful, .dxtbMenuItemWithImageWithPopOutImage_Youthful
+{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}	
+.dxtbComboBoxMenuItem_Youthful
+{
+    padding-top: 1px;
+	padding-bottom: 1px;
+}
+.dxtbMenuItemSelected_Youthful, .dxtbMenuItemSelectedWithImage_Youthful, .dxtbMenuItemSelectedWithPopOutImage_Youthful, .dxtbMenuItemSelectedWithImageWithPopOutImage_Youthful
+{
+	background-color: #F4921B;
+	border: 0px;
+}
+.dxtbMenuItemSelected_Youthful, .dxtbMenuItemSelectedWithImage_Youthful
+{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}
+.dxtbMenuItemSelectedWithPopOutImage_Youthful, .dxtbMenuItemSelectedWithImageWithPopOutImage_Youthful
+{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}
+
+.dxtbMenuItemChecked_Youthful, .dxtbMenuItemCheckedWithImage_Youthful, .dxtbMenuItemCheckedWithPopOutImage_Youthful, .dxtbMenuItemCheckedWithImageWithPopOutImage_Youthful
+{
+	background-color: #F4921B;
+	border: 0px;
+}
+.dxtbMenuItemChecked_Youthful, .dxtbMenuItemCheckedWithImage_Youthful
+{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}
+.dxtbMenuItemCheckedWithPopOutImage_Youthful, .dxtbMenuItemCheckedWithImageWithPopOutImage_Youthful
+{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}	
+
+.dxtbMenuItemHover_Youthful, .dxtbMenuItemHoverWithImage_Youthful, .dxtbMenuItemHoverWithPopOutImage_Youthful, .dxtbMenuItemHoverWithImageWithPopOutImage_Youthful
+{
+	background-color: #F4BD17;
+	border: 0px;
+}
+.dxtbMenuItemHover_Youthful, .dxtbMenuItemHoverWithImage_Youthful
+{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}
+.dxtbMenuItemHoverWithPopOutImage_Youthful, .dxtbMenuItemHoverWithImageWithPopOutImage_Youthful
+{
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+}
+
+.dxtbSubMenu_Youthful
+{
+    color: Black;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+	border: Solid 1px White;
+	padding: 0px;
+	background-color: #E5EECF;
+}
+
+.dxtbSubMenuBorderCorrector_Youthful
+{
+    position: absolute;
+    border: 0px;
+    padding: 0px;
+}
+
+/* ToolbarColorButton */
+.dxtcbControl_Youthful
+{
+	border-collapse:collapse;
+	border-width: 0px;
+}
+.dxtcbControl_Youthful td
+{
+	/*padding: 1px;	*/
+}
+.dxtcbImageCell_Youthful, .dxtcbColorCell_Youthful
+{
+	height:0px;
+}
+.dxtcbColorDiv_Youthful
+{
+	width: 16px;
+	height: 4px;
+	font-size:0pt;
+	background-color: Red;
+}
+/*----------------- ColorPicker -----------------*/
+.dxeColorPicker_Youthful 
+{
+    background-color: #E5EECF;
+}
+.dxeColorPicker_Youthful td.dx
+{
+    padding: 2px;
+}
+/* TODO ColorPickerCellStyle */
+.dxeColorPicker_Youthful table td {
+    padding-left: 3px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-right: 3px;
+    cursor: pointer;
+    cursor: hand;
+}
+/* TODO ColorPickerBoxStyle */
+.dxeColorPicker_Youthful table div {
+    border: solid 1px white;
+    width: 12px;
+    height: 12px;
+    font-size: 0px;
+}
+
+.dxeColorPickerCellSelected_Youthful {
+    padding-left: 3px!important;
+    padding-bottom: 3px!important;
+    padding-top: 3px!important;
+    padding-right: 3px!important;
+	
+    border-style: none;
+    background-color: #F4921B;
+}
+.dxeColorPickerCellHover_Youthful {
+    padding-left: 3px!important;
+    padding-bottom: 3px!important;
+    padding-top: 3px!important;
+    padding-right: 3px!important;
+	
+    border-style: none;
+    background-color: #F4BD17;
+}
+
+/*----------------- RoundPanel -----------------*/
+.dxheRPControl_Youthful td.dxheRP
+{
+	font-size: 9pt;
+	font-family: Tahoma, Verdana, Arial;
+	color: #000000;	
+}
+/* Header */
+.dxheRPHeader_Youthful, .dxrpHeader_Youthful td.dxheRP
+{
+    font-size: 13px;
+    font-weight: bold;
+	font-family: Tahoma, Verdana, Arial;    
+	color: #313131;
+	text-align:left;	
+}
+/* Disabled */
+.dxheRPDisabled_Youthful, .dxheRPDisabled_Youthful td.dxheRP
+{
+	color: #808080;
+	cursor: default;
+}

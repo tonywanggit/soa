@@ -1,0 +1,20 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxpg" Namespace="DevExpress.Web.ASPxPager" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxpg:ASPxPager runat="server" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine" ImageFolder="~/App_Themes/Red Wine/{0}/" CurrentPageNumberFormat="{0}" ShowNumericButtons="True">
+<Summary Visible="False" />
+<AllButton>
+<Image Height="19px" Width="24px" ></Image>
+</AllButton>
+<NextPageButton Visible="True">
+<Image Height="19px" Width="19px"></Image>
+</NextPageButton>
+<PrevPageButton Visible="True">
+<Image Height="19px" Width="19px"></Image>
+</PrevPageButton>
+<FirstPageButton Visible="True">
+<Image Height="19px" Width="23px"></Image>
+</FirstPageButton>
+<LastPageButton Visible="True">
+<Image Height="19px" Width="23px"></Image>
+</LastPageButton>
+</dxpg:ASPxPager>

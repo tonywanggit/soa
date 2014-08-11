@@ -1,0 +1,332 @@
+﻿/* BASE TAGS */
+
+
+/* HTML */
+html { padding: 0px; margin: 0px; height: 100%; }
+
+/* BODY */
+body {
+    padding: 0px 0px 0px 0px;
+    margin: 0px;
+    font-family: Tahoma, Arial;
+    font-size: 12px;
+}
+
+/* FORM */
+form  {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+
+/* OTHER TAGS */
+
+
+/* TABLE */
+table, td { font-size: 100%; }
+table.InfoPanelIndent { margin-top: 8px; }
+table.CodeLabel { margin-top: 13px; }
+table.DemoButton { margin-top: 25px; }
+
+/* TD */
+td.ActionMainLabel { padding-bottom: 6px; font-size: 12px; font-weight: bold; }
+td.ActionPanel { width: 100%; padding-bottom: 4px; }
+td.InfoPanel { padding-left: 24px; }
+td.InfoPanelGroupItem { padding-left: 30px; }
+td.InfoPanelLabel { padding-left: 3px; }
+
+/* HR */
+hr {
+    height: 1px;
+    border: 0px;
+    border-top: Solid 1px #BBD7DD;
+    display: block;
+    width: 200px;
+}
+
+/* P */
+p {
+	margin: 0px;
+	padding: 0px;  
+	margin-top: 8px;
+    font-size: 12px;
+}
+p.h1, p.h2, p.h3, h1.DemoHeader, h2.DemoHeader, h3.DemoHeader {
+    font-family: Tahoma, Arial;
+	color: #818180; 
+	margin: 0px;
+	padding: 0px;
+	background-color: Transparent!important;
+}
+p.h2, p.h3, h2.DemoHeader, h3.DemoHeader  {
+	font-size : 12px;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 11px;
+}
+p.h3, h3.DemoHeader  {
+	font-size : 10px;
+	margin-bottom: 8px;
+}
+.DemoHeader { white-space: nowrap; }
+
+/* PRE */
+pre {
+    margin-top: 23px;    
+    margin-bottom: 23px;
+    font-family: Courier New;
+    font-size: 13px;
+    padding: 20px;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+pre.NoIndent { margin: 0px; background-color: transparent; }
+
+/* TEXTAREA */
+textarea, select, input { font-size: 11px; font-family: Tahoma, Arial; }
+textarea, select { background-color: #FFFFFF; }
+textarea.Code {
+    border: 1px solid #9D9D9D; 
+    font-size: 11px; 
+    font-family: Tahoma; 
+    background-color: #FFFFFF; 
+    color: #000000; 
+}
+textarea.InactiveColor { color: Gray; }
+textarea.EditSample {
+    width: 398px;
+    border: solid 1px #C3D9FF; 
+    padding: 0px; 
+    margin: 0px;
+    font-size: 11px; 
+    font-family: Tahoma; 
+    background-color: #FFFFFF; 
+    overflow: auto; 
+    height: 200px;     
+    color: #000000;
+    margin-top: -1px; 
+}
+
+/* INPUT */
+input.DemoButton { width: 75px; height: 23px; }
+input.BigButton { width: 120px; height: 23px; } 
+
+/* DIV */
+div.Events {
+    border: 1px solid #9D9D9D; 
+    padding: 2px; 
+    font-size: 11px; 
+    font-family: Tahoma; 
+    background-color: #FFFFFF; 
+    overflow: auto; 
+    height: 200px;     
+    color: #000000; 
+}
+div.Events table, div.Events td { color: #000000; }
+div.LoadingDiv { vertical-align: middle; text-align: center; }
+
+/* SPAN */
+span.blue { color: #293ACF; font-weight: normal; }
+span.black { color: #333333; }
+
+/* A */
+a { color: #346DAD; }
+a.LinkButton { color: #0451A7; text-decoration: underline; }
+
+
+
+/* Custom Classes */
+
+
+.Form {
+    padding-left: 20px; padding-right: 20px; 
+}
+.Main {
+    width: 1%; 
+}
+.Header {
+    padding: 0px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+}
+.Navigation {
+    width: 1%;
+    padding-right: 10px;
+}
+.Content {
+    padding-top: 0px;
+    padding-left: 1px;
+    padding-right: 0px;
+}
+.Footer {
+    font-size: 12px;
+    padding-left: 1px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.Copyright { padding: 12px 0px 4px 0px; }
+.StatusImage { margin-left: 5px; vertical-align: bottom; }
+.PageStatus img { margin-left: 2px; vertical-align: middle; }
+.PageStatusHideImage img { display: none; }
+.Banners { margin-top: 11px; }
+label.BannerVersion { font-size: 16px; }
+.OnceBanner { margin-top: 20px; }
+.Slogan { white-space: nowrap; margin-left: -5px; color: White; font-size: 42px; font-family: Tahoma; position: absolute; line-height: 65%; padding-top: 8px; }
+.MiniSlogan { white-space: nowrap; color: #ACDAFA; font-size: 17px; margin-left: 3px; }
+.BannerLime { font-size: 11px; line-height: 14px; }
+.ControlActionSpacing { padding-left: 17px; }
+.ContentMargin { margin-left: 6px; }
+.Title img { margin-right: 12px; }
+.Title h1.h1Blue {
+    font-family: Tahoma;
+    font-size: 27px;
+    display: inline;
+    font-weight: normal;
+    padding: 0px;
+	margin: 0px;
+}
+.Title h2.h2Gray {
+    font-family: Tahoma;
+    font-size: 25px;
+    display: inline;
+    font-weight: normal;
+    padding: 0px;
+	margin: 0px;
+    color: #A9A9A9;
+}
+.DemoInfoLabel {
+	color: Red;
+	font-size: 11px;
+	font-family: Verdana;
+	white-space: nowrap;
+}
+.ActionGroupIndent { padding-top: 17px; }
+.ActionItemIndent { padding-top: 10px; }
+.DemoLabel { padding-left: 6px; white-space: nowrap; color: #666666; }
+.CaptionLabelIndent { padding-left: 0px; display: block; padding-bottom: 4px; }
+.EventMonitor { padding-left: 7px; padding-right: 7px; padding-bottom: 2px; }
+.CheckBoxLeftIndentCorrect { padding-left: 6px; }
+.CheckBoxTopIndent { padding-bottom: 10px; }
+.TableCheckBoxLeftIndentCorrect { margin-left: 4px; }
+.ActionLabel { white-space: nowrap; width: 1%; }
+.Hint { border: solid 1px #A8A8A8; background-color: #FEFFDE; color: #5A5A5A; padding: 10px; font-size: 10px; }
+.BlackBorder { border: Solid 1px #000000; }
+
+
+/* UTILITIES */
+
+.Clear { clear: both; }
+div.Spacer {
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+}
+.think { font-weight: normal; }
+.Cursor { cursor: pointer; cursor: hand; }
+.NoWrap { white-space: nowrap; }
+.NoLeftIndent { padding-left: 0px; }
+.Show { display: block; }
+.ShowInline { display: inline; }
+.Hide { display: none; }
+.Bold { font-weight: bold; }
+.FontNormal { font-weight: normal!important; }
+.FontSmall, .FontSmall * { font-size: 11px!important; }
+.ClearIndent { margin: 0px; padding: 0px; }
+.NoTopIndent { margin: 0px; }
+.Gray { color: #333333; }
+.centeredContentContainer { text-align: center; }
+.UserHelpTopic { width: 100%; font-size: 11px; }
+
+
+
+/* Code Renderer Styles */
+
+.cr-cs-comment { color: Green; }
+.cr-cs-keyword { color: Blue; }
+.cr-cs-preproc { color: #2B91AF; }
+.cr-cs-string { color: #A31515; }
+.cr-region-head { display: inline; margin: 0px 0px 0px 0px; font-size: small; font-weight: normal; color: Gray; }
+.cr-region-div { border-left: solid 1px DarkGray; margin-left: 5px; padding-left: 10px; }
+.cr-region-span { border-left: solid 1px LightGrey; width: 1px; margin-left: 5px; padding-left: 3px; }
+.cr-aspx-region-head { display: inline; margin: 0px 0px 0px 0px; font-size: small; font-weight: normal; color: Green; }
+
+.cr-js-comment { color: Green; }
+.cr-js-keyword { color: Blue; }
+.cr-js-preproc { color: #2B91AF; }
+.cr-js-string { color: #A31515; }
+.cr-js-pre { margin-top: 0px!important; margin-bottom: 0px!important; }
+
+.cr-vb-comment { color: Green; }
+.cr-vb-keyword { color: Blue; }
+.cr-vb-string { color: #A31515; }
+.cr-vb-preproc { color: #2B91AF; }
+
+.cr-delphi-comment { color: Green; }
+.cr-delphi-keyword { color: Blue; }
+.cr-delphi-string { color: #A31515; }
+.cr-delphi-preproc { color: #2B91AF; }
+
+.cr-xml-comment { color: Green; }
+.cr-xml-keyword { color: Blue; }
+.cr-xml-string { color: #A31515; }
+.cr-xml-preproc { color: #2B91AF; }
+.cr-xml-tag { color: #A31515; }
+.cr-xml-attribute { color: #FF0000; }
+.cr-xml-bind{ background-color: #FFEE62; }
+
+.cr-aspx-comment { color: Green; }
+.cr-aspx-preproc { background-color: #FFEE62; color: Black; }
+.cr-aspx-string { color: Black; }
+.cr-aspx-text { color: Blue; }
+.cr-aspx-keyword { color: #2B91AF; }
+.cr-aspx-tag { color: #A31515; }
+.cr-aspx-attribute { color: #FF0000; }
+.cr-aspx-bind{ background-color: #FFEE62; }
+.cr-aspx-pre { padding: 0px; margin-top: 0px!important; }
+
+div.cr-div pre {
+    font-size: 9pt; 
+    font-family: 'Courier New'; 
+    padding: 0px; 
+    margin-top: 0px;    
+    margin-bottom: 0px; 
+}
+.cr-div {
+    width: 606px; 
+    height: 380px; 
+    font-size: 9pt; 
+    font-family: 'Courier New'; 
+    overflow: auto; 
+    padding: 14px 20px 0px;
+    background-color: #FFFFFF;
+}
+.cr-div-description 
+{
+	width: 606px;
+	height: 380px;
+	font-size: 9pt;
+	overflow: auto;
+	padding: 14px 20px 0px;
+}
+
+
+
+/* OTHER */
+
+.HeaderPanel { padding: 27px 3px 0px 20px; }
+label.defaultLabel, span.defaultLabel {
+	color: Black;
+}
+/* ASPxGridView */
+.templateTable {
+    border-collapse: collapse;
+    background-color: #F3F8F7;
+}
+.templateTable td {
+    border: Solid 1px #C2D4DA;
+}
+.templateCaption {
+    background-color: #ECF2F3;
+}

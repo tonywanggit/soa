@@ -1,0 +1,86 @@
+﻿body {
+    background-color: #E1E6AC;
+    color: #171D2D;
+
+    background-image: url('GradientInternal.jpg'); 
+    background-repeat: repeat-x;
+}
+
+.BannerLime a { color: #5F7330; }
+.BannerLime { color: #5F7330; }
+.BannerVersion { color: #E1E7D0; }
+.Copyright { color: #95A470; }
+
+.Features b * { font-weight: normal; color: #171D2D; font-size: 16px; font-family: Tahoma; }
+.RootPage {
+    color: #171D2D; 
+}
+.RootPage a { color: #171D2D; }
+
+/* Label for Appearance combobox */
+.lblSkins { color: #282828; }
+.Title h1.h1Blue { color: #A9BB73; }
+.Slogan { color: #7DB632!important; }
+.MiniSlogan { color: #F4921B!important; }
+.ContentMargin { margin-left: 0px!important; }
+.HeaderPanel { padding-bottom: 70px!important; }
+
+/* Icon menu */
+.dxmMenu_Demo
+{
+	color: #282828;
+}
+.dxmMenuSeparator_Demo
+{
+    width: 1px!important;
+    height: 15px!important;
+	background-color: #282828;
+}
+.dxmMenu_Demo a
+{
+	color: #282828;
+	text-decoration: underline;
+}
+/* Header for TitleImage Area*/
+.DetailsPageHeader {
+    background-color: #DDEABE;
+    padding: 3px 11px;
+    width: 100%;
+    height: 56px;
+    border: Solid 1px #B6C498;
+}
+.DetailsPageHeaderBottom {
+    height: 0px; 
+    background-color: White;
+    border-left: solid 1px #C7D09A;
+    border-right: solid 1px #C7D09A;
+}
+.DetailsPageContent 
+{
+	background-color: White;
+	border-left: solid 1px #C7D09A;
+    border-right: solid 1px #C7D09A;
+}
+.DetailsSorceCodeArea 
+{
+	background-color: White;
+	border-left: solid 1px #C7D09A;
+    border-right: solid 1px #C7D09A;
+}
+.DetailsPageLeftEdgeHeader { display: none; }
+.DetailsPageRightEdgeHeader { display: none; }
+.DetailsPageLeftEdge { display: none; }
+.DetailsPageRightEdge {	display: none; }
+.DetailsPageContent {
+    padding: 25px 31px 28px;
+}
+.DetailsPageFooter {
+    width: 100%;
+    background-color: White;
+	border: solid 1px #C7D09A;
+	border-top-width: 0px;
+}
+.DetailsSorceCodeArea {
+    width: 100%; 
+    padding-top: 21px;
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost/EsbScheduler/SchedulerService.asmx?wsdl" docRef="http://localhost/EsbScheduler/SchedulerService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost/EsbScheduler/SchedulerService.asmx" xmlns:q1="http://www.jn.com/ESB/Scheduler" binding="q1:SchedulerServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost/EsbScheduler/SchedulerService.asmx" xmlns:q2="http://www.jn.com/ESB/Scheduler" binding="q2:SchedulerServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

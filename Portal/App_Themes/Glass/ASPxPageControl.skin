@@ -1,0 +1,9 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxtc" Namespace="DevExpress.Web.ASPxTabControl" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %> 
+<dxtc:ASPxPageControl runat="server" TabSpacing="0px" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass" ImageFolder="~/App_Themes/Glass/{0}/" >
+<Paddings PaddingLeft="0px"></Paddings>
+<ContentStyle>
+	<Border BorderColor="#4986A2"></Border>
+</ContentStyle>
+<TabStyle HorizontalAlign="Center"></TabStyle>
+</dxtc:ASPxPageControl>

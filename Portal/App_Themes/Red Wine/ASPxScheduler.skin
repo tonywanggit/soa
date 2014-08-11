@@ -1,0 +1,149 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwschs" Namespace="DevExpress.Web.ASPxScheduler" Assembly="DevExpress.Web.ASPxScheduler.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.XtraScheduler.v9.1.Core, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="temp" %>
+<dxwschs:ASPxScheduler runat="server">
+    <Styles CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine" SelectionColor="#8a0a37">
+        <Menu>
+            <SubMenu GutterWidth="0px" />
+            <SubMenuItem ImageSpacing="4px" />
+        </Menu>
+        <FormEditors>
+            <CalendarFooter Spacing="17px" />
+            <CalendarHeader Spacing="1px" />
+        </FormEditors>    
+    </Styles>
+    <Images ImageFolder="~/App_Themes/Red Wine/{0}/">
+		<ResourceNavigator>
+            <ComboBoxDropDown Width="7px" Height="7px" 
+                Url="~/App_Themes/Red Wine/Editors/edtDropDown.png" 
+                UrlHottracked="~/App_Themes/Red Wine/Editors/edtDropDownHottracked.png" 
+                UrlDisabled="~/App_Themes/Red Wine/Editors/edtDropDownDisabled.png" />
+                
+            <First Width="23px" Height="19px" />
+            <PrevPage Width="23px" Height="19px" />
+            <Prev Width="19px" Height="19px" />
+            <Next Width="19px" Height="19px" />
+            <NextPage Width="23px" Height="19px" />
+            <Last Width="23px" Height="19px" />
+            <Increase Width="19px" Height="19px" />
+            <Decrease Width="19px" Height="19px" />
+        </ResourceNavigator>  
+        <NavigationButton>
+            <Backward Width="15px" Height="41px" />
+            <Forward Width="15px" Height="41px" />
+        </NavigationButton>
+        <MoreButton>
+            <Top Width="21px" Height="17px" />
+            <Bottom Width="21px" Height="17px" />
+        </MoreButton>
+        <FormEditors>				
+            <CalendarFastNavNextYear Height="19px" Url="~/App_Themes/Red Wine/Editors/edtCalendarFNNextYear.png" Width="19px" />
+            <CalendarFastNavPrevYear Height="19px" Url="~/App_Themes/Red Wine/Editors/edtCalendarFNPrevYear.png" Width="19px" />    
+            <DropDownEditDropDown  Width="7px" Height="7px" Url="~/App_Themes/Red Wine/Editors/edtDropDown.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtDropDownHottracked.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtDropDownDisabled.png" />
+            <SpinEditLargeIncrement Url="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditLargeIncDisabledImage.png" Width="7px" Height="9px" />
+            <SpinEditDecrement Url="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditDecrementDisabledImage.png" Width="7px" Height="7px" />
+            <SpinEditLargeDecrement Url="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditLargeDecDisabledImage.png" Width="7px" Height="9px" />
+            <SpinEditIncrement Url="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementImage.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementHottrackedImage.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtSpinEditIncrementDisabledImage.png" Width="7px" Height="6px" />					            
+        </FormEditors>        
+        <FormCloseButton Height="19px" Width="19px" />
+	</Images>
+    
+    <OptionsLoadingPanel Text="" />
+        
+    <ResourceColorSchemas>        
+        <temp:SchedulerColorSchema 
+            Cell="238,244,245" 
+            CellBorder="198,224,234" 
+            CellBorderDark="147,195,211"
+            CellLight="255,255,255" 
+            CellLightBorder="216,232,235" 
+            CellLightBorderDark="198,227,240" />
+        <temp:SchedulerColorSchema 
+            Cell="255,246,201" 
+            CellBorder="241,221,175" 
+            CellBorderDark="234,208,152"
+            CellLight="255,250,226" 
+            CellLightBorder="248,237,212" 
+            CellLightBorderDark="244,230,200" />
+                            
+        <temp:SchedulerColorSchema 
+            Cell="228,249,211" 
+            CellBorder="201,236,193" 
+            CellBorderDark="185,229,174"
+            CellLight="241,252,232" 
+            CellLightBorder="226,245,222" 
+            CellLightBorderDark="218,241,212" />
+        <temp:SchedulerColorSchema 
+            Cell="210,227,255" 
+            CellBorder="179,207,236" 
+            CellBorderDark="157,194,228"
+            CellLight="231,240,255" 
+            CellLightBorder="214,229,245" 
+            CellLightBorderDark="203,222,241" />
+                                                
+        <temp:SchedulerColorSchema 
+            Cell="218,212,248" 
+            CellBorder="179,197,236" 
+            CellBorderDark="157,182,228"
+            CellLight="235,232,251" 
+            CellLightBorder="214,224,245" 
+            CellLightBorderDark="203,216,241" />
+                            
+        <temp:SchedulerColorSchema 
+            Cell="207,250,216" 
+            CellBorder="196,233,209" 
+            CellBorderDark="178,225,194"
+            CellLight="229,252,234" 
+            CellLightBorder="224,243,230" 
+            CellLightBorderDark="214,239,222" />
+        
+        <temp:SchedulerColorSchema 
+            Cell="248,254,201" 
+            CellBorder="234,227,193" 
+            CellBorderDark="228,218,178"
+            CellLight="251,254,226" 
+            CellLightBorder="244,240,222" 
+            CellLightBorderDark="241,235,214" />
+        
+        <temp:SchedulerColorSchema 
+            Cell="250,220,222" 
+            CellBorder="226,207,215" 
+            CellBorderDark="219,195,204"
+            CellLight="251,230,232" 
+            CellLightBorder="236,223,228" 
+            CellLightBorderDark="231,214,221" />
+                            
+        <temp:SchedulerColorSchema 
+            Cell="208,213,206" 
+            CellBorder="196,199,193" 
+            CellBorderDark="185,184,179"
+            CellLight="225,230,222" 
+            CellLightBorder="213,214,211" 
+            CellLightBorderDark="202,207,200" />
+        
+        <temp:SchedulerColorSchema 
+            Cell="167,236,236" 
+            CellBorder="148,222,222" 
+            CellBorderDark="156,210,211"
+            CellLight="200,243,243" 
+            CellLightBorder="178,231,231" 
+            CellLightBorderDark="161,229,230" />
+        
+        <temp:SchedulerColorSchema 
+            Cell="211,201,231" 
+            CellBorder="202,192,221" 
+            CellBorderDark="186,177,205"
+            CellLight="224,216,237" 
+            CellLightBorder="214,203,232" 
+            CellLightBorderDark="205,192,233" />
+        
+        <temp:SchedulerColorSchema 
+            Cell="220,220,220" 
+            CellBorder="202,202,202" 
+            CellBorderDark="189,189,189"
+            CellLight="228,228,228" 
+            CellLightBorder="213,213,213" 
+            CellLightBorderDark="200,200,200" />
+            
+        </ResourceColorSchemas>       
+</dxwschs:ASPxScheduler>

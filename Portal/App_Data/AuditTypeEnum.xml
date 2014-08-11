@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AuditTypeEnum>
+  <AuditType Text="发送成功" Value="1" />
+  <AuditType Text="发送失败" Value="0" />
+  <AuditType Text="异常重发" Value="8" />
+  <AuditType Text="异常归档" Value="9" />
+</AuditTypeEnum>

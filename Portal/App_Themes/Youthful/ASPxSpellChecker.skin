@@ -1,0 +1,6 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwsc" Namespace="DevExpress.Web.ASPxSpellChecker" Assembly="DevExpress.Web.ASPxSpellChecker.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxwsc:ASPxSpellChecker runat="server" 
+    CssFilePath="~/App_Themes/Youthful/{0}/styles.css" CssPostfix="Youthful" ImageFolder="~/App_Themes/Youthful/{0}/">
+	<DialogFormCloseButtonImage Height="13px" Width="13px" />
+</dxwsc:ASPxSpellChecker>

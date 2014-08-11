@@ -1,0 +1,27 @@
+﻿/* -- Label's -- */
+#registrationForm td.label {
+    text-align: right;
+    white-space: nowrap;
+    padding-bottom: 2px;
+}
+#registrationForm td.label .dxeBase
+{
+	font-size: 9pt;
+}
+#registrationForm td.label span.star {
+    color: #E9786E;
+}
+
+/* -- Button's --*/
+#registrationForm .buttonCell
+{
+	padding-left: 5px;
+	padding-top: 10px;
+}
+#registrationForm .formButton
+{
+	font: 8pt Tahoma;
+	width: 72px;
+	height: 22px;
+}
+

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="EsbExceptionDb" EntityNamespace="JN.ESB.Exception" ContextNamespace="JN.ESB.Exception" Class="ExceptionDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MESSQL2005CLS2\MES2;Initial Catalog=EsbExceptionDb;Integrated Security=True" SettingsObjectName="Exception.DataAccess.Properties.Settings" SettingsPropertyName="EsbExceptionDbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ExceptionType" Member="异常类型对象">
+    <Type Name="异常类型对象">
+      <Column Name="Desception" Member="描述" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="ExceptionLevel" Member="异常级别" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LevelDesception" Member="级别描述" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="TypeId" Member="类型编码" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExceptionCoreTb" Member="异常信息对象">
+    <Type Name="异常信息对象">
+      <Column Name="ExceptionID" Member="异常编码" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ExceptionTime" Member="异常时间" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Member="异常描述" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="ExceptionCode" Member="异常代码" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ExceptionInfo" Member="异常信息" Type="System.String" DbType="NText" CanBeNull="true" />
+      <Column Name="ExceptionLevel" Member="异常级别" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExceptionType" Member="异常类型" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MethodName" Member="方法名称" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="HostName" Member="主机名称" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MessageID" Member="消息编码" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="BindingTemplateID" Member="绑定地址编码" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ExceptionStatus" Member="异常信息状态" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MessageBody" Member="请求消息体" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BindingType" Member="绑定类型" Type="System.Int32" DbType="Int" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RequestPwd" Member="请求密码" Type="System.String" DbType="NChar(50)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="RequestType" Member="请求类型" Type="System.Int32" DbType="Int" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+</Database>

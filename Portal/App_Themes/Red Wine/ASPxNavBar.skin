@@ -1,0 +1,9 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxnb" Namespace="DevExpress.Web.ASPxNavBar" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxnb:ASPxNavBar runat="server" CssPostfix="RedWine" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" ImageFolder="~/App_Themes/Red Wine/{0}/" GroupSpacing="1px">
+    <ItemStyle ImageSpacing="10px" />
+    <GroupContentStyle ItemSpacing="1px" />
+    <LoadingPanelImage Url="~/App_Themes/Red Wine/Web/nbLoading.gif" />
+    <CollapseImage Url="~/App_Themes/Red Wine/Web/nbCollapse.png" Width="17px" Height="17px" />
+    <ExpandImage Url="~/App_Themes/Red Wine/Web/nbExpand.png" Width="17px" Height="17px" />
+</dxnb:ASPxNavBar>

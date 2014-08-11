@@ -1,0 +1,20 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxxr" Namespace="DevExpress.XtraReports.Web" Assembly="DevExpress.XtraReports.v9.1.Web, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxxr:ReportToolbar runat="server" ItemSpacing="2px" SeparatorHeight="100%" SeparatorWidth="1px" Font-Names="Tahoma" Font-Size="9pt">
+  <Styles CssPostfix="RedWine" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css">
+    <ButtonStyle VerticalAlign="Middle" HorizontalAlign="Center"></ButtonStyle>
+    <TextBoxStyle>
+        <Margins MarginLeft="2px" MarginRight="2px" />
+    </TextBoxStyle>
+    <ComboBoxStyle>
+        <Margins MarginLeft="3px" MarginRight="3px" />
+    </ComboBoxStyle>
+    <LabelStyle ForeColor="White">
+        <Margins MarginLeft="3px" MarginRight="3px" />
+    </LabelStyle>
+	<ComboBoxButtonStyle>
+		<DropDownButtonImage Width="7px" Height="7px" Url="~/App_Themes/Red Wine/Editors/edtDropDown.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtDropDownHottracked.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtDropDownDisabled.png" />
+	</ComboBoxButtonStyle>	
+  </Styles>
+  <Images ImageFolder="~/App_Themes/Red Wine/{0}/" />
+</dxxr:ReportToolbar>

@@ -1,0 +1,11 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxm:ASPxMenu runat="server" CssFilePath="~/App_Themes/Glass/{0}/styles.css" ItemSpacing="0px" CssPostfix="Glass" SeparatorHeight="100%" ImageFolder="~/App_Themes/Glass/{0}/" SeparatorWidth="1px" SeparatorColor="#A5A6A8" AutoSeparators="RootOnly">
+<Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#A5A6A8" />
+<SubMenuStyle BackColor="#EDF3F4" GutterWidth="0px" SeparatorColor="#7EACB1" ></SubMenuStyle>
+<RootItemSubMenuOffset FirstItemY="-2" LastItemY="-2" Y="-2" FirstItemX="-1" LastItemX="-1" X="-1" />
+<ItemStyle VerticalAlign="Middle" ImageSpacing="5px" PopOutImageSpacing="7px"></ItemStyle>
+<SubMenuItemStyle ImageSpacing="7px"></SubMenuItemStyle>
+<HorizontalPopOutImage Height="7px" Width="7px"></HorizontalPopOutImage>
+<VerticalPopOutImage Height="8px" Width="4px"></VerticalPopOutImage>
+</dxm:ASPxMenu>

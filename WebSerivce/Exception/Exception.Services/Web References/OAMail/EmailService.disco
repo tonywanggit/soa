@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://10.30.4.44/CKMService/WebService/EmailService.asmx?wsdl" docRef="http://10.30.4.44/CKMService/WebService/EmailService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://10.30.4.44/CKMService/WebService/EmailService.asmx" xmlns:q1="CKMService.WebService" binding="q1:EmailServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://10.30.4.44/CKMService/WebService/EmailService.asmx" xmlns:q2="CKMService.WebService" binding="q2:EmailServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

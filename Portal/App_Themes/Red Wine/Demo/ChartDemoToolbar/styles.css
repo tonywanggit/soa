@@ -1,0 +1,111 @@
+﻿/* -- ASPxMenu -- */
+.dxmControl_RedWineChartDemoToolbar 
+{
+	font: 9pt Tahoma;
+	color: #000000;
+}
+.dxmControl_RedWineChartDemoToolbar a, .dxmMenu_RedWineChartDemoToolbar a
+{
+	color: #000000;
+	text-decoration: none;
+}
+.dxmMenu_RedWineChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: #000000;
+	background-color: #F27AA4;
+	border: Solid 1px #8A0A37;
+	padding: 2px;
+}
+.dxmMenu_RedWineChartDemoToolbar
+{
+	background-image: url('../../Web/mBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmMenuGutter_RedWineChartDemoToolbar
+{
+}
+.dxmMenuSeparator_RedWineChartDemoToolbar
+{
+    width: 2px!important;
+    background-image: url('../../Web/mSeparator.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.dxmMenuItem_RedWineChartDemoToolbar, .dxmMenuItemWithImage_RedWineChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	white-space: nowrap;
+}
+.dxmMenuItem_RedWineChartDemoToolbar, .dxmMenuItemWithImage_RedWineChartDemoToolbar
+{
+	color: #FFFFFF;
+	background-color: #F27AA4;
+
+	background-image: url('../../Web/mItemBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmMenuItem_RedWineChartDemoToolbar a, .dxmMenuItemWithImage_RedWineChartDemoToolbar a
+{
+	color: #FFFFFF;
+}
+.dxmMenuItem_RedWineChartDemoToolbar, .dxmMenuItemWithImage_RedWineChartDemoToolbar
+{
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+}
+.dxmMenuItemWithImage_RedWineChartDemoToolbar
+{
+	padding-right: 6px;
+	padding-left: 6px;
+}
+.dxmMenuItemSelected_RedWineChartDemoToolbar, .dxmMenuItemSelectedWithImage_RedWineChartDemoToolbar
+{
+	border: Solid 1px #8A0A37;
+}
+.dxmMenuItemSelected_RedWineChartDemoToolbar, .dxmMenuItemSelectedWithImage_RedWineChartDemoToolbar
+{
+	background-color: #CB4F7B;
+
+	background-image: url('../../Web/mItemSBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmMenuItemSelected_RedWineChartDemoToolbar, .dxmMenuItemSelectedWithImage_RedWineChartDemoToolbar,
+.dxmMenuItemChecked_RedWineChartDemoToolbar, .dxmMenuItemCheckedWithImage_RedWineChartDemoToolbar,
+.dxmMenuItemHover_RedWineChartDemoToolbar, .dxmMenuItemHoverWithImage_RedWineChartDemoToolbar
+{
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+}
+.dxmMenuItemSelectedWithImage_RedWineChartDemoToolbar, .dxmMenuItemCheckedWithImage_RedWineChartDemoToolbar,
+.dxmMenuItemHoverWithImage_RedWineChartDemoToolbar
+{
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.dxmMenuItemHover_RedWineChartDemoToolbar, .dxmMenuItemHoverWithImage_RedWineChartDemoToolbar
+{
+	border: Solid 1px #8A0A37;
+}
+.dxmMenuItemHover_RedWineChartDemoToolbar, .dxmMenuItemHoverWithImage_RedWineChartDemoToolbar
+{
+	background-color: #D69BD3;
+
+	background-image: url('../../Web/mItemHBack.gif');	
+    background-repeat: repeat-x;
+    background-position: top;
+}
+
+/* Disabled */
+.dxmDisabled_RedWineChartDemoToolbar
+{
+	color: #808080;
+	cursor: default;
+}

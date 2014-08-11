@@ -1,0 +1,14 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxe:ASPxCalendar runat="server" CssFilePath="~/App_Themes/Glass/{0}/styles.css" CssPostfix="Glass" ImageFolder="~/App_Themes/Glass/{0}/" >
+	<ValidationSettings>
+		<ErrorFrameStyle ImageSpacing="4px">
+		<ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+		</ErrorFrameStyle>
+		<ErrorImage Url="~/App_Themes/Glass/Editors/edtError.png" Height="14px" Width="14px"></ErrorImage>
+	</ValidationSettings>
+	<HeaderStyle Spacing="1px" />
+	<FooterStyle Spacing="4px" />
+	<FastNavStyle MonthYearSpacing="4px" />
+	<FastNavFooterStyle Spacing="4px" />
+</dxe:ASPxCalendar>

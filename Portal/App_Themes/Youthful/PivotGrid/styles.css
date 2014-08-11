@@ -1,0 +1,336 @@
+﻿.dxpgControl_Youthful
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: 0;
+	background-color: white;
+}
+.dxpgContainerCell_Youthful
+{
+	vertical-align: top;
+}
+.dxpgMainTable_Youthful
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: 0;
+	border-collapse: separate;
+	width: 100%;
+}
+.dxpgMainTable_Youthful caption
+{
+    background: #AFC185;
+    color: white;
+    border-bottom: solid 1px white;
+	padding: 3px;	
+	text-align: center;	
+	font-size: 15px;
+}    
+.dxpgHeader_Youthful
+{
+	color: Black;
+	background-color: #D2E3A5;
+	cursor: pointer;
+	white-space: nowrap;
+	border: Solid 0px #C3D29F;
+}
+.dxpgHeaderTable_Youthful
+{
+	border-width: 1px;
+	width: 100%;
+}
+.dxpgHeaderGroupButton_Youthful
+{
+	padding-left: 4px;
+	vertical-align: middle;
+}
+.dxpgHeaderText_Youthful
+{
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+.dxpgHeaderSort_Youthful
+{
+	padding-left: 0px;
+	padding-right: 4px;
+	padding-top: 0px;
+	vertical-align: middle;
+}
+.dxpgHeaderFilter_Youthful
+{
+	padding-left: 0px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	vertical-align: middle;
+}
+.dxpgHeaderHover_Youthful
+{
+	background-color: #F7FBF0;
+	border-color: #C3D29F;
+}
+.dxpgArea_Youthful, .dxpgArea_Youthful table
+{
+	color: Black;
+	font: 9pt Tahoma;
+	font-weight: normal;
+}
+.dxpgArea_Youthful
+{
+	background-color: #E4EDCE;
+	border: 0px;
+}
+.dxpgColumnArea_Youthful
+{
+	border-bottom-style: solid;
+}
+.dxpgRowArea_Youthful
+{
+}
+.dxpgDataArea_Youthful
+{
+	border-right: solid 1px #E4EDCE;
+	border-bottom: solid 1px #E4EDCE;
+}
+.dxpgFilterArea_Youthful
+{
+	background-color: #9BC424;
+	font-weight: normal;
+	border-bottom: Solid 1px #FFFFFF;
+}
+.dxpgEmptyArea_Youthful
+{
+	cursor: default;
+	padding-top: 6px;
+	padding-left: 6px;
+	padding-bottom: 7px;
+	padding-right: 6px;
+}
+.dxpgColumnFieldValue_Youthful
+{
+	background-color: #D2E3A5;
+	border-left: solid 1px White;
+	border-bottom: none;
+	border-right: none;
+	border-top: solid 1px White;
+	padding: 4px 6px;
+    font-weight: normal;
+    text-align: left;    
+}
+.dxpgColumnTotalFieldValue_Youthful
+{
+	background-color: #C1D390;
+}
+.dxpgColumnGrandTotalFieldValue_Youthful
+{
+	color: #FFFFFF;
+	background-color: #9BC424;
+}
+.dxpgRowFieldValue_Youthful
+{
+	border: solid 1px White;
+	border-left: none;
+	border-bottom: none;
+	background-color: #D2E3A5;
+	padding: 4px 6px 4px 6px;
+    font-weight: normal;
+    text-align: left;    
+}
+.dxpgRowTotalFieldValue_Youthful
+{
+	background-color: #C1D390;
+}
+.dxpgRowGrandTotalFieldValue_Youthful
+{
+	color: #FFFFFF;
+	background-color: #9BC424;
+	padding: 6px 6px 6px 6px;
+}
+.dxpgCollapsedButton_Youthful
+{
+	vertical-align: -1px;
+	border: 0px;
+	margin-right: 5px;
+}
+.dxpgSortByColumnImage_Youthful
+{
+	vertical-align: 0px;
+	border: 0px;
+	margin-left: 5px;
+}
+.dxpgCell_Youthful
+{
+	background-color: #FEFEFE;
+	border-color: #D2E3A5;
+	border-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-bottom-style: none;
+	border-right-style: none;
+	text-align: right;
+	padding: 4px;
+	white-space: nowrap;
+}
+.dxpgKPICell_Youthful
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.dxpgTotalCell_Youthful
+{
+	background-color: #EDF3DF;
+}
+.dxpgGrandTotalCell_Youthful
+{
+	background-color: #E4EDCE;
+}
+.dxpgRowGrandTotalCell_Youthful
+{
+	background-color: #E4EDCE;
+}
+.dxpgColumnGrandTotalCell_Youthful
+{
+	background-color: #E4EDCE;
+}
+.dxpgFilterWindow_Youthful
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: Solid 1px #C3D29F;
+}
+.dxpgFilterItemsArea_Youthful
+{
+	color: Black;
+	background-color: White;
+}
+.dxpgFilterItem_Youthful
+{
+	font: 9pt Tahoma;
+}
+.dxpgFilterButton_Youthful
+{
+	font: 9pt Tahoma;
+	padding: 2px 6px;
+}
+.dxpgFilterButtonPanel_Youthful
+{
+	font: 9pt Tahoma;
+	background-color: #E4EDCE;
+	border: Solid 1px #DCDCDC;
+	color: Black;
+}
+.dxpgLoadingDiv_Youthful
+{
+	background-color: Gray;
+	opacity: 0.01;
+	filter: progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=1);
+}
+.dxpgTopPager_Youthful
+{
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: solid 1px #9BC424;
+}
+.dxpgBottomPager_Youthful
+{
+	border-top: none;
+	border-bottom: none;
+	border-right: none;
+	border-left: none;
+}
+.dxpgCustomizationFieldsHeader_Youthful
+{
+	color: Black;
+	font: 9pt Tahoma;
+}
+.dxpgCustomizationFieldsContent_Youthful
+{
+	padding: 0px;
+	border: 0px;
+	background-color: #F3F6EB;
+	color: Black;
+}
+.dxpgLoadingPanel_Youthful
+{
+	font: 9pt Tahoma;
+	color: #303030;
+	background-color: White;
+	border: Solid 1px #9BC424;
+	text-align: center;
+	cursor: wait;
+}
+.dxpgLoadingPanel_Youthful td
+{
+	padding: 12px 12px 12px 12px;
+}
+.dxpgMenuItem_Youthful
+{
+	font: 9pt Tahoma;
+}
+.dxpgDataHeadersImage_Youthful
+{
+	margin-right: 5px;
+	vertical-align: -2px;
+}
+
+.dxpgPrefilterPanelContainer_Youthful
+{
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+.dxpgPrefilterPanel_Youthful
+{
+	border: none;
+	background-color: #D3E4A6;
+}
+.dxpgPrefilterPanelLink_Youthful
+{
+	color: #7A9F0E;
+	text-decoration: underline;	
+}
+a:hover.dxpgPrefilterPanelLink_Youthful
+{
+	color: #F4921B;	
+}
+.dxpgPrefilterPanelCheckBoxCell_Youthful
+{
+	padding: 0 3px;
+	padding-right: 7px;
+}
+.dxpgPrefilterPanelImageCell_Youthful
+{
+	padding: 0 3px;
+	padding-right: 1px;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxpgPrefilterPanelExpressionCell_Youthful
+{
+	font-size: 9pt;
+	padding: 5px 5px 8px 0;	
+	white-space: nowrap;
+}
+.dxpgPrefilterPanelClearButtonCell_Youthful
+{
+	font-size: 9pt;
+	padding: 5px 6px 8px;
+}
+.dxpgFilterBuilderMainArea_Youthful
+{
+	background: white;
+	padding: 6px 2px;
+} 
+.dxpgFilterBuilderButtonArea_Youthful
+{
+	background: #9CC525;
+	border-top: Solid 1px White;
+	padding: 6px;
+}
+.dxpgGroupSeparator_Youthful
+{
+	vertical-align: middle;
+}

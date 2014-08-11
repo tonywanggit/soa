@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ScheduleFrequencyEnum>
+  <ScheduleFrequency Text="按分钟" Value="分钟" />
+  <ScheduleFrequency Text="按小时" Value="小时" />
+  <ScheduleFrequency Text="按天" Value="天" />
+  <ScheduleFrequency Text="按周" Value="周" />
+  <ScheduleFrequency Text="按月" Value="月" />
+</ScheduleFrequencyEnum>

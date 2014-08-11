@@ -1,0 +1,28 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwtl" Namespace="DevExpress.Web.ASPxTreeList" Assembly="DevExpress.Web.ASPxTreeList.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxwtl:ASPxTreeList runat="server">
+    <Styles CssFilePath="~/App_Themes/Youthful/{0}/styles.css" CssPostfix="Youthful" />
+    <Images ImageFolder="~/App_Themes/Youthful/{0}/">
+        <ExpandedButton Url="~/App_Themes/Youthful/TreeList/ExpandedButton.png" Width="9px" Height="9px" />
+        <CollapsedButton Url="~/App_Themes/Youthful/TreeList/CollapsedButton.png" Width="9px" Height="9px" />
+        <CustomizationWindowClose Width="13px" Height="13px" />
+    </Images>    
+    <SettingsLoadingPanel Text="" />
+    <SettingsPager CurrentPageNumberFormat="{0}">
+		<AllButton>
+			<Image Height="15px" Width="21px" />
+		</AllButton>
+		<NextPageButton>
+			<Image Height="15px" Width="16px" />
+		</NextPageButton>
+		<PrevPageButton>
+			<Image Height="15px" Width="16px" />
+		</PrevPageButton>
+		<FirstPageButton>
+			<Image Height="15px" Width="21px" />
+		</FirstPageButton>
+		<LastPageButton>
+			<Image Height="15px" Width="21px" />
+		</LastPageButton>    
+    </SettingsPager>
+</dxwtl:ASPxTreeList>

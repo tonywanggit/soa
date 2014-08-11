@@ -1,0 +1,42 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxrp" Namespace="DevExpress.Web.ASPxRoundPanel" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxrp:ASPxRoundPanel BackColor="#F2F2F2" runat="server" CssPostfix="RedWine" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css">
+    <Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#a9a9a9" />
+    <ContentPaddings Padding="14px" />
+    <HeaderStyle BackColor="#D45582">
+         <Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#8A0A37" />
+    </HeaderStyle>
+    <%-- Corner parts --%>
+    <TopLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/Web/rpTopLeft.png" />
+    <NoHeaderTopLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/Web/rpNoHeaderTopLeft.png" />
+    <TopRightCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/Web/rpTopRight.png" />
+    <NoHeaderTopRightCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/Web/rpNoHeaderTopRight.png" />
+    <BottomLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/Web/rpBottomLeft.png" />
+    <BottomRightCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/Web/rpBottomRight.png" />
+    <%-- Header parts --%>
+    <HeaderContent>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/Web/rpHeaderBackground.gif" />
+    </HeaderContent>
+    <HeaderLeftEdge>
+        <BackgroundImage Repeat="NoRepeat" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/Web/rpHeaderLeftEdge.gif" />
+    </HeaderLeftEdge>
+    <HeaderRightEdge>
+        <BackgroundImage Repeat="NoRepeat" ImageUrl="~/App_Themes/Red Wine/Web/rpHeaderRightEdge.gif" VerticalPosition="Top" />
+    </HeaderRightEdge>
+    <%-- Middle parts --%>
+    <TopEdge>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/Web/rpTopEdge.gif" />
+    </TopEdge>
+    <NoHeaderTopEdge BackColor="#F2F2F2">
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/Web/rpNoHeaderTopEdge.gif" />
+    </NoHeaderTopEdge>
+    <BottomEdge>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/Web/rpBottomEdge.gif" />
+    </BottomEdge>
+    <LeftEdge>
+        <BackgroundImage Repeat="RepeatY" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/Web/rpLeftEdge.gif" />
+    </LeftEdge>
+    <RightEdge>
+        <BackgroundImage Repeat="RepeatY" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/Web/rpRightEdge.gif" />
+    </RightEdge>
+</dxrp:ASPxRoundPanel>

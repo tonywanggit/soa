@@ -1,0 +1,61 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
+<dxhe:ASPxHtmlEditor runat="server" >
+	<SettingsLoadingPanel Text="" />
+	<Styles CssPostfix="RedWine" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css">
+		<ViewArea>
+			<Border BorderStyle="Solid" BorderColor="#A74768" BorderWidth="1px" />
+		</ViewArea>
+	</Styles>
+	<StylesToolbars>
+		<Toolbar ItemSpacing="2px" />
+	</StylesToolbars>
+	<StylesStatusBar>
+		<ActiveTab BackColor="White" />
+	</StylesStatusBar>
+	<Images>
+        	<DialogFormCloseButton Height="19px" Width="19px" />
+	</Images>	
+	<Images ImageFolder="~/App_Themes/Red Wine/{0}/"></Images>
+	<ImagesEditors>
+		<DropDownEditDropDown Width="7px" Height="7px" Url="~/App_Themes/Red Wine/HtmlEditor/tbDropDown.png" UrlHottracked="~/App_Themes/Red Wine/HtmlEditor/tbDropDownHottracked.png" UrlDisabled="~/App_Themes/Red Wine/HtmlEditor/tbDropDownDisabled.png" />
+	</ImagesEditors>
+	<PartsRoundPanel>
+	    <TopLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpTopLeft.png" />
+	    <NoHeaderTopLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpNoHeaderTopLeft.png" />
+	    <TopRightCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpTopRight.png" />
+	    <NoHeaderTopRightCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpNoHeaderTopRight.png" />
+	    <BottomLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpBottomLeft.png" />
+	    <BottomRightCorner Height="5px" Width="5px" Url="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpBottomRight.png" />
+	    <%-- Header parts --%>
+	    <HeaderContent>
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpHeaderBackground.gif" />
+	    </HeaderContent>
+	    <HeaderLeftEdge>
+	        <BackgroundImage Repeat="NoRepeat" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpHeaderLeftEdge.gif" />
+	    </HeaderLeftEdge>
+	    <HeaderRightEdge>
+	        <BackgroundImage Repeat="NoRepeat" ImageUrl="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpHeaderRightEdge.gif" VerticalPosition="Top" />
+	    </HeaderRightEdge>
+	    <%-- Middle parts --%>
+	    <TopEdge>
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpTopEdge.gif" />
+	    </TopEdge>
+	    <NoHeaderTopEdge BackColor="#F2F2F2">
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpNoHeaderTopEdge.gif" />
+	    </NoHeaderTopEdge>
+	    <BottomEdge>
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpBottomEdge.gif" />
+	    </BottomEdge>
+	    <LeftEdge>
+	        <BackgroundImage Repeat="RepeatY" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpLeftEdge.gif" />
+	    </LeftEdge>
+	    <RightEdge>
+	        <BackgroundImage Repeat="RepeatY" VerticalPosition="Top" ImageUrl="~/App_Themes/Red Wine/HtmlEditor/RoundPanel/herpRightEdge.gif" />
+	    </RightEdge>	</PartsRoundPanel>
+	<StylesRoundPanel>            
+		<ControlStyle BackColor="#F2F2F2">
+			<Border BorderStyle="None" />
+		</ControlStyle>
+	</StylesRoundPanel>	
+</dxhe:ASPxHtmlEditor>

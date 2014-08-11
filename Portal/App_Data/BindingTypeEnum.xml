@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BindingTypeEnum>
+  <BindingType Text="WebService" Value="0" />
+  <BindingType Text="WCF-HTTP" Value="1" />
+  <BindingType Text="REST" Value="2" />
+  <BindingType Text="ASHX" Value="3" />
+</BindingTypeEnum>

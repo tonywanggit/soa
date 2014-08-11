@@ -1,0 +1,250 @@
+.dxtlControl_RedWine
+{
+	cursor: default;
+	font: 9pt Tahoma;
+	color: black;
+	border: none 1px #8A0A37;
+}
+.dxtlControl_RedWine caption
+{
+    background: #EED8E3;
+    color: #8A0A37;
+	border: solid 1px #8A0A37;
+    border-bottom: 0;
+	font-weight: normal;
+    text-align: center;		
+	padding: 5px 5px 6px;
+}
+
+/* Indent cells */
+.dxtlIndent_RedWine, .dxtlIndentWithButton_RedWine
+{			
+	background: white;
+	vertical-align: top;
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+.dxtlIndent_RedWine
+{
+	padding: 0 11px;
+}
+.dxtlIndentWithButton_RedWine
+{
+	padding: 4px;
+}
+.dxtlSelectionCell_RedWine
+{
+	padding: 0 2px;
+	border: solid 1px #D5D5D5;
+}
+
+/* Tree-lines cells */
+.dxtlLineFirst_RedWine
+{
+	background-image: url(CssImages/TreeLineFirst.gif);	
+}
+.dxtlLineMiddle_RedWine
+{
+	background-image: url(CssImages/TreeLineMiddle.gif);
+	
+}
+.dxtlLineLast_RedWine
+{
+	background-image: url(CssImages/TreeLineLast.gif);
+	
+}
+.dxtlLineRoot_RedWine
+{
+	background-image: url(CssImages/TreeLineRoot.gif);
+	background-repeat: repeat-y;	
+}
+
+/* Headers */
+.dxtlHeader_RedWine 
+{
+	background: url(CssImages/HeaderBack.gif) repeat-x #F27AA4;	
+	border: solid 1px #8A0A37;
+	padding: 5px;
+	font-weight: normal;		
+}
+.dxtlHeader_RedWine table.dxtl 
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+.dxtlHeader_RedWine td.dxtl
+{
+	padding: 0;
+}
+.dxtlHeader_RedWine, .dxtlHeader_RedWine td.dxtl 
+{	
+    color: white;
+	font: 9pt Tahoma;
+	white-space: nowrap;
+	text-align: left;
+}
+
+/* Nodes */
+.dxtlNode_RedWine
+{
+	background: white;	
+}
+.dxtlAltNode_RedWine
+{
+	background: #F8EDEF;	
+}
+.dxtlSelectedNode_RedWine
+{
+	background: #AD275C;
+	color: white;
+}
+.dxtlFocusedNode_RedWine
+{
+	background: #8A0A37;
+    color: white;
+}
+.dxtlInlineEditNode_RedWine
+{
+	background: white;
+}
+.dxtlEditFormDisplayNode_RedWine
+{
+	background: #F1E3F1;
+}
+.dxtlNode_RedWine td.dxtl, 
+.dxtlAltNode_RedWine  td.dxtl, 
+.dxtlSelectedNode_RedWine td.dxtl, 
+.dxtlFocusedNode_RedWine td.dxtl,
+.dxtlEditFormDisplayNode_RedWine td.dxtl,
+.dxtlCommandCell_RedWine
+{
+	padding: 4px 5px 5px;
+	border: solid 1px #D5D5D5;
+	white-space: nowrap;
+	font-size: 9pt;
+    font-family: Tahoma;
+}
+.dxtlInlineEditNode_RedWine td.dxtl
+{
+	border: solid 1px #D5D5D5;
+	padding: 1px;
+}
+
+/* Preview */
+.dxtlPreview_RedWine
+{
+	background-color: #F6EBF6;
+	color: #AD82A4;	
+	padding: 15px 15px 20px;
+	border: solid 1px #D5D5D5;
+	font: 9pt Tahoma;	
+}
+
+/* Footers */
+.dxtlGroupFooter_RedWine
+{
+	background-color: #F3E9EF;	
+}
+.dxtlFooter_RedWine
+{
+	background-color: #EED8E3;	
+}
+.dxtlGroupFooter_RedWine td.dxtl,
+.dxtlFooter_RedWine td.dxtl
+{
+	padding: 5px 6px 7px;
+	white-space: nowrap;
+	text-align: left;
+	border: solid 1px #D5D5D5;
+	font: 9pt Tahoma;
+}
+
+/* Pagers */
+.dxtlPagerTopPanel_RedWine 
+{
+	border-bottom: none 1px #bc758e;	
+}
+.dxtlPagerBottomPanel_RedWine 
+{	
+	border-top: none 1px #bc758e;
+}
+.dxtlPagerTopPanel_RedWine,
+.dxtlPagerBottomPanel_RedWine 
+{
+	padding: 2px 0;
+}
+
+/* Editing */
+.dxtlEditForm_RedWine 
+{
+	background: #F6EBF6;
+	border: solid 1px #D5D5D5;
+	padding: 8px 10px 10px;
+}
+.dxtlEditFormCaption_RedWine,
+.dxtlEditFormEditCell_RedWine
+{
+	padding: 4px;
+}
+.dxtlEditFormCaption_RedWine
+{
+	padding-left: 10px;
+	white-space: nowrap;
+}
+.dxtlError_RedWine
+{
+	background: #FFC8C8;
+	color: #FF0000;
+	padding: 6px 10px;
+	border: solid 1px #cfcfcf;
+	font: 9pt Tahoma;		
+}
+
+/* Links */
+.dxtlControl_RedWine a,
+.dxtlCommandCell_RedWine a 
+{
+	color: #8A0A37;
+}
+.dxtlControl_RedWine a:hover 
+{
+	color:  #BE458B;
+}
+.dxtlHeader_RedWine a,
+.dxtlFocusedNode_RedWine a,
+.dxtlSelectedNode_RedWine a 
+{
+	color: White;
+}
+.dxtlHeader_RedWine a:hover,
+.dxtlFocusedNode_RedWine a:hover,
+.dxtlSelectedNode_RedWine a:hover 
+{
+	color: #ffa5eb;
+}
+.dxtlCommandCell_RedWine a 
+{
+    margin-right: 3px;
+}
+
+/* Loading panel */
+.dxtlLoadingPanel_RedWine
+{
+}
+.dxtlLoadingPanel_RedWine td.dx
+{
+}
+.dxtlLoadingDiv_RedWine
+{
+	background: white;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+/* Disabled */
+.dxtlDisabled_RedWine,
+.dxtlDisabled_RedWine .dxtl_RedWine
+{
+	color: #808080;
+	cursor: default;
+}

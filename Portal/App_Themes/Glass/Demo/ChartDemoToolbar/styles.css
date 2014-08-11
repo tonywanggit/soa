@@ -1,0 +1,108 @@
+﻿/* -- ASPxMenu -- */
+.dxmControl_GlassChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: black;
+}
+.dxmControl_GlassChartDemoToolbar a, .dxmMenu_GlassChartDemoToolbar a
+{
+	color: black;
+	text-decoration: none;
+}
+.dxmControl_GlassChartDemoToolbar a:hover
+{
+	text-decoration:none;
+}
+.dxmMenu_GlassChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: #F0F0F0;
+	border-style: none;
+	padding: 0px 0px 0px 0px;
+	
+	background-image: url('../../Web/mItemBack.gif');	
+    background-repeat:repeat-x;	
+    background-position:top;					
+}
+
+.dxmMenuGutter_GlassChartDemoToolbar
+{
+}
+.dxmMenuSeparator_GlassChartDemoToolbar
+{
+	background-color: #FFFFFF;
+    height: 1px!important;
+    background-color: #D5D5D5;
+}
+.dxmMenuItem_GlassChartDemoToolbar, .dxmMenuItemWithImage_GlassChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: black;
+	white-space: nowrap;
+	
+	background-image: url('../../Web/mItemBack.gif');	
+    background-repeat:repeat-x;	
+    background-position:top;					
+}
+
+.dxmMenuItem_GlassChartDemoToolbar, .dxmMenuItemWithImage_GlassChartDemoToolbar
+{
+	padding-top: 3px;
+	padding-right: 4px;
+	padding-bottom: 3px;
+	padding-left: 4px;	
+}
+.dxmMenuItemWithImage_GlassChartDemoToolbar
+{
+	padding-right: 7px;
+	padding-left: 7px;	
+}
+.dxmMenuItemSelected_GlassChartDemoToolbar, .dxmMenuItemSelectedWithImage_GlassChartDemoToolbar
+{
+	background-color: white;
+	color: White;
+	
+	background-image: url('../../Web/mItemSBack.gif');
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxmMenuItemSelected_GlassChartDemoToolbar, .dxmMenuItemSelectedWithImage_GlassChartDemoToolbar
+{
+	padding-top: 3px;
+	padding-right: 4px;
+	padding-bottom: 3px;
+	padding-left: 4px;	
+}
+.dxmMenuItemSelectedWithImage_GlassChartDemoToolbar
+{
+	padding-right: 7px;
+	padding-left: 7px;	
+}
+.dxmMenuItemHover_GlassChartDemoToolbar, .dxmMenuItemHoverWithImage_GlassChartDemoToolbar
+{
+	background-color: #CBCBCB;
+	color: black;
+	
+	background-image: url('../../Web/mItemHBack.gif');	
+    background-repeat:repeat-x;	
+    background-position:top;
+}
+.dxmMenuItemHover_GlassChartDemoToolbar, .dxmMenuItemHoverWithImage_GlassChartDemoToolbar
+{
+	padding-top: 3px;
+	padding-right: 4px;
+	padding-bottom: 3px;
+	padding-left: 4px;			
+}
+.dxmMenuItemHoverWithImage_GlassChartDemoToolbar
+{
+	padding-right: 7px;
+	padding-left: 7px;			
+}
+/* Disabled */
+.dxmDisabled_GlassChartDemoToolbar
+{
+	color: #808080;
+	cursor: default;
+}

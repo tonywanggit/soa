@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost/EsbCore/Core_Service_Bus_OnewayMainBus_OneWayReceive.asmx?wsdl" docRef="http://localhost/EsbCore/Core_Service_Bus_OnewayMainBus_OneWayReceive.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost/EsbCore/Core_Service_Bus_OnewayMainBus_OneWayReceive.asmx" xmlns:q1="http://www.jn.com/Esb" binding="q1:Core_Service_Bus_OnewayMainBus_OneWayReceiveSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost/EsbCore/Core_Service_Bus_OnewayMainBus_OneWayReceive.asmx" xmlns:q2="http://www.jn.com/Esb" binding="q2:Core_Service_Bus_OnewayMainBus_OneWayReceiveSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

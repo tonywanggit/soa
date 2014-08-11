@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="错误消息服务.asmx.cs" Class="JN.ESB.Exception.Service.错误消息服务" %>

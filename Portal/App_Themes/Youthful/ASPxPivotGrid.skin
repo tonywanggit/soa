@@ -1,0 +1,20 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPivotGrid" TagPrefix="dxwpg" %>
+<%@ Register Assembly="DevExpress.XtraPivotGrid.v9.1.Core, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraPivotGrid" TagPrefix="temp" %>
+<dxwpg:ASPxPivotGrid runat="server" >
+	<Images ImageFolder="~/App_Themes/Youthful/{0}/"></Images>
+    <OptionsLoadingPanel Text="" />
+	<Styles CssFilePath="~/App_Themes/Youthful/{0}/styles.css" CssPostfix="Youthful">
+        <MenuStyle GutterWidth="0px" />   
+        <CustomizationFieldsStyle>
+            <Border BorderColor="#758D5E" BorderStyle="Solid" BorderWidth="1px" />
+            <Paddings Padding="0px" />
+        </CustomizationFieldsStyle>
+    </Styles>
+    <Images>        
+        <CustomizationFieldsClose Height="12px" Url="~/App_Themes/Youthful/PivotGrid/pcClose.png" Width="13px" />
+        <HeaderSortUp Height="9px" Url="~/App_Themes/Youthful/PivotGrid/pgheadersortup.png" Width="9px" />
+        <HeaderSortDown Height="9px" Url="~/App_Themes/Youthful/PivotGrid/pgheadersortdown.png" Width="9px" />
+		<SortByColumn Url="~/App_Themes/Youthful/PivotGrid/pgSortByColumn.png" Width="18px" Height="10px" />
+    </Images>
+</dxwpg:ASPxPivotGrid>

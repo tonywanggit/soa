@@ -1,0 +1,41 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwschs" Namespace="DevExpress.Web.ASPxScheduler" Assembly="DevExpress.Web.ASPxScheduler.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.XtraScheduler.v9.1.Core, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="temp" %>
+<dxwschs:ASPxScheduler runat="server">
+    <Styles CssFilePath="~/App_Themes/Youthful/{0}/styles.css" CssPostfix="Youthful" 
+        SelectionColor="#F4BD17">
+        <ResourceNavigator ButtonSpacing="3px" />
+        <ViewSelector ButtonSpacing="0px" />
+        <ViewNavigator ButtonSpacing="3px" />
+		<FormEditors>
+			<RadioButtonList BackColor="#e5eecf" />
+		</FormEditors>
+    </Styles>
+    <Images ImageFolder="~/App_Themes/Youthful/{0}/">
+		<ResourceNavigator>
+            <First Width="21px" Height="11px" />
+            <Prev Width="14px" Height="11px" />
+            <PrevPage Width="19px" Height="11px" />
+            <NextPage Width="19px" Height="11px" />
+            <Next Width="14px" Height="11px" />
+            <Last Width="21px" Height="11px" /> 
+            <Decrease Width="15px" Height="11px" />
+            <Increase Width="15px" Height="11px" /> 
+        </ResourceNavigator>  
+		<MoreButton>
+            <Bottom Width="19px" Height="11px" />
+            <Top Width="19px" Height="11px" />
+        </MoreButton>
+        <NavigationButton>
+            <Backward Width="11px" Height="49px" />
+            <Forward Width="11px" Height="49px" />
+        </NavigationButton>
+		<StatusInfo>
+			<Error Width="48px" Height="48px" />
+			<Info Width="48px" Height="48px" />
+			<Warning Width="48px" Height="48px" />
+		</StatusInfo>
+		<FormCloseButton Width="13px" Height="13px" />
+	</Images>
+	<OptionsLoadingPanel Text="" />
+ </dxwschs:ASPxScheduler>

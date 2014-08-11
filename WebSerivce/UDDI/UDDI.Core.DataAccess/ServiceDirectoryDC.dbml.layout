@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ServiceDirectoryDC">
+  <DataContextMoniker Name="/ServiceDirectoryDCDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6b4ee328-a5ef-456c-865d-c0f0c1d94cbb" absoluteBounds="1, 0.75, 2, 1.2797265625">
+      <DataClassMoniker Name="/ServiceDirectoryDCDataContext/业务实体" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4812685e-2913-499e-9f95-dc589171cf0e" absoluteBounds="1.0149999999999997, 1.21, 1.9700000000000002, 0.7197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8563ce3c-6dfe-4178-8f24-54e2dfc5714e" absoluteBounds="3.25, 0.75, 2, 1.7855859374999996">
+      <DataClassMoniker Name="/ServiceDirectoryDCDataContext/服务" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a2f55f0-007a-4078-8434-2528e74e8845" absoluteBounds="3.2650000000000006, 1.21, 1.9700000000000002, 1.2255859375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2473b25e-a3e4-4b5a-80a6-058780221cb3" absoluteBounds="6, 3.75, 2, 1.4483463541666668">
+      <DataClassMoniker Name="/ServiceDirectoryDCDataContext/服务约束" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e253e2e1-b4dc-45c4-b74a-d09886cb42e8" absoluteBounds="6.0150000000000006, 4.21, 1.9700000000000002, 0.88834635416666674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c0be1a18-25aa-4e0f-86e4-9ae87a819c7c" absoluteBounds="6.125, 0.75, 2, 1.9542057291666666">
+      <DataClassMoniker Name="/ServiceDirectoryDCDataContext/服务地址" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7c5fa74a-8b86-4cd6-9021-719fdbf4dfde" absoluteBounds="6.1400000000000006, 1.21, 1.9700000000000002, 1.3942057291666665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0fd10e0-b423-4d53-90b4-e769709164a5" absoluteBounds="3.25, 3.75, 2, 1.7855859374999996">
+      <DataClassMoniker Name="/ServiceDirectoryDCDataContext/个人" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fd9369f0-df37-4c17-b04c-ba57dc2b9a95" absoluteBounds="3.2650000000000006, 4.21, 1.9700000000000002, 1.2255859375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c0de90f9-ca4a-4703-af89-25a8ed67edc9" absoluteBounds="1, 3, 2, 2.2914453125000005">
+      <DataClassMoniker Name="/ServiceDirectoryDCDataContext/服务视图" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c1f69ca1-2981-4815-bc17-9c45ffc7873a" absoluteBounds="1.0149999999999997, 3.46, 1.9700000000000002, 1.7314453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 3.75); (4.25 : 2.5355859375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ServiceDirectoryDCDataContext/个人/个人_服务" />
+      <nodes>
+        <classShapeMoniker Id="b0fd10e0-b423-4d53-90b4-e769709164a5" />
+        <classShapeMoniker Id="8563ce3c-6dfe-4178-8f24-54e2dfc5714e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3 : 1.38986328125); (3.25 : 1.38986328125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ServiceDirectoryDCDataContext/业务实体/业务实体_服务" />
+      <nodes>
+        <classShapeMoniker Id="6b4ee328-a5ef-456c-865d-c0f0c1d94cbb" />
+        <classShapeMoniker Id="8563ce3c-6dfe-4178-8f24-54e2dfc5714e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.25 : 1.64279296875); (6.125 : 1.64279296875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ServiceDirectoryDCDataContext/服务/服务_服务地址" />
+      <nodes>
+        <classShapeMoniker Id="8563ce3c-6dfe-4178-8f24-54e2dfc5714e" />
+        <classShapeMoniker Id="c0be1a18-25aa-4e0f-86e4-9ae87a819c7c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.0625 : 2.70420572916667); (7.0625 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ServiceDirectoryDCDataContext/服务地址/服务地址_服务约束" />
+      <nodes>
+        <classShapeMoniker Id="c0be1a18-25aa-4e0f-86e4-9ae87a819c7c" />
+        <classShapeMoniker Id="2473b25e-a3e4-4b5a-80a6-058780221cb3" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

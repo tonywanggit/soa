@@ -1,0 +1,7 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxm:ASPxPopupMenu runat="server" ImageFolder="~/App_Themes/Glass/{0}/" CssFilePath="~/App_Themes/Glass/{0}/styles.css" GutterWidth="0px" CssPostfix="Glass" SeparatorColor="#7EACB1">
+<SubMenuStyle BackColor="#EDF3F4" GutterWidth="0px" SeparatorColor="#7EACB1"></SubMenuStyle>
+<ItemStyle ImageSpacing="5px" />
+<SubMenuItemImage Height="7px" Width="7px" />
+</dxm:ASPxPopupMenu>

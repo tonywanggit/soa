@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode url="" title="" ColumnCount="3">
+    <siteMapNode url="" title="">
+      <siteMapNode url="" title="总线概况">
+        <siteMapNode url="~/Default.aspx" title="Features" />
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="" title="">
+      <siteMapNode url="" title="Editors">
+        <siteMapNode url="~/Editors/Validation.aspx" title="Validation" />
+      </siteMapNode>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

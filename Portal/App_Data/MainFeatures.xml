@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Features>
+  <Item Title="服务管理"  Text="此模块提供UDDI的完整实现，包括了服务提供者管理、服务管理、服务绑定地址管理、服务约束管理等功能。用户可以在此模块进行服务注册、服务检索、服务地址绑定和服务方法约束等操作。" ImageUrl="~/Images/IconImages/Template.png" Visible="True" />
+  <Item Title="异常管理"  Text="通讯异常的管理对于企业服务总线而言至关重要，一旦发生异常需要全面记录通讯的现关信息，并及时通知系统管理员进行异常的处理。此模块提供了异常的检索和重发功能。" ImageUrl="~/Images/IconImages/ClientSideEvent.png" Visible="True" />
+  <Item Title="用户管理"  Text="服务监控模块可以对企业服务总线的调用情况和通讯异常进行实时监控，并能够按年份、月度及日期汇总出图表。" ImageUrl="~/Images/IconImages/Admin.png" Visible="True" />
+  <Item Title="计划调度"  Text="在系统集成中经常会碰到定时调用服务的情况，此模块提供了计划制定、调度历史追踪的功能，减少了应用系统集成的工作量，加强了对调度集成的管理能力。" ImageUrl="~/Images/IconImages/Scheduler.png" Visible="True" />
+  <Item Title="日志审计"  Text="在系统集成中经常会碰到定时调用服务的情况，此模块提供了计划制定、调度历史追踪的功能，减少了应用系统集成的工作量，加强了对调度集成的管理能力。" ImageUrl="~/Images/IconImages/Audit.png" Visible="True" />
+  <Item Title="服务质量分析"  Text="在系统集成中经常会碰到定时调用服务的情况，此模块提供了计划制定、调度历史追踪的功能，减少了应用系统集成的工作量，加强了对调度集成的管理能力。" ImageUrl="~/Images/IconImages/Qos.png" Visible="True" />
+</Features>

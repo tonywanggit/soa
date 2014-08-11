@@ -1,0 +1,745 @@
+﻿.dxeLoadingDiv_Glass
+{
+	background: White;
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+    cursor: wait;
+}
+.dxeLoadingPanel_Glass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxeLoadingPanel_Glass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+
+.dxeBase_Glass
+{
+    font-family: Tahoma;
+    font-size: 9pt;    
+}
+/* -- ErrorFrame -- */
+.dxeErrorCell_Glass, .dxeErrorCell_Glass td
+{
+    font-family: Tahoma;
+	font-size: 9pt;
+	color: red;
+}
+.dxeErrorCell_Glass
+{
+	color: #a91123;
+	padding-left: 4px;	
+}
+.dxeErrorFrame_Glass
+{
+}
+.dxeErrorFrameWithoutError_Glass {
+    border: 1px solid Red;
+}
+.dxeErrorFrameWithoutError_Glass .dxeControlsCell_Glass {
+    padding: 2px;
+}
+.dxeEditArea_Glass
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+	border: 1px solid #A0A0A0;
+}
+/* -- Buttons -- */
+.dxeButtonEdit_Glass 
+{
+	background-color: white;
+	width: 170px;
+}
+.dxeButtonEdit_Glass .dxeEditArea_Glass, .dxeButtonEdit_Glass td.dxic
+{
+	width: 100%;
+}
+
+.dxeButtonEditButton_Glass, .dxeCalendarButton_Glass,
+.dxeSpinIncButton_Glass, .dxeSpinDecButton_Glass,
+.dxeSpinLargeIncButton_Glass, .dxeSpinLargeDecButton_Glass
+{	
+	background-color: #f0f0f0;	
+	vertical-align: middle;
+	cursor: pointer;
+	cursor: hand;
+} 
+.dxeButtonEditButton_Glass, .dxeCalendarButton_Glass, 
+.dxeButtonEditButton_Glass td.dx, .dxeCalendarButton_Glass td.dx,
+.dxeSpinIncButton_Glass td.dx, .dxeSpinDecButton_Glass td.dx,
+.dxeSpinLargeIncButton_Glass td.dx, .dxeSpinLargeDecButton_Glass td.dx,
+.dxeSpinIncButton_Glass, .dxeSpinDecButton_Glass,
+.dxeSpinLargeIncButton_Glass, .dxeSpinLargeDecButton_Glass
+{	
+    color: #000000;
+    font-family: Tahoma;
+    font-size: 9pt;  
+	font-weight: normal;
+	text-align: center;
+} 
+.dxeButtonEditButton_Glass
+{
+	background-image: url('edtButtonEditButtonBack.gif');	
+    background-repeat:repeat-x;
+    background-position:top;
+	border: solid 1px #4986a2;    
+	background-color: #45829F;	
+	padding: 0px 1px;
+}
+.dxeSpinIncButton_Glass, .dxeSpinDecButton_Glass,
+.dxeSpinLargeIncButton_Glass, .dxeSpinLargeDecButton_Glass
+{
+	border-style: none;
+	padding: 0px;
+}
+
+.dxeButtonEditButton_Glass table.dxbebt 
+{
+	width: 12px;
+}
+.dxeButtonEditButton_Glass table.dxbebt td.dx 
+{
+    color: White;
+}
+/* SpinButtons */
+.dxeSpinLargeIncButton_Glass
+{
+    padding-left: 1px;
+}
+.dxeSpinIncButton_Glass
+{
+	background: url('edtSpinIncBtnBack.gif') no-repeat top left #363636;
+	border-bottom: Solid 1px #FFFFFF;
+}
+.dxeSpinDecButton_Glass
+{
+	background: url('edtSpinDecBtnBack.gif') no-repeat top left #ddf2f9;
+    border-bottom-style: none;
+}
+.dxeSpinLargeIncButton_Glass, .dxeSpinLargeDecButton_Glass
+{
+   	background: url('edtSpinLargeIncBtnBack.gif') no-repeat top left #959595;
+}
+
+.dxeSpinLargeDecButton_Glass
+{
+	border-right-style: none;
+}
+.dxeSpinLargeIncButton_Glass
+{
+	border-left-style: none;
+}
+
+.dxeCalendarButton_Glass
+{
+    background: #DADFE0 url('edtButtonBack.gif') top;
+    background-repeat:repeat-x;
+    background-position:top;		    
+	border: solid 1px #B2BCBE;
+	background-color: #DADFE0;
+	padding: 5px 10px;
+}
+.dxeCalendarButton_Glass table.dxbebt
+{
+    width: 30px;
+}
+/* SpinButtons */
+.dxeSpinIncButton_Glass table.dxbebt, .dxeSpinDecButton_Glass table.dxbebt
+{
+	width: 15px;
+}
+.dxeSpinLargeDecButton_Glass table.dxbebt
+{
+	width: 16px;
+}
+.dxeSpinLargeIncButton_Glass table.dxbebt
+{
+	width: 15px;    
+}
+
+.dxeCalendarButton_Glass td.dx
+{
+	text-align: center;
+	white-space: nowrap;
+}
+
+/* -- Hover -- */
+.dxeButtonHover_Glass         /* inherits dxeButton */
+{
+	background-color: #E6E3D6;
+}
+.dxeCalendarButtonHover_Glass
+{
+	background: #B5D7DB url('edtButtonHoverBack.gif') top;
+    background-repeat: repeat-x;	
+	border: solid 1px #71ACB4;	    
+}
+.dxeButtonEditButtonHover_Glass
+{
+	background-image: url('edtDropDownButtonHoverBack.gif');	
+    background-repeat:repeat-x;
+    background-position:top;	    
+    border: Solid 1px #4986a2;    
+	background-color: #35acd2;    
+}
+/* SpinButtons */
+.dxeSpinIncButtonHover_Glass, .dxeSpinDecButtonHover_Glass,
+.dxeSpinLargeIncButtonHover_Glass, .dxeSpinLargeDecButtonHover_Glass
+{
+    border-style: none;    
+}
+.dxeSpinIncButtonHover_Glass
+{
+	background: url('edtSpinIncBtnHBack.gif') no-repeat top left #536b78;
+    border-bottom: Solid 1px #FFFFFF;    
+}
+.dxeSpinDecButtonHover_Glass
+{
+	background: url('edtSpinDecBtnHBack.gif') no-repeat top left #56abd1;
+    border-bottom-style: none;
+}
+.dxeSpinLargeIncButtonHover_Glass
+{
+	background: url('edtSpinLargeIncBtnHBack.gif') no-repeat top left #86bad6;
+	border-left-style: none;
+}
+.dxeSpinLargeDecButtonHover_Glass
+{
+	background: url('edtSpinLargeIncBtnHBack.gif') no-repeat top left #86bad6;
+    border-right-style: none;
+}
+/* -- Pressed -- */
+.dxeButtonPressed_Glass       /* inherits dxeButton */
+{    
+	background-color: #D4D1C3;
+}
+.dxeCalendarButtonPressed_Glass
+{
+	background: #9ABDC1 url('edtButtonPressedBack.gif') top;
+    background-repeat: repeat-x;	
+	border: solid 1px #71ACB4;	
+}
+.dxeButtonEditButtonPressed_Glass
+{
+	background-image: url('edtDropDownButtonPressedBack.gif');	
+    background-repeat:repeat-x;
+    background-position:top;
+    border: Solid 1px #3b6d84;    
+	background-color: #35657b;        
+}
+/* SpinButtons */
+.dxeSpinIncButtonPressed_Glass, .dxeSpinDecButtonPressed_Glass,
+.dxeSpinLargeIncButtonPressed_Glass, .dxeSpinLargeDecButtonPressed_Glass
+{
+    border-style: none;    
+}
+.dxeSpinIncButtonPressed_Glass
+{
+	background: url('edtSpinIncBtnPBack.gif') no-repeat top left #363636;
+    border-bottom: Solid 1px #FFFFFF;    
+}
+.dxeSpinDecButtonPressed_Glass
+{
+	background: url('edtSpinDecBtnPBack.gif') no-repeat top left #3b6d84;
+    border-bottom-style: none;
+}
+.dxeSpinLargeIncButtonPressed_Glass
+{
+	background: url('edtSpinLargeIncBtnPBack.gif') no-repeat top left #b7b7b7;
+	border-left-style: none;
+}
+.dxeSpinLargeDecButtonPressed_Glass
+{
+	background: url('edtSpinLargeIncBtnPBack.gif') no-repeat top left #b7b7b7;
+    border-right-style: none;
+}
+
+.dxeButtonEdit_Glass
+{
+    border: solid 1px #7EACB1;
+}
+.dxeButtonEdit_Glass td.dxic
+{
+	padding: 0px 2px 0px 1px;
+}
+.dxeTextBox_Glass, .dxeMemo_Glass
+{
+	background-color: white;
+    border: Solid 1px #7eacb1;
+}
+.dxeTextBox_Glass td.dxic
+{
+	padding: 1px 2px;
+}
+.dxeTextBox_Glass td.dxic
+{
+	width: 100%;
+}
+.dxeRadioButtonList_Glass, .dxeRadioButtonList_Glass table {
+    font-family: Tahoma;
+    font-size: 9pt;    
+}
+.dxeRadioButtonList_Glass {
+    border: Solid 1px #7EACB1;
+}
+.dxeRadioButtonList_Glass td.dxe {
+    padding: 6px 11px;
+    padding-right: 5px;
+}
+.dxeRadioButtonList_Glass label
+{
+	margin-right: 6px;    
+}
+
+/* -- Memo -- */
+.dxeMemo_Glass
+{
+    padding-left: 4px;
+}
+.dxeMemoEditArea_Glass
+{
+	font-family: Tahoma;
+	font-size: 9pt;
+}
+.dxeMemo_Glass td
+{
+	width: 100%;
+}
+
+/* -- Hyperlink -- */
+.dxeHyperlink_Glass
+{
+    font-family: Tahoma;
+    font-size: 9pt;
+	font-weight: normal;
+    color: #2a769d;    
+}
+a.dxeHyperlink_Glass
+{
+    color: #2a769d;    
+}
+a:hover.dxeHyperlink_Glass 
+{
+    color: #f15e34;
+}
+a:visited.dxeHyperlink_Glass 
+{
+    color: #a1a1a1;
+}
+
+/* -- ListBox -- */
+.dxeListBox_Glass
+{
+    background-color: white;
+    border: solid 1px #7EACB1;
+    font-family: Tahoma;
+    font-size: 9pt;
+    height: 102px;
+    width: 70px;
+}
+
+.dxeListBox_Glass div.dxlbd 
+{
+	height: 102px;
+}
+.dxeListBoxItemRow_Glass
+{
+    cursor: default;
+}
+.dxeListBoxItem_Glass
+{    
+    border: solid 1px white;
+    font-family: Tahoma;
+    font-size: 9pt;        
+    padding: 2px 2px 2px 3px;
+    white-space: nowrap;
+    text-align: left;
+    color: Black;    
+    font-weight: normal;
+}
+.dxeListBoxItemHover_Glass        /* inherits dxeListBoxItem */
+{
+    background-color: #d9eced;
+}
+.dxeListBoxItemSelected_Glass     /* inherits dxeListBoxItem */
+{    
+    background-color: #9eced6;
+}
+.dxeListBox_Glass td.dxeI, .dxeListBox_Glass td.dxeIM, .dxeListBox_Glass .dxeHIC
+{
+    border-right-width: 0px!important;
+}
+.dxeListBox_Glass td.dxeIM
+{
+    width: 0;
+}
+.dxeListBox_Glass td.dxeT
+{
+    width: 100%;    
+    border-left-width: 0px!important;    
+    padding-left: 0px!important;
+}
+.dxeListBox_Glass td.dxeFTM, .dxeListBox_Glass td.dxeTM, .dxeListBox_Glass td.dxeLTM, .dxeListBox_Glass .dxeHFC, .dxeListBox_Glass .dxeHC, .dxeListBox_Glass .dxeHLC
+{
+    overflow: hidden;
+    border-top-width: 0px;
+}
+.dxeListBox_Glass td.dxeFTM, .dxeListBox_Glass td.dxeTM
+{
+    border-right-width: 0px!important;
+}
+.dxeListBox_Glass td.dxeFTM, .dxeListBox_Glass td.dxeTM, .dxeListBox_Glass .dxeHFC, .dxeListBox_Glass .dxeHC
+{
+    padding-right: 6px!important;
+}
+.dxeListBox_Glass td.dxeLTM, .dxeListBox_Glass td.dxeTM, .dxeListBox_Glass .dxeHC,  .dxeListBox_Glass .dxeHLC
+{
+    padding-left: 6px!important;
+}
+.dxeListBox_Glass td.dxeLTM, .dxeListBox_Glass td.dxeTM
+{
+    border-left: 1px solid #C2D4DA !important;
+}
+.dxeListBox_Glass td.dxeIM, .dxeListBox_Glass td.dxeFTM, .dxeListBox_Glass td.dxeTM, .dxeListBox_Glass td.dxeLTM
+{
+    border-bottom: solid 1px #C2D4DA;
+}
+/*Header*/
+.dxeListBox_Glass .dxeHD
+{
+    background-color: #C0DDE0;
+    background-image:url(lbHeaderBackground.gif);
+    background-position:center top;
+    background-repeat:repeat-x;
+    border-bottom: solid 1px #7EACB1;
+}
+.dxeListBox_Glass .dxeHFC, .dxeListBox_Glass .dxeHIC, .dxeListBox_Glass .dxeHC,  .dxeListBox_Glass .dxeHLC
+{
+    padding-top: 4px;
+    padding-bottom: 5px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+}
+.dxeListBox_Glass .dxeHC,  .dxeListBox_Glass .dxeHLC
+{
+    border-left: solid 1px #7EACB1;
+}
+.dxeListBox_Glass .dxeHIC, .dxeListBox_Glass .dxeHFC
+{
+    border-left:1px solid #C0DDE0;
+}
+.dxeListBox_Glass .dxeHFC, .dxeListBox_Glass .dxeHC
+{
+    border-right-width:0;
+}
+.dxeListBox_Glass .dxeHLC
+{
+    border-right: solid 1px #7EACB1;
+}
+
+/* -- Calendar -- */
+.dxeCalendar_Glass
+{
+	color: black;
+	font-weight: normal;	
+    border: solid 1px #7eacb1;
+	background-color: White;    
+}
+.dxeCalendar_Glass td.dxMonthGrid, .dxeCalendar_Glass td.dxMonthGridWithWeekNumbers
+{
+    padding: 8px 20px 8px 8px;
+    cursor: default;
+}
+.dxeCalendar_Glass td.dxMonthGrid
+{
+    padding-left: 20px;
+}
+.dxeCalendarDayHeader_Glass
+{
+    font-family: Tahoma;
+    font-size: 9pt;
+    padding: 4px;
+    color: Black;
+    border-bottom: solid 1px #bcbcff;
+}
+.dxeCalendarWeekNumber_Glass
+{    
+    font-family: Tahoma;
+    font-size: 8pt;    
+    text-align: right;
+    color: #a0a0ff;    	
+    padding: 6px 8px 2px 4px;    
+}
+.dxeCalendarDay_Glass
+{    
+    font-family: Tahoma;
+    font-size: 9pt;
+    padding: 3px;
+    color:Black;
+	background-color: White;
+    text-align: center;
+}
+.dxeCalendarWeekend_Glass       	/* inherits dxeCalendarDay */
+{
+    color: #fe3c00;
+}
+.dxeCalendarOtherMonth_Glass    	 /* inherits dxeCalendarDay */
+{
+    color: #acacac;
+}
+.dxeCalendarOutOfRange_Glass        /* inherits dxeCalendarDay */
+{
+    color: #d0d0d0;    
+}
+.dxeCalendarSelected_Glass       	/* inherits dxeCalendarDay */
+{
+    background-color: #9eced6;
+    color: #FFFFFF;
+}
+.dxeCalendarToday_Glass       	        /* inherits dxeCalendarDay */
+{
+    border: solid 1px #ff5c20;
+    padding: 2px;
+}
+.dxeCalendarHeader_Glass
+{    
+    color: #000000;
+    font-family: Tahoma;
+    font-size: 9pt;        
+    background-color: #bcdbeb;
+    border: solid 1px #7eacb1;
+	border-width: 1px 0;
+    text-align: center;
+    padding: 1px;
+	height: 18px;
+}
+.dxeCalendarHeader_Glass td.dxe
+{
+    font-family: Tahoma;
+    font-size: 9pt;
+    text-align: center;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxeCalendarFooter_Glass
+{
+    background-color: #e3f0f7;
+    padding: 6px 0px;
+    border-top: solid 1px #7eacb1;
+}
+.dxeCalendarFastNav_Glass
+{
+    background: white;
+    border: solid 1px #7eacb1;
+    border-bottom: 0px;
+    padding: 8px;
+}
+.dxeCalendarFastNavFooter_Glass
+{
+    background-color: #e3f0f7;
+    padding: 6px 0px;
+    border: solid 1px #7eacb1;
+}
+.dxeCalendarFastNavMonth_Glass, .dxeCalendarFastNavYear_Glass
+{
+    font: 9pt Tahoma;
+    color: Black;
+    padding: 4px 6px;
+    text-align: center;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxeCalendarFastNavMonthSelected_Glass, .dxeCalendarFastNavYearSelected_Glass
+{
+    background: #9eced6;
+}
+.dxeCalendarFastNavMonthHover_Glass, .dxeCalendarFastNavYearHover_Glass
+{        
+    background: #e4edef;
+}
+/* Disabled */
+.dxeDisabled_Glass, .dxeDisabled_Glass td.dxe
+{
+	color: #93a1a4;
+	cursor: default;
+}
+a.dxeDisabled_Glass, a.dxeDisabled_Glass:hover
+{
+    color: #93a1a4;
+}
+.dxeButtonDisabled_Glass, .dxeButtonDisabled_Glass td.dxe
+{
+	color: #93a1a4;
+	background: #cdd7db url('edtButtonEditButtonBackDis.gif') repeat-x top left;
+	border-color: #c2c3c4;
+	cursor: default;
+}
+.dxeButtonDisabled_Glass td.dx
+{
+    color: #93a1a4;
+}
+/* -- Button -- */
+.dxbButton_Glass
+{	
+    color: #000000;   
+	font-weight:normal;    
+    font-size: 9pt;
+    font-family: Tahoma;				    
+    vertical-align: middle;	 		
+    border: solid 1px #B2BCBE;	
+    background: #DADFE0 url('edtButtonBack.gif') top;
+    background-repeat:repeat-x;
+    padding: 1px 1px 1px 1px;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxbButtonHover_Glass 
+{
+	background: #B5D7DB url('edtButtonHoverBack.gif') top;
+    background-repeat: repeat-x;	
+	border: solid 1px #71ACB4;	
+}
+.dxbButtonChecked_Glass
+{
+	background: #d3d3d3 url('edtButtonCheckedBack.gif') top;
+    background-repeat: repeat-x;	
+	border: solid 1px #929292;	
+}
+.dxbButtonPressed_Glass 
+{  	
+	background: #9ABDC1 url('edtButtonPressedBack.gif') top;
+    background-repeat: repeat-x;	
+	border: solid 1px #71ACB4;	
+}
+
+.dxbButton_Glass div.dxb
+{    
+    padding: 3px 13px 4px 13px;
+	border: 0px;
+}
+.dxbButton_Glass div.dxbf
+{     
+    padding: 2px 12px 3px 12px;
+	border: dotted 1px #9C99CA;		
+}
+.dxbButton_Glass div.dxb table
+{    
+    color: #000000;   
+	font-weight:normal;    
+    font-size: 9pt;
+    font-family: Tahoma;				    
+}
+.dxbButton_Glass div.dxb td.dxb
+{    
+    background-color: transparent!important;
+    background-image: url('')!important;
+    border-width: 0px!important;
+    padding: 0px!important;
+}
+/* Disabled */
+.dxbDisabled_Glass
+{
+	color: #93a1a4;
+	cursor: default;
+}
+.dxbDisabled_Glass td.dxb
+{
+	color: #93a1a4;
+}
+
+/* -- FilterControl -- */
+.dxfcTable_Glass
+{
+	border-collapse: separate!important;
+}
+.dxfcTable_Glass td.dxfc
+{
+	padding: 0px 0px 0px 3px;
+	vertical-align: middle;
+	font: 9pt Tahoma;
+	color: Black;	
+}
+a.dxfcPropertyName_Glass
+{
+	white-space:nowrap!important;
+	color: Blue!important;
+}
+a.dxfcGroupType_Glass
+{
+	white-space:nowrap!important;
+	padding:0px 3px 0px 3px!important;
+	color: Red!important;
+}
+a.dxfcOperation_Glass
+{
+	white-space:nowrap!important;
+	color: Green!important;
+}
+a.dxfcValue_Glass
+{
+	white-space:nowrap!important;
+	color: Gray!important;
+}
+.dxfcImageButton_Glass 
+{
+	cursor: pointer;
+}
+.dxfcLoadingPanel_Glass
+{
+	border: solid 1px #7EACB1;
+	background: white;
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxfcLoadingPanel_Glass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxfcLoadingDiv_Glass
+{
+	background: white;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+.dxeMaskHint_Glass 
+{
+	background: #ffffe1;
+	border: solid 1px black;
+	padding: 2px 5px 3px;
+	color: Black;
+	font: 9pt Tahoma;
+}
+/* -- ProgressBar -- */
+.dxeProgressBar_Glass, .dxeProgressBar_Glass td
+{
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+	color: Black;    
+}
+.dxeProgressBar_Glass td 
+{
+	background-image: url('edtProgressPositionBack.gif');
+	background-repeat: no-repeat;
+	background-position: 50% 0px;
+}
+.dxeProgressBar_Glass
+{
+    border: Solid 1px #4986a2;
+    background-color: #C6E0E4;
+	background-image: url('edtProgressBack.gif');
+    background-repeat: repeat-x;
+}
+.dxeProgressBarIndicator_Glass
+{
+    background-color: #4986a2;
+	background-image: url('edtProgressIndicatorBack.gif');
+    background-repeat: repeat-x;
+}

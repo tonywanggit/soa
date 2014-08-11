@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Roles>
+  <Role Text="系统管理员" Value="0" />
+  <Role Text="应用管理员" Value="1" />
+</Roles>

@@ -1,0 +1,28 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxti" Namespace="DevExpress.Web.ASPxTitleIndex" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxti:ASPxTitleIndex runat="server" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" ImageFolder="~/App_Themes/Red Wine/{0}/" FilterBoxSpacing="30px" CssPostfix="RedWine" GroupSpacing="50px" IndexPanelSpacing="0px" LoadingPanelText="" BackToTopSpacing="3px">
+<BackToTopImage Url="~/App_Themes/Red Wine/Web/tiGoToTop.png" Width="13px" Height="13px" />
+<FilterBox InfoText="" HorizontalPosition="Center" />
+<ColumnStyle>
+    <Paddings PaddingLeft="0px" />
+</ColumnStyle>
+<IndexPanelSeparatorStyle Height="0px" />
+<IndexPanelStyle LineSpacing="22px" Font-Size="10.5pt">
+    <Paddings PaddingBottom="8px" PaddingLeft="60px" PaddingRight="60px" PaddingTop="0px" />
+</IndexPanelStyle>
+<ItemStyle>
+    <Paddings PaddingBottom="7px" />
+    <CurrentItemStyle Font-Bold="False" Font-Underline="False" />
+</ItemStyle>
+<ColumnSeparatorStyle Width="15px">
+    <Paddings Padding="9px" />
+</ColumnSeparatorStyle>
+<GroupContentStyle ItemSpacing="0px">
+    <Paddings PaddingBottom="7px" PaddingLeft="0px" PaddingTop="9px" />
+    <BorderBottom BorderColor="#C3C3C3" BorderStyle="Solid" BorderWidth="2px" />
+</GroupContentStyle>
+<BackToTopStyle>
+    <Paddings Padding="2px" />
+</BackToTopStyle>
+<DisabledStyle ForeColor="#BCAAB0"></DisabledStyle>
+</dxti:ASPxTitleIndex>

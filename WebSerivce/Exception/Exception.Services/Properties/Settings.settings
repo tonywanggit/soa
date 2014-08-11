@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Exception.Service.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Exception_Service_OAMail_EmailService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.30.4.44/CKMService/WebService/EmailService.asmx</Value>
+    </Setting>
+    <Setting Name="Exception_Service_Audit_AuditServcie" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/EsbAudit/AuditServcie.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

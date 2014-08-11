@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.JN.com/esb/Exception/service/20100329" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.JN.com/esb/Exception/service/20100329" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.JN.com/esb/Exception/service/20100329">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="添加错误消息">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="异常描述" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="异常代码" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="异常信息" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="异常级别" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="异常类型" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="主机名称" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="方法名称" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="消息编码" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="绑定地址编码" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="异常信息状态" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="请求消息体" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="请求类型" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="请求密码" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="绑定类型" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="添加错误消息Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="获得所有错误消息">
+        <s:complexType />
+      </s:element>
+      <s:element name="获得所有错误消息Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得所有错误消息Result" type="tns:ArrayOf异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOf异常信息对象">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="异常信息对象" nillable="true" type="tns:异常信息对象" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="异常信息对象">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="异常编码" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="异常时间" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="异常描述" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="异常代码" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="异常信息" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="异常级别" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="异常类型" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="方法名称" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="主机名称" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="消息编码" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="绑定地址编码" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="异常信息状态" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="请求消息体" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="绑定类型" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="请求密码" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="请求类型" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="获得错误消息_服务编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="服务编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息_服务编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得错误消息_服务编码Result" type="tns:ArrayOf异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息_服务提供者编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="服务提供者编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息_服务提供者编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得分页错误消息_服务提供者编码Result" type="tns:ArrayOf异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息数量_服务提供者编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="服务提供者编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息数量_服务提供者编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="获得分页错误消息数量_服务提供者编码Result" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息数量_服务提供者_用户编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="用户编码" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="服务提供者编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息数量_服务提供者_用户编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="获得分页错误消息数量_服务提供者_用户编码Result" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息_服务提供者_用户编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="用户编码" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="服务提供者编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息_服务提供者_用户编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得分页错误消息_服务提供者_用户编码Result" type="tns:ArrayOf异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息_服务提供者编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="服务提供者编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息_服务提供者编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得错误消息_服务提供者编码Result" type="tns:ArrayOf异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息_异常编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="异常编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息_异常编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得错误消息_异常编码Result" type="tns:异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="删除错误消息_异常编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="异常编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="删除错误消息_异常编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="删除错误消息_异常编码Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获取未处理异常数量_服务提供者编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="服务提供者编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获取未处理异常数量_服务提供者编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="获取未处理异常数量_服务提供者编码Result" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得错误消息Result" type="tns:ArrayOf异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息_用户编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="用户编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息_用户编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得错误消息_用户编码Result" type="tns:ArrayOf异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息内容">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="exceptionId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息内容Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得错误消息内容Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息数量_用户编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="用户编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息数量_用户编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="获得错误消息数量_用户编码Result" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息_服务编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="服务编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得分页错误消息_服务编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="获得分页错误消息_服务编码Result" type="tns:ArrayOf异常信息对象" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息数量_服务编码">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="服务编码" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得错误消息数量_服务编码Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="获得错误消息数量_服务编码Result" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得所有错误消息数量">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startRowIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRows" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="获得所有错误消息数量Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="获得所有错误消息数量Result" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="添加错误消息SoapIn">
+    <wsdl:part name="parameters" element="tns:添加错误消息" />
+  </wsdl:message>
+  <wsdl:message name="添加错误消息SoapOut">
+    <wsdl:part name="parameters" element="tns:添加错误消息Response" />
+  </wsdl:message>
+  <wsdl:message name="获得所有错误消息SoapIn">
+    <wsdl:part name="parameters" element="tns:获得所有错误消息" />
+  </wsdl:message>
+  <wsdl:message name="获得所有错误消息SoapOut">
+    <wsdl:part name="parameters" element="tns:获得所有错误消息Response" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息_服务编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得错误消息_服务编码" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息_服务编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得错误消息_服务编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息_服务提供者编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息_服务提供者编码" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息_服务提供者编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息_服务提供者编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息数量_服务提供者编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息数量_服务提供者编码" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息数量_服务提供者编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息数量_服务提供者编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息数量_服务提供者_用户编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息数量_服务提供者_用户编码" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息数量_服务提供者_用户编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息数量_服务提供者_用户编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息_服务提供者_用户编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息_服务提供者_用户编码" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息_服务提供者_用户编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息_服务提供者_用户编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息_服务提供者编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得错误消息_服务提供者编码" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息_服务提供者编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得错误消息_服务提供者编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息_异常编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得错误消息_异常编码" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息_异常编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得错误消息_异常编码Response" />
+  </wsdl:message>
+  <wsdl:message name="删除错误消息_异常编码SoapIn">
+    <wsdl:part name="parameters" element="tns:删除错误消息_异常编码" />
+  </wsdl:message>
+  <wsdl:message name="删除错误消息_异常编码SoapOut">
+    <wsdl:part name="parameters" element="tns:删除错误消息_异常编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获取未处理异常数量_服务提供者编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获取未处理异常数量_服务提供者编码" />
+  </wsdl:message>
+  <wsdl:message name="获取未处理异常数量_服务提供者编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获取未处理异常数量_服务提供者编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息SoapIn">
+    <wsdl:part name="parameters" element="tns:获得错误消息" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息SoapOut">
+    <wsdl:part name="parameters" element="tns:获得错误消息Response" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息_用户编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得错误消息_用户编码" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息_用户编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得错误消息_用户编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息内容SoapIn">
+    <wsdl:part name="parameters" element="tns:获得错误消息内容" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息内容SoapOut">
+    <wsdl:part name="parameters" element="tns:获得错误消息内容Response" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息数量_用户编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得错误消息数量_用户编码" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息数量_用户编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得错误消息数量_用户编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息_服务编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息_服务编码" />
+  </wsdl:message>
+  <wsdl:message name="获得分页错误消息_服务编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得分页错误消息_服务编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息数量_服务编码SoapIn">
+    <wsdl:part name="parameters" element="tns:获得错误消息数量_服务编码" />
+  </wsdl:message>
+  <wsdl:message name="获得错误消息数量_服务编码SoapOut">
+    <wsdl:part name="parameters" element="tns:获得错误消息数量_服务编码Response" />
+  </wsdl:message>
+  <wsdl:message name="获得所有错误消息数量SoapIn">
+    <wsdl:part name="parameters" element="tns:获得所有错误消息数量" />
+  </wsdl:message>
+  <wsdl:message name="获得所有错误消息数量SoapOut">
+    <wsdl:part name="parameters" element="tns:获得所有错误消息数量Response" />
+  </wsdl:message>
+  <wsdl:portType name="错误消息服务Soap">
+    <wsdl:operation name="添加错误消息">
+      <wsdl:input message="tns:添加错误消息SoapIn" />
+      <wsdl:output message="tns:添加错误消息SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得所有错误消息">
+      <wsdl:input message="tns:获得所有错误消息SoapIn" />
+      <wsdl:output message="tns:获得所有错误消息SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_服务编码">
+      <wsdl:input message="tns:获得错误消息_服务编码SoapIn" />
+      <wsdl:output message="tns:获得错误消息_服务编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务提供者编码">
+      <wsdl:input message="tns:获得分页错误消息_服务提供者编码SoapIn" />
+      <wsdl:output message="tns:获得分页错误消息_服务提供者编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息数量_服务提供者编码">
+      <wsdl:input message="tns:获得分页错误消息数量_服务提供者编码SoapIn" />
+      <wsdl:output message="tns:获得分页错误消息数量_服务提供者编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息数量_服务提供者_用户编码">
+      <wsdl:input message="tns:获得分页错误消息数量_服务提供者_用户编码SoapIn" />
+      <wsdl:output message="tns:获得分页错误消息数量_服务提供者_用户编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务提供者_用户编码">
+      <wsdl:input message="tns:获得分页错误消息_服务提供者_用户编码SoapIn" />
+      <wsdl:output message="tns:获得分页错误消息_服务提供者_用户编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_服务提供者编码">
+      <wsdl:input message="tns:获得错误消息_服务提供者编码SoapIn" />
+      <wsdl:output message="tns:获得错误消息_服务提供者编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_异常编码">
+      <wsdl:input message="tns:获得错误消息_异常编码SoapIn" />
+      <wsdl:output message="tns:获得错误消息_异常编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="删除错误消息_异常编码">
+      <wsdl:input message="tns:删除错误消息_异常编码SoapIn" />
+      <wsdl:output message="tns:删除错误消息_异常编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获取未处理异常数量_服务提供者编码">
+      <wsdl:input message="tns:获取未处理异常数量_服务提供者编码SoapIn" />
+      <wsdl:output message="tns:获取未处理异常数量_服务提供者编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息">
+      <wsdl:input message="tns:获得错误消息SoapIn" />
+      <wsdl:output message="tns:获得错误消息SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_用户编码">
+      <wsdl:input message="tns:获得错误消息_用户编码SoapIn" />
+      <wsdl:output message="tns:获得错误消息_用户编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息内容">
+      <wsdl:input message="tns:获得错误消息内容SoapIn" />
+      <wsdl:output message="tns:获得错误消息内容SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息数量_用户编码">
+      <wsdl:input message="tns:获得错误消息数量_用户编码SoapIn" />
+      <wsdl:output message="tns:获得错误消息数量_用户编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务编码">
+      <wsdl:input message="tns:获得分页错误消息_服务编码SoapIn" />
+      <wsdl:output message="tns:获得分页错误消息_服务编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息数量_服务编码">
+      <wsdl:input message="tns:获得错误消息数量_服务编码SoapIn" />
+      <wsdl:output message="tns:获得错误消息数量_服务编码SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="获得所有错误消息数量">
+      <wsdl:input message="tns:获得所有错误消息数量SoapIn" />
+      <wsdl:output message="tns:获得所有错误消息数量SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="错误消息服务Soap" type="tns:错误消息服务Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="添加错误消息">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/添加错误消息" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有错误消息">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得所有错误消息" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_服务编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息_服务编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务提供者编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息_服务提供者编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息数量_服务提供者编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息数量_服务提供者编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息数量_服务提供者_用户编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息数量_服务提供者_用户编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务提供者_用户编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息_服务提供者_用户编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_服务提供者编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息_服务提供者编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_异常编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息_异常编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除错误消息_异常编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/删除错误消息_异常编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获取未处理异常数量_服务提供者编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获取未处理异常数量_服务提供者编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_用户编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息_用户编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息内容">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息内容" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息数量_用户编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息数量_用户编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息_服务编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息数量_服务编码">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息数量_服务编码" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有错误消息数量">
+      <soap:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得所有错误消息数量" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="错误消息服务Soap12" type="tns:错误消息服务Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="添加错误消息">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/添加错误消息" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有错误消息">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得所有错误消息" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_服务编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息_服务编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务提供者编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息_服务提供者编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息数量_服务提供者编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息数量_服务提供者编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息数量_服务提供者_用户编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息数量_服务提供者_用户编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务提供者_用户编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息_服务提供者_用户编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_服务提供者编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息_服务提供者编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_异常编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息_异常编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="删除错误消息_异常编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/删除错误消息_异常编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获取未处理异常数量_服务提供者编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获取未处理异常数量_服务提供者编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息_用户编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息_用户编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息内容">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息内容" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息数量_用户编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息数量_用户编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得分页错误消息_服务编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得分页错误消息_服务编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得错误消息数量_服务编码">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得错误消息数量_服务编码" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="获得所有错误消息数量">
+      <soap12:operation soapAction="http://www.JN.com/esb/Exception/service/20100329/获得所有错误消息数量" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="错误消息服务">
+    <wsdl:port name="错误消息服务Soap" binding="tns:错误消息服务Soap">
+      <soap:address location="http://localhost/EsbException/%E9%94%99%E8%AF%AF%E6%B6%88%E6%81%AF%E6%9C%8D%E5%8A%A1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="错误消息服务Soap12" binding="tns:错误消息服务Soap12">
+      <soap12:address location="http://localhost/EsbException/%E9%94%99%E8%AF%AF%E6%B6%88%E6%81%AF%E6%9C%8D%E5%8A%A1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

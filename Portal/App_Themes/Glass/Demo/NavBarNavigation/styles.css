@@ -1,0 +1,104 @@
+﻿.dxnbControl_GlassNavigation
+{
+	font: 11px Tahoma;
+	color: White;
+	background-color: #0D3D70;
+	padding: 3px 0px;
+}
+.dxnbControl_GlassNavigation a
+{
+	color: White; 
+	text-decoration: none;
+}
+.dxnbGroupHeaderCollapsed_GlassNavigation
+{
+    font: 11px Tahoma;
+	color: #BDE0FC;
+
+	font-weight: normal;
+	
+	background-image: url('nbGroupHeaderBackgroundCollap.gif');
+    background-repeat: repeat-x;	
+    					
+	border: 0px;
+	
+	padding: 4px 7px 5px 7px;
+}
+.dxnbGroupHeaderCollapsed_GlassNavigation table
+{
+    font: 11px Tahoma;
+	color: #BDE0FC;
+}
+.dxnbGroupHeaderCollapsed_GlassNavigation table td
+{
+	white-space: nowrap;
+}
+.dxnbGroupHeaderCollapsedHover_GlassNavigation
+{
+	background-image: url('nbGroupHeaderBackground.gif');
+    background-repeat: repeat-x;	
+    border: Solid 1px #19577B;
+
+	padding: 3px 6px 4px 6px;
+}
+.dxnbGroupHeader_GlassNavigation
+{
+    font: 11px Tahoma;
+	color: #BDE0FC;
+
+	background-color: #0D3D70;
+	font-weight: bold;
+
+	background-image: url('nbGroupHeaderBackground.gif');
+    background-repeat: repeat-x;	
+	
+	border: Solid 1px #19577B;
+	
+	padding: 3px 6px 3px 6px;
+}
+.dxnbGroupHeader_GlassNavigation table
+{
+    font: 11px Tahoma;
+	color: #BDE0FC;    					
+	font-weight: bold;
+}
+.dxnbGroupHeader_GlassNavigation table td
+{
+	white-space: nowrap;
+	font-weight: bold;
+}
+.dxnbGroupContent_GlassNavigation
+{
+    font: 11px Tahoma;
+
+	background-color: #1A4A84;
+
+	background-image: url('nbGroupContentBackground.gif');
+    background-repeat: repeat-x;	
+	
+	border: 0px;
+	border-top: Solid 1px #03305B;
+	border-bottom: Solid 1px #0A2D44;
+	
+	padding: 7px 0px 7px 0px;
+}
+.dxnbItem_GlassNavigation
+{
+    font: 11px Tahoma;
+
+    border: 0px;
+    padding: 1px 30px 3px 30px;
+}
+.dxnbItemSelected_GlassNavigation
+{
+    color: White;
+    font-weight: bold;
+	background-image: url('nbBullet.gif');
+	background-repeat: no-repeat;
+	background-position: 15px 4px;
+    padding: 1px 30px 3px 29px;
+}
+.dxnbItemHover_GlassNavigation
+{
+	background-color: #1E518F;
+}

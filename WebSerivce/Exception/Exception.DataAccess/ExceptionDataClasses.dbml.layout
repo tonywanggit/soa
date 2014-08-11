@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ExceptionDataClasses">
+  <DataContextMoniker Name="/ExceptionDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="171719bf-23d2-4050-86a0-44edfd08b666" absoluteBounds="2.25, 0.875, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/ExceptionDataClassesDataContext/异常类型对象" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0eb6a26e-98f0-428a-a44f-bf69dea2b39d" absoluteBounds="2.265, 1.335, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a9d6f9ed-c384-4458-91c1-aded841c5dc3" absoluteBounds="4.5, 0.875, 2, 3.8637821451822916">
+      <DataClassMoniker Name="/ExceptionDataClassesDataContext/异常信息对象" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa1de6b2-96d7-45fe-844a-83b648a38c8a" absoluteBounds="4.5150000000000006, 1.335, 1.9700000000000002, 3.3037821451822915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

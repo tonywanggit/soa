@@ -1,0 +1,40 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxrp" Namespace="DevExpress.Web.ASPxRoundPanel" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxrp:ASPxRoundPanel runat="server" CssPostfix="Glass" CssFilePath="~/App_Themes/Glass/{0}/styles.css" BackColor="#EBF2F4">
+    <Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#7EACB1" />
+    <ContentPaddings PaddingTop="10px" PaddingBottom="10px" PaddingLeft="4px" />
+    <HeaderStyle BackColor="White" Height="23px">
+        <Paddings PaddingTop="0px" PaddingBottom="0px" PaddingLeft="2px" />
+        <BorderBottom BorderStyle="None" />
+    </HeaderStyle>
+    <%-- Corner parts --%>
+    <TopLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/Web/rpTopLeftCorner.png" />
+    <NoHeaderTopLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/Web/rpNoHeaderTopLeftCorner.png" />
+    <TopRightCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/Web/rpTopRightCorner.png" />
+    <NoHeaderTopRightCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/Web/rpNoHeaderTopRightCorner.png" />
+    <BottomRightCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/Web/rpBottomRightCorner.png" />
+    <BottomLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/Web/rpBottomLeftCorner.png" />
+    <%-- Header parts --%>
+    <HeaderLeftEdge>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/Web/rpHeaderLeftEdge.gif" />
+    </HeaderLeftEdge>
+    <HeaderContent>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/Web/rpHeaderBack.gif" />
+    </HeaderContent>
+    <HeaderRightEdge>
+        <BackgroundImage VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/Web/rpHeaderRightEdge.gif" />
+    </HeaderRightEdge>
+    <%-- Middle parts --%>
+    <Content>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/Web/rpContentBack.gif" />
+    </Content>
+    <TopEdge />
+    <NoHeaderTopEdge BackColor="#EBF2F4" />
+    <RightEdge>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/Web/rpLeftRightEdge.gif" />
+    </RightEdge>
+    <LeftEdge>
+        <BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/Web/rpLeftRightEdge.gif" />
+    </LeftEdge>
+    <BottomEdge BackColor="#D7E9F1" />
+</dxrp:ASPxRoundPanel>

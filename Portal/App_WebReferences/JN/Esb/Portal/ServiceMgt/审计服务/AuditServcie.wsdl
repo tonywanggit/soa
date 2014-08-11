@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.jn.com/ESB/Audit" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.jn.com/ESB/Audit" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.jn.com/ESB/Audit">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="AddAuditBusiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hostName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="messageBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="messageID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="methodName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reqBeginTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="callBeginTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="callEndTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAuditBusinessResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExceptionPigeonhole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="messageID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExceptionPigeonholeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExceptionResend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="messageID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="bindingID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExceptionResendResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AuditBusinessSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="condition" type="tns:AuditBusinessSearchCondition" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuditBusinessSearchCondition">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:AuditBusinessStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="BusinessID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateScope" type="tns:DateScopeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateScopeBegin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateScopeEnd" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IfShowHeartBeat" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="AuditBusinessStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Exception" />
+          <s:enumeration value="ExceptionReSend" />
+          <s:enumeration value="ExceptionPigeonhole" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DateScopeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="OneDay" />
+          <s:enumeration value="OneWeek" />
+          <s:enumeration value="OneMonth" />
+          <s:enumeration value="OneYear" />
+          <s:enumeration value="All" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AuditBusinessSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuditBusinessSearchResult" type="tns:ArrayOfAuditBusiness" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAuditBusiness">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AuditBusiness" nillable="true" type="tns:AuditBusiness" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AuditBusiness">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReqBeginTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReqEndTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CallBeginTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CallEndTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BindingAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnMessageBody" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAuditBusinessCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="condition" type="tns:AuditBusinessSearchCondition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuditBusinessCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAuditBusinessCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuditBusinessByOID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="oid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuditBusinessByOIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuditBusinessByOIDResult" type="tns:AuditBusiness" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddAuditBusinessSoapIn">
+    <wsdl:part name="parameters" element="tns:AddAuditBusiness" />
+  </wsdl:message>
+  <wsdl:message name="AddAuditBusinessSoapOut">
+    <wsdl:part name="parameters" element="tns:AddAuditBusinessResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExceptionPigeonholeSoapIn">
+    <wsdl:part name="parameters" element="tns:ExceptionPigeonhole" />
+  </wsdl:message>
+  <wsdl:message name="ExceptionPigeonholeSoapOut">
+    <wsdl:part name="parameters" element="tns:ExceptionPigeonholeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExceptionResendSoapIn">
+    <wsdl:part name="parameters" element="tns:ExceptionResend" />
+  </wsdl:message>
+  <wsdl:message name="ExceptionResendSoapOut">
+    <wsdl:part name="parameters" element="tns:ExceptionResendResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuditBusinessSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:AuditBusinessSearch" />
+  </wsdl:message>
+  <wsdl:message name="AuditBusinessSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:AuditBusinessSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditBusinessCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuditBusinessCount" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditBusinessCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuditBusinessCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditBusinessByOIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuditBusinessByOID" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditBusinessByOIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuditBusinessByOIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AuditServcieSoap">
+    <wsdl:operation name="AddAuditBusiness">
+      <wsdl:input message="tns:AddAuditBusinessSoapIn" />
+      <wsdl:output message="tns:AddAuditBusinessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionPigeonhole">
+      <wsdl:input message="tns:ExceptionPigeonholeSoapIn" />
+      <wsdl:output message="tns:ExceptionPigeonholeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionResend">
+      <wsdl:input message="tns:ExceptionResendSoapIn" />
+      <wsdl:output message="tns:ExceptionResendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuditBusinessSearch">
+      <wsdl:input message="tns:AuditBusinessSearchSoapIn" />
+      <wsdl:output message="tns:AuditBusinessSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessCount">
+      <wsdl:input message="tns:GetAuditBusinessCountSoapIn" />
+      <wsdl:output message="tns:GetAuditBusinessCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessByOID">
+      <wsdl:input message="tns:GetAuditBusinessByOIDSoapIn" />
+      <wsdl:output message="tns:GetAuditBusinessByOIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuditServcieSoap" type="tns:AuditServcieSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddAuditBusiness">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/AddAuditBusiness" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionPigeonhole">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/ExceptionPigeonhole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionResend">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/ExceptionResend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuditBusinessSearch">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/AuditBusinessSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessCount">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/GetAuditBusinessCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessByOID">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/GetAuditBusinessByOID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuditServcieSoap12" type="tns:AuditServcieSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddAuditBusiness">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/AddAuditBusiness" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionPigeonhole">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/ExceptionPigeonhole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionResend">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/ExceptionResend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuditBusinessSearch">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/AuditBusinessSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessCount">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/GetAuditBusinessCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessByOID">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/GetAuditBusinessByOID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuditServcie">
+    <wsdl:port name="AuditServcieSoap" binding="tns:AuditServcieSoap">
+      <soap:address location="http://localhost/EsbAudit/AuditServcie.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuditServcieSoap12" binding="tns:AuditServcieSoap12">
+      <soap12:address location="http://localhost/EsbAudit/AuditServcie.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

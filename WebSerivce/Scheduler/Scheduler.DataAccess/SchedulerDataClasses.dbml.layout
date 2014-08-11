@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SchedulerDataClasses">
+  <DataContextMoniker Name="/SchedulerDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8495a642-38e1-459c-bb76-2529e90e5a3e" absoluteBounds="0.5, 1.25, 2, 3.1345442708333326">
+      <DataClassMoniker Name="/SchedulerDataClassesDataContext/ESB_SCHD" />
+      <nestedChildShapes>
+        <elementListCompartment Id="00610244-f03a-4c7b-ac3a-25102d95f512" absoluteBounds="0.51500000000000012, 1.71, 1.9700000000000002, 2.574544270833333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="226e3403-5261-4500-8972-37d39bbeed27" absoluteBounds="2.75, 1.25, 2, 2.4600651041666666">
+      <DataClassMoniker Name="/SchedulerDataClassesDataContext/ESB_SCHD_EsbWS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dda7d9de-e0e6-4c8e-9c44-01de8103a908" absoluteBounds="2.7649999999999997, 1.71, 1.9700000000000002, 1.9000651041666665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 2.48003255208333); (2.75 : 2.48003255208333)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SchedulerDataClassesDataContext/ESB_SCHD/ESB_SCHD_ESB_SCHD_EsbWS" />
+      <nodes>
+        <classShapeMoniker Id="8495a642-38e1-459c-bb76-2529e90e5a3e" />
+        <classShapeMoniker Id="226e3403-5261-4500-8972-37d39bbeed27" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="81b25860-c1b3-46c6-a3e5-6cafe85e70f9" absoluteBounds="2.75, 4.125, 2, 1.7855859375">
+      <DataClassMoniker Name="/SchedulerDataClassesDataContext/ESB_SCHD_HISTORY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3cc377aa-e953-4389-bba1-1e83912a34f1" absoluteBounds="2.765, 4.585, 1.9700000000000002, 1.2255859375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 4.38454427083333); (1.5 : 5.01779296875); (2.75 : 5.01779296875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SchedulerDataClassesDataContext/ESB_SCHD/ESB_SCHD_ESB_SCHD_HISTORY" />
+      <nodes>
+        <classShapeMoniker Id="8495a642-38e1-459c-bb76-2529e90e5a3e" />
+        <classShapeMoniker Id="81b25860-c1b3-46c6-a3e5-6cafe85e70f9" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4c39fba7-4672-48af-912c-1026ab3a19bc" absoluteBounds="5.125, 1.25, 2, 2.6286848958333331">
+      <DataClassMoniker Name="/SchedulerDataClassesDataContext/ESB_SCHD_HISTORY_VIEW" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58c4dbb1-2b23-4fcd-a211-0be19f41c33f" absoluteBounds="5.14, 1.71, 1.9700000000000002, 2.068684895833333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0dc013db-74e0-45de-914d-f606b94191d1" absoluteBounds="5.125, 4.25, 2, 3.4717838541666666">
+      <DataClassMoniker Name="/SchedulerDataClassesDataContext/ESB_SCHD_VIEW" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9266e172-6abc-4890-833e-8c06ce6e3db9" absoluteBounds="5.14, 4.71, 1.9700000000000002, 2.9117838541666665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

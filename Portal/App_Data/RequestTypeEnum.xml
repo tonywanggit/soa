@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RequestTypeEnum>
+  <RequestType Text="请求响应" Value="0" />
+  <RequestType Text="单向" Value="1" />
+</RequestTypeEnum>

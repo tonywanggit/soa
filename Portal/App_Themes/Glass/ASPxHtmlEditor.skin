@@ -1,0 +1,58 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
+<dxhe:ASPxHtmlEditor runat="server" >
+    <Images>
+        <DialogFormCloseButton Height="17px" Width="17px" />
+    </Images>
+	<Styles CssPostfix="Glass" CssFilePath="~/App_Themes/Glass/{0}/styles.css">
+		<ViewArea>
+			<Border BorderStyle="Solid" BorderColor="#4986A2" BorderWidth="1px" />
+		</ViewArea>
+	</Styles>
+	<StylesToolbars>
+		<Toolbar ItemSpacing="0px" SeparatorHeight="100%" />
+	</StylesToolbars>
+	<StylesStatusBar>
+		<Tab>
+			<Paddings PaddingTop="4px" PaddingBottom="5px" />
+		</Tab>
+		<ActiveTab>
+			<Paddings PaddingTop="4px" PaddingBottom="5px" />
+		</ActiveTab>
+		<StatusBar TabSpacing="0px" />
+	</StylesStatusBar>
+	<Images ImageFolder="~/App_Themes/Glass/{0}/"></Images>
+	<PartsRoundPanel>
+		<BottomRightCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpBottomRightCorner.png" />
+		<HeaderRightEdge>
+			<BackgroundImage VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpHeaderRightEdge.gif" />
+		</HeaderRightEdge>
+		<BottomLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpBottomLeftCorner.png" />
+		<RightEdge>
+			<BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpLeftRightEdge.gif" />
+		</RightEdge>
+		<NoHeaderTopLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpNoHeaderTopLeftCorner.png" />
+		<LeftEdge>
+			<BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpLeftRightEdge.gif" />
+		</LeftEdge>
+		<NoHeaderTopRightCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpNoHeaderTopRightCorner.png" />
+		<TopRightCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpTopRightCorner.png" />
+		<HeaderLeftEdge>
+			<BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpHeaderLeftEdge.gif" />
+		</HeaderLeftEdge>
+		<TopLeftCorner Height="5px" Width="5px" Url="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpTopLeftCorner.png" />
+		<NoHeaderTopEdge BackColor="#EBF2F4" />
+		<BottomEdge BackColor="#D7E9F1" />            
+		<HeaderContent>
+			<BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpHeaderBack.gif" />
+		</HeaderContent>
+		<Content>
+			<BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/Glass/HtmlEditor/RoundPanel/herpContentBack.gif" />
+		</Content>
+	</PartsRoundPanel>
+	<StylesRoundPanel>            
+		<ControlStyle BackColor="#EBF2F4">
+			<Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#7EACB1" />
+		</ControlStyle>
+	</StylesRoundPanel>	
+</dxhe:ASPxHtmlEditor>

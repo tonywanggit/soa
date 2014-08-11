@@ -1,0 +1,98 @@
+/* -- ASPxNavBar -- */
+.dxnbControl_RedWineNavigation
+{
+	font: 9pt Tahoma;
+	color: White;
+	background-color: #9F1B4A;
+	padding: 3px 0px;
+}
+.dxnbControl_RedWineNavigation a
+{
+	color: White; 
+	text-decoration: none;
+}
+.dxnbGroupHeaderCollapsed_RedWineNavigation
+{
+    font: 11px Tahoma;
+	color: White;
+
+	font-weight: normal;
+    					
+	border: 0px;
+	
+	padding: 4px 7px 5px 7px;
+}
+.dxnbGroupHeaderCollapsed_RedWineNavigation table
+{
+    font: 11px Tahoma;
+	color: White;
+}
+.dxnbGroupHeaderCollapsed_RedWineNavigation table td
+{
+	white-space: nowrap;
+}
+.dxnbGroupHeaderCollapsedHover_RedWineNavigation
+{
+	background-image: url('nbHeaderGroupHover.gif');
+    background-repeat: repeat-x;
+    background-color: #A92756;
+    border: Solid 1px #B9426D;
+	padding: 3px 6px 4px 6px;
+}
+.dxnbGroupHeader_RedWineNavigation
+{
+    font: 11px Tahoma;
+	color: White;
+
+	background-color: #D45582;
+	font-weight: bold;
+
+	background-image: url('nbHeaderGroup.gif');
+    background-repeat: repeat-x;	
+	
+	border: Solid 1px #8A0A37;
+	
+	padding: 3px 6px 3px 6px;
+}
+.dxnbGroupHeader_RedWineNavigation table
+{
+    font: 11px Tahoma;
+	color: White;
+	font-weight: bold;
+}
+.dxnbGroupHeader_RedWineNavigation table td
+{
+	white-space: nowrap;
+	font-weight: bold;
+}
+.dxnbGroupContent_RedWineNavigation
+{
+    font: 11px Tahoma;
+	background-color: #B73966;
+	background-image: url('nbGroupContentBackground.gif');
+	background-repeat: repeat-x;
+	border: 0px;
+	border-bottom: Solid 1px #C8678A;
+	
+	padding: 7px 0px 7px 0px;
+}
+.dxnbItem_RedWineNavigation
+{
+    font: 11px Tahoma;
+
+    border: 0px;
+    padding: 1px 30px 3px;
+}
+.dxnbItemSelected_RedWineNavigation
+{
+    color: #F0D8E1;
+    font-weight: bold;
+	background-image: url('nbBullet.gif');
+	background-repeat: no-repeat;
+	background-position: 15px 4px;
+    padding: 1px 30px 3px 29px;
+}
+.dxnbItemHover_RedWineNavigation
+{
+	background-color: #C64B78;
+}

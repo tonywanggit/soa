@@ -1,0 +1,18 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxe:ASPxComboBox runat="server" ImageFolder="~/App_Themes/Red Wine/{0}/" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine" LoadingPanelText="" ShowShadow="False">
+<DropDownButton>
+    <Image Width="7px" Height="5px" Url="~/App_Themes/Red Wine/Editors/edtDropDown.png" UrlHottracked="~/App_Themes/Red Wine/Editors/edtDropDownHottracked.png" UrlDisabled="~/App_Themes/Red Wine/Editors/edtDropDownDisabled.png" />
+</DropDownButton>
+<ValidationSettings>
+<ErrorFrameStyle ImageSpacing="4px">
+<ErrorTextPaddings PaddingLeft="4px"></ErrorTextPaddings>
+</ErrorFrameStyle>
+<ErrorImage Url="~/App_Themes/Red Wine/Editors/edtError.png" Height="14px" Width="14px"></ErrorImage>
+</ValidationSettings>
+<ButtonEditEllipsisImage Width="12px" Height="3px"
+    Url="~/App_Themes/Red Wine/Editors/edtEllipsis.png"
+    UrlHottracked="~/App_Themes/Red Wine/Editors/edtEllipsisHottracked.png"
+    UrlDisabled="~/App_Themes/Red Wine/Editors/edtEllipsisDisabled.png">
+</ButtonEditEllipsisImage>
+</dxe:ASPxComboBox>

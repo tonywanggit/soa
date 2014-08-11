@@ -1,0 +1,9 @@
+﻿@import url('Default.css'); /* UTILITIES */
+
+body {
+    background-color: #E1E6AC!important;
+
+    background-image: url('../App_Themes/Youthful/Demo/Gradient.jpg')!important; 
+    background-position: left top; 
+    background-repeat: no-repeat!important;
+}

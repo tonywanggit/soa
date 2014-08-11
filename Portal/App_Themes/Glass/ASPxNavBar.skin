@@ -1,0 +1,9 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxnb" Namespace="DevExpress.Web.ASPxNavBar" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxnb:ASPxNavBar runat="server" CssPostfix="Glass" CssFilePath="~/App_Themes/Glass/{0}/styles.css" GroupSpacing="0px" ImageFolder="~/App_Themes/Glass/{0}/">
+<GroupContentStyle>
+    <Paddings PaddingLeft="1px" PaddingRight="1px" PaddingBottom="2px" PaddingTop="2px" />
+</GroupContentStyle>
+<CollapseImage Height="16px" Width="16px"></CollapseImage>
+<ExpandImage Height="16px" Width="16px"></ExpandImage>
+</dxnb:ASPxNavBar>

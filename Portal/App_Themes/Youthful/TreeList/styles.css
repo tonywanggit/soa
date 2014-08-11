@@ -1,0 +1,251 @@
+.dxtlControl_Youthful
+{
+	cursor: default;
+	font: 9pt Tahoma;
+	color: black;
+	border: none 1px #b8d46d;
+}
+.dxtlControl_Youthful caption
+{	
+    background: #AFC185;    
+	color: white;    
+    border-left: solid 1px white;
+	font-size: 15px;	
+    text-align: center;	
+    padding: 3px;
+}
+
+/* Indent cells */
+.dxtlIndent_Youthful, .dxtlIndentWithButton_Youthful
+{			
+	background: white;
+	vertical-align: top;
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+.dxtlIndent_Youthful
+{
+	padding: 0 11px;
+}
+.dxtlIndentWithButton_Youthful
+{
+	padding: 7px;
+}
+.dxtlSelectionCell_Youthful
+{
+	padding: 0 2px;
+	border: solid 1px #d3e4a6;
+}
+
+/* Tree-lines cells */
+.dxtlLineFirst_Youthful
+{
+	background-image: url(CssImages/TreeLineFirst.gif);
+}
+.dxtlLineMiddle_Youthful
+{
+	background-image: url(CssImages/TreeLineMiddle.gif);
+}
+.dxtlLineLast_Youthful
+{
+	background-image: url(CssImages/TreeLineLast.gif);
+}
+.dxtlLineRoot_Youthful
+{
+	background-image: url(CssImages/TreeLineRoot.gif);
+	background-repeat: repeat-y;
+}
+
+/* Headers */
+.dxtlHeader_Youthful 
+{
+	background: #9cc525;	
+	border: solid 1px white;
+	border-right-style: none;
+	padding: 4px 4px 5px;
+	font-weight: normal;		
+}
+.dxtlHeader_Youthful table.dxtl 
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+.dxtlHeader_Youthful td.dxtl
+{
+	padding: 0;
+}
+.dxtlHeader_Youthful, .dxtlHeader_Youthful td.dxtl 
+{	
+    color: white;
+	font: 9pt Tahoma;
+	white-space: nowrap;
+	text-align: left;
+}
+
+/* Nodes */
+.dxtlNode_Youthful
+{
+	background: white;	
+}
+.dxtlAltNode_Youthful
+{
+	background: #EEF4E0;	
+}
+.dxtlSelectedNode_Youthful
+{
+	background: #F4BD17;
+	color: white;
+}
+.dxtlFocusedNode_Youthful
+{
+	background: #F4921B;
+    color: white;
+}
+.dxtlInlineEditNode_Youthful
+{
+	background: #D3E4A6;
+}
+.dxtlEditFormDisplayNode_Youthful 
+{
+	background: #E5EECF;
+}
+.dxtlNode_Youthful td.dxtl, 
+.dxtlAltNode_Youthful  td.dxtl, 
+.dxtlSelectedNode_Youthful td.dxtl, 
+.dxtlFocusedNode_Youthful td.dxtl,
+.dxtlEditFormDisplayNode_Youthful td.dxtl,
+.dxtlCommandCell_Youthful
+{
+	padding: 4px 4px 5px;
+	border: solid 1px #d3e4a6;
+	white-space: nowrap;
+	font-size: 9pt;
+    font-family: Tahoma;
+}
+.dxtlInlineEditNode_Youthful td.dxtl
+{
+	border: solid 1px #d3e4a6;
+	padding: 1px;
+}
+
+/* Preview */
+.dxtlPreview_Youthful
+{
+	background: #E5EECF;
+	color: #899766;
+	padding: 15px 15px 20px;
+	border: solid 1px #d3e4a6;
+	font: 9pt Tahoma;	
+}
+
+/* Footers */
+.dxtlGroupFooter_Youthful
+{
+	background-color: #d6e4b1;	
+}
+.dxtlFooter_Youthful
+{
+	background-color: #C2D491;	
+}
+.dxtlGroupFooter_Youthful td.dxtl,
+.dxtlFooter_Youthful td.dxtl
+{
+	padding: 5px 4px 6px;
+	white-space: nowrap;
+	text-align: left;
+	border: solid 1px #d3e4a6;
+	border-top-color: White;
+	border-bottom-color: White;
+	font: 9pt Tahoma;
+}
+
+/* Pagers */
+.dxtlPagerTopPanel_Youthful 
+{
+	border-bottom: none 1px #b8d46d;
+	background: #e5eecf;
+}
+.dxtlPagerBottomPanel_Youthful 
+{	
+	border-top: none 1px #b8d46d;
+	background: #e5eecf;
+}
+
+/* Editing */
+.dxtlEditForm_Youthful 
+{
+	background: white;
+	border: solid 1px #d3e4a6;
+	padding: 8px 10px 10px;
+}
+.dxtlEditFormCaption_Youthful,
+.dxtlEditFormEditCell_Youthful
+{
+	padding: 4px;
+}
+.dxtlEditFormCaption_Youthful
+{
+	padding-left: 10px;
+	white-space: nowrap;
+}
+.dxtlError_Youthful
+{
+	background: #FFC8C8;
+	color: #FF0000;
+	padding: 6px 10px;
+	border: solid 1px #cfcfcf;
+	font: 9pt Tahoma;		
+}
+
+/* Links */
+.dxtlControl_Youthful a,
+.dxtlCommandCell_Youthful a 
+{
+	color: #7A9F0E;
+}
+.dxtlControl_Youthful a:hover 
+{
+	color:  #F4921B;
+}
+.dxtlHeader_Youthful a,
+.dxtlHeader_Youthful a:hover,
+.dxtlFocusedNode_Youthful a,
+.dxtlFocusedNode_Youthful a:hover,
+.dxtlSelectedNode_Youthful a, 
+.dxtlSelectedNode_Youthful a:hover 
+{
+	color: White;
+}
+.dxtlCommandCell_Youthful a
+{
+    margin-right: 3px;
+}
+
+/* Loading panel */
+.dxtlLoadingPanel_Youthful
+{
+	border: Solid 1px #9CC525;
+	background-color: White;
+	font: 9pt Tahoma;
+	color: Black;
+}
+.dxtlLoadingPanel_Youthful td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxtlLoadingDiv_Youthful
+{
+	background: white;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+/* Disabled */
+.dxtlDisabled_Youthful,
+.dxtlDisabled_Youthful .dxtl_Youthful
+{
+	color: #808080;
+	cursor: default;
+}

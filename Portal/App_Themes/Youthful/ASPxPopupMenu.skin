@@ -1,0 +1,22 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxm:ASPxPopupMenu runat="server" BackColor="#E5EECF" GutterColor="#E5EECF" ImageFolder="~/App_Themes/Youthful/{0}/" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" GutterWidth="0px" CssPostfix="Youthful" ItemSpacing="1px" SeparatorColor="White" SeparatorHeight="1px" ShowSubMenuShadow="False">
+    <SubMenuStyle BackColor="#E5EECF" GutterColor="#E5EECF" GutterWidth="0px" SeparatorColor="White"></SubMenuStyle>
+    <RootItemSubMenuOffset FirstItemX="1" FirstItemY="-1" LastItemX="1" LastItemY="-1" X="1" Y="-1" />
+    <ItemSubMenuOffset FirstItemX="1" FirstItemY="-1" LastItemX="1" LastItemY="-1" X="1" Y="-1" />
+    <SeparatorBackgroundImage ImageUrl="~/App_Themes/Youthful/Web/mSeparator.gif" />
+    <VerticalPopOutImage Height="7px" Width="5px" />
+    <HorizontalPopOutImage Height="3px" Width="5px" />
+    <SubMenuItemStyle ImageSpacing="5px">
+        <HoverStyle BackColor="#F8FCF1">
+        </HoverStyle>
+        <SelectedStyle BackColor="#DCE6C3">
+        </SelectedStyle>
+    </SubMenuItemStyle>
+    <ItemStyle ImageSpacing="5px">
+        <HoverStyle BackColor="#F8FCF1">
+        </HoverStyle>
+        <SelectedStyle BackColor="#DCE6C3">
+        </SelectedStyle>
+    </ItemStyle>
+</dxm:ASPxPopupMenu>

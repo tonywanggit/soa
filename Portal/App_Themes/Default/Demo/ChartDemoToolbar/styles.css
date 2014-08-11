@@ -1,0 +1,94 @@
+﻿/* -- ASPxMenu -- */
+.dxmControl_DefaultChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: black;
+}
+.dxmControl_DefaultChartDemoToolbar a, .dxmMenu_DefaultChartDemoToolbar a
+{
+	color: black;
+	text-decoration: none;
+}
+.dxmMenu_DefaultChartDemoToolbar
+{
+    font: 9pt Tahoma;
+    color: black;
+    background-color: #F0F0F0;
+	border: solid 1px #A8A8A8;
+    padding: 2px 0px 2px 0px;
+}
+.dxmMenuGutter_DefaultChartDemoToolbar
+{
+}
+.dxmMenuSeparator_DefaultChartDemoToolbar
+{
+	background-color: #A8A8A8;
+}
+.dxmMenuItem_DefaultChartDemoToolbar, .dxmMenuItemWithImage_DefaultChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: black;
+	white-space: nowrap;
+}
+.dxmMenuItem_DefaultChartDemoToolbar
+{
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+}
+.dxmMenuItemWithImage_DefaultChartDemoToolbar
+{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.dxmMenuItemSelected_DefaultChartDemoToolbar, .dxmMenuItemSelectedWithImage_DefaultChartDemoToolbar
+{
+	background-color: white;
+	border: solid 1px #888888;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+}
+.dxmMenuItemSelectedWithImage_DefaultChartDemoToolbar
+{
+    padding-right: 4px;
+    padding-left: 4px;
+
+}
+.dxmMenuItemChecked_DefaultChartDemoToolbar, .dxmMenuItemCheckedWithImage_DefaultChartDemoToolbar
+{
+	background-color: white;
+	border: solid 1px #888888;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+}
+.dxmMenuItemCheckedWithImage_DefaultChartDemoToolbar
+{
+    padding-right: 4px;
+    padding-left: 4px;
+}
+.dxmMenuItemHover_DefaultChartDemoToolbar, .dxmMenuItemHoverWithImage_DefaultChartDemoToolbar
+{
+	background-color: #CBCBCB;
+	border: solid 1px #888888;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+}
+.dxmMenuItemHoverWithImage_DefaultChartDemoToolbar
+{
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+/* Disabled */
+.dxmDisabled_DefaultChartDemoToolbar
+{
+	color: #808080;
+	cursor: default;
+}

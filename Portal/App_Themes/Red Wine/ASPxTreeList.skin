@@ -1,0 +1,32 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwtl" Namespace="DevExpress.Web.ASPxTreeList" Assembly="DevExpress.Web.ASPxTreeList.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxwtl:ASPxTreeList runat="server">
+    <Styles CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" CssPostfix="RedWine">
+		<CustomizationWindowContent VerticalAlign="Top" />
+    </Styles>
+    <Images ImageFolder="~/App_Themes/Red Wine/{0}/">
+        <ExpandedButton Url="~/App_Themes/Red Wine/TreeList/ExpandedButton.png" Width="15px" Height="15px" />
+        <CollapsedButton Url="~/App_Themes/Red Wine/TreeList/CollapsedButton.png" Width="15px" Height="15px" />
+        <SortAscending Url="~/App_Themes/Red Wine/TreeList/SortAsc.png" Width="11px" Height="13px" />
+        <SortDescending Url="~/App_Themes/Red Wine/TreeList/SortDesc.png" Width="11px" Height="13px" />
+        <CustomizationWindowClose Width="19px" Height="19px" />
+    </Images>    
+    <SettingsLoadingPanel Text="" />
+	<SettingsPager CurrentPageNumberFormat="{0}">
+		<AllButton>
+			<Image Height="19px" Width="24px" />
+		</AllButton>
+		<NextPageButton>
+			<Image Height="19px" Width="19px" />
+		</NextPageButton>
+		<PrevPageButton>
+			<Image Height="19px" Width="19px" />
+		</PrevPageButton>
+		<FirstPageButton>
+			<Image Height="19px" Width="23px" />
+		</FirstPageButton>
+		<LastPageButton>
+			<Image Height="19px" Width="23px" />
+		</LastPageButton>
+	</SettingsPager>        
+</dxwtl:ASPxTreeList>

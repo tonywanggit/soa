@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost/EsbException/错误消息服务.asmx?wsdl" docRef="http://localhost/EsbException/错误消息服务.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost/EsbException/%E9%94%99%E8%AF%AF%E6%B6%88%E6%81%AF%E6%9C%8D%E5%8A%A1.asmx" xmlns:q1="http://www.JN.com/esb/Exception/service/20100329" binding="q1:错误消息服务Soap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost/EsbException/%E9%94%99%E8%AF%AF%E6%B6%88%E6%81%AF%E6%9C%8D%E5%8A%A1.asmx" xmlns:q2="http://www.JN.com/esb/Exception/service/20100329" binding="q2:错误消息服务Soap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

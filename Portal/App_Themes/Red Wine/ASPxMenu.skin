@@ -1,0 +1,10 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxm:ASPxMenu runat="server" CssFilePath="~/App_Themes/Red Wine/{0}/styles.css" ItemSpacing="1px" CssPostfix="RedWine" ImageFolder="~/App_Themes/Red Wine/{0}/" AutoSeparators="RootOnly" GutterWidth="16px" GutterImageSpacing="7px">
+    <SubMenuStyle GutterWidth="0px" />
+    <SubMenuItemStyle ImageSpacing="4px" Width="197px" />
+    <RootItemSubMenuOffset FirstItemY="2" LastItemY="2" Y="2" />
+    <ItemSubMenuOffset FirstItemX="2" FirstItemY="-2" LastItemX="2" LastItemY="-2" X="2" Y="-2" />
+    <VerticalPopOutImage Height="11px" Width="11px" />
+    <HorizontalPopOutImage Height="11px" Width="11px" />
+</dxm:ASPxMenu>

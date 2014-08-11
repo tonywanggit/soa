@@ -1,0 +1,363 @@
+.dxpgControl_Glass
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: solid 1px #7EACB1;
+}
+.dxpgContainerCell_Glass
+{
+	vertical-align: top;
+}
+.dxpgMainTable_Glass
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: 0px;
+	border-collapse: separate;
+	width: 100%;
+}
+.dxpgMainTable_Glass caption
+{	
+	background: white;
+    border-bottom: solid 1px #7EACB1;
+    padding: 3px 3px 4px;
+	font-weight: bold;	
+	text-align: center;	    
+}    
+.dxpgHeader_Glass
+{
+	border-width: 0px;
+	color: Black;
+	background-color: #DADFE0;
+	cursor: pointer;
+	white-space: nowrap;
+	font-weight: bold;
+}
+.dxpgHeaderTable_Glass
+{
+	border-width: 1px;
+	width: 100%;
+}
+.dxpgHeaderGroupButton_Glass
+{
+	padding-left: 4px;
+	vertical-align: middle;
+}
+.dxpgHeaderText_Glass
+{
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+.dxpgHeaderSort_Glass
+{
+	padding-left: 0px;
+	padding-right: 4px;
+	padding-top: 0px;
+	vertical-align: middle;
+}
+.dxpgHeaderFilter_Glass
+{
+	padding-left: 0px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	vertical-align: middle;	
+}
+.dxpgHeaderHover_Glass
+{
+	background-color: #f1f1f1;
+	border-color: #58a9b4;
+}
+.dxpgArea_Glass, .dxpgArea_Glass table
+{
+	color: Black;
+	font: 9pt Tahoma;
+	font-weight: bold;
+}
+.dxpgArea_Glass
+{
+	border: solid 1px #7EACB1;
+	background-color: #EDF3F4;
+	border-left-style: none;
+	border-top-style: none;
+	border-bottom-style: none;
+	border-right-style: none;
+}
+.dxpgColumnArea_Glass
+{
+	border-bottom-style: solid;
+}
+.dxpgRowArea_Glass
+{
+}
+.dxpgDataArea_Glass
+{
+}
+.dxpgFilterArea_Glass
+{
+	background-color: #DAE8EB;
+	color: Black;
+	border-bottom-style: solid;
+	font-weight: bold;
+}
+.dxpgEmptyArea_Glass
+{
+	cursor: default;
+	padding-top: 6px;
+	padding-left: 6px;
+	padding-bottom: 7px;
+	padding-right: 6px;
+}
+.dxpgColumnFieldValue_Glass
+{
+	background-color: #DFEAEC;
+	border: solid 1px #7EACB1;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+	padding: 4px 6px;
+    font-weight: normal;
+    text-align: left;    
+}
+.dxpgColumnTotalFieldValue_Glass
+{
+	background-color: #C7DEDF;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+}
+.dxpgColumnGrandTotalFieldValue_Glass
+{
+	background-color: #9AC4C8;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+}
+.dxpgRowFieldValue_Glass
+{
+	background-color: #DFEAEC;
+	border: solid 1px #7EACB1;
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+	padding: 3px 6px 4px 6px;
+    font-weight: normal;
+    text-align: left;    
+}
+.dxpgRowTotalFieldValue_Glass
+{
+	background-color: #C7DEDF;
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+}
+.dxpgRowGrandTotalFieldValue_Glass
+{
+	background-color: #9AC4C8;
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+	padding: 5px 6px 6px 6px;
+}
+.dxpgCollapsedButton_Glass
+{
+	vertical-align: -1px;
+	margin-right: 5px;
+}
+.dxpgSortByColumnImage_Glass
+{
+	vertical-align: 0px;
+	border: 0px;
+	margin-left: 5px;
+}
+.dxpgCell_Glass
+{
+	text-align: right;
+	background-color: #FFFFFF;	
+	border-color: #C2D8DA;
+	border-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-bottom-style: none;
+	border-right-style: none;
+	padding: 4px;
+    padding-top:3px;
+    white-space: nowrap;
+}
+.dxpgKPICell_Glass
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.dxpgTotalCell_Glass
+{
+	background-color: #EDF3F4;
+}
+.dxpgGrandTotalCell_Glass
+{
+	background-color: #D8E6E8;
+}
+.dxpgRowGrandTotalCell_Glass
+{
+	background-color: #e2e2e2;
+}
+.dxpgColumnGrandTotalCell_Glass
+{
+	background-color: #e2e2e2;
+}
+.dxpgFilterWindow_Glass
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: solid 1px #7EACB1;
+}
+.dxpgFilterItemsArea_Glass
+{
+	color: Black;
+	background-color: White;
+}
+.dxpgFilterItem_Glass
+{
+	font: 9pt Tahoma;
+}
+.dxpgFilterButton_Glass
+{
+	font: 9pt Tahoma;
+	padding: 2px 6px;
+}
+.dxpgFilterButtonPanel_Glass
+{
+	font: 9pt Tahoma;
+	background-color: #D3E6F3;
+ 	border: none;
+	border-top: 1px solid #C2D8DA;
+	color: Black;
+}
+.dxpgTopPager_Glass
+{
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: solid 1px #7EACB1;
+	background-color: #F4FAFB;
+}
+.dxpgBottomPager_Glass
+{
+	border-top: solid 1px #7EACB1;
+	border-bottom: none;
+	border-right: none;
+	border-left: none;
+	background-color: #F4FAFB;
+}
+.dxpgCustomizationFieldsHeader_Glass
+{
+	color: Black;
+	font: 9pt Tahoma !important;
+}
+.dxpgCustomizationFieldsContent_Glass
+{
+	padding: 0px !important;
+}
+.dxpgMenuItem_Glass
+{
+	font: 9pt Tahoma !important;	
+}
+.dxpgControl_Glass .dxpgBottomPager_Glass
+{
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background-color:#EEF2F5;
+}
+.dxpgControl_Glass .dxpgTopPager_Glass
+{
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background-color:#EEF2F5;    
+}
+.dxpgLoadingPanel_Glass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+	text-align: center;			
+	cursor: wait;	
+	border:solid 1px #7EACB1;
+	background-color: White;
+}
+.dxpgLoadingPanel_Glass td
+{
+	padding: 12px;
+}
+.dxpgLoadingDiv_Glass
+{
+	background-color:Gray;	
+	opacity: 0.01;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=1);
+}
+.dxpgDataHeadersImage_Glass
+{
+	margin-right: 5px;
+	vertical-align: -2px;
+}
+
+.dxpgPrefilterPanelContainer_Glass
+{
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+.dxpgPrefilterPanelLink_Glass
+{
+	color: #2a769d;
+	text-decoration: underline;
+}
+.dxpgPrefilterPanel_Glass
+{
+	border: none;
+	background: #d8e4e8;
+}
+.dxpgPrefilterPanelCheckBoxCell_Glass
+{
+	padding: 0 3px;
+	padding-right: 7px;
+}
+.dxpgPrefilterPanelImageCell_Glass
+{
+	padding: 0 3px;
+	padding-right: 1px;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxpgPrefilterPanelClearButtonCell_Glass
+{
+	font-size: 9pt;
+	padding: 5px 6px 8px;
+}
+.dxpgPrefilterPanelExpressionCell_Glass
+{
+	font-size: 9pt;
+	padding: 5px 5px 8px 0;	
+	white-space: nowrap;
+}
+.dxpgFilterBuilderMainArea_Glass
+{
+	background: white;
+	padding: 6px 2px;
+} 
+.dxpgFilterBuilderButtonArea_Glass
+{
+	border-top: solid 1px #c4d3de;
+	background: #D3E6F3;	
+	padding: 6px;
+}
+.dxpgGroupSeparator_Glass
+{
+	vertical-align: middle;
+}

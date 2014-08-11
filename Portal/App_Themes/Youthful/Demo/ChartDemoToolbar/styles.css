@@ -1,0 +1,97 @@
+﻿/* -- ASPxMenu -- */
+.dxmControl_YouthfulChartDemoToolbar {
+    color: Black;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+}
+.dxmControl_YouthfulChartDemoToolbar a, .dxmMenu_YouthfulChartDemoToolbar a{
+    color: Black;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+	text-decoration: none;
+}
+.dxmMenu_YouthfulChartDemoToolbar {
+    color: Black;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+	border: Solid 1px #D3E4A6;
+	background-color: #D3E4A6;
+	padding: 2px;
+}
+.dxmMenuGutter_YouthfulChartDemoToolbar {
+}
+.dxmMenuSeparator_YouthfulChartDemoToolbar {
+	background-color: White;
+}
+.dxmMenuItem_YouthfulChartDemoToolbar, .dxmMenuItemWithImage_YouthfulChartDemoToolbar {
+    color: Black;
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+	white-space: nowrap;
+	background-color: #D3E4A6;
+	border: 0px;	
+}
+.dxmMenuItem_YouthfulChartDemoToolbar, .dxmMenuItemWithImage_YouthfulChartDemoToolbar {	
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+}
+.dxmMenuItemWithImage_YouthfulChartDemoToolbar 
+{
+	padding-right: 6px;
+	padding-left: 6px;
+}
+.dxmMenuItemSelected_YouthfulChartDemoToolbar, .dxmMenuItemSelectedWithImage_YouthfulChartDemoToolbar {	
+	background-color: #D3E4A6;
+	border: 0px;
+}
+.dxmMenuItemSelected_YouthfulChartDemoToolbar, .dxmMenuItemSelectedWithImage_YouthfulChartDemoToolbar {
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+}
+.dxmMenuItemSelectedWithImage_YouthfulChartDemoToolbar 
+{
+	padding-right: 6px;
+	padding-left: 6px;
+}
+.dxmMenuItemChecked_YouthfulChartDemoToolbar, .dxmMenuItemCheckedWithImage_YouthfulChartDemoToolbar {
+	background-color: #D3E4A6;
+	border: 0px;
+}
+.dxmMenuItemChecked_YouthfulChartDemoToolbar, .dxmMenuItemCheckedWithImage_YouthfulChartDemoToolbar {
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+}
+.dxmMenuItemCheckedWithImage_YouthfulChartDemoToolbar 
+{
+	padding-right: 6px;
+	padding-left: 6px;
+}
+
+.dxmMenuItemHover_YouthfulChartDemoToolbar, .dxmMenuItemHoverWithImage_YouthfulChartDemoToolbar {
+	background-color: #F4BD17;
+	border: 0px;
+}
+.dxmMenuItemHover_YouthfulChartDemoToolbar, .dxmMenuItemHoverWithImage_YouthfulChartDemoToolbar {
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+}
+.dxmMenuItemHoverWithImage_YouthfulChartDemoToolbar 
+{
+	padding-right: 6px;
+	padding-left: 6px;
+}
+
+/* Disabled */
+.dxmDisabled_YouthfulChartDemoToolbar
+{
+	color: #808080;
+	cursor: default;
+}

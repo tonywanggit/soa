@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.jn.com/ESB/Audit" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.jn.com/ESB/Audit" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.jn.com/ESB/Audit">
+      <s:element name="GetCallNumAnalyseData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCallNumAnalyseDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCallNumAnalyseDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCallNumAnalyseDataByService">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCallNumAnalyseDataByServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCallNumAnalyseDataByServiceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResTimeAnalyseData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetResTimeAnalyseDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResTimeAnalyseDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExceptionAnalyseData">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetExceptionAnalyseDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExceptionAnalyseDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCallNumAnalyseDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCallNumAnalyseData" />
+  </wsdl:message>
+  <wsdl:message name="GetCallNumAnalyseDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCallNumAnalyseDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCallNumAnalyseDataByServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCallNumAnalyseDataByService" />
+  </wsdl:message>
+  <wsdl:message name="GetCallNumAnalyseDataByServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCallNumAnalyseDataByServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResTimeAnalyseDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetResTimeAnalyseData" />
+  </wsdl:message>
+  <wsdl:message name="GetResTimeAnalyseDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetResTimeAnalyseDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetExceptionAnalyseDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExceptionAnalyseData" />
+  </wsdl:message>
+  <wsdl:message name="GetExceptionAnalyseDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExceptionAnalyseDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AuditAnalyseServiceSoap">
+    <wsdl:operation name="GetCallNumAnalyseData">
+      <wsdl:input message="tns:GetCallNumAnalyseDataSoapIn" />
+      <wsdl:output message="tns:GetCallNumAnalyseDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallNumAnalyseDataByService">
+      <wsdl:input message="tns:GetCallNumAnalyseDataByServiceSoapIn" />
+      <wsdl:output message="tns:GetCallNumAnalyseDataByServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResTimeAnalyseData">
+      <wsdl:input message="tns:GetResTimeAnalyseDataSoapIn" />
+      <wsdl:output message="tns:GetResTimeAnalyseDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExceptionAnalyseData">
+      <wsdl:input message="tns:GetExceptionAnalyseDataSoapIn" />
+      <wsdl:output message="tns:GetExceptionAnalyseDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuditAnalyseServiceSoap" type="tns:AuditAnalyseServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCallNumAnalyseData">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/GetCallNumAnalyseData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallNumAnalyseDataByService">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/GetCallNumAnalyseDataByService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResTimeAnalyseData">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/GetResTimeAnalyseData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExceptionAnalyseData">
+      <soap:operation soapAction="http://www.jn.com/ESB/Audit/GetExceptionAnalyseData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuditAnalyseServiceSoap12" type="tns:AuditAnalyseServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCallNumAnalyseData">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/GetCallNumAnalyseData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallNumAnalyseDataByService">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/GetCallNumAnalyseDataByService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResTimeAnalyseData">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/GetResTimeAnalyseData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExceptionAnalyseData">
+      <soap12:operation soapAction="http://www.jn.com/ESB/Audit/GetExceptionAnalyseData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuditAnalyseService">
+    <wsdl:port name="AuditAnalyseServiceSoap" binding="tns:AuditAnalyseServiceSoap">
+      <soap:address location="http://localhost/EsbAudit/AuditAnalyseService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuditAnalyseServiceSoap12" binding="tns:AuditAnalyseServiceSoap12">
+      <soap12:address location="http://localhost/EsbAudit/AuditAnalyseService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,232 @@
+.dxtlControl_Glass
+{
+	cursor: default;
+	font: 9pt Tahoma;
+    color: black;
+    border: none 1px #7EACB1;
+}
+.dxtlControl_Glass caption
+{
+	border: solid 1px #7EACB1;
+    border-bottom: 0;
+	background: white;
+	font-weight:bold;
+	padding:3px;
+	text-align:center;	    
+}
+
+/* Indent cells */
+.dxtlIndent_Glass, .dxtlIndentWithButton_Glass
+{			
+	background: white;
+	vertical-align: top;
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+.dxtlIndent_Glass
+{
+	padding: 0 11px;
+}
+.dxtlIndentWithButton_Glass
+{
+	padding: 5px 6px;
+}
+.dxtlSelectionCell_Glass
+{
+	padding: 0 2px;
+	border: solid 1px #C2D4DA;
+}
+
+/* Tree-lines cells */
+.dxtlLineFirst_Glass
+{
+	background-image: url(CssImages/TreeLineFirst.gif);	
+}
+.dxtlLineMiddle_Glass
+{
+	background-image: url(CssImages/TreeLineMiddle.gif);
+}
+.dxtlLineLast_Glass
+{
+	background-image: url(CssImages/TreeLineLast.gif);
+}
+.dxtlLineRoot_Glass
+{
+	background-image: url(CssImages/TreeLineRoot.gif);
+	background-repeat: repeat-y;
+}
+
+/* Headers */
+.dxtlHeader_Glass 
+{
+    background: url(CssImages/HeaderBack.gif) repeat-x #C0DDE0;	
+	border: solid 1px #7EACB1;
+	padding: 4px 6px 5px;
+	font-weight: normal;		
+}
+.dxtlHeader_Glass table.dxtl 
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+.dxtlHeader_Glass td.dxtl
+{
+	padding: 0;
+}
+.dxtlHeader_Glass, .dxtlHeader_Glass td.dxtl 
+{	
+	font: 9pt Tahoma;
+	white-space: nowrap;
+	text-align: left;
+}
+
+/* Nodes */
+.dxtlNode_Glass
+{
+	background: white;	
+}
+.dxtlAltNode_Glass
+{
+	background: #F3F8F7;	
+}
+.dxtlSelectedNode_Glass
+{
+	background: #d8ecf0;	
+}
+.dxtlFocusedNode_Glass
+{
+	background: #c0e0e7;    
+}
+.dxtlInlineEditNode_Glass
+{
+	background: white;
+}
+.dxtlEditFormDisplayNode_Glass
+{
+	background: #EDF3F4;
+}
+.dxtlNode_Glass td.dxtl, 
+.dxtlAltNode_Glass  td.dxtl, 
+.dxtlSelectedNode_Glass td.dxtl, 
+.dxtlFocusedNode_Glass td.dxtl,
+.dxtlEditFormDisplayNode_Glass td.dxtl,
+.dxtlCommandCell_Glass
+{
+	padding: 3px 6px 4px;
+	border: solid 1px #C2D4DA;
+	white-space: nowrap;
+	font-size: 9pt;
+    font-family: Tahoma;
+}
+.dxtlInlineEditNode_Glass td.dxtl
+{
+	border: solid 1px #C2D4DA;
+	padding: 1px;
+}
+
+/* Preview */
+.dxtlPreview_Glass
+{
+	background: #ECF2F3;	
+	padding: 14px;
+	border: solid 1px #C2D4DA;
+	font: 9pt Tahoma;	
+}
+
+/* Footers */
+.dxtlGroupFooter_Glass
+{
+	background-color: #DAEDF0;	
+}
+.dxtlFooter_Glass
+{
+	background-color: #e9f8fa;	
+}
+.dxtlGroupFooter_Glass td.dxtl,
+.dxtlFooter_Glass td.dxtl
+{
+	padding: 5px 6px 6px;
+	white-space: nowrap;
+	text-align: left;
+	border: solid 1px #C2D4DA;
+	font: 9pt Tahoma;
+}
+
+/* Pagers */
+.dxtlPagerTopPanel_Glass
+{
+	border-bottom: none 1px #7EACB1;
+}
+.dxtlPagerBottomPanel_Glass
+{
+	border-top: none 1px #7EACB1;	
+}
+
+/* Editing */
+.dxtlEditForm_Glass
+{
+	background: #EDF3F4;
+	border: solid 1px #C2D4DA;
+	padding: 8px 10px 10px;
+}
+.dxtlEditFormCaption_Glass,
+.dxtlEditFormEditCell_Glass
+{
+	padding: 4px;	
+}
+.dxtlEditFormCaption_Glass
+{
+	padding-left: 10px;
+	white-space: nowrap;
+}
+.dxtlError_Glass
+{
+	background: #FFC8C8;
+	color: #FF0000;
+	padding: 6px 10px;
+	border: solid 1px #cfcfcf;
+	font: 9pt Tahoma;		
+}
+
+/* Links */
+.dxtlControl_Glass a 
+{
+	color: #2a769d;
+}
+.dxtlControl_Glass a:hover 
+{
+	color:  #f15e34;
+}
+.dxtlCommandCell_Glass a 
+{
+    margin-right: 3px;
+}
+
+/* Loading panel */
+.dxtlLoadingPanel_Glass
+{
+	border:solid 1px #7EACB1;
+	background-color: #D4E3E5;
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxtlLoadingPanel_Glass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxtlLoadingDiv_Glass
+{
+	background: white;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+/* Disabled */
+.dxtlDisabled_Glass,
+.dxtlDisabled_Glass .dxtl_Glass
+{
+	color: #808080;
+	cursor: default;
+}

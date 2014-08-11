@@ -1,0 +1,91 @@
+﻿body {
+    background-color: #F8F8F8;
+    color: #171D2D;
+
+    background-image: url('Gradient.jpg'); 
+    background-position: left top; 
+    background-repeat: no-repeat;
+}
+
+.BannerLime a { color: Black; }
+.BannerLime { color: Black; }
+.BannerVersion { color: White; }
+.Copyright { color: #C4C4C4; }
+
+.Features b * { font-weight: normal; color: #171D2D; font-size: 16px; font-family: Tahoma; }
+.RootPage {
+    color: #171D2D; 
+    background-image: url('Main.jpg');
+	background-repeat: no-repeat;
+	background-position: 35px 0px;
+	width: 720px;
+}
+.RootPage a { color: #171D2D; }
+
+/* Label for Appearance combobox */
+.lblSkins { color: #282828; }
+.Title h1.h1Blue { color: #000000; }
+.Slogan { display: none!important; }
+.MainBanner { margin-right: 45px; margin-top: 38px!important; padding-bottom: 25px; }
+.MiniSlogan { color: #7e7e7e!important; }
+.ContentMargin { margin-left: 0px!important; }
+.HeaderPanel { padding-bottom: 50px!important; }
+
+/* Icon menu */
+.dxmMenu_Demo
+{
+	color: #282828;
+}
+.dxmMenuSeparator_Demo
+{
+    width: 1px!important;
+    height: 15px!important;
+	background-color: #000000;
+}
+.dxmMenu_Demo a
+{
+	color: #282828;
+	text-decoration: underline;
+}
+/* Header for TitleImage Area*/
+.DetailsPageHeader {
+    background-color: #D7D7D7;
+    background-image: url('CaptionHeader.gif');
+    background-position: left top;
+    background-repeat: repeat-x;
+    padding-top: 0px;
+    padding-left: 10px;
+    width: 100%;
+}
+.DetailsPageHeaderBottom {
+    height: 0px; 
+    background-color: #D7D7D7;
+    border: Solid 1px #A1A1A1;
+    border-top-width: 0px;
+}
+.DetailsPageLeftEdgeHeader { display: none; }
+.DetailsPageRightEdgeHeader { display: none; }
+.DetailsPageLeftEdge { display: none; }
+.DetailsPageRightEdge { display: none; }
+.DetailsPageContent {
+    background-color: White;
+    padding: 24px;
+    border-left: Solid 1px #D9D9D9;
+    border-right: Solid 1px #D9D9D9;
+}
+.DetailsPageFooter {
+    width: 100%; 
+    background-color: White;
+    border-bottom: Solid 1px #D9D9D9;
+}
+.DetailsSorceCodeArea {
+    width: 100%; 
+    padding-top: 21px;
+    border-left: Solid 1px #D9D9D9;
+    border-right: Solid 1px #D9D9D9;
+}
+
+.dxgvEditFormCaption
+{
+	white-space:nowrap;
+}

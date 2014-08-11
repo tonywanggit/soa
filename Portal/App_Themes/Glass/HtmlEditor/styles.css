@@ -1,0 +1,474 @@
+/* ----------------- Main ----------------- */
+/* Loading panel */
+.dxheLoadingDiv_Glass
+{
+    background: white;
+    opacity: 0.85;
+    filter: alpha(opacity=85);
+    cursor: wait;
+}
+.dxheLoadingPanel_Glass
+{
+    font: 9pt Tahoma;
+    color: #303030;
+}
+.dxheLoadingPanel_Glass td.dx
+{
+    white-space: nowrap;
+    text-align: center;
+    padding: 12px 12px 12px 12px;
+}
+
+.dxheControl_Glass
+{
+    border: Solid 1px #4986A2;
+}
+
+/* Area */
+.dxheContentArea_Glass
+{
+    padding: 4px;
+	padding-bottom: 6px;
+    background-color: #D3E9F0;
+}
+.dxheViewArea_Glass
+{
+    border: Solid 1px #4986A2;    
+}
+.dxheHtmlViewEdit_Glass, .dxheDesignViewArea_Glass, .dxhePreviewArea_Glass 
+{
+    margin: 0px;
+    background-color: #FFFFFF;
+    background-image: none;
+    text-align: left;
+    font-size: smaller;
+    font: normal 12px Arial;
+}
+td.dxheHtmlViewEdit_Glass, body.dxheDesignViewArea_Glass, body.dxhePreviewArea_Glass
+{
+    padding: 0px;
+    padding-left: 4px;
+    padding-bottom: 0px;
+}
+/* Status Bar */
+.dxheStatusBar_Glass 
+{
+}
+.dxheStatusBarTab_Glass 
+{    
+}
+.dxheStatusBarActiveTab_Glass 
+{
+}
+
+/* ----------------- Dialog Forms ----------------- */
+#insertLinkForm .buttonsCell, #insertImageForm .buttonsCell, #pasteFromWordForm .buttonsCell
+{
+	background-color: #D3E6F3;
+	border-top-style: none;
+	
+	background-image: url('dfFooterBack.gif');
+    background-repeat:repeat-x;
+    background-position:top;	
+
+    padding: 11px;
+}
+#insertLinkForm .captionIndent, #insertImageForm .captionIndent
+{
+	overflow: hidden;
+	height: 5px;
+}
+#insertLinkForm .contentCell, #insertImageForm .contentCell, #pasteFromWordForm .contentCell
+{
+	padding: 11px;
+}
+#insertLinkForm .typeRadionButtonListCell, #insertImageForm .typeRadionButtonListCell
+{
+	padding-bottom: 12px;
+}
+#insertLinkForm .separatorCell, #insertImageForm .separatorCell
+{
+	height: 7px;
+}
+#insertLinkForm .buttons, #insertImageForm .buttons
+{
+    padding-top: 3px;
+}
+#insertLinkForm .cancelButton, #insertImageForm .cancelButton, #pasteFromWordForm .cancelButton
+{
+    padding-left: 10px;
+}
+/* Insert Link Form */
+#insertLinkForm .displayPropertiesCell 
+{
+    font-weight: bold;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+#insertLinkForm .targetCheckBoxCell
+{
+    padding-top:10px;
+}
+#insertLinkForm .captionCell
+{
+    padding-right: 9px;
+    padding-top: 3px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+#insertLinkForm .inputCell
+{
+    vertical-align: middle;
+}
+/* Insert Image Form */
+#insertImageForm .fieldSeparator 
+{
+    height: 9px;
+}
+#insertImageForm .imagePreview
+{
+    padding: 10px 0px;
+    padding-top: 5px;
+}
+#insertImageForm .fromTheWeb
+{
+    width: 100%;
+}
+#insertImageForm .imagePreviewCell
+{
+    color: #878787;
+    border: dashed 1px #cac8c8;
+    text-align:center;
+    width: 100%;
+    height: 170px;
+}
+#insertImageForm .imagePropertiesCell
+{
+    padding-left: 20px;
+    vertical-align:top;
+}
+#insertImageForm .moreOptionsCell
+{
+	padding-top: 11px;
+}
+#insertImageForm .radioButtonTable
+{
+	width: 317px;
+}
+#insertImageForm .saveToServerCheckBoxCell
+{
+    padding-top:0px;
+    padding-bottom: 13px;
+}
+/* Image Properties Form */
+#imagePropertiesForm .captionCell
+{
+    padding-right: 2px;
+}
+#imagePropertiesForm .imageSizeEditorsCell
+{
+    padding-top: 7px;
+    padding-bottom: 10px;
+}
+#imagePropertiesForm .pixelSizeCell
+{
+    padding-left: 7px;
+}
+#imagePropertiesForm .hSeparator
+{
+    width: 25px;
+    overflow: hidden;
+}
+#imagePropertiesForm .thumbnailFileNameArea
+{
+    padding-top: 8px;
+}
+/* IE, FireFox, WebKit*/
+#imagePropertiesForm .ckbWrapTextCell div
+{
+	margin-left: -4px;
+	padding-top: 2px;
+}
+/* Opera hack */
+@media not all and (-webkit-min-device-pixel-ratio) {   
+	#imagePropertiesForm .ckbWrapTextCell div
+	{
+		margin-left: 0px;
+	}
+}
+
+/* PasteFromWord Form */
+#pasteFromWordForm .pasteContainer
+{
+	width: 450px;
+	height: 300px;
+	border: none;
+	background-color: white;
+}
+#pasteFromWordForm .pasteContainerCell
+{
+	padding:0px;
+	padding-top: 10px;
+}
+#pasteFromWordForm .pasteContainerCell td
+{
+	border: Solid 1px #7EACB1;
+}
+#pasteFromWordForm .checkBoxCell
+{
+	padding-top: 10px;
+}
+#pasteFromWordForm .contentCell 
+{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+/*----------------- Toolbars -----------------*/
+.dxtbSpacing_Glass
+{
+	height: 1px;
+}
+.dxtbControl_Glass 
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: #7BA8BD;
+    border-bottom: Solid 1px #4986A2;
+}
+
+.dxtbMenu_Glass
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: #F0F0F0;
+	border-style: none;
+	padding: 0px 0px 0px 0px;
+	
+	background-image: url('tbItemBack.gif');	
+    background-repeat:repeat-x;	
+    background-position:top;					
+}
+.dxtbMenuSeparator_Glass
+{
+    background-color: #C4C5C6;
+}
+.dxtbMenuItem_Glass, .dxtbMenuItemWithImage_Glass, .dxtbMenuItemWithPopOutImage_Glass, .dxtbMenuItemWithImageWithPopOutImage_Glass
+{
+	font: 9pt Tahoma;
+	color: black;
+	white-space: nowrap;
+	
+	background-image: url('tbItemBack.gif');	
+    background-repeat:repeat-x;	
+    background-position:top;					
+}
+.dxtbMenuItem_Glass, .dxtbMenuItemWithImage_Glass
+{
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+	padding-left: 8px;	
+}
+.dxtbMenuItemWithPopOutImage_Glass, .dxtbMenuItemWithImageWithPopOutImage_Glass
+{
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+	padding-left: 8px;
+}	
+.dxtbComboBoxMenuItem_Glass
+{
+    padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+.dxtbMenuItemSelected_Glass, .dxtbMenuItemSelectedWithImage_Glass, .dxtbMenuItemSelectedWithPopOutImage_Glass, .dxtbMenuItemSelectedWithImageWithPopOutImage_Glass
+{
+	background-color: white;
+	color: White;
+	
+	background-image: url('tbItemSBack.gif');
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxtbMenuItemSelected_Glass, .dxtbMenuItemSelectedWithImage_Glass
+{
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+	padding-left: 8px;	
+}
+.dxtbMenuItemSelectedWithPopOutImage_Glass, .dxtbMenuItemSelectedWithImageWithPopOutImage_Glass
+{
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+	padding-left: 8px;
+}
+
+.dxtbMenuItemChecked_Glass, .dxtbMenuItemCheckedWithImage_Glass, .dxtbMenuItemCheckedWithPopOutImage_Glass, .dxtbMenuItemCheckedWithImageWithPopOutImage_Glass
+{
+	background-color: white;
+	color: White;
+	
+	background-image: url('tbItemSBack.gif');
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.dxtbMenuItemChecked_Glass, .dxtbMenuItemCheckedWithImage_Glass
+{
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+	padding-left: 8px;	
+}
+.dxtbMenuItemCheckedWithPopOutImage_Glass, .dxtbMenuItemCheckedWithImageWithPopOutImage_Glass
+{
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+	padding-left: 8px;
+}	
+
+.dxtbMenuItemHover_Glass, .dxtbMenuItemHoverWithImage_Glass, .dxtbMenuItemHoverWithPopOutImage_Glass, .dxtbMenuItemHoverWithImageWithPopOutImage_Glass
+{
+	background-color: #CBCBCB;
+	color: black;
+	
+	background-image: url('tbItemHBack.gif');	
+    background-repeat:repeat-x;	
+    background-position:top;
+}
+.dxtbMenuItemHover_Glass, .dxtbMenuItemHoverWithImage_Glass
+{
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+	padding-left: 8px;		
+}
+.dxtbMenuItemHoverWithPopOutImage_Glass, .dxtbMenuItemHoverWithImageWithPopOutImage_Glass
+{
+	padding-top: 5px;
+	padding-right: 8px;
+	padding-bottom: 6px;
+	padding-left: 8px;		
+}
+
+.dxtbSubMenu_Glass
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: #EDF3F4;
+	border: solid 1px #7EACB1;
+	padding: 2px 2px 2px 2px;
+}
+
+.dxtbSubMenuBorderCorrector_Glass
+{
+    position: absolute;
+    border: 0px;
+    padding: 0px;
+}
+
+/* ToolbarColorButton */
+.dxtcbControl_Glass
+{
+	border-collapse:collapse;
+	border-width: 0px;
+}
+.dxtcbControl_Glass td
+{
+	/*padding: 1px;	*/
+}
+.dxtcbImageCell_Glass, .dxtcbColorCell_Glass
+{
+	height:0px;
+}
+.dxtcbColorDiv_Glass
+{
+	width: 16px;
+	height: 4px;
+	font-size:0pt;
+	background-color: Red;
+}
+/*----------------- ColorPicker -----------------*/
+.dxeColorPicker_Glass 
+{
+    background-color: #edf3f4;
+}
+.dxeColorPicker_Glass td.dx
+{
+    padding: 2px;
+}
+/* TODO ColorPickerCellStyle */
+.dxeColorPicker_Glass table td {
+    padding-left: 3px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-right: 3px;
+    cursor: pointer;
+    cursor: hand;
+}
+/* TODO ColorPickerBoxStyle */
+.dxeColorPicker_Glass table div {
+    border: solid 1px #4986A2;
+    width: 12px;
+    height: 12px;
+    font-size: 0px;
+}
+
+.dxeColorPickerCellSelected_Glass {
+    padding-left: 2px!important;
+    padding-bottom: 2px!important;
+    padding-top: 2px!important;
+    padding-right: 2px!important;
+	
+    border: solid 1px #4986A2;
+    background-color: #B9D9DD;
+}
+.dxeColorPickerCellHover_Glass {
+    padding-left: 2px!important;
+    padding-bottom: 2px!important;
+    padding-top: 2px!important;
+    padding-right: 2px!important;
+	
+    border: solid 1px #4986A2;
+    background-color: #EEF5F7;
+}
+
+/*----------------- RoundPanel -----------------*/
+.dxheRPControl_Glass td.dxheRP
+{
+	font-size: 9pt;
+	font-family: Tahoma, Verdana, Arial;
+	color: #000000;	
+}
+/* Header */
+.dxheRPHeader_Glass, .dxrpHeader_Glass td.dxheRP
+{
+    font-size: 13px;
+    font-weight: bold;
+	font-family: Tahoma, Verdana, Arial;    
+	color: #313131;
+	text-align:left;	
+}
+/* Disabled */
+.dxheRPDisabled_Glass, .dxheRPDisabled_Glass td.dxheRP
+{
+	color: #808080;
+	cursor: default;
+}
+
+/*----------------- UploadControl -----------------*/
+.dxheucControl_Glass, .dxheucEditArea_Glass
+{
+    font: 9pt Tahoma, Verdana, Arial;
+}
+.dxheucErrorCell_Glass
+{
+    padding-left: 4px;
+    font: 10px Tahoma, Verdana, Arial;
+    color: #A91123;
+    text-align: left;
+}

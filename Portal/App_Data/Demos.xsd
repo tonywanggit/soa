@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="Demos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="Demos.xsd" elementFormDefault="qualified" id="Demos">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+      Demos schema.
+      Copyright 2007 DevExpress Inc. All rights reserved.
+    </xs:documentation>
+	</xs:annotation>
+	<xs:element name="Demos" type="Demos" />
+	<xs:complexType name="Demos">
+		<xs:choice minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="DemoGroup" type="DemoGroup" />
+		</xs:choice>
+		<xs:attribute name="Name" type="xs:string" use="required" />
+		<xs:attribute name="ColumnCount" type="xs:int" use="optional" />
+		<xs:attribute name="Title" type="xs:string" use="required" />
+		<xs:attribute name="HighlightedFeaturesPosition" type="xs:int" use="optional" />
+		<xs:attribute name="TitleFormatString" type="xs:string" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="DemoGroup">
+		<xs:choice minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="Demo" type="Demo" />
+		</xs:choice>
+		<xs:attribute name="ImageWidth" type="xs:string" use="optional" />
+		<xs:attribute name="ImageHeight" type="xs:string" use="optional" />
+		<xs:attribute name="Text" type="xs:string" use="required" />
+		<xs:attribute name="Caption" type="xs:string" use="optional" />
+		<xs:attribute name="ImageUrl" type="xs:string" use="optional" />
+		<xs:attribute name="BeginCategory" type="xs:boolean" use="optional" />
+		<xs:attribute name="IsNew" type="xs:boolean" use="optional" />
+		<xs:attribute name="IsUpdated" type="xs:boolean" use="optional" />
+		<xs:attribute name="Visible" type="xs:boolean" use="optional" />
+		<xs:attribute name="Title" type="xs:string" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="Demo">
+		<xs:all>
+			<xs:element name="GeneralTerms" type="GeneralTerms" minOccurs="0" />
+			<xs:element name="Description" type="xs:anyType" />
+			<xs:element name="SourceCodeFiles" type="SourceCodeFiles" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="Section" type="xs:string" use="optional" />
+		<xs:attribute name="Text" type="xs:string" use="required" />
+		<xs:attribute name="NavigateUrl" type="xs:string" use="required" />
+		<xs:attribute name="Caption" type="xs:string" use="optional" />
+		<xs:attribute name="Title" type="xs:string" use="required" />
+		<xs:attribute name="UseFullTitle" type="xs:boolean" use="optional" />
+		<xs:attribute name="IsNew" type="xs:boolean" use="optional" />
+		<xs:attribute name="IsUpdated" type="xs:boolean" use="optional" />
+		<xs:attribute name="HighlightedIndex" type="xs:integer" />
+	</xs:complexType>
+	<xs:complexType name="GeneralTerms" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:any minOccurs="0" processContents="skip" />
+		</xs:choice>
+		<xs:attribute name="ShowHeader" type="xs:boolean" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="SourceCodeFiles">
+		<xs:choice>
+			<xs:element name="File" type="SourceCodeFile" maxOccurs="unbounded" />
+		</xs:choice>
+		<xs:attribute name="PageControlWidth" type="xs:string" use="optional" />
+	</xs:complexType>
+	<xs:complexType name="SourceCodeFile">
+		<xs:attribute name="Name" type="xs:string" use="required" />
+	</xs:complexType>
+</xs:schema>

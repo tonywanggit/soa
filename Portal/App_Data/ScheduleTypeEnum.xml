@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ScheduleTypeEnum>
+  <ScheduleType Text="ESB WebService" Value="EsbWS" />
+  <ScheduleType Text="ESB WCF" Value="EsbWCF" />
+  <ScheduleType Text="标准 WebService" Value="StdWS" />
+  <ScheduleType Text="标准 WCF" Value="StdWCF" />
+  <ScheduleType Text="Window应用程序" Value="WinEXE" />
+</ScheduleTypeEnum>

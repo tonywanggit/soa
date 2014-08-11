@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost/EsbUDDI/注册服务目录服务.asmx?wsdl" docRef="http://localhost/EsbUDDI/注册服务目录服务.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost/EsbUDDI/%E6%B3%A8%E5%86%8C%E6%9C%8D%E5%8A%A1%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1.asmx" xmlns:q1="http://www.jn.com/ESB/UDDI" binding="q1:注册服务目录服务Soap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost/EsbUDDI/%E6%B3%A8%E5%86%8C%E6%9C%8D%E5%8A%A1%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1.asmx" xmlns:q2="http://www.jn.com/ESB/UDDI" binding="q2:注册服务目录服务Soap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

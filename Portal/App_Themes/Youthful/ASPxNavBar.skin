@@ -1,0 +1,25 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxnb" Namespace="DevExpress.Web.ASPxNavBar" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxnb:ASPxNavBar runat="server" CssPostfix="Youthful" CssFilePath="~/App_Themes/Youthful/{0}/styles.css" GroupSpacing="1px" ImageFolder="~/App_Themes/Youthful/{0}/" LoadingPanelImagePosition="Bottom">
+    <GroupContentStyle>
+        <Paddings Padding="0px" PaddingLeft="6px" />
+    </GroupContentStyle>
+    <ItemStyle ImageSpacing="10px" />    
+    <GroupHeaderStyleCollapsed>
+        <BackgroundImage ImageUrl="~/App_Themes/Youthful/Web/nbGroupHeaderCBack.gif" Repeat="RepeatY" />
+    </GroupHeaderStyleCollapsed>
+    <LoadingPanelImage Url="~/App_Themes/Youthful/Web/nbLoading.gif" />
+    <ItemImage Url="~/App_Themes/Youthful/Web/nbItemBullet.gif" />
+    <CollapseImage Url="~/App_Themes/Youthful/Web/nbCollapse.gif" />
+    <ExpandImage Url="~/App_Themes/Youthful/Web/nbExpand.gif" />
+    <GroupHeaderStyle>
+        <HoverStyle>
+            <BackgroundImage ImageUrl="~/App_Themes/Youthful/Web/nbGroupHeaderHBack.gif" Repeat="RepeatY" />
+        </HoverStyle>
+        <BackgroundImage ImageUrl="~/App_Themes/Youthful/Web/nbGroupHeaderBack.gif" Repeat="RepeatY" />
+    </GroupHeaderStyle>
+    <LoadingPanelStyle ImageSpacing="3px" />
+    <GroupContentStyle>
+        <BackgroundImage ImageUrl="~/App_Themes/Youthful/Web/nbGroupBack.gif" Repeat="RepeatY" />
+    </GroupContentStyle>
+</dxnb:ASPxNavBar>

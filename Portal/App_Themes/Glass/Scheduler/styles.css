@@ -1,0 +1,406 @@
+.dxscControl_Glass
+{    
+    background: #4986a2;
+	border: solid 1px #4986a2;
+}
+.dxscLoadingPanel_Glass
+{
+	border:solid 1px #7EACB1;
+	background-color: #fdffff;	
+	font: 8pt Tahoma;
+	color: #303030;
+}
+.dxscLoadingPanel_Glass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxscLoadingDiv_Glass
+{
+    cursor: wait;
+	background-color: Gray;
+	opacity: 0.01;
+	filter:alpha(opacity=1);
+
+}
+
+/* Headers */
+.dxscDateHeader_Glass, 
+.dxscAlternateDateHeader_Glass,
+.dxscDayHeader_Glass,
+.dxscDateCellHeader_Glass,
+.dxscTodayCellHeader_Glass,
+.dxscTimelineDateHeader_Glass,
+.dxscHorizontalResourceHeader_Glass,
+.dxscVerticalResourceHeader_Glass
+{    
+    color: white;
+    background: url(CssImages/HeaderBack.gif) repeat-x left top #5d99b2;
+    border: solid 1px #296e8e;
+    border-width: 0 1px 1px 0;
+    padding: 4px;
+	font: 9pt Tahoma;		
+	text-align: center;
+    vertical-align: top;    
+    cursor: default;
+	overflow: hidden;
+	white-space: nowrap;	
+}
+
+.dxscAlternateTimelineDateHeader_Glass,
+.dxscAlternateDateHeader_Glass
+{    
+    background: url(CssImages/HeaderAltBack.gif) repeat-x left top #8ce2db;
+    color: black;
+}
+.dxscDayHeader_Glass
+{
+	border-width: 1px 1px 0 0;
+}
+.dxscDateCellHeader_Glass
+{
+    border-width: 1px;
+}
+.dxscTodayCellHeader_Glass
+{    
+	border-top-width: 1px;
+	background: url(CssImages/HeaderAltBack.gif) repeat-x left top #8ce2db;
+    color: black;
+}
+.dxscTimelineDateHeader_Glass
+{
+    border-width: 1px 1px 1px 0;
+}
+.dxscHorizontalResourceHeader_Glass
+{
+    border-width: 1px 1px 1px 0;
+    background: url(CssImages/ResHeaderBack.gif) repeat-x #559ab7;    
+}
+.dxscVerticalResourceHeader_Glass
+{
+    border-width: 1px 1px 0 0;
+    background: url(CssImages/ResHeaderBack.gif) repeat-x #559ab7;    
+    white-space: normal;
+}
+.dxscSelectionBar_Glass 
+{	
+    border-style: solid;
+	border-width: 0 1px 0 0;
+	height: 30px;
+}
+
+/* Corners */
+.dxscLeftTopCorner_Glass, 
+.dxscRightTopCorner_Glass
+{
+    background: url(CssImages/AdaBack.gif) repeat-x left bottom #f8fbfd;
+	width: 1px;
+    border-style: solid;
+    border-color: #93c3d3;	
+	border-width: 0 0 1px;
+}
+.dxscLeftTopCorner_Glass
+{    
+    border-width: 1px 1px 1px 0;
+    font: 8pt Tahoma;
+    text-align: center;
+    padding: 2px;
+}
+
+/* Separators */
+.dxscGroupSeparatorVertical_Glass, 
+.dxscGroupSeparatorHorizontal_Glass
+{
+    background: white;
+    border: solid 1px #90b5c9;
+}
+
+.dxscGroupSeparatorVertical_Glass
+{
+    width: 1px; 
+    border-width: 0 1px;
+}
+.dxscGroupSeparatorHorizontal_Glass
+{
+	height: 1px;
+    border-width: 1px 0 0;
+    font-size: 1px;
+}
+
+/* Apts Area */
+.dxscAllDayArea_Glass
+{
+    background: url(CssImages/AdaBack.gif) repeat-x left bottom #f8fbfd;
+    border: solid 1px #93c3d3;
+    border-width: 0 1px 1px 0;
+}
+.dxscDateCellBody_Glass 
+{
+	height: 100px;
+    border: solid 1px;
+    border-width: 0 1px 0 0;
+}
+.dxscTimeCellBody_Glass
+{
+    border: solid 1px;
+	font: 9pt Tahoma;
+}
+.dxscTimelineCellBody_Glass
+{
+	height: 300px;
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+}
+
+.dxscAppointment_Glass
+{
+    color: black;
+    font: 8pt Tahoma;
+    border: solid 1px #7f9db9;
+    padding: 0;
+	margin: 0;
+	cursor: default;		
+	width: 100%;
+	height: 100%;
+	overflow: hidden;	
+}
+
+.dxscAppointmentInnerBorders_Glass
+{	
+    border: solid 1px #7f9db9;
+    padding: 0px;
+}
+.dxscAppointmentHorizontalSeparator_Glass
+{
+	height: 1px;
+	width: 100%;
+	overflow: hidden;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+.dxscMoreButton_Glass
+{
+    font: 8pt Tahoma;
+    color: black;
+    text-decoration: underline;
+    padding: 0;
+}
+
+/* Rulers */
+.dxscTimeRulerHoursItem_Glass, .dxscTimeRulerMinuteItem_Glass
+{
+    color: #5d5d5d;
+    background: #edf3f4;
+    border: solid 1px #93c3d3;
+    border-width: 0px 1px 1px 0;
+	vertical-align: top;
+	white-space: nowrap;
+} 
+.dxscTimeRulerHoursItem_Glass
+{
+    border-right-width: 0;
+    border-left-color: #4986a2;
+    font: 13pt Tahoma;
+	text-align: right;
+	width: 45px;
+    padding: 2px 4px 0px;
+}
+.dxscTimeRulerMinuteItem_Glass
+{
+    border-left-width: 0px;
+	text-align: center;
+	width: 13px;
+	font: 8pt Tahoma;
+    padding: 4px;
+    padding-left: 1px;
+}
+
+.dxscTimeRulerHeaderHourItem_Glass
+{
+    width: 55px;
+}
+.dxscTimeRulerHeaderMinuteItem_Glass
+{
+    width: 16px;
+}
+.dxscScrollHeaderItem_Glass 
+{
+    width: 16px;
+}
+
+
+/* Control elements */
+.dxscToolbar_Glass,
+.dxscViewSelector_Glass 
+{    
+    background: url(CssImages/ToolbarBack.gif) repeat-x #b7dded;
+    padding: 9px 6px;    
+}
+.dxscResourceNavigator_Glass 
+{    
+    background: #dbeff7;
+    padding: 7px;
+    border: solid 1px #4986a2;
+}
+.dxscViewVisibleInterval_Glass
+{
+    color: black;
+    font: 9pt Tahoma;
+    white-space: nowrap;
+}
+.dxscTooltip_Glass 
+{
+    background: #f9f9cd;
+    padding: 4px 10px;
+    font: 8pt Tahoma;
+    color: #303030;
+    white-space: nowrap;
+}
+.dxscInplaceEditor_Glass
+{
+	background: #edf3f4;
+	border: solid 1px #4986a2;
+	padding: 0;
+	font: 8pt Tahoma;
+	color: Black;
+}
+.dxscErrorInfo_Glass
+{
+	background: #f1abab;
+	color: #853a3a;
+	padding: 10px;
+	border: solid 1px #4986a2;
+    border-width: 1px 0;    
+}
+
+/* Buttons */
+.dxscViewNavigatorButton_Glass
+{    
+    background: url(CssImages/ButtonBack.gif) repeat-x #5592ac;
+    border: solid 1px #4986a2;
+    height: 20px;
+    padding: 0px 7px;
+    vertical-align: center;
+	font: 9pt Tahoma;
+    color: white;
+    cursor: pointer;
+    cursor: hand;
+}
+.dxscViewNavigatorButtonHover_Glass
+{
+    background: url(CssImages/ButtonHoverBack.gif) repeat-x #74bcdb;
+    border: solid 1px #6bb3d5;
+}
+.dxscViewNavigatorButtonPressed_Glass
+{
+    background: url(CssImages/ButtonPressedBack.gif) repeat-x #86b5c9;
+    border: solid 1px #7dacc2;
+}
+
+.dxscViewSelectorButton_Glass 
+{
+    color: black;
+    background: url(CssImages/ViewSelectorButtonBack.gif) repeat-x #ecf1f2;
+	border: solid 1px #b2bcbe;		
+	padding: 6px 8px;	
+	font: 9pt Tahoma;
+    margin-right: 3px;
+    cursor: pointer;
+    cursor: hand;
+}
+.dxscViewSelectorButtonHover_Glass,
+.dxscViewSelectorButtonChecked_Glass 
+{
+    background: url(CssImages/ViewSelectorButtonHoverBack.gif) repeat-x #b5d7db;
+    border-color: #71acb4;
+}
+.dxscViewSelectorButtonPressed_Glass
+{
+    background: url(CssImages/ViewSelectorButtonPressedBack.gif) repeat-x #9abdc1;
+    border-color: #71acb4;
+}
+
+.dxscResourceNavigatorButton_Glass
+{    
+    background: #5592ac;
+    cursor: pointer;
+    cursor: hand;
+}
+.dxscResourceNavigatorButtonHover_Glass
+{
+    background: #74bcdb;
+}
+.dxscResourceNavigatorButtonPressed_Glass
+{
+    background: #86b5c9;
+}
+
+
+.dxscNavigationButton_Glass
+{
+    background: #e5eef1;
+    cursor: pointer;
+    cursor: hand;
+}
+.dxscNavigationButtonHover_Glass
+{
+    background: #eff5f7;    
+}
+
+.dxscSmartTagButton_Glass 
+{
+    border: solid 1px black;
+    background: #ffffee;
+    padding: 4px 5px;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.dxscDVBottomMoreButton_Glass,
+.dxscDVTopMoreButton_Glass
+{
+    background: url(CssImages/ButtonBack.gif) repeat-x #5592ac;
+    border: solid 1px #4986a2;
+    padding: 7px;
+    cursor: pointer;
+    cursor: hand;
+}
+.dxscDVBottomMoreButtonHover_Glass,
+.dxscDVTopMoreButtonHover_Glass
+{
+    background: url(CssImages/ButtonHoverBack.gif) repeat-x #74bcdb;
+    border: solid 1px #6bb3d5;
+}
+.dxscDVBottomMoreButtonPressed_Glass,
+.dxscDVTopMoreButtonPressed_Glass
+{
+    background: url(CssImages/ButtonPressedBack.gif) repeat-x #86b5c9;
+    border: solid 1px #7dacc2;
+}
+
+.dxscNoBorderButton_Glass
+{
+    border: solid 1px #EDF3F4;
+    cursor: pointer;
+    cursor: hand;
+}
+.dxscNoBorderButtonHover_Glass
+{
+    background: #d9eced;
+    border: solid 1px #c0dde0;
+}
+.dxscNoBorderButtonPressed_Glass
+{
+    background: #bcd6d7;
+    border-color: #c0dde0;
+}
+.dxscControlAreaForm_Glass
+{
+	font: 12pt Tahoma;
+	color: #010000;
+	white-space: normal;
+	padding: 9px 12px 13px 12px;
+	background-color: #EDF3F4;	
+}3

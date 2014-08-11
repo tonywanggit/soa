@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="CKMService.WebService" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="CKMService.WebService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="CKMService.WebService">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="SendEmaiToOA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Receiver" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmaiToOAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendEmaiToOAResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileToOAFull">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="extName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="buff" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="accid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileToOAFullResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadFileToOAFullResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileToOAPartly">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="extName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="buff" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="attachid" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="accid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isEnd" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileToOAPartlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadFileToOAPartlyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendEmaiToOASoapIn">
+    <wsdl:part name="parameters" element="tns:SendEmaiToOA" />
+  </wsdl:message>
+  <wsdl:message name="SendEmaiToOASoapOut">
+    <wsdl:part name="parameters" element="tns:SendEmaiToOAResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileToOAFullSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFileToOAFull" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileToOAFullSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileToOAFullResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileToOAPartlySoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFileToOAPartly" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileToOAPartlySoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileToOAPartlyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EmailServiceSoap">
+    <wsdl:operation name="SendEmaiToOA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OA系统邮件接口. 返回值:: 成功返回'1',失败返回失败相关的细节信息. 参数:: Sender:发件人帐号;Receiver:收件人帐号(多个用英文逗号隔开);Summary:邮件主题;Message:邮件正文;Accid:邮件附件的ID,无附件请置为空.</wsdl:documentation>
+      <wsdl:input message="tns:SendEmaiToOASoapIn" />
+      <wsdl:output message="tns:SendEmaiToOASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileToOAFull">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上传邮件的附件到OA系统. 返回值::  字符串,以*隔开,*之前部分代表发送是否成功('0':失败,'1':成功), *之后部分为失败的原因或成功返回的附件ID. 参数:: fileName:文件名(包括扩展名);extName:文件扩展名;buff:字节数组;accid:附件id,上传第一附件时置为空,多次上传置为首次上传返回的附件36位ID.</wsdl:documentation>
+      <wsdl:input message="tns:UploadFileToOAFullSoapIn" />
+      <wsdl:output message="tns:UploadFileToOAFullSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileToOAPartly">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">分块上传邮件的附件到OA系统.  返回值:: 字符串,以*隔开,*之前部分代表发送是否成功('0':失败 , '1':成功), *之后部分为失败的原因或成功返回的附件ID. 参数:: fileName:文件名(包括扩展名);extName:文件扩展名;buff:字节数组;attachid:分块上传的标记ID;accid:附件id,上传第一附件时置为空,多次上传置为首次上传返回的附件36位ID;isEnd:分块上传是否结束.</wsdl:documentation>
+      <wsdl:input message="tns:UploadFileToOAPartlySoapIn" />
+      <wsdl:output message="tns:UploadFileToOAPartlySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmailServiceSoap" type="tns:EmailServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendEmaiToOA">
+      <soap:operation soapAction="CKMService.WebService/SendEmaiToOA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileToOAFull">
+      <soap:operation soapAction="CKMService.WebService/UploadFileToOAFull" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileToOAPartly">
+      <soap:operation soapAction="CKMService.WebService/UploadFileToOAPartly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EmailServiceSoap12" type="tns:EmailServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendEmaiToOA">
+      <soap12:operation soapAction="CKMService.WebService/SendEmaiToOA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileToOAFull">
+      <soap12:operation soapAction="CKMService.WebService/UploadFileToOAFull" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileToOAPartly">
+      <soap12:operation soapAction="CKMService.WebService/UploadFileToOAPartly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmailService">
+    <wsdl:port name="EmailServiceSoap" binding="tns:EmailServiceSoap">
+      <soap:address location="http://10.30.4.44/CKMService/WebService/EmailService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EmailServiceSoap12" binding="tns:EmailServiceSoap12">
+      <soap12:address location="http://10.30.4.44/CKMService/WebService/EmailService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

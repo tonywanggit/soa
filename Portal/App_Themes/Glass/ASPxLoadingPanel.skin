@@ -1,0 +1,4 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxlp" Namespace="DevExpress.Web.ASPxLoadingPanel" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxlp:ASPxLoadingPanel runat="server" CssPostfix="Glass" CssFilePath="~/App_Themes/Glass/{0}/styles.css"  ImageFolder="~/App_Themes/Glass/{0}/">
+</dxlp:ASPxLoadingPanel>
