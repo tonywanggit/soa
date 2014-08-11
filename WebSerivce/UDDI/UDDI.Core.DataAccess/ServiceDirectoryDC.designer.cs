@@ -23,7 +23,7 @@ namespace JN.ESB.UDDI.Core.DataAccess
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ServiceDirectoryDb")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EsbServiceDirectoryDB")]
 	public partial class ServiceDirectoryDCDataContext : System.Data.Linq.DataContext
 	{
 		

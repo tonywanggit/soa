@@ -40,7 +40,7 @@ namespace JN.ESB.Core.Service.Common
             string dbIp = EsbConfig.getConfigValue("DBServer");
             if (dbIp != null)
             {
-                conn = String.Format("Data Source={0};Initial Catalog={1};Integrated Security=False;Connect Timeout=120;UserID=soa;Password=123456", dbIp, dbName);
+                conn = String.Format("Data Source={0};Initial Catalog={1};Integrated Security=False;Connect Timeout=120;User ID=soa;Password=123456", dbIp, dbName);
             }
 
             return conn;

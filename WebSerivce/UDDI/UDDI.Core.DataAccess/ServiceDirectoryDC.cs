@@ -5,7 +5,7 @@ namespace JN.ESB.UDDI.Core.DataAccess
     partial class ServiceDirectoryDCDataContext
     {
         public ServiceDirectoryDCDataContext() :
-            base(EsbConfig.getConnStringByDBName("ServiceDirectoryDb"), mappingSource)
+            base(EsbConfig.getConnStringByDBName("EsbServiceDirectoryDB"), mappingSource)
         {
             OnCreated();
         }
