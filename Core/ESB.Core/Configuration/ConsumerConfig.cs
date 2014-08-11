@@ -27,6 +27,13 @@ namespace ESB.Core.Configuration
         /// </summary>
         public String ApplicationName { get; set; }
 
+        /// <summary>
+        /// 向服务器汇报客户端的版本信息
+        /// ESB.Core-1.0.2014.0811
+        /// NewLife.Core-1.0.2014.0811
+        /// </summary>
+        public String ConsumerVersion { get; set; }
+
         public ConsumerConfig()
         {
             Registry = new List<RegistryItem>();

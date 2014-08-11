@@ -8,8 +8,8 @@
     <ProjectGuid>{CDD25F6F-8C1E-4972-A231-2EB9FE1B7BFF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ESBTestFramework</RootNamespace>
-    <AssemblyName>ESBTestFramework</AssemblyName>
+    <RootNamespace>ESB.TestFramework</RootNamespace>
+    <AssemblyName>ESB.TestFramework</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -32,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ESBTestFramework.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ESB.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

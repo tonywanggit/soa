@@ -6,6 +6,8 @@ using System.Threading;
 using ESB.Core.Configuration;
 using ESB.Core.Registry;
 using ESB.Core.Rpc;
+using NewLife.Reflection;
+using NewLife.Log;
 
 namespace ESB.Core
 {
@@ -65,6 +67,9 @@ namespace ESB.Core
         /// </summary>
         private ESBProxy()
         {
+            var asm = AssemblyX.Create(System.Reflection.Assembly.GetExecutingAssembly());
+            XTrace.WriteLine("{0} v{1} Build {2:yyyy-MM-dd HH:mm:ss}", asm.Name, asm.FileVersion, asm.Compile);
+
             LoadConfig();
             m_RegistryClient = new RegistryConsumerClient(this);
             m_RegistryClient.Connect();
