@@ -34,7 +34,7 @@ namespace Registry.WindowsService
             m_TcpListener.Start(2000);
 
             m_TcpListener.BeginAcceptSocket(new AsyncCallback(AcceptCallback), m_TcpListener);
-            Console.WriteLine("注册中心服务正在监控：5555端口！");
+            Console.WriteLine("注册中心服务正在监控：{0}端口！", port);
 
             m_monitorThread = new MonitorThread(this);
             m_monitorThread.Start();
@@ -115,7 +115,7 @@ namespace Registry.WindowsService
         /// </summary>
         /// <param name="rsClient"></param>
         /// <param name="data"></param>
-        public void SendData(RegistryClient registryClient, String data)
+        public void SendData(RegistryClient registryClient, RegistryMessageAction action, String data)
         {
             try
             {
@@ -138,11 +138,11 @@ namespace Registry.WindowsService
         /// <summary>
         /// 给所有的客户端发送消息
         /// </summary>
-        public void SendDataToAllClient(String message)
+        public void SendDataToAllClient(RegistryMessageAction action, String message)
         {
             foreach (var client in m_RegistryClients)
             {
-                SendData(client, message);
+                SendData(client, action, message);
             }
         }
 

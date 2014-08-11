@@ -85,6 +85,7 @@ namespace ESB.Core.Registry
 
                 //--进行业务处理
                 Console.WriteLine("接收到来自服务器的响应：{0}", data);
+                ReceiveNotify(CometEventType.ReceiveMessage, data);
 
                 m_RecvBuff = new Byte[m_SocketClient.SendBufferSize];
                 m_SocketClient.BeginReceive(m_RecvBuff, 0, m_RecvBuff.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), m_SocketClient);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESB.Core.Registry;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace Registry.WindowsService
         {
             while (true)
             {
-                m_RegistryCenter.SendDataToAllClient("Beat Heart");
+                m_RegistryCenter.SendDataToAllClient(RegistryMessageAction.HeartBeat, "Heart Beat");
                 Thread.Sleep(5000);
             }
         }

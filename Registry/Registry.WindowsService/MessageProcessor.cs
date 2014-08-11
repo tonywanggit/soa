@@ -31,7 +31,7 @@ namespace Registry.WindowsService
             {
                 ConsumerConfig consumerConfig = XmlUtil.LoadObjFromXML<ConsumerConfig>(regMessage.MessageBody);
                 ESBConfig esbConfig = GetESBConfig(consumerConfig);
-                m_RegistryCenter.SendData(regClient, esbConfig.ToXml());
+                m_RegistryCenter.SendData(regClient, RegistryMessageAction.ServiceConfig, esbConfig.ToXml());
             }
         }
 

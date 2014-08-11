@@ -19,6 +19,14 @@ namespace ESB.Core.Registry
         /// </summary>
         Bye,
         /// <summary>
+        /// 心跳检测
+        /// </summary>
+        HeartBeat,
+        /// <summary>
+        /// 服务配置
+        /// </summary>
+        ServiceConfig,
+        /// <summary>
         /// 增加服务
         /// </summary>
         AddService,

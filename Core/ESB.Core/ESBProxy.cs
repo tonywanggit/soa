@@ -35,6 +35,7 @@ namespace ESB.Core
             get { return m_ConsumerConfig; }
         }
 
+        private object m_ESBConfigLock = new Object();
         private ESBConfig m_ESBConfig = null;
         /// <summary>
         /// 消费者配置文件
@@ -43,7 +44,7 @@ namespace ESB.Core
         {
             get { return m_ESBConfig; }
             set {
-                lock (m_ESBConfig)
+                lock (m_ESBConfigLock)
                 {
                     m_ESBConfig = value;
                 }
