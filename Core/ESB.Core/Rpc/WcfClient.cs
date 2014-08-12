@@ -39,7 +39,7 @@ namespace ESB.Core.Rpc
                 }
                 else
                 {
-                    webRequest.Headers.Add("SOAPAction", String.Format("{0}/{1}", EsbClient.COMPANY_URL, request.方法名称));
+                    webRequest.Headers.Add("SOAPAction", String.Format("{0}/EsbAction", EsbClient.COMPANY_URL));
                 }
 
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去

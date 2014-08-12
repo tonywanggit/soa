@@ -13,10 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{677880CD-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumer", "Consumer", "{851D8DBF-C5B6-47F1-838E-DE049F8591E1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Provider", "Provider", "{7D6F8291-9A1F-4B77-9473-F627BA206F72}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.ProviderWebService", "Test\ESB.ProviderWebService\ESB.ProviderWebService.csproj", "{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,26 +110,6 @@ Global
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Release|x86.ActiveCfg = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Debug|x86.ActiveCfg = Debug|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Release|Any CPU.Build.0 = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Net4Release|x86.ActiveCfg = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +119,5 @@ Global
 		{5813C22E-EEB3-4DEE-A45C-BB218041193A} = {677880CD-33DF-4905-B7ED-2AD90A0EE758}
 		{3A6FD2E3-189B-4217-B619-D4B3064FD53E} = {677880CD-33DF-4905-B7ED-2AD90A0EE758}
 		{CDD25F6F-8C1E-4972-A231-2EB9FE1B7BFF} = {851D8DBF-C5B6-47F1-838E-DE049F8591E1}
-		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1} = {7D6F8291-9A1F-4B77-9473-F627BA206F72}
 	EndGlobalSection
 EndGlobal

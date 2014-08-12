@@ -13,7 +13,7 @@ namespace ESB.ProviderWebService.Handler
     {
         protected override string DoEsbAction(string esbAction, string request)
         {
-            return String.Format("收到参数：{0}-{1}。", esbAction, request);
+            return String.Format("收到参数：{0}={1}。", esbAction, request);
         }
     }
 }

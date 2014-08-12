@@ -22,9 +22,9 @@ namespace ESB.Core.Rpc
     /// </summary>
     internal class EsbClient
     {
-        public const String CONTENT_TYPE_XML = "application/xml";
-        public const String CONTENT_TYPE_JSON = "application/json";
-        public const String CONTENT_TYPE_FROM = "application/x-www-form-urlencoded";
+        public const String CONTENT_TYPE_XML = "application/xml; charset=utf-8";
+        public const String CONTENT_TYPE_JSON = "application/json; charset=utf-8";
+        public const String CONTENT_TYPE_FROM = "application/x-www-form-urlencoded; charset=utf-8";
 
         public const String COMPANY_URL = "http://mb.com";//--公司网址,用于SOAP协议中的基地址
 

@@ -46,6 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter\AshxAdapter.cs" />
+    <Compile Include="Adapter\WcfHttpAdapter.cs" />
+    <Compile Include="Adapter\WebServiceAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Common\EsbConfig.cs" />
     <Compile Include="Common\Settings.cs" />
     <Compile Include="Common\UDDI对象.cs" />

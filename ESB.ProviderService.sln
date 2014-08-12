@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.ProviderWebService", "Test\ESB.ProviderWebService\ESB.ProviderWebService.csproj", "{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.Core", "Core\ESB.Core\ESB.Core.csproj", "{3A6FD2E3-189B-4217-B619-D4B3064FD53E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB1D4982-CDF6-4D66-891C-6B4A272E0AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

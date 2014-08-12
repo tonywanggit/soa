@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ESB.ProviderWebService.Wcf.ESB_WCF" CodeBehind="ESB_WCF.svc.cs" %>

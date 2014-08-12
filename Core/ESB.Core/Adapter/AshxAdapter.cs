@@ -22,19 +22,23 @@ namespace ESB.Core.Adapter
             }
         }
 
+        public String TraceContent { get; set; }
+
         public void ProcessRequest(HttpContext context)
         {
             this.context = context;
             this.context.Response.ContentType = context.Request.ContentType;
             if (String.IsNullOrEmpty(this.context.Response.ContentType))
             {
-                this.context.Response.ContentType = "text/plain; charset=utf-8";
+                this.context.Response.ContentType = "text/plain; charset=gb2312";
             }
+            //this.context.Response.ContentType = "text/plain; charset=gb2312";
+            this.context.Response.ContentEncoding = System.Text.Encoding.Default;
 
             String esbAction = context.Request["EsbAction"];
             if (String.IsNullOrEmpty(esbAction))
             {
-                this.context.Response.ContentType = "text/plain; charset=utf-8";
+                this.context.Response.ContentType = "text/plain; charset=gb2312";
                 this.context.Response.Write("未经授权的访问！");
                 //this.context.Response.End();
                 return;
