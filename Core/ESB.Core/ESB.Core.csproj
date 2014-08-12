@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\AshxAdapter.cs" />
     <Compile Include="Common\EsbConfig.cs" />
     <Compile Include="Common\Settings.cs" />
     <Compile Include="Common\UDDI对象.cs" />
@@ -121,6 +122,7 @@
       <Name>NewLife.XCode</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

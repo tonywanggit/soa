@@ -20,12 +20,12 @@ namespace ESBTestFramework
             Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
 
             stopWatch.Restart();
-            esbProxy.ReceiveRequest("ESB_ASHX", "HelloWorld", "HelloWorld!");
+            String message = esbProxy.ReceiveRequest("ESB_ASHX", "HelloWorld", "HelloWorld!");
             stopWatch.Stop();
 
             Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 2; i++)
             {
                 stopWatch.Restart();
                 esbProxy.ReceiveRequest("ESB_ASHX", "HelloWorld", "HelloWorld!");
