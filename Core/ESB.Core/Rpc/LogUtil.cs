@@ -6,7 +6,7 @@ using ESB.Core.Entity;
 
 namespace ESB.Core.Rpc
 {
-    public class LogUtil
+    internal class LogUtil
     {
         /// <summary>
         /// 增加审计日志

@@ -16,6 +16,7 @@ namespace ESB.Core
     /// </summary>
     public class ESBProxy
     {
+        #region 单例模式
         private static ESBProxy m_Instance = null;
 
         public static ESBProxy GetInstance()
@@ -27,7 +28,9 @@ namespace ESB.Core
 
             return m_Instance;
         }
+        #endregion
 
+        #region 配置文件
         private ConsumerConfig m_ConsumerConfig = null;
         /// <summary>
         /// 消费者配置文件
@@ -52,28 +55,11 @@ namespace ESB.Core
                 }
             }
         }
-        /// <summary>
-        /// 注册中心客户端
-        /// </summary>
-        private RegistryConsumerClient m_RegistryClient = null;
 
         /// <summary>
         /// 配置文件管理
         /// </summary>
         private ConfigurationManager m_ConfigurationManager = null;
-
-        /// <summary>
-        /// ESBProxy构造函数
-        /// </summary>
-        private ESBProxy()
-        {
-            var asm = AssemblyX.Create(System.Reflection.Assembly.GetExecutingAssembly());
-            XTrace.WriteLine("{0} v{1} Build {2:yyyy-MM-dd HH:mm:ss}", asm.Name, asm.FileVersion, asm.Compile);
-
-            LoadConfig();
-            m_RegistryClient = new RegistryConsumerClient(this);
-            m_RegistryClient.Connect();
-        }
 
         /// <summary>
         /// 加载配置文件：加载本地配置文件ConsumerConfig->ESBConfig
@@ -83,8 +69,64 @@ namespace ESB.Core
             m_ConfigurationManager = ConfigurationManager.GetInstance();
             m_ConsumerConfig = m_ConfigurationManager.LoadConsumerConfig();
             m_ESBConfig = m_ConfigurationManager.LoadESBConfig();
-        }
 
+            if (m_ConsumerConfig == null)
+                throw new Exception("缺少有效的消费者配置文件ConsumerConfig.xml。");
+
+            if (m_ESBConfig != null)
+                Status = ESBProxyStatus.LostESBConfig;
+        }
+        #endregion
+
+        #region 构造函数和注册中心
+        /// <summary>
+        /// 注册中心客户端
+        /// </summary>
+        private RegistryConsumerClient m_RegistryClient = null;
+
+        /// <summary>
+        /// ESBProxy状态枚举值
+        /// </summary>
+        internal enum ESBProxyStatus
+        {
+            /// <summary>
+            /// 正在初始化
+            /// </summary>
+            Init,
+            /// <summary>
+            /// 已经就绪可以调用
+            /// </summary>
+            Ready,
+            /// <summary>
+            /// 缺少消费者配置文件
+            /// </summary>
+            LostConsumerConfig,
+            /// <summary>
+            /// 缺少ESB配置文件
+            /// </summary>
+            LostESBConfig
+        }
+        /// <summary>
+        /// ESBProxy状态
+        /// </summary>
+        internal ESBProxyStatus Status { get; set; }
+
+        /// <summary>
+        /// ESBProxy构造函数
+        /// </summary>
+        private ESBProxy()
+        {
+            Status = ESBProxyStatus.Init;
+            var asm = AssemblyX.Create(System.Reflection.Assembly.GetExecutingAssembly());
+            XTrace.WriteLine("{0} v{1} Build {2:yyyy-MM-dd HH:mm:ss}", asm.Name, asm.FileVersion, asm.Compile);
+
+            LoadConfig();
+            m_RegistryClient = new RegistryConsumerClient(this);
+            m_RegistryClient.Connect();
+        }
+        #endregion
+
+        #region 对外公开的调用接口
         /// <summary>
         /// 请求响应端口
         /// </summary>
@@ -92,6 +134,8 @@ namespace ESB.Core
         /// <returns></returns>
         public String ReceiveRequest(String serviceName, String methodName, String message)
         {
+            InitCheck();
+
             ESB.Core.Schema.服务请求 req = new ESB.Core.Schema.服务请求();
             req.服务名称 = serviceName;
             req.方法名称 = methodName;
@@ -103,5 +147,24 @@ namespace ESB.Core
 
             return EsbClient.DynamicalCallWebService(true, req).消息内容;
         }
+
+        /// <summary>
+        /// 检测ESB是否达到可用状态
+        /// </summary>
+        private void InitCheck()
+        {
+            if (Status == ESBProxyStatus.Ready)
+                return;
+
+            if (Status == ESBProxyStatus.Init)
+                throw new Exception("ESBProxy处于初始化状态。");
+
+            if (Status == ESBProxyStatus.LostESBConfig)
+                throw new Exception("缺少配置文件ESBConfig.xml。");
+
+            if (Status != ESBProxyStatus.Ready)
+                throw new Exception("ESBProxy没有达到可用状态");
+        }
+        #endregion
     }
 }

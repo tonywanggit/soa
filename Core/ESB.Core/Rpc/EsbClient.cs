@@ -20,7 +20,7 @@ namespace ESB.Core.Rpc
     /// <summary>
     /// ESB调用各种协议的接口的统一入口
     /// </summary>
-    public class EsbClient
+    internal class EsbClient
     {
         public const String CONTENT_TYPE_XML = "application/xml";
         public const String CONTENT_TYPE_JSON = "application/json";
