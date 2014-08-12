@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using ESB.Core.Util;
+using ESB.Core.Entity;
 
 namespace ESB.Core.Configuration
 {   
@@ -50,6 +51,16 @@ namespace ESB.Core.Configuration
         public Boolean DirectInvokeEnabled { 
             get { return m_DirectInvokeEnabled; }
             set { m_DirectInvokeEnabled = value; }
+        }
+
+        private List<BindingTemplate> m_Binding = new List<BindingTemplate>();
+        /// <summary>
+        /// 服务的绑定地址
+        /// </summary>
+        public List<BindingTemplate> Binding
+        {
+            get { return m_Binding; }
+            set { m_Binding = value; }
         }
     }
 

@@ -35,7 +35,7 @@ namespace ESB.Core
         /// <summary>
         /// 消费者配置文件
         /// </summary>
-        public ConsumerConfig ConsumerConfig
+        internal ConsumerConfig ConsumerConfig
         {
             get { return m_ConsumerConfig; }
         }
@@ -45,7 +45,7 @@ namespace ESB.Core
         /// <summary>
         /// 消费者配置文件
         /// </summary>
-        public ESBConfig ESBConfig
+        internal ESBConfig ESBConfig
         {
             get { return m_ESBConfig; }
             set {
@@ -73,8 +73,10 @@ namespace ESB.Core
             if (m_ConsumerConfig == null)
                 throw new Exception("缺少有效的消费者配置文件ConsumerConfig.xml。");
 
-            if (m_ESBConfig != null)
+            if (m_ESBConfig == null)
                 Status = ESBProxyStatus.LostESBConfig;
+            else
+                Status = ESBProxyStatus.Ready;
         }
         #endregion
 
@@ -145,7 +147,15 @@ namespace ESB.Core
             req.消息编码 = "";
             req.密码 = "";
 
-            return EsbClient.DynamicalCallWebService(true, req).消息内容;
+            ServiceItem si = ESBConfig.Service.Find(x=>x.ServiceName == serviceName);
+            if(si == null)
+                throw new Exception(String.Format("请求的服务【{0}】没有注册!", serviceName));
+
+            if(si.Binding == null || si.Binding.Count == 0)
+                throw new Exception(String.Format("请求的服务【{0}】没有有效的绑定地址!", serviceName));
+
+
+            return EsbClient.DynamicalCallWebService(true, req, si.Binding).消息内容;
         }
 
         /// <summary>

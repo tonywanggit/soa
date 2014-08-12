@@ -14,7 +14,7 @@ namespace ESB.Core.Entity
     [Description("")]
     [BindIndex("PK_Personal", false, "PersonalID")]
     [BindRelation("PersonalID", false, "BusinessService", "PersonalID")]
-    [BindTable("Personal", Description = "", ConnName = "ServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
+    [BindTable("Personal", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class Personal<TEntity> : IPersonal
     {
         #region 属性

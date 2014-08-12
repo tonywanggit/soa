@@ -13,7 +13,7 @@ namespace ESB.Core.Entity
     [DataObject]
     [Description("")]
     [BindIndex("PK_TModel", false, "ModelID")]
-    [BindTable("TModel", Description = "", ConnName = "ServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
+    [BindTable("TModel", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class TModel<TEntity> : ITModel
     {
         #region 属性

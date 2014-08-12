@@ -98,6 +98,16 @@ namespace ESB.Core.Entity
         //    }
         //    set { _Personal = value; }
         //}
+        /// <summary>
+        /// 该服务的所有绑定地址
+        /// </summary>
+        public List<BindingTemplate> Binding
+        {
+            get
+            {
+                return BindingTemplate.FindAllByServiceID(_ServiceID);
+            }
+        }
         #endregion
 
         #region 扩展查询﻿

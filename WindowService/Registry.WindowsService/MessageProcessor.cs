@@ -1,6 +1,7 @@
 ﻿using ESB.Core.Configuration;
 using ESB.Core.Registry;
 using ESB.Core.Util;
+using ESB.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +43,24 @@ namespace Registry.WindowsService
         private ESBConfig GetESBConfig(ConsumerConfig consumerConfig)
         {
             ESBConfig esbConfig = new ESBConfig();
-            esbConfig.Service.Add(new ServiceItem() { ServiceName = "ESB_ASHX", DirectInvokeEnabled = true, Uri = "http://esb.jn.com" });
+            esbConfig.Monitor.Add(new MonitorItem() { Uri = "192.168.56.2", Load = 1 });
+            esbConfig.Registry.Add(new RegistryItem() { Uri = "192.168.56.2", Load = 1 });
+            esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "192.168.56.2", Load = 1 });
 
+            //esbConfig.Service.Add(new ServiceItem() { ServiceName = "ESB_ASHX", DirectInvokeEnabled = true, Uri = "http://esb.jn.com" });
+
+            foreach (var refService in consumerConfig.Reference)
+            {
+                BusinessService bs = BusinessService.FindByServiceName(refService.ServiceName);
+                if (bs != null)
+                {
+                    ServiceItem si = new ServiceItem();
+                    si.ServiceName = bs.ServiceName;
+                    si.Binding = bs.Binding;
+
+                    esbConfig.Service.Add(si);
+                }
+            }
 
             return esbConfig;
         }

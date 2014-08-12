@@ -35,7 +35,8 @@ namespace ESB.Core.Rpc
         /// <returns></returns>
         public static ESB.Core.Schema.服务响应 DynamicalCallWebService(
               Boolean needResponse
-            , ESB.Core.Schema.服务请求 request)
+            , ESB.Core.Schema.服务请求 request
+            , List<BindingTemplate> bindings)
         {
             //--记录接收时间并放在请求结束时间中，用于判读ESB在接到请求到开始调用的耗时
             DateTime receiveDateTime = DateTime.Now;
@@ -44,7 +45,7 @@ namespace ESB.Core.Rpc
             InvalidRequest(request);
 
             //--获取到请求对应服务的绑定
-            EntityList<BindingTemplate> bindings = GetBindings(request);
+            //EntityList<BindingTemplate> bindings = GetBindings(request);
 
             //--如果只有一个绑定，且需要返回结果
             if (bindings.Count == 1 && needResponse == true)

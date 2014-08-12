@@ -12,7 +12,7 @@ namespace ESB.Core.Entity
     [Serializable]
     [DataObject]
     [Description("")]
-    [BindTable("EsbView_UDDI", Description = "", ConnName = "ServiceDirectoryDB", DbType = DatabaseType.SqlServer, IsView = true)]
+    [BindTable("EsbView_UDDI", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer, IsView = true)]
     public partial class EsbView_UDDI<TEntity> : IEsbView_UDDI
     {
         #region 属性

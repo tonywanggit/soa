@@ -13,7 +13,7 @@ namespace ESB.Core.Entity
     [DataObject]
     [Description("")]
     [BindIndex("PK_Buiness", false, "BusinessID")]
-    [BindTable("BusinessEntity", Description = "", ConnName = "ServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
+    [BindTable("BusinessEntity", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class BusinessEntity<TEntity> : IBusinessEntity
     {
         #region 属性

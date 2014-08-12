@@ -184,6 +184,7 @@ namespace ESB.Core.Registry
             Dispose();
             String error = String.Format("与服务器失去联系：" + reason);
             XTrace.WriteLine(error);
+            Console.WriteLine(error);
             ReceiveNotify(CometEventType.Lost, error);
         }
     }

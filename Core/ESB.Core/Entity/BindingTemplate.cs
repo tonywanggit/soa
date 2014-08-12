@@ -13,7 +13,7 @@ namespace ESB.Core.Entity
     [DataObject]
     [Description("")]
     [BindIndex("PK_BindingTemplate", false, "TemplateID")]
-    [BindTable("BindingTemplate", Description = "", ConnName = "ServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
+    [BindTable("BindingTemplate", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class BindingTemplate<TEntity> : IBindingTemplate
     {
         #region 属性

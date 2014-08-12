@@ -62,6 +62,10 @@ namespace ESB.Core.Registry
 
                     if(rm.Action == RegistryMessageAction.ServiceConfig){
                         m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
+                        if (m_ESBProxy.ESBConfig != null)
+                            m_ESBProxy.Status = ESBProxy.ESBProxyStatus.Ready;
+
+                        //--异步将配置文件序列化到本地存储
                         ThreadPoolX.QueueUserWorkItem(x =>
                         {
                             m_ConfigurationManager.SaveESBConfig(m_ESBProxy.ESBConfig);
@@ -72,6 +76,11 @@ namespace ESB.Core.Registry
                 {
                     m_CometClient.SendData(RegistryMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml());
                 }
+                else if (e.Type == CometEventType.Lost)     // 当和注册中心断开连接时
+                {
+                    Console.WriteLine("和注册中心断开连接。");
+                }
+
             }
             catch (Exception ex)
             {
