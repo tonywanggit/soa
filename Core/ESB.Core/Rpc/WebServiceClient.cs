@@ -70,7 +70,7 @@ namespace ESB.Core.Rpc
                             String outString = srRead.ReadToEnd();
                             callState.CallEndTime = DateTime.Now;
 
-                            response.消息内容 = GetMessageFromSOAP(outString, "//" + callState.Request.方法名称 + "Result");
+                            response.消息内容 = GetMessageFromSOAP(outString);
                             srRead.Close();
                         }
                     }
@@ -84,7 +84,7 @@ namespace ESB.Core.Rpc
                             String outString = srRead.ReadToEnd();
                             callState.CallEndTime = DateTime.Now;
 
-                            response.消息内容 = GetMessageFromSOAP(outString, "//" + callState.Request.方法名称 + "Result");
+                            response.消息内容 = GetMessageFromSOAP(outString);
                             srRead.Close();
                         }
                     }
@@ -98,7 +98,7 @@ namespace ESB.Core.Rpc
                             String outString = srRead.ReadToEnd();
                             callState.CallEndTime = DateTime.Now;
 
-                            response.消息内容 = GetMessageFromSOAP(outString, "//" + callState.Request.方法名称 + "Result");
+                            response.消息内容 = GetMessageFromSOAP(outString);
                             srRead.Close();
                         }
                     }
@@ -133,7 +133,7 @@ namespace ESB.Core.Rpc
         /// <param name="soapXml"></param>
         /// <param name="xpath"></param>
         /// <returns></returns>
-        private static String GetMessageFromSOAP(String soapXml, String xpath)
+        private static String GetMessageFromSOAP(String soapXml)
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(soapXml);

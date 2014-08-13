@@ -32,11 +32,11 @@ namespace ESB.TestFramework
             //ESBProxy esbProxy = ESBProxy.GetInstance();
             //String message = esbProxy.ReceiveRequest("ESB_WCF", "HelloAction", "HelloBody!");
 
-            TestEsbProxy("ESB_WCF");
+            //TestEsbProxy("ESB_WCF");
 
             //TestEsbProxy("ESB_ASHX");
 
-            //TestEsbProxy("ESB_WS");
+            TestEsbProxy("ESB_WS");
 
             //TestWcfService();
         }
@@ -51,7 +51,7 @@ namespace ESB.TestFramework
             String message = esbClient.EsbAction("HelloAction", msgBody);
             stopWatch.Stop();
 
-            Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
+            //Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
 
             for (int i = 0; i < 10; i++)
             {
@@ -59,7 +59,7 @@ namespace ESB.TestFramework
                 String ret = esbClient.EsbAction("HelloAction", msgBody);
                 stopWatch.Stop();
 
-                Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
+                //Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
             }
 
             Console.ReadKey();
@@ -73,7 +73,7 @@ namespace ESB.TestFramework
             stopWatch.Stop();
 
             Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);;
-            //Console.ReadKey();
+            Console.ReadKey();
 
             stopWatch.Restart();
             String msgBody = new String('A', 1024*1);
@@ -88,7 +88,7 @@ namespace ESB.TestFramework
                 String ret = esbProxy.ReceiveRequest(serviceName, "HelloAction", msgBody);
                 stopWatch.Stop();
 
-                Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 1, stopWatch.ElapsedMilliseconds);
+                Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
             }
 
             Console.ReadKey();

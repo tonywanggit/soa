@@ -20,7 +20,7 @@ namespace ESB.Core.Rpc
 
         public static ESB.Core.Schema.服务响应 CallWcfService(CallState callState)
         {
-            Console.WriteLine("CallWcfService 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            //Console.WriteLine("CallWcfService 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             //--STEP.1.从CallState中获取到需要的信息
             ESB.Core.Schema.服务请求 request = callState.Request;
@@ -33,6 +33,7 @@ namespace ESB.Core.Rpc
             try
             {
                 HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(uri);
+                //webRequest.Proxy = null;
                 webRequest.Method = "POST";
                 webRequest.ContentType = "text/xml; charset=utf-8";
                 webRequest.Headers.Add("Accept-Encoding", "gzip, deflate");
@@ -46,6 +47,9 @@ namespace ESB.Core.Rpc
                     webRequest.Headers.Add("SOAPAction", String.Format("{0}/EsbAction", EsbClient.COMPANY_URL));
                 }
 
+
+                //Console.WriteLine("WebRequest.Create 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去
                 if (!String.IsNullOrEmpty(message))
                 {
@@ -53,15 +57,19 @@ namespace ESB.Core.Rpc
                     String esbAction = request.方法名称;
                     String soapMessage = String.Format(SOAP_MESSAGE_TEMPLATE, EsbClient.COMPANY_URL, esbAction, reqMessage);
                     byte[] data = System.Text.Encoding.Default.GetBytes(soapMessage);
+                    //Console.WriteLine("webRequest.GetRequestStream 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     using (Stream stream = webRequest.GetRequestStream())
                     {
                         stream.Write(data, 0, data.Length);
                     }
+                    //Console.WriteLine("webRequest.GetRequestStream 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 }
 
                 //--STEP.3.2.获取到响应消息
                 callState.CallBeginTime = DateTime.Now;
                 HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+                //Console.WriteLine("webRequest.GetResponse 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                 if (webResponse.ContentEncoding.ToLower().Contains("gzip"))
                 {
@@ -105,8 +113,8 @@ namespace ESB.Core.Rpc
                         }
                     }
                 }
-                Console.WriteLine("CallWcfService END：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                Console.WriteLine("AddAuditLog Start：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                //Console.WriteLine("CallWcfService 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                //Console.WriteLine("AddAuditLog 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                 //--STEP.3.3.记录日志并返回ESB响应
                 LogUtil.AddAuditLog(
@@ -115,7 +123,7 @@ namespace ESB.Core.Rpc
                     , callState.RequestBeginTime, callState.RequestEndTime, callState.CallBeginTime, callState.CallEndTime
                     , response.消息内容, request);
 
-                Console.WriteLine("AddAuditLog END：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                //Console.WriteLine("AddAuditLog 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             }
             catch (Exception ex)

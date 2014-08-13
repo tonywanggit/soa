@@ -8,6 +8,7 @@ using ESB.Core.Registry;
 using ESB.Core.Rpc;
 using NewLife.Reflection;
 using NewLife.Log;
+using System.Net;
 
 namespace ESB.Core
 {
@@ -22,6 +23,14 @@ namespace ESB.Core
         public static ESBProxy GetInstance()
         {
             if (m_Instance != null) return m_Instance;
+
+            //--此处可以降低第一次调用的时间：2~3秒减少到200ms左右
+            HttpWebRequest.DefaultWebProxy = null;
+            //HttpWebRequest.DefaultCachePolicy = null;
+
+            //--客户端的连接数
+            //--http://www.cnblogs.com/summer_adai/archive/2013/04/26/3045274.html
+            ServicePointManager.DefaultConnectionLimit = 10000;
 
             ESBProxy proxy = new ESBProxy();
             Interlocked.CompareExchange<ESBProxy>(ref m_Instance, proxy, null);
@@ -156,9 +165,9 @@ namespace ESB.Core
 
             //Console.WriteLine();
 
-            Console.WriteLine("DynamicalCallWebService Start：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            //Console.WriteLine("DynamicalCallWebService 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding).消息内容;
-            Console.WriteLine("DynamicalCallWebService Start：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            //Console.WriteLine("DynamicalCallWebService 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             return msg;
         }
