@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\..\..\RabbitMQ.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -89,6 +92,7 @@
     <Compile Include="Entity\TModel.Biz.cs" />
     <Compile Include="Entity\TModel.cs" />
     <Compile Include="ESBProxy.cs" />
+    <Compile Include="Monitor\MonitorClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registry\CometClient.cs" />
     <Compile Include="Registry\RegistryConsumerClient.cs" />

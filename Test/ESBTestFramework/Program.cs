@@ -6,6 +6,7 @@ using ESB.Core;
 using ESB.Core.Registry;
 using System.Diagnostics;
 using System.Reflection;
+using ESB.Core.Monitor;
 
 namespace ESB.TestFramework
 {
@@ -25,6 +26,12 @@ namespace ESB.TestFramework
 
         static void Main(string[] args)
         {
+            MonitorClient mc = new MonitorClient("192.168.56.2");
+            mc.Send();
+
+
+
+
             //SeleniumUtil.getFileName();
             //WCF.EsbActionClient port = new WCF.EsbActionClient();
             //String hello = port.EsbAction("MyAction", "HelloWorld!");
@@ -36,7 +43,7 @@ namespace ESB.TestFramework
 
             //TestEsbProxy("ESB_ASHX");
 
-            TestEsbProxy("ESB_WS");
+            //TestEsbProxy("ESB_WS");
 
             //TestWcfService();
         }
