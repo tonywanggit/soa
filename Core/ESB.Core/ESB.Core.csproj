@@ -98,6 +98,7 @@
     <Compile Include="Rpc\AssemblyType.cs" />
     <Compile Include="Rpc\BindingType.cs" />
     <Compile Include="Rpc\CallState.cs" />
+    <Compile Include="Rpc\WebServiceClient.cs" />
     <Compile Include="Util\CommonUtil.cs" />
     <Compile Include="Rpc\EsbClient.cs" />
     <Compile Include="Rpc\HandlerClient.cs" />

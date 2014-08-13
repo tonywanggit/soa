@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -33,7 +34,7 @@ namespace ESB.Core.Adapter
                 this.context.Response.ContentType = "text/plain; charset=gb2312";
             }
             //this.context.Response.ContentType = "text/plain; charset=gb2312";
-            this.context.Response.ContentEncoding = System.Text.Encoding.Default;
+            this.context.Response.ContentEncoding = System.Text.Encoding.UTF8;
 
             String esbAction = context.Request["EsbAction"];
             if (String.IsNullOrEmpty(esbAction))
@@ -50,7 +51,29 @@ namespace ESB.Core.Adapter
                 request = srRead.ReadToEnd();
             }
 
-            this.context.Response.Write(DoEsbAction(esbAction, request));
+            String acceptEncoding = context.Request.Headers["Accept-Encoding"];//.ToString().ToUpperInvariant();
+            
+            if (!String.IsNullOrEmpty(acceptEncoding))
+            {
+                acceptEncoding = acceptEncoding.ToString().ToUpperInvariant();
+                if (acceptEncoding.Contains("GZIP"))
+                {
+                    this.context.Response.AppendHeader("Content-encoding", "gzip");
+                    this.context.Response.Filter = new GZipStream(this.context.Response.Filter, CompressionMode.Compress);
+                }
+                else if (acceptEncoding.Contains("DEFLATE"))
+                {
+                    this.context.Response.AppendHeader("Content-encoding", "deflate");
+                    this.context.Response.Filter = new DeflateStream(this.context.Response.Filter, CompressionMode.Compress);
+                }
+            }
+
+            String retMessage = DoEsbAction(esbAction, request);
+            Byte[] retBuffer = Encoding.UTF8.GetBytes(retMessage);
+
+            this.context.Response.OutputStream.Write(retBuffer, 0, retBuffer.Length);
+
+
         }
 
         protected abstract String DoEsbAction(String esbAction, String request);

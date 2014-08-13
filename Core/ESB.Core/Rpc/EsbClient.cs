@@ -151,7 +151,7 @@ namespace ESB.Core.Rpc
             switch (callState.Binding.BindingType)
             {
                 case (int)BindingType.WebService:
-                    return SoapClient.CallWebService(callState);
+                    return WebServiceClient.CallWebService(callState);
                 case (int)BindingType.REST:
                     return RestfulClient.CallRestfulService(callState);
                 case (int)BindingType.ASHX:

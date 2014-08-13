@@ -5,6 +5,7 @@ using System.Web;
 using ESB.Core.Entity;
 using System.Net;
 using System.IO;
+using System.IO.Compression;
 
 namespace ESB.Core.Rpc
 {
@@ -41,6 +42,7 @@ namespace ESB.Core.Rpc
                 webRequest.Accept = contentType;
                 webRequest.Method = "POST";
                 webRequest.ContentType = contentType;
+                webRequest.Headers.Add("Accept-Encoding", "gzip");
 
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去
                 if (!String.IsNullOrEmpty(message))
@@ -55,15 +57,62 @@ namespace ESB.Core.Rpc
                 //--STEP.3.2.获取到响应消息
                 callState.CallBeginTime = DateTime.Now;
                 HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
-                using (Stream newstream = webResponse.GetResponseStream())
-                {
-                    using (StreamReader srRead = new StreamReader(newstream, System.Text.Encoding.Default))
-                    {
-                        String outString = srRead.ReadToEnd();
-                        callState.CallEndTime = DateTime.Now;
+                String contentEncoding = webResponse.ContentEncoding.ToLower();
 
-                        response.消息内容 = outString;
-                        srRead.Close();
+                if (String.IsNullOrEmpty(contentEncoding))
+                {
+                    using (Stream newstream = webResponse.GetResponseStream())
+                    {
+                        using (StreamReader srRead = new StreamReader(newstream, System.Text.Encoding.UTF8))
+                        {
+                            String outString = srRead.ReadToEnd();
+                            callState.CallEndTime = DateTime.Now;
+
+                            response.消息内容 = outString;
+                            srRead.Close();
+                        }
+                    }
+                }
+                else if (contentEncoding.Contains("gzip"))
+                {
+                    using (GZipStream stream = new GZipStream(webResponse.GetResponseStream(), CompressionMode.Decompress))
+                    {
+                        using (StreamReader srRead = new StreamReader(stream, System.Text.Encoding.UTF8))
+                        {
+                            String outString = srRead.ReadToEnd();
+                            callState.CallEndTime = DateTime.Now;
+
+                            response.消息内容 = outString;
+                            srRead.Close();
+                        }
+                    }
+                }
+                else if (contentEncoding.Contains("deflate"))
+                {
+                    using (DeflateStream stream = new DeflateStream(webResponse.GetResponseStream(), CompressionMode.Decompress))
+                    {
+                        using (StreamReader srRead = new StreamReader(stream, System.Text.Encoding.UTF8))
+                        {
+                            String outString = srRead.ReadToEnd();
+                            callState.CallEndTime = DateTime.Now;
+
+                            response.消息内容 = outString;
+                            srRead.Close();
+                        }
+                    }
+                }
+                else
+                {
+                    using (Stream newstream = webResponse.GetResponseStream())
+                    {
+                        using (StreamReader srRead = new StreamReader(newstream, System.Text.Encoding.UTF8))
+                        {
+                            String outString = srRead.ReadToEnd();
+                            callState.CallEndTime = DateTime.Now;
+
+                            response.消息内容 = outString;
+                            srRead.Close();
+                        }
                     }
                 }
 

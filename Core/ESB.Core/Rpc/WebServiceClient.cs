@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ESB.Core.Entity;
-using System.Net;
-using System.IO;
-using System.Xml;
+﻿using ESB.Core.Entity;
 using ESB.Core.Util;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.IO.Compression;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Xml;
 
 namespace ESB.Core.Rpc
 {
     /// <summary>
-    /// WCF-HTTP服务调用代理类
+    /// WebService调用客户端
     /// </summary>
-    internal class WcfClient
+    internal class WebServiceClient
     {
         private const String SOAP_MESSAGE_TEMPLATE = @"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body><EsbAction xmlns=""{0}""><action>{1}</action><request>{2}</request></EsbAction></s:Body></s:Envelope>";
 
-        public static ESB.Core.Schema.服务响应 CallWcfService(CallState callState)
+        public static ESB.Core.Schema.服务响应 CallWebService(CallState callState)
         {
-            Console.WriteLine("CallWcfService 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-
             //--STEP.1.从CallState中获取到需要的信息
             ESB.Core.Schema.服务请求 request = callState.Request;
             String message = callState.Request.消息内容;
@@ -105,8 +103,6 @@ namespace ESB.Core.Rpc
                         }
                     }
                 }
-                Console.WriteLine("CallWcfService END：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                Console.WriteLine("AddAuditLog Start：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                 //--STEP.3.3.记录日志并返回ESB响应
                 LogUtil.AddAuditLog(
@@ -114,9 +110,6 @@ namespace ESB.Core.Rpc
                     , binding
                     , callState.RequestBeginTime, callState.RequestEndTime, callState.CallBeginTime, callState.CallEndTime
                     , response.消息内容, request);
-
-                Console.WriteLine("AddAuditLog END：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-
             }
             catch (Exception ex)
             {

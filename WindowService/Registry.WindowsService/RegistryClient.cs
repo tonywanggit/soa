@@ -24,7 +24,7 @@ namespace Registry.WindowsService
 
         public void ClearBuffer()
         {
-            ReceiveBuffer = new Byte[1024];
+            ReceiveBuffer = new Byte[1024 * 10];
         }
 
         public void Dispose()

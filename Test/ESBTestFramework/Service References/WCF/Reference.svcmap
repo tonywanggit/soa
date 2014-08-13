@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d23db8bf-2ea0-472e-b3eb-eaa373a975f3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/ProviderService/Wcf/ESB_WCF.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ESB_WCF1.disco" MetadataType="Disco" ID="40009944-bd67-4e76-ba85-a40e14c0f532" SourceId="1" SourceUrl="http://localhost/ProviderService/Wcf/ESB_WCF.svc?disco" />
+    <MetadataFile FileName="ESB_WCF2.xsd" MetadataType="Schema" ID="0a419388-aa3a-4e79-a88c-c0ca0e3272fc" SourceId="1" SourceUrl="http://localhost/ProviderService/Wcf/ESB_WCF.svc?xsd=xsd1" />
+    <MetadataFile FileName="ESB_WCF2.wsdl" MetadataType="Wsdl" ID="a51fa095-667c-4d33-bdb7-0eb4524b701b" SourceId="1" SourceUrl="http://localhost/ProviderService/Wcf/ESB_WCF.svc?wsdl" />
+    <MetadataFile FileName="ESB_WCF21.xsd" MetadataType="Schema" ID="2aea0c8c-b15a-4196-91cb-586775a1b346" SourceId="1" SourceUrl="http://localhost/ProviderService/Wcf/ESB_WCF.svc?xsd=xsd0" />
+    <MetadataFile FileName="ESB_WCF21.wsdl" MetadataType="Wsdl" ID="01c31a10-d774-4ce6-ab88-1b9f1a2b7c09" SourceId="1" SourceUrl="http://localhost/ProviderService/Wcf/ESB_WCF.svc?wsdl=wsdl0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

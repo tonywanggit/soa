@@ -180,6 +180,10 @@
     <Compile Include="Wcf\ESB_WCF.svc.cs">
       <DependentUpon>ESB_WCF.svc</DependentUpon>
     </Compile>
+    <Compile Include="WebService\ESB_WS.asmx.cs">
+      <DependentUpon>ESB_WS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -251,6 +255,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Handler\ESB_ASHX.ashx" />
+    <Content Include="WebService\ESB_WS.asmx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

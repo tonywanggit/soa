@@ -154,8 +154,13 @@ namespace ESB.Core
             if(si.Binding == null || si.Binding.Count == 0)
                 throw new Exception(String.Format("请求的服务【{0}】没有有效的绑定地址!", serviceName));
 
+            //Console.WriteLine();
 
-            return EsbClient.DynamicalCallWebService(true, req, si.Binding).消息内容;
+            Console.WriteLine("DynamicalCallWebService Start：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding).消息内容;
+            Console.WriteLine("DynamicalCallWebService Start：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            return msg;
         }
 
         /// <summary>
