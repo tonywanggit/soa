@@ -32,21 +32,21 @@ namespace Monitor.WindowsService
         /// </summary>
         public void StartReceive()
         {
-            ProcessAuditMessage();
+            ///ProcessAuditMessage();
 
-            //Thread threadAudit = new Thread(x =>
-            //{
-            //    ProcessAuditMessage();
+            Thread threadAudit = new Thread(x =>
+            {
+                ProcessAuditMessage();
 
-            //});
-            //threadAudit.Start();
+            });
+            threadAudit.Start();
 
-            //Thread threadException = new Thread(x =>
-            //{
-            //    ProcessExceptionMessage();
+            Thread threadException = new Thread(x =>
+            {
+                ProcessExceptionMessage();
 
-            //});
-            //threadException.Start();
+            });
+            threadException.Start();
         }
 
         /// <summary>

@@ -16,15 +16,15 @@ namespace Audit.WindowsService
         /// </summary>
         static void Main()
         {
-            //ServiceBase[] ServicesToRun;
-            //ServicesToRun = new ServiceBase[] 
-            //{ 
-            //    new StoreAuditService() 
-            //};
-            //ServiceBase.Run(ServicesToRun);
+            ServiceBase[] ServicesToRun;
+            ServicesToRun = new ServiceBase[] 
+            { 
+                new StoreAuditService() 
+            };
+            ServiceBase.Run(ServicesToRun);
 
-            RabbitQueueManager rbQueueManager = new RabbitQueueManager();
-            rbQueueManager.StartReceive();
+            //RabbitQueueManager rbQueueManager = new RabbitQueueManager();
+            //rbQueueManager.StartReceive();
 
             //String m_ESBQueueName = Config.AppSettings["ESB.Queue.AuditName"];
             //String m_ESBQueueName = Config.GetConfig<String>("ESB.Queue.AuditName");
