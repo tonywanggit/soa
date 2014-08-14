@@ -95,6 +95,7 @@
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
     <Compile Include="QueueManager.cs" />
+    <Compile Include="RabbitQueueManager.cs" />
     <Compile Include="StoreAuditService.cs">
       <SubType>Component</SubType>
     </Compile>

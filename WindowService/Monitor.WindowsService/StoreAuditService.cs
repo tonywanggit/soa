@@ -9,6 +9,7 @@ using System.Text;
 using NewLife.Log;
 using NewLife.Configuration;
 using System.Threading;
+using Monitor.WindowsService;
 
 namespace Audit.WindowsService
 {
@@ -25,21 +26,23 @@ namespace Audit.WindowsService
         {
             XTrace.WriteLine("日志队列处理服务启动。");
 
+            RabbitQueueManager rbQueueManager = new RabbitQueueManager();
+            rbQueueManager.StartReceive();
 
-            Thread thread = new Thread(x =>
-            {
-                try
-                {
-                    m_QueueManager = new QueueManager();
-                    m_QueueManager.StartReceive();
-                }
-                catch (Exception ex)
-                {
-                    Trace.WriteLine("从队列中获取消息失败：" + ex.ToString());
-                }
+            //Thread thread = new Thread(x =>
+            //{
+            //    try
+            //    {
+            //        m_QueueManager = new QueueManager();
+            //        m_QueueManager.StartReceive();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Trace.WriteLine("从队列中获取消息失败：" + ex.ToString());
+            //    }
 
-            });
-            thread.Start();
+            //});
+            //thread.Start();
         }
 
         protected override void OnStop()

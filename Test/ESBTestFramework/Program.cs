@@ -26,10 +26,6 @@ namespace ESB.TestFramework
 
         static void Main(string[] args)
         {
-            MonitorClient mc = new MonitorClient("192.168.56.2");
-            mc.Send();
-
-
 
 
             //SeleniumUtil.getFileName();
@@ -41,7 +37,7 @@ namespace ESB.TestFramework
 
             //TestEsbProxy("ESB_WCF");
 
-            //TestEsbProxy("ESB_ASHX");
+            TestEsbProxy("ESB_ASHX");
 
             //TestEsbProxy("ESB_WS");
 

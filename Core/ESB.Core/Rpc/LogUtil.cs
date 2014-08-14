@@ -45,6 +45,9 @@ namespace ESB.Core.Rpc
             };
 
             //log.Insert();
+            //String mqHost = ESBProxy.GetInstance().ESBConfig.Monitor[0].Uri;
+            //MSMQUtil.SendMessage<AuditBusiness>(log, String.Format(@"FormatName:DIRECT=TCP:{0}\Private$\EsbAuditQueue", "192.168.56.2"));
+
             ESBProxy.GetInstance().MonitorClient.SendAuditMessage(log);
             return log.MessageID;
         }

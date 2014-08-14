@@ -6,6 +6,7 @@ using System.Net;
 using System.IO;
 using ESB.Core.Entity;
 using System.Text;
+using ESB.Core.Configuration;
 
 namespace ESB.Core.Rpc
 {
@@ -23,7 +24,7 @@ namespace ESB.Core.Rpc
             BindingTemplate binding = callState.Binding;
             String uri = callState.Binding.Address;
             String contentType = String.Equals(callState.Request.消息编码, "XML", StringComparison.OrdinalIgnoreCase)
-                ? EsbClient.CONTENT_TYPE_XML : EsbClient.CONTENT_TYPE_JSON;
+                ? Constant.CONTENT_TYPE_XML : Constant.CONTENT_TYPE_JSON;
             String method = "POST";
 
             //--STEP.2.根据method拼接URL

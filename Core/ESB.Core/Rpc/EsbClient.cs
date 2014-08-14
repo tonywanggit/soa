@@ -22,11 +22,6 @@ namespace ESB.Core.Rpc
     /// </summary>
     internal class EsbClient
     {
-        public const String CONTENT_TYPE_XML = "application/xml; charset=utf-8";
-        public const String CONTENT_TYPE_JSON = "application/json; charset=utf-8";
-        public const String CONTENT_TYPE_FROM = "application/x-www-form-urlencoded; charset=utf-8";
-
-        public const String COMPANY_URL = "http://mb.com";//--公司网址,用于SOAP协议中的基地址
 
         /// <summary>
         /// 动态调用WebService主函数

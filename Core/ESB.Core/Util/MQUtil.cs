@@ -85,7 +85,7 @@ namespace ESB.Core.Util
                 {
                     myQueue.Send(myMessage, tran);
                 }
-                Console.WriteLine("消息已成功发送到" + queuePath + "队列！");
+                //Console.WriteLine("消息已成功发送到" + queuePath + "队列！");
                 return true;
             }
             catch (ArgumentException e)

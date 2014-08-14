@@ -63,6 +63,7 @@
     <Compile Include="Common\请求类型.cs" />
     <Compile Include="Common\错误类型.cs" />
     <Compile Include="Configuration\ConfigurationManager.cs" />
+    <Compile Include="Configuration\Constant.cs" />
     <Compile Include="Configuration\ConsumerConfig.cs" />
     <Compile Include="Configuration\ESBConfig.cs" />
     <Compile Include="Entity\AuditBusiness.Biz.cs" />

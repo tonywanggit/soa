@@ -1,8 +1,10 @@
-﻿using ESB.Core.Entity;
+﻿using ESB.Core.Configuration;
+using ESB.Core.Entity;
 using NewLife.Log;
 using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,15 +18,6 @@ namespace ESB.Core.Monitor
     internal class MonitorClient
     {
         /// <summary>
-        /// ESB审计消息队列
-        /// </summary>
-        public const String ESB_AUDIT_QUEUE = "esb.audit";
-        /// <summary>
-        /// ESB异常消息队列
-        /// </summary>
-        public const String ESB_EXCEPTION_QUEUE = "esb.exception";
-
-        /// <summary>
         /// 消息队列
         /// </summary>
         private RabbitMQClient m_RabbitMQ;
@@ -33,6 +26,11 @@ namespace ESB.Core.Monitor
         /// ESBProxy实例
         /// </summary>
         private ESBProxy m_ESBProxy;
+
+        /// <summary>
+        /// Stopwatch
+        /// </summary>
+        Stopwatch stopWatch = new Stopwatch();
 
         /// <summary>
         /// 构造函数
@@ -62,13 +60,14 @@ namespace ESB.Core.Monitor
         /// <param name="message"></param>
         private void SendMessage<T>(String queueName, T message)
         {
-            if (m_RabbitMQ == null)
+            if (m_RabbitMQ != null)
             {
                 m_RabbitMQ.SendMessage<T>(queueName, message);
             }
             else
             {
                 XTrace.WriteLine("无法连接消息队列，将采用本地存储。");
+                Console.WriteLine("无法连接消息队列，将采用本地存储。");
             }
         }
 
@@ -77,7 +76,7 @@ namespace ESB.Core.Monitor
         /// </summary>
         public void SendAuditMessage(AuditBusiness auditBussiness)
         {
-            SendMessage<AuditBusiness>(ESB_AUDIT_QUEUE, auditBussiness);
+            SendMessage<AuditBusiness>(Constant.ESB_AUDIT_QUEUE, auditBussiness);
         }
 
         /// <summary>
@@ -85,7 +84,7 @@ namespace ESB.Core.Monitor
         /// </summary>
         public void SendExceptionMessage(ExceptionCoreTb exception)
         {
-            SendMessage<ExceptionCoreTb>(ESB_EXCEPTION_QUEUE, exception);
+            SendMessage<ExceptionCoreTb>(Constant.ESB_EXCEPTION_QUEUE, exception);
         }
     }
 }

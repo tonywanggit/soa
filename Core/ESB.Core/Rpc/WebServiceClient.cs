@@ -1,4 +1,5 @@
-﻿using ESB.Core.Entity;
+﻿using ESB.Core.Configuration;
+using ESB.Core.Entity;
 using ESB.Core.Util;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace ESB.Core.Rpc
                 }
                 else
                 {
-                    webRequest.Headers.Add("SOAPAction", String.Format("{0}/EsbAction", EsbClient.COMPANY_URL));
+                    webRequest.Headers.Add("SOAPAction", String.Format("{0}/EsbAction", Constant.COMPANY_URL));
                 }
 
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去
@@ -49,7 +50,7 @@ namespace ESB.Core.Rpc
                 {
                     String reqMessage = CommonUtil.XmlEncoding(request.消息内容);
                     String esbAction = request.方法名称;
-                    String soapMessage = String.Format(SOAP_MESSAGE_TEMPLATE, EsbClient.COMPANY_URL, esbAction, reqMessage);
+                    String soapMessage = String.Format(SOAP_MESSAGE_TEMPLATE, Constant.COMPANY_URL, esbAction, reqMessage);
                     byte[] data = System.Text.Encoding.Default.GetBytes(soapMessage);
                     using (Stream stream = webRequest.GetRequestStream())
                     {
