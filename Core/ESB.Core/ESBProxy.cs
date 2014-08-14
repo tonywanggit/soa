@@ -161,18 +161,25 @@ namespace ESB.Core
 
         #region 对外公开的调用接口
         /// <summary>
-        /// 请求响应端口
+        /// 请求响应调用
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="serviceName">服务名称</param>
+        /// <param name="methodName">方法名称</param>
+        /// <param name="message">消息内容</param>
+        /// <param name="traceContext">跟踪上下文</param>
+        /// <param name="esbTransaction">事务</param>
         /// <returns></returns>
-        public String ReceiveRequest(String serviceName, String methodName, String message)
+        public String Invoke(String serviceName, String methodName, String message
+            , TraceContext traceContext = null, ESBTransaction esbTransaction = null)
         {
+            DateTime reqStartTime = DateTime.Now;
+
             InitCheck();
 
             ESB.Core.Schema.服务请求 req = new ESB.Core.Schema.服务请求();
             req.服务名称 = serviceName;
             req.方法名称 = methodName;
-            req.请求时间 = DateTime.Now;
+            req.请求时间 = reqStartTime;
             req.主机名称 = m_ConsumerConfig.ApplicationName;
             req.消息内容 = message;
             req.消息编码 = "";

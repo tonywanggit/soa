@@ -27,7 +27,6 @@ namespace ESB.TestFramework
         static void Main(string[] args)
         {
 
-
             //SeleniumUtil.getFileName();
             //WCF.EsbActionClient port = new WCF.EsbActionClient();
             //String hello = port.EsbAction("MyAction", "HelloWorld!");
@@ -35,9 +34,9 @@ namespace ESB.TestFramework
             //ESBProxy esbProxy = ESBProxy.GetInstance();
             //String message = esbProxy.ReceiveRequest("ESB_WCF", "HelloAction", "HelloBody!");
 
-            //TestEsbProxy("ESB_WCF");
+            TestEsbProxy("ESB_WCF");
 
-            TestEsbProxy("ESB_ASHX");
+            //TestEsbProxy("ESB_ASHX");
 
             //TestEsbProxy("ESB_WS");
 
@@ -49,7 +48,7 @@ namespace ESB.TestFramework
             Stopwatch stopWatch = new Stopwatch();
 
             stopWatch.Restart();
-            String msgBody = new String('A', 1024 * 1);
+            String msgBody = new String('A', 1024 * 10);
             WCF.EsbActionClient esbClient = new WCF.EsbActionClient();
             String message = esbClient.EsbAction("HelloAction", msgBody);
             stopWatch.Stop();
@@ -79,8 +78,8 @@ namespace ESB.TestFramework
             Console.ReadKey();
 
             stopWatch.Restart();
-            String msgBody = new String('A', 1024*1);
-            String message = esbProxy.ReceiveRequest(serviceName, "HelloAction", msgBody);
+            String msgBody = new String('A', 1024*10);
+            String message = esbProxy.Invoke(serviceName, "HelloAction", msgBody);
             stopWatch.Stop();
 
             Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
@@ -88,7 +87,7 @@ namespace ESB.TestFramework
             for (int i = 0; i < 10; i++)
             {
                 stopWatch.Restart();
-                String ret = esbProxy.ReceiveRequest(serviceName, "HelloAction", msgBody);
+                String ret = esbProxy.Invoke(serviceName, "HelloAction", msgBody);
                 stopWatch.Stop();
 
                 Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
