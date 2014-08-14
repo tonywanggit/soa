@@ -107,5 +107,9 @@ namespace ESB.Core.Configuration
         /// 负载：用监控中心的消息队列长度进行表示
         /// </summary>
         public Int32 Load { get; set; }
+        /// <summary>
+        /// 注册中心类型：RabbitMQ,MSMQ
+        /// </summary>
+        public String Type { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using RabbitMQ.Client;
+﻿using ESB.Core.Entity;
+using NewLife.Log;
+using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,49 +10,82 @@ using System.Xml.Serialization;
 
 namespace ESB.Core.Monitor
 {
-    public class RequestMessage
+    /// <summary>
+    /// 监控中心客户端
+    /// </summary>
+    internal class MonitorClient
     {
-        public Guid MessageId { get; set; }
-        public String Message { get; set; }
-    }
+        /// <summary>
+        /// ESB审计消息队列
+        /// </summary>
+        public const String ESB_AUDIT_QUEUE = "esb.audit";
+        /// <summary>
+        /// ESB异常消息队列
+        /// </summary>
+        public const String ESB_EXCEPTION_QUEUE = "esb.exception";
 
-    public class MonitorClient
-    {
-        ConnectionFactory factory = new ConnectionFactory();
+        /// <summary>
+        /// 消息队列
+        /// </summary>
+        private RabbitMQClient m_RabbitMQ;
 
-        public MonitorClient(String uri)
+        /// <summary>
+        /// ESBProxy实例
+        /// </summary>
+        private ESBProxy m_ESBProxy;
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public MonitorClient(ESBProxy esbProxy)
         {
-            factory.HostName = uri;
-            factory.UserName = "tony";
-            factory.Password = "efun102@mb";
+            m_ESBProxy = esbProxy;
         }
 
-        public void Send()
+        /// <summary>
+        /// 连接到监控中心
+        /// </summary>
+        public void Connect()
         {
-            //定义要发送的数据
-            RequestMessage message = new RequestMessage() { MessageId = Guid.NewGuid(), Message = "this is a 请求。" };
-
-            //创建一个 AMQP 连接
-            using (IConnection connection = factory.CreateConnection())
+            if (m_ESBProxy.ESBConfig.Monitor != null && m_ESBProxy.ESBConfig.Monitor.Count > 0)
             {
-                using (IModel channel = connection.CreateModel())
-                {
-                    //在MQ上定义一个队列
-                    channel.QueueDeclare("esb.test.queue", false, false, false, null);
-
-                    //序列化消息对象，RabbitMQ并不支持复杂对象的序列化，所以对于自定义的类型需要自己序列化
-                    XmlSerializer xs = new XmlSerializer(typeof(RequestMessage));
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        xs.Serialize(ms, message);
-                        byte[] bytes = ms.ToArray();
-                        //指定发送的路由，通过默认的exchange直接发送到指定的队列中。
-                        channel.BasicPublish("", "esb.test.queue", null, bytes);
-                    }
-
-                    Console.WriteLine(string.Format("Request Message Sent, Id:{0}, Message:{1}", message.MessageId, message.Message));
-                }
+                String[] paramMQ = m_ESBProxy.ESBConfig.Monitor[0].Uri.Split(':');
+                m_RabbitMQ = new RabbitMQClient(paramMQ[0], paramMQ[2], paramMQ[3], Int32.Parse(paramMQ[1]));
             }
+        }
+
+        /// <summary>
+        /// 将消息发送到队列，如果失败则存储在本地
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="queueName"></param>
+        /// <param name="message"></param>
+        private void SendMessage<T>(String queueName, T message)
+        {
+            if (m_RabbitMQ == null)
+            {
+                m_RabbitMQ.SendMessage<T>(queueName, message);
+            }
+            else
+            {
+                XTrace.WriteLine("无法连接消息队列，将采用本地存储。");
+            }
+        }
+
+        /// <summary>
+        /// 发送审计消息
+        /// </summary>
+        public void SendAuditMessage(AuditBusiness auditBussiness)
+        {
+            SendMessage<AuditBusiness>(ESB_AUDIT_QUEUE, auditBussiness);
+        }
+
+        /// <summary>
+        /// 发送异常消息
+        /// </summary>
+        public void SendExceptionMessage(ExceptionCoreTb exception)
+        {
+            SendMessage<ExceptionCoreTb>(ESB_EXCEPTION_QUEUE, exception);
         }
     }
 }

@@ -93,6 +93,8 @@
     <Compile Include="Entity\TModel.cs" />
     <Compile Include="ESBProxy.cs" />
     <Compile Include="Monitor\MonitorClient.cs" />
+    <Compile Include="Monitor\MonitorMessage.cs" />
+    <Compile Include="Monitor\RabbitMQClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registry\CometClient.cs" />
     <Compile Include="Registry\RegistryConsumerClient.cs" />
@@ -107,7 +109,7 @@
     <Compile Include="Rpc\EsbClient.cs" />
     <Compile Include="Rpc\HandlerClient.cs" />
     <Compile Include="Rpc\LogUtil.cs" />
-    <Compile Include="Rpc\MQUtil.cs" />
+    <Compile Include="Util\MQUtil.cs" />
     <Compile Include="Rpc\RestfulClient.cs" />
     <Compile Include="Rpc\SoapClient.cs" />
     <Compile Include="Rpc\SoapClientCache.cs" />

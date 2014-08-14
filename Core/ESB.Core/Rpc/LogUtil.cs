@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ESB.Core.Entity;
+using ESB.Core.Util;
 
 namespace ESB.Core.Rpc
 {
@@ -44,9 +45,7 @@ namespace ESB.Core.Rpc
             };
 
             //log.Insert();
-            String mqHost = ESBProxy.GetInstance().ESBConfig.Monitor[0].Uri;
-            MQUtil.SendMessage<AuditBusiness>(log, String.Format(@"FormatName:DIRECT=TCP:{0}\Private$\EsbAuditQueue", mqHost));
-
+            ESBProxy.GetInstance().MonitorClient.SendAuditMessage(log);
             return log.MessageID;
         }
 
@@ -142,7 +141,9 @@ namespace ESB.Core.Rpc
                 RequestPwd = request.密码,
                 RequestType = 0
             };
-            exception.Insert();
+
+            //exception.Insert();
+            ESBProxy.GetInstance().MonitorClient.SendExceptionMessage(exception);
 
             return new Exception(message);
         }

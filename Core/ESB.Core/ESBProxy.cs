@@ -9,6 +9,7 @@ using ESB.Core.Rpc;
 using NewLife.Reflection;
 using NewLife.Log;
 using System.Net;
+using ESB.Core.Monitor;
 
 namespace ESB.Core
 {
@@ -89,11 +90,23 @@ namespace ESB.Core
         }
         #endregion
 
-        #region 构造函数和注册中心
+        #region 构造函数、注册中心、监控中心
         /// <summary>
         /// 注册中心客户端
         /// </summary>
         private RegistryConsumerClient m_RegistryClient = null;
+
+        /// <summary>
+        /// 监控中心客户端
+        /// </summary>
+        private MonitorClient m_MonitorClient = null;
+        /// <summary>
+        /// 对内部类公开监控客户端
+        /// </summary>
+        internal MonitorClient MonitorClient
+        {
+            get { return m_MonitorClient; }
+        }
 
         /// <summary>
         /// ESBProxy状态枚举值
@@ -127,13 +140,22 @@ namespace ESB.Core
         /// </summary>
         private ESBProxy()
         {
+            //--STEP.1.记录客户端版本信息
             Status = ESBProxyStatus.Init;
             var asm = AssemblyX.Create(System.Reflection.Assembly.GetExecutingAssembly());
             XTrace.WriteLine("{0} v{1} Build {2:yyyy-MM-dd HH:mm:ss}", asm.Name, asm.FileVersion, asm.Compile);
 
+            //--STEP.2.加载配置文件
             LoadConfig();
+
+            //--STEP.3.连接注册中心
             m_RegistryClient = new RegistryConsumerClient(this);
             m_RegistryClient.Connect();
+
+            //--STEP.4.连接监控中心
+            m_MonitorClient = new MonitorClient(this);
+            m_MonitorClient.Connect();
+
         }
         #endregion
 

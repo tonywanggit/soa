@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Messaging;
 
-namespace ESB.Core.Rpc
+namespace ESB.Core.Util
 {
-    public class MQUtil
+    /// <summary>
+    /// MSMQ工具
+    /// </summary>
+    public class MSMQUtil
     {       /// <summary>
-        /// 创建MSMQ队列
+        /// 创建MSMQ队列辅助类
         /// </summary>
         /// <param name="queuePath">队列路径</param>
         /// <param name="transactional">是否事务队列</param>
