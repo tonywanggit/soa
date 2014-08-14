@@ -1,4 +1,5 @@
-﻿using NewLife.Log;
+﻿using ESB.Core.Configuration;
+using NewLife.Log;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -17,7 +18,8 @@ namespace ESB.Core.Monitor
     {
         ConnectionFactory m_Factory = new ConnectionFactory();
         IConnection m_Connection;
-        IModel m_Channel;
+        Dictionary<String, IModel> m_ChannelDict = new Dictionary<string, IModel>();
+
 
         /// <summary>
         /// RabbitMQ构造函数
@@ -34,7 +36,9 @@ namespace ESB.Core.Monitor
             m_Factory.Port = port;
 
             m_Connection = m_Factory.CreateConnection();
-            m_Channel = m_Connection.CreateModel();
+
+            m_ChannelDict.Add(Constant.ESB_AUDIT_QUEUE, m_Connection.CreateModel());
+            m_ChannelDict.Add(Constant.ESB_EXCEPTION_QUEUE, m_Connection.CreateModel());
         }
 
         /// <summary>
@@ -47,9 +51,10 @@ namespace ESB.Core.Monitor
         {
             //Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff"));
             //在MQ上定义一个队列
-            m_Channel.QueueDeclare(queueName, true, false, false, null);
-            
-            IBasicProperties properties = m_Channel.CreateBasicProperties();
+            IModel channel = m_ChannelDict[queueName];
+            channel.QueueDeclare(queueName, true, false, false, null);
+
+            IBasicProperties properties = channel.CreateBasicProperties();
             properties.DeliveryMode = 2;
 
             //Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff"));
@@ -61,7 +66,7 @@ namespace ESB.Core.Monitor
                 byte[] bytes = ms.ToArray();
                 //Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff"));
                 //指定发送的路由，通过默认的exchange直接发送到指定的队列中。
-                m_Channel.BasicPublish("", queueName, properties, bytes);
+                channel.BasicPublish("", queueName, properties, bytes);
                 //Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff"));
             }
         }
@@ -75,11 +80,12 @@ namespace ESB.Core.Monitor
         public void Listen<T>(String queueName, Action<T> processMethod)
         {
             //在MQ上定义一个队列，如果名称相同不会重复创建
-            m_Channel.QueueDeclare(queueName, true, false, false, null);
+            IModel channel = m_ChannelDict[queueName];
+            channel.QueueDeclare(queueName, true, false, false, null);
 
             //在队列上定义一个消费者
-            QueueingBasicConsumer consumer = new QueueingBasicConsumer(m_Channel);
-            m_Channel.BasicConsume(queueName, true, consumer);
+            QueueingBasicConsumer consumer = new QueueingBasicConsumer(channel);
+            channel.BasicConsume(queueName, true, consumer);
 
             while (true)
             {
