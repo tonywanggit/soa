@@ -17,7 +17,7 @@ namespace ESB.Core.Rpc
     /// </summary>
     internal class WebServiceClient
     {
-        private const String SOAP_MESSAGE_TEMPLATE = @"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body><EsbAction xmlns=""{0}""><action>{1}</action><request>{2}</request></EsbAction></s:Body></s:Envelope>";
+        private const String SOAP_MESSAGE_TEMPLATE = @"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body><EsbAction xmlns=""{0}""><request>{2}</request></EsbAction></s:Body></s:Envelope>";
 
         public static ESB.Core.Schema.服务响应 CallWebService(CallState callState)
         {
@@ -35,6 +35,8 @@ namespace ESB.Core.Rpc
                 webRequest.Method = "POST";
                 webRequest.ContentType = "text/xml; charset=utf-8";
                 webRequest.Headers.Add("Accept-Encoding", "gzip, deflate");
+                webRequest.Headers.Add(Constant.ESB_HEAD_TRACE_CONTEXT, callState.TraceContext.ToString());
+                webRequest.Headers.Add(Constant.ESB_HEAD_ANVOKE_ACTION, callState.Request.方法名称);
 
                 if (String.IsNullOrEmpty(callState.Request.方法名称))
                 {
@@ -61,6 +63,9 @@ namespace ESB.Core.Rpc
                 //--STEP.3.2.获取到响应消息
                 callState.CallBeginTime = DateTime.Now;
                 HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
+                //--从返回头消息中取到服务调用的时间
+                callState.ServiceBeginTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_BEGIN];
+                callState.ServiceEndTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_END];
 
                 if (webResponse.ContentEncoding.ToLower().Contains("gzip"))
                 {

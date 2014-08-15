@@ -51,6 +51,10 @@ namespace ESB.Core.Configuration
         /// ESB请求消息头信息-跟踪上下文
         /// </summary>
         public const String ESB_HEAD_TRACE_CONTEXT = "Esb-TraceContext";
+        /// <summary>
+        /// ESB请求消息头信息-调用方法
+        /// </summary>
+        public const String ESB_HEAD_ANVOKE_ACTION = "Esb-InvokeAction";
 
     }
 }

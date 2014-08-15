@@ -66,7 +66,7 @@ namespace ESB.Core.Adapter
             //this.context.Response.ContentType = "text/plain; charset=gb2312";
             this.m_HttpContext.Response.ContentEncoding = System.Text.Encoding.UTF8;
 
-            String esbAction = context.Request["EsbAction"];
+            String esbAction = context.Request.Headers[Constant.ESB_HEAD_ANVOKE_ACTION];
             if (String.IsNullOrEmpty(esbAction))
             {
                 this.m_HttpContext.Response.ContentType = "text/plain; charset=gb2312";

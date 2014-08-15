@@ -35,10 +35,6 @@ namespace ESB.Core.Rpc
             {
                 throw LogUtil.ExceptionAndLog(callState, "ASHX服务的方法名称必须填写", "", binding, request);
             }
-            else
-            {
-                uri = uri + "?EsbAction=" + callState.Request.方法名称;
-            }
 
             //--STEP.3.构造HTTP请求并调用ASHX服务
             ESB.Core.Schema.服务响应 response = new ESB.Core.Schema.服务响应();
@@ -50,6 +46,7 @@ namespace ESB.Core.Rpc
                 webRequest.ContentType = contentType;
                 webRequest.Headers.Add("Accept-Encoding", "gzip");
                 webRequest.Headers.Add(Constant.ESB_HEAD_TRACE_CONTEXT, callState.TraceContext.ToString());
+                webRequest.Headers.Add(Constant.ESB_HEAD_ANVOKE_ACTION, callState.Request.方法名称);
 
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去
                 if (!String.IsNullOrEmpty(message))
@@ -65,8 +62,8 @@ namespace ESB.Core.Rpc
                 callState.CallBeginTime = DateTime.Now;
                 HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
                 String contentEncoding = webResponse.ContentEncoding.ToLower();
-                String serviceBeginTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_BEGIN];
-                String serviceEndTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_END];
+                callState.ServiceBeginTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_BEGIN];
+                callState.ServiceEndTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_END];
 
                 if (String.IsNullOrEmpty(contentEncoding))
                 {
