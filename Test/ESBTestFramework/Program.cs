@@ -34,9 +34,9 @@ namespace ESB.TestFramework
             //ESBProxy esbProxy = ESBProxy.GetInstance();
             //String message = esbProxy.ReceiveRequest("ESB_WCF", "HelloAction", "HelloBody!");
 
-            TestEsbProxy("ESB_WCF");
+            //TestEsbProxy("ESB_WCF");
 
-            //TestEsbProxy("ESB_ASHX");
+            TestEsbProxy("ESB_ASHX");
 
             //TestEsbProxy("ESB_WS");
 
@@ -83,6 +83,7 @@ namespace ESB.TestFramework
             stopWatch.Stop();
 
             Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
+            Console.ReadKey();
 
             for (int i = 0; i < 10; i++)
             {

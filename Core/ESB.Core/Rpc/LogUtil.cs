@@ -16,10 +16,7 @@ namespace ESB.Core.Rpc
             , String bindingTemplateID
             , String serviceID
             , String address
-            , DateTime reqBeginTime
-            , DateTime reqEndTime
-            , DateTime callBeginTime
-            , DateTime callEndTime
+            , CallState callState
             , String message
             , ESB.Core.Schema.服务请求 request)
         {
@@ -29,19 +26,24 @@ namespace ESB.Core.Rpc
                 HostName = request.主机名称,
                 ServiceName = request.服务名称,
                 MethodName = request.方法名称,
-                ReqBeginTime = reqBeginTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
+                ReqBeginTime = callState.RequestBeginTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
                 ReqEndTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
                 Status = status,
                 MessageID = Guid.NewGuid().ToString(),
                 MessageBody = request.消息内容,
-                CallBeginTime = callBeginTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
-                CallEndTime = callEndTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
+                CallBeginTime = callState.CallBeginTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
+                CallEndTime = callState.CallEndTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
                 BindingTemplateID = bindingTemplateID,
                 ServiceID = serviceID,
                 BindingAddress = address,
                 ReturnMessageBody = message,
                 BusinessName = "",
-                BusinessID = ""
+                BusinessID = "",
+                ServiceBeginTime = callState.ServiceBeginTime,
+                ServiceEndTime = callState.ServiceEndTime,
+                TraceID = callState.TraceContext.TraceID,
+                InvokeLevel = callState.TraceContext.InvokeLevel,
+                InvokeOrder = callState.TraceContext.InvokeOrder
             };
 
             //log.Insert();
@@ -49,6 +51,10 @@ namespace ESB.Core.Rpc
             //MSMQUtil.SendMessage<AuditBusiness>(log, String.Format(@"FormatName:DIRECT=TCP:{0}\Private$\EsbAuditQueue", "192.168.56.2"));
 
             ESBProxy.GetInstance().MonitorClient.SendAuditMessage(log);
+
+            //--每调用完一次需要增加调用次数
+            callState.TraceContext.IncreaseInvokeOrder();
+
             return log.MessageID;
         }
 
@@ -58,15 +64,12 @@ namespace ESB.Core.Rpc
         /// </summary>
         public static String AddAuditLog(int status
             , BindingTemplate binding
-            , DateTime reqBeginTime
-            , DateTime reqEndTime
-            , DateTime callBeginTime
-            , DateTime callEndTime
+            , CallState callState
             , String message
             , ESB.Core.Schema.服务请求 request)
         {
             return AddAuditLog(status, binding.TemplateID.ToString(), binding.ServiceID.ToString(), binding.Address.ToString()
-             , reqBeginTime, reqEndTime, callBeginTime, callEndTime
+             , callState
              , message, request);
         }
 
@@ -117,12 +120,10 @@ namespace ESB.Core.Rpc
             if (state.CallEndTime.Year != DateTime.Now.Year) state.CallEndTime = DateTime.Now;
 
             if (binding != null)
-                messageID = AddAuditLog(0, binding, state.RequestBeginTime, state.RequestEndTime, state.CallBeginTime, state.CallEndTime
-                    , exceptionMessage, request);
+                messageID = AddAuditLog(0, binding, state , exceptionMessage, request);
             else
                 messageID = AddAuditLog(0, "00000000-0000-0000-0000-000000000000"
-                    , String.Empty, string.Empty, state.RequestBeginTime, state.RequestEndTime, state.CallBeginTime, state.CallEndTime
-                    , exceptionMessage, request);
+                    , String.Empty, string.Empty, state, exceptionMessage, request);
 
 
             ExceptionCoreTb exception = new ExceptionCoreTb()

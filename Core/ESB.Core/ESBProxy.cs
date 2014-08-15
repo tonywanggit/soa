@@ -170,7 +170,7 @@ namespace ESB.Core
         /// <param name="esbTransaction">事务</param>
         /// <returns></returns>
         public String Invoke(String serviceName, String methodName, String message
-            , TraceContext traceContext = null, ESBTransaction esbTransaction = null)
+            , ESBTraceContext esbTraceContext = null, ESBTransaction esbTransaction = null)
         {
             DateTime reqStartTime = DateTime.Now;
 
@@ -192,10 +192,9 @@ namespace ESB.Core
             if(si.Binding == null || si.Binding.Count == 0)
                 throw new Exception(String.Format("请求的服务【{0}】没有有效的绑定地址!", serviceName));
 
-            //Console.WriteLine();
 
             //Console.WriteLine("DynamicalCallWebService 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding).消息内容;
+            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, esbTraceContext, esbTransaction).消息内容;
             //Console.WriteLine("DynamicalCallWebService 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             return msg;

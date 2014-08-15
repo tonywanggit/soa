@@ -68,7 +68,7 @@ namespace ESB.Core.Rpc
                 LogUtil.AddAuditLog(
                     1
                     , binding
-                    , callState.RequestBeginTime, callState.RequestEndTime, callState.CallBeginTime, callState.CallEndTime
+                    , callState
                     , response.消息内容, request);
 
                 return response;

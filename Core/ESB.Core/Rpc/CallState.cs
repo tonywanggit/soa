@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ESB.Core.Entity;
+using ESB.Core.Monitor;
 
 namespace ESB.Core.Rpc
 {
@@ -41,5 +42,20 @@ namespace ESB.Core.Rpc
         /// 调用结束时间
         /// </summary>
         public DateTime CallEndTime { get; set; }
+
+        /// <summary>
+        /// 服务开始时间
+        /// </summary>
+        public String ServiceBeginTime { get; set; }
+
+        /// <summary>
+        /// 服务结束时间
+        /// </summary>
+        public String ServiceEndTime { get; set; }
+
+        /// <summary>
+        /// 跟踪上下文
+        /// </summary>
+        public ESBTraceContext TraceContext { get; set; }
     }
 }

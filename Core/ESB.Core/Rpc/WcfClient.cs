@@ -121,7 +121,7 @@ namespace ESB.Core.Rpc
                 LogUtil.AddAuditLog(
                     1
                     , binding
-                    , callState.RequestBeginTime, callState.RequestEndTime, callState.CallBeginTime, callState.CallEndTime
+                    , callState
                     , response.消息内容, request);
 
                 //Console.WriteLine("AddAuditLog 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));

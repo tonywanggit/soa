@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter\AshxAdapter.cs" />
+    <Compile Include="Adapter\IServiceAdapter.cs" />
     <Compile Include="Adapter\WcfHttpAdapter.cs" />
     <Compile Include="Adapter\WebServiceAdapter.cs">
       <SubType>Component</SubType>
@@ -96,7 +97,7 @@
     <Compile Include="Monitor\MonitorClient.cs" />
     <Compile Include="Monitor\MonitorMessage.cs" />
     <Compile Include="Monitor\RabbitMQClient.cs" />
-    <Compile Include="Monitor\TraceContext.cs" />
+    <Compile Include="Monitor\ESBTraceContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registry\CometClient.cs" />
     <Compile Include="Registry\RegistryConsumerClient.cs" />

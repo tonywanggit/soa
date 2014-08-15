@@ -39,5 +39,18 @@ namespace ESB.Core.Configuration
         /// </summary>
         public const String COMPANY_URL = "http://mb.com";
 
+        /// <summary>
+        /// ESB返回消息头信息-服务考核开始
+        /// </summary>
+        public const String ESB_HEAD_SERVICE_BEGIN = "Esb-ServiceBegin";
+        /// <summary>
+        /// ESB返回消息头信息-服务考核结束
+        /// </summary>
+        public const String ESB_HEAD_SERVICE_END = "Esb-ServiceEnd";
+        /// <summary>
+        /// ESB请求消息头信息-跟踪上下文
+        /// </summary>
+        public const String ESB_HEAD_TRACE_CONTEXT = "Esb-TraceContext";
+
     }
 }

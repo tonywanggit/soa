@@ -14,6 +14,8 @@ using ESB.Core.Entity;
 using XCode;
 using NewLife.Threading;
 using NewLife.Log;
+using ESB.Core.Monitor;
+using ESB.Core.Configuration;
 
 namespace ESB.Core.Rpc
 {
@@ -31,13 +33,19 @@ namespace ESB.Core.Rpc
         public static ESB.Core.Schema.服务响应 DynamicalCallWebService(
               Boolean needResponse
             , ESB.Core.Schema.服务请求 request
-            , List<BindingTemplate> bindings)
+            , List<BindingTemplate> bindings
+            , ESBTraceContext esbTraceContext = null
+            , ESBTransaction esbTransaction = null)
         {
             //--记录接收时间并放在请求结束时间中，用于判读ESB在接到请求到开始调用的耗时
             DateTime receiveDateTime = DateTime.Now;
 
             //--验证并预处理请求参数
             InvalidRequest(request);
+
+            if (esbTraceContext == null)
+                esbTraceContext = GetEsbTraceContext();
+
 
             //--获取到请求对应服务的绑定
             //EntityList<BindingTemplate> bindings = GetBindings(request);
@@ -50,7 +58,8 @@ namespace ESB.Core.Rpc
                     Binding = bindings[0],
                     Request = request,
                     RequestBeginTime = request.请求时间,
-                    RequestEndTime = receiveDateTime
+                    RequestEndTime = receiveDateTime,
+                    TraceContext = esbTraceContext
                 };
 
                 return CallService(state);
@@ -64,13 +73,31 @@ namespace ESB.Core.Rpc
                         Binding = binding,
                         Request = request,
                         RequestBeginTime = request.请求时间,
-                        RequestEndTime = receiveDateTime
+                        RequestEndTime = receiveDateTime,
+                        TraceContext = esbTraceContext
                     };
 
                     ThreadPoolX.QueueUserWorkItem(() => CallService(state));
                 }
                 return GetMultiResponse();
             }
+        }
+
+        /// <summary>
+        /// 获取到EsbTraceConext
+        /// </summary>
+        /// <returns></returns>
+        private static ESBTraceContext GetEsbTraceContext()
+        {
+            //--在Asp.NET环境下调用,可以从HttpContext.Current中获取到跟踪上下文
+            if (HttpContext.Current != null && HttpContext.Current.Items[Constant.ESB_HEAD_TRACE_CONTEXT] != null)    
+            {
+                //--HttpContext.Current.Items[Constant.ESB_HEAD_TRACE_CONTEXT]的值由服务适配器确保实现
+                return HttpContext.Current.Items[Constant.ESB_HEAD_TRACE_CONTEXT] as ESBTraceContext;
+            }
+
+            //--如果获取不到则代表第一次调用，进行跟踪上下文初始化
+            return new ESBTraceContext(Guid.NewGuid().ToString(), 0);
         }
 
 

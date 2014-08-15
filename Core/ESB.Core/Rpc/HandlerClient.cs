@@ -15,6 +15,11 @@ namespace ESB.Core.Rpc
     /// </summary>
     public class HandlerClient
     {
+        /// <summary>
+        /// 调用Handler服务
+        /// </summary>
+        /// <param name="callState"></param>
+        /// <returns></returns>
         public static ESB.Core.Schema.服务响应 CallAshxService(CallState callState)
         {
             //--STEP.1.从CallState中获取到需要的信息
@@ -44,6 +49,7 @@ namespace ESB.Core.Rpc
                 webRequest.Method = "POST";
                 webRequest.ContentType = contentType;
                 webRequest.Headers.Add("Accept-Encoding", "gzip");
+                webRequest.Headers.Add(Constant.ESB_HEAD_TRACE_CONTEXT, callState.TraceContext.ToString());
 
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去
                 if (!String.IsNullOrEmpty(message))
@@ -59,6 +65,8 @@ namespace ESB.Core.Rpc
                 callState.CallBeginTime = DateTime.Now;
                 HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
                 String contentEncoding = webResponse.ContentEncoding.ToLower();
+                String serviceBeginTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_BEGIN];
+                String serviceEndTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_END];
 
                 if (String.IsNullOrEmpty(contentEncoding))
                 {
@@ -121,7 +129,7 @@ namespace ESB.Core.Rpc
                 LogUtil.AddAuditLog(
                     1
                     , binding
-                    , callState.RequestBeginTime, callState.RequestEndTime, callState.CallBeginTime, callState.CallEndTime
+                    , callState
                     , response.消息内容, request);
             }
             catch (Exception ex)

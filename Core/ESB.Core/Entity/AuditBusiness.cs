@@ -12,6 +12,7 @@ namespace ESB.Core.Entity
     [Serializable]
     [DataObject]
     [Description("")]
+    [BindIndex("PK_AuditBusiness", true, "OID")]
     [BindTable("AuditBusiness", Description = "", ConnName = "EsbAuditDB", DbType = DatabaseType.SqlServer)]
     public partial class AuditBusiness<TEntity> : IAuditBusiness
     {
@@ -219,6 +220,102 @@ namespace ESB.Core.Entity
             get { return _ServiceID; }
             set { if (OnPropertyChanging(__.ServiceID, value)) { _ServiceID = value; OnPropertyChanged(__.ServiceID); } }
         }
+
+        private String _ServiceBeginTime;
+        /// <summary></summary>
+        [DisplayName("ServiceBeginTime")]
+        [Description("")]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(18, "ServiceBeginTime", "", "", "nvarchar(50)", 0, 0, true)]
+        public virtual String ServiceBeginTime
+        {
+            get { return _ServiceBeginTime; }
+            set { if (OnPropertyChanging(__.ServiceBeginTime, value)) { _ServiceBeginTime = value; OnPropertyChanged(__.ServiceBeginTime); } }
+        }
+
+        private String _ServiceEndTime;
+        /// <summary></summary>
+        [DisplayName("ServiceEndTime")]
+        [Description("")]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(19, "ServiceEndTime", "", "", "nvarchar(50)", 0, 0, true)]
+        public virtual String ServiceEndTime
+        {
+            get { return _ServiceEndTime; }
+            set { if (OnPropertyChanging(__.ServiceEndTime, value)) { _ServiceEndTime = value; OnPropertyChanged(__.ServiceEndTime); } }
+        }
+
+        private Int32 _InvokeTimeSpan;
+        /// <summary></summary>
+        [DisplayName("InvokeTimeSpan")]
+        [Description("")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(20, "InvokeTimeSpan", "", "0", "int", 10, 0, false)]
+        public virtual Int32 InvokeTimeSpan
+        {
+            get { return _InvokeTimeSpan; }
+            set { if (OnPropertyChanging(__.InvokeTimeSpan, value)) { _InvokeTimeSpan = value; OnPropertyChanged(__.InvokeTimeSpan); } }
+        }
+
+        private Int32 _InBytes;
+        /// <summary></summary>
+        [DisplayName("InBytes")]
+        [Description("")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(21, "InBytes", "", "0", "int", 10, 0, false)]
+        public virtual Int32 InBytes
+        {
+            get { return _InBytes; }
+            set { if (OnPropertyChanging(__.InBytes, value)) { _InBytes = value; OnPropertyChanged(__.InBytes); } }
+        }
+
+        private Int32 _OutBytes;
+        /// <summary></summary>
+        [DisplayName("OutBytes")]
+        [Description("")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(22, "OutBytes", "", "0", "int", 10, 0, false)]
+        public virtual Int32 OutBytes
+        {
+            get { return _OutBytes; }
+            set { if (OnPropertyChanging(__.OutBytes, value)) { _OutBytes = value; OnPropertyChanged(__.OutBytes); } }
+        }
+
+        private String _TraceID;
+        /// <summary></summary>
+        [DisplayName("TraceID")]
+        [Description("")]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(23, "TraceID", "", "0", "nvarchar(50)", 0, 0, true)]
+        public virtual String TraceID
+        {
+            get { return _TraceID; }
+            set { if (OnPropertyChanging(__.TraceID, value)) { _TraceID = value; OnPropertyChanged(__.TraceID); } }
+        }
+
+        private Int32 _InvokeLevel;
+        /// <summary></summary>
+        [DisplayName("InvokeLevel")]
+        [Description("")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(24, "InvokeLevel", "", "0", "int", 10, 0, false)]
+        public virtual Int32 InvokeLevel
+        {
+            get { return _InvokeLevel; }
+            set { if (OnPropertyChanging(__.InvokeLevel, value)) { _InvokeLevel = value; OnPropertyChanged(__.InvokeLevel); } }
+        }
+
+        private Int32 _InvokeOrder;
+        /// <summary></summary>
+        [DisplayName("InvokeOrder")]
+        [Description("")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(25, "InvokeOrder", "", "0", "int", 10, 0, false)]
+        public virtual Int32 InvokeOrder
+        {
+            get { return _InvokeOrder; }
+            set { if (OnPropertyChanging(__.InvokeOrder, value)) { _InvokeOrder = value; OnPropertyChanged(__.InvokeOrder); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -235,23 +332,31 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.OID : return _OID;
-                    case __.HostName : return _HostName;
-                    case __.ServiceName : return _ServiceName;
-                    case __.MethodName : return _MethodName;
-                    case __.ReqBeginTime : return _ReqBeginTime;
-                    case __.ReqEndTime : return _ReqEndTime;
-                    case __.Status : return _Status;
-                    case __.MessageID : return _MessageID;
-                    case __.MessageBody : return _MessageBody;
-                    case __.CallBeginTime : return _CallBeginTime;
-                    case __.CallEndTime : return _CallEndTime;
-                    case __.BindingAddress : return _BindingAddress;
-                    case __.BindingTemplateID : return _BindingTemplateID;
-                    case __.ReturnMessageBody : return _ReturnMessageBody;
-                    case __.BusinessID : return _BusinessID;
-                    case __.BusinessName : return _BusinessName;
-                    case __.ServiceID : return _ServiceID;
+                    case __.OID: return _OID;
+                    case __.HostName: return _HostName;
+                    case __.ServiceName: return _ServiceName;
+                    case __.MethodName: return _MethodName;
+                    case __.ReqBeginTime: return _ReqBeginTime;
+                    case __.ReqEndTime: return _ReqEndTime;
+                    case __.Status: return _Status;
+                    case __.MessageID: return _MessageID;
+                    case __.MessageBody: return _MessageBody;
+                    case __.CallBeginTime: return _CallBeginTime;
+                    case __.CallEndTime: return _CallEndTime;
+                    case __.BindingAddress: return _BindingAddress;
+                    case __.BindingTemplateID: return _BindingTemplateID;
+                    case __.ReturnMessageBody: return _ReturnMessageBody;
+                    case __.BusinessID: return _BusinessID;
+                    case __.BusinessName: return _BusinessName;
+                    case __.ServiceID: return _ServiceID;
+                    case __.ServiceBeginTime: return _ServiceBeginTime;
+                    case __.ServiceEndTime: return _ServiceEndTime;
+                    case __.InvokeTimeSpan: return _InvokeTimeSpan;
+                    case __.InBytes: return _InBytes;
+                    case __.OutBytes: return _OutBytes;
+                    case __.TraceID: return _TraceID;
+                    case __.InvokeLevel: return _InvokeLevel;
+                    case __.InvokeOrder: return _InvokeOrder;
                     default: return base[name];
                 }
             }
@@ -259,23 +364,31 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.OID : _OID = Convert.ToString(value); break;
-                    case __.HostName : _HostName = Convert.ToString(value); break;
-                    case __.ServiceName : _ServiceName = Convert.ToString(value); break;
-                    case __.MethodName : _MethodName = Convert.ToString(value); break;
-                    case __.ReqBeginTime : _ReqBeginTime = Convert.ToString(value); break;
-                    case __.ReqEndTime : _ReqEndTime = Convert.ToString(value); break;
-                    case __.Status : _Status = Convert.ToInt32(value); break;
-                    case __.MessageID : _MessageID = Convert.ToString(value); break;
-                    case __.MessageBody : _MessageBody = Convert.ToString(value); break;
-                    case __.CallBeginTime : _CallBeginTime = Convert.ToString(value); break;
-                    case __.CallEndTime : _CallEndTime = Convert.ToString(value); break;
-                    case __.BindingAddress : _BindingAddress = Convert.ToString(value); break;
-                    case __.BindingTemplateID : _BindingTemplateID = Convert.ToString(value); break;
-                    case __.ReturnMessageBody : _ReturnMessageBody = Convert.ToString(value); break;
-                    case __.BusinessID : _BusinessID = Convert.ToString(value); break;
-                    case __.BusinessName : _BusinessName = Convert.ToString(value); break;
-                    case __.ServiceID : _ServiceID = Convert.ToString(value); break;
+                    case __.OID: _OID = Convert.ToString(value); break;
+                    case __.HostName: _HostName = Convert.ToString(value); break;
+                    case __.ServiceName: _ServiceName = Convert.ToString(value); break;
+                    case __.MethodName: _MethodName = Convert.ToString(value); break;
+                    case __.ReqBeginTime: _ReqBeginTime = Convert.ToString(value); break;
+                    case __.ReqEndTime: _ReqEndTime = Convert.ToString(value); break;
+                    case __.Status: _Status = Convert.ToInt32(value); break;
+                    case __.MessageID: _MessageID = Convert.ToString(value); break;
+                    case __.MessageBody: _MessageBody = Convert.ToString(value); break;
+                    case __.CallBeginTime: _CallBeginTime = Convert.ToString(value); break;
+                    case __.CallEndTime: _CallEndTime = Convert.ToString(value); break;
+                    case __.BindingAddress: _BindingAddress = Convert.ToString(value); break;
+                    case __.BindingTemplateID: _BindingTemplateID = Convert.ToString(value); break;
+                    case __.ReturnMessageBody: _ReturnMessageBody = Convert.ToString(value); break;
+                    case __.BusinessID: _BusinessID = Convert.ToString(value); break;
+                    case __.BusinessName: _BusinessName = Convert.ToString(value); break;
+                    case __.ServiceID: _ServiceID = Convert.ToString(value); break;
+                    case __.ServiceBeginTime: _ServiceBeginTime = Convert.ToString(value); break;
+                    case __.ServiceEndTime: _ServiceEndTime = Convert.ToString(value); break;
+                    case __.InvokeTimeSpan: _InvokeTimeSpan = Convert.ToInt32(value); break;
+                    case __.InBytes: _InBytes = Convert.ToInt32(value); break;
+                    case __.OutBytes: _OutBytes = Convert.ToInt32(value); break;
+                    case __.TraceID: _TraceID = Convert.ToString(value); break;
+                    case __.InvokeLevel: _InvokeLevel = Convert.ToInt32(value); break;
+                    case __.InvokeOrder: _InvokeOrder = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -337,6 +450,30 @@ namespace ESB.Core.Entity
             ///<summary></summary>
             public static readonly Field ServiceID = FindByName(__.ServiceID);
 
+            ///<summary></summary>
+            public static readonly Field ServiceBeginTime = FindByName(__.ServiceBeginTime);
+
+            ///<summary></summary>
+            public static readonly Field ServiceEndTime = FindByName(__.ServiceEndTime);
+
+            ///<summary></summary>
+            public static readonly Field InvokeTimeSpan = FindByName(__.InvokeTimeSpan);
+
+            ///<summary></summary>
+            public static readonly Field InBytes = FindByName(__.InBytes);
+
+            ///<summary></summary>
+            public static readonly Field OutBytes = FindByName(__.OutBytes);
+
+            ///<summary></summary>
+            public static readonly Field TraceID = FindByName(__.TraceID);
+
+            ///<summary></summary>
+            public static readonly Field InvokeLevel = FindByName(__.InvokeLevel);
+
+            ///<summary></summary>
+            public static readonly Field InvokeOrder = FindByName(__.InvokeOrder);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -393,6 +530,30 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public const String ServiceID = "ServiceID";
+
+            ///<summary></summary>
+            public const String ServiceBeginTime = "ServiceBeginTime";
+
+            ///<summary></summary>
+            public const String ServiceEndTime = "ServiceEndTime";
+
+            ///<summary></summary>
+            public const String InvokeTimeSpan = "InvokeTimeSpan";
+
+            ///<summary></summary>
+            public const String InBytes = "InBytes";
+
+            ///<summary></summary>
+            public const String OutBytes = "OutBytes";
+
+            ///<summary></summary>
+            public const String TraceID = "TraceID";
+
+            ///<summary></summary>
+            public const String InvokeLevel = "InvokeLevel";
+
+            ///<summary></summary>
+            public const String InvokeOrder = "InvokeOrder";
 
         }
         #endregion
@@ -452,6 +613,30 @@ namespace ESB.Core.Entity
 
         /// <summary></summary>
         String ServiceID { get; set; }
+
+        /// <summary></summary>
+        String ServiceBeginTime { get; set; }
+
+        /// <summary></summary>
+        String ServiceEndTime { get; set; }
+
+        /// <summary></summary>
+        Int32 InvokeTimeSpan { get; set; }
+
+        /// <summary></summary>
+        Int32 InBytes { get; set; }
+
+        /// <summary></summary>
+        Int32 OutBytes { get; set; }
+
+        /// <summary></summary>
+        String TraceID { get; set; }
+
+        /// <summary></summary>
+        Int32 InvokeLevel { get; set; }
+
+        /// <summary></summary>
+        Int32 InvokeOrder { get; set; }
         #endregion
 
         #region 获取/设置 字段值
