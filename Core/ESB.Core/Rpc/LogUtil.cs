@@ -44,7 +44,7 @@ namespace ESB.Core.Rpc
                 TraceID = callState.TraceContext.TraceID,
                 InvokeLevel = callState.TraceContext.InvokeLevel,
                 InvokeOrder = callState.TraceContext.InvokeOrder,
-                InvokeID = String.Format("{0}.{1}{2}", callState.TraceContext.InvokeLevel, callState.TraceContext.InvokeOrder)
+                InvokeID = String.Format("{0}.{1}{2}", callState.TraceContext.ParentInvokeID, callState.TraceContext.InvokeLevel, callState.TraceContext.InvokeOrder)
             };
 
             //log.Insert();
