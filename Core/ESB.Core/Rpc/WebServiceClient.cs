@@ -17,7 +17,7 @@ namespace ESB.Core.Rpc
     /// </summary>
     internal class WebServiceClient
     {
-        private const String SOAP_MESSAGE_TEMPLATE = @"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body><EsbAction xmlns=""{0}""><request>{2}</request></EsbAction></s:Body></s:Envelope>";
+        private const String SOAP_MESSAGE_TEMPLATE = @"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body><EsbAction xmlns=""{0}""><request>{1}</request></EsbAction></s:Body></s:Envelope>";
 
         public static ESB.Core.Schema.服务响应 CallWebService(CallState callState)
         {
@@ -52,7 +52,7 @@ namespace ESB.Core.Rpc
                 {
                     String reqMessage = CommonUtil.XmlEncoding(request.消息内容);
                     String esbAction = request.方法名称;
-                    String soapMessage = String.Format(SOAP_MESSAGE_TEMPLATE, Constant.COMPANY_URL, esbAction, reqMessage);
+                    String soapMessage = String.Format(SOAP_MESSAGE_TEMPLATE, Constant.COMPANY_URL, reqMessage);
                     byte[] data = System.Text.Encoding.Default.GetBytes(soapMessage);
                     using (Stream stream = webRequest.GetRequestStream())
                     {

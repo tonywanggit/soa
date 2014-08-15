@@ -17,7 +17,7 @@ namespace ESB.Core.Rpc
     /// </summary>
     internal class WcfClient
     {
-        private const String SOAP_MESSAGE_TEMPLATE = @"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body><EsbAction xmlns=""{0}""><action>{1}</action><request>{2}</request></EsbAction></s:Body></s:Envelope>";
+        private const String SOAP_MESSAGE_TEMPLATE = @"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body><EsbAction xmlns=""{0}""><request>{1}</request></EsbAction></s:Body></s:Envelope>";
 
         public static ESB.Core.Schema.服务响应 CallWcfService(CallState callState)
         {
@@ -38,6 +38,8 @@ namespace ESB.Core.Rpc
                 webRequest.Method = "POST";
                 webRequest.ContentType = "text/xml; charset=utf-8";
                 webRequest.Headers.Add("Accept-Encoding", "gzip, deflate");
+                webRequest.Headers.Add(Constant.ESB_HEAD_TRACE_CONTEXT, callState.TraceContext.ToString());
+                webRequest.Headers.Add(Constant.ESB_HEAD_ANVOKE_ACTION, callState.Request.方法名称);
 
                 if (String.IsNullOrEmpty(callState.Request.方法名称))
                 {
@@ -56,7 +58,7 @@ namespace ESB.Core.Rpc
                 {
                     String reqMessage = CommonUtil.XmlEncoding(request.消息内容);
                     String esbAction = request.方法名称;
-                    String soapMessage = String.Format(SOAP_MESSAGE_TEMPLATE, Constant.COMPANY_URL, esbAction, reqMessage);
+                    String soapMessage = String.Format(SOAP_MESSAGE_TEMPLATE, Constant.COMPANY_URL, reqMessage);
                     byte[] data = System.Text.Encoding.Default.GetBytes(soapMessage);
                     //Console.WriteLine("webRequest.GetRequestStream 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     using (Stream stream = webRequest.GetRequestStream())
@@ -69,6 +71,9 @@ namespace ESB.Core.Rpc
                 //--STEP.3.2.获取到响应消息
                 callState.CallBeginTime = DateTime.Now;
                 HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
+                //--从返回头消息中取到服务调用的时间
+                callState.ServiceBeginTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_BEGIN];
+                callState.ServiceEndTime = webResponse.Headers[Constant.ESB_HEAD_SERVICE_END];
 
                 //Console.WriteLine("webRequest.GetResponse 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 

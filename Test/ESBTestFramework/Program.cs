@@ -36,9 +36,9 @@ namespace ESB.TestFramework
 
             //TestEsbProxy("ESB_WCF");
 
-            TestEsbProxy("ESB_ASHX");
+            //TestEsbProxy("ESB_ASHX");
 
-            //TestEsbProxy("ESB_WS");
+            TestEsbProxy("ESB_WS");
 
             //TestWcfService();
         }
