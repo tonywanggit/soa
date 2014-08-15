@@ -38,7 +38,7 @@ namespace ESB.Core.Adapter
                     String traceContext = m_HttpContext.Request.Headers[Constant.ESB_HEAD_TRACE_CONTEXT];
                     String[] traceContextParams = traceContext.Split(":");
 
-                    m_TraceContext = new ESBTraceContext(traceContextParams[0], Int32.Parse(traceContextParams[1]) + 1, traceContextParams[2]);
+                    m_TraceContext = new ESBTraceContext(traceContextParams[0], Int32.Parse(traceContextParams[1]) + 1, Int32.Parse(traceContextParams[2]));
                 }
 
                 return m_TraceContext;
