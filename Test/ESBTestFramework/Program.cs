@@ -12,35 +12,50 @@ namespace ESB.TestFramework
 {
     class Program
     {
-        public class SeleniumUtil
-        {
-            public static void getFileName()
-            {
-                StackTrace trace = new StackTrace();
-                StackFrame frame = trace.GetFrame(1);
-                MethodBase method = frame.GetMethod();
-                String className = method.ReflectedType.Name;
-                Console.Write("ClassName:" + className + "\nMethodName:" + method.Name);
-            }
-        }
-
         static void Main(string[] args)
         {
-
-            //SeleniumUtil.getFileName();
-            //WCF.EsbActionClient port = new WCF.EsbActionClient();
-            //String hello = port.EsbAction("MyAction", "HelloWorld!");
-
-            //ESBProxy esbProxy = ESBProxy.GetInstance();
-            //String message = esbProxy.ReceiveRequest("ESB_WCF", "HelloAction", "HelloBody!");
+            TestEsbProxy("ESB_COM_WS");
 
             //TestEsbProxy("ESB_WCF");
 
             //TestEsbProxy("ESB_ASHX");
 
-            TestEsbProxy("ESB_WS");
+            //TestEsbProxy("ESB_WS");
+        }
 
-            //TestWcfService();
+        static void TestEsbProxy(String serviceName)
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            ESBProxy esbProxy = ESBProxy.GetInstance();
+            stopWatch.Stop();
+
+            Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);;
+            Console.ReadKey();
+
+            stopWatch.Restart();
+            String msgBody = new String('A', 1024*10);
+            String message = esbProxy.Invoke(serviceName, "HelloAction", msgBody);
+            stopWatch.Stop();
+
+            Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
+            //Console.ReadKey();
+
+            Int64 elapsedMS = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                stopWatch.Restart();
+                String ret = esbProxy.Invoke(serviceName, "HelloAction", msgBody);
+                stopWatch.Stop();
+
+                elapsedMS += stopWatch.ElapsedMilliseconds;
+
+                Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
+            }
+
+            Console.WriteLine("排除第一次后 10 平均耗时：{0}ms。", elapsedMS / 10);
+
+            Console.ReadKey();
         }
 
         static void TestWcfService()
@@ -67,34 +82,29 @@ namespace ESB.TestFramework
             Console.ReadKey();
         }
 
-        static void TestEsbProxy(String serviceName)
+    }
+
+
+    public class SeleniumUtil
+    {
+        public static void getFileName()
         {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-            ESBProxy esbProxy = ESBProxy.GetInstance();
-            stopWatch.Stop();
+            StackTrace trace = new StackTrace();
+            StackFrame frame = trace.GetFrame(1);
+            MethodBase method = frame.GetMethod();
+            String className = method.ReflectedType.Name;
+            Console.Write("ClassName:" + className + "\nMethodName:" + method.Name);
 
-            Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);;
-            Console.ReadKey();
 
-            stopWatch.Restart();
-            String msgBody = new String('A', 1024*10);
-            String message = esbProxy.Invoke(serviceName, "HelloAction", msgBody);
-            stopWatch.Stop();
 
-            Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
-            //Console.ReadKey();
+            //SeleniumUtil.getFileName();
+            //WCF.EsbActionClient port = new WCF.EsbActionClient();
+            //String hello = port.EsbAction("MyAction", "HelloWorld!");
 
-            for (int i = 0; i < 10; i++)
-            {
-                stopWatch.Restart();
-                String ret = esbProxy.Invoke(serviceName, "HelloAction", msgBody);
-                stopWatch.Stop();
+            //ESBProxy esbProxy = ESBProxy.GetInstance();
+            //String message = esbProxy.ReceiveRequest("ESB_WCF", "HelloAction", "HelloBody!");
 
-                Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
-            }
-
-            Console.ReadKey();
+            //TestWcfService();
         }
     }
 }

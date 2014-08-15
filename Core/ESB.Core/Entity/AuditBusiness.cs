@@ -316,6 +316,18 @@ namespace ESB.Core.Entity
             get { return _InvokeOrder; }
             set { if (OnPropertyChanging(__.InvokeOrder, value)) { _InvokeOrder = value; OnPropertyChanged(__.InvokeOrder); } }
         }
+
+        private String _InvokeID;
+        /// <summary></summary>
+        [DisplayName("InvokeID")]
+        [Description("")]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(26, "InvokeID", "", "", "nvarchar(50)", 0, 0, true)]
+        public virtual String InvokeID
+        {
+            get { return _InvokeID; }
+            set { if (OnPropertyChanging(__.InvokeID, value)) { _InvokeID = value; OnPropertyChanged(__.InvokeID); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -357,6 +369,7 @@ namespace ESB.Core.Entity
                     case __.TraceID: return _TraceID;
                     case __.InvokeLevel: return _InvokeLevel;
                     case __.InvokeOrder: return _InvokeOrder;
+                    case __.InvokeID: return _InvokeID;
                     default: return base[name];
                 }
             }
@@ -389,6 +402,7 @@ namespace ESB.Core.Entity
                     case __.TraceID: _TraceID = Convert.ToString(value); break;
                     case __.InvokeLevel: _InvokeLevel = Convert.ToInt32(value); break;
                     case __.InvokeOrder: _InvokeOrder = Convert.ToInt32(value); break;
+                    case __.InvokeID: _InvokeID = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -474,6 +488,9 @@ namespace ESB.Core.Entity
             ///<summary></summary>
             public static readonly Field InvokeOrder = FindByName(__.InvokeOrder);
 
+            ///<summary></summary>
+            public static readonly Field InvokeID = FindByName(__.InvokeID);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -554,6 +571,9 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public const String InvokeOrder = "InvokeOrder";
+
+            ///<summary></summary>
+            public const String InvokeID = "InvokeID";
 
         }
         #endregion
@@ -637,6 +657,9 @@ namespace ESB.Core.Entity
 
         /// <summary></summary>
         Int32 InvokeOrder { get; set; }
+
+        /// <summary></summary>
+        String InvokeID { get; set; }
         #endregion
 
         #region 获取/设置 字段值
