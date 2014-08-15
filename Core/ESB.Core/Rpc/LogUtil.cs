@@ -20,6 +20,9 @@ namespace ESB.Core.Rpc
             , String message
             , ESB.Core.Schema.服务请求 request)
         {
+            callState.RequestEndTime = DateTime.Now;
+            TimeSpan ReqTimeSpan = callState.RequestEndTime.Subtract(callState.RequestBeginTime);
+
             AuditBusiness log = new AuditBusiness()
             {
                 OID = Guid.NewGuid().ToString(),
@@ -27,7 +30,7 @@ namespace ESB.Core.Rpc
                 ServiceName = request.服务名称,
                 MethodName = request.方法名称,
                 ReqBeginTime = callState.RequestBeginTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
-                ReqEndTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
+                ReqEndTime = callState.RequestEndTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
                 Status = status,
                 MessageID = Guid.NewGuid().ToString(),
                 MessageBody = request.消息内容,
@@ -44,7 +47,8 @@ namespace ESB.Core.Rpc
                 TraceID = callState.TraceContext.TraceID,
                 InvokeLevel = callState.TraceContext.InvokeLevel,
                 InvokeOrder = callState.TraceContext.InvokeOrder,
-                InvokeID = String.Format("{0}.{1}{2}", callState.TraceContext.ParentInvokeID, callState.TraceContext.InvokeLevel, callState.TraceContext.InvokeOrder)
+                InvokeID = callState.TraceContext.InvokeID,
+                InvokeTimeSpan = ReqTimeSpan.TotalMilliseconds
             };
 
             //log.Insert();

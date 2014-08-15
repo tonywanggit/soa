@@ -245,37 +245,37 @@ namespace ESB.Core.Entity
             set { if (OnPropertyChanging(__.ServiceEndTime, value)) { _ServiceEndTime = value; OnPropertyChanged(__.ServiceEndTime); } }
         }
 
-        private Int32 _InvokeTimeSpan;
+        private Double _InvokeTimeSpan;
         /// <summary></summary>
         [DisplayName("InvokeTimeSpan")]
         [Description("")]
-        [DataObjectField(false, false, false, 10)]
-        [BindColumn(20, "InvokeTimeSpan", "", "0", "int", 10, 0, false)]
-        public virtual Int32 InvokeTimeSpan
+        [DataObjectField(false, false, false, 53)]
+        [BindColumn(20, "InvokeTimeSpan", "", "0", "float", 53, 0, false)]
+        public virtual Double InvokeTimeSpan
         {
             get { return _InvokeTimeSpan; }
             set { if (OnPropertyChanging(__.InvokeTimeSpan, value)) { _InvokeTimeSpan = value; OnPropertyChanged(__.InvokeTimeSpan); } }
         }
 
-        private Int32 _InBytes;
+        private Int64 _InBytes;
         /// <summary></summary>
         [DisplayName("InBytes")]
         [Description("")]
-        [DataObjectField(false, false, false, 10)]
-        [BindColumn(21, "InBytes", "", "0", "int", 10, 0, false)]
-        public virtual Int32 InBytes
+        [DataObjectField(false, false, false, 19)]
+        [BindColumn(21, "InBytes", "", "0", "bigint", 19, 0, false)]
+        public virtual Int64 InBytes
         {
             get { return _InBytes; }
             set { if (OnPropertyChanging(__.InBytes, value)) { _InBytes = value; OnPropertyChanged(__.InBytes); } }
         }
 
-        private Int32 _OutBytes;
+        private Int64 _OutBytes;
         /// <summary></summary>
         [DisplayName("OutBytes")]
         [Description("")]
-        [DataObjectField(false, false, false, 10)]
-        [BindColumn(22, "OutBytes", "", "0", "int", 10, 0, false)]
-        public virtual Int32 OutBytes
+        [DataObjectField(false, false, false, 19)]
+        [BindColumn(22, "OutBytes", "", "0", "bigint", 19, 0, false)]
+        public virtual Int64 OutBytes
         {
             get { return _OutBytes; }
             set { if (OnPropertyChanging(__.OutBytes, value)) { _OutBytes = value; OnPropertyChanged(__.OutBytes); } }
@@ -396,9 +396,9 @@ namespace ESB.Core.Entity
                     case __.ServiceID: _ServiceID = Convert.ToString(value); break;
                     case __.ServiceBeginTime: _ServiceBeginTime = Convert.ToString(value); break;
                     case __.ServiceEndTime: _ServiceEndTime = Convert.ToString(value); break;
-                    case __.InvokeTimeSpan: _InvokeTimeSpan = Convert.ToInt32(value); break;
-                    case __.InBytes: _InBytes = Convert.ToInt32(value); break;
-                    case __.OutBytes: _OutBytes = Convert.ToInt32(value); break;
+                    case __.InvokeTimeSpan: _InvokeTimeSpan = Convert.ToDouble(value); break;
+                    case __.InBytes: _InBytes = Convert.ToInt64(value); break;
+                    case __.OutBytes: _OutBytes = Convert.ToInt64(value); break;
                     case __.TraceID: _TraceID = Convert.ToString(value); break;
                     case __.InvokeLevel: _InvokeLevel = Convert.ToInt32(value); break;
                     case __.InvokeOrder: _InvokeOrder = Convert.ToInt32(value); break;
@@ -641,13 +641,13 @@ namespace ESB.Core.Entity
         String ServiceEndTime { get; set; }
 
         /// <summary></summary>
-        Int32 InvokeTimeSpan { get; set; }
+        Double InvokeTimeSpan { get; set; }
 
         /// <summary></summary>
-        Int32 InBytes { get; set; }
+        Int64 InBytes { get; set; }
 
         /// <summary></summary>
-        Int32 OutBytes { get; set; }
+        Int64 OutBytes { get; set; }
 
         /// <summary></summary>
         String TraceID { get; set; }

@@ -57,8 +57,25 @@ namespace Monitor.WindowsService
             m_RabbitMQ.Listen<AuditBusiness>(Constant.ESB_AUDIT_QUEUE, x =>
             {
                 if (x != null)
+                {
+                    x.InBytes = GetStringByteLength(x.MessageBody);
+                    x.OutBytes = GetStringByteLength(x.ReturnMessageBody);
                     x.Insert();
+                }
             });
+        }
+
+        /// <summary>
+        /// 获取到消息的字节数
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public Int64 GetStringByteLength(String message)
+        {
+            if(String.IsNullOrEmpty(message))
+                return 0;
+            else
+                return Encoding.Default.GetByteCount(message);
         }
 
         /// <summary>

@@ -97,7 +97,7 @@ namespace ESB.Core.Rpc
             }
 
             //--如果获取不到则代表第一次调用，进行跟踪上下文初始化
-            return new ESBTraceContext(Guid.NewGuid().ToString(), 0, 0);
+            return new ESBTraceContext(Guid.NewGuid().ToString(), 0, "");
         }
 
 

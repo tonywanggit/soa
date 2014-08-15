@@ -14,9 +14,9 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
-            TestEsbProxy("ESB_COM_WS");
+            //TestEsbProxy("ESB_COM_WS");
 
-            //TestEsbProxy("ESB_WCF");
+            TestEsbProxy("ESB_WCF");
 
             //TestEsbProxy("ESB_ASHX");
 
