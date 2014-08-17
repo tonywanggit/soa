@@ -25,7 +25,8 @@ namespace CoreWeb
         [return: System.Xml.Serialization.XmlElementAttribute(Namespace = "http://schemas.jn.com/esb/response/20100329", ElementName = "服务响应")]
         public ESB.Core.Schema.服务响应 ReceiveRequest([System.Xml.Serialization.XmlElementAttribute(Namespace = "http://schemas.jn.com/esb/request/20100329", ElementName = "服务请求")] ESB.Core.Schema.服务请求 part)
         {
-            return EsbClient.DynamicalCallWebService(true, part);
+            return null;
+            //return EsbClient.DynamicalCallWebService(true, part);
         }
     }
 }

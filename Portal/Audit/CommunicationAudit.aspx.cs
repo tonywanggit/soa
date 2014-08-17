@@ -17,6 +17,8 @@ using System.Xml;
 using System.Text;
 using System.Collections.Generic;
 using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxTreeList;
+using System.Drawing;
 
 public partial class Audit_CommunicationAudit : BasePage
 {
@@ -30,6 +32,7 @@ public partial class Audit_CommunicationAudit : BasePage
 
         if (!IsCallback && !IsPostBack)
         {
+            
             InitPage();
         }
     }
@@ -48,6 +51,17 @@ public partial class Audit_CommunicationAudit : BasePage
     #endregion
 
     #region 数据源接口函数
+    protected void OdsAuditTrace_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+        if (grid.IsEditing)
+        {
+            Int32 i = grid.EditingRowVisibleIndex;
+            String oid = grid.GetRowValues(i, "OID").ToString();
+
+            e.InputParameters["traceID"] = oid;
+        }
+    }
+
     protected void OdsService_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
         业务实体 svrEntity = new 业务实体();
@@ -119,6 +133,10 @@ public partial class Audit_CommunicationAudit : BasePage
         grid.DataBind();
     }
 
+    protected void treeList_DataBinding(object sender, EventArgs e)
+    {
+    }
+
     protected void grid_OnHtmlEditFormCreated(object sender, ASPxGridViewEditFormEventArgs e)
     {
         Control pc = grid.FindEditFormTemplateControl("pageControl");
@@ -140,6 +158,7 @@ public partial class Audit_CommunicationAudit : BasePage
             try
             {
                 Guid g = new Guid(oid);
+                Session["TraceID"] = oid;
             }
             catch
             {
@@ -180,6 +199,23 @@ public partial class Audit_CommunicationAudit : BasePage
 
             txtMB.Text = msgBody;
             txtRMB.Text = retMsgBody;
+        }
+    }
+
+    /// <summary>
+    /// 分析依赖
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void treeList_HtmlRowPrepared(object sender, TreeListHtmlRowEventArgs e)
+    {
+        if (grid.IsEditing)
+        {
+            Int32 i = grid.EditingRowVisibleIndex;
+            String oid = grid.GetRowValues(i, "OID").ToString();
+
+            if (Object.Equals(e.GetValue("OID"), oid))
+                e.Row.BackColor = Color.FromArgb(211, 235, 183);
         }
     }
     #endregion

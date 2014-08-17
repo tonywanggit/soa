@@ -29,7 +29,8 @@ namespace Registry.WindowsService
         {
             Int32 port = Config.GetConfig<Int32>("ESB.RegistryService.Port");
 
-            IPEndPoint localep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+            //IPEndPoint localep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+            IPEndPoint localep = new IPEndPoint(IPAddress.Any, port);
             m_TcpListener = new TcpListener(localep);
             m_TcpListener.Start(2000);
 

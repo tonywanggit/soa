@@ -14,9 +14,9 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
-            //TestEsbProxy("ESB_COM_WS");
+            TestEsbProxy("ESB_COM_WS");
 
-            TestEsbProxy("ESB_WCF");
+            //TestEsbProxy("ESB_WCF");
 
             //TestEsbProxy("ESB_ASHX");
 
@@ -39,7 +39,7 @@ namespace ESB.TestFramework
             stopWatch.Stop();
 
             Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
-            //Console.ReadKey();
+            Console.ReadKey();
 
             Int64 elapsedMS = 0;
             for (int i = 0; i < 10; i++)

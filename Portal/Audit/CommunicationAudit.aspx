@@ -5,6 +5,7 @@
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dxlp" %>
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dxwtl" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="localCssPlaceholder" runat="server">
     <style type="text/css">
@@ -70,7 +71,7 @@
             </tr>
         </table>
         <br />
-        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" 
+        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server"
             DataSourceID="OdsAuditBusiness" KeyFieldName="OID" AutoGenerateColumns="False" Width="900" 
             DataSourceForceStandardPaging="True" SettingsPager-PageSize="15" OnHtmlEditFormCreated="grid_OnHtmlEditFormCreated" >
             <%-- BeginRegion Columns --%>
@@ -134,6 +135,28 @@
                          <dxe:ASPxMemo ID="txtReturnMessageBody" ReadOnly="true" runat="server" Text='<%# Eval("OID").ToString()%>' Width="100%" Height="400px"></dxe:ASPxMemo>
                         </dxw:ContentControl></ContentCollection>
                     </dxtc:TabPage>
+                    <dxtc:TabPage Text="依赖分析" Visible="true">
+                        <ContentCollection>
+                            <dxw:ContentControl runat="server">
+                                <dxwtl:ASPxTreeList ID="treeList" runat="server" AutoGenerateColumns="False" OnHtmlRowPrepared="treeList_HtmlRowPrepared"
+                                     Width="100%" DataSourceID="OdsAuditTrace" KeyFieldName="InvokeID" ParentFieldName="ParentInvokeID">
+                                    <Columns>
+                                        <dxwtl:TreeListDataColumn FieldName="ServiceName" Caption="服务名称" VisibleIndex="0" />            
+                                        <dxwtl:TreeListDataColumn FieldName="MethodName" Caption="方法名称" VisibleIndex="1" />          
+                                        <dxwtl:TreeListDataColumn FieldName="ReqBeginTime" Caption="请求开始" VisibleIndex="2" />          
+                                        <dxwtl:TreeListDataColumn FieldName="ReqEndTime" Caption="请求结束" VisibleIndex="3" />            
+                                        <dxwtl:TreeListDataColumn FieldName="InvokeTimeSpan"  Caption="耗时（ms）" VisibleIndex="4"  DisplayFormat="#,###.000" />  
+                                        <dxwtl:TreeListDataColumn FieldName="OID"  Caption="耗时（ms）" VisibleIndex="4" Visible="false" />
+                                    </Columns>
+                                     <Styles>
+                                         <AlternatingNode Enabled="true" />
+                                     </Styles>
+                                     <Settings GridLines="Both" />
+                                     <SettingsBehavior ExpandCollapseAction="NodeDblClick" AutoExpandAllNodes="true" />
+                                </dxwtl:ASPxTreeList>
+                            </dxw:ContentControl>
+                        </ContentCollection>
+                    </dxtc:TabPage>
                 </TabPages>
                 </dxtc:ASPxPageControl>
                 <table width="100%" runat="server" id="tblDownload">
@@ -160,6 +183,14 @@
     </asp:UpdatePanel>
     
     <%-- BeginRegion DataSource --%>
+    <asp:ObjectDataSource ID="OdsAuditTrace" runat="server" 
+        TypeName="ESB.AuditService" 
+        DataObjectTypeName="ESB.AuditBusiness" OnSelecting="OdsAuditTrace_Selecting"
+        SelectMethod="GetAuditListByTraceID">
+        <SelectParameters>
+            <asp:SessionParameter Name="traceID" SessionField="TraceID" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsProvider" runat="server" 
         TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
         DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.业务实体" 

@@ -25,7 +25,7 @@ namespace CoreWeb
             "", OneWay = true, Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Default)]
         public void ReceiveRequest([System.Xml.Serialization.XmlElementAttribute(Namespace = "http://schemas.jn.com/esb/request/20100329", ElementName = "服务请求")] ESB.Core.Schema.服务请求 part)
         {
-            EsbClient.DynamicalCallWebService(false, part);
+            //EsbClient.DynamicalCallWebService(false, part);
         }
     }
 

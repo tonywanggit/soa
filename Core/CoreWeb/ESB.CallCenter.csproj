@@ -75,6 +75,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BasicService\AuditService.asmx" />
     <Content Include="ClearAssemblyCache.aspx" />
     <Content Include="Core_Service_Bus_MainBus_ReceiveSendPort.asmx" />
     <Content Include="Core_Service_Bus_OnewayMainBus_OneWayReceive.asmx" />
@@ -84,6 +85,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicService\AuditService.asmx.cs">
+      <DependentUpon>AuditService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ClearAssemblyCache.aspx.cs">
       <DependentUpon>ClearAssemblyCache.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

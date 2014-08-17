@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://esb.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://esb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://esb.com/">
+      <s:element name="GetAuditListByTraceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="traceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuditListByTraceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuditListByTraceIDResult" type="tns:ArrayOfAuditBusiness" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAuditBusiness">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AuditBusiness" nillable="true" type="tns:AuditBusiness" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AuditBusiness">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:AuditBusinessOfAuditBusiness" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AuditBusinessOfAuditBusiness">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfAuditBusiness">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ParentInvokeID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReqBeginTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReqEndTime" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CallBeginTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CallEndTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BindingAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BindingTemplateID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReturnMessageBody" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceBeginTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceEndTime" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="InvokeTimeSpan" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="InBytes" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="OutBytes" type="s:long" />
+              <s:element minOccurs="0" maxOccurs="1" name="TraceID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="InvokeLevel" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="InvokeOrder" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="InvokeID" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfAuditBusiness">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityBase" abstract="true" />
+      <s:element name="GetAuditList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAuditListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuditListResult" type="tns:ArrayOfAuditBusiness" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAuditListByTraceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuditListByTraceID" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditListByTraceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuditListByTraceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuditList" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuditListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AuditServiceSoap">
+    <wsdl:operation name="GetAuditListByTraceID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到同一次调用的所有审计日志</wsdl:documentation>
+      <wsdl:input message="tns:GetAuditListByTraceIDSoapIn" />
+      <wsdl:output message="tns:GetAuditListByTraceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到同一次调用的所有审计日志</wsdl:documentation>
+      <wsdl:input message="tns:GetAuditListSoapIn" />
+      <wsdl:output message="tns:GetAuditListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuditServiceSoap" type="tns:AuditServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAuditListByTraceID">
+      <soap:operation soapAction="http://esb.com/GetAuditListByTraceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditList">
+      <soap:operation soapAction="http://esb.com/GetAuditList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuditServiceSoap12" type="tns:AuditServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAuditListByTraceID">
+      <soap12:operation soapAction="http://esb.com/GetAuditListByTraceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditList">
+      <soap12:operation soapAction="http://esb.com/GetAuditList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuditService">
+    <wsdl:port name="AuditServiceSoap" binding="tns:AuditServiceSoap">
+      <soap:address location="http://localhost/CallCenter/BasicService/AuditService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuditServiceSoap12" binding="tns:AuditServiceSoap12">
+      <soap12:address location="http://localhost/CallCenter/BasicService/AuditService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

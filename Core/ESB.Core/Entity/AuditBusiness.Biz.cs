@@ -81,9 +81,36 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展属性﻿
+        /// <summary>
+        /// 上一级调用的ID
+        /// </summary>
+        private String m_ParentInvokeID;
+        public String ParentInvokeID
+        {
+            get
+            {
+                if (m_ParentInvokeID != null) return m_ParentInvokeID;
+
+                if (InvokeID == "00")
+                    return "0";
+                else
+                    return InvokeID.Substring(0, InvokeID.Length - 3);
+            }
+            set
+            {
+                m_ParentInvokeID = value;
+            }
+        }
         #endregion
 
         #region 扩展查询﻿
+        public static EntityList<TEntity> FindAllByTraceID(String traceID)
+        {
+            EntityList<TEntity> lstAudit = FindAll(_.TraceID == traceID, _.InvokeID
+                , "OID, HostName, ServiceName, MethodName, ReqBeginTime, ReqEndTime, InvokeTimeSpan, InvokeID, InvokeLevel, InvokeOrder", 0, 0);
+
+            return lstAudit;
+        }
         #endregion
 
         #region 高级查询
