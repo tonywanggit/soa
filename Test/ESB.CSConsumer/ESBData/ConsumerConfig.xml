@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ConsumerConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationName>ESB_CallCenter_10.100.20.214</ApplicationName>
+  <Registry>
+    <RegistryItem>
+      <Uri>10.100.20.214:5555</Uri>
+      <Load>1</Load>
+    </RegistryItem>
+  </Registry>
+</ConsumerConfig>
