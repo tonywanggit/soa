@@ -38,7 +38,7 @@ namespace ESB.Core.Registry
         {
             String uri = m_ESBProxy.ConsumerConfig.Registry[0].Uri;
 
-            if(m_ESBProxy.ConsumerConfig.ApplicationName == "ESB_CallCenter")
+            if(m_ESBProxy.ConsumerConfig.ApplicationName.StartsWith("ESB_CallCenter"))
                 m_CometClient = new CometClient(uri, RegistryClientType.CallCenter);
             else
                 m_CometClient = new CometClient(uri, RegistryClientType.Consumer);

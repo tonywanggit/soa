@@ -75,6 +75,7 @@ namespace Registry.WindowsService
             try
             {
                 int dataLength = registryClient.Socket.EndReceive(ar);
+
                 if(dataLength == 0)
                 {
                     Console.WriteLine("接收客户端：{0}已经断开连接。", registryClient.Socket.RemoteEndPoint.ToString());
@@ -82,13 +83,14 @@ namespace Registry.WindowsService
                         m_RegistryClients.Remove(registryClient);
                         registryClient.Dispose();
                     }
-                }else
+                }
+                else
                 {
                     String data = Encoding.UTF8.GetString(registryClient.ReceiveBuffer, 0, dataLength);
 
                     Console.WriteLine("接收客户端：{0}发送的数据：{1}。", registryClient.Socket.RemoteEndPoint.ToString(), data);
 
-                    //解析来自客户端的类型
+                    //--解析来自客户端的类型
                     RegistryMessage regMessage = XmlUtil.LoadObjFromXML<RegistryMessage>(data);
                     registryClient.RegistryClientType = regMessage.ClientType;
 

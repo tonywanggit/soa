@@ -45,7 +45,7 @@ namespace ESB.Core.Monitor
         /// </summary>
         public void Connect()
         {
-            if (m_ESBProxy.ESBConfig.Monitor != null && m_ESBProxy.ESBConfig.Monitor.Count > 0)
+            if (m_ESBProxy.ESBConfig != null && m_ESBProxy.ESBConfig.Monitor != null && m_ESBProxy.ESBConfig.Monitor.Count > 0)
             {
                 String[] paramMQ = m_ESBProxy.ESBConfig.Monitor[0].Uri.Split(':');
                 m_RabbitMQ = new RabbitMQClient(paramMQ[0], paramMQ[2], paramMQ[3], Int32.Parse(paramMQ[1]));

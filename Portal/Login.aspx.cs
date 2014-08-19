@@ -4,22 +4,30 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Collections.Generic;
 using JN.Esb.Portal.ServiceMgt.服务目录服务;
+using System.DirectoryServices;
 
-public partial class LoginPage : System.Web.UI.Page{
+public partial class LoginPage : System.Web.UI.Page
+{
 
-    private HttpCookie authCookie;
+    /// <summary>
+    /// ESB记录登陆用户的Cookie名称
+    /// </summary>
+    public const String ESB_COOKIE_LOGINNAME = "Esb-Cookie-LoginName";
 
 	protected void Page_Load(object sender, EventArgs e) {
-
+        if (!this.IsPostBack && this.Request.Cookies[ESB_COOKIE_LOGINNAME] != null)
+        {
+            this.txtUsername.Text = this.Request.Cookies[ESB_COOKIE_LOGINNAME].Value;
+        }
 	}
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        string adPath = "LDAP://DC=jn,DC=com"; //Path to your LDAP directory server
-        LdapAuthentication adAuth = new LdapAuthentication(adPath);
+        //string adPath = "LDAP://DC=mb,DC=com"; //Path to your LDAP directory server
+        LdapAuthentication adAuth = new LdapAuthentication(txtDomain.Text);
         try
         {
-            //if (true == adAuth.IsAuthenticated(txtDomain.Text, txtUsername.Text, txtPassword.Text))
+            if (true == adAuth.IsAuthenticated(txtDomain.Text, txtUsername.Text, txtPassword.Text))
             {
                 // string groups = adAuth.GetGroups();
                 string groups = "";
@@ -33,15 +41,18 @@ public partial class LoginPage : System.Web.UI.Page{
                 string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
 
                 //Create a cookie, and then add the encrypted ticket to the cookie as data.
-                authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                HttpCookie loginNameCookie = new HttpCookie(ESB_COOKIE_LOGINNAME, txtUsername.Text);
 
                 if (true == isCookiePersistent)
                 {
                     authCookie.Expires = authTicket.Expiration;
+                    loginNameCookie.Expires = DateTime.Now.AddDays(30);
                 }
 
                 //Add the cookie to the outgoing cookies collection.
                 Response.Cookies.Add(authCookie);
+                Response.Cookies.Add(loginNameCookie);
 
 
                 //Esb授权校验
@@ -52,10 +63,10 @@ public partial class LoginPage : System.Web.UI.Page{
                 //Response.Redirect(FormsAuthentication.GetRedirectUrl(txtUsername.Text, false));
                 Response.Redirect("Default.aspx", false);
             }
-            /*else
+            else
             {
                 errorLabel.Text = "登录失败，请检查用户名和密码！";
-            }*/
+            }
         }
         catch (System.Exception ex)
         {

@@ -70,7 +70,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" align="left" style="padding-left:7px"><asp:CheckBox ID="chkPersist" runat="server" Text="保持登录状态" /></td>
+                                            <td colspan="2" align="left" style="padding-left:7px"><asp:CheckBox ID="chkPersist" runat="server" Checked="true" Text="记住我的登陆名" /></td>
                                         </tr>
                                         <tr>
                                             <td style="height:30px;width:50px"></td>

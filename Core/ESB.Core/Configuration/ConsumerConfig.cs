@@ -60,9 +60,5 @@ namespace ESB.Core.Configuration
         /// 服务名称
         /// </summary>
         public String ServiceName { get; set; }
-        /// <summary>
-        /// 接口
-        /// </summary>
-        public String Interface { get; set; }
     }
 }

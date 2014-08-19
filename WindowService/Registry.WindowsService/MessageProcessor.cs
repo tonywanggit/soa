@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using XCode;
 
 namespace Registry.WindowsService
 {
@@ -28,10 +29,10 @@ namespace Registry.WindowsService
         /// <param name="regMessage"></param>
         public void Process(RegistryClient regClient, RegistryMessage regMessage)
         {
-            if (regMessage.ClientType == RegistryClientType.Consumer && regMessage.Action == RegistryMessageAction.Hello)
+            if (regMessage.Action == RegistryMessageAction.Hello)
             {
                 ConsumerConfig consumerConfig = XmlUtil.LoadObjFromXML<ConsumerConfig>(regMessage.MessageBody);
-                ESBConfig esbConfig = GetESBConfig(consumerConfig);
+                ESBConfig esbConfig = GetESBConfig(consumerConfig, regClient);
                 m_RegistryCenter.SendData(regClient, RegistryMessageAction.ServiceConfig, esbConfig.ToXml());
             }
         }
@@ -40,7 +41,7 @@ namespace Registry.WindowsService
         /// 获取到ESBConfig
         /// </summary>
         /// <returns></returns>
-        private ESBConfig GetESBConfig(ConsumerConfig consumerConfig)
+        private ESBConfig GetESBConfig(ConsumerConfig consumerConfig, RegistryClient regClient)
         {
             ESBConfig esbConfig = new ESBConfig();
             esbConfig.Monitor.Add(new MonitorItem() { Uri = "192.168.56.2:5672:soa:123456", Load = 1, Type = "RabbitMQ" });
@@ -50,10 +51,25 @@ namespace Registry.WindowsService
 
             //esbConfig.Service.Add(new ServiceItem() { ServiceName = "ESB_ASHX", DirectInvokeEnabled = true, Uri = "http://esb.jn.com" });
 
-            foreach (var refService in consumerConfig.Reference)
+            if (regClient.RegistryClientType == RegistryClientType.Consumer)
             {
-                BusinessService bs = BusinessService.FindByServiceName(refService.ServiceName);
-                if (bs != null)
+                foreach (var refService in consumerConfig.Reference)
+                {
+                    BusinessService bs = BusinessService.FindByServiceName(refService.ServiceName);
+                    if (bs != null)
+                    {
+                        ServiceItem si = new ServiceItem();
+                        si.ServiceName = bs.ServiceName;
+                        si.Binding = bs.Binding;
+
+                        esbConfig.Service.Add(si);
+                    }
+                }
+            }
+            else if(regClient.RegistryClientType == RegistryClientType.CallCenter)
+            {
+                EntityList<BusinessService> lstBS = BusinessService.FindAll();
+                foreach (var bs in lstBS)
                 {
                     ServiceItem si = new ServiceItem();
                     si.ServiceName = bs.ServiceName;

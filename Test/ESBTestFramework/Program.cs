@@ -14,13 +14,53 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
-            TestEsbProxy("ESB_COM_WS");
+            //TestEsbProxy("ESB_COM_WS");
 
             //TestEsbProxy("ESB_WCF");
 
             //TestEsbProxy("ESB_ASHX");
 
             //TestEsbProxy("ESB_WS");
+
+            TestWXSC();
+        }
+
+        static void TestWXSC()
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            ESBProxy esbProxy = ESBProxy.GetInstance();
+            stopWatch.Stop();
+
+            Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
+            Console.ReadKey();
+
+            stopWatch.Restart();
+            String msgBody = "collocationId=11";
+            //String message = esbProxy.Invoke("WXSC_WeiXinServiceForApp", "GET:XML:CollocationDetailFilter", msgBody);
+            String message = esbProxy.Invoke("WXSC_WeiXinServiceForApp", "WxSellerAccountFilter", @"{""id"":0,""supeR_SELLER_ID"":0,""state"":""String"",""pageIndex"":0,""pageSize"":0}");
+            stopWatch.Stop();
+
+            Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
+            Console.ReadKey();
+
+            
+            Int64 elapsedMS = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                stopWatch.Restart();
+                //String ret = esbProxy.Invoke("WXSC_WeiXinServiceForApp", "GET:CollocationDetailFilter", msgBody);
+                String ret = esbProxy.Invoke("WXSC_WeiXinServiceForApp", "CollocationFilter", "{'id':0}");
+                stopWatch.Stop();
+
+                elapsedMS += stopWatch.ElapsedMilliseconds;
+
+                Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
+            }
+
+            Console.WriteLine("排除第一次后 10 平均耗时：{0}ms。", elapsedMS / 10);
+
+            Console.ReadKey();
         }
 
         static void TestEsbProxy(String serviceName)

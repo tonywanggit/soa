@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.CallCenter", "Core\Core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewLife.XCode", "NewLife\NewLife.XCode\NewLife.XCode.csproj", "{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.WebConsumer", "Test\ESB.WebConsumer\ESB.WebConsumer.csproj", "{A35C8D66-D351-4F91-9A62-C6AB7094A623}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,14 @@ Global
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Net4Release|Any CPU.Build.0 = Net4Release|Any CPU
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A35C8D66-D351-4F91-9A62-C6AB7094A623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A35C8D66-D351-4F91-9A62-C6AB7094A623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A35C8D66-D351-4F91-9A62-C6AB7094A623}.Net4Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A35C8D66-D351-4F91-9A62-C6AB7094A623}.Net4Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A35C8D66-D351-4F91-9A62-C6AB7094A623}.Net4Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A35C8D66-D351-4F91-9A62-C6AB7094A623}.Net4Release|Any CPU.Build.0 = Release|Any CPU
+		{A35C8D66-D351-4F91-9A62-C6AB7094A623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A35C8D66-D351-4F91-9A62-C6AB7094A623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
