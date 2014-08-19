@@ -82,6 +82,7 @@
     <Content Include="Demo_InvokeService.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Script\jquery-2.1.0.min.js" />
+    <Content Include="Script\mb-esb-1.0.0.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
