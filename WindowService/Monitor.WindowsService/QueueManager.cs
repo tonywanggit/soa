@@ -71,7 +71,8 @@ namespace Audit.WindowsService
                     m_ProcessMessage = false;
                 }
                 catch (Exception ex){
-                    XTrace.WriteLine("接收消息时发生异常：{0}，服务将忽略此消息并继续运行！", ex.ToString());
+                    XTrace.WriteLine("接收消息时发生异常：{0}，服务将停止运行！", ex.ToString());
+                    break;
                 }
 
             } while (m_StopFlag == false);

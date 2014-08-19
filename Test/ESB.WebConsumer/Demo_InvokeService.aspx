@@ -6,6 +6,7 @@
 <head runat="server">
     <title>ESB调用中心演示用例</title>
     <script src="Script/jquery-2.1.0.min.js" type="text/javascript"></script>
+    <script src="http://192.168.56.1/CallCenter/Script/mb-esb-1.0.0.js" type="text/javascript"></script>
     <script type="text/javascript">
         function SendToESB() {
             var serviceName = $("#txtServiceName").val();
@@ -13,16 +14,8 @@
             var message = $("#txtSendMessage").val();
 
 
-            $.ajax({
-                type: "POST",
-                url: "http://192.168.56.1/CallCenter/ESB_InvokeService.ashx?callback=?",
-                crossDomain: true,
-                dataType: "jsonp",
-                data: "ServiceName=" + serviceName + "&MethodName=" + methodName + "&Message=" + message,
-                success: function (msg) {
-                    $("#txtReceiveMessage").val(msg.message);
-                    //console.log(msg.message);
-                }
+            $.esb.invoke(serviceName, methodName, message, function (response) {
+                $("#txtReceiveMessage").val(response);
             });
         }
     </script>
