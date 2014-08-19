@@ -10,6 +10,7 @@ using NewLife.Reflection;
 using NewLife.Log;
 using System.Net;
 using ESB.Core.Monitor;
+using NewLife.Threading;
 
 namespace ESB.Core
 {
@@ -143,7 +144,8 @@ namespace ESB.Core
             //--STEP.1.记录客户端版本信息
             Status = ESBProxyStatus.Init;
             var asm = AssemblyX.Create(System.Reflection.Assembly.GetExecutingAssembly());
-            XTrace.WriteLine("{0} v{1} Build {2:yyyy-MM-dd HH:mm:ss}", asm.Name, asm.FileVersion, asm.Compile);
+            String clientVersion = String.Format("{0} v{1} Build {2:yyyy-MM-dd HH:mm:ss}", asm.Name, asm.FileVersion, asm.Compile);
+            XTrace.WriteLine(clientVersion);
 
             //--STEP.2.加载配置文件
             LoadConfig();
@@ -151,6 +153,7 @@ namespace ESB.Core
             //--STEP.3.连接注册中心
             m_RegistryClient = new RegistryConsumerClient(this);
             m_RegistryClient.Connect();
+
 
             //--STEP.4.连接监控中心
             m_MonitorClient = new MonitorClient(this);
@@ -174,8 +177,6 @@ namespace ESB.Core
         {
             DateTime reqStartTime = DateTime.Now;
 
-            InitCheck();
-
             ESB.Core.Schema.服务请求 req = new ESB.Core.Schema.服务请求();
             req.服务名称 = serviceName;
             req.方法名称 = methodName;
@@ -185,9 +186,36 @@ namespace ESB.Core
             req.消息编码 = "";
             req.密码 = "";
 
+            Boolean getSyncESBConfig = false;
+            if (ESBConfig == null)
+            {
+                SyncESBConfig(serviceName);
+                getSyncESBConfig = true;
+            }
+
+            if (ESBConfig == null)
+                throw new Exception("无法获取到有效的配置文件");
+
             ServiceItem si = ESBConfig.Service.Find(x=>x.ServiceName == serviceName);
-            if(si == null)
-                throw new Exception(String.Format("请求的服务【{0}】没有注册!", serviceName));
+            if (si == null)
+            {
+                if (getSyncESBConfig)
+                {
+                    m_ConfigurationManager.RemoveReference(serviceName, m_ConsumerConfig);
+                    throw new Exception(String.Format("请求的服务【{0}】没有注册!", serviceName));
+                }
+                else
+                {
+                    SyncESBConfig(serviceName);
+                    si = ESBConfig.Service.Find(x => x.ServiceName == serviceName);
+
+                    if (si == null)
+                    {
+                        m_ConfigurationManager.RemoveReference(serviceName, m_ConsumerConfig);
+                        throw new Exception(String.Format("请求的服务【{0}】没有注册!", serviceName));
+                    }
+                }
+            }
 
             if(si.Binding == null || si.Binding.Count == 0)
                 throw new Exception(String.Format("请求的服务【{0}】没有有效的绑定地址!", serviceName));
@@ -198,6 +226,26 @@ namespace ESB.Core
             //Console.WriteLine("DynamicalCallWebService 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             return msg;
+        }
+
+        /// <summary>
+        /// 同步服务配置
+        /// </summary>
+        /// <param name="serviceName"></param>
+        private void SyncESBConfig(String serviceName)
+        {
+            //--如果没有服务,先查看引用中是否存在
+            if (m_ConsumerConfig.Reference.Find(x => x.ServiceName == serviceName) == null)
+            {
+                m_ConsumerConfig.Reference.Add(new ReferenceItem() { ServiceName = serviceName });
+                ThreadPoolX.QueueUserWorkItem(x =>
+                {
+                    m_ConfigurationManager.SaveConsumerConfig(m_ConsumerConfig);
+                });
+            }
+
+            //--采用同步机制到注册中心获取到服务配置信息
+            m_RegistryClient.SyncESBConfig();
         }
 
         /// <summary>

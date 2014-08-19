@@ -8,6 +8,7 @@ using System.IO;
 using ESB.Core.Util;
 using NewLife.Threading;
 using NewLife.Log;
+using System.Threading;
 
 namespace ESB.Core.Registry
 {
@@ -19,6 +20,8 @@ namespace ESB.Core.Registry
         private CometClient m_CometClient = null;
         private ESBProxy m_ESBProxy = null;
         private ConfigurationManager m_ConfigurationManager = null;
+        private Object m_SyncESBConfigLock = new Object();  //同步获取到ESBConfig配置锁
+        private AutoResetEvent m_AutoResetEvent = new AutoResetEvent(false);
 
         /// <summary>
         /// 注册中心消费者客户端
@@ -48,6 +51,18 @@ namespace ESB.Core.Registry
         }
 
         /// <summary>
+        /// 同步获取到ESBConfig文件
+        /// </summary>
+        public void SyncESBConfig()
+        {
+            lock (m_SyncESBConfigLock)
+            {
+                m_CometClient.SendData(RegistryMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml(), false);
+                m_AutoResetEvent.WaitOne();
+            }
+        }
+
+        /// <summary>
         /// 接收注册中心的消息
         /// </summary>
         /// <param name="sender"></param>
@@ -61,9 +76,23 @@ namespace ESB.Core.Registry
                     RegistryMessage rm = XmlUtil.LoadObjFromXML<RegistryMessage>(e.Response);
 
                     if(rm.Action == RegistryMessageAction.ServiceConfig){
-                        m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
-                        if (m_ESBProxy.ESBConfig != null)
-                            m_ESBProxy.Status = ESBProxy.ESBProxyStatus.Ready;
+
+                        //--如果ESBConfig为NULL，则说明注册中心还没连上
+                        if (m_ESBProxy.ESBConfig == null)
+                        {
+                            m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
+                            m_ESBProxy.MonitorClient.Connect();
+                        }
+                        else
+                        {
+                            //--从返回消息中加载ESBConfig配置文件
+                            m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
+                            if (m_ESBProxy.ESBConfig != null)
+                                m_ESBProxy.Status = ESBProxy.ESBProxyStatus.Ready;
+                        }
+
+                        //--如果是同步调用，则需要在消息返回时释放信号
+                        if (!rm.IsAsync) m_AutoResetEvent.Set();
 
                         //--异步将配置文件序列化到本地存储
                         ThreadPoolX.QueueUserWorkItem(x =>

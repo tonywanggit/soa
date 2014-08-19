@@ -101,13 +101,15 @@ namespace ESB.Core.Registry
         /// 向服务器发送数据
         /// </summary>
         /// <param name="message"></param>
-        public void SendData(RegistryMessageAction action, String message)
+        /// <param name="isAsync">如过为同步调用，则在回传的是后需要释放同步信号</param>
+        public void SendData(RegistryMessageAction action, String message, Boolean isAsync = true)
         {
             try
             {
                 RegistryMessage regMessage = new RegistryMessage()
                 {
                     Action = action,
+                    IsAsync = isAsync,
                     ClientType = m_ClientType,
                     MessageBody = message
                 };
@@ -123,7 +125,6 @@ namespace ESB.Core.Registry
                 OnLostConnection(ex.ToString());
             }
         }
-
         /// <summary>
         /// 发送回调函数
         /// </summary>

@@ -1,6 +1,7 @@
 ﻿using ESB.Core.Util;
 using NewLife.Configuration;
 using NewLife.Log;
+using NewLife.Threading;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -140,6 +141,24 @@ namespace ESB.Core.Configuration
             catch (Exception ex)
             {
                 XTrace.WriteLine("序列化ESBConfig.xml文件失败：{0}", ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// 删除一个服务引用并异步序列化到磁盘
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <param name="consumerConfig"></param>
+        public void RemoveReference(String serviceName, ConsumerConfig consumerConfig)
+        {
+            ReferenceItem refItem = consumerConfig.Reference.Find(x => x.ServiceName == serviceName);
+            if (refItem != null)
+            {
+                consumerConfig.Reference.Remove(refItem);
+                ThreadPoolX.QueueUserWorkItem(x =>
+                {
+                    m_ConfigurationManager.SaveConsumerConfig(consumerConfig);
+                });
             }
         }
     }

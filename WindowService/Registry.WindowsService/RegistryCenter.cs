@@ -118,14 +118,16 @@ namespace Registry.WindowsService
         /// </summary>
         /// <param name="rsClient"></param>
         /// <param name="data"></param>
-        public void SendData(RegistryClient registryClient, RegistryMessageAction action, String data)
+        /// <param name="isAsync">默认为异步调用</param>
+        public void SendData(RegistryClient registryClient, RegistryMessageAction action, String data, Boolean isAsync = true)
         {
             try
             {
                 RegistryMessage rm = new RegistryMessage()
                 {
                     Action = action,
-                    MessageBody = data
+                    MessageBody = data,
+                    IsAsync = isAsync
                 };
 
                 String messageData = XmlUtil.SaveXmlFromObj<RegistryMessage>(rm);

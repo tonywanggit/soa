@@ -21,6 +21,17 @@ namespace ESB.Core.Registry
         public RegistryMessageAction Action { get; set; }
 
         /// <summary>
+        /// 消息编码
+        /// </summary>
+        public String MessageGUID { get; set; }
+
+        private Boolean m_IsAsync = true;
+        /// <summary>
+        /// 是否为异步调用,默认为异步调用
+        /// </summary>
+        public Boolean IsAsync { get { return m_IsAsync; } set { m_IsAsync = value; } }
+
+        /// <summary>
         /// 消息主体内容
         /// </summary>
         public String MessageBody { get; set; }
