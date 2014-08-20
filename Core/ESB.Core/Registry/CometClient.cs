@@ -104,6 +104,11 @@ namespace ESB.Core.Registry
         /// <param name="isAsync">如过为同步调用，则在回传的是后需要释放同步信号</param>
         public void SendData(RegistryMessageAction action, String message, Boolean isAsync = true)
         {
+            if (m_SocketClient == null || !m_SocketClient.Connected)
+            {
+                throw new Exception("无法连接注册中心！");
+            }
+
             try
             {
                 RegistryMessage regMessage = new RegistryMessage()
@@ -148,11 +153,14 @@ namespace ESB.Core.Registry
         {
             try
             {
-                if (m_SocketClient.Connected)
+                if (m_SocketClient != null)
                 {
-                    m_SocketClient.Shutdown(SocketShutdown.Both);
+                    if (m_SocketClient.Connected)
+                    {
+                        m_SocketClient.Shutdown(SocketShutdown.Both);
+                    }
+                    m_SocketClient.Close();
                 }
-                m_SocketClient.Close();
             }
             finally
             {

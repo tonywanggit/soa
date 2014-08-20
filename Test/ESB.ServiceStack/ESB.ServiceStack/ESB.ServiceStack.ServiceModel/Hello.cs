@@ -6,7 +6,7 @@ using ServiceStack;
 
 namespace ESB.ServiceStack.ServiceModel
 {
-    [Route("/hello/{Name}")]
+    [Route("/hello")]
     public class Hello : IReturn<HelloResponse>
     {
         public string Name { get; set; }

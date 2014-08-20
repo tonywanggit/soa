@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.ServiceStack.ServiceInt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.ServiceStack.Tests", "ESB.ServiceStack\ESB.ServiceStack.Tests\ESB.ServiceStack.Tests.csproj", "{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.Core", "..\..\Core\ESB.Core\ESB.Core.csproj", "{3A6FD2E3-189B-4217-B619-D4B3064FD53E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D22B5797-9F2A-4BA7-9636-6EFCE62EBE00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

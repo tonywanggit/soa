@@ -76,6 +76,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\ESB.Core\ESB.Core.csproj">
+      <Project>{3a6fd2e3-189b-4217-b619-d4b3064fd53e}</Project>
+      <Name>ESB.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESB.ServiceStack.ServiceInterface\ESB.ServiceStack.ServiceInterface.csproj">
       <Project>{801a0f89-d5f6-49a6-bcea-6624388c98a4}</Project>
       <Name>ESB.ServiceStack.ServiceInterface</Name>
@@ -86,6 +90,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ESBData\ConsumerConfig.xml" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>

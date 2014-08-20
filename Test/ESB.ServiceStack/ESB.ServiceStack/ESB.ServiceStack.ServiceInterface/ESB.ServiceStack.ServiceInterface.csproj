@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\ESB.Core\ESB.Core.csproj">
+      <Project>{3a6fd2e3-189b-4217-b619-d4b3064fd53e}</Project>
+      <Name>ESB.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ESB.ServiceStack.ServiceModel\ESB.ServiceStack.ServiceModel.csproj">
       <Project>{53E82AC1-DD1D-4C66-B55F-F9F4ACFB2F40}</Project>
       <Name>ESB.ServiceStack.ServiceModel</Name>

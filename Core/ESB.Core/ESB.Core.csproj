@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapter\AshxAdapter.cs" />
+    <Compile Include="Adapter\ESBHttpModule.cs" />
     <Compile Include="Adapter\IServiceAdapter.cs" />
     <Compile Include="Adapter\WcfHttpAdapter.cs" />
     <Compile Include="Adapter\WebServiceAdapter.cs">
