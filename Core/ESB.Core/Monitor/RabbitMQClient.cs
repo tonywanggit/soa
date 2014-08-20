@@ -42,6 +42,18 @@ namespace ESB.Core.Monitor
         }
 
         /// <summary>
+        /// 当和监控中心发生异常时需要销毁连接以尽快释放资源
+        /// </summary>
+        public void Dispose()
+        {
+            foreach (var item in m_ChannelDict.Values)
+            {
+                item.Dispose();
+            }
+            m_Connection.Dispose();
+        }
+
+        /// <summary>
         /// 发送特定类型的消息
         /// </summary>
         /// <typeparam name="T">消息类型</typeparam>

@@ -96,6 +96,7 @@
     <Compile Include="Entity\TModel.Biz.cs" />
     <Compile Include="Entity\TModel.cs" />
     <Compile Include="ESBProxy.cs" />
+    <Compile Include="Monitor\LocalMQ.cs" />
     <Compile Include="Monitor\MonitorClient.cs" />
     <Compile Include="Monitor\MonitorMessage.cs" />
     <Compile Include="Monitor\RabbitMQClient.cs" />

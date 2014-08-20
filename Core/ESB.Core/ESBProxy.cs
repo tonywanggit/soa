@@ -11,6 +11,7 @@ using NewLife.Log;
 using System.Net;
 using ESB.Core.Monitor;
 using NewLife.Threading;
+using System.Diagnostics;
 
 namespace ESB.Core
 {
@@ -141,6 +142,9 @@ namespace ESB.Core
         /// </summary>
         private ESBProxy()
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             //--STEP.1.记录客户端版本信息
             Status = ESBProxyStatus.Init;
             var asm = AssemblyX.Create(System.Reflection.Assembly.GetExecutingAssembly());
@@ -158,6 +162,10 @@ namespace ESB.Core
             //--STEP.4.连接监控中心
             m_MonitorClient = new MonitorClient(this);
             m_MonitorClient.Connect();
+
+
+            stopWatch.Stop();
+            XTrace.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds); ;
 
         }
         #endregion

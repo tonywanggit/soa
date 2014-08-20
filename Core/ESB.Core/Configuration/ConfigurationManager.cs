@@ -69,6 +69,17 @@ namespace ESB.Core.Configuration
             }
         }
 
+        /// <summary>
+        /// ESB监控路径
+        /// </summary>
+        public String ESBMonitorDataPath
+        {
+            get
+            {
+                return Path.Combine(ESBDataPath, "MonitorData");
+            }
+        }
+
         private String m_ConsumerConfigPath;
         /// <summary>
         /// 消费者配置文件路径

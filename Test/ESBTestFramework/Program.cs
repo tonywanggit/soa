@@ -39,7 +39,7 @@ namespace ESB.TestFramework
             stopWatch.Stop();
 
             Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);;
-            //Console.ReadKey();
+            Console.ReadKey();
 
             stopWatch.Restart();
             String msgBody = (message == null) ? new String('A', 1024 * 10) : message;
