@@ -1,0 +1,80 @@
+﻿/* -- ASPxMenu -- */
+.dxmControl_BlackGlassChartDemoToolbar 
+{
+	font: 9pt Tahoma;
+	color: white;
+}
+.dxmControl_BlackGlassChartDemoToolbar a, .dxmMenu_BlackGlassChartDemoToolbar a
+{
+	color: white;
+	text-decoration: none;
+}
+.dxmSubMenu_BlackGlassChartDemoToolbar a
+{
+	color: black;
+}
+.dxmMenu_BlackGlassChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: white;
+	background-color: Black;
+
+	background: #444444 url('../../Web/mItemBack.gif') repeat-x top center;
+}
+.dxmMenuGutter_BlackGlassChartDemoToolbar
+{
+}
+.dxmMenuSeparator_BlackGlassChartDemoToolbar
+{
+	background-color: Black;
+}
+.dxmMenuItem_BlackGlassChartDemoToolbar, .dxmMenuItemWithImage_BlackGlassChartDemoToolbar
+{
+	font: 9pt Tahoma;
+	color: white;
+	background: #444444 url('../../Web/mItemBack.gif') repeat-x top center;
+	white-space: nowrap;
+
+	padding-top: 3px;
+	padding-right: 4px;
+	padding-bottom: 3px;
+	padding-left: 4px;
+}
+.dxmMenuItemWithImage_BlackGlassChartDemoToolbar
+{
+	padding-right: 7px;
+	padding-left: 7px;
+}
+.dxmMenuItemSelected_BlackGlassChartDemoToolbar, .dxmMenuItemSelectedWithImage_BlackGlassChartDemoToolbar
+{
+	background: #457692 url('../../Web/mItemBackS.gif') repeat-x top center;
+	padding-top: 3px;
+	padding-right: 4px;
+	padding-bottom: 3px;
+	padding-left: 4px;
+}
+.dxmMenuItemSelectedWithImage_BlackGlassChartDemoToolbar
+{
+	padding-right: 7px;
+	padding-left: 7px;
+}
+.dxmMenuItemHover_BlackGlassChartDemoToolbar, .dxmMenuItemHoverWithImage_BlackGlassChartDemoToolbar
+{
+	color: White;
+	background: #82b3ce url('../../Web/mItemBackH.gif') repeat-x top center;
+	padding-top: 3px;
+	padding-right: 4px;
+	padding-bottom: 3px;
+	padding-left: 4px;
+}
+.dxmMenuItemHoverWithImage_BlackGlassChartDemoToolbar
+{
+	padding-right: 7px;
+	padding-left: 7px;
+}
+/* Disabled */
+.dxmDisabled_BlackGlassChartDemoToolbar
+{
+	color: #808080;
+	cursor: default;
+}

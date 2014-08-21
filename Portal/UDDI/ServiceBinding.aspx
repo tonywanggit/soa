@@ -142,9 +142,6 @@
                 <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="70">
                     <EditButton Visible="True" Text="编辑" />
                     <DeleteButton Visible="true" Text="删除" />
-                    <CustomButtons>
-                        <dxwgv:GridViewCommandColumnCustomButton ID="ccbClearCache" Text="清除缓存"></dxwgv:GridViewCommandColumnCustomButton>
-                    </CustomButtons>
                 </dxwgv:GridViewCommandColumn>               
                 <dxwgv:GridViewDataHyperLinkColumn FieldName="访问地址" Caption="访问地址" VisibleIndex="1" >
                     <PropertiesHyperLinkEdit TextField="访问地址" TextFormatString="{0}" NavigateUrlFormatString="{0}" Target="_blank" >

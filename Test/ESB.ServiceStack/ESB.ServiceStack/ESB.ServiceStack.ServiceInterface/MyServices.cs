@@ -15,6 +15,8 @@ namespace ESB.ServiceStack.ServiceInterface
         public HelloResponse Any(Hello request)
         {
             String response = esbProxy.Invoke("ESB_COM_WS", "HelloAction", "Hello From ServiceStack!");
+
+
             return new HelloResponse { Result = "Hello, {0}!".Fmt(request.Name) };
         }
     }

@@ -95,7 +95,7 @@
       <Description>
       </Description>
     </Demo>
-    <Demo Text="通讯流量分析" NavigateUrl="~/ServiceScan/ScanByMonth.aspx" Title="企业服务总线 - 流量分析" IsNew="true">
+    <Demo Text="实时流量分析" NavigateUrl="~/Analyse/RealTimeCallAnalyse.aspx" Title="企业服务总线 - 实时流量分析" IsNew="true">
       <Description>
       </Description>
     </Demo>

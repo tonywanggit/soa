@@ -104,7 +104,7 @@ namespace JN.ESB.Audit.DataAccess
             DbConnection conn = execptionDC.Connection;
             SqlCommand comm = new SqlCommand();
             comm.Connection = conn as SqlConnection;
-            comm.CommandText = "SELECT BusinessName,ServiceName,MethodName, AVG(DATEDIFF(ms, CallBeginTime, CallEndTime)) AS ResTimeAvg ";
+            comm.CommandText = "SELECT BusinessName,ServiceName,MethodName, AVG(DATEDIFF(ms, LEFT(CallBeginTime, 23), LEFT(CallEndTime, 23))) AS ResTimeAvg ";
             comm.CommandText += "FROM [AuditBusinessAnalyseView] ";
             comm.CommandText += "GROUP BY BusinessName,ServiceName,MethodName ";
             comm.CommandText += "ORDER BY BusinessName,ServiceName DESC ";

@@ -1,0 +1,9 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxm" Namespace="DevExpress.Web.ASPxMenu" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxm:ASPxMenu runat="server" ImageFolder="~/App_Themes/BlackGlass/{0}/" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" SeparatorColor="#16171B" AllowSelectItem="True" AutoSeparators="RootOnly" ItemSpacing="0px" ShowPopOutImages="True" SeparatorWidth="1px" CssPostfix="BlackGlass" SeparatorHeight="100%">
+    <SubMenuStyle GutterWidth="0px"></SubMenuStyle>
+    <HorizontalPopOutImage Height="7px" Width="7px" Url="~/App_Themes/BlackGlass/Web/mHorizontalPopOut.png"></HorizontalPopOutImage>
+    <RootItemSubMenuOffset X="-1" LastItemX="-1" FirstItemX="-1"></RootItemSubMenuOffset>
+    <Border BorderWidth="1px" BorderStyle="Solid" BorderColor="#16171B"></Border>
+    <SubMenuItemStyle Wrap="False"></SubMenuItemStyle>
+</dxm:ASPxMenu>

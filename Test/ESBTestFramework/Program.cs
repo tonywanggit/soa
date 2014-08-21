@@ -17,6 +17,7 @@ namespace ESB.TestFramework
         {
 
             TestEsbProxy("ESB_ServiceStack", "Hello", @"{""Name""=""Tony""}");
+
             //TestEsbProxy("ESB_ServiceStack", "POST:XML:Hello", @"<Hello xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/ESB.ServiceStack.ServiceModel""><Name>Ronger</Name></Hello>");
             //TestEsbProxy("WXSC_WeiXinServiceForApp", "GET:XML:CollocationDetailFilter", "collocationId=11");
 
@@ -43,7 +44,15 @@ namespace ESB.TestFramework
 
             stopWatch.Restart();
             String msgBody = (message == null) ? new String('A', 1024 * 10) : message;
-            String response = esbProxy.Invoke(serviceName, methodName, msgBody);
+
+            try
+            {
+                String response = esbProxy.Invoke(serviceName, methodName, msgBody);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("调用总线发生异常：" + ex.Message);
+            }
             stopWatch.Stop();
 
             Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);

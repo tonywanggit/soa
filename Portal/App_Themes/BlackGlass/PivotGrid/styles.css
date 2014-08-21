@@ -1,0 +1,350 @@
+.dxpgControl_BlackGlass
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: solid 1px Black;
+	background-color: #EEF2F5;
+}
+.dxpgContainerCell_BlackGlass
+{
+	vertical-align: top;
+}
+.dxpgMainTable_BlackGlass
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: 0px;
+	border-collapse: separate;
+	width: 100%;
+}
+.dxpgMainTable_BlackGlass caption
+{
+	background: #c9d7dc;
+	border-bottom: solid 1px #A4BED1;
+	padding:3px;
+	font-weight: bold;
+	text-align: center;	
+}
+.dxpgHeader_BlackGlass
+{
+	border-width: 0px;
+	color: White;
+	font: 9pt Tahoma;
+	background-color: #444444;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.dxpgHeaderTable_BlackGlass
+{
+	border-width: 1px;
+	width: 100%;
+}
+.dxpgHeaderGroupButton_BlackGlass
+{
+	padding-left: 4px;
+	vertical-align: middle;
+}
+.dxpgHeaderText_BlackGlass
+{
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+.dxpgHeaderSort_BlackGlass
+{
+	padding-left: 0px;
+	padding-right: 4px;
+	padding-top: 0px;
+	vertical-align: middle;
+}
+.dxpgHeaderFilter_BlackGlass
+{
+	padding-left: 0px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	vertical-align: middle;	
+}
+.dxpgHeaderHover_BlackGlass
+{
+	background-color: #86BAD6;
+	font: 9pt Tahoma;
+	color: White;
+}
+.dxpgArea_BlackGlass, .dxpgArea_BlackGlass table
+{
+	color: Black;
+	font: 9pt Tahoma;
+}
+.dxpgArea_BlackGlass
+{
+	border: solid 1px #A4BED1;
+	border-left-style: none;
+	border-top-style: none;
+	border-bottom-style: none;
+	border-right-style: none;
+	padding:0px 5px 0px 0px;
+	background-color: #eef2f5;
+}
+.dxpgColumnArea_BlackGlass
+{
+	border-bottom-style: solid;
+}
+.dxpgRowArea_BlackGlass
+{
+}
+.dxpgDataArea_BlackGlass
+{
+}
+.dxpgFilterArea_BlackGlass
+{
+	color: #808080;
+	background-color: #dcdcdc;
+	border-bottom-style: solid;
+}
+.dxpgEmptyArea_BlackGlass
+{
+	cursor: default;
+	padding-top: 6px;
+	padding-left: 6px;
+	padding-bottom: 7px;
+	padding-right: 6px;
+}
+.dxpgColumnFieldValue_BlackGlass
+{
+	background-color: #D5DFE7;
+	border: solid 1px #A4BED1;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+	padding: 4px 6px;
+    font-weight: normal;
+    text-align: left;    
+}
+.dxpgColumnTotalFieldValue_BlackGlass
+{
+	background-color: #BDCAD5;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+}
+.dxpgColumnGrandTotalFieldValue_BlackGlass
+{
+	background-color: #BDCAD5;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-top-style: none;
+}
+.dxpgRowFieldValue_BlackGlass
+{
+	background-color: #D5DFE7;
+	border: solid 1px #A4BED1;
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+	padding: 4px 6px 4px 6px;
+    font-weight: normal;
+    text-align: left;    
+}
+.dxpgRowTotalFieldValue_BlackGlass
+{
+	background-color: #B2C6D2;
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right-style: solid;
+	border-top-style: solid;
+}
+.dxpgRowGrandTotalFieldValue_BlackGlass
+{
+	background-color: #9BB4C2;
+	border-left-style: none;
+	border-bottom-style: none;
+	border-right: solid 1px #80ADC6;
+	border-top: solid 1px #80ADC6;
+	padding: 6px 6px 6px 6px;
+}
+.dxpgCollapsedButton_BlackGlass
+{
+	vertical-align: -1px;
+	border: 0px;
+	margin-right: 5px;
+}
+.dxpgSortByColumnImage_BlackGlass
+{
+	vertical-align: 0px;
+	border: 0px;
+	margin-left: 5px;
+}
+.dxpgCell_BlackGlass
+{
+	text-align: right;
+	background-color: White;	
+	border-color: #cbdfee;
+	border-width: 1px;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-bottom-style: none;
+	border-right-style: none;
+	padding: 4px;
+	white-space: nowrap;
+}
+.dxpgKPICell_BlackGlass
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.dxpgTotalCell_BlackGlass
+{
+	background-color: #EEF2F5;
+}
+.dxpgGrandTotalCell_BlackGlass
+{
+	background-color: #e2e9ee;
+}
+.dxpgRowGrandTotalCell_BlackGlass
+{
+	background-color: #CCDAE3;
+}
+.dxpgColumnGrandTotalCell_BlackGlass
+{
+	background-color: #CCDAE3;
+}
+.dxpgFilterWindow_BlackGlass
+{
+	color: Black;
+	font: 9pt Tahoma;
+	border: solid 1px #9f9f9f;
+}
+.dxpgFilterItemsArea_BlackGlass
+{
+	color: Black;
+	background-color: White;
+}
+.dxpgFilterItem_BlackGlass
+{
+	font: 9pt Tahoma;
+}
+.dxpgFilterButton_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding: 2px 6px;
+}
+.dxpgFilterButtonPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	background-color: #c9d6de;
+	border: 1px solid #dcdcdc;
+	color: Black;
+}
+.dxpgLoadingDiv_BlackGlass
+{
+	background-color:Gray;	
+	opacity: 0.01;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=1);
+}
+.dxpgTopPager_BlackGlass
+{
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: solid 1px #9f9f9f;
+	background-color: #EEF2F5;
+}
+.dxpgBottomPager_BlackGlass
+{
+	border-top: solid 1px #4d7993;
+	border-bottom: none;
+	border-right: none;
+	border-left: none;
+	background-color: #EEF2F5;
+}
+.dxpgCustomizationFieldsHeader_BlackGlass
+{
+	color: White;
+	font: 9pt Tahoma;
+}
+.dxpgCustomizationFieldsContent_BlackGlass
+{
+	padding: 0px !important;
+}
+.dxpgLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+	background-color: White;
+	border: solid 1px #9f9f9f;
+	text-align: center;			
+	cursor: wait;
+}
+.dxpgLoadingPanel_BlackGlass td.dx
+{
+	padding: 12px 12px 12px 12px;
+}
+.dxpgMenuItem_BlackGlass 
+{
+	font: 9pt Tahoma;
+}
+.dxpgDataHeadersImage_BlackGlass
+{
+	margin-right: 5px;
+	vertical-align: -2px;
+}
+
+.dxpgPrefilterPanelContainer_BlackGlass
+{
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+.dxpgPrefilterPanelLink_BlackGlass
+{
+	color: #3e6b96;
+	text-decoration: underline;
+}
+.dxpgPrefilterPanel_BlackGlass
+{
+	background-color: #d3e3ed;
+}
+.dxpgPrefilterPanelCheckBoxCell_BlackGlass
+{
+	padding: 0 3px;
+	padding-right: 7px;
+}
+.dxpgPrefilterPanelImageCell_BlackGlass
+{
+	padding: 0 3px;
+	padding-right: 1px;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxpgPrefilterPanelClearButtonCell_BlackGlass
+{
+	font-size: 9pt;
+	padding: 5px 6px 8px;
+}
+.dxpgPrefilterPanelExpressionCell_BlackGlass
+{
+	font-size: 9pt;
+	padding: 5px 5px 8px 0;	
+	white-space: nowrap;
+}
+.dxpgFilterBuilderMainArea_BlackGlass
+{
+	background: white;
+	padding: 6px 2px;
+} 
+.dxpgFilterBuilderButtonArea_BlackGlass
+{
+	border-top: solid 1px #b2bcc7;
+	background: #C9D6DE;
+	padding: 6px;
+}
+.dxpgGroupSeparator_BlackGlass
+{
+	vertical-align: middle;
+}

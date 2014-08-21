@@ -1,0 +1,11 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxpc" Namespace="DevExpress.Web.ASPxPopupControl" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxpc:ASPxPopupControl runat="server" ImageFolder="~/App_Themes/BlackGlass/{0}/"
+    CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" CssPostfix="BlackGlass">
+    <ContentStyle HorizontalAlign="Left" VerticalAlign="Top"></ContentStyle>
+    <SizeGripImage Height="12px" Width="12px" Url="~/App_Themes/BlackGlass/Web/pcSizeGrip.gif"></SizeGripImage>
+    <HeaderStyle>
+        <Paddings PaddingTop="3px" PaddingRight="6px" PaddingBottom="6px" PaddingLeft="15px"></Paddings>
+    </HeaderStyle>
+    <CloseButtonImage Url="~/App_Themes/BlackGlass/web/pcItemCloseButton.gif"></CloseButtonImage>
+</dxpc:ASPxPopupControl>

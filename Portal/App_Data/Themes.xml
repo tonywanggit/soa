@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Themes>
-  <Theme Text="走向深蓝" Value="Glass" />
-  <Theme Text="红色经典" Value="Red Wine" />
+    <Theme Text="默认" Value="Default" />
+    <Theme Text="BlackGlass" Value="BlackGlass" />
+    <Theme Text="走向深蓝" Value="Glass" />
+    <Theme Text="红色经典" Value="Red Wine" />
 </Themes>

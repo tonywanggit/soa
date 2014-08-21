@@ -1,0 +1,34 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxnc" Namespace="DevExpress.Web.ASPxNewsControl" Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxnc:ASPxNewsControl runat="server" ImageFolder="~/App_Themes/BlackGlass/{0}/"
+    CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" PagerPanelSpacing="15px" ItemSpacing="30px"
+    CssPostfix="BlackGlass">
+    <ItemDateStyle Spacing="0px"></ItemDateStyle>
+    <PagerCurrentPageNumberStyle Font-Bold="False"></PagerCurrentPageNumberStyle>
+    <Border BorderStyle="None"></Border>
+    <PagerPanelStyle>
+        <Paddings PaddingLeft="0px"></Paddings>
+    </PagerPanelStyle>
+    <PagerSummaryStyle>
+        <Paddings PaddingLeft="0px"></Paddings>
+    </PagerSummaryStyle>
+    <ItemSettings TailText="More"></ItemSettings>
+    <PagerSettings CurrentPageNumberFormat="{0}">
+        <AllButton Text="">
+            <Image Url="~/App_Themes/BlackGlass/Web/pAll.png" UrlDisabled="~/App_Themes/BlackGlass/Web/pAllDisabled.png"></Image>
+        </AllButton>
+        <FirstPageButton Text="">
+            <Image Url="~/App_Themes/BlackGlass/Web/pFirst.png" UrlDisabled="~/App_Themes/BlackGlass/Web/pFirstDisabled.png"></Image>
+        </FirstPageButton>
+        <Summary AllPagesText="" Text=""></Summary>
+        <LastPageButton Text="">
+            <Image Url="~/App_Themes/BlackGlass/Web/pLast.png" UrlDisabled="~/App_Themes/BlackGlass/Web/pLastDisabled.png"></Image>
+        </LastPageButton>
+        <NextPageButton Text="">
+            <Image Url="~/App_Themes/BlackGlass/Web/pNext.png" UrlDisabled="~/App_Themes/BlackGlass/Web/pNextDisabled.png"></Image>
+        </NextPageButton>
+        <PrevPageButton Text="">
+            <Image Url="~/App_Themes/BlackGlass/Web/pPrev.png" UrlDisabled="~/App_Themes/BlackGlass/Web/pPrevDisabled.png"></Image>
+        </PrevPageButton>
+    </PagerSettings>
+</dxnc:ASPxNewsControl>

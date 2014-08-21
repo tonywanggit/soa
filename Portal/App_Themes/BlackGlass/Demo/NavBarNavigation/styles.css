@@ -1,0 +1,99 @@
+/* -- ASPxNavBar -- */
+.dxnbControl_BlackGlassNavigation
+{
+	font: 9pt Tahoma;
+	color: #D0D0D0;
+	background-color: #151515;
+	padding: 3px 0px;
+}
+.dxnbControl_BlackGlassNavigation a
+{
+	color: #D0D0D0; 
+	text-decoration: none;
+}
+.dxnbGroupHeaderCollapsed_BlackGlassNavigation
+{
+    font: 11px Tahoma;
+	color: #D0D0D0;
+
+	font-weight: normal;
+    					
+	border: 0px;
+	
+	padding: 4px 7px 5px 7px;
+}
+.dxnbGroupHeaderCollapsed_BlackGlassNavigation table
+{
+    font: 11px Tahoma;
+	color: #D0D0D0;
+}
+.dxnbGroupHeaderCollapsed_BlackGlassNavigation table td
+{
+	white-space: nowrap;
+}
+.dxnbGroupHeaderCollapsedHover_BlackGlassNavigation
+{
+	background-image: url('nbHeaderGroupHover.gif');
+    background-repeat: repeat-x;
+    background-color: #323232;
+    border: Solid 1px #3E3E3E;
+	padding: 3px 6px 4px 6px;
+}
+.dxnbGroupHeader_BlackGlassNavigation
+{
+    font: 11px Tahoma;
+	color: White;
+
+	background-color: #6E6E6E;
+	font-weight: bold;
+
+	background-image: url('nbHeaderGroup.gif');
+    background-repeat: repeat-x;	
+	
+	border: Solid 1px #8D8D8D;
+	
+	padding: 3px 6px 3px 6px;
+}
+.dxnbGroupHeader_BlackGlassNavigation table
+{
+    font: 11px Tahoma;
+	color: White;
+	font-weight: bold;
+}
+.dxnbGroupHeader_BlackGlassNavigation table td
+{
+	white-space: nowrap;
+	font-weight: bold;
+}
+.dxnbGroupContent_BlackGlassNavigation
+{
+    font: 11px Tahoma;
+	background-color: #373737;
+	background-image: url('nbGroupContentBackground.gif');
+    background-repeat: repeat-x;	
+	border: 0px;
+	border-top: Solid 1px #03305B;
+	border-bottom: Solid 1px #433d3f;
+	
+	padding: 7px 0px 7px 0px;
+}
+.dxnbItem_BlackGlassNavigation
+{
+    font: 11px Tahoma;
+
+    border: 0px;
+    padding: 1px 30px 3px;
+}
+.dxnbItemSelected_BlackGlassNavigation
+{
+    color: White;
+    font-weight: bold;
+	background-image: url('nbBullet.gif');
+	background-repeat: no-repeat;
+	background-position: 15px 4px;
+    padding: 1px 30px 3px 29px;
+}
+.dxnbItemHover_BlackGlassNavigation
+{
+	background-color: #484848;
+}

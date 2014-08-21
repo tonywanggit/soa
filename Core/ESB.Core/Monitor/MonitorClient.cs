@@ -84,7 +84,7 @@ namespace ESB.Core.Monitor
                     }
 
                     m_RabbitMQAvailable = true;
-                    XTrace.WriteLine("成功连接到监控中心:）");
+                    XTrace.WriteLine("成功连接到监控中心。");
                 }
                 catch(Exception ex)
                 {

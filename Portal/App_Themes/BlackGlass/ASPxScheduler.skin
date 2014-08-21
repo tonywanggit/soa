@@ -1,0 +1,38 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwschs" Namespace="DevExpress.Web.ASPxScheduler" Assembly="DevExpress.Web.ASPxScheduler.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.XtraScheduler.v9.1.Core, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="temp" %>
+<dxwschs:ASPxScheduler runat="server">
+	<Styles CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" CssPostfix="BlackGlass" 
+		SelectionColor="#BDCAD5">
+		<ResourceNavigator ButtonSpacing="3px" />
+		<ViewSelector ButtonSpacing="3px" />
+		<ViewNavigator ButtonSpacing="3px" />
+		<FormEditors>
+			<CalendarFooter Spacing="4px" />
+			<CalendarHeader Spacing="1px" />
+			<CalendarFastNavFooter Spacing="4px" />
+			<CalendarFastNav MonthYearSpacing="4px" />                
+		</FormEditors>
+	</Styles>
+	<Images ImageFolder="~/App_Themes/BlackGlass/{0}/">
+		<ResourceNavigator>
+			<First Width="23px" Height="18px" />
+			<Prev Width="19px" Height="18px" />
+			<PrevPage Width="23px" Height="18px" />
+			<NextPage Width="23px" Height="18px" />
+			<Next Width="19px" Height="18px" />
+			<Last Width="23px" Height="18px" />
+			<Decrease Width="20px" Height="18px" />
+			<Increase Width="20px" Height="18px" />
+		</ResourceNavigator>                                                          
+		<NavigationButton>
+			<Backward Width="27px" Height="18px" />
+			<Forward Width="27px" Height="18px" />
+		</NavigationButton>      
+		<StatusInfo>
+			<Error Width="48px" Height="48px" />
+			<Info Width="48px" Height="48px"/>
+			<Warning Width="48px" Height="48px" />
+		</StatusInfo>
+	</Images>
+</dxwschs:ASPxScheduler>

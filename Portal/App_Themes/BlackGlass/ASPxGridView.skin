@@ -1,0 +1,18 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwgv" Namespace="DevExpress.Web.ASPxGridView" Assembly="DevExpress.Web.ASPxGridView.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxwgv:ASPxGridView runat="server" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" CssPostfix="BlackGlass">
+    <Images ImageFolder="~/App_Themes/BlackGlass/{0}/">
+		<FilterRowButton Width="13px" Height="13px" />
+    </Images>
+    <Styles CssPostfix="BlackGlass" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css">
+        <Header SortingImageSpacing="5px" ImageSpacing="5px"></Header>
+    </Styles>
+    <SettingsPager CurrentPageNumberFormat="{0}">
+        <FirstPageButton Visible="True"></FirstPageButton>
+        <LastPageButton Visible="True"></LastPageButton>
+    </SettingsPager>
+    <StylesEditors>
+        <ProgressBar Height="25px">
+        </ProgressBar>
+    </StylesEditors>    
+</dxwgv:ASPxGridView>

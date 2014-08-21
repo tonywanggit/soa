@@ -1,0 +1,64 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
+<dxhe:ASPxHtmlEditor runat="server" >
+	<Styles CssPostfix="BlackGlass" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css">
+		<ViewArea>
+			<Border BorderStyle="Solid" BorderColor="#4E4F51" BorderWidth="1px" />
+		</ViewArea>
+	</Styles>
+	<StylesToolbars>
+		<Toolbar ItemSpacing="0px" SeparatorHeight="100%" />
+	</StylesToolbars>
+	<StylesStatusBar>
+		<Tab>
+			<Paddings PaddingTop="4px" PaddingBottom="5px" />
+		</Tab>
+		<ActiveTab BackColor="White">
+			<Paddings PaddingTop="4px" PaddingBottom="5px" />
+		</ActiveTab>
+	</StylesStatusBar>
+	<Images ImageFolder="~/App_Themes/BlackGlass/{0}/">
+		<ToolbarPopOut Height="7px" Width="7px" Url="~/App_Themes/BlackGlass/HtmlEditor/tbPopOut.png"></ToolbarPopOut>
+	</Images>
+	<PartsRoundPanel>
+	    <TopLeftCorner Height="7px" Width="10px" Url="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpTopLeftCorner.png" />
+	    <NoHeaderTopLeftCorner Height="10px" Width="10px" Url="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpNoHeaderTopLeftCorner.png" />
+	    <TopRightCorner Height="7px" Width="10px" Url="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpTopRightCorner.png" />
+	    <NoHeaderTopRightCorner Height="10px" Width="10px" Url="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpNoHeaderTopRightCorner.png" />
+	    <BottomLeftCorner Height="10px" Width="10px" Url="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpBottomLeftCorner.png" />
+	    <BottomRightCorner Height="10px" Width="10px" Url="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpBottomRightCorner.png" />
+	    <%-- Header parts --%>
+	    <HeaderLeftEdge BackColor="#444545">
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="top" HorizontalPosition="left" ImageUrl="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpHeaderLeftEdge.png" />
+	    </HeaderLeftEdge>
+	    <HeaderContent BackColor="#444545">
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="top" HorizontalPosition="left" ImageUrl="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpHeaderBack.gif" />
+	    </HeaderContent>
+	    <HeaderRightEdge BackColor="#444545">
+	        <BackgroundImage Repeat="NoRepeat" VerticalPosition="top" HorizontalPosition="right" ImageUrl="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpHeaderRightEdge.png" />
+	    </HeaderRightEdge>
+	    <%-- Middle parts --%>
+	    <Content BackColor="#C9D7DC">
+	        <BackgroundImage VerticalPosition="top" ImageUrl="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpContentBack.gif" />
+	    </Content>
+	    <TopEdge BackColor="#444545">
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="top" HorizontalPosition="left" ImageUrl="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpTopEdge.gif" />
+	    </TopEdge>
+	    <NoHeaderTopEdge BackColor="#C9D7DC" />
+	    <RightEdge BackColor="#C9D7DC">
+	        <BackgroundImage Repeat="RepeatY" VerticalPosition="top" HorizontalPosition="right" ImageUrl="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpContentRightEdge.gif" />
+	    </RightEdge>
+	    <BottomEdge BackColor="#C9D7DC">
+	        <BackgroundImage Repeat="RepeatX" VerticalPosition="bottom" ImageUrl="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpContentBottomEdge.gif" />
+	    </BottomEdge>
+	    <LeftEdge BackColor="#C9D7DC">
+	        <BackgroundImage Repeat="RepeatY" VerticalPosition="top" HorizontalPosition="left" ImageUrl="~/App_Themes/BlackGlass/HtmlEditor/RoundPanel/herpContentLeftEdge.gif" />
+	    </LeftEdge>
+	</PartsRoundPanel>
+	<StylesRoundPanel>            
+		<ControlStyle>
+		    <Border BorderStyle="None" />
+		    <BorderTop BorderStyle="Solid" BorderColor="Black" BorderWidth="1px" />
+		</ControlStyle>
+	</StylesRoundPanel>	
+</dxhe:ASPxHtmlEditor>

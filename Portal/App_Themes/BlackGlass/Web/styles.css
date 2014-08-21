@@ -1,0 +1,1560 @@
+/* -- ASPxCallbackPanel -- */
+.dxcpLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxcpLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxcpLoadingPanelWithContent_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+	border: solid 1px #9F9F9F;
+	background-color: White;
+}
+.dxcpLoadingPanelWithContent_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxcpLoadingDiv_BlackGlass
+{
+	background-color: Gray;
+	opacity: 0.01;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=1);
+}
+/* Disabled */
+.dxcpDisabled_BlackGlass
+{
+	color: #bebebe;
+	cursor: default;
+}
+
+/* -- ASPxCloudControl -- */
+.dxccControl_BlackGlass a:visited
+{
+    color: #c37300!important;
+}
+.dxccControl_BlackGlass a:hover
+{
+    color: #ff9600!important;
+}
+.dxccControl_BlackGlass a
+{
+	text-decoration:none!important;
+	color: #3e6b96;	
+}
+.dxccControl_BlackGlass
+{
+	font-family: Tahoma;
+	text-decoration:none;
+	color: #B4CFEC;
+	background-color: #FFFFFF;
+}
+/* Disabled */
+.dxccDisabled_BlackGlass
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxDataView -- */
+.dxdvControl_BlackGlass 
+{
+	font: 9pt Tahoma;
+	background-color: #E8EDF1;
+	border: solid 1px Black;
+	color: black;
+}
+.dxdvControlCell_BlackGlass 
+{
+	padding: 0px;
+}
+.dxdvLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+	border: solid 1px #9F9F9F;
+	background-color: White;
+}
+.dxdvLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxdvContent_BlackGlass
+{
+	border-bottom: solid 1px #A4BED1;
+	border-top: solid 1px #A4BED1;
+}
+.dxdvItem_BlackGlass, .dxdvFlowItem_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: Black;
+	background-color: #E8EDF1;
+	padding: 13px 50px;
+	height: 180px;
+	/*if IE*/	
+	height:expression("154px");
+}
+.dxdvFlowItem_BlackGlass
+{
+	float: left;
+	overflow: hidden;
+}
+.dxdvFlowItemsContainer_BlackGlass
+{
+}
+.dxdvEmptyItem_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: Black;
+	text-align: left;
+	vertical-align: top;
+	padding: 14px 20px 14px 50px;
+	height: 180px;
+	/*if IE*/
+	height:expression("154px");
+}
+.dxdvPagerPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #2A769D;
+	background-color: #C9D7DC;
+	padding: 0px;
+}
+.dxdvEmptyData_BlackGlass
+{
+	color: Gray;
+	padding: 12px 40px 12px 40px;
+}
+/* Disabled */
+.dxdvDisabled_BlackGlass
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxHeadline -- */
+.dxhlControl_BlackGlass 
+{
+	font: 10px Verdana;
+	color: black;
+}
+.dxhlContent_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #585858;
+} 
+.dxhlDate_BlackGlass
+{
+	font: bold 7pt Verdana;
+	color: Black;
+	white-space: nowrap;
+}
+.dxhlHeader_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: Black;
+	padding-bottom: 4px;
+	font-weight: bold;
+	line-height: 17px;
+}
+.dxhlDateHeader_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: Gray;
+	font-weight: normal;
+}
+.dxhlLeftPanel_BlackGlass
+{
+	font: 10px Verdana;
+	color: black;
+}
+.dxhlRightPanel_BlackGlass
+{
+	font: 10px Verdana;
+	color: black;
+}
+.dxhlDateLeftPanel_BlackGlass
+{
+	font: 10px Verdana;
+	color: Gray;
+	white-space: nowrap;
+}
+.dxhlDateRightPanel_BlackGlass
+{
+	font: 10px Verdana;
+	color: Gray;
+	white-space: nowrap;
+}
+.dxhlTailDiv_BlackGlass
+{
+	font: 10px Verdana;
+	color: Black;
+	background-color: #EEF2F5;
+}
+.dxhlTailDiv_BlackGlass a
+{
+	color: #4688aa;
+	text-decoration: underline;
+}
+.dxhlTailDiv_BlackGlass a:hover
+{
+	color: #ff9600;
+    text-decoration: underline;
+}
+.dxhlTailDiv_BlackGlass a:visited
+{
+	color: #c37300;
+    text-decoration: underline;
+}
+.dxhlContent_BlackGlass a.dxhl span
+{
+	color: #3e6b96;
+	text-decoration: underline;
+} 
+.dxhlContent_BlackGlass a.dxhl:visited span
+{
+	color: #c37300;
+    text-decoration: underline;
+}
+.dxhlContent_BlackGlass a.dxhl:hover span
+{
+	color: #ff9600;
+    text-decoration: underline;
+}
+.dxhlContent_BlackGlass a.dxhl
+{
+	color: #4688aa;
+	text-decoration: underline;
+} 
+.dxhlContent_BlackGlass a.dxhl:visited
+{
+	color: #c37300;
+    text-decoration: underline;
+}
+.dxhlContent_BlackGlass a.dxhl:hover
+{
+	color: #ff9600;
+    text-decoration: underline;
+}
+/* Disabled */
+.dxhlDisabled_BlackGlass
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxLoadingPanel -- */
+.dxlpLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+	border: solid 1px #9F9F9F;
+	background-color: White;
+}
+.dxlpLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxlpLoadingDiv_BlackGlass
+{
+	background-color: #777777;
+	opacity: 0.7;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=70);
+}
+
+/* -- ASPxMenu -- */
+.dxmControl_BlackGlass 
+{
+	font: 9pt Tahoma;
+	color: white;
+}
+.dxmControl_BlackGlass a, .dxmMenu_BlackGlass a, .dxmVerticalMenu_BlackGlass a, .dxmSubMenu_BlackGlass a
+{
+	color: white;
+	text-decoration: none;
+}
+.dxmLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxmLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 6px 6px 6px 6px;
+}
+.dxmSubMenu_BlackGlass a
+{
+	color: black;
+}
+.dxmMenu_BlackGlass, .dxmVerticalMenu_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: white;
+	background-color: Black;
+
+	background: #444444 url('mItemBack.gif') repeat-x top center;
+}
+.dxmMenuGutter_BlackGlass
+{
+}
+.dxmMenuSeparator_BlackGlass
+{
+	background-color: Black;
+}
+.dxmMenuVerticalSeparator_BlackGlass
+{
+	width: 100%!important;
+	height: 1px!important;
+	background-color: Black;
+}
+.dxmMenuItem_BlackGlass, .dxmMenuItemWithImage_BlackGlass, .dxmMenuItemWithPopOutImage_BlackGlass, .dxmMenuItemWithImageWithPopOutImage_BlackGlass,
+.dxmVerticalMenuItem_BlackGlass, .dxmVerticalMenuItemWithImage_BlackGlass, .dxmVerticalMenuItemWithPopOutImage_BlackGlass, .dxmVerticalMenuItemWithImageWithPopOutImage_BlackGlass, 
+.dxmMenuLargeItem_BlackGlass, .dxmMenuLargeItemWithImage_BlackGlass, .dxmMenuLargeItemWithPopOutImage_BlackGlass, .dxmMenuLargeItemWithImageWithPopOutImage_BlackGlass,
+.dxmVerticalMenuLargeItem_BlackGlass, .dxmVerticalMenuLargeItemWithImage_BlackGlass, .dxmVerticalMenuLargeItemWithPopOutImage_BlackGlass, .dxmVerticalMenuLargeItemWithImageWithPopOutImage_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: white;
+	background: #444444 url('mItemBack.gif') repeat-x top center;
+	white-space: nowrap;
+
+	padding-top: 4px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 11px;
+}
+.dxmVerticalMenuItem_BlackGlass, .dxmVerticalMenuItemWithImage_BlackGlass, .dxmVerticalMenuItemWithPopOutImage_BlackGlass, .dxmVerticalMenuItemWithImageWithPopOutImage_BlackGlass, 
+.dxmVerticalMenuLargeItem_BlackGlass, .dxmVerticalMenuLargeItemWithImage_BlackGlass, .dxmVerticalMenuLargeItemWithPopOutImage_BlackGlass, .dxmVerticalMenuLargeItemWithImageWithPopOutImage_BlackGlass
+{
+	background: #444444 url('mVerticalItemBack.gif') repeat-x top center;
+}
+
+.dxmMenuItemSelected_BlackGlass, .dxmMenuItemSelectedWithImage_BlackGlass, .dxmMenuItemSelectedWithPopOutImage_BlackGlass, .dxmMenuItemSelectedWithImageWithPopOutImage_BlackGlass,
+.dxmVerticalMenuItemSelected_BlackGlass, .dxmVerticalMenuItemSelectedWithImage_BlackGlass, .dxmVerticalMenuItemSelectedWithPopOutImage_BlackGlass, .dxmVerticalMenuItemSelectedWithImageWithPopOutImage_BlackGlass,
+.dxmMenuLargeItemSelected_BlackGlass, .dxmMenuLargeItemSelectedWithImage_BlackGlass, .dxmMenuLargeItemSelectedWithPopOutImage_BlackGlass, .dxmMenuLargeItemSelectedWithImageWithPopOutImage_BlackGlass,
+.dxmVerticalMenuLargeItemSelected_BlackGlass, .dxmVerticalMenuLargeItemWithImageSelected_BlackGlass, .dxmVerticalMenuLargeItemSelectedWithPopOutImage_BlackGlass, .dxmVerticalMenuLargeItemSelectedWithImageWithPopOutImage_BlackGlass
+{
+	background: #457692 url('mItemBackS.gif') repeat-x top center;
+	padding-top: 4px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 11px;
+}
+.dxmMenuItemHover_BlackGlass, .dxmMenuItemHoverWithImage_BlackGlass, .dxmMenuItemHoverWithPopOutImage_BlackGlass, .dxmMenuItemHoverWithImageWithPopOutImage_BlackGlass, 
+.dxmVerticalMenuItemHover_BlackGlass, .dxmVerticalMenuItemHoverWithImage_BlackGlass, .dxmVerticalMenuItemHoverWithPopOutImage_BlackGlass, .dxmVerticalMenuItemHoverWithImageWithPopOutImage_BlackGlass, 
+.dxmMenuLargeItemHover_BlackGlass, .dxmMenuLargeItemHoverWithImage_BlackGlass, .dxmMenuLargeItemHoverWithPopOutImage_BlackGlass, .dxmMenuLargeItemHoverWithImageWithPopOutImage_BlackGlass, 
+.dxmVerticalMenuLargeItemHover_BlackGlass, .dxmVerticalMenuLargeItemHoverWithImage_BlackGlass, .dxmVerticalMenuLargeItemHoverWithPopOutImage_BlackGlass, .dxmVerticalMenuLargeItemHoverWithImageWithPopOutImage_BlackGlass
+{
+	color: White;
+	background: #82b3ce url('mItemBackH.gif') repeat-x top center;
+	padding-top: 4px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 11px;
+}
+.dxmSubMenu_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: #e8edf1;
+	border: solid 1px #4e4f51;
+	padding: 1px;
+	position: relative; top: 0px;
+}
+.dxmSubMenuSeparator_BlackGlass
+{
+    background-color: #9f9f9f;
+}
+.dxmSubMenuItem_BlackGlass, .dxmSubMenuItemWithImage_BlackGlass, 
+.dxmSubMenuItemWithPopOutImage_BlackGlass, .dxmSubMenuItemWithImageWithPopOutImage_BlackGlass
+{
+	background-color: #E8EDF1;
+	border-top: solid 1px #E8EDF1;
+	border-bottom: solid 1px #E8EDF1;
+	white-space: nowrap;	
+}
+.dxmSubMenuItem_BlackGlass, 
+.dxmSubMenuItemWithImage_BlackGlass 
+{
+	padding-top: 2px;
+	padding-right: 40px;
+	padding-bottom: 3px;
+	padding-left: 10px;
+}
+.dxmSubMenuItemWithPopOutImage_BlackGlass, 
+.dxmSubMenuItemWithImageWithPopOutImage_BlackGlass
+{
+	padding-top: 2px;
+	padding-right: 8px;
+	padding-bottom: 3px;
+	padding-left: 10px;
+}
+
+.dxmSubMenuItemSelected_BlackGlass, .dxmSubMenuItemSelectedWithImage_BlackGlass, 
+.dxmSubMenuItemSelectedWithPopOutImage_BlackGlass, .dxmSubMenuItemSelectedWithImageWithPopOutImage_BlackGlass
+{
+	background-color: #93a7ba;
+	border: solid 1px #719dbe;
+}
+.dxmSubMenuItemSelected_BlackGlass, 
+.dxmSubMenuItemSelectedWithImage_BlackGlass 
+{
+	padding-top: 2px;
+	padding-right: 39px;
+	padding-bottom: 3px;
+	padding-left: 9px;
+}
+.dxmSubMenuItemSelectedWithPopOutImage_BlackGlass, 
+.dxmSubMenuItemSelectedWithImageWithPopOutImage_BlackGlass
+{
+	padding-top: 2px;
+	padding-right: 7px;
+	padding-bottom: 3px;
+	padding-left: 9px;
+}
+
+.dxmSubMenuItemHover_BlackGlass, .dxmSubMenuItemHoverWithImage_BlackGlass, 
+.dxmSubMenuItemHoverWithPopOutImage_BlackGlass, .dxmSubMenuItemHoverWithImageWithPopOutImage_BlackGlass
+{
+	background-color: #c1ced9;
+	border: solid 1px #a4bed1;
+}
+.dxmSubMenuItemHover_BlackGlass, 
+.dxmSubMenuItemHoverWithImage_BlackGlass
+{
+	padding-top: 2px;
+	padding-right: 39px;
+	padding-bottom: 3px;
+	padding-left: 9px;
+}
+.dxmSubMenuItemHoverWithPopOutImage_BlackGlass, 
+.dxmSubMenuItemHoverWithImageWithPopOutImage_BlackGlass
+{
+	padding-top: 2px;
+	padding-right: 7px;
+	padding-bottom: 3px;
+	padding-left: 9px;
+}
+
+.dxmSubMenuBorderCorrector_BlackGlass
+{
+    position: absolute;
+    border: 0px;
+	padding: 0px;
+}
+/* Disabled */
+.dxmDisabled_BlackGlass
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxNavBar -- */
+.dxnbControl_BlackGlass 
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: white;
+	border-right: solid 1px Black;
+	border-bottom: solid 1px Black;
+}
+.dxnbControl_BlackGlass a
+{
+	color: Black;
+}
+.dxnbLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxnbLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxnbGroupHeader_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: White;
+	background: #444444 url('nbItemBack.gif') repeat-x top left;
+	border-left: solid 1px Black;
+	border-top: solid 1px Black;
+	padding: 4px 6px 5px 10px;
+}
+.dxnbGroupHeader_BlackGlass a {
+	color: White;
+}
+.dxnbGroupHeader_BlackGlass table.dxnb
+{
+	font: 9pt Tahoma;
+	color: black;
+}
+.dxnbGroupHeader_BlackGlass td.dxnb
+{
+	color: White;
+	white-space: nowrap;
+}
+.dxnbGroupHeaderCollapsed_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	background: #444444 url('nbItemBack.gif') repeat-x top left;
+	border-left: solid 1px Black;
+	border-top: solid 1px Black;
+	padding: 4px 6px 5px 10px;
+}
+.dxnbGroupHeaderCollapsed_BlackGlass table.dxnb
+{
+	font: 9pt Tahoma;
+	color: black;
+}
+.dxnbGroupHeaderCollapsed_BlackGlass td.dxnb
+{
+	color: White;
+	white-space: nowrap;
+}
+.dxnbGroupHeaderCollapsed_BlackGlass td.dxnb a
+{
+	color: White;
+	white-space: nowrap;
+}
+
+.dxnbGroupContent_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #4F4F51;
+	background-color: #a4bed1;
+	border-left: solid 1px Black;
+	border-top: solid 1px Black;
+}
+.dxnbItem_BlackGlass, .dxnbLargeItem_BlackGlass, .dxnbBulletItem_BlackGlass
+{
+	color: #4F4F51;
+	background-color: #E8EDF1;
+}
+.dxnbItem_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 5px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+}
+.dxnbLargeItem_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 11px;
+	padding-bottom: 6px;
+	padding-left: 11px;
+}
+.dxnbBulletItem_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 5px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+}
+.dxnbItemSelected_BlackGlass, .dxnbLargeItemSelected_BlackGlass, .dxnbBulletItemSelected_BlackGlass
+{
+	background-color: #9faebb;
+}
+.dxnbItemSelected_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 5px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+}
+.dxnbLargeItemSelected_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 11px;
+	padding-bottom: 6px;
+	padding-left: 11px;
+}
+.dxnbBulletItemSelected_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 5px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+}
+.dxnbItemHover_BlackGlass, .dxnbLargeItemHover_BlackGlass, .dxnbBulletItemHover_BlackGlass
+{
+	background-color: #c1ced9;
+}
+.dxnbItemHover_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 5px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+}
+.dxnbLargeItemHover_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 11px;
+	padding-bottom: 6px;
+	padding-left: 11px;
+}
+.dxnbBulletItemHover_BlackGlass
+{
+	font: 9pt Tahoma;
+	padding-top: 6px;
+	padding-right: 5px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+}
+.dxnbGroupHeader_BlackGlass, .dxnbGroupHeaderCollapsed_BlackGlass
+{
+	text-align: left;
+}
+.dxnbItem_BlackGlass, .dxnbItemHover_BlackGlass, .dxnbItemSelected_BlackGlass,
+.dxnbBulletItem_BlackGlass, .dxnbBulletItemHover_BlackGlass, .dxnbBulletItemSelected_BlackGlass
+{
+    text-align: left;
+}
+.dxnbItemSelected_BlackGlass
+{
+	color: White;
+}
+.dxnbItemHover_BlackGlass
+{
+	color: #4f4f51;
+}
+.dxnbLargeItem_BlackGlass, .dxnbLargeItemHover_BlackGlass, .dxnbLargeItemSelected_BlackGlass
+{
+    text-align: center;
+}
+.dxnbGroupHeaderHover_BlackGlass
+{
+	background: #82b3ce url('nbItemBackH.gif') repeat-x top left;
+}
+.dxnbGroupHeaderCollapsedHover_BlackGlass
+{
+	background: #82b3ce url('nbItemBackH.gif') repeat-x top left;
+}
+/* Disabled */
+.dxnbDisabled_BlackGlass, .dxnbDisabled_BlackGlass td.dxnb
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxNewsControl -- */
+.dxncControl_BlackGlass 
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: White;
+}
+.dxncControlCell_BlackGlass 
+{
+	padding: 18px 18px 18px 18px;
+}
+.dxncLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+	border: solid 1px #9F9F9F;
+	background-color: White;
+}
+.dxncLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxncContent_BlackGlass
+{
+}
+.dxncPagerPanel_BlackGlass
+{
+	padding: 0px 2px 0px 2px;
+}
+.dxncItem_BlackGlass
+{
+	font: 9pt Tahoma;
+	vertical-align: top;
+	padding: 0px;
+}
+.dxncEmptyItem_BlackGlass
+{
+	font: 9pt Tahoma;
+	vertical-align: top;
+	padding: 0px;
+}
+.dxncBackToTop_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #404040;
+}
+.dxncBackToTop_BlackGlass a 
+{
+    color:#3e6b96;
+}
+.dxncBackToTop_BlackGlass a:hover
+{
+    color:#FF9600;
+}
+.dxncBackToTop_BlackGlass a:visited
+{
+    color:#800080;
+}
+
+.dxncItemContent_BlackGlass, .dxncItemContent_BlackGlass span.dxhl
+{
+	font: 9pt Tahoma;
+	color: #585858;
+	background-color: transparent;
+	text-align: left;
+}
+.dxncItemContent_BlackGlass a.dxhl  span
+{
+	color: #3e6b96;
+	text-decoration: underline;
+}
+.dxncItemContent_BlackGlass a.dxhl:visited span
+{
+	color: #800080;
+	text-decoration: underline;
+}
+.dxncItemContent_BlackGlass a.dxhl:hover span
+{
+	color: #FF9600;
+	text-decoration: underline;
+}
+.dxncItemContent_BlackGlass a.dxhl
+{
+	color: #585858;
+	text-decoration: underline;
+}
+.dxncItemContent_BlackGlass a.dxhl:visited
+{
+	color: #c37300;
+	text-decoration: underline;
+}
+.dxncItemContent_BlackGlass a.dxhl:hover
+{
+	color: #ff9600;
+	text-decoration: underline;
+}
+
+.dxncItemDate_BlackGlass
+{
+	font: 10px Tahoma;
+	font-weight: bold;
+	color: Black;
+	white-space: nowrap;
+	text-align: left;
+}
+.dxncItemHeader_BlackGlass
+{
+	font: 14px Tahoma;
+	font-weight: bold;
+	color: Black;
+	padding-bottom: 5px;
+}
+.dxncItemLeftPanel_BlackGlass
+{
+	font: 12px Tahoma;
+	color: black;
+	vertical-align: top;   
+}
+.dxncItemRightPanel_BlackGlass
+{
+  	font: 12px Tahoma;
+	color: black;
+	vertical-align: top;
+}
+.dxncEmptyData_BlackGlass
+{
+	color: Gray;
+}
+/* Disabled */
+.dxncDisabled_BlackGlass, .dxncDisabled_BlackGlass span.dxhl,
+.dxncDisabled_BlackGlass a, .dxncDisabled_BlackGlass a:hover
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxPager -- */
+.dxpControl_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	padding: 14px 20px 15px;
+}
+.dxpButton_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #394EA2;
+	text-decoration: underline;
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+}
+.dxpButton_BlackGlass a
+{
+	font: 9pt Tahoma;
+	color: #394EA2;
+	text-decoration: underline;
+	white-space: nowrap;
+}
+.dxpDisabledButton_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	text-decoration: none;
+}
+.dxpPageNumber_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #3e6b96;
+	text-decoration: underline;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0px 3px;
+}
+.dxpPageNumber_BlackGlass a
+{
+	font: 9pt Tahoma;
+	color: #3e6b96;
+	text-decoration: underline;
+}
+.dxpCurrentPageNumber_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: White;
+	background-color: #3e6b96;
+	text-decoration: underline;
+	padding: 0px 3px 0px 3px;
+}
+.dxpSummary_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0px;
+}
+.dxpSeparator_BlackGlass
+{
+	background-color: #cccccc;
+}
+/* Disabled */
+.dxpDisabled_BlackGlass
+{
+	color: #9f9f9f;
+	border-color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxPopupControl -- */
+.dxpcControl_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: white;
+	border: solid 1px #4E4F51;
+}
+.dxpcControl_BlackGlass a
+{
+	color: #1E3695;
+}
+.dxpcCloseButton_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: transparent;
+}
+.dxpcCloseButtonHover_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: White;
+}
+.dxpcContent_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: Black;
+	background-color: #e8edf1;
+	white-space: normal;
+	padding: 16px;
+    vertical-align: top;
+}
+.dxpcFooter_BlackGlass
+{
+	color: Black;
+	background: #C9D6DE url('pcItemFooter.gif') repeat-x top center;
+}
+.dxpcFooter_BlackGlass td.dxpc
+{
+	font: 9pt Tahoma;
+	color: Black;
+	white-space: nowrap;
+	padding: 12px 16px;
+}
+.dxpcHeader_BlackGlass
+{
+	color: White;
+	background: #444444 url('pcItemHeader.gif') repeat-x top center;
+}
+.dxpcHeader_BlackGlass td.dxpc
+{
+	font: 12px Tahoma;
+	color: White;
+	white-space: nowrap;
+	padding: 0px 0px;
+}
+.dxpcModalBackground_BlackGlass
+{
+	background-color: #777777;
+	opacity: 0.7;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=70);
+}
+/* Disabled */
+.dxpcDisabled_BlackGlass
+{
+	color: #808080;
+	cursor: default;
+}
+
+/* -- ASPxRoundPanel -- */
+.dxrpControl_BlackGlass td.dxrp
+{
+	font: 9pt Tahoma;
+	color: Black;
+}
+/* Header */
+.dxrpHeader_BlackGlass td.dxrp
+{
+	font: 14px Tahoma;
+	color: White;
+}
+/* Disabled */
+.dxrpDisabled_BlackGlass, .dxrpDisabled_BlackGlass td.dxrp
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxSiteMapControl -- */
+.dxsmControl_BlackGlass a
+{
+	color: #3E6B96;
+	text-decoration: none!important;
+}
+.dxsmControl_BlackGlass 
+{	
+	color: #1E3695;
+	background-color: white;
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 9pt;
+}
+.dxsmControl_BlackGlass a:visited
+{
+	color: #efbc8f;
+	text-decoration: none!important;
+}
+.dxsmControl_BlackGlass a:hover
+{
+	color: #ff9600;
+	text-decoration: none!important;
+}
+
+/* - Category Level - */
+.dxsmCategoryLevel_BlackGlass, .dxsmCategoryLevel_BlackGlass a
+{
+    font: 14px Tahoma;
+    color: White;
+    padding: 4px 9px 5px 0px;
+    color: White;
+}
+.dxsmCategoryLevel_BlackGlass a
+{
+	text-decoration: underline;
+}
+.dxsmCategoryLevel_BlackGlass
+{
+    color: White;
+    background: #575757 url('mItemBackLevel0.gif') repeat-x top left;
+    white-space: nowrap;
+    padding: 2px 9px 5px;
+}
+.dxsmCategoryLevel_BlackGlass
+{
+    border: solid 1px Black;
+}
+ /*flow layout*/
+.dxsmLevelCategoryFlow_BlackGlass, .dxsmLevelCategoryFlow_BlackGlass a
+{
+	border: solid 1px Black;
+    font: 9pt Tahoma;
+    color: #2a769d;
+    padding: 4px 9px 5px;
+}
+.dxsmLevelCategoryFlow_BlackGlass a
+{
+	text-decoration: underline;
+}
+/* - Level 0 - */
+.dxsmLevel0_BlackGlass, .dxsmLevel0_BlackGlass a
+{
+    font: 14px Tahoma;
+    color: White;
+}
+.dxsmLevel0_BlackGlass a
+{
+	color: #b1cae2;
+	text-decoration: underline;
+}
+.dxsmLevel0_BlackGlass
+{
+	padding: 2px 9px 5px;
+	border: solid 1px Black;
+}
+.dxsmLevel0Categorized_BlackGlass, .dxsmLevel0Categorized_BlackGlass a
+{
+    font: 9pt Tahoma;
+    color: #3e6b96;
+    padding: 4px 9px 5px 0px;
+}
+.dxsmLevel0Categorized_BlackGlass a
+{
+	color: #3e6b96;
+	text-decoration: underline;
+}
+.dxsmLevel0_BlackGlass
+{
+	background: #444444 url('mItemBackLevel0.gif') repeat-x top left;
+	white-space: nowrap;
+}
+ /*flow layout*/
+.dxsmLevel0Flow_BlackGlass, .dxsmLevel0Flow_BlackGlass a,
+.dxsmLevel0CategorizedFlow_BlackGlass, .dxsmLevel0CategorizedFlow_BlackGlass a
+{
+	color: #2A769D;
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 9pt;
+}
+.dxsmLevel0Flow_BlackGlass a, .dxsmLevel0CategorizedFlow_BlackGlass a
+{
+	text-decoration: underline;
+}
+.dxsmLevel0Flow_BlackGlass
+{
+    padding: 0px 0px 0px 0px;    
+}
+.dxsmLevel0Flow_BlackGlass
+{
+    text-decoration: none;    
+}
+
+/* - Level 1 - */
+.dxsmLevel1_BlackGlass, .dxsmLevel1_BlackGlass a,
+.dxsmLevel1Categorized_BlackGlass, .dxsmLevel1Categorized_BlackGlass a
+{    
+	font: 12px Tahoma;
+    color: #3e6b96;
+}
+.dxsmLevel1_BlackGlass a, .dxsmLevel1Categorized_BlackGlass a
+{
+	text-decoration: underline;
+}
+.dxsmLevel1_BlackGlass, .dxsmLevel1Categorized_BlackGlass
+{
+	padding: 0px 0px 0px 6px;
+    white-space: nowrap;  
+}
+
+/*flow layout*/
+.dxsmLevel1Flow_BlackGlass, .dxsmLevel1Flow_BlackGlass a,
+.dxsmLevel1CategorizedFlow_BlackGlass, .dxsmLevel1CategorizedFlow_BlackGlass a
+{    
+    font: 12px Tahoma;
+    color: #2A769D;
+}
+.dxsmLevel1Flow_BlackGlass a, .dxsmLevel1CategorizedFlow_BlackGlass a
+{
+	text-decoration: underline;
+}
+.dxsmLevel1Flow_BlackGlass
+{
+    text-decoration: none;
+    padding: 0px 0px 0px 0px;
+}
+/* - Level 2 - */
+.dxsmLevel2_BlackGlass, .dxsmLevel2_BlackGlass a,
+.dxsmLevel2Categorized_BlackGlass a, .dxsmLevel2Categorized_BlackGlass
+{    
+	font: 9pt Tahoma;
+    color: #3e6b96;
+}
+.dxsmLevel2_BlackGlass a, .dxsmLevel2Categorized_BlackGlass a
+{
+	text-decoration: underline;
+}
+.dxsmLevel2_BlackGlass, .dxsmLevel2Categorized_BlackGlass
+{
+    white-space:nowrap;
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel2Flow_BlackGlass, .dxsmLevel2Flow_BlackGlass a
+{
+    font: 9pt Tahoma;
+    color: #6199B6;
+}
+.dxsmLevel2Flow_BlackGlass a
+{
+	text-decoration:underline;
+}
+.dxsmLevel2Flow_BlackGlass
+{
+    padding: 0px 0px 0px 0px;
+}
+/* - Level 3 - */
+.dxsmLevel3_BlackGlass, .dxsmLevel3_BlackGlass a
+{    
+    font: 9pt Tahoma;
+    color: #3e6b96;
+}
+.dxsmLevel3_BlackGlass a
+{
+	text-decoration: underline;
+}
+.dxsmLevel3_BlackGlass
+{
+    white-space: nowrap;        
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel3Flow_BlackGlass, .dxsmLevel3Flow_BlackGlass a
+{    
+    font: 9pt Tahoma;
+    color: #A0C2D3;	
+}
+.dxsmLevel3Flow_BlackGlass a
+{
+	text-decoration: underline;
+}
+/* - Level 4 - */
+.dxsmLevel4_BlackGlass, .dxsmLevel4_BlackGlass a
+{    
+    font: 9pt Tahoma;
+    color: #3e6b96;
+}
+.dxsmLevel4_BlackGlass a
+{
+	text-decoration: underline;
+}
+.dxsmLevel4_BlackGlass
+{
+    white-space: nowrap;
+    padding: 0px 0px 0px 0px;    
+}
+/*flow layout*/
+.dxsmLevel4Flow_BlackGlass, .dxsmLevel4Flow_BlackGlass a
+{
+    font: 9pt Tahoma;
+    color: #A0C2D3;
+}
+.dxsmLevel4Flow_BlackGlass a
+{
+	text-decoration: underline;
+}
+.dxsmLevel4Flow_BlackGlass
+{
+    padding: 0px 0px 0px 0px;        
+}
+/* - Other Levels - */
+.dxsmLevelOther_BlackGlass
+{    
+    font: 9pt Tahoma;
+    color: #3e6b96;
+    text-decoration: none;
+}
+.dxsmLevelOther_BlackGlass
+{
+    white-space:nowrap;
+    padding: 0px 0px 0px 0px;            
+}
+/*flow layout*/
+.dxsmLevelOtherFlow_BlackGlass, .dxsmLevelOtherFlow_BlackGlass a
+{
+    font: 9pt Tahoma;
+    color: #A0C2D3;
+}
+.dxsmLevelOtherFlow_BlackGlass a
+{
+	text-decoration: underline;
+}
+/* Disabled */
+.dxsmDisabled_BlackGlass
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxTabControl, ASPxPageControl -- */
+.dxtcControl_BlackGlass 
+{
+	font: 9pt Tahoma;
+	color: black;
+}
+.dxtcLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxtcLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+
+/* Tab hyperlink */
+.dxtcTab_BlackGlass a, .dxtcTabWithTabPositionLeft_BlackGlass a, .dxtcTabWithTabPositionBottom_BlackGlass a, .dxtcTabWithTabPositionRight_BlackGlass a,
+.dxtcActiveTab_BlackGlass a, .dxtcActiveTabWithTabPositionBottom_BlackGlass a, .dxtcActiveTabWithTabPositionLeft_BlackGlass a, .dxtcActiveTabWithTabPositionRight_BlackGlass a,
+.dxtcTabHover_BlackGlass a, .dxtcTabHoverWithTabPositionBottom_BlackGlass a, .dxtcTabHoverWithTabPositionLeft_BlackGlass a, .dxtcTabHoverWithTabPositionRight_BlackGlass a
+{
+	text-decoration: none;
+	color: White;
+}
+
+.dxtcActiveTab_BlackGlass, .dxtcActiveTabWithTabPositionBottom_BlackGlass,
+.dxtcActiveTabWithTabPositionLeft_BlackGlass, .dxtcActiveTabWithTabPositionRight_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	border: solid 1px #4E4F51;
+	padding: 3px 13px 4px 13px;
+	background-color: #f5f5f7;
+}
+/* Active Tab */
+.dxtcActiveTab_BlackGlass table.dxtc, .dxtcActiveTabWithTabPositionBottom_BlackGlass table.dxtc,
+.dxtcActiveTabWithTabPositionLeft_BlackGlass table.dxtc, .dxtcActiveTabWithTabPositionRight_BlackGlass table.dxtc
+{
+	font: 9pt Tahoma;
+	color: black;    
+}
+.dxtcActiveTab_BlackGlass td.dxtc, .dxtcActiveTabWithTabPositionBottom_BlackGlass td.dxtc,
+.dxtcActiveTabWithTabPositionLeft_BlackGlass td.dxtc, .dxtcActiveTabWithTabPositionRight_BlackGlass td.dxtc
+{
+	white-space: nowrap;
+    background-color: transparent!important;
+    background-image: url('')!important;
+    border-width: 0px!important;
+    padding: 0px!important;
+}
+.dxtcActiveTabHover_BlackGlass
+{
+	background-color: #f5f5f7;
+}
+/* Tab */
+.dxtcTab_BlackGlass, .dxtcTabWithTabPositionLeft_BlackGlass, 
+.dxtcTabWithTabPositionBottom_BlackGlass, .dxtcTabWithTabPositionRight_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: White;
+	background: #444444 url('tcTabBack.gif') repeat-x top left;
+	border: solid 1px #4E4F51;
+	padding: 3px 13px 4px 13px;
+}
+.dxtcTab_BlackGlass table.dxtc, .dxtcTabWithTabPositionBottom_BlackGlass table.dxtc, 
+.dxtcTabWithTabPositionLeft_BlackGlass table.dxtc, .dxtcTabWithTabPositionRight_BlackGlass table.dxtc
+{
+	font: 9pt Tahoma;
+	color: White;
+}
+.dxtcTab_BlackGlass td.dxtc, .dxtcTabWithTabPositionBottom_BlackGlass td.dxtc, 
+.dxtcTabWithTabPositionLeft_BlackGlass td.dxtc, .dxtcTabWithTabPositionRight_BlackGlass td.dxtc
+{
+	white-space: nowrap;
+    background-color: transparent!important;
+    background-image: url('')!important;
+    border-width: 0px!important;
+    padding: 0px!important;
+}
+.dxtcTabWithTabPositionBottom_BlackGlass
+{
+}
+.dxtcTabWithTabPositionLeft_BlackGlass
+{
+}
+.dxtcTabWithTabPositionRight_BlackGlass
+{
+}
+/* Hover */
+.dxtcTabHover_BlackGlass, .dxtcTabHoverWithTabPositionBottom_BlackGlass,
+.dxtcTabHoverWithTabPositionLeft_BlackGlass, .dxtcTabHoverWithTabPositionRight_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: White;
+	background: #82b3ce url('tcTabBackH.gif') repeat-x top left;
+	padding: 3px 13px 4px 13px;
+}
+.dxtcTabHover_BlackGlass td.dxtc, .dxtcTabHoverWithTabPositionBottom_BlackGlass td.dxtc,
+.dxtcTabHoverWithTabPositionLeft_BlackGlass td.dxtc, .dxtcTabHoverWithTabPositionRight_BlackGlass td.dxtc
+{
+	white-space: nowrap;
+    background-color: transparent!important;
+    background-image: none!important;
+    border-width: 0px!important;
+    padding: 0px!important;
+}
+
+.dxtcPageContent_BlackGlass, .dxtcPageContentWithTabPositionBottom_BlackGlass, 
+.dxtcPageContentWithTabPositionLeft_BlackGlass, .dxtcPageContentWithTabPositionRight_BlackGlass,
+.dxtcPageContentWithoutTabs_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	background-color: #f5f5f7;
+	vertical-align: top;
+}
+.dxtcContent_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: black;
+	border: solid 1px #4E4F51;
+	background-color: white;
+	vertical-align: top;
+}
+/* Disabled */
+.dxtcDisabled_BlackGlass, .dxtcDisabled_BlackGlass table.dxtc
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+
+/* -- ASPxTitleIndex -- */
+.dxtiControl_BlackGlass 
+{
+	font: 10px Verdana;
+	color: #3e6b96;
+	background-color: white;
+	font-family: Verdana, Tahoma, Arial;
+}
+.dxtiLoadingPanel_BlackGlass
+{
+	font: 9pt Tahoma;
+	color: #303030;
+	border: solid 1px #9F9F9F;
+	background-color: White;
+}
+.dxtiLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px 12px 12px 12px;
+}
+.dxtiItem_BlackGlass, .dxtiItem_BlackGlass a
+{
+	font: 9pt Tahoma;
+	color: #3e6b96;
+	padding: 0px 0px 4px;
+	white-space: nowrap;
+}
+.dxtiItem_BlackGlass a
+{
+	text-decoration: none;
+}
+.dxtiControl_BlackGlass a:visited
+{
+	color: #4688aa;
+	text-decoration: none;
+}
+.dxtiControl_BlackGlass a:hover
+{
+    color: #ff9600;
+	text-decoration: none;
+}
+.dxtiGroupHeader_BlackGlass, .dxtiGroupHeaderCategorized_BlackGlass
+{
+	font: 16pt Verdana;
+	text-decoration: none;
+}
+.dxtiGroupHeader_BlackGlass, .dxtiGroupHeaderCategorized_BlackGlass
+{
+	white-space:nowrap;
+	padding: 0px;
+	padding-left: 1px;
+}
+.dxtiGroupHeaderCategorized_BlackGlass
+{
+    border-bottom: Solid 1px #C0C0C0;
+    padding-bottom: 2px;
+}
+/* - GroupHeaderText - */
+.dxtiGroupHeaderText_BlackGlass
+{
+	border: solid 1px Black;
+    color: #FFFFFF;
+}
+.dxtiGroupHeaderText_BlackGlass
+{
+	font: 18px Tahoma;
+	color: White;
+    padding: 0px 7px 2px 6px;
+    background: #444444 url('tiItemBack.gif') repeat-x top left;
+}
+.dxtiGroupHeaderTextCategorized_BlackGlass
+{
+    color: White;
+    font: bold 18px Tahoma;
+    background: #575757 url('tiItemBack.gif') repeat-x top left;
+    padding: 0px 7px 2px 5px
+}
+.dxtiGroupHeaderTextCategorized_BlackGlass
+{
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 2px;
+}
+/* - FilterBox - */
+.dxtiFilterBoxInfoText_BlackGlass
+{
+    font: 7pt Verdana;
+    color: #999999;
+    font-weight: normal;
+    padding-top: 0px;
+    padding-bottom: 4px;    
+}
+.dxtiFilterBoxEdit_BlackGlass
+{
+    font-size: 9pt;
+    width: 158px;
+    border: Solid 1px #a0a0a0;
+    padding-left: 3px;
+}
+.dxtiFilterBox_BlackGlass, .dxtiFilterBox_BlackGlass table
+{
+    color: #898989;
+    font-size: 9pt;
+    font-weight: bold;        
+}
+.dxtiFilterBox_BlackGlass
+{
+    background-color: #E8E8E8;
+    padding: 15px;    
+}
+/* - IndexPanel - */
+.dxtiIndexPanel_BlackGlass
+{
+    padding-bottom: 2px;
+    text-decoration: none;
+    border-bottom: solid 2px Black;
+}
+.dxtiIndexPanelItem_BlackGlass, .dxtiCurrentIndexPanelItem_BlackGlass
+{
+	font: 14px Tahoma;
+	color: #4688aa;
+	padding-left: 2px;
+	padding-right: 2px;
+	text-decoration: underline;
+}
+.dxtiIndexPanelItem_BlackGlass a
+{
+	color: #4688aa;
+	text-decoration: underline;
+}
+.dxtiIndexPanelItem_BlackGlass a:visited
+{
+	color: #c37300;
+	text-decoration: underline;
+}
+.dxtiIndexPanelItem_BlackGlass a:hover
+{
+	color: #ff9600;
+	text-decoration: underline;
+}
+
+.dxtiIndexPanelItem_BlackGlass, .dxtiCurrentIndexPanelItem_BlackGlass
+{
+}
+.dxtiCurrentIndexPanelItem_BlackGlass
+{
+    color: #000000;
+    background-color: #E0E0E0;
+}
+/* - BackToTop - */
+.dxtiBackToTop_BlackGlass, .dxtiBackToTop_BlackGlass a
+{
+    font-size: 7pt;
+    text-decoration: none;
+    color: #468cbc;
+}
+.dxtiBackToTop_BlackGlass
+{
+    padding: 0px 0px 12px;
+}
+/* Disabled */
+.dxtiDisabled_BlackGlass
+{
+	color: #9f9f9f;
+	cursor: default;
+}
+/* -- ASPxUploadControl -- */
+.dxucControl_BlackGlass, .dxucEditArea_BlackGlass
+{
+    font-size: 10pt;
+    font-family: Tahoma, Verdana, Arial;    
+}
+.dxucErrorCell_BlackGlass
+{
+    font-size: 9pt;
+    font-family: Tahoma, Verdana, Arial;
+    color: Red;
+    text-align: left;
+}
+.dxucButton_BlackGlass, .dxucButton_BlackGlass a
+{
+    font-size: 10pt;
+    font-family: Tahoma, Verdana, Arial;
+    color: #394ea2;
+    cursor: pointer;
+    white-space: nowrap;
+}
+/* UploadControl - ProgressBar */
+.dxucProgressBar_BlackGlass, .dxucProgressBar_BlackGlass td
+{
+    font-family: Tahoma, Verdana, Arial;
+    font-size: 9pt;
+	color: #FFFFFF;
+}
+.dxucProgressBar_BlackGlass
+{
+    border: Solid 1px #000000;
+    background-color: #8A8B8B;
+}
+.dxucProgressBarIndicator_BlackGlass
+{
+    background-color: #464646;
+	background-image: url('ucProgressIndicatorBack.gif');
+    background-repeat: repeat-x;
+}

@@ -1,0 +1,12 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxwtl" Namespace="DevExpress.Web.ASPxTreeList" Assembly="DevExpress.Web.ASPxTreeList.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxwtl:ASPxTreeList runat="server">
+    <Styles CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css" CssPostfix="BlackGlass">
+        <CustomizationWindowContent VerticalAlign="Top" />
+    </Styles>
+    <Images ImageFolder="~/App_Themes/BlackGlass/{0}/">
+        <ExpandedButton Url="~/App_Themes/BlackGlass/TreeList/ExpandedButton.png" Width="11px" Height="11px" />
+        <CollapsedButton Url="~/App_Themes/BlackGlass/TreeList/CollapsedButton.png" Width="11px" Height="11px" />
+        <CustomizationWindowClose Width="18px" Height="17px" />
+    </Images>
+</dxwtl:ASPxTreeList>

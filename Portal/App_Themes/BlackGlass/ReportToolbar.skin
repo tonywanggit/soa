@@ -1,0 +1,20 @@
+<%@ Register TagPrefix="dx" Namespace="DevExpress.Data" Assembly="DevExpress.Data.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register TagPrefix="dxxr" Namespace="DevExpress.XtraReports.Web" Assembly="DevExpress.XtraReports.v9.1.Web, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<dxxr:ReportToolbar runat="server" ItemSpacing="0px" SeparatorHeight="100%" SeparatorWidth="1px" SeparatorColor="#16171B" Font-Names="Tahoma" Font-Size="9pt">
+  <Styles CssPostfix="BlackGlass" CssFilePath="~/App_Themes/BlackGlass/{0}/styles.css">
+    <ButtonStyle VerticalAlign="Middle" HorizontalAlign="Center">
+		<Paddings PaddingLeft="11px" PaddingRight="11px"></Paddings>
+	</ButtonStyle>
+    <TextBoxStyle>
+        <Margins MarginLeft="2px" MarginRight="2px" />
+    </TextBoxStyle>
+    <ComboBoxStyle>
+        <Margins MarginLeft="2px" MarginRight="2px" />
+    </ComboBoxStyle>
+    <LabelStyle ForeColor="White">
+        <Margins MarginLeft="3px" MarginRight="3px" />
+    </LabelStyle>
+   </Styles>
+  <Images ImageFolder="~/App_Themes/BlackGlass/{0}/" />
+  <Border BorderStyle="Solid" BorderWidth="1px" BorderColor="#16171B" />
+</dxxr:ReportToolbar>

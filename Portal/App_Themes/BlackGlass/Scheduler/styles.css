@@ -1,0 +1,405 @@
+.dxscControl_BlackGlass
+{    
+    background: black;
+	border: solid 1px black;
+}
+.dxscLoadingPanel_BlackGlass
+{
+	border:solid 1px black;
+	background-color: White;	
+	font: 8pt Tahoma;
+	color: black;
+}
+.dxscLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxscLoadingDiv_BlackGlass
+{
+    background: White ;
+    opacity: 0.25;
+    filter: alpha(opacity=25);
+    cursor: wait;
+}
+
+/* Headers */
+.dxscDateHeader_BlackGlass, 
+.dxscAlternateDateHeader_BlackGlass,
+.dxscDayHeader_BlackGlass,
+.dxscDateCellHeader_BlackGlass,
+.dxscTodayCellHeader_BlackGlass,
+.dxscTimelineDateHeader_BlackGlass,
+.dxscHorizontalResourceHeader_BlackGlass,
+.dxscVerticalResourceHeader_BlackGlass
+{    
+    color: white;
+    background: url(CssImages/HeaderBack.gif) repeat-x left top #474747;
+    border: solid 1px black;
+    border-width: 0 1px 1px 0;
+    padding: 4px;
+	font: 9pt Tahoma;		
+	text-align: center;
+    vertical-align: top;
+    
+    cursor: default;
+	overflow: hidden;
+	white-space: nowrap;	
+}
+
+.dxscAlternateTimelineDateHeader_BlackGlass,
+.dxscAlternateDateHeader_BlackGlass
+{    
+    background: url(CssImages/HeaderAltBack.gif) repeat-x left top #7CABC4;
+    color: #FFFFFF;
+}
+.dxscDayHeader_BlackGlass
+{
+	border-width: 1px 1px 0 0;
+}
+.dxscDateCellHeader_BlackGlass
+{
+    border-width: 1px;
+}
+.dxscTodayCellHeader_BlackGlass
+{    
+	border-top-width: 1px;
+	background: url(CssImages/HeaderAltBack.gif) repeat-x left top #7CABC4;
+    color: #FFFFFF;
+}
+.dxscTimelineDateHeader_BlackGlass
+{
+    border-width: 1px 1px 1px 0;
+}
+.dxscHorizontalResourceHeader_BlackGlass
+{
+    border-width: 1px 1px 1px 0;
+    background: #868686;    
+}
+.dxscVerticalResourceHeader_BlackGlass
+{
+    border-width: 1px 1px 0 0;
+	border-top-color: #93C3D3;
+    background: #868686;    
+    white-space: normal;
+}
+.dxscSelectionBar_BlackGlass 
+{	
+    border-style: solid;
+	border-width: 0 1px 0 0;
+	height: 30px;
+}
+
+/* Corners */
+.dxscLeftTopCorner_BlackGlass, 
+.dxscRightTopCorner_BlackGlass
+{
+    background: url(CssImages/AdaBack.gif) repeat-x left bottom #E8EDF1;
+	width: 1px;
+    border-style: solid;
+    border-color: #A4BED1 ;	
+	border-width: 0 0 1px;
+}
+.dxscLeftTopCorner_BlackGlass
+{    
+    border-width: 1px 1px 1px 0;
+    font: 8pt Tahoma;
+    text-align: center;
+    padding: 2px;
+}
+
+/* Separators */
+.dxscGroupSeparatorVertical_BlackGlass 
+{
+	background: #A4BED1;
+	border: solid 1px black;
+}
+.dxscGroupSeparatorHorizontal_BlackGlass
+{
+    background: White;
+    border: solid 1px #A4BED1;
+}
+
+.dxscGroupSeparatorVertical_BlackGlass
+{
+    width: 1px; 
+    border-width: 0 1px;
+}
+.dxscGroupSeparatorHorizontal_BlackGlass
+{
+	height: 1px;
+    border-width: 1px 0 0;
+    font-size: 1px;
+}
+
+/* Apts Area */
+.dxscAllDayArea_BlackGlass
+{
+    background: url(CssImages/AdaBack.gif) repeat-x left bottom #E8EDF1;
+    border: solid 1px #A4BED1 ;
+    border-width: 0 1px 1px 0;
+}
+.dxscDateCellBody_BlackGlass 
+{
+	height: 100px;
+    border: solid 1px;
+    border-width: 0 1px 0 0;
+}
+.dxscTimeCellBody_BlackGlass
+{
+    border: solid 1px;
+	font: 9pt Tahoma;
+}
+.dxscTimelineCellBody_BlackGlass
+{
+	height: 300px;
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+}
+
+.dxscAppointment_BlackGlass
+{
+    color: black;
+    font: 8pt Tahoma;
+    border: solid 1px #7f9db9;
+    padding: 0;
+	margin: 0;
+	cursor: default;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;	
+}
+.dxscAppointmentInnerBorders_BlackGlass
+{	
+    border: solid 1px #7f9db9;
+    padding: 0px;
+}
+.dxscAppointmentHorizontalSeparator_BlackGlass
+{
+	height: 1px;
+	width: 100%;
+	overflow: hidden;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: none;
+}
+.dxscMoreButton_BlackGlass
+{
+	font: 8pt Tahoma;
+	color: black;
+	text-decoration: underline;	
+	padding: 0;	
+}
+
+/* Rulers */
+.dxscTimeRulerHoursItem_BlackGlass, .dxscTimeRulerMinuteItem_BlackGlass
+{
+    color: #5D5D5D;
+    background: #EBF0F3;
+    border: solid 1px #A4BED1 ;
+    border-width: 0px 1px 1px 0;
+	vertical-align: top;
+	white-space: nowrap;
+} 
+.dxscTimeRulerHoursItem_BlackGlass
+{
+    border-right-width: 0;
+    border-left-color: black;
+    font: 13pt Tahoma;
+	text-align: right;
+	width: 45px;
+    padding: 2px 4px 0px;
+}
+.dxscTimeRulerMinuteItem_BlackGlass
+{
+    border-left-width: 0px;
+	text-align: center;
+	width: 13px;
+	font: 8pt Tahoma;
+    padding: 4px;
+    padding-left: 1px;
+}
+
+.dxscTimeRulerHeaderHourItem_BlackGlass
+{
+    width: 55px;
+}
+.dxscTimeRulerHeaderMinuteItem_BlackGlass
+{
+    width: 16px;
+}
+.dxscScrollHeaderItem_BlackGlass 
+{
+    width: 16px;
+}
+
+
+/* Control elements */
+.dxscToolbar_BlackGlass 
+{
+	background: url(CssImages/ToolbarBack.gif) repeat-x #DDECF4;
+	padding: 9px 0 9px 6px;
+}
+.dxscViewSelector_BlackGlass 
+{    
+	background: url(CssImages/ToolbarBack.gif) repeat-x #DDECF4;
+    padding: 9px 6px;   
+}
+.dxscResourceNavigator_BlackGlass 
+{    
+    background: #CADAE6;
+    padding: 7px;
+    border: solid 1px black;
+}
+.dxscViewVisibleInterval_BlackGlass
+{
+    color: black;
+    font: 9pt Tahoma;
+    white-space: nowrap;
+}
+.dxscTooltip_BlackGlass 
+{
+    background: #f9f9cd;
+    padding: 4px 10px;
+    font: 8pt Tahoma;
+    color: #303030;
+    white-space: nowrap;
+}
+.dxscInplaceEditor_BlackGlass
+{
+	background: #B6D5E3;
+	border: solid 3px black;
+	padding: 0;
+	font: 8pt Tahoma;
+	color: Black;
+}
+.dxscErrorInfo_BlackGlass
+{
+	background: #f1abab;
+	color: #853a3a;
+	padding: 10px;
+	border: solid 1px Black;
+    border-width: 1px 0;
+}
+
+/* Buttons */
+.dxscViewNavigatorButton_BlackGlass
+{    
+    background: url(CssImages/ButtonBack.gif) repeat-x #E7EEEE;
+    border: solid 1px #B2BDBF;
+    height: 26px;
+    padding: 0px 7px;
+    font: 9pt Tahoma;
+    color: #303030;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxscViewNavigatorButtonHover_BlackGlass
+{
+    background: url(CssImages/ButtonHoverBack.gif) repeat-x #DDEEF3;
+    border: solid 1px #8DC5D8;
+}
+.dxscViewNavigatorButtonPressed_BlackGlass
+{
+    background: url(CssImages/ButtonPressedBack.gif) repeat-x #D0E8EE;
+    border: solid 1px #62AFC9;
+}
+
+.dxscViewSelectorButton_BlackGlass 
+{
+    background: url(CssImages/ButtonBack.gif) repeat-x #E7EEEE;
+    border: solid 1px #B2BDBF;
+    padding: 6px 8px;	
+	font: 9pt Tahoma;
+	margin-right: 3px;
+	color: black;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxscViewSelectorButtonHover_BlackGlass 
+{
+	background: url(CssImages/ButtonHoverBack.gif) repeat-x #DDEEF3;
+    border: solid 1px #8DC5D8;
+}
+.dxscViewSelectorButtonChecked_BlackGlass 
+{
+    background: url(CssImages/ButtonPressedBack.gif) repeat-x #D0E8EE;
+    border: solid 1px #62AFC9;
+}
+.dxscViewSelectorButtonPressed_BlackGlass
+{
+    background: url(CssImages/ButtonPressedBack.gif) repeat-x #D0E8EE;
+    border: solid 1px #62AFC9;
+}
+
+.dxscResourceNavigatorButton_BlackGlass
+{    
+    background: #303030;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxscResourceNavigatorButtonHover_BlackGlass
+{
+    background: #759DB3;
+}
+.dxscResourceNavigatorButtonPressed_BlackGlass
+{
+    background: #AEAEAE;
+}
+
+.dxscNavigationButton_BlackGlass
+{
+    background: #303030;
+	cursor: pointer;
+	cursor: hand;
+}
+.dxscNavigationButtonHover_BlackGlass
+{
+    background: #759DB3;    
+}
+.dxscNavigationButtonPressed_BlackGlass
+{
+    background: #AEAEAE;    
+}
+
+.dxscSmartTagButton_BlackGlass 
+{
+    background: url(CssImages/ResourceNavigatorButtonBack.gif) repeat-x #303030;
+	border: solid 1px black;
+    padding: 4px 5px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.dxscDVBottomMoreButton_BlackGlass,
+.dxscDVTopMoreButton_BlackGlass
+{
+	cursor: pointer;
+	cursor: hand;
+}
+
+.dxscNoBorderButton_BlackGlass
+{
+	cursor: pointer;
+	cursor: hand;
+	border: solid 1px #B6D5E3;
+}
+.dxscNoBorderButtonHover_BlackGlass
+{
+    background: #C4DFEE;
+    border-color: #A4BED1;
+}
+.dxscNoBorderButtonPressed_BlackGlass
+{
+    background: #B6D5E3;
+    border-color: #A4BED1;
+}
+.dxscControlAreaForm_BlackGlass
+{
+	font: 12pt Tahoma;
+	color: black;
+	white-space: normal;
+	padding: 9px 12px 13px 12px;
+	background-color: #E8EDF1;	
+}

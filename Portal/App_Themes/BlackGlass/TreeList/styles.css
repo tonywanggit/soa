@@ -1,0 +1,241 @@
+.dxtlControl_BlackGlass
+{
+	cursor: default;
+	font: 9pt Tahoma;
+	color: black;
+	border: none 1px #9f9f9f;
+}
+.dxtlControl_BlackGlass caption
+{
+	background: #c9d7dc;
+	border: solid 1px black;
+    border-bottom: 0;
+	font-weight: bold;
+	padding: 3px;
+	text-align: center;	    
+}
+
+/* Indent cells */
+.dxtlIndent_BlackGlass, .dxtlIndentWithButton_BlackGlass
+{			
+	background: white;
+	vertical-align: top;
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+.dxtlIndent_BlackGlass
+{
+	padding: 0 11px;
+}
+.dxtlIndentWithButton_BlackGlass
+{
+	padding: 5px 6px;
+}
+.dxtlSelectionCell_BlackGlass
+{
+	padding: 0 2px;
+	border: solid 1px #a4bed1;
+}
+
+/* Tree-lines cells */
+.dxtlLineFirst_BlackGlass
+{
+	background-image: url(CssImages/TreeLineFirst.gif);	
+}
+.dxtlLineMiddle_BlackGlass
+{
+	background-image: url(CssImages/TreeLineMiddle.gif);
+}
+.dxtlLineLast_BlackGlass
+{
+	background-image: url(CssImages/TreeLineLast.gif);
+}
+.dxtlLineRoot_BlackGlass
+{
+	background-image: url(CssImages/TreeLineRoot.gif);
+	background-repeat: repeat-y;
+}
+
+/* Headers */
+.dxtlHeader_BlackGlass 
+{
+	background: url(CssImages/HeaderBack.gif) repeat-x #444444;
+	border: solid 1px #4e4f51;    
+	padding: 4px 6px 5px;	
+	font-weight: normal;		
+}
+.dxtlHeader_BlackGlass table.dxtl 
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+.dxtlHeader_BlackGlass td.dxtl
+{
+	padding: 0;
+}
+.dxtlHeader_BlackGlass, .dxtlHeader_BlackGlass td.dxtl 
+{	
+	font: 9pt Tahoma;
+	white-space: nowrap;
+	text-align: left;
+    color: white;
+}
+
+/* Nodes */
+.dxtlNode_BlackGlass
+{
+	background: white;	
+}
+.dxtlAltNode_BlackGlass
+{
+	background: #f1f4f6;	
+}
+.dxtlSelectedNode_BlackGlass
+{
+	background: #e0eaec;	
+}
+.dxtlFocusedNode_BlackGlass
+{
+	background: #bdcad5;    
+}
+.dxtlInlineEditNode_BlackGlass
+{
+	background: white;
+}
+.dxtlEditFormDisplayNode_BlackGlass 
+{
+	background: white;
+}
+.dxtlNode_BlackGlass td.dxtl, 
+.dxtlAltNode_BlackGlass  td.dxtl, 
+.dxtlSelectedNode_BlackGlass td.dxtl, 
+.dxtlFocusedNode_BlackGlass td.dxtl,
+.dxtlEditFormDisplayNode_BlackGlass td.dxtl,
+.dxtlCommandCell_BlackGlass
+{
+	padding: 3px 6px 4px;
+	border: solid 1px #a4bed1;
+	white-space: nowrap;
+	font-size: 9pt;
+    font-family: Tahoma;
+}
+.dxtlInlineEditNode_BlackGlass td.dxtl
+{
+	border: solid 1px #a4bed1;
+	padding: 1px;
+}
+
+/* Preview */
+.dxtlPreview_BlackGlass
+{
+	background: white;	
+	padding: 14px;
+	border: solid 1px #a4bed1;
+	font: 9pt Tahoma;	
+}
+
+/* Footers */
+.dxtlGroupFooter_BlackGlass
+{
+	background-color: #d6e2ea;	
+}
+.dxtlFooter_BlackGlass
+{
+	background-color: #c9d7dc;	
+}
+.dxtlGroupFooter_BlackGlass td.dxtl,
+.dxtlFooter_BlackGlass td.dxtl
+{
+	padding: 5px 6px 6px;
+	white-space: nowrap;
+	text-align: left;
+	border: solid 1px #a4bed1;
+	font: 9pt Tahoma;
+}
+
+/* Pagers */
+.dxtlPagerTopPanel_BlackGlass
+{
+	border-bottom: none 1px #9f9f9f;
+}
+.dxtlPagerBottomPanel_BlackGlass
+{
+	border-top: none 1px #9f9f9f;	
+}
+
+/* Editing */
+.dxtlEditForm_BlackGlass
+{
+	background: #EEF2F5;
+	border: solid 1px #a4bed1;
+	padding: 8px 10px 10px;
+}
+.dxtlEditFormCaption_BlackGlass,
+.dxtlEditFormEditCell_BlackGlass
+{
+	padding: 4px;	
+}
+.dxtlEditFormCaption_BlackGlass
+{
+	padding-left: 10px;
+	white-space: nowrap;
+}
+.dxtlError_BlackGlass
+{
+	background: #FFC8C8;
+	color: #FF0000;
+	padding: 6px 10px;
+	border: solid 1px #cfcfcf;
+	font: 9pt Tahoma;		
+}
+
+/* Links */
+.dxtlControl_BlackGlass a 
+{
+	color: #3e6b96;
+}
+.dxtlControl_BlackGlass a:hover 
+{
+	color:  #ff9600;
+}
+.dxtlHeader_BlackGlass a 
+{
+	color: White;
+}
+.dxtlFocusedNode_BlackGlass a:hover
+{
+	color: Black;
+}
+.dxtlCommandCell_BlackGlass a
+{
+    margin-right: 3px;
+}
+
+/* Loading panel */
+.dxtlLoadingPanel_BlackGlass
+{
+	border: solid 1px #D3D3D3;
+	background-color: #E3E3E1;
+	font: 9pt Tahoma;
+	color: #303030;
+}
+.dxtlLoadingPanel_BlackGlass td.dx
+{
+	white-space: nowrap;
+	text-align: center;
+	padding: 12px;
+}
+.dxtlLoadingDiv_BlackGlass
+{
+	background: white;
+	opacity: 0.01;
+	filter: alpha(opacity=1);
+}
+
+/* Disabled */
+.dxtlDisabled_BlackGlass,
+.dxtlDisabled_BlackGlass .dxtl_BlackGlass
+{
+	color: #808080;
+	cursor: default;
+}
