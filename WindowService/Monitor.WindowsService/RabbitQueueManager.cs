@@ -50,19 +50,34 @@ namespace Monitor.WindowsService
         }
 
         /// <summary>
+        /// 停止接收
+        /// </summary>
+        public void StopReceive()
+        {
+            m_RabbitMQ.Dispose();
+        }
+
+        /// <summary>
         /// 处理日志消息
         /// </summary>
         public void ProcessAuditMessage()
         {
-            m_RabbitMQ.Listen<AuditBusiness>(Constant.ESB_AUDIT_QUEUE, x =>
+            try
             {
-                if (x != null)
+                m_RabbitMQ.Listen<AuditBusiness>(Constant.ESB_AUDIT_QUEUE, x =>
                 {
-                    x.InBytes = GetStringByteLength(x.MessageBody);
-                    x.OutBytes = GetStringByteLength(x.ReturnMessageBody);
-                    x.Insert();
-                }
-            });
+                    if (x != null)
+                    {
+                        x.InBytes = GetStringByteLength(x.MessageBody);
+                        x.OutBytes = GetStringByteLength(x.ReturnMessageBody);
+                        x.Insert();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                XTrace.WriteLine("处理审计日志发生异常，消息将停止接收！");
+            }
         }
 
         /// <summary>
@@ -83,11 +98,18 @@ namespace Monitor.WindowsService
         /// </summary>
         public void ProcessExceptionMessage()
         {
-            m_RabbitMQ.Listen<ExceptionCoreTb>(Constant.ESB_EXCEPTION_QUEUE, x =>
+            try
             {
-                if (x != null)
-                    x.Insert();
-            });
+                m_RabbitMQ.Listen<ExceptionCoreTb>(Constant.ESB_EXCEPTION_QUEUE, x =>
+                {
+                    if (x != null)
+                        x.Insert();
+                });
+            }
+            catch (Exception ex)
+            {
+                XTrace.WriteLine("处理异常日志发生异常，消息将停止接收！");
+            }
         }
     }
 }

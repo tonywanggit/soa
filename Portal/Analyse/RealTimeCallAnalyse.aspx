@@ -11,42 +11,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phContent" Runat="Server">
     <asp:Table ID="statTable" runat="server" Width="900px">
-        <asp:TableRow>
-            <asp:TableCell>
-                <div id="real-time-gauge1" class="epoch gauge-tiny"></div>
-				<div style="font-weight:bold">WXSC_WeiXinServiceForApp</div>
-				<div>调用峰值：300TPS</div>
-				<div>调用总数：10000</div>
-				<div>流量 入：10  出：10000</div>
-            </asp:TableCell>
-            <asp:TableCell>
-                <div id="real-time-area1" class="epoch area" style="height:160px;width:800px"></div>
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                <div id="real-time-gauge2" class="epoch gauge-tiny"></div>
-				<div style="font-weight:bold">ERP_OrderService</div>
-				<div>调用峰值：100TPS</div>
-				<div>调用总数：10000</div>
-				<div>流量 入：10  出：10000</div>
-            </asp:TableCell>
-            <asp:TableCell>
-                <div id="real-time-area2" class="epoch area" style="height:160px;width:800px"></div>
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                <div id="Div1" class="epoch gauge-tiny"></div>
-				<div style="font-weight:bold">ERP_OrderService</div>
-				<div>调用峰值：100TPS</div>
-				<div>调用总数：10000</div>
-				<div>流量 入：10  出：10000</div>
-            </asp:TableCell>
-            <asp:TableCell>
-                <div id="Div2" class="epoch area" style="height:160px;width:800px"></div>
-            </asp:TableCell>
-        </asp:TableRow>
     </asp:Table>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phOnceContent" Runat="Server">
@@ -74,25 +38,57 @@
     	});
 
 		$(function () {
-		    var data = new RealTimeData(2);
 		    var chartsArea = [];
 
 		    $(".epoch.area").each(function (e) {
-		        chartsArea.push($(this).epoch({
+		        var data = new RealTimeData(1);
+		        var chart = $(this).epoch({
 		            type: 'time.area',
-		            data: data.history(),
-		            axes: ['left', 'top', 'right']
-		        }));
-		    });
+		            data: data.history(1),
+		            axes: ['left', 'bottom', 'right']
+		        }); 
 
+		        chartsArea.push({ id: $(this).attr("id"), chart: chart, data: data});
+		    });;
 
 		    setInterval(function () {
-		        for (var item in chartsArea) {
-		            chartsArea[item].push(data.next());
-		        }
-		    }, 2000);
+		        $.ajax({
+		            type: "POST",
+		            url: "../Handler/MonitorData.ashx",
+		            dataType: "json",
+		            success: function (msg) {
+		                ProcessMonitorData(msg);
+		            }
+		        })
+		    }, 1000);
 
+            //--处理监控数据
+		    function ProcessMonitorData(msg) {
+		        for (var i = 0; i < chartsArea.length; i++) {
+		            var chartArea = chartsArea[i];
+		            var sName = chartArea.id;
+		            var callNum = GetServiceCallNum(sName, msg);
+
+		            console.log(sName);
+
+		            chartArea.chart.push(chartArea.data.next(callNum));
+		        }
+		    }
+
+            //--从监控数据中获取到调用次数
+		    function GetServiceCallNum(serviceName, msg) {
+		        for (var i = 0; i < msg.length; i++) {
+		            console.log(msg[i].ServiceName);
+		            if ("div_area_" + msg[i].ServiceName == serviceName) {
+
+		                return msg[i].CallNum;
+		            }
+		        }
+		        return 0;
+		    };
 		});
+
+		
 	</script>
 </asp:Content>
 

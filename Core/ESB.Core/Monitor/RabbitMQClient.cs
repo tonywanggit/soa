@@ -118,6 +118,7 @@ namespace ESB.Core.Monitor
                 catch(Exception ex)
                 {
                     XTrace.WriteLine("处理队列消息时发生异常：" + ex.Message);
+                    throw ex;
                 }
             }
         }

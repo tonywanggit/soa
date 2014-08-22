@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 
@@ -67,6 +68,26 @@ namespace ESB.Core.Configuration
                 m_ESBDataPath = new DirectoryInfo(dir).FullName;
                 return m_ESBDataPath;
             }
+        }
+
+        private String m_LocalIP;
+        /// <summary>
+        /// 获取到本机IP地址
+        /// </summary>
+        public String LocalIP
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(m_LocalIP))
+                {
+                    IPHostEntry ipe = Dns.GetHostEntry(Dns.GetHostName());
+                    IPAddress ipa = ipe.AddressList[0];
+
+                    m_LocalIP = ipa.ToString();
+                }
+                return m_LocalIP;
+            }
+
         }
 
         /// <summary>

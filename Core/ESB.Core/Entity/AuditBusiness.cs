@@ -328,6 +328,18 @@ namespace ESB.Core.Entity
             get { return _InvokeID; }
             set { if (OnPropertyChanging(__.InvokeID, value)) { _InvokeID = value; OnPropertyChanged(__.InvokeID); } }
         }
+
+        private String _ConsumerIP;
+        /// <summary>消费者IP</summary>
+        [DisplayName("消费者IP")]
+        [Description("消费者IP")]
+        [DataObjectField(false, false, false, 30)]
+        [BindColumn(27, "ConsumerIP", "消费者IP", "", "nvarchar(30)", 0, 0, true)]
+        public virtual String ConsumerIP
+        {
+            get { return _ConsumerIP; }
+            set { if (OnPropertyChanging(__.ConsumerIP, value)) { _ConsumerIP = value; OnPropertyChanged(__.ConsumerIP); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -370,6 +382,7 @@ namespace ESB.Core.Entity
                     case __.InvokeLevel: return _InvokeLevel;
                     case __.InvokeOrder: return _InvokeOrder;
                     case __.InvokeID: return _InvokeID;
+                    case __.ConsumerIP: return _ConsumerIP;
                     default: return base[name];
                 }
             }
@@ -403,6 +416,7 @@ namespace ESB.Core.Entity
                     case __.InvokeLevel: _InvokeLevel = Convert.ToInt32(value); break;
                     case __.InvokeOrder: _InvokeOrder = Convert.ToInt32(value); break;
                     case __.InvokeID: _InvokeID = Convert.ToString(value); break;
+                    case __.ConsumerIP: _ConsumerIP = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -491,6 +505,9 @@ namespace ESB.Core.Entity
             ///<summary></summary>
             public static readonly Field InvokeID = FindByName(__.InvokeID);
 
+            ///<summary>消费者IP</summary>
+            public static readonly Field ConsumerIP = FindByName(__.ConsumerIP);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -574,6 +591,9 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public const String InvokeID = "InvokeID";
+
+            ///<summary>消费者IP</summary>
+            public const String ConsumerIP = "ConsumerIP";
 
         }
         #endregion
@@ -660,6 +680,9 @@ namespace ESB.Core.Entity
 
         /// <summary></summary>
         String InvokeID { get; set; }
+
+        /// <summary>消费者IP</summary>
+        String ConsumerIP { get; set; }
         #endregion
 
         #region 获取/设置 字段值

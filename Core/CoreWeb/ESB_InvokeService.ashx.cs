@@ -19,11 +19,10 @@ namespace ESB.CallCenter
             String serviceName = context.Request["ServiceName"].Trim();
             String methodName = context.Request["MethodName"].Trim();
             String message = context.Request["Message"].Trim();
-            String callback = context.Request["callback"].Trim();
+            String callback = context.Request["callback"];
 
             String response = esbProxy.Invoke(serviceName, methodName, message);
-
-            if (!String.IsNullOrEmpty(response))
+            if (!String.IsNullOrEmpty(callback))
             {
                 response = String.Format("{0}({{message:'{1}'}})", callback, response);
             }

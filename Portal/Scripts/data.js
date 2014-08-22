@@ -27,7 +27,7 @@
 
         for (var i = 0; i < entries; i++) {
             for (var j = 0; j < this.layers; j++) {
-                history[j].values.push({time: this.timestamp, y: this.rand()});
+                history[j].values.push({time: this.timestamp, y: 0});
             }
             this.timestamp++;
         }
@@ -35,12 +35,12 @@
         return history;
     };
 
-    RealTimeData.prototype.next = function() {
+    RealTimeData.prototype.next = function(y) {
         var entry = [];
         for (var i = 0; i < this.layers; i++) {
-            entry.push({ time: this.timestamp, y: this.rand() });
+            entry.push({ time: this.timestamp, y: y });
         }
-        this.timestamp++;
+        this.timestamp = this.timestamp + 5;
         return entry;
     }
 

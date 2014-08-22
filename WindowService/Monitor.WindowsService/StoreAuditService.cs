@@ -15,7 +15,7 @@ namespace Audit.WindowsService
 {
     public partial class StoreAuditService : ServiceBase
     {
-        QueueManager m_QueueManager = null;
+        RabbitQueueManager m_RabbitQueueManager = null;
 
         public StoreAuditService()
         {
@@ -26,8 +26,8 @@ namespace Audit.WindowsService
         {
             XTrace.WriteLine("日志队列处理服务启动。");
 
-            RabbitQueueManager rbQueueManager = new RabbitQueueManager();
-            rbQueueManager.StartReceive();
+            m_RabbitQueueManager = new RabbitQueueManager();
+            m_RabbitQueueManager.StartReceive();
 
             //Thread thread = new Thread(x =>
             //{
@@ -47,8 +47,8 @@ namespace Audit.WindowsService
 
         protected override void OnStop()
         {
-            if (m_QueueManager != null)
-                m_QueueManager.StopReceive();
+            if (m_RabbitQueueManager != null)
+                m_RabbitQueueManager.StopReceive();
 
             XTrace.WriteLine("日志队列处理服务关闭。");
         }

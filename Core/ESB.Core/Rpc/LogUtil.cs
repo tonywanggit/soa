@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ESB.Core.Entity;
 using ESB.Core.Util;
+using ESB.Core.Configuration;
 
 namespace ESB.Core.Rpc
 {
@@ -22,6 +23,8 @@ namespace ESB.Core.Rpc
         {
             callState.RequestEndTime = DateTime.Now;
             TimeSpan ReqTimeSpan = callState.RequestEndTime.Subtract(callState.RequestBeginTime);
+
+            ConfigurationManager cm = ConfigurationManager.GetInstance();
 
             AuditBusiness log = new AuditBusiness()
             {
@@ -48,7 +51,8 @@ namespace ESB.Core.Rpc
                 InvokeLevel = callState.TraceContext.InvokeLevel,
                 InvokeOrder = callState.TraceContext.InvokeOrder,
                 InvokeID = callState.TraceContext.InvokeID,
-                InvokeTimeSpan = ReqTimeSpan.TotalMilliseconds
+                InvokeTimeSpan = ReqTimeSpan.TotalMilliseconds,
+                ConsumerIP = cm.LocalIP
             };
 
             //log.Insert();
