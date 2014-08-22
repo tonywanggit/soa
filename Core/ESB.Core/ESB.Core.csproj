@@ -92,6 +92,8 @@
     <Compile Include="Entity\Personal.cs" />
     <Compile Include="Entity\ReturnResponse.Biz.cs" />
     <Compile Include="Entity\ReturnResponse.cs" />
+    <Compile Include="Entity\ServiceMonitor.Biz.cs" />
+    <Compile Include="Entity\ServiceMonitor.cs" />
     <Compile Include="Entity\ShowTodayWatch.Biz.cs" />
     <Compile Include="Entity\ShowTodayWatch.cs" />
     <Compile Include="Entity\TModel.Biz.cs" />
