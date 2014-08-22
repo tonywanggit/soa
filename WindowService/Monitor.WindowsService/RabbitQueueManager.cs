@@ -16,8 +16,18 @@ namespace Monitor.WindowsService
     /// </summary>
     internal class RabbitQueueManager
     {
+        /// <summary>
+        /// 队列客户端
+        /// </summary>
         RabbitMQClient m_RabbitMQ;
+        /// <summary>
+        /// 实时监控管理器
+        /// </summary>
+        MonitorStatManager m_MonitorStatManager = MonitorStatManager.GetInstance();
 
+        /// <summary>
+        /// 构造器
+        /// </summary>
         public RabbitQueueManager()
         {
             String esbQueue = Config.GetConfig<String>("ESB.Queue");
@@ -71,6 +81,8 @@ namespace Monitor.WindowsService
                         x.InBytes = GetStringByteLength(x.MessageBody);
                         x.OutBytes = GetStringByteLength(x.ReturnMessageBody);
                         x.Insert();
+
+                        m_MonitorStatManager.Record(x);
                     }
                 });
             }
