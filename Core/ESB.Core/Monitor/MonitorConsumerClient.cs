@@ -16,7 +16,7 @@ namespace ESB.Core.Monitor
     /// <summary>
     /// 监控中心客户端
     /// </summary>
-    internal class MonitorClient
+    internal class MonitorConsumerClient
     {
         /// <summary>
         /// 消息队列
@@ -55,7 +55,7 @@ namespace ESB.Core.Monitor
         /// <summary>
         /// 构造函数
         /// </summary>
-        public MonitorClient(ESBProxy esbProxy)
+        public MonitorConsumerClient(ESBProxy esbProxy)
         {
             m_ESBProxy = esbProxy;
             m_LocalMQ = new LocalMQ(this);

@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Monitor.WindowsService
 {
+    /// <summary>
+    /// 监控数据统计结构
+    /// </summary>
     internal class MonitorStatData
     {
         /// <summary>
@@ -122,9 +125,9 @@ namespace Monitor.WindowsService
 
                 if (ab.InvokeTimeSpan > 200)
                     serviceMonitor.CallLevel3Num++;
-                else if (ab.InvokeTimeSpan > 100 && ab.InvokeTimeSpan < 200)
+                else if (ab.InvokeTimeSpan > 100 && ab.InvokeTimeSpan <= 200)
                     serviceMonitor.CallLevel2Num++;
-                else if(ab.InvokeTimeSpan > 20 && ab.InvokeTimeSpan < 100)
+                else if(ab.InvokeTimeSpan > 20 && ab.InvokeTimeSpan <= 100)
                     serviceMonitor.CallLevel1Num++;
 
                 serviceMonitor.InBytes += ab.InBytes;
@@ -133,5 +136,24 @@ namespace Monitor.WindowsService
                 serviceMonitor.TpsPeak++;
             }
         }
+    }
+
+    /// <summary>
+    /// 监控数据统计维度
+    /// </summary>
+    internal class MonitorStatDimension
+    {
+        /// <summary>
+        /// 服务名称
+        /// </summary>
+        public String ServiceName{ get; set; }
+        /// <summary>
+        /// 绑定地址
+        /// </summary>
+        public String BindingAddress { get; set; }
+        /// <summary>
+        /// 方法名称
+        /// </summary>
+        public String MethodName { get; set; }
     }
 }

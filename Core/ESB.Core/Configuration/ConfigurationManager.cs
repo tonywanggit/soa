@@ -81,9 +81,18 @@ namespace ESB.Core.Configuration
                 if (String.IsNullOrEmpty(m_LocalIP))
                 {
                     IPHostEntry ipe = Dns.GetHostEntry(Dns.GetHostName());
-                    IPAddress ipa = ipe.AddressList[0];
+                    IPAddress ipa = null;
 
-                    m_LocalIP = ipa.ToString();
+                    foreach (var item in ipe.AddressList)
+                    {
+                        if (item.IsIPv6LinkLocal || item.IsIPv6Multicast || item.IsIPv6SiteLocal || item.IsIPv6Teredo)
+                            continue;
+                        else
+                            ipa = item;
+                    }
+
+                    if (ipa != null)
+                        m_LocalIP = ipa.ToString();
                 }
                 return m_LocalIP;
             }

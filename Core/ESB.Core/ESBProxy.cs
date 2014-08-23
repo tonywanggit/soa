@@ -101,11 +101,11 @@ namespace ESB.Core
         /// <summary>
         /// 监控中心客户端
         /// </summary>
-        private MonitorClient m_MonitorClient = null;
+        private MonitorConsumerClient m_MonitorClient = null;
         /// <summary>
         /// 对内部类公开监控客户端
         /// </summary>
-        internal MonitorClient MonitorClient
+        internal MonitorConsumerClient MonitorClient
         {
             get { return m_MonitorClient; }
         }
@@ -160,7 +160,7 @@ namespace ESB.Core
 
 
             //--STEP.4.连接监控中心
-            m_MonitorClient = new MonitorClient(this);
+            m_MonitorClient = new MonitorConsumerClient(this);
             m_MonitorClient.Connect();
 
 

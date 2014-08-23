@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MonitorCenter.cs" />
     <Compile Include="MonitorStatData.cs" />
     <Compile Include="MonitorStatManager.cs" />
     <Compile Include="ProjectInstaller.cs">
@@ -98,6 +99,7 @@
     </Compile>
     <Compile Include="QueueManager.cs" />
     <Compile Include="RabbitQueueManager.cs" />
+    <Compile Include="MonitorClient.cs" />
     <Compile Include="StoreAuditService.cs">
       <SubType>Component</SubType>
     </Compile>

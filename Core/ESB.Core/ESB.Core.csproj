@@ -100,7 +100,8 @@
     <Compile Include="Entity\TModel.cs" />
     <Compile Include="ESBProxy.cs" />
     <Compile Include="Monitor\LocalMQ.cs" />
-    <Compile Include="Monitor\MonitorClient.cs" />
+    <Compile Include="Monitor\MonitorConsumerClient.cs" />
+    <Compile Include="Monitor\MonitorClientType.cs" />
     <Compile Include="Monitor\MonitorMessage.cs" />
     <Compile Include="Monitor\RabbitMQClient.cs" />
     <Compile Include="Monitor\ESBTraceContext.cs" />

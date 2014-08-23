@@ -51,7 +51,7 @@
       </Description>
     </Demo>
   </DemoGroup>
-
+<!--
   <DemoGroup IsNew="true" Text="计划调度"  ImageUrl="~/Images/TitleImages/Scheduler.png" ImageWidth="76px" ImageHeight="76px" BeginCategory="true">
     <Demo Text="调度列表" NavigateUrl="~/Schedule/ScheduleList.aspx" Title="企业服务总线 - 新增计划调度" IsNew="true">
       <Description>
@@ -62,17 +62,7 @@
       </Description>
     </Demo>
   </DemoGroup>
-  
-  <DemoGroup Text="用户管理" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" >
-    <Demo Text="新增管理员" NavigateUrl="~/Security/UserList.aspx" Title="企业服务总线 - 新增管理员">
-      <Description>
-      </Description>
-    </Demo>
-    <Demo Text="权限浏览" NavigateUrl="~/Security/UserRight.aspx" Title="企业服务总线 - 权限浏览">
-      <Description>
-      </Description>
-      </Demo>
-  </DemoGroup>
+-->  
 
   <DemoGroup Text="日志审计" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" IsNew="true" >
     <Demo Text="通讯日志" NavigateUrl="~/Audit/CommunicationAudit.aspx" Title="企业服务总线 - 通讯日志" IsNew="true">
@@ -104,4 +94,14 @@
       </Description>
     </Demo>
   </DemoGroup>
+    <DemoGroup Text="用户管理" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" >
+        <Demo Text="新增管理员" NavigateUrl="~/Security/UserList.aspx" Title="企业服务总线 - 新增管理员">
+            <Description>
+            </Description>
+        </Demo>
+        <Demo Text="权限浏览" NavigateUrl="~/Security/UserRight.aspx" Title="企业服务总线 - 权限浏览">
+            <Description>
+            </Description>
+        </Demo>
+    </DemoGroup>
 </Demos>
