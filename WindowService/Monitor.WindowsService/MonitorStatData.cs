@@ -1,4 +1,5 @@
 ﻿using ESB.Core.Entity;
+using NewLife.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,6 +93,7 @@ namespace Monitor.WindowsService
             ServiceMonitor[] serviceMonitorArray;
             MonitorStatDimension msDimension = GetMonitorStatDimension(ab);
 
+
             //--如果统计中没有相应维度的数据，则创建
             if (msDimension == null)
             {
@@ -137,9 +139,13 @@ namespace Monitor.WindowsService
         /// <param name="serviceMonitorArray"></param>
         private void RecordItem(AuditBusiness ab, ServiceMonitor[] serviceMonitorArray)
         {
-            DateTime serviceBeginTime = DateTime.ParseExact(ab.ServiceBeginTime, "yyyy-MM-dd HH:mm:ss.ffffff", null);
-            Int32 second = serviceBeginTime.Second;
+           // DateTime serviceBeginTime = DateTime.ParseExact(ab.ServiceBeginTime, "yyyy-MM-dd HH:mm:ss.ffffff", null);
+            DateTime monitorStamp = DateTime.Now;
+            Int32 second = monitorStamp.Second;
             ServiceMonitor serviceMonitor = serviceMonitorArray[second];
+
+
+            XTrace.WriteLine("第{0}秒记录。", second);
 
             if (serviceMonitor == null)
             {
@@ -147,7 +153,7 @@ namespace Monitor.WindowsService
                     OID = Guid.NewGuid().ToString(),
                     ServiceName = ab.ServiceName,
                     MethodName = ab.MethodName,
-                    MonitorStamp = DateTime.Now,
+                    MonitorStamp = monitorStamp,
                     ConsumerIP = ab.ConsumerIP,
                     BindingAddress = ab.BindingAddress,
                     CallSuccessNum = (ab.Status == 1) ? 1 : 0,

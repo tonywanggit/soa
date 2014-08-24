@@ -50,7 +50,7 @@ namespace Monitor.WindowsService
 
                 MonitorClient monitorClient = new MonitorClient(socket);
                 monitorClient.ReceiveDateTime = DateTime.Now;
-                monitorClient.MonitorClientType = MonitorClientType.RegistryCenter;
+                monitorClient.MonitorClientType = CometClientType.RegistryCenter;
                 monitorClient.ClearBuffer();
                 monitorClient.Socket.BeginReceive(monitorClient.ReceiveBuffer, 0, monitorClient.ReceiveBuffer.Length
                     , SocketFlags.None, new AsyncCallback(ReceiveCallback), monitorClient);
@@ -123,6 +123,8 @@ namespace Monitor.WindowsService
         /// </summary>
         public void Publish(String data)
         {
+            XTrace.WriteLine("发布数据：" + data);
+
             foreach (var item in m_MonitorClients)
             {
                 SendData(item, MonitorMessageAction.Publish, data);

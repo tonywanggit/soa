@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ESB.Core.Registry
+namespace ESB.Core.Rpc
 {
     /// <summary>
     /// 表示和注册中心通讯的数据类型
     /// </summary>
-    public enum RegistryMessageAction
+    public enum CometMessageAction
     {
         /// <summary>
         /// 用于和注册中心第一次通讯

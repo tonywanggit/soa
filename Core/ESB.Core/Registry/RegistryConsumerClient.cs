@@ -9,6 +9,7 @@ using ESB.Core.Util;
 using NewLife.Threading;
 using NewLife.Log;
 using System.Threading;
+using ESB.Core.Rpc;
 
 namespace ESB.Core.Registry
 {
@@ -42,9 +43,9 @@ namespace ESB.Core.Registry
             String uri = m_ESBProxy.ConsumerConfig.Registry[0].Uri;
 
             if(m_ESBProxy.ConsumerConfig.ApplicationName.StartsWith("ESB_CallCenter"))
-                m_CometClient = new CometClient(uri, RegistryClientType.CallCenter);
+                m_CometClient = new CometClient(uri, CometClientType.CallCenter);
             else
-                m_CometClient = new CometClient(uri, RegistryClientType.Consumer);
+                m_CometClient = new CometClient(uri, CometClientType.Consumer);
 
             m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
             m_CometClient.Connect();
@@ -57,7 +58,7 @@ namespace ESB.Core.Registry
         {
             lock (m_SyncESBConfigLock)
             {
-                m_CometClient.SendData(RegistryMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml(), false);
+                m_CometClient.SendData(CometMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml(), false);
                 m_AutoResetEvent.WaitOne();
             }
         }
@@ -73,9 +74,9 @@ namespace ESB.Core.Registry
             {
                 if (e.Type == CometEventType.ReceiveMessage)    // 接收到来自服务器的配置信息
                 {
-                    RegistryMessage rm = XmlUtil.LoadObjFromXML<RegistryMessage>(e.Response);
+                    CometMessage rm = XmlUtil.LoadObjFromXML<CometMessage>(e.Response);
 
-                    if(rm.Action == RegistryMessageAction.ServiceConfig){
+                    if(rm.Action == CometMessageAction.ServiceConfig){
 
                         //--如果ESBConfig为NULL，则说明注册中心还没连上
                         if (m_ESBProxy.ESBConfig == null)
@@ -103,7 +104,7 @@ namespace ESB.Core.Registry
                 }
                 else if (e.Type == CometEventType.Connected)   // 当和服务器取得联系时发送消费者配置文件到服务端
                 {
-                    m_CometClient.SendData(RegistryMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml());
+                    m_CometClient.SendData(CometMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml());
                 }
                 else if (e.Type == CometEventType.Lost)     // 当和注册中心断开连接时
                 {

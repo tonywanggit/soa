@@ -1,14 +1,13 @@
-﻿using System;
+﻿using ESB.Core.Util;
+using NewLife.Log;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Net;
-using System.IO;
 using System.Net.Sockets;
-using NewLife.Log;
-using ESB.Core.Util;
+using System.Text;
 
-namespace ESB.Core.Registry
+namespace ESB.Core.Rpc
 {
     /// <summary>
     /// 长连接客户端：用于和注册中心保持联系
@@ -19,10 +18,10 @@ namespace ESB.Core.Registry
         private String m_IP = String.Empty;
         private Int32 m_Port = 0;
         private Byte[] m_RecvBuff;
-        private RegistryClientType m_ClientType;    //表明和监控中心通讯的客户端身份
-        public event EventHandler<CometEventArgs> OnReceiveNotify; 
+        private CometClientType m_ClientType;    //表明和监控中心通讯的客户端身份
+        public event EventHandler<CometEventArgs> OnReceiveNotify;
 
-        public CometClient(String uri, RegistryClientType clientType)
+        public CometClient(String uri, CometClientType clientType)
         {
             m_IP = uri.Split(':')[0];
             m_Port = Int32.Parse(uri.Split(':')[1]);
@@ -102,16 +101,16 @@ namespace ESB.Core.Registry
         /// </summary>
         /// <param name="message"></param>
         /// <param name="isAsync">如过为同步调用，则在回传的是后需要释放同步信号</param>
-        public void SendData(RegistryMessageAction action, String message, Boolean isAsync = true)
+        public void SendData(CometMessageAction action, String message, Boolean isAsync = true)
         {
             if (m_SocketClient == null || !m_SocketClient.Connected)
             {
-                throw new Exception("无法连接注册中心！");
+                throw new Exception("无法连接服务器！");
             }
 
             try
             {
-                RegistryMessage regMessage = new RegistryMessage()
+                CometMessage regMessage = new CometMessage()
                 {
                     Action = action,
                     IsAsync = isAsync,
@@ -119,7 +118,7 @@ namespace ESB.Core.Registry
                     MessageBody = message
                 };
 
-                String dataMessage = XmlUtil.SaveXmlFromObj<RegistryMessage>(regMessage);
+                String dataMessage = XmlUtil.SaveXmlFromObj<CometMessage>(regMessage);
                 Console.WriteLine("发送数据：{0}", dataMessage);
 
                 Byte[] data = Encoding.UTF8.GetBytes(dataMessage);
@@ -178,7 +177,7 @@ namespace ESB.Core.Registry
         {
             if (OnReceiveNotify != null)
             {
-                CometEventArgs e = new CometEventArgs(){ Type = notifyType, Response = message };
+                CometEventArgs e = new CometEventArgs() { Type = notifyType, Response = message };
 
                 OnReceiveNotify(this, e);
             }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ESB.Core.Registry
-{
+namespace ESB.Core.Rpc
+{  
     /// <summary>
     /// 表示和注册中心通讯的客户端类型
     /// </summary>
-    public enum RegistryClientType
+    public enum CometClientType
     {
         /// <summary>
         /// 服务消费方
@@ -30,6 +30,10 @@ namespace ESB.Core.Registry
         /// 调用中心
         /// </summary>
         CallCenter,
+        /// <summary>
+        /// 注册中心
+        /// </summary>
+        RegistryCenter,
         /// <summary>
         /// 未知类型
         /// </summary>

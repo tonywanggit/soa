@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESB.Core.Rpc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace ESB.Core.Monitor
         /// <summary>
         /// 和监控中心客户端通讯的类型
         /// </summary>
-        public MonitorClientType ClientType { get; set; }
+        public CometClientType ClientType { get; set; }
 
         /// <summary>
         /// 表明和监控中心通讯的意图

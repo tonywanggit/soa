@@ -16,7 +16,7 @@ namespace Monitor.WindowsService
         public Socket Socket { get; set; }
         public Byte[] ReceiveBuffer { get; set; }
         public DateTime ReceiveDateTime { get; set; }
-        public MonitorClientType MonitorClientType { get; set; }
+        public CometClientType MonitorClientType { get; set; }
 
         public MonitorClient(Socket socket)
         {

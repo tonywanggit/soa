@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ESB.Core.Registry
+namespace ESB.Core.Rpc
 {
     /// <summary>
-    /// 和注册中心通讯的消息类
+    /// 通讯的消息类
     /// </summary>
-    public class RegistryMessage
+    public class CometMessage
     {
         /// <summary>
         /// 和注册中心客户端通讯的类型
         /// </summary>
-        public RegistryClientType ClientType { get; set; }
+        public CometClientType ClientType { get; set; }
 
         /// <summary>
         /// 表明和注册中心通讯的意图
         /// </summary>
-        public RegistryMessageAction Action { get; set; }
+        public CometMessageAction Action { get; set; }
 
         /// <summary>
         /// 消息编码

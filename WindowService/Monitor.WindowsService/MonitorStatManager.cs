@@ -96,6 +96,8 @@ namespace Monitor.WindowsService
         private void PublishMointorData(MonitorStatData msData)
         {
             Int32 second = DateTime.Now.Second;
+            if (second > 0) second--;   //--发布前一秒的数据
+
             String data = XmlUtil.SaveXmlFromObj<List<ServiceMonitor>>(msData.GetOnSecondData(second));
 
             m_MonitorCenter.Publish(data);
