@@ -37,14 +37,6 @@ namespace Monitor.WindowsService
         }
 
         /// <summary>
-        /// 发布数据
-        /// </summary>
-        public void Publish(String data)
-        {
-
-        }
-
-        /// <summary>
         /// 接受客户端连接
         /// </summary>
         /// <param name="ar"></param>
@@ -125,6 +117,74 @@ namespace Monitor.WindowsService
             }
         }
 
+
+        /// <summary>
+        /// 向所有连接的客户端发送数据
+        /// </summary>
+        public void Publish(String data)
+        {
+            foreach (var item in m_MonitorClients)
+            {
+                SendData(item, MonitorMessageAction.Publish, data);
+            }
+        }
+
+        /// <summary>
+        /// 向单个客户端发送数据
+        /// </summary>
+        /// <param name="rsClient"></param>
+        /// <param name="data"></param>
+        /// <param name="isAsync">默认为异步调用m</param>
+        public void SendData(MonitorClient monitorClient, MonitorMessageAction action, String data, Boolean isAsync = true)
+        {
+            try
+            {
+                MonitorMessage rm = new MonitorMessage()
+                {
+                    Action = action,
+                    MessageBody = data,
+                    IsAsync = isAsync
+                };
+
+                String messageData = XmlUtil.SaveXmlFromObj<MonitorMessage>(rm);
+                Console.WriteLine("发送数据：{0}", messageData);
+
+                Byte[] msg = Encoding.UTF8.GetBytes(messageData);
+                monitorClient.Socket.BeginSend(msg, 0, msg.Length, SocketFlags.None, new AsyncCallback(SendCallback), monitorClient);
+            }
+            catch (Exception ex)
+            {
+                XTrace.WriteLine("发送数据时发生异常：" + ex.ToString());
+                lock (m_MonitorClients)
+                {
+                    m_MonitorClients.Remove(monitorClient);
+                    monitorClient.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 发送数据回调函数
+        /// </summary>
+        /// <param name="ar"></param>
+        private void SendCallback(IAsyncResult ar)
+        {
+            MonitorClient monitorClient = ar.AsyncState as MonitorClient;
+
+            try
+            {
+                monitorClient.Socket.EndSend(ar);
+            }
+            catch (Exception ex)
+            {
+                XTrace.WriteLine("发送数据时发生异常：" + ex.ToString());
+                lock (m_MonitorClients)
+                {
+                    m_MonitorClients.Remove(monitorClient);
+                    monitorClient.Dispose();
+                }
+            }
+        }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ESB.Core.Entity;
+using ESB.Core.Util;
 using NewLife.Threading;
 using System;
 using System.Collections.Generic;
@@ -94,7 +95,10 @@ namespace Monitor.WindowsService
         /// <param name="msData"></param>
         private void PublishMointorData(MonitorStatData msData)
         {
-            m_MonitorCenter.Publish("TODO::");
+            Int32 second = DateTime.Now.Second;
+            String data = XmlUtil.SaveXmlFromObj<List<ServiceMonitor>>(msData.GetOnSecondData(second));
+
+            m_MonitorCenter.Publish(data);
         }
 
         /// <summary>

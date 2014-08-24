@@ -45,6 +45,10 @@ namespace ESB.Core.Monitor
         /// <summary>
         /// 订阅监控数据
         /// </summary>
-        Subscribe
+        Subscribe,
+        /// <summary>
+        /// 发布监控数据
+        /// </summary>
+        Publish
     }
 }

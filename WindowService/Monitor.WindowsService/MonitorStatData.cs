@@ -14,14 +14,14 @@ namespace Monitor.WindowsService
         /// <summary>
         /// 服务监控对象：存放一分钟的监控数据
         /// </summary>
-        private Dictionary<String, ServiceMonitor[]> m_ServiceMonitor;
+        private Dictionary<MonitorStatDimension, ServiceMonitor[]> m_ServiceMonitor;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         public MonitorStatData()
         {
-            m_ServiceMonitor = new Dictionary<string, ServiceMonitor[]>();
+            m_ServiceMonitor = new Dictionary<MonitorStatDimension, ServiceMonitor[]>();
         }
 
         /// <summary>
@@ -64,6 +64,25 @@ namespace Monitor.WindowsService
         }
 
         /// <summary>
+        /// 获取到一秒种的数据
+        /// </summary>
+        /// <returns></returns>
+        public List<ServiceMonitor> GetOnSecondData(Int32 second)
+        {
+            List<ServiceMonitor> lstServiceMonitor = new List<ServiceMonitor>();
+
+            foreach (var item in m_ServiceMonitor)
+            {
+                if (item.Value[second] != null)
+                {
+                    lstServiceMonitor.Add(item.Value[second]);
+                }
+            }
+
+            return lstServiceMonitor;
+        }
+
+        /// <summary>
         /// 接收一条审计记录
         /// </summary>
         /// <param name="?"></param>
@@ -71,18 +90,44 @@ namespace Monitor.WindowsService
         {
             String serviceName = ab.ServiceName;
             ServiceMonitor[] serviceMonitorArray;
+            MonitorStatDimension msDimension = GetMonitorStatDimension(ab);
 
-            if (!m_ServiceMonitor.ContainsKey(serviceName))
+            //--如果统计中没有相应维度的数据，则创建
+            if (msDimension == null)
             {
                 serviceMonitorArray = new ServiceMonitor[60];
-                m_ServiceMonitor.Add(serviceName, serviceMonitorArray);
+                msDimension = new MonitorStatDimension()
+                {
+                    ServiceName = ab.ServiceName,
+                    BindingAddress = ab.BindingAddress,
+                    MethodName = ab.MethodName
+                };
+                m_ServiceMonitor.Add(msDimension, serviceMonitorArray);
             }
             else
             {
-                serviceMonitorArray = m_ServiceMonitor[serviceName];
+                serviceMonitorArray = m_ServiceMonitor[msDimension];
             }
 
             RecordItem(ab, serviceMonitorArray);
+        }
+
+        /// <summary>
+        /// 从监控数据中查找是否有审计日志对应维度的数据
+        /// </summary>
+        /// <param name="ab"></param>
+        /// <returns></returns>
+        private MonitorStatDimension GetMonitorStatDimension(AuditBusiness ab)
+        {
+            foreach (var item in m_ServiceMonitor.Keys)
+            {
+                if (item.ServiceName == ab.ServiceName && item.MethodName == ab.MethodName && item.BindingAddress == ab.BindingAddress)
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
