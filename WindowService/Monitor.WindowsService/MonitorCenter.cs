@@ -33,8 +33,7 @@ namespace Monitor.WindowsService
             m_TcpListener.Start(2000);
 
             m_TcpListener.BeginAcceptSocket(new AsyncCallback(AcceptCallback), m_TcpListener);
-            Console.WriteLine("监控中心服务正在监控：{0}端口！", port);
-
+            XTrace.WriteLine("监控中心服务正在监听：{0}端口！", port);
         }
 
         /// <summary>

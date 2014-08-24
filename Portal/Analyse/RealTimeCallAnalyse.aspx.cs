@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESB.Core.Monitor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +8,8 @@ using System.Web.UI.WebControls;
 
 public partial class Analyse_RealTimeCallAnalyse : BasePage
 {
+    MonitorCenterClient mcClient = MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal);
+
     protected void Page_Load(object sender, EventArgs e)
     {
         HideSourceCodeTable();

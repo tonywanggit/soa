@@ -21,11 +21,11 @@ namespace ESB.Core.Monitor
 
         private static MonitorCenterClient m_Instance;
 
-        public static MonitorCenterClient GetInstance()
+        public static MonitorCenterClient GetInstance(CometClientType ccType)
         {
             if (m_Instance != null) return m_Instance;
 
-            MonitorCenterClient mcClient = new MonitorCenterClient();
+            MonitorCenterClient mcClient = new MonitorCenterClient(ccType);
 
             Interlocked.CompareExchange<MonitorCenterClient>(ref m_Instance, mcClient, null);
 
@@ -36,21 +36,26 @@ namespace ESB.Core.Monitor
         /// 监控中心消费者客户端
         /// </summary>
         /// <param name="esbProxy"></param>
-        private MonitorCenterClient()
+        private MonitorCenterClient(CometClientType ccType)
         {
+            String uri = Config.GetConfig<String>("ESB.MonitorCenter.Uri");
+            m_CometClient = new CometClient(uri, ccType);
+
+            m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
+            m_CometClient.Connect();
         }
 
         /// <summary>
         /// 连接到监控中心
         /// </summary>
         /// <returns></returns>
-        public void Connect(CometClientType ccType)
+        private void Connect(CometClientType ccType)
         {
-            String uri = Config.GetConfig<String>("ESB.MonitorCenter");
-            m_CometClient = new CometClient(uri, ccType);
+            //String uri = Config.GetConfig<String>("ESB.MonitorCenter.Uri");
+            //m_CometClient = new CometClient(uri, ccType);
 
-            m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
-            m_CometClient.Connect();
+            //m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
+            //m_CometClient.Connect();
         }
 
         /// <summary>
@@ -71,7 +76,7 @@ namespace ESB.Core.Monitor
 
                         List<ServiceMonitor> lstServiceMonitor = XmlUtil.LoadObjFromXML<List<ServiceMonitor>>(rm.MessageBody);
 
-                        
+                        XTrace.WriteLine("接收到来自监控中心的消息。");
                     }
                 }
                 else if (e.Type == CometEventType.Lost)     // 当和注册中心断开连接时

@@ -6,7 +6,8 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Portal", "http://localhost/Portal", "{5D7C351D-81BB-4912-BBF9-FA3B3EA28EC5}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{3a6fd2e3-189b-4217-b619-d4b3064fd53e}|ESB.Core.dll;{5813C22E-EEB3-4DEE-A45C-BB218041193A}|NewLife.Core.dll;{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}|XCode.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Portal"
 		Debug.AspNetCompiler.PhysicalPath = "Portal\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Portal\"
