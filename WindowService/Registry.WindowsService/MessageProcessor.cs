@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using XCode;
+using ESB.Core.Rpc;
 
 namespace Registry.WindowsService
 {
@@ -27,13 +28,13 @@ namespace Registry.WindowsService
         /// </summary>
         /// <param name="regClient"></param>
         /// <param name="regMessage"></param>
-        public void Process(RegistryClient regClient, RegistryMessage regMessage)
+        public void Process(RegistryClient regClient, CometMessage regMessage)
         {
-            if (regMessage.Action == RegistryMessageAction.Hello)
+            if (regMessage.Action == CometMessageAction.Hello)
             {
                 ConsumerConfig consumerConfig = XmlUtil.LoadObjFromXML<ConsumerConfig>(regMessage.MessageBody);
                 ESBConfig esbConfig = GetESBConfig(consumerConfig, regClient);
-                m_RegistryCenter.SendData(regClient, RegistryMessageAction.ServiceConfig, esbConfig.ToXml(), regMessage.IsAsync);
+                m_RegistryCenter.SendData(regClient, CometMessageAction.ServiceConfig, esbConfig.ToXml(), regMessage.IsAsync);
             }
         }
 
@@ -54,7 +55,7 @@ namespace Registry.WindowsService
 
             //esbConfig.Service.Add(new ServiceItem() { ServiceName = "ESB_ASHX", DirectInvokeEnabled = true, Uri = "http://esb.jn.com" });
 
-            if (regClient.RegistryClientType == RegistryClientType.Consumer)
+            if (regClient.RegistryClientType == CometClientType.Consumer)
             {
                 foreach (var refService in consumerConfig.Reference)
                 {
@@ -69,7 +70,7 @@ namespace Registry.WindowsService
                     }
                 }
             }
-            else if(regClient.RegistryClientType == RegistryClientType.CallCenter)
+            else if(regClient.RegistryClientType == CometClientType.CallCenter)
             {
                 EntityList<BusinessService> lstBS = BusinessService.FindAll();
                 foreach (var bs in lstBS)

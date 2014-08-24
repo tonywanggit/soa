@@ -8,6 +8,7 @@ using NewLife.Log;
 using ESB.Core.Registry;
 using ESB.Core.Util;
 using NewLife.Configuration;
+using ESB.Core.Rpc;
 
 namespace Registry.WindowsService
 {
@@ -51,7 +52,7 @@ namespace Registry.WindowsService
 
                 RegistryClient registryClient = new RegistryClient(socket);
                 registryClient.ReceiveDateTime = DateTime.Now;
-                registryClient.RegistryClientType = RegistryClientType.AnKnown;
+                registryClient.RegistryClientType = CometClientType.AnKnown;
                 registryClient.ClearBuffer();
                 registryClient.Socket.BeginReceive(registryClient.ReceiveBuffer, 0, registryClient.ReceiveBuffer.Length
                     , SocketFlags.None, new AsyncCallback(ReceiveCallback), registryClient);
@@ -91,7 +92,7 @@ namespace Registry.WindowsService
                     Console.WriteLine("接收客户端：{0}发送的数据：{1}。", registryClient.Socket.RemoteEndPoint.ToString(), data);
 
                     //--解析来自客户端的类型
-                    RegistryMessage regMessage = XmlUtil.LoadObjFromXML<RegistryMessage>(data);
+                    CometMessage regMessage = XmlUtil.LoadObjFromXML<CometMessage>(data);
                     registryClient.RegistryClientType = regMessage.ClientType;
 
                     registryClient.ClearBuffer();
@@ -119,18 +120,18 @@ namespace Registry.WindowsService
         /// <param name="rsClient"></param>
         /// <param name="data"></param>
         /// <param name="isAsync">默认为异步调用</param>
-        public void SendData(RegistryClient registryClient, RegistryMessageAction action, String data, Boolean isAsync = true)
+        public void SendData(RegistryClient registryClient, CometMessageAction action, String data, Boolean isAsync = true)
         {
             try
             {
-                RegistryMessage rm = new RegistryMessage()
+                CometMessage rm = new CometMessage()
                 {
                     Action = action,
                     MessageBody = data,
                     IsAsync = isAsync
                 };
 
-                String messageData = XmlUtil.SaveXmlFromObj<RegistryMessage>(rm);
+                String messageData = XmlUtil.SaveXmlFromObj<CometMessage>(rm);
                 Console.WriteLine("发送数据：{0}", messageData);
 
                 Byte[] msg = Encoding.UTF8.GetBytes(messageData);
@@ -150,7 +151,7 @@ namespace Registry.WindowsService
         /// <summary>
         /// 给所有的客户端发送消息
         /// </summary>
-        public void SendDataToAllClient(RegistryMessageAction action, String message)
+        public void SendDataToAllClient(CometMessageAction action, String message)
         {
             foreach (var client in m_RegistryClients)
             {

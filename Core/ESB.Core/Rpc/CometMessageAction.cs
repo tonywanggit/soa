@@ -41,6 +41,14 @@ namespace ESB.Core.Rpc
         /// <summary>
         /// 增加调用中心
         /// </summary>
-        AddCallCenter
+        AddCallCenter,
+        /// <summary>
+        /// 订阅监控数据
+        /// </summary>
+        Subscribe,
+        /// <summary>
+        /// 发布监控数据
+        /// </summary>
+        Publish
     }
 }

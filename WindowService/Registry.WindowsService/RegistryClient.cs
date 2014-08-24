@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net.Sockets;
 using ESB.Core.Registry;
+using ESB.Core.Rpc;
 
 namespace Registry.WindowsService
 {
@@ -15,7 +16,7 @@ namespace Registry.WindowsService
         public Socket Socket { get; set; }
         public Byte[] ReceiveBuffer { get; set; }
         public DateTime ReceiveDateTime { get; set; }
-        public RegistryClientType RegistryClientType { get; set; }
+        public CometClientType RegistryClientType { get; set; }
 
         public RegistryClient(Socket socket)
         {

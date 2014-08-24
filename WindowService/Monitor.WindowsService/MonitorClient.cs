@@ -5,6 +5,7 @@ using System.Text;
 using System.Net.Sockets;
 using ESB.Core.Registry;
 using ESB.Core.Monitor;
+using ESB.Core.Rpc;
 
 namespace Monitor.WindowsService
 {

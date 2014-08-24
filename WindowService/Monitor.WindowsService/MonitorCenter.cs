@@ -1,4 +1,5 @@
 ﻿using ESB.Core.Monitor;
+using ESB.Core.Rpc;
 using ESB.Core.Util;
 using NewLife.Configuration;
 using NewLife.Log;
@@ -95,7 +96,7 @@ namespace Monitor.WindowsService
                     Console.WriteLine("接收客户端：{0}发送的数据：{1}。", monitorClient.Socket.RemoteEndPoint.ToString(), data);
 
                     //--解析来自客户端的类型
-                    MonitorMessage regMessage = XmlUtil.LoadObjFromXML<MonitorMessage>(data);
+                    CometMessage regMessage = XmlUtil.LoadObjFromXML<CometMessage>(data);
                     monitorClient.MonitorClientType = regMessage.ClientType;
 
                     monitorClient.ClearBuffer();
@@ -127,7 +128,7 @@ namespace Monitor.WindowsService
 
             foreach (var item in m_MonitorClients)
             {
-                SendData(item, MonitorMessageAction.Publish, data);
+                SendData(item, CometMessageAction.Publish, data);
             }
         }
 
@@ -137,18 +138,18 @@ namespace Monitor.WindowsService
         /// <param name="rsClient"></param>
         /// <param name="data"></param>
         /// <param name="isAsync">默认为异步调用m</param>
-        public void SendData(MonitorClient monitorClient, MonitorMessageAction action, String data, Boolean isAsync = true)
+        public void SendData(MonitorClient monitorClient, CometMessageAction action, String data, Boolean isAsync = true)
         {
             try
             {
-                MonitorMessage rm = new MonitorMessage()
+                CometMessage rm = new CometMessage()
                 {
                     Action = action,
                     MessageBody = data,
                     IsAsync = isAsync
                 };
 
-                String messageData = XmlUtil.SaveXmlFromObj<MonitorMessage>(rm);
+                String messageData = XmlUtil.SaveXmlFromObj<CometMessage>(rm);
                 Console.WriteLine("发送数据：{0}", messageData);
 
                 Byte[] msg = Encoding.UTF8.GetBytes(messageData);

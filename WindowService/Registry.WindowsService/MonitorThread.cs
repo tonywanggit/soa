@@ -1,4 +1,5 @@
 ﻿using ESB.Core.Registry;
+using ESB.Core.Rpc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace Registry.WindowsService
         {
             while (true)
             {
-                m_RegistryCenter.SendDataToAllClient(RegistryMessageAction.HeartBeat, "Heart Beat");
+                m_RegistryCenter.SendDataToAllClient(CometMessageAction.HeartBeat, "Heart Beat");
                 Thread.Sleep(5000);
             }
         }

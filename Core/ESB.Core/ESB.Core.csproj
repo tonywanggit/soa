@@ -102,7 +102,6 @@
     <Compile Include="Monitor\LocalMQ.cs" />
     <Compile Include="Monitor\MonitorCenterClient.cs" />
     <Compile Include="Monitor\MonitorConsumerClient.cs" />
-    <Compile Include="Monitor\MonitorMessage.cs" />
     <Compile Include="Monitor\RabbitMQClient.cs" />
     <Compile Include="Monitor\ESBTraceContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
