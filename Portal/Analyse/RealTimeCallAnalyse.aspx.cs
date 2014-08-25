@@ -1,4 +1,6 @@
-﻿using ESB.Core.Monitor;
+﻿using ESB.Core.Entity;
+using ESB.Core.Monitor;
+using NewLife.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,46 @@ public partial class Analyse_RealTimeCallAnalyse : BasePage
         HideSourceCodeTable();
 
         this.statTable.Rows.Add(BuildTableRow("WXSC_WeiXinServiceForApp", 200, 1000, 10, 1000));
-        this.statTable.Rows.Add(BuildTableRow("ERP_Order", 300, 5000, 300, 800));
+        this.statTable.Rows.Add(BuildTableRow("ESB_ServiceStack", 300, 5000, 300, 800));
+
+        if (!mcClient.IsSubscribe)
+        {
+            mcClient.OnMonitorStatPublish += mcClient_OnMonitorStatPublish;
+        }
+    }
+
+    /// <summary>
+    /// 当收到监控中心的发布事件时通知个客户端刷新数据
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    void mcClient_OnMonitorStatPublish(object sender, MonitorStatEventArgs e)
+    {
+        List<ServiceMonitor> lstServiceMonitor = e.ListServiceMonitor;
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        Random r = new Random();
+        r.Next(100);
+
+        if (lstServiceMonitor == null || lstServiceMonitor.Count == 0)
+        {
+            sb.Append(@"[{""ServiceName"":""WXSC_WeiXinServiceForApp"",""CallNum"":" + r.Next(100) + @"}");
+            sb.Append(@",{""ServiceName"":""ESB_ServiceStack"",""CallNum"":" + 0 + @"}]");
+        }
+        else
+        {
+            int ssCall = lstServiceMonitor.Sum(x =>
+            {
+                if (x.ServiceName == "ESB_ServiceStack")
+                    return x.CallSuccessNum + x.CallFailureNum;
+                else
+                    return 0;
+            });
+
+            sb.Append(@"[{""ServiceName"":""WXSC_WeiXinServiceForApp"",""CallNum"":" + r.Next(100) + @"}");
+            sb.Append(@",{""ServiceName"":""ESB_ServiceStack"",""CallNum"":" + ssCall + @"}]");
+        }
+
+        MonitorStatAsyncResult.SetAllResultComplete(sb.ToString());
     }
 
     protected TableRow BuildTableRow(String serviceName, Int32 callPeak, Int32 callSum, Int32 inBytes, Int32 outBytes)

@@ -46,6 +46,19 @@ namespace ESB.Core.Monitor
         }
 
         /// <summary>
+        /// 对外暴露监控数据发布接口
+        /// </summary>
+        public event EventHandler<MonitorStatEventArgs> OnMonitorStatPublish;
+
+        /// <summary>
+        /// 是否已经被订阅
+        /// </summary>
+        public Boolean IsSubscribe
+        {
+            get { return OnMonitorStatPublish != null; }
+        }
+
+        /// <summary>
         /// 连接到监控中心
         /// </summary>
         /// <returns></returns>
@@ -76,7 +89,10 @@ namespace ESB.Core.Monitor
 
                         List<ServiceMonitor> lstServiceMonitor = XmlUtil.LoadObjFromXML<List<ServiceMonitor>>(rm.MessageBody);
 
-                        XTrace.WriteLine("接收到来自监控中心的消息。");
+                        if (OnMonitorStatPublish != null)
+                        {
+                            OnMonitorStatPublish(this, new MonitorStatEventArgs(lstServiceMonitor));
+                        }
                     }
                 }
                 else if (e.Type == CometEventType.Lost)     // 当和注册中心断开连接时
@@ -89,6 +105,22 @@ namespace ESB.Core.Monitor
             {
                 XTrace.WriteLine("接收监控中心消息时发生错误：" + ex.ToString());
             }
+        }
+    }
+
+    /// <summary>
+    /// 监控数据发布事件参数
+    /// </summary>
+    public class MonitorStatEventArgs : EventArgs
+    {
+        /// <summary>
+        /// 1秒钟的监控统计数据
+        /// </summary>
+        public List<ServiceMonitor> ListServiceMonitor { get; private set; }
+
+        public MonitorStatEventArgs(List<ServiceMonitor> listServiceMonitor)
+        {
+            ListServiceMonitor = listServiceMonitor;
         }
     }
 }

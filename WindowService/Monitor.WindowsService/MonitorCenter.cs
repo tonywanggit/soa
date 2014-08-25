@@ -123,8 +123,6 @@ namespace Monitor.WindowsService
         /// </summary>
         public void Publish(String data)
         {
-            XTrace.WriteLine("发布数据：" + data);
-
             foreach (var item in m_MonitorClients)
             {
                 SendData(item, CometMessageAction.Publish, data);
