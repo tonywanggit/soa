@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BasicService\AuditService.asmx" />
+    <Content Include="BasicService\UddiService.asmx" />
     <Content Include="ClearAssemblyCache.aspx" />
     <Content Include="Core_Service_Bus_MainBus_ReceiveSendPort.asmx" />
     <Content Include="Core_Service_Bus_OnewayMainBus_OneWayReceive.asmx" />
@@ -90,6 +91,10 @@
   <ItemGroup>
     <Compile Include="BasicService\AuditService.asmx.cs">
       <DependentUpon>AuditService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BasicService\UddiService.asmx.cs">
+      <DependentUpon>UddiService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClearAssemblyCache.aspx.cs">

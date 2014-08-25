@@ -15,30 +15,19 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phOnceContent" Runat="Server">
     <script type="text/javascript">
-    	$(function () {
-    		var data = new GaugeData();
-    		var chartsGauge = [];
-
-    		$(".epoch.gauge-tiny").each(function (e) {
-    		    chartsGauge.push($(this).epoch({
-    		        type: 'time.gauge', domain: [0, 500], value: 500, format: function (v) {
-    		            return v.toFixed(0) + " TPS";
-    		        }
-    		    }));
-    		});
-
-    		function updateCharts() {
-    		    for (var i = 0; i < chartsGauge.length; i++) {
-    		        chartsGauge[i].update(data.next() * 500);
-    		    }
-    		}
-
-    		setInterval(updateCharts, 2000);
-    		updateCharts();
-    	});
-
 		$(function () {
 		    var chartsArea = [];
+		    var chartsGauge = [];
+
+		    $(".epoch.gauge-tiny").each(function (e) {
+		        var data = new GaugeData();
+		        var chart = $(this).epoch({
+		            type: 'time.gauge', domain: [0, 500], value: 0, format: function (v) {
+		                return v.toFixed(0) + " TPS";
+		            }
+		        });
+		        chartsGauge.push({ id: $(this).attr("id"), chart: chart, data: data, elem: $(this) });
+		    });
 
 		    $(".epoch.area").each(function (e) {
 		        var data = new RealTimeData(1);
@@ -49,19 +38,7 @@
 		        }); 
 
 		        chartsArea.push({ id: $(this).attr("id"), chart: chart, data: data});
-		    });;
-
-            /*
-		    setInterval(function () {
-		        $.ajax({
-		            type: "POST",
-		            url: "../Handler/MonitorData.ashx",
-		            dataType: "json",
-		            success: function (msg) {
-		                ProcessMonitorData(msg);
-		            }
-		        })
-		    }, 1000);*/
+		    });
 
             //--长连接获取到监控中心发布的数据
 		    function comin() {
@@ -71,8 +48,8 @@
 		        xmlHttp.onreadystatechange = function () {
 		            if (xmlHttp.readyState == 4) {
 		                if (xmlHttp.status == 200) {
-		                    //console.log(xmlHttp.responseText);
 		                    ProcessMonitorData(xmlHttp.responseText);
+
 		                    //连接已经结束，马上开启另外一个连接 
 		                    comin();
 		                }
@@ -113,28 +90,70 @@
 		    function ProcessMonitorData(data) {
 		        var msg = eval('(' + data + ')');
 
-		        console.log(msg);
-
 		        for (var i = 0; i < chartsArea.length; i++) {
 		            var chartArea = chartsArea[i];
+		            var chartGauge = chartsGauge[i];
 		            var sName = chartArea.id;
-		            var callNum = GetServiceCallNum(sName, msg);
-
-		            //console.log(sName);
-
-		            chartArea.chart.push(chartArea.data.next(callNum));
+		            var sm = GetServiceMonitor(sName, msg);
+                    
+		            if (sm) {
+		                RefreshGaugeUI(chartGauge, sm);
+		                chartArea.chart.push(chartArea.data.next(sm.CallNum));
+		            }
+		            else {
+		                RefreshGaugeUI(chartGauge, sm);
+		                chartArea.chart.push(chartArea.data.next(0));
+		            }
 		        }
 		    };
 
-            //--从监控数据中获取到调用次数
-		    function GetServiceCallNum(serviceName, msg) {
+            //--刷新左侧图表部分
+		    function RefreshGaugeUI(chartGauge, sm) {
+		        if (sm == null) {
+		            sm = { CallNum: 0, Tps: 0, InBytes: 0, OutBytes: 0 };
+		        }
+
+		        chartGauge.chart.update(sm.CallNum);
+
+		        var elemParent = $(chartGauge.elem).parent();
+		        var elemTps = elemParent.find("span.esb_tps").first();
+		        var elemCallSum = elemParent.find("span.esb_callSum").first();
+		        var elemInBytes = elemParent.find("span.esb_inBytes").first();
+		        var elemOutBytes = elemParent.find("span.esb_outBytes").first();
+
+		        if(parseInt(elemTps.text()) < sm.Tps)
+		            elemTps.text(sm.Tps)
+
+		        elemCallSum.text(parseInt(elemCallSum.text()) + sm.CallNum);
+
+		        var inBytes = parseInt(elemInBytes.attr("data"));
+		        inBytes += sm.InBytes;
+		        elemInBytes.attr("data", inBytes);
+		        elemInBytes.text(formatByte(inBytes));
+
+		        var outBytes = parseInt(elemOutBytes.attr("data"));
+		        outBytes += sm.OutBytes;
+		        elemOutBytes.attr("data", outBytes);
+		        elemOutBytes.text(formatByte(outBytes));
+
+		    };
+
+            //--格式化流量
+		    function formatByte(raw) {
+		        if (raw < 1024) return raw + "Byte"
+		        if (raw < 1024 * 1024) return (raw / 1024).toFixed(2) + "K"
+		        if (raw < 1024 * 1024 * 1024) return (raw / 1024 / 1024).toFixed(2) + "M"
+		    }
+
+            //--从监控数据中获取到监控数据
+		    function GetServiceMonitor(serviceName, msg) {
 		        for (var i = 0; i < msg.length; i++) {
 		            if ("div_area_" + msg[i].ServiceName == serviceName) {
 
-		                return msg[i].CallNum;
+		                return msg[i];
 		            }
 		        }
-		        return 0;
+		        return null;
 		    };
 		});
 

@@ -35,12 +35,15 @@
         return history;
     };
 
+    RealTimeData.prototype.getTimeStamp = function(){
+        return ((new Date()).getTime() / 1000) | 0;
+    }
+
     RealTimeData.prototype.next = function(y) {
         var entry = [];
         for (var i = 0; i < this.layers; i++) {
-            entry.push({ time: this.timestamp, y: y });
+            entry.push({ time: this.getTimeStamp(), y: y });
         }
-        this.timestamp = this.timestamp + 5;
         return entry;
     }
 

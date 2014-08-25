@@ -16,7 +16,7 @@ namespace ESB.TestFramework
         static void Main(string[] args)
         {
 
-            TestEsbProxy("ESB_ServiceStack", "Hello", @"{""Name""=""Tony""}");
+            //TestEsbProxy("ESB_ServiceStack", "Hello", @"{""Name""=""Tony""}");
 
             //TestEsbProxy("ESB_ServiceStack", "POST:XML:Hello", @"<Hello xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/ESB.ServiceStack.ServiceModel""><Name>Ronger</Name></Hello>");
             //TestEsbProxy("WXSC_WeiXinServiceForApp", "GET:XML:CollocationDetailFilter", "collocationId=11");
@@ -25,14 +25,14 @@ namespace ESB.TestFramework
 
             //TestEsbProxy("ESB_WCF");
 
-            //TestEsbProxy("ESB_ASHX");
+            TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 100000);
 
             //TestEsbProxy("ESB_WS");
 
             //TestWXSC();
         }
 
-        static void TestEsbProxy(String serviceName, String methodName = "HelloAction", String message = null)
+        static void TestEsbProxy(String serviceName, String methodName = "HelloAction", String message = null, int callNum = 10)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -59,7 +59,7 @@ namespace ESB.TestFramework
             Console.ReadKey();
 
             Int64 elapsedMS = 0;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < callNum; i++)
             {
                 stopWatch.Restart();
                 String ret = esbProxy.Invoke(serviceName, methodName, msgBody);
@@ -70,7 +70,7 @@ namespace ESB.TestFramework
                 Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
             }
 
-            Console.WriteLine("排除第一次后 10 平均耗时：{0}ms。", elapsedMS / 10);
+            Console.WriteLine("排除第一次后 {0} 平均耗时：{1}ms。", callNum, elapsedMS / callNum);
 
             Console.ReadKey();
         }

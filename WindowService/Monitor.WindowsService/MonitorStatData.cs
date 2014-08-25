@@ -53,12 +53,16 @@ namespace Monitor.WindowsService
                         smOneMinute.CallLevel3Num += sm.CallLevel3Num;
                         smOneMinute.InBytes += sm.InBytes;
                         smOneMinute.OutBytes += sm.OutBytes;
-                        smOneMinute.TpsPeak += sm.TpsPeak;
+
+                        if (smOneMinute.TpsPeak < sm.TpsPeak)
+                            smOneMinute.TpsPeak = sm.TpsPeak;
                     }
                 }
 
                 if (smOneMinute != null)
+                {
                     lstServiceMinute.Add(smOneMinute);
+                }
             }
 
             return lstServiceMinute;
@@ -145,7 +149,7 @@ namespace Monitor.WindowsService
             ServiceMonitor serviceMonitor = serviceMonitorArray[second];
 
 
-            XTrace.WriteLine("第{0}秒记录。", second);
+            //XTrace.WriteLine("第{0}秒记录。", second);
 
             if (serviceMonitor == null)
             {
