@@ -24,26 +24,26 @@
         </tr>
     </table>
     <br />
-    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="ObjectDataSource1" KeyFieldName="个人编码" AutoGenerateColumns="False" OnRowValidating="grid_RowValidating" OnRowUpdating="grid_RowUpdating" Width="100%">
+    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsUser" KeyFieldName="PersonalID" AutoGenerateColumns="False" OnRowValidating="grid_RowValidating" OnRowUpdating="grid_RowUpdating" Width="800px">
         <%-- BeginRegion Columns --%>
         <Columns>
             <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center">
                 <EditButton Visible="True" Text="编辑" />
                 <DeleteButton Visible="True" Text="删除" />
             </dxwgv:GridViewCommandColumn>
-            <dxwgv:GridViewDataTextColumn FieldName="姓名" Caption="姓名" VisibleIndex="1">
+            <dxwgv:GridViewDataTextColumn FieldName="PersonalName" Caption="姓名" VisibleIndex="1">
                 <EditFormSettings VisibleIndex="0" />
             </dxwgv:GridViewDataTextColumn>
-            <dxwgv:GridViewDataColumn FieldName="电话" Caption="电话" VisibleIndex="2">
+            <dxwgv:GridViewDataColumn FieldName="Phone" Caption="电话" VisibleIndex="2">
                 <EditFormSettings VisibleIndex="1" />
             </dxwgv:GridViewDataColumn>
-            <dxwgv:GridViewDataColumn FieldName="帐号" VisibleIndex="3" Visible="True"  Caption="登陆帐号">
+            <dxwgv:GridViewDataColumn FieldName="PersonalAccount" VisibleIndex="3" Visible="True"  Caption="登陆帐号">
                 <EditFormSettings VisibleIndex="3" ColumnSpan="1" Visible="True"/>
             </dxwgv:GridViewDataColumn>
-            <dxwgv:GridViewDataColumn FieldName="邮件地址" VisibleIndex="4" Caption="邮件帐号">
+            <dxwgv:GridViewDataColumn FieldName="Mail" VisibleIndex="4" Caption="邮件帐号">
                 <EditFormSettings VisibleIndex="4" ColumnSpan="1" />
             </dxwgv:GridViewDataColumn>
-            <dxwgv:GridViewDataComboBoxColumn FieldName="权限" VisibleIndex="5" Caption="角色">
+            <dxwgv:GridViewDataComboBoxColumn FieldName="permission" VisibleIndex="5" Caption="角色">
                 <PropertiesComboBox TextField="Text" ValueField="Value" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="xdsRole">
                 </PropertiesComboBox>
                 <EditFormSettings VisibleIndex="5" ColumnSpan="1" />
@@ -77,12 +77,11 @@
             </EditForm>
         </Templates>
     </dxwgv:ASPxGridView>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.个人" 
-        SelectMethod="获得所有服务管理员" DeleteMethod="删除服务管理员" UpdateMethod="修改服务管理员" InsertMethod="新增服务管理员"
+    <asp:ObjectDataSource ID="OdsUser" runat="server" 
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.Personal" 
+        SelectMethod="GetAllPerson" DeleteMethod="DeletePerson" UpdateMethod="UpdatePerson" InsertMethod="InsertPerson"
         >
-
     </asp:ObjectDataSource>
     <asp:XmlDataSource DataFile="~/App_Data/RoleEnum.xml" XPath="//Role" ID="xdsRole" runat="server" />
 <%-- EndRegion --%>

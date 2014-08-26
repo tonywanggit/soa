@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Collections;
-using JN.Esb.Portal.ServiceMgt.服务目录服务;
+using ESB;
 
 /// <summary>
 /// 授权用户信息
@@ -23,7 +23,7 @@ public class AuthenUser
 
     public string UserName;
     public bool IsSystemAdmin;
-    public Guid UserID;
+    public string UserID;
     public string LoginName;
 
     public static Hashtable OnlineAuthenUserList = new Hashtable();
@@ -33,14 +33,14 @@ public class AuthenUser
     /// </summary>
     /// <param name="person"></param>
     /// <returns></returns>
-    public static AuthenUser GetAuthenUser(个人 person)
+    public static AuthenUser GetAuthenUser(Personal person)
     {
         AuthenUser authenUser = new AuthenUser();
 
-        authenUser.IsSystemAdmin = (person.权限 == 0);
-        authenUser.UserID = person.个人编码;
-        authenUser.UserName = person.姓名;
-        authenUser.LoginName = person.帐号;
+        authenUser.IsSystemAdmin = (person.permission == 0);
+        authenUser.UserID = person.PersonalID;
+        authenUser.UserName = person.PersonalName;
+        authenUser.LoginName = person.PersonalAccount;
 
         return authenUser;
     }
@@ -55,8 +55,8 @@ public class AuthenUser
         if(AuthenUser.OnlineAuthenUserList.ContainsKey(loginName))
             return AuthenUser.OnlineAuthenUserList[loginName] as AuthenUser;
 
-        注册服务目录服务 userCheck = new 注册服务目录服务();
-        个人 person = userCheck.获得管理员_管理员姓名(loginName);
+        ESB.UddiService uddiService = new UddiService();
+        Personal person = uddiService.GetPersonByLoginName(loginName);
 
         if (person == null)
             return null;

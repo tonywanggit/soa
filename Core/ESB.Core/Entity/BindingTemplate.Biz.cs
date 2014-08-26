@@ -88,24 +88,24 @@ namespace ESB.Core.Entity
         /// <param name="templateid"></param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<TEntity> FindAllByTemplateID(Guid templateid)
+        public static TEntity FindByTemplateID(String templateid)
         {
             if (Meta.Count >= 1000)
-                return FindAll(_.TemplateID, templateid);
+                return Find(_.TemplateID, templateid);
             else // 实体缓存
-                return Meta.Cache.Entities.FindAll(_.TemplateID, templateid);
+                return Meta.Cache.Entities.Find(_.TemplateID, templateid);
         }
 
-        /// <summary>根据ServiceID查找所有启用的绑定</summary>
+        /// <summary>根据ServiceID查找的绑定</summary>
         /// <param name="templateid"></param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<TEntity> FindAllByServiceID(Guid serviceId)
+        public static EntityList<TEntity> FindAllByServiceID(String serviceId)
         {
             if (Meta.Count >= 1000)
-                return FindAll(new String[] { _.ServiceID, _.BindingStatus }, new Object[] { serviceId, 0 });
+                return FindAll(new String[] { _.ServiceID }, new Object[] { serviceId });
             else // 实体缓存
-                return Meta.Cache.Entities.FindAll(x => x._ServiceID == serviceId && x.BindingStatus == 0);
+                return Meta.Cache.Entities.FindAll(x => x._ServiceID == serviceId);
         }
 
         #endregion

@@ -23,17 +23,17 @@
         </tr>
     </table>
     <br />
-    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="ObjectDataSource1" KeyFieldName="业务编码" AutoGenerateColumns="False" Width="100%">
+    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="BusinessID" AutoGenerateColumns="False" Width="100%">
         <%-- BeginRegion Columns --%>
         <Columns>
             <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center">
                 <EditButton Visible="True" Text="编辑" />
                 <DeleteButton Visible="True" Text="删除" />
             </dxwgv:GridViewCommandColumn>
-            <dxwgv:GridViewDataTextColumn FieldName="业务名称" Caption="系统代码" VisibleIndex="1">
+            <dxwgv:GridViewDataTextColumn FieldName="BusinessName" Caption="系统代码" VisibleIndex="1">
                 <EditFormSettings VisibleIndex="0" ColumnSpan="2" />
             </dxwgv:GridViewDataTextColumn>
-            <dxwgv:GridViewDataColumn FieldName="描述" Caption="系统名称" VisibleIndex="2">
+            <dxwgv:GridViewDataColumn FieldName="Description" Caption="系统名称" VisibleIndex="2">
                 <EditFormSettings VisibleIndex="1" ColumnSpan="2" />
             </dxwgv:GridViewDataColumn>  
         </Columns>
@@ -62,12 +62,10 @@
             </EditForm>
         </Templates>
     </dxwgv:ASPxGridView>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.业务实体" 
-        SelectMethod="获得所有服务提供者" DeleteMethod="删除服务提供者" UpdateMethod="修改服务提供者" InsertMethod="新增服务提供者"
-        >
-
+    <asp:ObjectDataSource ID="OdsService" runat="server" 
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.BusinessEntity" 
+        SelectMethod="GetAllBusinessEntity" DeleteMethod="DeleteBusinessEntity" UpdateMethod="UpdateBusinessEntity" InsertMethod="InsertBusinessEntity" >
     </asp:ObjectDataSource>
 </asp:Content>
 

@@ -12,30 +12,30 @@ namespace ESB.Core.Entity
     [Serializable]
     [DataObject]
     [Description("")]
-    [BindIndex("PK_TModel", false, "ModelID")]
+    [BindIndex("PK_TModel", true, "ModelID")]
     [BindTable("TModel", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class TModel<TEntity> : ITModel
     {
         #region 属性
-        private Guid _ModelID;
+        private String _ModelID;
         /// <summary></summary>
         [DisplayName("ModelID")]
         [Description("")]
-        [DataObjectField(true, false, false, 16)]
-        [BindColumn(1, "ModelID", "", null, "uniqueidentifier", 0, 0, false)]
-        public virtual Guid ModelID
+        [DataObjectField(true, false, false, 50)]
+        [BindColumn(1, "ModelID", "", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String ModelID
         {
             get { return _ModelID; }
             set { if (OnPropertyChanging(__.ModelID, value)) { _ModelID = value; OnPropertyChanged(__.ModelID); } }
         }
 
-        private Guid _TemplateID;
+        private String _TemplateID;
         /// <summary></summary>
         [DisplayName("TemplateID")]
         [Description("")]
-        [DataObjectField(false, false, true, 16)]
-        [BindColumn(2, "TemplateID", "", null, "uniqueidentifier", 0, 0, false)]
-        public virtual Guid TemplateID
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(2, "TemplateID", "", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String TemplateID
         {
             get { return _TemplateID; }
             set { if (OnPropertyChanging(__.TemplateID, value)) { _TemplateID = value; OnPropertyChanged(__.TemplateID); } }
@@ -91,8 +91,8 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.ModelID : _ModelID = (Guid)value; break;
-                    case __.TemplateID : _TemplateID = (Guid)value; break;
+                    case __.ModelID : _ModelID = Convert.ToString(value); break;
+                    case __.TemplateID : _TemplateID = Convert.ToString(value); break;
                     case __.Description : _Description = Convert.ToString(value); break;
                     case __.Example : _Example = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -144,10 +144,10 @@ namespace ESB.Core.Entity
     {
         #region 属性
         /// <summary></summary>
-        Guid ModelID { get; set; }
+        String ModelID { get; set; }
 
         /// <summary></summary>
-        Guid TemplateID { get; set; }
+        String TemplateID { get; set; }
 
         /// <summary></summary>
         String Description { get; set; }

@@ -18,9 +18,13 @@ using JN.Esb.Portal.ServiceMgt.总线单向服务;
 using JN.Esb.Portal.ServiceMgt.审计服务;
 using System.Xml;
 using System.Web.Services.Protocols;
+using System.Collections.Generic;
 
 public partial class Exception_ExceptionList : BasePage
 {
+
+    ESB.UddiService m_UddiService = new ESB.UddiService();
+
     #region 初始化函数
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -51,16 +55,15 @@ public partial class Exception_ExceptionList : BasePage
 
         if (!(String.IsNullOrEmpty(exceptionID)))
         {
-            错误消息服务 异常服务对象 = new 错误消息服务();
-            异常信息对象 异常消息 = 异常服务对象.获得错误消息_异常编码(new Guid(exceptionID));
-            //String msgBody = 异常服务对象.获得错误消息内容(new Guid(exceptionID));
+            ESB.ExceptionService exceptionService = new ESB.ExceptionService();
+            ESB.ExceptionCoreTb exception = exceptionService.GetExceptionByID(exceptionID);
 
             XmlDocument doc = new XmlDocument();
-            if (!(String.IsNullOrEmpty(异常消息.请求消息体)))
+            if (!(String.IsNullOrEmpty(exception.MessageBody)))
             {
                 try
                 {
-                    doc.LoadXml(异常消息.请求消息体);
+                    doc.LoadXml(exception.MessageBody);
                     XmlNodeList list = doc.GetElementsByTagName("消息内容");
                     if (list.Count > 0)
                     {
@@ -72,12 +75,12 @@ public partial class Exception_ExceptionList : BasePage
                     }
                     else
                     {
-                        retBody = 异常消息.请求消息体;
+                        retBody = exception.MessageBody;
                     }
                 }
                 catch
                 {
-                    retBody = 异常消息.请求消息体;
+                    retBody = exception.MessageBody;
                 }
             }
             else
@@ -126,26 +129,19 @@ public partial class Exception_ExceptionList : BasePage
     #endregion
 
     #region 数据源接口函数
-    protected void OdsService_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
-    {
-        string svrID = cbProvider.Value.ToString();
-
-        业务实体 svrEntity = new 业务实体();
-        svrEntity.业务编码 = new Guid(svrID);
-        
-        e.InputParameters["服务提供者"] = svrEntity;
-    }
 
     protected void OdsException_Selecting(object sender, ObjectDataSourceMethodEventArgs e)
     {
-        if (cbProvider.Value != null)
-        {
-            OdsException.SelectMethod = "获得分页错误消息_服务提供者_用户编码";
-            OdsException.SelectCountMethod = "获得分页错误消息数量_服务提供者_用户编码";
-            e.InputParameters["服务提供者编码"] = new Guid(cbProvider.Value.ToString());        
-        }
+        //if (cbProvider.Value != null)
+        //{
+        //    OdsException.SelectMethod = "获得分页错误消息_服务提供者_用户编码";
+        //    OdsException.SelectCountMethod = "获得分页错误消息数量_服务提供者_用户编码";
+        //    e.InputParameters["服务提供者编码"] = new Guid(cbProvider.Value.ToString());        
+        //}
 
-        e.InputParameters["用户编码"] = AuthUser.UserID;
+        //e.InputParameters["用户编码"] = AuthUser.UserID;
+
+        e.InputParameters["personID"] = AuthUser.UserID;
     }
 
     protected void OdsException_OnUpdating(object sender, ObjectDataSourceMethodEventArgs e)
@@ -202,24 +198,20 @@ public partial class Exception_ExceptionList : BasePage
 
     protected void grid_OnCustomColumnDisplayText(object sender, ASPxGridViewColumnDisplayTextEventArgs e)
     {
-        if (e.Column.FieldName != "绑定地址编码") return;
-
-        服务地址 服务绑定地址 = new 服务地址();
-        服务绑定地址.服务地址编码 = new Guid(e.Value.ToString());
-
-        if (服务绑定地址.服务地址编码 != Guid.Empty)
+        if (e.Column.FieldName != "BindingTemplateID") return;
+        if (e.Value != null)
         {
-            注册服务目录服务 目录服务 = new 注册服务目录服务();
-            服务 具体服务 = 目录服务.获得具体服务_绑定信息(服务绑定地址);
-            业务实体 实体 = 目录服务.获得服务提供者((Guid)具体服务.业务编码);
+            ESB.BusinessService service = m_UddiService.GetBusinessServiceByTemplateID(e.Value.ToString());
+            ESB.BusinessEntity[] entityArray = m_UddiService.GetAllBusinessEntity();
+            ESB.BusinessEntity entity = entityArray.First(x => x.BusinessID == service.BusinessID);
 
             if (e.Column.Caption == "调用服务")
             {
-                e.DisplayText = 具体服务.服务名称;
+                e.DisplayText = service.ServiceName;
 
             }else if(e.Column.Caption == "调用系统")
             {
-                e.DisplayText = 实体.描述;
+                e.DisplayText = entity.Description;
             }
         }
 
@@ -245,19 +237,27 @@ public partial class Exception_ExceptionList : BasePage
         }
         else
         {
-            错误消息服务 异常服务对象 = new 错误消息服务();
-            异常信息对象 异常消息 = 异常服务对象.获得错误消息_异常编码(new Guid(grid.GetRowValues(e.VisibleIndex, "异常编码").ToString()));
-            try
-            {
-                AuditServcie auditService = new AuditServcie();
-                auditService.ExceptionPigeonhole(new Guid(异常消息.消息编码.ToString()));
-            }
-            catch (Exception)
-            {
-                throw new Exception("归档操作失败！");
-            }
+            //错误消息服务 异常服务对象 = new 错误消息服务();
+            //异常信息对象 异常消息 = 异常服务对象.获得错误消息_异常编码(new Guid());
+            //try
+            //{
+            //    AuditServcie auditService = new AuditServcie();
+            //    auditService.ExceptionPigeonhole(new Guid(异常消息.消息编码.ToString()));
+            //}
+            //catch (Exception)
+            //{
+            //    throw new Exception("归档操作失败！");
+            //}
+                
+            String exceptionID = grid.GetRowValues(e.VisibleIndex, "ExceptionID").ToString();
+            String messageID = grid.GetRowValues(e.VisibleIndex, "MessageID").ToString();
 
-            异常服务对象.删除错误消息_异常编码(异常消息.异常编码);
+            ESB.ExceptionService exceptionService = new ESB.ExceptionService();
+            exceptionService.DeleteExceptionByID(exceptionID);
+
+            ESB.AuditService auditService = new ESB.AuditService();
+            auditService.ExceptionPigeonhole(messageID);
+
             grid.DataBind();
         }
     }

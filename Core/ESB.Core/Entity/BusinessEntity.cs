@@ -12,18 +12,18 @@ namespace ESB.Core.Entity
     [Serializable]
     [DataObject]
     [Description("")]
-    [BindIndex("PK_Buiness", false, "BusinessID")]
+    [BindIndex("PK_Buiness", true, "BusinessID")]
     [BindTable("BusinessEntity", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class BusinessEntity<TEntity> : IBusinessEntity
     {
         #region 属性
-        private Guid _BusinessID;
+        private String _BusinessID;
         /// <summary></summary>
         [DisplayName("BusinessID")]
         [Description("")]
-        [DataObjectField(true, false, false, 16)]
-        [BindColumn(1, "BusinessID", "", "newid()", "uniqueidentifier", 0, 0, false)]
-        public virtual Guid BusinessID
+        [DataObjectField(true, false, false, 50)]
+        [BindColumn(1, "BusinessID", "", "newid()", "nvarchar(50)", 0, 0, true)]
+        public virtual String BusinessID
         {
             get { return _BusinessID; }
             set { if (OnPropertyChanging(__.BusinessID, value)) { _BusinessID = value; OnPropertyChanged(__.BusinessID); } }
@@ -33,8 +33,8 @@ namespace ESB.Core.Entity
         /// <summary></summary>
         [DisplayName("BusinessName")]
         [Description("")]
-        [DataObjectField(false, false, true, 50)]
-        [BindColumn(2, "BusinessName", "", null, "nvarchar(50)", 0, 0, true)]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(2, "BusinessName", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String BusinessName
         {
             get { return _BusinessName; }
@@ -45,8 +45,8 @@ namespace ESB.Core.Entity
         /// <summary></summary>
         [DisplayName("Description")]
         [Description("")]
-        [DataObjectField(false, false, true, 200)]
-        [BindColumn(3, "Description", "", null, "nvarchar(200)", 0, 0, true)]
+        [DataObjectField(false, false, false, 200)]
+        [BindColumn(3, "Description", "", "", "nvarchar(200)", 0, 0, true)]
         public virtual String Description
         {
             get { return _Description; }
@@ -78,7 +78,7 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.BusinessID : _BusinessID = (Guid)value; break;
+                    case __.BusinessID : _BusinessID = Convert.ToString(value); break;
                     case __.BusinessName : _BusinessName = Convert.ToString(value); break;
                     case __.Description : _Description = Convert.ToString(value); break;
                     default: base[name] = value; break;
@@ -124,7 +124,7 @@ namespace ESB.Core.Entity
     {
         #region 属性
         /// <summary></summary>
-        Guid BusinessID { get; set; }
+        String BusinessID { get; set; }
 
         /// <summary></summary>
         String BusinessName { get; set; }

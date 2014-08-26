@@ -11,13 +11,13 @@ namespace ESB.Core.Entity
 {
     /// <summary></summary>
     [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
-    public class Personal : Personal<Personal> { }
+    public class BusinessServiceVersion : BusinessServiceVersion<BusinessServiceVersion> { }
     
     /// <summary></summary>
-    public partial class Personal<TEntity> : Entity<TEntity> where TEntity : Personal<TEntity>, new()
+    public partial class BusinessServiceVersion<TEntity> : Entity<TEntity> where TEntity : BusinessServiceVersion<TEntity>, new()
     {
         #region 对象操作﻿
-        static Personal()
+        static BusinessServiceVersion()
         {
             // 用于引发基类的静态构造函数，所有层次的泛型实体类都应该有一个
             TEntity entity = new TEntity();
@@ -66,9 +66,9 @@ namespace ESB.Core.Entity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}Personal数据……", typeof(TEntity).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}BusinessServiceVersion数据……", typeof(TEntity).Name);
 
-        //    var entity = new Personal();
+        //    var entity = new BusinessServiceVersion();
         //    entity.Name = "admin";
         //    entity.Password = DataHelper.Hash("admin");
         //    entity.DisplayName = "管理员";
@@ -76,53 +76,26 @@ namespace ESB.Core.Entity
         //    entity.IsEnable = true;
         //    entity.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}Personal数据！", typeof(TEntity).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}BusinessServiceVersion数据！", typeof(TEntity).Name);
         //}
         #endregion
 
         #region 扩展属性﻿
-        //[NonSerialized]
-        //private BusinessService _BusinessService;
-        ///// <summary>该Personal所对应的BusinessService</summary>
-        //[XmlIgnore]
-        //public BusinessService BusinessService
-        //{
-        //    get
-        //    {
-        //        if (_BusinessService == null && PersonalID > 0 && !Dirtys.ContainsKey("BusinessService"))
-        //        {
-        //            _BusinessService = BusinessService.FindByPersonalID(PersonalID);
-        //            Dirtys["BusinessService"] = true;
-        //        }
-        //        return _BusinessService;
-        //    }
-        //    set { _BusinessService = value; }
-        //}
         #endregion
 
         #region 扩展查询﻿
-        /// <summary>根据PersonalID查找</summary>
-        /// <param name="personalid"></param>
+        /// <summary>根据主健查找</summary>
+        /// <param name="oid">主健</param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<TEntity> FindAllByPersonalID(Guid personalid)
+        public static TEntity FindByOID(String oid)
         {
             if (Meta.Count >= 1000)
-                return FindAll(_.PersonalID, personalid);
+                return Find(_.OID, oid);
             else // 实体缓存
-                return Meta.Cache.Entities.FindAll(_.PersonalID, personalid);
-        }
-
-        /// <summary>根据用户账户查找</summary>
-        /// <param name="personalid"></param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static TEntity FindAllByAccount(String account)
-        {
-            if (Meta.Count >= 1000)
-                return Find(_.PersonalAccount, account);
-            else // 实体缓存
-                return Meta.Cache.Entities.Find(_.PersonalAccount, account);
+                return Meta.Cache.Entities.Find(_.OID, oid);
+            // 单对象缓存
+            //return Meta.SingleCache[oid];
         }
         #endregion
 

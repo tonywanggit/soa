@@ -12,30 +12,30 @@ namespace ESB.Core.Entity
     [Serializable]
     [DataObject]
     [Description("")]
-    [BindIndex("PK_BindingTemplate", false, "TemplateID")]
+    [BindIndex("PK_BindingTemplate", true, "TemplateID")]
     [BindTable("BindingTemplate", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class BindingTemplate<TEntity> : IBindingTemplate
     {
         #region 属性
-        private Guid _TemplateID;
+        private String _TemplateID;
         /// <summary></summary>
         [DisplayName("TemplateID")]
         [Description("")]
-        [DataObjectField(true, false, false, 16)]
-        [BindColumn(1, "TemplateID", "", "newid()", "uniqueidentifier", 0, 0, false)]
-        public virtual Guid TemplateID
+        [DataObjectField(true, false, false, 50)]
+        [BindColumn(1, "TemplateID", "", "newid()", "nvarchar(50)", 0, 0, true)]
+        public virtual String TemplateID
         {
             get { return _TemplateID; }
             set { if (OnPropertyChanging(__.TemplateID, value)) { _TemplateID = value; OnPropertyChanged(__.TemplateID); } }
         }
 
-        private Guid _ServiceID;
+        private String _ServiceID;
         /// <summary></summary>
         [DisplayName("ServiceID")]
         [Description("")]
-        [DataObjectField(false, false, true, 16)]
-        [BindColumn(2, "ServiceID", "", null, "uniqueidentifier", 0, 0, false)]
-        public virtual Guid ServiceID
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(2, "ServiceID", "", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String ServiceID
         {
             get { return _ServiceID; }
             set { if (OnPropertyChanging(__.ServiceID, value)) { _ServiceID = value; OnPropertyChanged(__.ServiceID); } }
@@ -130,8 +130,8 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.TemplateID : _TemplateID = (Guid)value; break;
-                    case __.ServiceID : _ServiceID = (Guid)value; break;
+                    case __.TemplateID : _TemplateID = Convert.ToString(value); break;
+                    case __.ServiceID : _ServiceID = Convert.ToString(value); break;
                     case __.Address : _Address = Convert.ToString(value); break;
                     case __.Description : _Description = Convert.ToString(value); break;
                     case __.BindingStatus : _BindingStatus = Convert.ToInt32(value); break;
@@ -204,10 +204,10 @@ namespace ESB.Core.Entity
     {
         #region 属性
         /// <summary></summary>
-        Guid TemplateID { get; set; }
+        String TemplateID { get; set; }
 
         /// <summary></summary>
-        Guid ServiceID { get; set; }
+        String ServiceID { get; set; }
 
         /// <summary></summary>
         String Address { get; set; }

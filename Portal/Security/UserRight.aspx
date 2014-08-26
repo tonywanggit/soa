@@ -22,26 +22,26 @@
             <tr>
                 <td class="buttonCell">
                     <dxe:ASPxComboBox ID="cbProvider" runat="server" ToolTip="请选择服务提供者" AutoPostBack="true" DataSourceID="OdsProvider" 
-                        ValueField="业务编码" TextField="描述" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" />
+                        ValueField="BusinessID" TextField="Description" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" />
                 </td>                
             </tr>
         </table>
         <br />
-        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="服务编码" AutoGenerateColumns="False" Width="100%">
+        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="ServiceID" AutoGenerateColumns="False" Width="800px">
             <%-- BeginRegion Columns --%>
             <Columns>
                 <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center">
                     <EditButton Visible="True" Text="修改管理员" />
                 </dxwgv:GridViewCommandColumn>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="业务编码" Caption="服务提供者" VisibleIndex="1" ReadOnly="true">
-                    <PropertiesComboBox TextField="业务名称" ValueField="业务编码" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider" />
+                <dxwgv:GridViewDataComboBoxColumn FieldName="BusinessID" Caption="服务提供者" VisibleIndex="1" ReadOnly="true" Width="120px">
+                    <PropertiesComboBox TextField="BusinessName" ValueField="BusinessID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider" />
                 </dxwgv:GridViewDataComboBoxColumn>
-                <dxwgv:GridViewDataColumn FieldName="服务名称" Caption="服务名称" VisibleIndex="2" ReadOnly="true">
+                <dxwgv:GridViewDataColumn FieldName="ServiceName" Caption="服务名称" VisibleIndex="2" ReadOnly="true">
                 </dxwgv:GridViewDataColumn>
-                <dxwgv:GridViewDataColumn FieldName="描述" VisibleIndex="3" Caption="服务描述" ReadOnly="true">
+                <dxwgv:GridViewDataColumn FieldName="Description" VisibleIndex="3" Caption="服务描述" ReadOnly="true">
                 </dxwgv:GridViewDataColumn>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="个人编码" VisibleIndex="4" Caption="服务管理员">
-                    <PropertiesComboBox TextField="姓名" ValueField="个人编码" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
+                <dxwgv:GridViewDataComboBoxColumn FieldName="PersonalID" VisibleIndex="4" Caption="服务管理员" Width="80px">
+                    <PropertiesComboBox TextField="PersonalName" ValueField="PersonalID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
                     </PropertiesComboBox>
                 </dxwgv:GridViewDataComboBoxColumn>    
             </Columns>
@@ -58,20 +58,21 @@
     </asp:UpdatePanel>
     <%-- BeginRegion DataSource --%>
     <asp:ObjectDataSource ID="OdsUser" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.个人" 
-        SelectMethod="获得所有服务管理员" 
-        />
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.Personal" 
+        SelectMethod="GetAllPerson"
+        >
+    </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsProvider" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.业务实体" 
-        SelectMethod="获得所有服务提供者"
-        />
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.BusinessEntity" 
+        SelectMethod="GetAllBusinessEntity">
+    </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsService" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.服务" 
-        SelectMethod="获得具体服务_服务提供者"  UpdateMethod="修改具体服务"
-        OnSelecting="OdsService_Selecting">
+        TypeName="ESB.UddiService"
+        DataObjectTypeName="ESB.BusinessService"
+        SelectMethod="GetBusinessServiceByBussinessID" UpdateMethod="UpdateBusinessService"
+        OnSelecting="OdsService_Selecting" >
     </asp:ObjectDataSource>
 </asp:Content>
 

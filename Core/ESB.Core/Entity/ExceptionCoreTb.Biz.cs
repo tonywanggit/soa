@@ -84,11 +84,12 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展查询﻿
+
         /// <summary>根据ExceptionID查找</summary>
         /// <param name="exceptionid"></param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static TEntity FindByExceptionID(Guid exceptionid)
+        public static TEntity FindByExceptionID(String exceptionid)
         {
             if (Meta.Count >= 1000)
                 return Find(_.ExceptionID, exceptionid);

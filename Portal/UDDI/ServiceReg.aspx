@@ -23,7 +23,7 @@
             <tr>
                 <td class="buttonCell">
                     <dxe:ASPxComboBox ID="cbProvider" runat="server" ToolTip="请选择服务提供者" AutoPostBack="true" DataSourceID="OdsProvider" 
-                        ValueField="业务编码" TextField="描述" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" />
+                        ValueField="BusinessID" TextField="Description" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" />
                 </td>           
                 <td class="buttonCell">
                     <dxe:ASPxButton ID="btnAdd" runat="server" Text="新增服务" UseSubmitBehavior="False" AutoPostBack="false">
@@ -33,31 +33,31 @@
             </tr>
         </table>
         <br />
-        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="服务编码" AutoGenerateColumns="False" Width="100%">
+        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="ServiceID" AutoGenerateColumns="False" Width="800px">
             <%-- BeginRegion Columns --%>
             <Columns>
                 <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center">
                     <EditButton Visible="True" Text="编辑" />
                     <DeleteButton Visible="true" Text="删除" />
                 </dxwgv:GridViewCommandColumn>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="业务编码" Caption="服务提供者" VisibleIndex="1" >
-                    <PropertiesComboBox TextField="业务名称" ValueField="业务编码" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider" />
+                <dxwgv:GridViewDataComboBoxColumn FieldName="BusinessID" Caption="服务提供者" VisibleIndex="1" >
+                    <PropertiesComboBox TextField="Description" ValueField="BusinessID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider" />
                     <EditFormSettings Visible="True" VisibleIndex="1" />
                 </dxwgv:GridViewDataComboBoxColumn>
-                <dxwgv:GridViewDataHyperLinkColumn FieldName="服务编码" Caption="服务名称" VisibleIndex="2" ReadOnly="true" >
-                    <PropertiesHyperLinkEdit TextField="服务名称" TextFormatString="{0}" NavigateUrlFormatString="ServiceBinding.aspx?SID={0}" >
+                <dxwgv:GridViewDataHyperLinkColumn FieldName="ServiceID" Caption="服务名称" VisibleIndex="2" ReadOnly="true" >
+                    <PropertiesHyperLinkEdit TextField="ServiceName" NavigateUrlFormatString="ServiceBinding.aspx?SID={0}" >
                     </PropertiesHyperLinkEdit>
                     <EditFormSettings Visible="False" />
                 </dxwgv:GridViewDataHyperLinkColumn>
-                <dxwgv:GridViewDataColumn FieldName="服务名称" VisibleIndex="3" Caption="服务名称" Visible="false">
+                <dxwgv:GridViewDataColumn FieldName="ServiceName" VisibleIndex="3" Caption="服务名称" Visible="false">
                     <EditFormSettings Visible="true" VisibleIndex="3" ColumnSpan="2" />
                 </dxwgv:GridViewDataColumn>                
-                <dxwgv:GridViewDataMemoColumn FieldName="描述" VisibleIndex="3" Caption="服务描述" >
+                <dxwgv:GridViewDataMemoColumn FieldName="Description" VisibleIndex="3" Caption="服务描述" >
                     <EditFormSettings Visible="true" VisibleIndex="4" ColumnSpan="2" />
                     <PropertiesMemoEdit Height="80px" />
                 </dxwgv:GridViewDataMemoColumn>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="个人编码" VisibleIndex="4" Caption="服务管理员">
-                    <PropertiesComboBox TextField="姓名" ValueField="个人编码" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
+                <dxwgv:GridViewDataComboBoxColumn FieldName="PersonalID" VisibleIndex="4" Caption="服务管理员">
+                    <PropertiesComboBox TextField="PersonalName" ValueField="PersonalID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
                     </PropertiesComboBox>
                     <EditFormSettings Visible="true" VisibleIndex="2" />
                 </dxwgv:GridViewDataComboBoxColumn>    
@@ -76,18 +76,19 @@
     </asp:UpdatePanel>
     <%-- BeginRegion DataSource --%>
     <asp:ObjectDataSource ID="OdsUser" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.个人" 
-        SelectMethod="获得所有服务管理员" 
-        />
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.Personal" 
+        SelectMethod="GetAllPerson">
+    </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsProvider" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.业务实体" 
-        SelectMethod="获得所有服务提供者"
-        />
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.BusinessEntity" 
+        SelectMethod="GetAllBusinessEntity">
+    </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsService" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务"
-        SelectMethod="获得具体服务_服务提供者"  UpdateMethod="修改具体服务" InsertMethod="新增服务" DeleteMethod="删除具体服务"
+        TypeName="ESB.UddiService"
+        DataObjectTypeName="ESB.BusinessService"
+        SelectMethod="GetBusinessServiceByBussinessID"  UpdateMethod="UpdateBusinessService" InsertMethod="InsertBusinessService" DeleteMethod="DeleteBusinessService"
         OnSelecting="OdsService_Selecting" OnInserting="OdsService_Inserting" OnUpdating="OdsService_Updating" OnDeleting="OdsService_Deleting">
     </asp:ObjectDataSource>
 </asp:Content>

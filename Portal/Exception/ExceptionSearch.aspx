@@ -43,14 +43,14 @@
                 </td>
                 <td class="buttonCell">
                     <dxe:ASPxComboBox ID="cbProvider" runat="server" ToolTip="请选择服务提供者" AutoPostBack="true" DataSourceID="OdsProvider" 
-                        ValueField="业务编码" TextField="描述" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" Width="140px" />
+                        ValueField="BusinessID" TextField="Description" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" Width="140px" />
                 </td> 
                 <td class="buttonCell">
                     <dxe:ASPxComboBox ID="cbService" runat="server" ToolTip="请选择具体服务" AutoPostBack="false" DataSourceID="OdsService"  Width="150px"
-                        ValueField="服务编码" TextField="描述" AutoResizeWithContainer="true" DropDownStyle="DropDownList" TextFormatString="{0}">
+                        ValueField="ServiceID" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" TextFormatString="{0}">
                         <Columns>
-                            <dxe:ListBoxColumn Caption="服务名称" FieldName="服务名称" ToolTip="服务名称" Width="100px" />
-                            <dxe:ListBoxColumn Caption="服务描述" FieldName="描述" ToolTip="服务描述" Width="200px" />
+                            <dxe:ListBoxColumn Caption="服务名称" FieldName="ServiceName" ToolTip="服务名称" Width="100px" />
+                            <dxe:ListBoxColumn Caption="服务描述" FieldName="ServiceName" ToolTip="服务描述" Width="200px" />
                         </Columns>
                     </dxe:ASPxComboBox>
                 </td>           
@@ -61,7 +61,7 @@
         </table>
         <br />
         <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" 
-            DataSourceID="OdsAuditBusiness" KeyFieldName="OID" AutoGenerateColumns="False" Width="100%" 
+            DataSourceID="OdsAuditBusiness" KeyFieldName="OID" AutoGenerateColumns="False" Width="800px" 
             DataSourceForceStandardPaging="True" SettingsPager-PageSize="15" OnHtmlEditFormCreated="grid_OnHtmlEditFormCreated" >
             <%-- BeginRegion Columns --%>
             <Columns>
@@ -151,17 +151,19 @@
     
     <%-- BeginRegion DataSource --%>
     <asp:ObjectDataSource ID="OdsProvider" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.业务实体" 
-        SelectMethod="获得所有服务提供者">
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.BusinessEntity" 
+        SelectMethod="GetAllBusinessEntity">
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsService" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务"
-        SelectMethod="获得具体服务_服务提供者" OnSelecting="OdsService_Selecting">
+        TypeName="ESB.UddiService"
+        DataObjectTypeName="ESB.BusinessService"
+        SelectMethod="GetBusinessServiceByBussinessID"
+        OnSelecting="OdsService_Selecting">
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsAuditBusiness" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.审计服务.AuditServcie"
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.审计服务.AuditBusiness"
+        TypeName="ESB.AuditService"
+        DataObjectTypeName="ESB.AuditBusiness"
         SelectMethod="AuditBusinessSearch"
         OnSelecting="OdsAuditBusiness_Selecting"
         EnablePaging="True" 

@@ -12,19 +12,19 @@ namespace ESB.Core.Entity
     [Serializable]
     [DataObject]
     [Description("")]
-    [BindIndex("PK_Personal", false, "PersonalID")]
-    [BindRelation("PersonalID", false, "BusinessService", "PersonalID")]
+    [BindIndex("PK_Personal", true, "PersonalID")]
+    [BindRelation("PersonalID", true, "BusinessService", "PersonalID")]
     [BindTable("Personal", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class Personal<TEntity> : IPersonal
     {
         #region 属性
-        private Guid _PersonalID;
+        private String _PersonalID;
         /// <summary></summary>
         [DisplayName("PersonalID")]
         [Description("")]
-        [DataObjectField(true, false, false, 16)]
-        [BindColumn(1, "PersonalID", "", "newid()", "uniqueidentifier", 0, 0, false)]
-        public virtual Guid PersonalID
+        [DataObjectField(true, false, false, 50)]
+        [BindColumn(1, "PersonalID", "", "newid()", "nvarchar(50)", 0, 0, true)]
+        public virtual String PersonalID
         {
             get { return _PersonalID; }
             set { if (OnPropertyChanging(__.PersonalID, value)) { _PersonalID = value; OnPropertyChanged(__.PersonalID); } }
@@ -118,7 +118,7 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.PersonalID : _PersonalID = (Guid)value; break;
+                    case __.PersonalID : _PersonalID = Convert.ToString(value); break;
                     case __.PersonalName : _PersonalName = Convert.ToString(value); break;
                     case __.Phone : _Phone = Convert.ToString(value); break;
                     case __.Mail : _Mail = Convert.ToString(value); break;
@@ -185,7 +185,7 @@ namespace ESB.Core.Entity
     {
         #region 属性
         /// <summary></summary>
-        Guid PersonalID { get; set; }
+        String PersonalID { get; set; }
 
         /// <summary></summary>
         String PersonalName { get; set; }

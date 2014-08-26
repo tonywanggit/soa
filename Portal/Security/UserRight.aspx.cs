@@ -39,11 +39,7 @@ public partial class Security_UserRight : BasePage
     protected void OdsService_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
         string svrID = Session["UserRight_SvrID"] == null ? cbProvider.Value.ToString() : Session["UserRight_SvrID"].ToString();
-
-        业务实体 svrEntity = new 业务实体();
-        svrEntity.业务编码 = new Guid(svrID);
-
-        e.InputParameters["服务提供者"] = svrEntity;
+        e.InputParameters["businessID"] = svrID;
     }
 
     protected void cbProvider_SelectedIndexChanged(object sender, EventArgs e)

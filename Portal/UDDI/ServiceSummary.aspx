@@ -5,6 +5,7 @@
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dxlp" %>
+<%@ Register TagPrefix="dxe" Namespace="DevExpress.Web.ASPxEditors" Assembly="DevExpress.Web.ASPxEditors.v9.1" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="localCssPlaceholder" runat="server">
     <style type="text/css">
         td.buttonCell {
@@ -25,25 +26,25 @@
             </tr>
         </table>
         <br />
-        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="服务编码" AutoGenerateColumns="False" Width="100%">
+        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="ServiceID" AutoGenerateColumns="False" Width="800px">
             <%-- BeginRegion Columns --%>
             <Columns>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="业务编码" Caption="服务提供者" VisibleIndex="1" ReadOnly="true">
-                    <PropertiesComboBox TextField="业务名称" ValueField="业务编码" TextFormatString="{0}({1})" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider" >
+                <dxwgv:GridViewDataComboBoxColumn FieldName="BusinessID" Caption="服务提供者" VisibleIndex="1" ReadOnly="true">
+                    <PropertiesComboBox TextField="BusinessName" ValueField="BusinessID" TextFormatString="{0}({1})" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider" >
                         <Columns>
-                            <dxe:ListBoxColumn Caption="系统代码" FieldName="业务名称" ToolTip="系统代码" Width="100px" />
-                            <dxe:ListBoxColumn Caption="系统名称" FieldName="描述" ToolTip="系统名称" Width="200px" />
+                            <dxe:ListBoxColumn Caption="系统代码" FieldName="BusinessName" ToolTip="系统代码" Width="100px" />
+                            <dxe:ListBoxColumn Caption="系统名称" FieldName="Description" ToolTip="系统名称" Width="200px" />
                         </Columns>
                     </PropertiesComboBox>
                 </dxwgv:GridViewDataComboBoxColumn>
-                <dxwgv:GridViewDataHyperLinkColumn FieldName="服务编码" Caption="服务名称" VisibleIndex="2" ReadOnly="true" >
-                    <PropertiesHyperLinkEdit TextField="服务名称" TextFormatString="{0}" NavigateUrlFormatString="ServiceBinding.aspx?SID={0}" >
+                <dxwgv:GridViewDataHyperLinkColumn FieldName="ServiceID" Caption="服务名称" VisibleIndex="2" ReadOnly="true" >
+                    <PropertiesHyperLinkEdit TextField="ServiceName" TextFormatString="{0}" NavigateUrlFormatString="ServiceBinding.aspx?SID={0}" >
                     </PropertiesHyperLinkEdit>
                 </dxwgv:GridViewDataHyperLinkColumn>
-                <dxwgv:GridViewDataColumn FieldName="描述" VisibleIndex="3" Caption="服务描述" ReadOnly="true">
+                <dxwgv:GridViewDataColumn FieldName="Description" VisibleIndex="3" Caption="服务描述" ReadOnly="true">
                 </dxwgv:GridViewDataColumn>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="个人编码" VisibleIndex="4" Caption="服务管理员">
-                    <PropertiesComboBox TextField="姓名" ValueField="个人编码" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
+                <dxwgv:GridViewDataComboBoxColumn FieldName="PersonalID" VisibleIndex="4" Caption="服务管理员">
+                    <PropertiesComboBox TextField="PersonalName" ValueField="PersonalID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
                     </PropertiesComboBox>
                 </dxwgv:GridViewDataComboBoxColumn>    
             </Columns>
@@ -52,10 +53,10 @@
             <SettingsPager AlwaysShowPager="true" PageSize="15" />
             <SettingsText EmptyDataRow="暂无数据！" CommandCancel="取消" CommandUpdate="保存" GroupPanel="可将字段拖到这里进行分组" />
             <GroupSummary>
-                <dxwgv:ASPxSummaryItem FieldName="业务编码" SummaryType="Count" />
+                <dxwgv:ASPxSummaryItem FieldName="BusinessID" SummaryType="Count" />
             </GroupSummary>
             <TotalSummary>
-                <dxwgv:ASPxSummaryItem FieldName="业务编码" SummaryType="Count" />
+                <dxwgv:ASPxSummaryItem FieldName="BusinessID" SummaryType="Count" />
             </TotalSummary>
         </dxwgv:ASPxGridView>           
         <script type="text/javascript">
@@ -65,21 +66,20 @@
     </ContentTemplate>
     </asp:UpdatePanel>
     <%-- BeginRegion DataSource --%>
-    <asp:ObjectDataSource ID="OdsUser" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.个人" 
-        SelectMethod="获得所有服务管理员" 
-        />
     <asp:ObjectDataSource ID="OdsProvider" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.业务实体" 
-        SelectMethod="获得所有服务提供者"
-        />
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.BusinessEntity" 
+        SelectMethod="GetAllBusinessEntity">
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="OdsUser" runat="server" 
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.Personal" 
+        SelectMethod="GetAllPerson">
+    </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsService" runat="server" 
-        TypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.注册服务目录服务" 
-        DataObjectTypeName="JN.Esb.Portal.ServiceMgt.服务目录服务.服务" 
-        SelectMethod="获得具体服务_服务提供者"  UpdateMethod="修改具体服务"
-        OnSelecting="OdsService_Selecting">
+        TypeName="ESB.UddiService" 
+        DataObjectTypeName="ESB.BusinessService" 
+        SelectMethod="GetServiceList">
     </asp:ObjectDataSource>
 </asp:Content>
 

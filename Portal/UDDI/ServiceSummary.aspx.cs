@@ -31,9 +31,9 @@ public partial class UDDI_ServiceSummary : BasePage
 
     protected void OdsService_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
-        业务实体 svrEntity = new 业务实体();
-        svrEntity.业务编码 = Guid.Empty;
-
-        e.InputParameters["服务提供者"] = svrEntity;
+        //业务实体 svrEntity = new 业务实体();
+        //svrEntity.业务编码 = Guid.Empty;
+        
+        //e.InputParameters["服务提供者"] = svrEntity;
     }
 }

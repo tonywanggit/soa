@@ -77,7 +77,7 @@ namespace ESB.Core.Rpc
             , String message
             , ESB.Core.Schema.服务请求 request)
         {
-            return AddAuditLog(status, binding.TemplateID.ToString(), binding.ServiceID.ToString(), binding.Address.ToString()
+            return AddAuditLog(status, binding.TemplateID, binding.ServiceID, binding.Address
              , callState
              , message, request);
         }
@@ -137,8 +137,8 @@ namespace ESB.Core.Rpc
 
             ExceptionCoreTb exception = new ExceptionCoreTb()
             {
-                ExceptionID = Guid.NewGuid(),
-                BindingTemplateID = binding == null ? Guid.Empty : binding.TemplateID,
+                ExceptionID = Guid.NewGuid().ToString(),
+                BindingTemplateID = binding == null ? "" : binding.TemplateID,
                 BindingType = 0,
                 Description = exceptionDesc,
                 ExceptionCode = String.Empty,
@@ -149,7 +149,7 @@ namespace ESB.Core.Rpc
                 ExceptionType = 0,
                 HostName = request.主机名称,
                 MessageBody = request.消息内容,
-                MessageID = new Guid(messageID),
+                MessageID = messageID,
                 MethodName = request.方法名称,
                 RequestPwd = request.密码,
                 RequestType = 0

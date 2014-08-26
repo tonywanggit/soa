@@ -55,7 +55,7 @@
         }" />
     </dxm:ASPxMenu>
     <br />    
-    <dxchartsui:WebChartControl ID="chart" runat="server" Height="400px" Width="700px" ClientInstanceName="chart" 
+    <dxchartsui:WebChartControl ID="chart" runat="server" Height="400px" Width="900px" ClientInstanceName="chart" 
         OnCustomCallback="chart_CustomCallback" OnObjectSelected="chart_ObjectSelected" EnableCallbackCompression="True">
         <BorderOptions Visible="False" />
         <Legend AlignmentVertical="Top"></Legend>

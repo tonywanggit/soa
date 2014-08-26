@@ -2,25 +2,20 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://esb.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://esb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://esb.com/">
-      <s:element name="GetAuditListByTraceID">
+      <s:element name="GetAuditBusinessByOID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="traceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="auditID" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAuditListByTraceIDResponse">
+      <s:element name="GetAuditBusinessByOIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAuditListByTraceIDResult" type="tns:ArrayOfAuditBusiness" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuditBusinessByOIDResult" type="tns:AuditBusiness" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfAuditBusiness">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="AuditBusiness" nillable="true" type="tns:AuditBusiness" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="AuditBusiness">
         <s:complexContent mixed="false">
           <s:extension base="tns:AuditBusinessOfAuditBusiness" />
@@ -57,6 +52,7 @@
               <s:element minOccurs="1" maxOccurs="1" name="InvokeLevel" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="InvokeOrder" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="InvokeID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConsumerIP" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -67,6 +63,25 @@
         </s:complexContent>
       </s:complexType>
       <s:complexType name="EntityBase" abstract="true" />
+      <s:element name="GetAuditListByTraceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="traceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuditListByTraceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuditListByTraceIDResult" type="tns:ArrayOfAuditBusiness" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAuditBusiness">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AuditBusiness" nillable="true" type="tns:AuditBusiness" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetAuditList">
         <s:complexType />
       </s:element>
@@ -77,8 +92,83 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ExceptionPigeonhole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messageID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExceptionPigeonholeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AuditBusinessSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="condition" type="tns:AuditBusinessSearchCondition" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuditBusinessSearchCondition">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:AuditBusinessStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateScope" type="tns:DateScopeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateScopeBegin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateScopeEnd" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IfShowHeartBeat" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="AuditBusinessStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Exception" />
+          <s:enumeration value="ExceptionReSend" />
+          <s:enumeration value="ExceptionPigeonhole" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DateScopeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="OneDay" />
+          <s:enumeration value="OneWeek" />
+          <s:enumeration value="OneMonth" />
+          <s:enumeration value="OneYear" />
+          <s:enumeration value="All" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AuditBusinessSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuditBusinessSearchResult" type="tns:ArrayOfAuditBusiness" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuditBusinessCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="condition" type="tns:AuditBusinessSearchCondition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuditBusinessCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAuditBusinessCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="GetAuditBusinessByOIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuditBusinessByOID" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditBusinessByOIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuditBusinessByOIDResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAuditListByTraceIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetAuditListByTraceID" />
   </wsdl:message>
@@ -91,7 +181,30 @@
   <wsdl:message name="GetAuditListSoapOut">
     <wsdl:part name="parameters" element="tns:GetAuditListResponse" />
   </wsdl:message>
+  <wsdl:message name="ExceptionPigeonholeSoapIn">
+    <wsdl:part name="parameters" element="tns:ExceptionPigeonhole" />
+  </wsdl:message>
+  <wsdl:message name="ExceptionPigeonholeSoapOut">
+    <wsdl:part name="parameters" element="tns:ExceptionPigeonholeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuditBusinessSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:AuditBusinessSearch" />
+  </wsdl:message>
+  <wsdl:message name="AuditBusinessSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:AuditBusinessSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditBusinessCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuditBusinessCount" />
+  </wsdl:message>
+  <wsdl:message name="GetAuditBusinessCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuditBusinessCountResponse" />
+  </wsdl:message>
   <wsdl:portType name="AuditServiceSoap">
+    <wsdl:operation name="GetAuditBusinessByOID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到审计日志</wsdl:documentation>
+      <wsdl:input message="tns:GetAuditBusinessByOIDSoapIn" />
+      <wsdl:output message="tns:GetAuditBusinessByOIDSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAuditListByTraceID">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到同一次调用的所有审计日志</wsdl:documentation>
       <wsdl:input message="tns:GetAuditListByTraceIDSoapIn" />
@@ -102,9 +215,33 @@
       <wsdl:input message="tns:GetAuditListSoapIn" />
       <wsdl:output message="tns:GetAuditListSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ExceptionPigeonhole">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">将日志标记为归档状态</wsdl:documentation>
+      <wsdl:input message="tns:ExceptionPigeonholeSoapIn" />
+      <wsdl:output message="tns:ExceptionPigeonholeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuditBusinessSearch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">审计日志查询分页版本</wsdl:documentation>
+      <wsdl:input message="tns:AuditBusinessSearchSoapIn" />
+      <wsdl:output message="tns:AuditBusinessSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到审计日志的数量</wsdl:documentation>
+      <wsdl:input message="tns:GetAuditBusinessCountSoapIn" />
+      <wsdl:output message="tns:GetAuditBusinessCountSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AuditServiceSoap" type="tns:AuditServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAuditBusinessByOID">
+      <soap:operation soapAction="http://esb.com/GetAuditBusinessByOID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAuditListByTraceID">
       <soap:operation soapAction="http://esb.com/GetAuditListByTraceID" style="document" />
       <wsdl:input>
@@ -123,9 +260,45 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ExceptionPigeonhole">
+      <soap:operation soapAction="http://esb.com/ExceptionPigeonhole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuditBusinessSearch">
+      <soap:operation soapAction="http://esb.com/AuditBusinessSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessCount">
+      <soap:operation soapAction="http://esb.com/GetAuditBusinessCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AuditServiceSoap12" type="tns:AuditServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAuditBusinessByOID">
+      <soap12:operation soapAction="http://esb.com/GetAuditBusinessByOID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAuditListByTraceID">
       <soap12:operation soapAction="http://esb.com/GetAuditListByTraceID" style="document" />
       <wsdl:input>
@@ -137,6 +310,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetAuditList">
       <soap12:operation soapAction="http://esb.com/GetAuditList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExceptionPigeonhole">
+      <soap12:operation soapAction="http://esb.com/ExceptionPigeonhole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuditBusinessSearch">
+      <soap12:operation soapAction="http://esb.com/AuditBusinessSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditBusinessCount">
+      <soap12:operation soapAction="http://esb.com/GetAuditBusinessCount" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

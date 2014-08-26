@@ -11,14 +11,13 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using DevExpress.Web.ASPxGridView;
-using JN.Esb.Portal.ServiceMgt.服务目录服务;
-using JN.Esb.Portal.ServiceMgt.审计服务;
 using System.Xml;
 using System.Text;
 using System.Collections.Generic;
 using DevExpress.Web.ASPxEditors;
 using DevExpress.Web.ASPxTreeList;
 using System.Drawing;
+using ESB;
 
 public partial class Audit_CommunicationAudit : BasePage
 {
@@ -64,19 +63,7 @@ public partial class Audit_CommunicationAudit : BasePage
 
     protected void OdsService_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
-        业务实体 svrEntity = new 业务实体();
-
-        if (cbProvider.Value == null)
-        {
-            svrEntity.业务编码 = Guid.NewGuid();
-
-        }
-        else
-        {
-            svrEntity.业务编码 = new Guid(cbProvider.Value.ToString());
-        }
-
-        e.InputParameters["服务提供者"] = svrEntity;
+        e.InputParameters["businessID"] = cbProvider.Value;
     }
 
     protected void OdsAuditBusiness_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
@@ -90,20 +77,20 @@ public partial class Audit_CommunicationAudit : BasePage
 
         if (cbProvider.Value == null)
         {
-            condition.BusinessID = Guid.Empty;
+            condition.BusinessID = String.Empty;
         }
         else
         {
-            condition.BusinessID = new Guid(this.cbProvider.Value.ToString());
+            condition.BusinessID = this.cbProvider.Value.ToString();
         }
 
         if (cbService.SelectedItem == null)
         {
-            condition.ServiceID = Guid.Empty;
+            condition.ServiceID = String.Empty;
         }
         else
         {
-            condition.ServiceID = new Guid(this.cbService.Value.ToString());
+            condition.ServiceID = this.cbService.Value.ToString();
         }
 
         condition.IfShowHeartBeat = chkShowHeartBeat.Checked;
@@ -168,8 +155,8 @@ public partial class Audit_CommunicationAudit : BasePage
             hlReq.NavigateUrl += oid;
             hlRes.NavigateUrl += oid;
 
-            AuditServcie auditService = new AuditServcie();
-            AuditBusiness auditBusiness = auditService.GetAuditBusinessByOID(new Guid(oid));
+            AuditService auditService = new AuditService();
+            AuditBusiness auditBusiness = auditService.GetAuditBusinessByOID(oid);
 
             if (!(String.IsNullOrEmpty(auditBusiness.MessageBody)))
             {

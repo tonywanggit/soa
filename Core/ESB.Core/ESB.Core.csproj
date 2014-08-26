@@ -82,6 +82,8 @@
     <Compile Include="Entity\BusinessEntity.cs" />
     <Compile Include="Entity\BusinessService.Biz.cs" />
     <Compile Include="Entity\BusinessService.cs" />
+    <Compile Include="Entity\BusinessServiceVersion.Biz.cs" />
+    <Compile Include="Entity\BusinessServiceVersion.cs" />
     <Compile Include="Entity\EsbView_UDDI.Biz.cs" />
     <Compile Include="Entity\EsbView_UDDI.cs" />
     <Compile Include="Entity\ExceptionCoreTb.Biz.cs" />
@@ -92,6 +94,8 @@
     <Compile Include="Entity\Personal.cs" />
     <Compile Include="Entity\ReturnResponse.Biz.cs" />
     <Compile Include="Entity\ReturnResponse.cs" />
+    <Compile Include="Entity\ServiceContract.Biz.cs" />
+    <Compile Include="Entity\ServiceContract.cs" />
     <Compile Include="Entity\ServiceMonitor.Biz.cs" />
     <Compile Include="Entity\ServiceMonitor.cs" />
     <Compile Include="Entity\ShowTodayWatch.Biz.cs" />
@@ -99,6 +103,7 @@
     <Compile Include="Entity\TModel.Biz.cs" />
     <Compile Include="Entity\TModel.cs" />
     <Compile Include="ESBProxy.cs" />
+    <Compile Include="Monitor\AuditBusinessSearchCondition.cs" />
     <Compile Include="Monitor\LocalMQ.cs" />
     <Compile Include="Monitor\MonitorCenterClient.cs" />
     <Compile Include="Monitor\MonitorConsumerClient.cs" />

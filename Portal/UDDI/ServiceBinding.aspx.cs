@@ -37,13 +37,12 @@ public partial class UDDI_ServiceBinding : BasePage
         else
         {
             string sid = Request["SID"];
-            注册服务目录服务 目录服务 = new 注册服务目录服务();
-            服务 svrService = 目录服务.获得服务(new Guid(sid));
+            ESB.UddiService uddiService = new ESB.UddiService();
+            ESB.BusinessService service = uddiService.GetServiceByID(sid);
 
-            cbProvider.Value = svrService.业务编码.ToString();
-            cbService.Value = svrService.服务编码;
+            cbProvider.Value = service.BusinessID;
+            cbService.Value = service.ServiceID;
         }
-
     }
 
     protected void InitRight()
@@ -60,60 +59,27 @@ public partial class UDDI_ServiceBinding : BasePage
     protected void OdsService_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
         string svrID = cbProvider.Value.ToString();
-
-        业务实体 svrEntity = new 业务实体();
-        svrEntity.业务编码 = new Guid(svrID);
-
-        e.InputParameters["服务提供者"] = svrEntity;
+        e.InputParameters["businessID"] = svrID;
     }
 
     protected void OdsBinding_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
-        服务 svrService = new 服务();
-        svrService.服务编码 = (cbService.Value == null) ? Guid.NewGuid() : new Guid(cbService.Value.ToString());
-
         if (cbService.Value == null)
             this.btnAdd.Enabled = false;
         else
             this.btnAdd.Enabled = AuthUser.IsSystemAdmin;
 
-        e.InputParameters["具体服务单元"] = svrService;
+        e.InputParameters["serviceID"] = cbService.Value;
     }
 
     protected void OdsBinding_Updating(object sender, ObjectDataSourceMethodEventArgs e)
     {
-        string svrID = cbService.Value.ToString();
-
-        ((服务地址)e.InputParameters[0]).服务编码 = new Guid(svrID);
     }
 
     protected void OdsBinding_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
     {
-        string svrID = cbService.Value.ToString();
-
-        ((服务地址)e.InputParameters[0]).服务编码 = new Guid(svrID);
-    }
-
-    protected void OdsTModel_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
-    {
-        服务地址 svrBinding = new 服务地址();
-        svrBinding.服务地址编码 = new Guid(Session["ServiceBinding_BindingID"].ToString());
-
-        e.InputParameters["绑定服务"] = svrBinding;
-    }
-
-    protected void OdsTModel_Updating(object sender, ObjectDataSourceMethodEventArgs e)
-    {
-        string bindingID = Session["ServiceBinding_BindingID"].ToString();
-
-        ((服务约束)e.InputParameters[0]).服务地址编码 = new Guid(bindingID);
-    }
-
-    protected void OdsTModel_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
-    {
-        string bindingID = Session["ServiceBinding_BindingID"].ToString();
-
-        ((服务约束)e.InputParameters[0]).服务地址编码 = new Guid(bindingID);
+        ESB.BindingTemplate template = e.InputParameters["entity"] as ESB.BindingTemplate;
+        template.ServiceID = cbService.Value.ToString();
     }
 
     #endregion

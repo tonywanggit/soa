@@ -6,6 +6,8 @@ using System.Xml.Serialization;
 using NewLife.Log;
 using XCode;
 using XCode.Configuration;
+using ESB.Core.Monitor;
+using System.Data;
 
 namespace ESB.Core.Entity
 {
@@ -104,6 +106,17 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展查询﻿
+        /// <summary>
+        /// 根据主键查找审计日志
+        /// </summary>
+        /// <param name="auditID"></param>
+        /// <returns></returns>
+        public static TEntity GetAuditBusinessByOID(String auditID)
+        {
+            return Find(_.OID, auditID);
+        }
+
+
         public static EntityList<TEntity> FindAllByTraceID(String traceID)
         {
             EntityList<TEntity> lstAudit = FindAll(_.TraceID == traceID, _.InvokeID
@@ -162,6 +175,103 @@ namespace ESB.Core.Entity
 
             return exp;
         }
+
+        public static EntityList<AuditBusiness> AuditBusinessSearch(AuditBusinessSearchCondition condition, int pageIndex, int pageSize)
+        {
+            condition = FormatSearchCondition(condition);
+
+            string businessID = condition.BusinessID;
+            string serviceID = condition.ServiceID;
+            pageIndex = pageIndex / pageSize + 1;
+
+            string _SSE = string.Format("exec AuditBusinessPage {0},{1},'{2}','{3}','{4}','{5}','{6}','{7}','{8}'",
+                pageSize, //PageSize
+                pageIndex,  //PageIndex
+                condition.DateScopeBegin.ToString("yyyy-MM-dd") + " 00:00:00.000",   //开始时间
+                condition.DateScopeEnd.ToString("yyyy-MM-dd") + " 23:59:59.999",     //结束时间
+                condition.Status.GetHashCode(),                                  //通讯状态   
+                businessID,                                                              //实体ID   
+                serviceID,
+                condition.HostName,
+                condition.IfShowHeartBeat);
+
+            //IEnumerable<AuditBusiness> auditList = execptionDC.ExecuteQuery<AuditBusiness>(_SSE);
+
+            DataSet dsAudit = AuditBusiness.Meta.Query(_SSE);
+
+            return AuditBusiness.LoadData(dsAudit);
+        }
+
+        /// <summary>
+        /// 获取到审计日志的数量
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        public static int GetAuditBusinessCount(AuditBusinessSearchCondition condition)
+        {
+            condition = FormatSearchCondition(condition);
+
+            string businessID = condition.BusinessID;
+            string serviceID = condition.ServiceID;
+            string _SSE = string.Format("exec GetAuditBusinessRowsCount '{0}','{1}','{2}','{3}','{4}','{5}','{6}'",
+                condition.DateScopeBegin.ToString("yyyy-MM-dd") + " 00:00:00.000",   //开始时间
+                condition.DateScopeEnd.ToString("yyyy-MM-dd") + " 23:59:59.999",     //结束时间
+                condition.Status.GetHashCode(),                                  //通讯状态   
+                businessID,                                                              //实体ID   
+                serviceID,
+                condition.HostName,
+                condition.IfShowHeartBeat);
+
+            //var rowsCount = execptionDC.ExecuteQuery<int>(_SSE);
+            DataSet dsAudit = AuditBusiness.Meta.Query(_SSE);
+
+            return Int32.Parse(dsAudit.Tables[0].Rows[0][0].ToString());
+        }
+
+        /// <summary>
+        /// 格式化搜索条件
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        private static AuditBusinessSearchCondition FormatSearchCondition(AuditBusinessSearchCondition condition)
+        {
+            DateTime today = DateTime.Now;
+            DateTime todayStart = new DateTime(today.Year, today.Month, today.Day, 0, 0, 0);
+
+            if (condition.DateScopeBegin == DateTime.MinValue)
+            {
+                condition.DateScopeBegin = todayStart;
+
+                switch (condition.DateScope)
+                {
+                    case DateScopeEnum.OneDay:
+                        break;
+                    case DateScopeEnum.OneWeek:
+                        condition.DateScopeBegin = condition.DateScopeBegin.AddDays(-7);
+                        break;
+                    case DateScopeEnum.OneMonth:
+                        condition.DateScopeBegin = condition.DateScopeBegin.AddDays(-30);
+                        break;
+                    case DateScopeEnum.OneYear:
+                        condition.DateScopeBegin = condition.DateScopeBegin.AddDays(-365);
+                        break;
+                    case DateScopeEnum.All:
+                        condition.DateScopeBegin = condition.DateScopeBegin.AddYears(-100);
+                        break;
+                    default:
+                        condition.DateScopeBegin = condition.DateScopeBegin.AddYears(-100);
+                        break;
+                }
+            }
+
+            if (condition.DateScopeEnd == DateTime.MinValue)
+            {
+                condition.DateScopeEnd = today;
+            }
+
+            return condition;
+        }
+
         #endregion
 
         #region 扩展操作

@@ -13,17 +13,17 @@ namespace ESB.Core.Entity
     [DataObject]
     [Description("")]
     [BindIndex("PK_ExceptionCoreTb", true, "ExceptionID")]
-    [BindTable("ExceptionCoreTb", Description = "", ConnName = "EsbExceptionDb", DbType = DatabaseType.SqlServer)]
+    [BindTable("ExceptionCoreTb", Description = "", ConnName = "EsbExceptionDB", DbType = DatabaseType.SqlServer)]
     public partial class ExceptionCoreTb<TEntity> : IExceptionCoreTb
     {
         #region 属性
-        private Guid _ExceptionID;
+        private String _ExceptionID;
         /// <summary></summary>
         [DisplayName("ExceptionID")]
         [Description("")]
-        [DataObjectField(true, false, false, 16)]
-        [BindColumn(1, "ExceptionID", "", "newid()", "uniqueidentifier", 0, 0, false)]
-        public virtual Guid ExceptionID
+        [DataObjectField(true, false, false, 50)]
+        [BindColumn(1, "ExceptionID", "", "newid()", "nvarchar(50)", 0, 0, true)]
+        public virtual String ExceptionID
         {
             get { return _ExceptionID; }
             set { if (OnPropertyChanging(__.ExceptionID, value)) { _ExceptionID = value; OnPropertyChanged(__.ExceptionID); } }
@@ -45,8 +45,8 @@ namespace ESB.Core.Entity
         /// <summary></summary>
         [DisplayName("Description")]
         [Description("")]
-        [DataObjectField(false, false, true, 254)]
-        [BindColumn(3, "Description", "", null, "nvarchar(254)", 0, 0, true)]
+        [DataObjectField(false, false, true, -1)]
+        [BindColumn(3, "Description", "", null, "nvarchar(MAX)", 0, 0, true)]
         public virtual String Description
         {
             get { return _Description; }
@@ -69,8 +69,8 @@ namespace ESB.Core.Entity
         /// <summary></summary>
         [DisplayName("ExceptionInfo")]
         [Description("")]
-        [DataObjectField(false, false, true, 4000)]
-        [BindColumn(5, "ExceptionInfo", "", null, "nvarchar(4000)", 0, 0, true)]
+        [DataObjectField(false, false, true, 1073741823)]
+        [BindColumn(5, "ExceptionInfo", "", null, "ntext", 0, 0, true)]
         public virtual String ExceptionInfo
         {
             get { return _ExceptionInfo; }
@@ -125,25 +125,25 @@ namespace ESB.Core.Entity
             set { if (OnPropertyChanging(__.HostName, value)) { _HostName = value; OnPropertyChanged(__.HostName); } }
         }
 
-        private Guid _MessageID;
+        private String _MessageID;
         /// <summary></summary>
         [DisplayName("MessageID")]
         [Description("")]
-        [DataObjectField(false, false, true, 16)]
-        [BindColumn(10, "MessageID", "", null, "uniqueidentifier", 0, 0, false)]
-        public virtual Guid MessageID
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(10, "MessageID", "", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String MessageID
         {
             get { return _MessageID; }
             set { if (OnPropertyChanging(__.MessageID, value)) { _MessageID = value; OnPropertyChanged(__.MessageID); } }
         }
 
-        private Guid _BindingTemplateID;
+        private String _BindingTemplateID;
         /// <summary></summary>
         [DisplayName("BindingTemplateID")]
         [Description("")]
-        [DataObjectField(false, false, true, 16)]
-        [BindColumn(11, "BindingTemplateID", "", null, "uniqueidentifier", 0, 0, false)]
-        public virtual Guid BindingTemplateID
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(11, "BindingTemplateID", "", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String BindingTemplateID
         {
             get { return _BindingTemplateID; }
             set { if (OnPropertyChanging(__.BindingTemplateID, value)) { _BindingTemplateID = value; OnPropertyChanged(__.BindingTemplateID); } }
@@ -224,22 +224,22 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.ExceptionID : return _ExceptionID;
-                    case __.ExceptionTime : return _ExceptionTime;
-                    case __.Description : return _Description;
-                    case __.ExceptionCode : return _ExceptionCode;
-                    case __.ExceptionInfo : return _ExceptionInfo;
-                    case __.ExceptionLevel : return _ExceptionLevel;
-                    case __.ExceptionType : return _ExceptionType;
-                    case __.MethodName : return _MethodName;
-                    case __.HostName : return _HostName;
-                    case __.MessageID : return _MessageID;
-                    case __.BindingTemplateID : return _BindingTemplateID;
-                    case __.ExceptionStatus : return _ExceptionStatus;
-                    case __.MessageBody : return _MessageBody;
-                    case __.BindingType : return _BindingType;
-                    case __.RequestPwd : return _RequestPwd;
-                    case __.RequestType : return _RequestType;
+                    case __.ExceptionID: return _ExceptionID;
+                    case __.ExceptionTime: return _ExceptionTime;
+                    case __.Description: return _Description;
+                    case __.ExceptionCode: return _ExceptionCode;
+                    case __.ExceptionInfo: return _ExceptionInfo;
+                    case __.ExceptionLevel: return _ExceptionLevel;
+                    case __.ExceptionType: return _ExceptionType;
+                    case __.MethodName: return _MethodName;
+                    case __.HostName: return _HostName;
+                    case __.MessageID: return _MessageID;
+                    case __.BindingTemplateID: return _BindingTemplateID;
+                    case __.ExceptionStatus: return _ExceptionStatus;
+                    case __.MessageBody: return _MessageBody;
+                    case __.BindingType: return _BindingType;
+                    case __.RequestPwd: return _RequestPwd;
+                    case __.RequestType: return _RequestType;
                     default: return base[name];
                 }
             }
@@ -247,22 +247,22 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.ExceptionID : _ExceptionID = (Guid)value; break;
-                    case __.ExceptionTime : _ExceptionTime = Convert.ToDateTime(value); break;
-                    case __.Description : _Description = Convert.ToString(value); break;
-                    case __.ExceptionCode : _ExceptionCode = Convert.ToString(value); break;
-                    case __.ExceptionInfo : _ExceptionInfo = Convert.ToString(value); break;
-                    case __.ExceptionLevel : _ExceptionLevel = Convert.ToInt32(value); break;
-                    case __.ExceptionType : _ExceptionType = Convert.ToInt32(value); break;
-                    case __.MethodName : _MethodName = Convert.ToString(value); break;
-                    case __.HostName : _HostName = Convert.ToString(value); break;
-                    case __.MessageID : _MessageID = (Guid)value; break;
-                    case __.BindingTemplateID : _BindingTemplateID = (Guid)value; break;
-                    case __.ExceptionStatus : _ExceptionStatus = Convert.ToInt32(value); break;
-                    case __.MessageBody : _MessageBody = Convert.ToString(value); break;
-                    case __.BindingType : _BindingType = Convert.ToInt32(value); break;
-                    case __.RequestPwd : _RequestPwd = Convert.ToString(value); break;
-                    case __.RequestType : _RequestType = Convert.ToInt32(value); break;
+                    case __.ExceptionID: _ExceptionID = Convert.ToString(value); break;
+                    case __.ExceptionTime: _ExceptionTime = Convert.ToDateTime(value); break;
+                    case __.Description: _Description = Convert.ToString(value); break;
+                    case __.ExceptionCode: _ExceptionCode = Convert.ToString(value); break;
+                    case __.ExceptionInfo: _ExceptionInfo = Convert.ToString(value); break;
+                    case __.ExceptionLevel: _ExceptionLevel = Convert.ToInt32(value); break;
+                    case __.ExceptionType: _ExceptionType = Convert.ToInt32(value); break;
+                    case __.MethodName: _MethodName = Convert.ToString(value); break;
+                    case __.HostName: _HostName = Convert.ToString(value); break;
+                    case __.MessageID: _MessageID = Convert.ToString(value); break;
+                    case __.BindingTemplateID: _BindingTemplateID = Convert.ToString(value); break;
+                    case __.ExceptionStatus: _ExceptionStatus = Convert.ToInt32(value); break;
+                    case __.MessageBody: _MessageBody = Convert.ToString(value); break;
+                    case __.BindingType: _BindingType = Convert.ToInt32(value); break;
+                    case __.RequestPwd: _RequestPwd = Convert.ToString(value); break;
+                    case __.RequestType: _RequestType = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -384,7 +384,7 @@ namespace ESB.Core.Entity
     {
         #region 属性
         /// <summary></summary>
-        Guid ExceptionID { get; set; }
+        String ExceptionID { get; set; }
 
         /// <summary></summary>
         DateTime ExceptionTime { get; set; }
@@ -411,10 +411,10 @@ namespace ESB.Core.Entity
         String HostName { get; set; }
 
         /// <summary></summary>
-        Guid MessageID { get; set; }
+        String MessageID { get; set; }
 
         /// <summary></summary>
-        Guid BindingTemplateID { get; set; }
+        String BindingTemplateID { get; set; }
 
         /// <summary></summary>
         Int32 ExceptionStatus { get; set; }

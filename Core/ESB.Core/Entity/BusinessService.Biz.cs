@@ -115,12 +115,12 @@ namespace ESB.Core.Entity
         /// <param name="serviceid"></param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<TEntity> FindAllByServiceID(Guid serviceid)
+        public static TEntity FindByServiceID(String serviceid)
         {
             if (Meta.Count >= 1000)
-                return FindAll(_.ServiceID, serviceid);
+                return Find(_.ServiceID, serviceid);
             else // 实体缓存
-                return Meta.Cache.Entities.FindAll(_.ServiceID, serviceid);
+                return Meta.Cache.Entities.Find(_.ServiceID, serviceid);
         }
 
         /// <summary>根据PersonalID查找</summary>
@@ -135,6 +135,18 @@ namespace ESB.Core.Entity
                 return Meta.Cache.Entities.FindAll(_.PersonalID, personalid);
         }
 
+        /// <summary>根据业务实体ID查找</summary>
+        /// <param name="personalid"></param>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public static EntityList<TEntity> FindAllByBusinessID(String businessID)
+        {
+            if (Meta.Count >= 1000)
+                return FindAll(_.BusinessID, businessID);
+            else // 实体缓存
+                return Meta.Cache.Entities.FindAll(_.BusinessID, businessID);
+        }
+
         /// <summary>
         /// 根据服务名称获取到相关的服务
         /// </summary>
@@ -146,7 +158,7 @@ namespace ESB.Core.Entity
                 return Find(_.ServiceName, serviceName);
             else // 实体缓存
                 return Meta.Cache.Entities.Find(_.ServiceName, serviceName);
-            
+
             //return Find(_.ServiceName, serviceName);
         }
         #endregion

@@ -11,10 +11,9 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using DevExpress.Web.ASPxGridView;
-using JN.Esb.Portal.ServiceMgt.服务目录服务;
-using JN.Esb.Portal.ServiceMgt.审计服务;
 using System.Xml;
 using DevExpress.Web.ASPxEditors;
+using ESB;
 
 public partial class Exception_ExceptionSearch : BasePage
 {
@@ -46,17 +45,22 @@ public partial class Exception_ExceptionSearch : BasePage
     #region 数据源接口函数
     protected void OdsService_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
-        业务实体 svrEntity = new 业务实体();
 
-        if (cbProvider.Value == null)
-        {
-            svrEntity.业务编码 = Guid.NewGuid();
+        //string svrID = Session["UserRight_SvrID"] == null ? cbProvider.Value.ToString() : Session["UserRight_SvrID"].ToString();
+        e.InputParameters["businessID"] = cbProvider.Value;
 
-        }else{
-            svrEntity.业务编码 = new Guid(cbProvider.Value.ToString());
-        }
+        //业务实体 svrEntity = new 业务实体();
 
-        e.InputParameters["服务提供者"] = svrEntity;
+        //if (cbProvider.Value == null)
+        //{
+        //    svrEntity.业务编码 = Guid.NewGuid();
+
+        //}else{
+        //    svrEntity.业务编码 = new Guid(cbProvider.Value.ToString());
+        //}
+
+        //e.InputParameters["服务提供者"] = svrEntity;
+
     }
 
     protected void OdsAuditBusiness_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
@@ -68,20 +72,20 @@ public partial class Exception_ExceptionSearch : BasePage
         
         if (cbProvider.Value == null)
         {
-            condition.BusinessID = Guid.Empty;
+            condition.BusinessID = String.Empty;
         }
         else
         {
-            condition.BusinessID = new Guid(this.cbProvider.Value.ToString());
+            condition.BusinessID = this.cbProvider.Value.ToString();
         }
 
         if (cbService.SelectedItem == null)
         {
-            condition.ServiceID = Guid.Empty;
+            condition.ServiceID = String.Empty;
         }
         else
         {
-            condition.ServiceID = new Guid(this.cbService.Value.ToString());
+            condition.ServiceID = this.cbService.Value.ToString();
         }
 
         e.InputParameters.Clear();
@@ -139,8 +143,8 @@ public partial class Exception_ExceptionSearch : BasePage
             hlReq.NavigateUrl += oid;
             hlRes.NavigateUrl += oid;
 
-            AuditServcie auditService = new AuditServcie();
-            AuditBusiness auditBusiness = auditService.GetAuditBusinessByOID(new Guid(oid));
+            AuditService auditService = new AuditService();
+            AuditBusiness auditBusiness = auditService.GetAuditBusinessByOID(oid);
 
             if (!(String.IsNullOrEmpty(auditBusiness.MessageBody)))
             {
