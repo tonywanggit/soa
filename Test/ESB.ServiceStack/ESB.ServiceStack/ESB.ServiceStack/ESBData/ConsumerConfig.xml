@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ConsumerConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Registry>
+    <RegistryItem>
+      <Uri>127.0.0.1:5555</Uri>
+      <Load>0</Load>
+    </RegistryItem>
+  </Registry>
+  <Reference>
+    <ReferenceItem>
+      <ServiceName>ESB_WS</ServiceName>
+    </ReferenceItem>
+    <ReferenceItem>
+      <ServiceName>ESB_COM_WS</ServiceName>
+    </ReferenceItem>
+  </Reference>
+  <ApplicationName>esb.test.serviceStack</ApplicationName>
+</ConsumerConfig>

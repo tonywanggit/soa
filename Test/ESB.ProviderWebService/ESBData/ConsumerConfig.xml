@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ConsumerConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationName>ESB.ProviderWebService</ApplicationName>
+  <Registry>
+    <RegistryItem>
+      <Uri>127.0.0.1:5555</Uri>
+      <Load>1</Load>
+    </RegistryItem>
+  </Registry>
+  <Reference>
+    <ReferenceItem>
+      <ServiceName>ESB_ASHX</ServiceName>
+      <Interface />
+    </ReferenceItem>
+    <ReferenceItem>
+      <ServiceName>ESB_WCF</ServiceName>
+      <Interface />
+    </ReferenceItem>
+    <ReferenceItem>
+      <ServiceName>ESB_WS</ServiceName>
+      <Interface />
+    </ReferenceItem>
+    <ReferenceItem>
+      <ServiceName>ESB_COMPOSIT</ServiceName>
+      <Interface />
+    </ReferenceItem>
+  </Reference>
+</ConsumerConfig>

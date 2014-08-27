@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ConsumerConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationName>esb.test.framework</ApplicationName>
+  <Registry>
+    <RegistryItem>
+      <Uri>127.0.0.1:5555</Uri>
+    </RegistryItem>
+  </Registry>
+</ConsumerConfig>

@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://esb.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://esb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://esb.com/">
+      <s:element name="GetAllBusinessEntity">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllBusinessEntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllBusinessEntityResult" type="tns:ArrayOfBusinessEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusinessEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessEntity" nillable="true" type="tns:BusinessEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessEntity">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BusinessEntityOfBusinessEntity" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BusinessEntityOfBusinessEntity">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfBusinessEntity">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfBusinessEntity">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityBase" abstract="true" />
+      <s:element name="DeleteBusinessEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="be" type="tns:BusinessEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBusinessEntityResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateBusinessEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="be" type="tns:BusinessEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBusinessEntityResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="InsertBusinessEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="be" type="tns:BusinessEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBusinessEntityResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServiceList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServiceListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceListResult" type="tns:ArrayOfBusinessService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusinessService">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessService" nillable="true" type="tns:BusinessService" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessService">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BusinessServiceOfBusinessService" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BusinessServiceOfBusinessService">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfBusinessService">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Binding" type="tns:ArrayOfBindingTemplate" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PersonalID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DefaultVersion" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfBusinessService">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfBindingTemplate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BindingTemplate" nillable="true" type="tns:BindingTemplate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BindingTemplate">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BindingTemplateOfBindingTemplate" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BindingTemplateOfBindingTemplate">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfBindingTemplate">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TemplateID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BindingStatus" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="BindingType" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfBindingTemplate">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetServiceByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceByIDResult" type="tns:BusinessService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusinessServiceByBussinessID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusinessServiceByBussinessIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBusinessServiceByBussinessIDResult" type="tns:ArrayOfBusinessService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusinessServiceByTemplateID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="templateID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusinessServiceByTemplateIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBusinessServiceByTemplateIDResult" type="tns:BusinessService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBusinessService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="service" type="tns:BusinessService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBusinessServiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateBusinessService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="service" type="tns:BusinessService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBusinessServiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteBusinessService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="service" type="tns:BusinessService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBusinessServiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBindingByServiceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBindingByServiceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBindingByServiceIDResult" type="tns:ArrayOfBindingTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBindingTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:BindingTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertBindingTemplateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateBindingTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:BindingTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBindingTemplateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteBindingTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:BindingTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBindingTemplateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPersonByLoginName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonByLoginNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonByLoginNameResult" type="tns:Personal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Personal">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PersonalOfPersonal" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonalOfPersonal">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfPersonal">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="PersonalID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PersonalName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Mail" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="permission" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="PersonalAccount" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfPersonal">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAllPerson">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPersonResult" type="tns:ArrayOfPersonal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPersonal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Personal" nillable="true" type="tns:Personal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Personal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPersonResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdatePerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Personal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePersonResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeletePerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Personal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePersonResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllBusinessEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllBusinessEntity" />
+  </wsdl:message>
+  <wsdl:message name="GetAllBusinessEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllBusinessEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBusinessEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBusinessEntity" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBusinessEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBusinessEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBusinessEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBusinessEntity" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBusinessEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBusinessEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBusinessEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBusinessEntity" />
+  </wsdl:message>
+  <wsdl:message name="InsertBusinessEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBusinessEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceList" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceByID" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessServiceByBussinessIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBusinessServiceByBussinessID" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessServiceByBussinessIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBusinessServiceByBussinessIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessServiceByTemplateIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBusinessServiceByTemplateID" />
+  </wsdl:message>
+  <wsdl:message name="GetBusinessServiceByTemplateIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBusinessServiceByTemplateIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBusinessServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBusinessService" />
+  </wsdl:message>
+  <wsdl:message name="InsertBusinessServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBusinessServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBusinessServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBusinessService" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBusinessServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBusinessServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBusinessServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBusinessService" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBusinessServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBusinessServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBindingByServiceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBindingByServiceID" />
+  </wsdl:message>
+  <wsdl:message name="GetBindingByServiceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBindingByServiceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertBindingTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertBindingTemplate" />
+  </wsdl:message>
+  <wsdl:message name="InsertBindingTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertBindingTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBindingTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBindingTemplate" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBindingTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBindingTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBindingTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBindingTemplate" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBindingTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBindingTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonByLoginNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonByLoginName" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonByLoginNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonByLoginNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPerson" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPerson" />
+  </wsdl:message>
+  <wsdl:message name="InsertPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePersonSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePerson" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePersonSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePersonSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePerson" />
+  </wsdl:message>
+  <wsdl:message name="DeletePersonSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePersonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UddiServiceSoap">
+    <wsdl:operation name="GetAllBusinessEntity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得所有服务提供者</wsdl:documentation>
+      <wsdl:input message="tns:GetAllBusinessEntitySoapIn" />
+      <wsdl:output message="tns:GetAllBusinessEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusinessEntity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务提供者</wsdl:documentation>
+      <wsdl:input message="tns:DeleteBusinessEntitySoapIn" />
+      <wsdl:output message="tns:DeleteBusinessEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusinessEntity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改服务提供者</wsdl:documentation>
+      <wsdl:input message="tns:UpdateBusinessEntitySoapIn" />
+      <wsdl:output message="tns:UpdateBusinessEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBusinessEntity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入服务提供者</wsdl:documentation>
+      <wsdl:input message="tns:InsertBusinessEntitySoapIn" />
+      <wsdl:output message="tns:InsertBusinessEntitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到所有的服务列表</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceListSoapIn" />
+      <wsdl:output message="tns:GetServiceListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据ServiceID查找服务</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceByIDSoapIn" />
+      <wsdl:output message="tns:GetServiceByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessServiceByBussinessID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到业务实体下所有的服务列表</wsdl:documentation>
+      <wsdl:input message="tns:GetBusinessServiceByBussinessIDSoapIn" />
+      <wsdl:output message="tns:GetBusinessServiceByBussinessIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessServiceByTemplateID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据绑定地址找到服务</wsdl:documentation>
+      <wsdl:input message="tns:GetBusinessServiceByTemplateIDSoapIn" />
+      <wsdl:output message="tns:GetBusinessServiceByTemplateIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBusinessService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增服务</wsdl:documentation>
+      <wsdl:input message="tns:InsertBusinessServiceSoapIn" />
+      <wsdl:output message="tns:InsertBusinessServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusinessService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改服务</wsdl:documentation>
+      <wsdl:input message="tns:UpdateBusinessServiceSoapIn" />
+      <wsdl:output message="tns:UpdateBusinessServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusinessService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务</wsdl:documentation>
+      <wsdl:input message="tns:DeleteBusinessServiceSoapIn" />
+      <wsdl:output message="tns:DeleteBusinessServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBindingByServiceID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据ServiceID查找绑定地址</wsdl:documentation>
+      <wsdl:input message="tns:GetBindingByServiceIDSoapIn" />
+      <wsdl:output message="tns:GetBindingByServiceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertBindingTemplate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增绑定地址</wsdl:documentation>
+      <wsdl:input message="tns:InsertBindingTemplateSoapIn" />
+      <wsdl:output message="tns:InsertBindingTemplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBindingTemplate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改绑定地址</wsdl:documentation>
+      <wsdl:input message="tns:UpdateBindingTemplateSoapIn" />
+      <wsdl:output message="tns:UpdateBindingTemplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBindingTemplate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除绑定地址</wsdl:documentation>
+      <wsdl:input message="tns:DeleteBindingTemplateSoapIn" />
+      <wsdl:output message="tns:DeleteBindingTemplateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByLoginName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据用户账户获取到用户信息</wsdl:documentation>
+      <wsdl:input message="tns:GetPersonByLoginNameSoapIn" />
+      <wsdl:output message="tns:GetPersonByLoginNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到所有用户信息</wsdl:documentation>
+      <wsdl:input message="tns:GetAllPersonSoapIn" />
+      <wsdl:output message="tns:GetAllPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增用户</wsdl:documentation>
+      <wsdl:input message="tns:InsertPersonSoapIn" />
+      <wsdl:output message="tns:InsertPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改绑定地址</wsdl:documentation>
+      <wsdl:input message="tns:UpdatePersonSoapIn" />
+      <wsdl:output message="tns:UpdatePersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除绑定地址</wsdl:documentation>
+      <wsdl:input message="tns:DeletePersonSoapIn" />
+      <wsdl:output message="tns:DeletePersonSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UddiServiceSoap" type="tns:UddiServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllBusinessEntity">
+      <soap:operation soapAction="http://esb.com/GetAllBusinessEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusinessEntity">
+      <soap:operation soapAction="http://esb.com/DeleteBusinessEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusinessEntity">
+      <soap:operation soapAction="http://esb.com/UpdateBusinessEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBusinessEntity">
+      <soap:operation soapAction="http://esb.com/InsertBusinessEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceList">
+      <soap:operation soapAction="http://esb.com/GetServiceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByID">
+      <soap:operation soapAction="http://esb.com/GetServiceByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessServiceByBussinessID">
+      <soap:operation soapAction="http://esb.com/GetBusinessServiceByBussinessID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessServiceByTemplateID">
+      <soap:operation soapAction="http://esb.com/GetBusinessServiceByTemplateID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBusinessService">
+      <soap:operation soapAction="http://esb.com/InsertBusinessService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusinessService">
+      <soap:operation soapAction="http://esb.com/UpdateBusinessService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusinessService">
+      <soap:operation soapAction="http://esb.com/DeleteBusinessService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBindingByServiceID">
+      <soap:operation soapAction="http://esb.com/GetBindingByServiceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBindingTemplate">
+      <soap:operation soapAction="http://esb.com/InsertBindingTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBindingTemplate">
+      <soap:operation soapAction="http://esb.com/UpdateBindingTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBindingTemplate">
+      <soap:operation soapAction="http://esb.com/DeleteBindingTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByLoginName">
+      <soap:operation soapAction="http://esb.com/GetPersonByLoginName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPerson">
+      <soap:operation soapAction="http://esb.com/GetAllPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPerson">
+      <soap:operation soapAction="http://esb.com/InsertPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePerson">
+      <soap:operation soapAction="http://esb.com/UpdatePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerson">
+      <soap:operation soapAction="http://esb.com/DeletePerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UddiServiceSoap12" type="tns:UddiServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllBusinessEntity">
+      <soap12:operation soapAction="http://esb.com/GetAllBusinessEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusinessEntity">
+      <soap12:operation soapAction="http://esb.com/DeleteBusinessEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusinessEntity">
+      <soap12:operation soapAction="http://esb.com/UpdateBusinessEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBusinessEntity">
+      <soap12:operation soapAction="http://esb.com/InsertBusinessEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceList">
+      <soap12:operation soapAction="http://esb.com/GetServiceList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByID">
+      <soap12:operation soapAction="http://esb.com/GetServiceByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessServiceByBussinessID">
+      <soap12:operation soapAction="http://esb.com/GetBusinessServiceByBussinessID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusinessServiceByTemplateID">
+      <soap12:operation soapAction="http://esb.com/GetBusinessServiceByTemplateID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBusinessService">
+      <soap12:operation soapAction="http://esb.com/InsertBusinessService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusinessService">
+      <soap12:operation soapAction="http://esb.com/UpdateBusinessService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusinessService">
+      <soap12:operation soapAction="http://esb.com/DeleteBusinessService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBindingByServiceID">
+      <soap12:operation soapAction="http://esb.com/GetBindingByServiceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertBindingTemplate">
+      <soap12:operation soapAction="http://esb.com/InsertBindingTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBindingTemplate">
+      <soap12:operation soapAction="http://esb.com/UpdateBindingTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBindingTemplate">
+      <soap12:operation soapAction="http://esb.com/DeleteBindingTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByLoginName">
+      <soap12:operation soapAction="http://esb.com/GetPersonByLoginName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPerson">
+      <soap12:operation soapAction="http://esb.com/GetAllPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPerson">
+      <soap12:operation soapAction="http://esb.com/InsertPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePerson">
+      <soap12:operation soapAction="http://esb.com/UpdatePerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerson">
+      <soap12:operation soapAction="http://esb.com/DeletePerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UddiService">
+    <wsdl:port name="UddiServiceSoap" binding="tns:UddiServiceSoap">
+      <soap:address location="http://192.168.56.1/CallCenter/BasicService/UddiService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UddiServiceSoap12" binding="tns:UddiServiceSoap12">
+      <soap12:address location="http://192.168.56.1/CallCenter/BasicService/UddiService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
