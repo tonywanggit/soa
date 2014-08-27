@@ -18,8 +18,8 @@ namespace ESB.CallCenter
         {
             String serviceName = context.Request["ServiceName"].Trim();
             String methodName = context.Request["MethodName"].Trim();
-            String message = context.Request["Message"].Trim();
             String callback = context.Request["callback"];
+            String message = GetMessageFromUrl(context);
 
             String response = esbProxy.Invoke(serviceName, methodName, message);
             if (!String.IsNullOrEmpty(callback))
@@ -30,6 +30,24 @@ namespace ESB.CallCenter
             context.Response.ContentType = "text/plain";
             context.Response.ContentEncoding = Encoding.Default;
             context.Response.Write(response);
+        }
+
+        /// <summary>
+        /// 从原始请求链接中获取到Message
+        /// </summary>
+        /// <param name="rawUrl"></param>
+        /// <returns></returns>
+        private String GetMessageFromUrl(HttpContext context)
+        {
+            String rawUrl = context.Request.RawUrl;
+
+            if (rawUrl.Contains("&MessageURLEncoder="))
+                return context.Request["MessageURLEncoder"].Trim();
+
+            if (rawUrl.Contains("&Message="))
+                return rawUrl.Substring(rawUrl.IndexOf("&Message=") + 9);
+
+            throw new Exception("无效的调用方式！");
         }
 
         public bool IsReusable

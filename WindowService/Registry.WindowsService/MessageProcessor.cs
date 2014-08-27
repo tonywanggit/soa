@@ -45,13 +45,13 @@ namespace Registry.WindowsService
         private ESBConfig GetESBConfig(ConsumerConfig consumerConfig, RegistryClient regClient)
         {
             ESBConfig esbConfig = new ESBConfig();
-            esbConfig.Monitor.Add(new MonitorItem() { Uri = "192.168.56.2:5672:soa:123456", Load = 1, Type = "RabbitMQ" });
-            esbConfig.Registry.Add(new RegistryItem() { Uri = "192.168.56.2", Load = 1 });
-            esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "192.168.56.2", Load = 1 });
+            //esbConfig.Monitor.Add(new MonitorItem() { Uri = "192.168.56.2:5672:soa:123456", Load = 1, Type = "RabbitMQ" });
+            //esbConfig.Registry.Add(new RegistryItem() { Uri = "192.168.56.2", Load = 1 });
+            //esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "192.168.56.2", Load = 1 });
 
-            //esbConfig.Monitor.Add(new MonitorItem() { Uri = "10.100.20.100:5672:admin:osroot", Load = 1, Type = "RabbitMQ" });
-            //esbConfig.Registry.Add(new RegistryItem() { Uri = "10.100.20.214", Load = 1 });
-            //esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "10.100.20.214", Load = 1 });
+            esbConfig.Monitor.Add(new MonitorItem() { Uri = "10.100.20.100:5672:admin:osroot", Load = 1, Type = "RabbitMQ" });
+            esbConfig.Registry.Add(new RegistryItem() { Uri = "10.100.20.214", Load = 1 });
+            esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "10.100.20.214", Load = 1 });
 
             //esbConfig.Service.Add(new ServiceItem() { ServiceName = "ESB_ASHX", DirectInvokeEnabled = true, Uri = "http://esb.jn.com" });
 

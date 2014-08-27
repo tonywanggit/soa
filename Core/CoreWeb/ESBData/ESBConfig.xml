@@ -2,14 +2,75 @@
 <ESBConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Service>
     <ServiceItem>
-      <ServiceName>ESB_ASHX</ServiceName>
+      <ServiceName>ERP_Product</ServiceName>
       <DirectInvokeEnabled>true</DirectInvokeEnabled>
       <Binding>
         <BindingTemplate>
-          <TemplateID>a6d8670b-ceda-45d2-92f1-ffc3e1f67b62</TemplateID>
-          <ServiceID>e5ac5b54-3f11-4d32-98b5-0c7c76234985</ServiceID>
-          <Address>http://192.168.56.1/ProviderService/Handler/ESB_ASHX.ashx</Address>
-          <Description>ASHX服务地址</Description>
+          <TemplateID>4936E3FA-BBE0-40A1-AF65-35C3BA5E0A6A</TemplateID>
+          <ServiceID>02837C4A-85D0-45CA-9D18-4ACDB84A40E2</ServiceID>
+          <Address>http://192.168.56.1/HelloWebAPI/api/products</Address>
+          <Description>产品目录地址</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>2</BindingType>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
+      <ServiceName>ESB_WS</ServiceName>
+      <DirectInvokeEnabled>true</DirectInvokeEnabled>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>5DB79830-47ED-49AB-8E14-3324E2B3A9DF</TemplateID>
+          <ServiceID>10ECCB0F-260B-41BE-BF93-79BB80A74A36</ServiceID>
+          <Address>http://192.168.56.1/ProviderService/WebService/ESB_WS.asmx</Address>
+          <Description>WebService地址绑定</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>0</BindingType>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
+      <ServiceName>WXSC_WeiXinServiceForApp</ServiceName>
+      <DirectInvokeEnabled>true</DirectInvokeEnabled>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>401F6E05-BE6A-4D8A-8EA3-0422C04747BD</TemplateID>
+          <ServiceID>1A5F1711-1602-4781-9234-48B26EE09679</ServiceID>
+          <Address>http://10.100.20.180:8016/</Address>
+          <Description>微信商城服务</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>2</BindingType>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
+      <ServiceName>ESB_COM_WS</ServiceName>
+      <DirectInvokeEnabled>true</DirectInvokeEnabled>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>13EE831C-6F0C-4E9F-9D05-5F0F3431A052</TemplateID>
+          <ServiceID>1BA3C30D-0F0D-4E17-BFFD-7D6B92F644B3</ServiceID>
+          <Address>http://192.168.56.1/ProviderService/Composit/ESB_COM_WS.asmx</Address>
+          <Description>ESB二级组合服务地址</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>0</BindingType>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
+      <ServiceName>GB_HELLO</ServiceName>
+      <DirectInvokeEnabled>true</DirectInvokeEnabled>
+      <Binding />
+    </ServiceItem>
+    <ServiceItem>
+      <ServiceName>ESB_COMPOSIT</ServiceName>
+      <DirectInvokeEnabled>true</DirectInvokeEnabled>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>CB0DC8ED-B208-4084-AEC1-8C910E091C78</TemplateID>
+          <ServiceID>42BDB21A-C262-46EC-9AA0-A7E4B6AFE30A</ServiceID>
+          <Address>http://192.168.56.1/ProviderService/Composit/ESB_Composit.ashx</Address>
+          <Description>ESB组合服务地址</Description>
           <BindingStatus>0</BindingStatus>
           <BindingType>3</BindingType>
         </BindingTemplate>
@@ -20,38 +81,10 @@
       <DirectInvokeEnabled>true</DirectInvokeEnabled>
       <Binding>
         <BindingTemplate>
-          <TemplateID>0f6a276c-5733-4fed-8ce9-7fbae408c5c6</TemplateID>
-          <ServiceID>730b6a47-93e1-4763-8e07-2a7a8c6e9351</ServiceID>
+          <TemplateID>0F6A276C-5733-4FED-8CE9-7FBAE408C5C6</TemplateID>
+          <ServiceID>730B6A47-93E1-4763-8E07-2A7A8C6E9351</ServiceID>
           <Address>http://192.168.56.1/ServiceStackDemo</Address>
           <Description>ServiceStack演示地址</Description>
-          <BindingStatus>0</BindingStatus>
-          <BindingType>2</BindingType>
-        </BindingTemplate>
-      </Binding>
-    </ServiceItem>
-    <ServiceItem>
-      <ServiceName>WXSC_WeiXinServiceForApp</ServiceName>
-      <DirectInvokeEnabled>true</DirectInvokeEnabled>
-      <Binding>
-        <BindingTemplate>
-          <TemplateID>401f6e05-be6a-4d8a-8ea3-0422c04747bd</TemplateID>
-          <ServiceID>1a5f1711-1602-4781-9234-48b26ee09679</ServiceID>
-          <Address>http://10.100.20.180:8016/</Address>
-          <Description>微信商城服务</Description>
-          <BindingStatus>0</BindingStatus>
-          <BindingType>2</BindingType>
-        </BindingTemplate>
-      </Binding>
-    </ServiceItem>
-    <ServiceItem>
-      <ServiceName>ERP_Product</ServiceName>
-      <DirectInvokeEnabled>true</DirectInvokeEnabled>
-      <Binding>
-        <BindingTemplate>
-          <TemplateID>4936e3fa-bbe0-40a1-af65-35c3ba5e0a6a</TemplateID>
-          <ServiceID>02837c4a-85d0-45ca-9d18-4acdb84a40e2</ServiceID>
-          <Address>http://192.168.56.1/HelloWebAPI/api/products</Address>
-          <Description>产品目录地址</Description>
           <BindingStatus>0</BindingStatus>
           <BindingType>2</BindingType>
         </BindingTemplate>
@@ -62,8 +95,8 @@
       <DirectInvokeEnabled>true</DirectInvokeEnabled>
       <Binding>
         <BindingTemplate>
-          <TemplateID>17c451da-558f-438a-a22e-28bbbec6f9f5</TemplateID>
-          <ServiceID>912ece57-b8ec-4756-9b0f-5d1db4131960</ServiceID>
+          <TemplateID>17C451DA-558F-438A-A22E-28BBBEC6F9F5</TemplateID>
+          <ServiceID>912ECE57-B8EC-4756-9B0F-5D1DB4131960</ServiceID>
           <Address>http://localhost/OAWeb/EmailService.asmx</Address>
           <Description>OA邮件服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -72,58 +105,30 @@
       </Binding>
     </ServiceItem>
     <ServiceItem>
-      <ServiceName>ESB_WS</ServiceName>
-      <DirectInvokeEnabled>true</DirectInvokeEnabled>
-      <Binding>
-        <BindingTemplate>
-          <TemplateID>5db79830-47ed-49ab-8e14-3324e2b3a9df</TemplateID>
-          <ServiceID>10eccb0f-260b-41be-bf93-79bb80a74a36</ServiceID>
-          <Address>http://192.168.56.1/ProviderService/WebService/ESB_WS.asmx</Address>
-          <Description>WebService地址绑定</Description>
-          <BindingStatus>0</BindingStatus>
-          <BindingType>0</BindingType>
-        </BindingTemplate>
-      </Binding>
-    </ServiceItem>
-    <ServiceItem>
-      <ServiceName>ESB_COM_WS</ServiceName>
-      <DirectInvokeEnabled>true</DirectInvokeEnabled>
-      <Binding>
-        <BindingTemplate>
-          <TemplateID>13ee831c-6f0c-4e9f-9d05-5f0f3431a052</TemplateID>
-          <ServiceID>1ba3c30d-0f0d-4e17-bffd-7d6b92f644b3</ServiceID>
-          <Address>http://192.168.56.1/ProviderService/Composit/ESB_COM_WS.asmx</Address>
-          <Description>ESB二级组合服务地址</Description>
-          <BindingStatus>0</BindingStatus>
-          <BindingType>0</BindingType>
-        </BindingTemplate>
-      </Binding>
-    </ServiceItem>
-    <ServiceItem>
-      <ServiceName>ESB_COMPOSIT</ServiceName>
-      <DirectInvokeEnabled>true</DirectInvokeEnabled>
-      <Binding>
-        <BindingTemplate>
-          <TemplateID>cb0dc8ed-b208-4084-aec1-8c910e091c78</TemplateID>
-          <ServiceID>42bdb21a-c262-46ec-9aa0-a7e4b6afe30a</ServiceID>
-          <Address>http://192.168.56.1/ProviderService/Composit/ESB_Composit.ashx</Address>
-          <Description>ESB组合服务地址</Description>
-          <BindingStatus>0</BindingStatus>
-          <BindingType>3</BindingType>
-        </BindingTemplate>
-      </Binding>
-    </ServiceItem>
-    <ServiceItem>
       <ServiceName>ESB_WCF</ServiceName>
       <DirectInvokeEnabled>true</DirectInvokeEnabled>
       <Binding>
         <BindingTemplate>
-          <TemplateID>1dd4b44c-072c-4f80-9c14-670f65e82d13</TemplateID>
-          <ServiceID>a736d31d-c7a2-48a3-b7c0-adf07b2c42e5</ServiceID>
+          <TemplateID>1DD4B44C-072C-4F80-9C14-670F65E82D13</TemplateID>
+          <ServiceID>A736D31D-C7A2-48A3-B7C0-ADF07B2C42E5</ServiceID>
           <Address>http://192.168.56.1/ProviderService/Wcf/ESB_WCF.svc</Address>
           <Description>WCF绑定地址</Description>
           <BindingStatus>0</BindingStatus>
           <BindingType>1</BindingType>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
+      <ServiceName>ESB_ASHX</ServiceName>
+      <DirectInvokeEnabled>true</DirectInvokeEnabled>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>A6D8670B-CEDA-45D2-92F1-FFC3E1F67B62</TemplateID>
+          <ServiceID>E5AC5B54-3F11-4D32-98B5-0C7C76234985</ServiceID>
+          <Address>http://192.168.56.1/ProviderService/Handler/ESB_ASHX.ashx</Address>
+          <Description>ASHX服务地址</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>3</BindingType>
         </BindingTemplate>
       </Binding>
     </ServiceItem>
