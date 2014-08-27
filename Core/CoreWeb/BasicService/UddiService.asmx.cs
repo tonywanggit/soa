@@ -79,7 +79,24 @@ namespace ESB.CallCenter.BasicService
             if (String.IsNullOrEmpty(service.ServiceID))
                 service.ServiceID = Guid.NewGuid().ToString();
 
+            //--借用Category字段传递用户ID
+            String userID = service.Category;
+            service.Category = String.Empty;
             service.Insert();
+
+            //--在新增服务时建立默认版本
+            BusinessServiceVersion version = new BusinessServiceVersion()
+            {
+                OID = Guid.NewGuid().ToString(),
+                ServiceID = service.ServiceID,
+                BigVer = 1,
+                SmallVer = 0,
+                CreateDateTime = DateTime.Now,
+                Status = 0,
+                CreatePersionID = userID,
+                Description = "初始化版本"
+            };
+            version.Insert();
         }
 
         [WebMethod(Description = "修改服务")]

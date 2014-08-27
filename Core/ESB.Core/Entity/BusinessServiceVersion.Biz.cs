@@ -97,6 +97,20 @@ namespace ESB.Core.Entity
             // 单对象缓存
             //return Meta.SingleCache[oid];
         }
+
+        /// <summary>根据服务ID查找</summary>
+        /// <param name="oid">主健</param>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public static EntityList<TEntity> FindAllByServiceID(String serviceID)
+        {
+            if (Meta.Count >= 1000)
+                return FindAll(_.ServiceID, serviceID);
+            else // 实体缓存
+                return Meta.Cache.Entities.FindAll(_.ServiceID, serviceID);
+            // 单对象缓存
+            //return Meta.SingleCache[oid];
+        }
         #endregion
 
         #region 高级查询

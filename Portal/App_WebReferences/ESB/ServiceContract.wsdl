@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://esb.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://esb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://esb.com/">
+      <s:element name="GetServiceVersionByServiceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceVersionByServiceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceVersionByServiceIDResult" type="tns:ArrayOfBusinessServiceVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusinessServiceVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessServiceVersion" nillable="true" type="tns:BusinessServiceVersion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BusinessServiceVersionOfBusinessServiceVersion" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BusinessServiceVersionOfBusinessServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfBusinessServiceVersion">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BigVer" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SmallVer" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreatePersionID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConfirmPersonID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CommitDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="ConfirmDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfBusinessServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityBase" abstract="true" />
+      <s:element name="InsertServiceVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:BusinessServiceVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertServiceVersionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateServiceVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:BusinessServiceVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateServiceVersionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteServiceVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:BusinessServiceVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServiceVersionResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetServiceVersionByServiceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionByServiceID" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceVersionByServiceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionByServiceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertServiceVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="InsertServiceVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateServiceVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="UpdateServiceVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceContractSoap">
+    <wsdl:operation name="GetServiceVersionByServiceID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务下的所有版本</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceVersionByServiceIDSoapIn" />
+      <wsdl:output message="tns:GetServiceVersionByServiceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增服务版本</wsdl:documentation>
+      <wsdl:input message="tns:InsertServiceVersionSoapIn" />
+      <wsdl:output message="tns:InsertServiceVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改服务版本</wsdl:documentation>
+      <wsdl:input message="tns:UpdateServiceVersionSoapIn" />
+      <wsdl:output message="tns:UpdateServiceVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务版本</wsdl:documentation>
+      <wsdl:input message="tns:DeleteServiceVersionSoapIn" />
+      <wsdl:output message="tns:DeleteServiceVersionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceContractSoap" type="tns:ServiceContractSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServiceVersionByServiceID">
+      <soap:operation soapAction="http://esb.com/GetServiceVersionByServiceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceVersion">
+      <soap:operation soapAction="http://esb.com/InsertServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceVersion">
+      <soap:operation soapAction="http://esb.com/UpdateServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceVersion">
+      <soap:operation soapAction="http://esb.com/DeleteServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceContractSoap12" type="tns:ServiceContractSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServiceVersionByServiceID">
+      <soap12:operation soapAction="http://esb.com/GetServiceVersionByServiceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceVersion">
+      <soap12:operation soapAction="http://esb.com/InsertServiceVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceVersion">
+      <soap12:operation soapAction="http://esb.com/UpdateServiceVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceVersion">
+      <soap12:operation soapAction="http://esb.com/DeleteServiceVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceContract">
+    <wsdl:port name="ServiceContractSoap" binding="tns:ServiceContractSoap">
+      <soap:address location="http://192.168.56.1/CallCenter/BasicService/ServiceContract.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceContractSoap12" binding="tns:ServiceContractSoap12">
+      <soap12:address location="http://192.168.56.1/CallCenter/BasicService/ServiceContract.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -51,15 +51,19 @@ public partial class UDDI_ServiceBinding : BasePage
         //this.grid.FindControl("gridTmodel").Visible = AuthUser.IsSystemAdmin;
         //this.grid.FindDetailRowTemplateControl(0, "gridTmodel").Visible = AuthUser.IsSystemAdmin;
         this.btnAdd.Visible = AuthUser.IsSystemAdmin;
-        this.grid.SettingsDetail.ShowDetailRow = AuthUser.IsSystemAdmin;
+        this.grid.SettingsDetail.ShowDetailRow = false;
     }
     #endregion
 
     #region 数据源接口函数
     protected void OdsService_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
-        string svrID = cbProvider.Value.ToString();
-        e.InputParameters["businessID"] = svrID;
+        e.InputParameters["businessID"] = cbProvider.Value;
+    }
+
+    protected void OdsServiceVersion_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+        e.InputParameters["serviceID"] = cbService.Value;
     }
 
     protected void OdsBinding_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
@@ -86,11 +90,6 @@ public partial class UDDI_ServiceBinding : BasePage
 
     #region 控件接口函数
 
-    protected void gridTmodel_DataSelect(object sender, EventArgs e)
-    {
-        Session["ServiceBinding_BindingID"] = (sender as ASPxGridView).GetMasterRowKeyValue();
-    }
-
     protected void cbProvider_SelectedIndexChanged(object sender, EventArgs e)
     {
         cbService.DataBind();
@@ -98,6 +97,12 @@ public partial class UDDI_ServiceBinding : BasePage
     }
 
     protected void cbService_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        cbServiceVersion.DataBind();
+        cbServiceVersion.SelectedIndex = 0;
+    }
+
+    protected void cbServiceVersion_SelectedIndexChanged(object sender, EventArgs e)
     {
         grid.Selection.UnselectAll();
         grid.PageIndex = 0;

@@ -90,6 +90,15 @@
                             <dxe:ListBoxColumn Caption="服务描述" FieldName="Description" ToolTip="服务描述" Width="200px" />
                         </Columns>
                     </dxe:ASPxComboBox>
+                </td> 
+                <td class="buttonCell">
+                    <dxe:ASPxComboBox ID="cbServiceVersion" ClientInstanceName="cbService" runat="server" ToolTip="请选择服务版本" AutoPostBack="true" DataSourceID="OdsServiceVersion" 
+                        ValueField="OID" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" OnSelectedIndexChanged="cbServiceVersion_SelectedIndexChanged" TextFormatString="{0}">
+                        <Columns>
+                            <dxe:ListBoxColumn Caption="版本号" FieldName="BigVer" ToolTip="版本号" Width="100px" />
+                            <dxe:ListBoxColumn Caption="版本描述" FieldName="Description" ToolTip="版本描述" Width="200px" />
+                        </Columns>
+                    </dxe:ASPxComboBox>
                 </td>           
                 <td class="buttonCell">
                     <dxe:ASPxButton ID="btnAdd" runat="server" Text="新增绑定" UseSubmitBehavior="False" AutoPostBack="false">
@@ -113,7 +122,6 @@
                     </PropertiesHyperLinkEdit>
                     <EditFormSettings ColumnSpan="2" VisibleIndex="3" />
                 </dxwgv:GridViewDataHyperLinkColumn>
-                                
                 <dxwgv:GridViewDataMemoColumn FieldName="Description" VisibleIndex="2" Caption="绑定描述" >
                     <EditFormSettings ColumnSpan="2" VisibleIndex="4" CaptionLocation="Near" />
                     <EditFormCaptionStyle VerticalAlign="Top" />
@@ -131,7 +139,7 @@
                 </dxwgv:GridViewDataComboBoxColumn>    
             </Columns>
             <%-- EndRegion --%>
-            <SettingsDetail ShowDetailRow="true"/>
+            <SettingsDetail ShowDetailRow="false"/>
             <SettingsEditing Mode="EditFormAndDisplayRow"/>
             <SettingsPager AlwaysShowPager="true" />
             <SettingsText EmptyDataRow="暂无数据！" CommandCancel="取消" CommandUpdate="保存" ConfirmDelete="您确定要删除这条记录吗？" />
@@ -156,6 +164,12 @@
         DataObjectTypeName="ESB.BusinessService"
         SelectMethod="GetBusinessServiceByBussinessID"
         OnSelecting="OdsService_Selecting">
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="OdsServiceVersion" runat="server" 
+        TypeName="ESB.ServiceContract"
+        DataObjectTypeName="ESB.BusinessServiceVersion"
+        SelectMethod="GetServiceVersionByServiceID"
+        OnSelecting="OdsServiceVersion_Selecting">
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsBinding" runat="server" 
         TypeName="ESB.UddiService"

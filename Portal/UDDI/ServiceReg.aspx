@@ -62,7 +62,35 @@
                     <EditFormSettings Visible="true" VisibleIndex="2" />
                 </dxwgv:GridViewDataComboBoxColumn>    
             </Columns>
+            <Templates>
+                <DetailRow>
+                    <dxwgv:ASPxGridView ID="detailGrid" runat="server" DataSourceID="OdsServiceVersion" KeyFieldName="OID" Width="100%" 
+                         OnBeforePerformDataSelect="detailGrid_DataSelect" >
+                        <Columns>
+                            <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="90px">
+                                <EditButton Visible="True" Text="编辑" />
+                                <DeleteButton Visible="true" Text="删除" />
+                                <NewButton Visible="true" Text="新增"/>
+                            </dxwgv:GridViewCommandColumn>
+                            <dxwgv:GridViewDataColumn FieldName="BigVer" VisibleIndex="0" Caption="版本号">
+                                <EditFormSettings ColumnSpan="1" VisibleIndex="0" />
+                            </dxwgv:GridViewDataColumn>
+                            <dxwgv:GridViewDataColumn FieldName="SmallVer" VisibleIndex="0" Caption="修订号">
+                                <EditFormSettings ColumnSpan="1" VisibleIndex="0" />
+                            </dxwgv:GridViewDataColumn>
+                            <dxwgv:GridViewDataMemoColumn FieldName="Description" VisibleIndex="1" Caption="服务版本描述">
+                                <EditFormSettings ColumnSpan="2" VisibleIndex="1" CaptionLocation="Near" />
+                                <EditFormCaptionStyle VerticalAlign="Top" />
+                                <PropertiesMemoEdit Height="80px" />
+                            </dxwgv:GridViewDataMemoColumn>
+                        </Columns>
+                        <SettingsDetail IsDetailGrid="true"/>
+                        <SettingsText EmptyDataRow=" " CommandCancel="取消" CommandUpdate="保存" />
+                     </dxwgv:ASPxGridView>
+                </DetailRow>
+            </Templates>
             <%-- EndRegion --%>
+            <SettingsDetail ShowDetailRow="true" />
             <SettingsEditing Mode="EditFormAndDisplayRow"/>
             <SettingsPager AlwaysShowPager="true" />
             <SettingsBehavior ConfirmDelete="true" />
@@ -90,6 +118,15 @@
         DataObjectTypeName="ESB.BusinessService"
         SelectMethod="GetBusinessServiceByBussinessID"  UpdateMethod="UpdateBusinessService" InsertMethod="InsertBusinessService" DeleteMethod="DeleteBusinessService"
         OnSelecting="OdsService_Selecting" OnInserting="OdsService_Inserting" OnUpdating="OdsService_Updating" OnDeleting="OdsService_Deleting">
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="OdsServiceVersion" runat="server" 
+        TypeName="ESB.ServiceContract"
+        DataObjectTypeName="ESB.BusinessServiceVersion"
+        SelectMethod="GetServiceVersionByServiceID"  UpdateMethod="UpdateServiceVersion" InsertMethod="InsertServiceVersion" DeleteMethod="DeleteServiceVersion"
+        OnInserting="OdsServiceVersion_Inserting">
+        <SelectParameters>
+            <asp:SessionParameter Name="serviceID" SessionField="ServiceReg_ServiceID" Type="String" />
+        </SelectParameters>
     </asp:ObjectDataSource>
 </asp:Content>
 
