@@ -8,7 +8,7 @@
      */
     var RealTimeData = function(layers) {
         this.layers = layers;
-        this.timestamp = ((new Date()).getTime() / 1000)|0;
+        this.timestamp = ((new Date()).getTime() / 1000 - 30)|0;
     };
 
     RealTimeData.prototype.rand = function() {
@@ -41,9 +41,13 @@
 
     RealTimeData.prototype.next = function(y) {
         var entry = [];
+
         for (var i = 0; i < this.layers; i++) {
             entry.push({ time: this.getTimeStamp(), y: y });
+            //entry.push({ time: this.timestamp, y: y });
         }
+
+
         return entry;
     }
 

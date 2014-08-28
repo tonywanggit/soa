@@ -22,7 +22,8 @@ public partial class Analyse_RealTimeCallAnalyse : BasePage
 
         foreach (var item in lstBusinessService)
         {
-            this.statTable.Rows.Add(BuildTableRow(item.ServiceName, 0, 0, 0, 0));
+            //if (item.ServiceName == "WXSC_WeiXinServiceForApp")
+                this.statTable.Rows.Add(BuildTableRow(item.ServiceName, 0, 0, 0, 0));
         }
 
         mcClient = MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal);
@@ -107,7 +108,9 @@ public partial class Analyse_RealTimeCallAnalyse : BasePage
 				<div>流量 <font color=""green"">入</font>：<span class=""esb_inBytes"" data=""0"">{3}</span><span style=""color:red;padding-left:10px;"">出</span>：<span class=""esb_outBytes"" data=""0"">{4}</span></div>"
             , serviceName, callPeak, callSum, inBytes, outBytes)
         });
-        row.Cells.Add(new TableCell() { Text = String.Format(@"<div id=""div_area_{0}"" class=""epoch area"" style=""height:160px;width:800px""></div>", serviceName) });
+        //row.Cells.Add(new TableCell() { Text = String.Format(@"<div id=""div_area_{0}"" class=""epoch area"" style=""height:160px;width:800px""></div>", serviceName) });
+        row.Cells.Add(new TableCell() { Text = String.Format(@"<canvas id=""div_area_tps_{0}"" class=""tony tps"" style=""height:150px;width:380px""></canvas>", serviceName) });
+        row.Cells.Add(new TableCell() { Text = String.Format(@"<canvas id=""div_area_byte_{0}"" class=""tony byte"" style=""height:150px;width:380px""></canvas>", serviceName) });
 
         return row;
     }

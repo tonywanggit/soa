@@ -8,6 +8,7 @@
     <script src="../scripts/d3.js" type="text/javascript"></script>
     <script src="../scripts/epoch.min.js" type="text/javascript"></script>
     <script src="../scripts/data.js" type="text/javascript"></script>
+    <script src="../scripts/smooth.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phContent" Runat="Server">
     <asp:Table ID="statTable" runat="server" Width="900px">
@@ -15,8 +16,9 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phOnceContent" Runat="Server">
     <script type="text/javascript">
-		$(function () {
-		    var chartsArea = [];
+        $(function () {
+            var chartsAreaTps = [];
+            var chartsAreaByte = [];
 		    var chartsGauge = [];
 
 		    $(".epoch.gauge-tiny").each(function (e) {
@@ -29,15 +31,26 @@
 		        chartsGauge.push({ id: $(this).attr("id"), chart: chart, data: data, elem: $(this) });
 		    });
 
-		    $(".epoch.area").each(function (e) {
-		        var data = new RealTimeData(1);
-		        var chart = $(this).epoch({
-		            type: 'time.area',
-		            data: [{ values: [{ time: (((new Date()).getTime() / 1000) | 0), y: 0 }] }],
-		            axes: ['left', 'bottom', 'right']
-		        }); 
+		    $(".tony.tps").each(function (e) {
+		        var data = new TimeSeries({ timestampFormatter: SmoothieChart.timeFormatter });
 
-		        chartsArea.push({ id: $(this).attr("id"), chart: chart, data: data});
+		        var chart = new SmoothieChart();
+		        chart.addTimeSeries(data, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 2 });
+		        chart.streamTo($(this)[0], 10);
+
+		        chartsAreaTps.push({ id: $(this).attr("id"), chart: chart, data: data });
+		    });
+
+		    $(".tony.byte").each(function (e) {
+		        var dataIn = new TimeSeries();
+		        var dataOut = new TimeSeries();
+
+		        var chart = new SmoothieChart();
+		        chart.addTimeSeries(dataIn, { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 2 });
+		        chart.addTimeSeries(dataOut, { strokeStyle: 'rgba(255, 0, 0, 1)', fillStyle: 'rgba(255, 0, 0, 0.2)', lineWidth: 2 });
+		        chart.streamTo($(this)[0], 10);
+
+		        chartsAreaByte.push({ id: $(this).attr("id"), chart: chart, dataIn: dataIn, dataOut: dataOut });
 		    });
 
             //--长连接获取到监控中心发布的数据
@@ -91,21 +104,27 @@
 		        var msg = eval('(' + data + ')');
 
                 if(msg.length > 0)
-		            console.log(msg);
+                    console.log(msg);
 
-		        for (var i = 0; i < chartsArea.length; i++) {
-		            var chartArea = chartsArea[i];
+                for (var i = 0; i < chartsGauge.length; i++) {
+                    var chartAreaTps = chartsAreaTps[i];
+                    var chartAreaByte = chartsAreaByte[i];
 		            var chartGauge = chartsGauge[i];
-		            var sName = chartArea.id;
+		            var sName = chartAreaTps.id;
 		            var sm = GetServiceMonitor(sName, msg);
                     
 		            if (sm) {
 		                RefreshGaugeUI(chartGauge, sm);
-		                chartArea.chart.push(chartArea.data.next(sm.CallNum));
+		                chartAreaTps.data.append(new Date().getTime(), sm.CallNum);
+		                chartAreaByte.dataIn.append(new Date().getTime(), sm.InBytes);
+		                chartAreaByte.dataOut.append(new Date().getTime(), sm.OutBytes);
+
 		            }
 		            else {
 		                RefreshGaugeUI(chartGauge, sm);
-		                chartArea.chart.push(chartArea.data.next(0));
+		                chartAreaTps.data.append(new Date().getTime(), 0);
+		                chartAreaByte.dataIn.append(new Date().getTime(), 0);
+		                chartAreaByte.dataOut.append(new Date().getTime(), 0);
 		            }
 		        }
 		    };
@@ -143,7 +162,7 @@
 
             //--格式化流量
 		    function formatByte(raw) {
-		        if (raw < 1024) return raw + "Byte"
+		        //if (raw < 1024) return raw + "Byte"
 		        if (raw < 1024 * 1024) return (raw / 1024).toFixed(2) + "K"
 		        if (raw < 1024 * 1024 * 1024) return (raw / 1024 / 1024).toFixed(2) + "M"
 		    }
@@ -151,7 +170,7 @@
             //--从监控数据中获取到监控数据
 		    function GetServiceMonitor(serviceName, msg) {
 		        for (var i = 0; i < msg.length; i++) {
-		            if ("div_area_" + msg[i].ServiceName == serviceName) {
+		            if ("div_area_tps_" + msg[i].ServiceName == serviceName) {
 
 		                return msg[i];
 		            }
