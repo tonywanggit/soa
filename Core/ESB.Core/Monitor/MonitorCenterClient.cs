@@ -82,11 +82,13 @@ namespace ESB.Core.Monitor
             {
                 if (e.Type == CometEventType.ReceiveMessage)    // 接收到来自服务器的配置信息
                 {
+                    if (e.Response.Length > 500)
+                        XTrace.WriteLine(e.Response);
+
                     CometMessage rm = XmlUtil.LoadObjFromXML<CometMessage>(e.Response);
 
                     if (rm.Action == CometMessageAction.Publish)
                     {
-
                         List<ServiceMonitor> lstServiceMonitor = XmlUtil.LoadObjFromXML<List<ServiceMonitor>>(rm.MessageBody);
 
                         if (OnMonitorStatPublish != null)

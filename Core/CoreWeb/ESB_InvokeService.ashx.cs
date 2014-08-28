@@ -19,7 +19,7 @@ namespace ESB.CallCenter
             String serviceName = context.Request["ServiceName"].Trim();
             String methodName = context.Request["MethodName"].Trim();
             String callback = context.Request["callback"];
-            String message = GetMessageFromUrl(context);
+            String message = GetMessageFromRequest(context.Request);
 
             String response = esbProxy.Invoke(serviceName, methodName, message);
             if (!String.IsNullOrEmpty(callback))
@@ -37,12 +37,18 @@ namespace ESB.CallCenter
         /// </summary>
         /// <param name="rawUrl"></param>
         /// <returns></returns>
-        private String GetMessageFromUrl(HttpContext context)
+        private String GetMessageFromRequest(HttpRequest request)
         {
-            String rawUrl = context.Request.RawUrl;
+            //--如果取不到Message直接返回空
+            if (request["Message"] == null)
+                return String.Empty;
 
-            if (rawUrl.Contains("&MessageURLEncoder="))
-                return context.Request["MessageURLEncoder"].Trim();
+            //--如果能够从表单上获取到Message则优先使用
+            if (request.Form["Message"] != null)
+                return request.Form["Message"];
+
+            //--如果表单上无法取到Message，则表示请求为GET请求，直接从URL上获取数据
+            String rawUrl = request.RawUrl;
 
             if (rawUrl.Contains("&Message="))
                 return rawUrl.Substring(rawUrl.IndexOf("&Message=") + 9);

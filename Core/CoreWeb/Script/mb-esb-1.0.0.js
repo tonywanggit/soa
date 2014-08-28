@@ -14,7 +14,7 @@ jQuery.esb = {
      */
     baseurl: 'http://192.168.56.1/CallCenter/',
     /*
-     *  请求响应调用
+     *  请求响应调用 JSONP
      */
     invoke: function (serviceName, methodName, message, fn) {
         var response;
@@ -28,6 +28,21 @@ jQuery.esb = {
             success: function (msg) {
                 response = msg.message;
                 fn(response);
+            }
+        });
+    },
+    /*
+     *  请求响应调用 POST
+     */
+    invokePost: function (serviceName, methodName, message, fn) {
+        var response;
+        var invokeUrl = "ESB_InvokeService.ashx";
+        $.ajax({
+            url: invokeUrl,
+            type: "POST",
+            data: "ServiceName=" + serviceName + "&MethodName=" + methodName + "&Message=" + message,
+            success: function (msg) {
+                fn(msg);
             }
         });
     }

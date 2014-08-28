@@ -1,5 +1,6 @@
 ﻿using ESB.Core.Entity;
 using ESB.Core.Util;
+using NewLife.Log;
 using NewLife.Threading;
 using System;
 using System.Collections.Generic;
@@ -99,6 +100,9 @@ namespace Monitor.WindowsService
             if (second > 0) second--;   //--发布前一秒的数据
 
             String data = XmlUtil.SaveXmlFromObj<List<ServiceMonitor>>(msData.GetOnSecondData(second));
+
+            if(data.Length > 180)
+                XTrace.WriteLine("PublishMointorData:{0}", data);
 
             m_MonitorCenter.Publish(data);
         }

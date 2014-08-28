@@ -13,7 +13,8 @@
             var methodName = $("#txtMethodName").val();
             var message = $("#txtSendMessage").val();
 
-            $.esb.invoke(serviceName, methodName, message, function (response) {
+            $.esb.invokePost(serviceName, methodName, message, function (response) {
+
                 $("#txtReceiveMessage").val(response);
             });
         }
@@ -26,12 +27,12 @@
         服务名称：<asp:TextBox ID="txtServiceName" runat="server" Width="258px">WXSC_WeiXinServiceForApp</asp:TextBox>
         <br />
         <br />
-        方法名称：<asp:TextBox ID="txtMethodName" runat="server" Width="258px">GET:XML:CollocationDetailFilter</asp:TextBox>
+        方法名称：<asp:TextBox ID="txtMethodName" runat="server" Width="258px">POST:JSON:WxSellerChangeCashPws</asp:TextBox>
         <br />
         <br />
         <asp:Label ID="Label1" runat="server" Text="发送数据："></asp:Label>
         <br />
-        <asp:TextBox ID="txtSendMessage" runat="server" Height="144px" Width="474px" TextMode="MultiLine">collocationId=11</asp:TextBox>
+        <asp:TextBox ID="txtSendMessage" runat="server" Height="144px" Width="474px" TextMode="MultiLine">{"accountId":325,"oldPws":"123456","newPws":"123456"}</asp:TextBox>
         <br />
         <br />
         <input type="button" id="btnSend" onclick="SendToESB()" value="发送" />

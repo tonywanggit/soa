@@ -47,6 +47,8 @@ namespace ESB.Core.Rpc
                 contentType = String.Compare("JSON", methodParams[1], true) == 0 ? Constant.CONTENT_TYPE_JSON : Constant.CONTENT_TYPE_XML;
             }
 
+            //contentType = Constant.CONTENT_TYPE_JSON;
+
 
             //--STEP.2.根据method拼接URL
             if (method.ToUpper() == "GET")
@@ -58,7 +60,8 @@ namespace ESB.Core.Rpc
                 uri = uri + "/" + methodName;
             }
 
-            //uri = uri + "/" + callState.Request.方法名称;
+            //uri = "http://10.100.20.180:8016/" + methodName + "?format=json";
+            //uri = "http://localhost:8080/" + methodName;// +"?format=json";
 
             //--STEP.3.构造HTTP请求并调用RESTful服务
             ESB.Core.Schema.服务响应 response = new ESB.Core.Schema.服务响应();
@@ -69,6 +72,7 @@ namespace ESB.Core.Rpc
                 webRequest.Method = method;
                 webRequest.ContentType = contentType;
                 webRequest.Headers.Add(Constant.ESB_HEAD_TRACE_CONTEXT, callState.TraceContext.ToString());
+
 
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去
                 if (method == "POST" && !String.IsNullOrEmpty(message))

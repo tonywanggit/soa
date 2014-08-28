@@ -33,7 +33,7 @@
 		        var data = new RealTimeData(1);
 		        var chart = $(this).epoch({
 		            type: 'time.area',
-		            data: data.history(1),
+		            data: [{ values: [{ time: (((new Date()).getTime() / 1000) | 0), y: 0 }] }],
 		            axes: ['left', 'bottom', 'right']
 		        }); 
 
@@ -89,6 +89,9 @@
             //--处理监控数据
 		    function ProcessMonitorData(data) {
 		        var msg = eval('(' + data + ')');
+
+                if(msg.length > 0)
+		            console.log(msg);
 
 		        for (var i = 0; i < chartsArea.length; i++) {
 		            var chartArea = chartsArea[i];

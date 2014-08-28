@@ -20,11 +20,22 @@ public class MonitorStatAsyncResult : IAsyncResult
     /// <param name="message"></param>
     public static void SetAllResultComplete(String message)
     {
+        Boolean error = false;
         foreach (var item in Queue)
         {
-            item.Message = message;
-            item.SetCompleted(true);
+            try
+            {
+                item.Message = message;
+                item.SetCompleted(true);
+            }
+            catch (Exception)
+            {
+                error = true;
+            }
         }
+
+        if (error)
+            Queue.Clear();
     }
 
     /// <summary>

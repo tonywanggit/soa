@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 public partial class Analyse_RealTimeCallAnalyse : BasePage
 {
-    MonitorCenterClient mcClient = MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal);
+    MonitorCenterClient mcClient;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -25,6 +25,7 @@ public partial class Analyse_RealTimeCallAnalyse : BasePage
             this.statTable.Rows.Add(BuildTableRow(item.ServiceName, 0, 0, 0, 0));
         }
 
+        mcClient = MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal);
         if (!mcClient.IsSubscribe)
         {
             mcClient.OnMonitorStatPublish += mcClient_OnMonitorStatPublish;
@@ -40,8 +41,6 @@ public partial class Analyse_RealTimeCallAnalyse : BasePage
     {
         List<ServiceMonitor> lstServiceMonitor = e.ListServiceMonitor;
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        Random r = new Random();
-        r.Next(100);
 
         if (lstServiceMonitor == null || lstServiceMonitor.Count == 0)
         {
