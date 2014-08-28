@@ -35,10 +35,14 @@
       <Description>
       </Description>
     </Demo>
-    <Demo Text="服务地址绑定" NavigateUrl="~/UDDI/ServiceBinding.aspx" Title="企业服务总线 - 服务地址绑定">
-      <Description>
-      </Description>
-    </Demo>
+      <Demo Text="服务地址绑定" NavigateUrl="~/UDDI/ServiceBinding.aspx" Title="企业服务总线 - 服务地址绑定">
+          <Description>
+          </Description>
+      </Demo>
+      <Demo Text="服务契约撰写" NavigateUrl="~/UDDI/ServiceContract.aspx" Title="企业服务总线 - 服务契约撰写">
+          <Description>
+          </Description>
+      </Demo>
   </DemoGroup>
   
   <DemoGroup Text="异常管理" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" >

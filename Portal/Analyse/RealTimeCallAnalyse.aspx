@@ -36,7 +36,7 @@
 
 		        var chart = new SmoothieChart();
 		        chart.addTimeSeries(data, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 2 });
-		        chart.streamTo($(this)[0], 10);
+		        chart.streamTo($(this)[0], 5);
 
 		        chartsAreaTps.push({ id: $(this).attr("id"), chart: chart, data: data });
 		    });
@@ -48,7 +48,7 @@
 		        var chart = new SmoothieChart();
 		        chart.addTimeSeries(dataIn, { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 2 });
 		        chart.addTimeSeries(dataOut, { strokeStyle: 'rgba(255, 0, 0, 1)', fillStyle: 'rgba(255, 0, 0, 0.2)', lineWidth: 2 });
-		        chart.streamTo($(this)[0], 10);
+		        chart.streamTo($(this)[0], 5);
 
 		        chartsAreaByte.push({ id: $(this).attr("id"), chart: chart, dataIn: dataIn, dataOut: dataOut });
 		    });

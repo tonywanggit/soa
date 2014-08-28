@@ -722,8 +722,6 @@
             context.fillText(maxValueString, dimensions.width - context.measureText(maxValueString).width - 2, chartOptions.labels.fontSize);
             context.fillText(minValueString, dimensions.width - context.measureText(minValueString).width - 2, dimensions.height - 2);
 
-
-            console.log(maxValueString);
         }
 
         // Display timestamps along x-axis at the bottom of the chart.

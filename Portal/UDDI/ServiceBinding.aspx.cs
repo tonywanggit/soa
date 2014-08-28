@@ -33,6 +33,7 @@ public partial class UDDI_ServiceBinding : BasePage
         {
             cbProvider.SelectedIndex = 0;
             cbService.SelectedIndex = 0;
+            cbServiceVersion.SelectedIndex = 0;
         }
         else
         {
