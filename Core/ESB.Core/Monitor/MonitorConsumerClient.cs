@@ -78,10 +78,10 @@ namespace ESB.Core.Monitor
                         m_TimerX.Dispose();
                         m_TimerX = null;
                         m_ReConnectNum = 0;
-
-                        //--当监控中心可用时需要检测本地消息队列，如果有消息则需要发送
-                        m_LocalMQ.CheckAndResendMessage();
                     }
+
+                    //--当监控中心可用时需要检测本地消息队列，如果有消息则需要发送
+                    m_LocalMQ.CheckAndResendMessage();
 
                     m_RabbitMQAvailable = true;
                     XTrace.WriteLine("成功连接到监控中心。");
@@ -95,7 +95,7 @@ namespace ESB.Core.Monitor
                     }
                     else
                     {
-                        Console.WriteLine("第{0}次重连监控中心失败！", m_ReConnectNum);
+                        XTrace.WriteLine("第{0}次重连监控中心失败, 抛出异常：{0}", m_ReConnectNum, ex.ToString());
                         m_ReConnectNum++;
                     }
                 }
@@ -118,11 +118,17 @@ namespace ESB.Core.Monitor
                 }
                 catch (Exception ex)
                 {
-                    XTrace.WriteLine("向监控中心发送数据是异常：", ex,ToString());
+                    m_LocalMQ.QueueMessage<T>(queueName, message);
+                    XTrace.WriteLine("向监控中心发送数据产生异常, 这段时间消息将被存在本地：{0}", ex.ToString());
+
                     m_RabbitMQ.Dispose();
                     m_RabbitMQ = null;
 
-                    m_LocalMQ.QueueMessage<T>(queueName, message);
+                    if (m_TimerX == null)
+                    {
+                        m_TimerX = new TimerX(x => Connect(), null, 5000, 5000);
+                        XTrace.WriteLine("5秒之后将会重新连接监控中心...");
+                    }
                 }
             }
             else

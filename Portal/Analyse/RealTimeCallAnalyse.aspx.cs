@@ -22,39 +22,11 @@ public partial class Analyse_RealTimeCallAnalyse : BasePage
 
         foreach (var item in lstBusinessService)
         {
-            //if (item.ServiceName == "WXSC_WeiXinServiceForApp")
+            //if (item.ServiceName == "WXSC_WeiXinServiceForApp" || item.ServiceName == "BG_Member")
                 this.statTable.Rows.Add(BuildTableRow(item.ServiceName, 0, 0, 0, 0));
         }
-
-        mcClient = MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal);
-        if (!mcClient.IsSubscribe)
-        {
-            mcClient.OnMonitorStatPublish += mcClient_OnMonitorStatPublish;
-        }
     }
-
-    /// <summary>
-    /// 当收到监控中心的发布事件时通知个客户端刷新数据
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void mcClient_OnMonitorStatPublish(object sender, MonitorStatEventArgs e)
-    {
-        List<ServiceMonitor> lstServiceMonitor = e.ListServiceMonitor;
-        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
-        if (lstServiceMonitor == null || lstServiceMonitor.Count == 0)
-        {
-            sb.Append(@"[]");
-        }
-        else
-        {
-            sb = GetJsonString(lstServiceMonitor);
-        }
-
-        MonitorStatAsyncResult.SetAllResultComplete(sb.ToString());
-    }
-
+    
     /// <summary>
     /// 将监控数据转化成JSON格式
     /// </summary>
@@ -105,7 +77,7 @@ public partial class Analyse_RealTimeCallAnalyse : BasePage
 				<div style=""font-weight:bold"">{0}</div>
 				<div>调用峰值：<span class=""esb_tps"">{1}</span>TPS</div>
 				<div>调用总数：<span class=""esb_callSum"">{2}</span></div>
-				<div>流量 <font color=""green"">入</font>：<span class=""esb_inBytes"" data=""0"">{3}</span><span style=""color:red;padding-left:10px;"">出</span>：<span class=""esb_outBytes"" data=""0"">{4}</span></div>"
+				<div>流量 <font color=""blue"">入</font>：<span class=""esb_inBytes"" data=""0"">{3}</span><span style=""color:red;padding-left:10px;"">出</span>：<span class=""esb_outBytes"" data=""0"">{4}</span></div>"
             , serviceName, callPeak, callSum, inBytes, outBytes)
         });
         //row.Cells.Add(new TableCell() { Text = String.Format(@"<div id=""div_area_{0}"" class=""epoch area"" style=""height:160px;width:800px""></div>", serviceName) });

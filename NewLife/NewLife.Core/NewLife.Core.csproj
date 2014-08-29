@@ -35,7 +35,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;NET4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\NewLife.Core.XML</DocumentationFile>
@@ -122,7 +122,6 @@
     <Compile Include="Extension\Linq\Enumerable.cs" />
     <Compile Include="Extension\Linq\EnumerableSorter.cs" />
     <Compile Include="Extension\Linq\Enumerable_2.cs" />
-    <Compile Include="Extension\Linq\ExtensionAttribute.cs" />
     <Compile Include="Extension\Linq\GroupedEnumerable.cs" />
     <Compile Include="Extension\Linq\IdentityFunction.cs" />
     <Compile Include="Extension\Linq\IGrouping.cs" />

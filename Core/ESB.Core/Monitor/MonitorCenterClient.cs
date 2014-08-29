@@ -97,7 +97,7 @@ namespace ESB.Core.Monitor
                         }
                     }
                 }
-                else if (e.Type == CometEventType.Lost)     // 当和注册中心断开连接时
+                else if (e.Type == CometEventType.Lost)     // 当和监控中心断开连接时
                 {
                     Console.WriteLine("和监控中心断开连接。");
                 }

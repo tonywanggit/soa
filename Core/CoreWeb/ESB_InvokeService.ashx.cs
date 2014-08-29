@@ -48,7 +48,7 @@ namespace ESB.CallCenter
                 return request.Form["Message"];
 
             //--如果表单上无法取到Message，则表示请求为GET请求，直接从URL上获取数据
-            String rawUrl = request.RawUrl;
+            String rawUrl = request.Url.ToString();
 
             if (rawUrl.Contains("&Message="))
                 return rawUrl.Substring(rawUrl.IndexOf("&Message=") + 9);

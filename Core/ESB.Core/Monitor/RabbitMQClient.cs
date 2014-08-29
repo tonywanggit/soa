@@ -37,8 +37,15 @@ namespace ESB.Core.Monitor
 
             m_Connection = m_Factory.CreateConnection();
 
-            m_ChannelDict.Add(Constant.ESB_AUDIT_QUEUE, m_Connection.CreateModel());
-            m_ChannelDict.Add(Constant.ESB_EXCEPTION_QUEUE, m_Connection.CreateModel());
+            //--声明Audit通道
+            IModel channelAudit = m_Connection.CreateModel();
+            channelAudit.QueueDeclare(Constant.ESB_AUDIT_QUEUE, true, false, false, null);
+            m_ChannelDict.Add(Constant.ESB_AUDIT_QUEUE, channelAudit);
+
+            //--声明Exception通道
+            IModel channelException = m_Connection.CreateModel();
+            channelException.QueueDeclare(Constant.ESB_EXCEPTION_QUEUE, true, false, false, null);
+            m_ChannelDict.Add(Constant.ESB_EXCEPTION_QUEUE, channelException);
         }
 
         /// <summary>
@@ -46,11 +53,18 @@ namespace ESB.Core.Monitor
         /// </summary>
         public void Dispose()
         {
-            foreach (var item in m_ChannelDict.Values)
+            try
             {
-                item.Dispose();
+                foreach (var item in m_ChannelDict.Values)
+                {
+                    item.Dispose();
+                }
+                m_Connection.Dispose();
             }
-            m_Connection.Dispose();
+            catch (Exception ex)
+            {
+                XTrace.WriteLine("在执行RabbitMQClient.Dispose方式时发生异常：{0}", ex.ToString());
+            }
         }
 
         /// <summary>
@@ -64,7 +78,7 @@ namespace ESB.Core.Monitor
             //Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff"));
             //在MQ上定义一个队列
             IModel channel = m_ChannelDict[queueName];
-            channel.QueueDeclare(queueName, true, false, false, null);
+            //channel.QueueDeclare(queueName, true, false, false, null);
 
             IBasicProperties properties = channel.CreateBasicProperties();
             properties.DeliveryMode = 2;
@@ -93,7 +107,7 @@ namespace ESB.Core.Monitor
         {
             //在MQ上定义一个队列，如果名称相同不会重复创建
             IModel channel = m_ChannelDict[queueName];
-            channel.QueueDeclare(queueName, true, false, false, null);
+            //channel.QueueDeclare(queueName, true, false, false, null);
 
             //在队列上定义一个消费者
             QueueingBasicConsumer consumer = new QueueingBasicConsumer(channel);
