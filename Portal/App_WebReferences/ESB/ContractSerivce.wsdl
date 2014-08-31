@@ -81,6 +81,83 @@
       <s:element name="DeleteServiceVersionResponse">
         <s:complexType />
       </s:element>
+      <s:element name="SelectServiceContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="versionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectServiceContractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectServiceContractResult" type="tns:ArrayOfServiceContract" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfServiceContract">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceContract" nillable="true" type="tns:ServiceContract" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceContract">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceContractOfServiceContract" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiceContractOfServiceContract">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfServiceContract">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceVersionID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MethodContract" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreatePersonID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfServiceContract">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="InsertServiceContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:ServiceContract" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertServiceContractResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateServiceContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:ServiceContract" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateServiceContractResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteServiceContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:ServiceContract" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServiceContractResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetServiceVersionByServiceIDSoapIn">
@@ -107,7 +184,31 @@
   <wsdl:message name="DeleteServiceVersionSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteServiceVersionResponse" />
   </wsdl:message>
-  <wsdl:portType name="ServiceContractSoap">
+  <wsdl:message name="SelectServiceContractSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectServiceContract" />
+  </wsdl:message>
+  <wsdl:message name="SelectServiceContractSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectServiceContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertServiceContractSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertServiceContract" />
+  </wsdl:message>
+  <wsdl:message name="InsertServiceContractSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertServiceContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateServiceContractSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateServiceContract" />
+  </wsdl:message>
+  <wsdl:message name="UpdateServiceContractSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateServiceContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceContractSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteServiceContract" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceContractSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteServiceContractResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ContractSerivceSoap">
     <wsdl:operation name="GetServiceVersionByServiceID">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务下的所有版本</wsdl:documentation>
       <wsdl:input message="tns:GetServiceVersionByServiceIDSoapIn" />
@@ -128,8 +229,28 @@
       <wsdl:input message="tns:DeleteServiceVersionSoapIn" />
       <wsdl:output message="tns:DeleteServiceVersionSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="SelectServiceContract">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务版本下的所有契约</wsdl:documentation>
+      <wsdl:input message="tns:SelectServiceContractSoapIn" />
+      <wsdl:output message="tns:SelectServiceContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceContract">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增服务契约</wsdl:documentation>
+      <wsdl:input message="tns:InsertServiceContractSoapIn" />
+      <wsdl:output message="tns:InsertServiceContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceContract">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改服务契约</wsdl:documentation>
+      <wsdl:input message="tns:UpdateServiceContractSoapIn" />
+      <wsdl:output message="tns:UpdateServiceContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceContract">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务契约</wsdl:documentation>
+      <wsdl:input message="tns:DeleteServiceContractSoapIn" />
+      <wsdl:output message="tns:DeleteServiceContractSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="ServiceContractSoap" type="tns:ServiceContractSoap">
+  <wsdl:binding name="ContractSerivceSoap" type="tns:ContractSerivceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetServiceVersionByServiceID">
       <soap:operation soapAction="http://esb.com/GetServiceVersionByServiceID" style="document" />
@@ -167,8 +288,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SelectServiceContract">
+      <soap:operation soapAction="http://esb.com/SelectServiceContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceContract">
+      <soap:operation soapAction="http://esb.com/InsertServiceContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceContract">
+      <soap:operation soapAction="http://esb.com/UpdateServiceContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceContract">
+      <soap:operation soapAction="http://esb.com/DeleteServiceContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="ServiceContractSoap12" type="tns:ServiceContractSoap">
+  <wsdl:binding name="ContractSerivceSoap12" type="tns:ContractSerivceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetServiceVersionByServiceID">
       <soap12:operation soapAction="http://esb.com/GetServiceVersionByServiceID" style="document" />
@@ -206,13 +363,49 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SelectServiceContract">
+      <soap12:operation soapAction="http://esb.com/SelectServiceContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceContract">
+      <soap12:operation soapAction="http://esb.com/InsertServiceContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceContract">
+      <soap12:operation soapAction="http://esb.com/UpdateServiceContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceContract">
+      <soap12:operation soapAction="http://esb.com/DeleteServiceContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="ServiceContract">
-    <wsdl:port name="ServiceContractSoap" binding="tns:ServiceContractSoap">
-      <soap:address location="http://192.168.56.1/CallCenter/BasicService/ServiceContract.asmx" />
+  <wsdl:service name="ContractSerivce">
+    <wsdl:port name="ContractSerivceSoap" binding="tns:ContractSerivceSoap">
+      <soap:address location="http://192.168.56.1/CallCenter/BasicService/ContractSerivce.asmx" />
     </wsdl:port>
-    <wsdl:port name="ServiceContractSoap12" binding="tns:ServiceContractSoap12">
-      <soap12:address location="http://192.168.56.1/CallCenter/BasicService/ServiceContract.asmx" />
+    <wsdl:port name="ContractSerivceSoap12" binding="tns:ContractSerivceSoap12">
+      <soap12:address location="http://192.168.56.1/CallCenter/BasicService/ContractSerivce.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

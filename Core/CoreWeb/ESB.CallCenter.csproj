@@ -77,7 +77,7 @@
   <ItemGroup>
     <Content Include="BasicService\AuditService.asmx" />
     <Content Include="BasicService\ExceptionService.asmx" />
-    <Content Include="BasicService\ServiceContract.asmx" />
+    <Content Include="BasicService\ContractSerivce.asmx" />
     <Content Include="BasicService\UddiService.asmx" />
     <Content Include="ClearAssemblyCache.aspx" />
     <Content Include="Core_Service_Bus_MainBus_ReceiveSendPort.asmx" />
@@ -99,8 +99,8 @@
       <DependentUpon>ExceptionService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BasicService\ServiceContract.asmx.cs">
-      <DependentUpon>ServiceContract.asmx</DependentUpon>
+    <Compile Include="BasicService\ContractSerivce.asmx.cs">
+      <DependentUpon>ContractSerivce.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BasicService\UddiService.asmx.cs">

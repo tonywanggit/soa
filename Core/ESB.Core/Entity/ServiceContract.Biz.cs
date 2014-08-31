@@ -97,6 +97,20 @@ namespace ESB.Core.Entity
             // 单对象缓存
             //return Meta.SingleCache[oid];
         }
+
+        /// <summary>根据服务版本查找</summary>
+        /// <param name="oid"></param>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public static List<TEntity> FindByVersion(String serviceID, String versionID, Int32 status)
+        {
+            if (Meta.Count >= 1000)
+                return FindAll(new String[] { _.ServiceID, _.ServiceVersionID, _.Status }, new Object[] { serviceID, versionID, status });
+            else // 实体缓存
+                return Meta.Cache.Entities.FindAll(x => x.ServiceID == serviceID && x.ServiceVersionID == versionID && x.Status == status);
+            // 单对象缓存
+            //return Meta.SingleCache[oid];
+        }
         #endregion
 
         #region 高级查询

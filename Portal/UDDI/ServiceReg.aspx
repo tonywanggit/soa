@@ -120,7 +120,7 @@
         OnSelecting="OdsService_Selecting" OnInserting="OdsService_Inserting" OnUpdating="OdsService_Updating" OnDeleting="OdsService_Deleting">
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsServiceVersion" runat="server" 
-        TypeName="ESB.ServiceContract"
+        TypeName="ESB.ContractSerivce"
         DataObjectTypeName="ESB.BusinessServiceVersion"
         SelectMethod="GetServiceVersionByServiceID"  UpdateMethod="UpdateServiceVersion" InsertMethod="InsertServiceVersion" DeleteMethod="DeleteServiceVersion"
         OnInserting="OdsServiceVersion_Inserting">
