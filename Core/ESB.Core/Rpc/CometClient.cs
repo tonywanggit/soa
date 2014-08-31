@@ -56,10 +56,10 @@ namespace ESB.Core.Rpc
             try
             {
                 m_SocketClient.EndConnect(ar);
-                m_RecvBuff = new Byte[m_SocketClient.SendBufferSize];
+                m_RecvBuff = new Byte[1024 * 100]; //设置缓冲区为100K
                 m_SocketClient.BeginReceive(m_RecvBuff, 0, m_RecvBuff.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), m_SocketClient);
 
-                Console.WriteLine("与服务器成功建立连接！");
+                XTrace.WriteLine("与服务器成功建立连接！");
 
                 ReceiveNotify(CometEventType.Connected, String.Empty);
 
@@ -86,7 +86,7 @@ namespace ESB.Core.Rpc
                 Console.WriteLine("接收到来自服务器的响应：{0}", data);
                 ReceiveNotify(CometEventType.ReceiveMessage, data);
 
-                m_RecvBuff = new Byte[m_SocketClient.SendBufferSize];
+                m_RecvBuff = new Byte[1024 * 100]; //设置缓冲区为100K
                 m_SocketClient.BeginReceive(m_RecvBuff, 0, m_RecvBuff.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), m_SocketClient);
 
             }
@@ -192,7 +192,7 @@ namespace ESB.Core.Rpc
             Dispose();
             String error = String.Format("与服务器失去联系：" + reason);
             XTrace.WriteLine(error);
-            Console.WriteLine(error);
+            //Console.WriteLine(error);
             ReceiveNotify(CometEventType.Lost, error);
         }
     }

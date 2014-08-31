@@ -4,6 +4,7 @@ using ESB.Core.Rpc;
 using ESB.Core.Util;
 using NewLife.Configuration;
 using NewLife.Log;
+using NewLife.Threading;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,13 @@ namespace ESB.Core.Monitor
     public class MonitorCenterClient
     {
         private CometClient m_CometClient = null;
+        private CometClientType m_CometClientType;
+        private String m_MonitorCenterUri;
+
+        /// <summary>
+        /// 定时器：用于检测调用中心是否可以使用
+        /// </summary>
+        private TimerX m_TimerX;
 
         private static MonitorCenterClient m_Instance;
 
@@ -38,11 +46,8 @@ namespace ESB.Core.Monitor
         /// <param name="esbProxy"></param>
         private MonitorCenterClient(CometClientType ccType)
         {
-            String uri = Config.GetConfig<String>("ESB.MonitorCenter.Uri");
-            m_CometClient = new CometClient(uri, ccType);
-
-            m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
-            m_CometClient.Connect();
+            m_MonitorCenterUri = Config.GetConfig<String>("ESB.MonitorCenter.Uri");
+            m_CometClientType = ccType;
         }
 
         /// <summary>
@@ -62,13 +67,29 @@ namespace ESB.Core.Monitor
         /// 连接到监控中心
         /// </summary>
         /// <returns></returns>
-        private void Connect(CometClientType ccType)
+        public void Connect()
         {
-            //String uri = Config.GetConfig<String>("ESB.MonitorCenter.Uri");
-            //m_CometClient = new CometClient(uri, ccType);
+            m_CometClient = new CometClient(m_MonitorCenterUri, m_CometClientType);
+            m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
+            m_CometClient.Connect();
 
-            //m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
-            //m_CometClient.Connect();
+            //--连接成功后,释放定时器
+            if (m_TimerX != null)
+            {
+                m_TimerX.Dispose();
+                m_TimerX = null;
+            }
+        }
+
+        /// <summary>
+        /// 重新连接到监控中心，采用定时器5秒后重连
+        /// </summary>
+        private void ReConnect()
+        {
+            if (m_CometClient != null)
+                m_CometClient.Dispose();
+
+            m_TimerX = new TimerX(x => Connect(), null, 5000, 5000);
         }
 
         /// <summary>
@@ -82,9 +103,6 @@ namespace ESB.Core.Monitor
             {
                 if (e.Type == CometEventType.ReceiveMessage)    // 接收到来自服务器的配置信息
                 {
-                    if (e.Response.Length > 500)
-                        XTrace.WriteLine(e.Response);
-
                     CometMessage rm = XmlUtil.LoadObjFromXML<CometMessage>(e.Response);
 
                     if (rm.Action == CometMessageAction.Publish)
@@ -99,13 +117,14 @@ namespace ESB.Core.Monitor
                 }
                 else if (e.Type == CometEventType.Lost)     // 当和监控中心断开连接时
                 {
-                    Console.WriteLine("和监控中心断开连接。");
+                    Console.WriteLine("和监控中心断开连接, 5秒钟后将重新连接。");
+                    ReConnect();
                 }
 
             }
             catch (Exception ex)
             {
-                XTrace.WriteLine("接收监控中心消息时发生错误：" + ex.ToString());
+                Console.WriteLine("接收监控中心消息时发生错误:" + ex.ToString());
             }
         }
     }

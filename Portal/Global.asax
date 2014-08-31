@@ -4,6 +4,7 @@
     {
         ESB.Core.Monitor.MonitorCenterClient mcClient = ESB.Core.Monitor.MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal);
         mcClient.OnMonitorStatPublish += mcClient_OnMonitorStatPublish;
+        mcClient.Connect();
     }
 
     /// <summary>

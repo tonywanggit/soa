@@ -15,6 +15,7 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
+            //MonitorCenterTest.DoTest();
 
             //TestEsbProxy("ESB_ServiceStack", "Hello", @"{""Name""=""Tony""}");
 
