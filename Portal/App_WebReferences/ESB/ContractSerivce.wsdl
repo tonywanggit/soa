@@ -37,6 +37,7 @@
               <s:element minOccurs="1" maxOccurs="1" name="ConfirmDateTime" type="s:dateTime" />
               <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Opinion" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -71,10 +72,33 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="versionID" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="opinion" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="UpdateServiceVersionStatusResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReviseServiceVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="versionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="personalID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReviseServiceVersionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpgradeServiceVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="versionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="personalID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpgradeServiceVersionResponse">
         <s:complexType />
       </s:element>
       <s:element name="UpdateServiceVersionInfo">
@@ -119,10 +143,19 @@
       <s:element name="DeleteServiceVersionResponse">
         <s:complexType />
       </s:element>
+      <s:element name="DeleteServiceVersionAndContract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="versionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServiceVersionAndContractResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="SelectServiceContract">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="versionID" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
           </s:sequence>
@@ -216,6 +249,18 @@
   <wsdl:message name="UpdateServiceVersionStatusSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateServiceVersionStatusResponse" />
   </wsdl:message>
+  <wsdl:message name="ReviseServiceVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:ReviseServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="ReviseServiceVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:ReviseServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpgradeServiceVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpgradeServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="UpgradeServiceVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpgradeServiceVersionResponse" />
+  </wsdl:message>
   <wsdl:message name="UpdateServiceVersionInfoSoapIn">
     <wsdl:part name="parameters" element="tns:UpdateServiceVersionInfo" />
   </wsdl:message>
@@ -239,6 +284,12 @@
   </wsdl:message>
   <wsdl:message name="DeleteServiceVersionSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteServiceVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceVersionAndContractSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteServiceVersionAndContract" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceVersionAndContractSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteServiceVersionAndContractResponse" />
   </wsdl:message>
   <wsdl:message name="SelectServiceContractSoapIn">
     <wsdl:part name="parameters" element="tns:SelectServiceContract" />
@@ -280,6 +331,16 @@
       <wsdl:input message="tns:UpdateServiceVersionStatusSoapIn" />
       <wsdl:output message="tns:UpdateServiceVersionStatusSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ReviseServiceVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修订版本</wsdl:documentation>
+      <wsdl:input message="tns:ReviseServiceVersionSoapIn" />
+      <wsdl:output message="tns:ReviseServiceVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpgradeServiceVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">升级版本</wsdl:documentation>
+      <wsdl:input message="tns:UpgradeServiceVersionSoapIn" />
+      <wsdl:output message="tns:UpgradeServiceVersionSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateServiceVersionInfo">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改服务版本的信息</wsdl:documentation>
       <wsdl:input message="tns:UpdateServiceVersionInfoSoapIn" />
@@ -299,6 +360,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务版本</wsdl:documentation>
       <wsdl:input message="tns:DeleteServiceVersionSoapIn" />
       <wsdl:output message="tns:DeleteServiceVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceVersionAndContract">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务版本和服务契约</wsdl:documentation>
+      <wsdl:input message="tns:DeleteServiceVersionAndContractSoapIn" />
+      <wsdl:output message="tns:DeleteServiceVersionAndContractSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SelectServiceContract">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务版本下的所有契约</wsdl:documentation>
@@ -350,6 +416,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReviseServiceVersion">
+      <soap:operation soapAction="http://esb.com/ReviseServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpgradeServiceVersion">
+      <soap:operation soapAction="http://esb.com/UpgradeServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateServiceVersionInfo">
       <soap:operation soapAction="http://esb.com/UpdateServiceVersionInfo" style="document" />
       <wsdl:input>
@@ -379,6 +463,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteServiceVersion">
       <soap:operation soapAction="http://esb.com/DeleteServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceVersionAndContract">
+      <soap:operation soapAction="http://esb.com/DeleteServiceVersionAndContract" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -452,6 +545,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReviseServiceVersion">
+      <soap12:operation soapAction="http://esb.com/ReviseServiceVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpgradeServiceVersion">
+      <soap12:operation soapAction="http://esb.com/UpgradeServiceVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateServiceVersionInfo">
       <soap12:operation soapAction="http://esb.com/UpdateServiceVersionInfo" style="document" />
       <wsdl:input>
@@ -481,6 +592,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteServiceVersion">
       <soap12:operation soapAction="http://esb.com/DeleteServiceVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceVersionAndContract">
+      <soap12:operation soapAction="http://esb.com/DeleteServiceVersionAndContract" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

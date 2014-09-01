@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Web.ASPxEditors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -57,7 +58,6 @@ public partial class UDDI_ServiceContract : BasePage
 
     protected void OdsServiceContract_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
     {
-        e.InputParameters["serviceID"] = cbService.Value;
         e.InputParameters["versionID"] = cbServiceVersion.Value;
         e.InputParameters["status"] = 0;
     }
@@ -114,8 +114,15 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnAdd.Enabled = false;
             this.btnCommit.Enabled = false;
             this.btnCommit.Text = "提交评审";
+            this.btnSaveVersion.Enabled = false;
+            this.btnRevise.Enabled = true;
+            this.btnUpdate.Enabled = true;
+            this.btnDelete.Enabled = false;
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
+
+            //--控制修订版本、升级版本两个按钮
+            SetPublishVersionUI();
 
             grid.Columns[0].Visible = false;
         }
@@ -124,6 +131,10 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnAdd.Enabled = false;
             this.btnCommit.Enabled = true;
             this.btnCommit.Text = "取消评审";
+            this.btnSaveVersion.Enabled = false;
+            this.btnRevise.Enabled = false;
+            this.btnUpdate.Enabled = false;
+            this.btnDelete.Enabled = false;
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
 
@@ -134,10 +145,37 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnAdd.Enabled = true;
             this.btnCommit.Enabled = true;
             this.btnCommit.Text = "提交评审";
+            this.btnSaveVersion.Enabled = true;
+            this.btnRevise.Enabled = false;
+            this.btnUpdate.Enabled = false;
+            this.btnDelete.Enabled = true;
             this.cbConfirmPerson.ReadOnly = false;
             this.mmVersionDesc.ReadOnly = false;
 
             grid.Columns[0].Visible = true;
+        }
+    }
+
+    /// <summary>
+    /// 当选择发布版本时，需要判断该版本下是否有编辑中、提交审核、审核失败的版本
+    /// </summary>
+    private void SetPublishVersionUI()
+    {
+        String bigVer = cbServiceVersion.Text.Split('.')[0];
+        Boolean isEdit = false;
+        foreach (ListEditItem item in this.cbServiceVersion.Items)
+        {
+            //--如果同一个大版本下有编辑中、提交审核、审核失败的版本，则不允许修订或升级版本
+            if (item.Text.StartsWith(bigVer + ".") && !item.Text.Contains("已发布"))
+            {
+                isEdit = true;
+                break;
+            }
+        }
+        if (isEdit)
+        {
+            this.btnRevise.Enabled = false;
+            this.btnUpdate.Enabled = false;
         }
     }
 
@@ -167,9 +205,9 @@ public partial class UDDI_ServiceContract : BasePage
     protected void btnCommit_Click(object sender, EventArgs e)
     {
         if (this.btnCommit.Text == "提交评审")
-            m_ContractSerivce.UpdateServiceVersionStatus(cbServiceVersion.Value.ToString(), 1);
+            m_ContractSerivce.UpdateServiceVersionStatus(cbServiceVersion.Value.ToString(), 1, String.Empty);
         else
-            m_ContractSerivce.UpdateServiceVersionStatus(cbServiceVersion.Value.ToString(), 0);
+            m_ContractSerivce.UpdateServiceVersionStatus(cbServiceVersion.Value.ToString(), 0, String.Empty);
 
         this.Page.DataBind();
     }
@@ -187,6 +225,42 @@ public partial class UDDI_ServiceContract : BasePage
     protected void btnSaveVersion_Click(object sender, EventArgs e)
     {
         m_ContractSerivce.UpdateServiceVersionInfo(cbServiceVersion.Value.ToString(), cbConfirmPerson.Value.ToString(), mmVersionDesc.Text);
+    }
+
+    /// <summary>
+    /// 修订版本
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnRevise_Click(object sender, EventArgs e)
+    {
+        m_ContractSerivce.ReviseServiceVersion(cbServiceVersion.Value.ToString(), AuthUser.UserID);
+        InitPage();
+        this.Page.DataBind();
+    }
+
+    /// <summary>
+    /// 升级版本
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnUpdate_Click(object sender, EventArgs e)
+    {
+        m_ContractSerivce.UpgradeServiceVersion(cbServiceVersion.Value.ToString(), AuthUser.UserID);
+        InitPage();
+        this.Page.DataBind();
+    }
+
+    /// <summary>
+    /// 删除版本
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        m_ContractSerivce.DeleteServiceVersionAndContract(cbServiceVersion.Value.ToString());
+        InitPage();
+        this.Page.DataBind();
     }
     #endregion
 }

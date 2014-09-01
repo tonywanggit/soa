@@ -96,6 +96,10 @@ namespace ESB.Core.Entity
                         return "提交评审";
                     case 2:
                         return "已发布";
+                    case 3:
+                        return "评审拒绝";
+                    case 9:
+                        return "版本废弃";
                     default:
                         return "异常状态";
                 }
@@ -191,9 +195,23 @@ namespace ESB.Core.Entity
         /// </summary>
         /// <param name="versionID"></param>
         /// <param name="status"></param>
-        public static void UpdateServiceVersionStatus(String versionID, Int32 status)
+        public static void UpdateServiceVersionStatus(String versionID, Int32 status, String opinion)
         {
-            BusinessServiceVersion.Update(new String[] { _.Status }, new Object[] { status }, new String[] { _.OID }, new Object[] { versionID });
+            TEntity version = FindByOID(versionID);
+            if (version != null)
+            {
+                if (status == 1)//--将状态置为提交审批
+                {
+                    version.CommitDateTime = DateTime.Now;
+                }
+                else if (status > 1)//--将状态置为 审批通过或审批拒绝
+                {
+                    version.ConfirmDateTime = DateTime.Now;
+                    version.Opinion = opinion;
+                }
+                version.Status = status;
+                version.Update();
+            }
         }
 
         /// <summary>
@@ -211,6 +229,73 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 业务
+        /// <summary>
+        /// 修订版本
+        /// </summary>
+        /// <param name="versionID"></param>
+        /// <param name="status"></param>
+        public static void ReviseServiceVersion(String versionID, String personalID)
+        {
+            TEntity versionBase = FindByOID(versionID);
+            if (versionBase != null)
+            {
+                TEntity versionNew = new TEntity()
+                {
+                    OID = Guid.NewGuid().ToString(),
+                    CreatePersionID = personalID,
+                    CreateDateTime = DateTime.Now,
+                    BigVer = versionBase.BigVer,
+                    SmallVer = versionBase.SmallVer + 1,
+                    ServiceID = versionBase.ServiceID,
+                    Description = String.Format("{0}.{1}的修订版本。", versionBase.BigVer, versionBase.SmallVer),
+                    Status = 0
+                };
+                versionNew.Insert();
+
+                //--将原先的方法契约拷贝到新的服务版本上
+                ServiceContract.CopyServiceContract(versionID, versionNew.OID);
+            }
+        }
+
+        /// <summary>
+        /// 审计版本
+        /// </summary>
+        /// <param name="versionID"></param>
+        /// <param name="status"></param>
+        public static void UpgradeServiceVersion(String versionID, String personalID)
+        {
+            TEntity versionBase = FindByOID(versionID);
+            if (versionBase != null)
+            {
+                TEntity versionNew = new TEntity()
+                {
+                    OID = Guid.NewGuid().ToString(),
+                    CreatePersionID = personalID,
+                    CreateDateTime = DateTime.Now,
+                    BigVer = versionBase.BigVer + 1,
+                    SmallVer = 0,
+                    ServiceID = versionBase.ServiceID,
+                    Description = String.Format("{0}.{1}的升级版本。", versionBase.BigVer, versionBase.SmallVer),
+                    Status = 0
+                };
+                versionNew.Insert();
+
+                //--将原先的方法契约拷贝到新的服务版本上
+                ServiceContract.CopyServiceContract(versionID, versionNew.OID);
+            }
+        }
+
+        /// <summary>
+        /// 删除服务版本和关联契约
+        /// </summary>
+        /// <param name="versionID"></param>
+        /// <param name="personalID"></param>
+        public static void DeleteServiceVersionAndContract(String versionID)
+        {
+            ServiceContract.DeleteAllContract(versionID);
+            Delete(new String[] { _.OID }, new Object[] { versionID });
+        }
+
         #endregion
     }
 }

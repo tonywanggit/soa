@@ -27,13 +27,26 @@ namespace ESB.CallCenter.BasicService
         [WebMethod(Description = "获取到服务下的所有版本")]
         public List<BusinessServiceVersion> GetServiceVersionByServiceID(String serviceID)
         {
-            return BusinessServiceVersion.FindAllByServiceID(serviceID);
+            List<BusinessServiceVersion> lstVersion = BusinessServiceVersion.FindAllByServiceID(serviceID);
+            return lstVersion.OrderByDescending(x => x.CreateDateTime).ToList();
         }
 
         [WebMethod(Description = "修改服务版本的状态")]
-        public void UpdateServiceVersionStatus(String versionID, Int32 status)
+        public void UpdateServiceVersionStatus(String versionID, Int32 status, String opinion)
         {
-            BusinessServiceVersion.UpdateServiceVersionStatus(versionID, status);
+            BusinessServiceVersion.UpdateServiceVersionStatus(versionID, status, opinion);
+        }
+
+        [WebMethod(Description = "修订版本")]
+        public void ReviseServiceVersion(String versionID, String personalID)
+        {
+            BusinessServiceVersion.ReviseServiceVersion(versionID, personalID);
+        }
+
+        [WebMethod(Description = "升级版本")]
+        public void UpgradeServiceVersion(String versionID, String personalID)
+        {
+            BusinessServiceVersion.UpgradeServiceVersion(versionID, personalID);
         }
 
         [WebMethod(Description = "修改服务版本的信息")]
@@ -62,6 +75,12 @@ namespace ESB.CallCenter.BasicService
         {
             entity.Delete();
         }
+
+        [WebMethod(Description = "删除服务版本和服务契约")]
+        public void DeleteServiceVersionAndContract(String versionID)
+        {
+            BusinessServiceVersion.DeleteServiceVersionAndContract(versionID);
+        }
         #endregion
 
 
@@ -74,9 +93,9 @@ namespace ESB.CallCenter.BasicService
         /// <param name="status">0：当前，1：提交评审，2：评审通过</param>
         /// <returns></returns>
         [WebMethod(Description = "获取到服务版本下的所有契约")]
-        public List<ServiceContract> SelectServiceContract(String serviceID, String versionID, Int32 status)
+        public List<ServiceContract> SelectServiceContract(String versionID, Int32 status)
         {
-            return ServiceContract.FindByVersion(serviceID, versionID, status);
+            return ServiceContract.FindByVersion(versionID, status).OrderBy(x => x.CreateDateTime).ToList();
         }
 
         [WebMethod(Description = "新增服务契约")]

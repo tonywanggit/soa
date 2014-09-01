@@ -102,12 +102,12 @@ namespace ESB.Core.Entity
         /// <param name="oid"></param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static List<TEntity> FindByVersion(String serviceID, String versionID, Int32 status)
+        public static List<TEntity> FindByVersion(String versionID, Int32 status)
         {
             if (Meta.Count >= 1000)
-                return FindAll(new String[] { _.ServiceID, _.ServiceVersionID, _.Status }, new Object[] { serviceID, versionID, status });
+                return FindAll(new String[] { _.ServiceVersionID, _.Status }, new Object[] { versionID, status });
             else // 实体缓存
-                return Meta.Cache.Entities.FindAll(x => x.ServiceID == serviceID && x.ServiceVersionID == versionID && x.Status == status);
+                return Meta.Cache.Entities.FindAll(x => x.ServiceVersionID == versionID && x.Status == status);
             // 单对象缓存
             //return Meta.SingleCache[oid];
         }
@@ -168,6 +168,30 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 业务
+        /// <summary>
+        /// 复制服务版本契约
+        /// </summary>
+        /// <param name="baseVersionID"></param>
+        /// <param name="newVersionID"></param>
+        public static void CopyServiceContract(String baseVersionID, String newVersionID)
+        {
+            List<TEntity> lstContract = FindByVersion(baseVersionID, 0);
+            foreach (var item in lstContract)
+            {
+                item.OID = Guid.NewGuid().ToString();
+                item.ServiceVersionID = newVersionID;
+                item.Insert();
+            }
+        }
+
+        /// <summary>
+        /// 删除版本下的所有契约
+        /// </summary>
+        /// <param name="versionID"></param>
+        public static void DeleteAllContract(String versionID)
+        {
+            Delete(new String[] { _.ServiceVersionID }, new Object[] { versionID });
+        }
         #endregion
     }
 }

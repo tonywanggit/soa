@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Demo.master" AutoEventWireup="true" CodeFile="ServiceContract.aspx.cs" Inherits="UDDI_ServiceContract" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Demo.master" AutoEventWireup="true" CodeFile="ServiceContractReview.aspx.cs" Inherits="UDDI_ServiceContractReview" %>
 <%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"  Namespace="System.Web.UI" TagPrefix="asp" %>
 <%@ Register Assembly="DevExpress.Web.ASPxGridView.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dxwgv" %>
 <%@ Register Assembly="DevExpress.Web.ASPxEditors.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dxe" %>
@@ -24,11 +24,11 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td class="buttonCell">
-                    <dxe:ASPxComboBox ID="cbProvider" runat="server" ToolTip="请选择服务提供者" AutoPostBack="true" DataSourceID="OdsProvider" 
+                    <dxe:ASPxComboBox ID="cbProvider" runat="server" ReadOnly="true" ToolTip="请选择服务提供者" AutoPostBack="true" DataSourceID="OdsProvider" 
                         ValueField="BusinessID" TextField="Description" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" />
                 </td> 
                 <td class="buttonCell">
-                    <dxe:ASPxComboBox ID="cbService" ClientInstanceName="cbService" runat="server" ToolTip="请选择具体服务" AutoPostBack="true" DataSourceID="OdsService" Width="150"
+                    <dxe:ASPxComboBox ID="cbService" ClientInstanceName="cbService" runat="server" ReadOnly="true" ToolTip="请选择具体服务" AutoPostBack="true" DataSourceID="OdsService" Width="150"
                         ValueField="ServiceID" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" OnSelectedIndexChanged="cbService_SelectedIndexChanged" TextFormatString="{0}">
                         <Columns>
                             <dxe:ListBoxColumn Caption="服务名称" FieldName="ServiceName" ToolTip="服务名称" Width="100px" />
@@ -37,7 +37,7 @@
                     </dxe:ASPxComboBox>
                 </td> 
                 <td class="buttonCell">
-                    <dxe:ASPxComboBox ID="cbServiceVersion" ClientInstanceName="cbService" runat="server" ToolTip="请选择服务版本" AutoPostBack="true" DataSourceID="OdsServiceVersion" Width="120" 
+                    <dxe:ASPxComboBox ID="cbServiceVersion" ClientInstanceName="cbService" runat="server" ReadOnly="true" ToolTip="请选择服务版本" AutoPostBack="true" DataSourceID="OdsServiceVersion" Width="120" 
                         ValueField="OID" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" TextFormatString="{0}.{1}（{2}）"
                         OnSelectedIndexChanged="cbServiceVersion_SelectedIndexChanged" OnDataBound="cbServiceVersion_DataBound">
                         <Columns>
@@ -49,23 +49,17 @@
                     </dxe:ASPxComboBox>
                 </td>           
                 <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnAdd" runat="server" Text="新增契约" UseSubmitBehavior="False" AutoPostBack="false">
-                        <ClientSideEvents Click="function(){ 
-                            grid.AddNewRow(); 
-                        }" />
-                    </dxe:ASPxButton>
+                    <dxe:ASPxTextBox ID="txtOpinion" runat="server" Width="280" ToolTip="请填写审批意见" NullText="请填写审批意见" ValidationSettings-ErrorDisplayMode="ImageWithTooltip">
+                        <ValidationSettings>
+                            <RequiredField IsRequired="true" ErrorText="请填写审批意见" />
+                        </ValidationSettings>
+                    </dxe:ASPxTextBox>
+                </td>
+                <td class="buttonCell">
+                    <dxe:ASPxButton ID="btnRefuse" runat="server" Text="拒绝" AutoPostBack="true" OnClick="btnRefuse_Click"></dxe:ASPxButton>
                 </td>    
                 <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnCommit" runat="server" Text="提交评审" AutoPostBack="true" OnClick="btnCommit_Click"></dxe:ASPxButton>
-                </td> 
-                <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnRevise" runat="server" Text="修订版本" AutoPostBack="true" OnClick="btnRevise_Click"></dxe:ASPxButton>
-                </td>
-                <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnUpdate" runat="server" Text="升级版本" AutoPostBack="true" OnClick="btnUpdate_Click"></dxe:ASPxButton>
-                </td>
-                <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnDelete" runat="server" Text="删除版本" AutoPostBack="true" OnClick="btnDelete_Click"></dxe:ASPxButton>
+                    <dxe:ASPxButton ID="btnPass" runat="server" Text="通过" AutoPostBack="true" OnClick="btnPass_Click"></dxe:ASPxButton>
                 </td>
             </tr>
         </table>
@@ -79,49 +73,49 @@
                             <dxe:ASPxLabel ID="ASPxLabel1" Text="创建人:" runat="server"></dxe:ASPxLabel>
                         </td>
                         <td class="buttonCell">
-                            <dxe:ASPxComboBox ID="cbCreatePerson" runat="server" ReadOnly="true" Width="130" DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName"></dxe:ASPxComboBox>
+                            <dxe:ASPxComboBox ID="cbCreatePerson" runat="server" ReadOnly="true" Width="100" DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName"></dxe:ASPxComboBox>
                         </td>
                         <td class="buttonCell">
                             <dxe:ASPxLabel ID="ASPxLabel2" Text="创建时间:" runat="server"></dxe:ASPxLabel>
                         </td>
                         <td class="buttonCell">
-                            <dxe:ASPxDateEdit ID="deCreateDateTime" runat="server" ReadOnly="true" Width="130" EditFormat="DateTime"></dxe:ASPxDateEdit>
+                            <dxe:ASPxDateEdit ID="deCreateDateTime" runat="server" ReadOnly="true" Width="120" EditFormat="DateTime"></dxe:ASPxDateEdit>
+                        </td>
+                        <td class="buttonCell">
+                            <dxe:ASPxLabel ID="ASPxLabel6" Text="提交时间:" runat="server"></dxe:ASPxLabel>
+                        </td>
+                        <td class="buttonCell">
+                            <dxe:ASPxDateEdit ID="deCommitDateTime" runat="server" ReadOnly="true" Width="120" EditFormat="DateTime"></dxe:ASPxDateEdit>
                         </td>
                         <td class="buttonCell">
                             <dxe:ASPxLabel ID="ASPxLabel3" Text="审批人:" runat="server" ></dxe:ASPxLabel>
                         </td>
                         <td class="buttonCell">
-                            <dxe:ASPxComboBox ID="cbConfirmPerson" runat="server" Width="130" DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName"></dxe:ASPxComboBox>
+                            <dxe:ASPxComboBox ID="cbConfirmPerson" runat="server" Width="100" ReadOnly="true"  DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName"></dxe:ASPxComboBox>
                         </td>
                         <td class="buttonCell">
                             <dxe:ASPxLabel ID="ASPxLabel4" Text="审批时间:" runat="server"></dxe:ASPxLabel>
                         </td>
                         <td class="buttonCell">
-                            <dxe:ASPxDateEdit ID="deConfirmDateTime" runat="server" ReadOnly="true" Width="130" EditFormat="DateTime"></dxe:ASPxDateEdit>
-                        </td>
-                        <td class="buttonCell">
-                            <dxe:ASPxButton ID="btnSaveVersion" runat="server" Text="保存信息" OnClick="btnSaveVersion_Click"></dxe:ASPxButton>
+                            <dxe:ASPxDateEdit ID="deConfirmDateTime" runat="server" ReadOnly="true" Width="120" EditFormat="DateTime"></dxe:ASPxDateEdit>
                         </td>
                     </tr>
                     <tr>
                         <td class="buttonCell" style="height:25px;vertical-align:top">
                             <dxe:ASPxLabel ID="ASPxLabel5" Text="版本描述:" runat="server"></dxe:ASPxLabel>
                         </td>
-                        <td class="buttonCell" colspan="8">
-                            <dxe:ASPxMemo ID="mmVersionDesc" Width="100%" runat="server" Height="80px"></dxe:ASPxMemo>
+                        <td class="buttonCell" colspan="9">
+                            <dxe:ASPxMemo ID="mmVersionDesc" ReadOnly="true" Width="100%" runat="server" Height="80px"></dxe:ASPxMemo>
                         </td>
                     </tr>
                 </table>            
             </dxp:PanelContent></PanelCollection>
         </dxrp:ASPxRoundPanel>
         <br />
-        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsServiceContract" KeyFieldName="OID" PreviewFieldName="MethodContract" AutoGenerateColumns="False" Width="900">
+        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsServiceContract" KeyFieldName="OID" PreviewFieldName="MethodContract" 
+            AutoGenerateColumns="False" Width="900" OnDataBound="grid_DataBound">
             <%-- BeginRegion Columns --%>
-            <Columns>
-                <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="70">
-                    <EditButton Visible="True" Text="编辑" />
-                    <DeleteButton Visible="true" Text="删除" />
-                </dxwgv:GridViewCommandColumn>   
+            <Columns> 
                 <dxwgv:GridViewDataTextColumn FieldName="MethodName" VisibleIndex="1" Caption="方法名称" >
                     <EditFormSettings ColumnSpan="2" VisibleIndex="1" CaptionLocation="Near" />
                     <EditFormCaptionStyle VerticalAlign="Top" />

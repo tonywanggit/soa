@@ -67,11 +67,6 @@
                     <dxwgv:ASPxGridView ID="detailGrid" runat="server" DataSourceID="OdsServiceVersion" KeyFieldName="OID" Width="100%" 
                          OnBeforePerformDataSelect="detailGrid_DataSelect" >
                         <Columns>
-                            <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="90px">
-                                <EditButton Visible="True" Text="编辑" />
-                                <DeleteButton Visible="true" Text="删除" />
-                                <NewButton Visible="true" Text="新增"/>
-                            </dxwgv:GridViewCommandColumn>
                             <dxwgv:GridViewDataColumn FieldName="BigVer" VisibleIndex="0" Caption="版本号">
                                 <EditFormSettings ColumnSpan="1" VisibleIndex="0" />
                             </dxwgv:GridViewDataColumn>

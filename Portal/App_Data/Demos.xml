@@ -43,6 +43,10 @@
           <Description>
           </Description>
       </Demo>
+      <Demo Text="契约评审" NavigateUrl="~/UDDI/ServiceContractReview.aspx" Title="企业服务总线 - 契约评审">
+          <Description>
+          </Description>
+      </Demo>
   </DemoGroup>
   
   <DemoGroup Text="异常管理" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" >
