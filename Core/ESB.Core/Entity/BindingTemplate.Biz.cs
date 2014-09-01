@@ -108,6 +108,18 @@ namespace ESB.Core.Entity
                 return Meta.Cache.Entities.FindAll(x => x._ServiceID == serviceId);
         }
 
+        /// <summary>根据ServiceID和版本号查找的绑定</summary>
+        /// <param name="templateid"></param>
+        /// <returns></returns>
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public static EntityList<TEntity> FindAllByServiceIDAndVersion(String serviceId, Int32 version)
+        {
+            if (Meta.Count >= 1000)
+                return FindAll(new String[] { _.ServiceID, _.Version }, new Object[] { serviceId, version });
+            else // 实体缓存
+                return Meta.Cache.Entities.FindAll(x => x._ServiceID == serviceId && x.Version == version );
+        }
+
         #endregion
 
         #region 高级查询

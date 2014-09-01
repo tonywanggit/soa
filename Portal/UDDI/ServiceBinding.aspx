@@ -93,7 +93,7 @@
                 </td> 
                 <td class="buttonCell">
                     <dxe:ASPxComboBox ID="cbServiceVersion" ClientInstanceName="cbService" runat="server" ToolTip="请选择服务版本" AutoPostBack="true" DataSourceID="OdsServiceVersion" Width="100" 
-                        ValueField="OID" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" OnSelectedIndexChanged="cbServiceVersion_SelectedIndexChanged" TextFormatString="{0}">
+                        ValueField="BigVer" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" OnSelectedIndexChanged="cbServiceVersion_SelectedIndexChanged" TextFormatString="{0}">
                         <Columns>
                             <dxe:ListBoxColumn Caption="版本号" FieldName="BigVer" ToolTip="版本号" Width="100px" />
                             <dxe:ListBoxColumn Caption="版本描述" FieldName="Description" ToolTip="版本描述" Width="200px" />
@@ -174,7 +174,7 @@
     <asp:ObjectDataSource ID="OdsBinding" runat="server" 
         TypeName="ESB.UddiService"
         DataObjectTypeName="ESB.BindingTemplate"
-        SelectMethod="GetBindingByServiceID"  UpdateMethod="UpdateBindingTemplate" InsertMethod="InsertBindingTemplate" DeleteMethod="DeleteBindingTemplate"
+        SelectMethod="GetBindingByServiceIDAndVersion"  UpdateMethod="UpdateBindingTemplate" InsertMethod="InsertBindingTemplate" DeleteMethod="DeleteBindingTemplate"
         OnSelecting="OdsBinding_Selecting" OnUpdating="OdsBinding_Updating" OnInserting="OdsBinding_Inserting">
     </asp:ObjectDataSource>
     <asp:XmlDataSource DataFile="~/App_Data/BindingStatusEnum.xml" XPath="//Binding" ID="xdsBindingStatus" runat="server" />

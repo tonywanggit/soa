@@ -120,6 +120,12 @@ namespace ESB.CallCenter.BasicService
             return BindingTemplate.FindAllByServiceID(serviceID);
         }
 
+        [WebMethod(Description = "根据ServiceID查找绑定地址")]
+        public List<BindingTemplate> GetBindingByServiceIDAndVersion(String serviceID, Int32 version)
+        {
+            return BindingTemplate.FindAllByServiceIDAndVersion(serviceID, version);
+        }
+
         [WebMethod(Description = "新增绑定地址")]
         public void InsertBindingTemplate(BindingTemplate entity)
         {

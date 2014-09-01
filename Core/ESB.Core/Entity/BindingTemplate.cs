@@ -89,16 +89,16 @@ namespace ESB.Core.Entity
             set { if (OnPropertyChanging(__.BindingType, value)) { _BindingType = value; OnPropertyChanged(__.BindingType); } }
         }
 
-        private String _MethodName;
-        /// <summary></summary>
-        [DisplayName("MethodName")]
-        [Description("")]
-        [DataObjectField(false, false, true, 254)]
-        [BindColumn(7, "MethodName", "", null, "nvarchar(254)", 0, 0, true)]
-        public virtual String MethodName
+        private Int32 _Version;
+        /// <summary>版本号：默认为1</summary>
+        [DisplayName("版本号：默认为1")]
+        [Description("版本号：默认为1")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(7, "Version", "版本号：默认为1", "1", "int", 10, 0, false)]
+        public virtual Int32 Version
         {
-            get { return _MethodName; }
-            set { if (OnPropertyChanging(__.MethodName, value)) { _MethodName = value; OnPropertyChanged(__.MethodName); } }
+            get { return _Version; }
+            set { if (OnPropertyChanging(__.Version, value)) { _Version = value; OnPropertyChanged(__.Version); } }
         }
         #endregion
 
@@ -116,13 +116,13 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.TemplateID : return _TemplateID;
-                    case __.ServiceID : return _ServiceID;
-                    case __.Address : return _Address;
-                    case __.Description : return _Description;
-                    case __.BindingStatus : return _BindingStatus;
-                    case __.BindingType : return _BindingType;
-                    case __.MethodName : return _MethodName;
+                    case __.TemplateID: return _TemplateID;
+                    case __.ServiceID: return _ServiceID;
+                    case __.Address: return _Address;
+                    case __.Description: return _Description;
+                    case __.BindingStatus: return _BindingStatus;
+                    case __.BindingType: return _BindingType;
+                    case __.Version: return _Version;
                     default: return base[name];
                 }
             }
@@ -130,13 +130,13 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.TemplateID : _TemplateID = Convert.ToString(value); break;
-                    case __.ServiceID : _ServiceID = Convert.ToString(value); break;
-                    case __.Address : _Address = Convert.ToString(value); break;
-                    case __.Description : _Description = Convert.ToString(value); break;
-                    case __.BindingStatus : _BindingStatus = Convert.ToInt32(value); break;
-                    case __.BindingType : _BindingType = Convert.ToInt32(value); break;
-                    case __.MethodName : _MethodName = Convert.ToString(value); break;
+                    case __.TemplateID: _TemplateID = Convert.ToString(value); break;
+                    case __.ServiceID: _ServiceID = Convert.ToString(value); break;
+                    case __.Address: _Address = Convert.ToString(value); break;
+                    case __.Description: _Description = Convert.ToString(value); break;
+                    case __.BindingStatus: _BindingStatus = Convert.ToInt32(value); break;
+                    case __.BindingType: _BindingType = Convert.ToInt32(value); break;
+                    case __.Version: _Version = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -165,8 +165,8 @@ namespace ESB.Core.Entity
             ///<summary></summary>
             public static readonly Field BindingType = FindByName(__.BindingType);
 
-            ///<summary></summary>
-            public static readonly Field MethodName = FindByName(__.MethodName);
+            ///<summary>版本号：默认为1</summary>
+            public static readonly Field Version = FindByName(__.Version);
 
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
@@ -192,8 +192,8 @@ namespace ESB.Core.Entity
             ///<summary></summary>
             public const String BindingType = "BindingType";
 
-            ///<summary></summary>
-            public const String MethodName = "MethodName";
+            ///<summary>版本号：默认为1</summary>
+            public const String Version = "Version";
 
         }
         #endregion
@@ -221,8 +221,8 @@ namespace ESB.Core.Entity
         /// <summary></summary>
         Int32 BindingType { get; set; }
 
-        /// <summary></summary>
-        String MethodName { get; set; }
+        /// <summary>版本号：默认为1</summary>
+        Int32 Version { get; set; }
         #endregion
 
         #region 获取/设置 字段值

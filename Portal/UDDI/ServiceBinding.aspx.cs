@@ -75,6 +75,7 @@ public partial class UDDI_ServiceBinding : BasePage
             this.btnAdd.Enabled = AuthUser.IsSystemAdmin;
 
         e.InputParameters["serviceID"] = cbService.Value;
+        e.InputParameters["version"] = cbServiceVersion.Value;
     }
 
     protected void OdsBinding_Updating(object sender, ObjectDataSourceMethodEventArgs e)
@@ -85,6 +86,7 @@ public partial class UDDI_ServiceBinding : BasePage
     {
         ESB.BindingTemplate template = e.InputParameters["entity"] as ESB.BindingTemplate;
         template.ServiceID = cbService.Value.ToString();
+        template.Version = Int32.Parse(cbServiceVersion.Value.ToString());
     }
 
     #endregion

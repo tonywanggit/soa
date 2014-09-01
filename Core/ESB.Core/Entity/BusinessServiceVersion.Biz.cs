@@ -81,6 +81,27 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展属性﻿
+        /// <summary>
+        /// 状态描述
+        /// </summary>
+        public String StatusDesc
+        {
+            get
+            {
+                switch (Status)
+                {
+                    case 0:
+                        return "编辑中";
+                    case 1:
+                        return "提交评审";
+                    case 2:
+                        return "已发布";
+                    default:
+                        return "异常状态";
+                }
+            }
+            set { }
+        }
         #endregion
 
         #region 扩展查询﻿
@@ -165,6 +186,28 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展操作
+        /// <summary>
+        /// 修改指定版本的状态
+        /// </summary>
+        /// <param name="versionID"></param>
+        /// <param name="status"></param>
+        public static void UpdateServiceVersionStatus(String versionID, Int32 status)
+        {
+            BusinessServiceVersion.Update(new String[] { _.Status }, new Object[] { status }, new String[] { _.OID }, new Object[] { versionID });
+        }
+
+        /// <summary>
+        /// 修改指定版本的信息
+        /// </summary>
+        /// <param name="versionID"></param>
+        /// <param name="status"></param>
+        public static void UpdateServiceVersionInfo(String versionID, String confirmPersonID, String desc)
+        {
+            BusinessServiceVersion.Update(new String[] { _.ConfirmPersonID, _.Description }, new Object[] { confirmPersonID, desc }, new String[] { _.OID }, new Object[] { versionID });
+        }
+
+        
+
         #endregion
 
         #region 业务

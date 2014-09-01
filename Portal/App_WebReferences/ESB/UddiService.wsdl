@@ -130,7 +130,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="BindingStatus" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="BindingType" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -223,6 +223,21 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetBindingByServiceIDResult" type="tns:ArrayOfBindingTemplate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBindingByServiceIDAndVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="version" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBindingByServiceIDAndVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBindingByServiceIDAndVersionResult" type="tns:ArrayOfBindingTemplate" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -413,6 +428,12 @@
   <wsdl:message name="GetBindingByServiceIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetBindingByServiceIDResponse" />
   </wsdl:message>
+  <wsdl:message name="GetBindingByServiceIDAndVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBindingByServiceIDAndVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetBindingByServiceIDAndVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBindingByServiceIDAndVersionResponse" />
+  </wsdl:message>
   <wsdl:message name="InsertBindingTemplateSoapIn">
     <wsdl:part name="parameters" element="tns:InsertBindingTemplate" />
   </wsdl:message>
@@ -522,6 +543,11 @@
       <wsdl:input message="tns:GetBindingByServiceIDSoapIn" />
       <wsdl:output message="tns:GetBindingByServiceIDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetBindingByServiceIDAndVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据ServiceID查找绑定地址</wsdl:documentation>
+      <wsdl:input message="tns:GetBindingByServiceIDAndVersionSoapIn" />
+      <wsdl:output message="tns:GetBindingByServiceIDAndVersionSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="InsertBindingTemplate">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增绑定地址</wsdl:documentation>
       <wsdl:input message="tns:InsertBindingTemplateSoapIn" />
@@ -553,12 +579,12 @@
       <wsdl:output message="tns:InsertPersonSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdatePerson">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改绑定地址</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改用户</wsdl:documentation>
       <wsdl:input message="tns:UpdatePersonSoapIn" />
       <wsdl:output message="tns:UpdatePersonSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="DeletePerson">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除绑定地址</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除用户</wsdl:documentation>
       <wsdl:input message="tns:DeletePersonSoapIn" />
       <wsdl:output message="tns:DeletePersonSoapOut" />
     </wsdl:operation>
@@ -666,6 +692,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetBindingByServiceID">
       <soap:operation soapAction="http://esb.com/GetBindingByServiceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBindingByServiceIDAndVersion">
+      <soap:operation soapAction="http://esb.com/GetBindingByServiceIDAndVersion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -849,6 +884,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetBindingByServiceID">
       <soap12:operation soapAction="http://esb.com/GetBindingByServiceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBindingByServiceIDAndVersion">
+      <soap12:operation soapAction="http://esb.com/GetBindingByServiceIDAndVersion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

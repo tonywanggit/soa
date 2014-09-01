@@ -18,10 +18,28 @@ namespace ESB.CallCenter.BasicService
     public class ContractSerivce : System.Web.Services.WebService
     {
         #region 服务版本
+        [WebMethod(Description = "获取到服务的特定版本")]
+        public BusinessServiceVersion GetServiceVersionByID(String versionID)
+        {
+            return BusinessServiceVersion.FindByOID(versionID);
+        }
+
         [WebMethod(Description = "获取到服务下的所有版本")]
         public List<BusinessServiceVersion> GetServiceVersionByServiceID(String serviceID)
         {
             return BusinessServiceVersion.FindAllByServiceID(serviceID);
+        }
+
+        [WebMethod(Description = "修改服务版本的状态")]
+        public void UpdateServiceVersionStatus(String versionID, Int32 status)
+        {
+            BusinessServiceVersion.UpdateServiceVersionStatus(versionID, status);
+        }
+
+        [WebMethod(Description = "修改服务版本的信息")]
+        public void UpdateServiceVersionInfo(String versionID, String confirmPersonID, String desc)
+        {
+            BusinessServiceVersion.UpdateServiceVersionInfo(versionID, confirmPersonID, desc);
         }
 
         [WebMethod(Description = "新增服务版本")]

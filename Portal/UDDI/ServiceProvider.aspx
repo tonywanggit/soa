@@ -26,7 +26,7 @@
     <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="BusinessID" AutoGenerateColumns="False" Width="100%">
         <%-- BeginRegion Columns --%>
         <Columns>
-            <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center">
+            <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" Width="80px" HeaderStyle-HorizontalAlign="Center">
                 <EditButton Visible="True" Text="编辑" />
                 <DeleteButton Visible="True" Text="删除" />
             </dxwgv:GridViewCommandColumn>
