@@ -30,7 +30,7 @@
         <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="ServiceID" AutoGenerateColumns="False" Width="800px">
             <%-- BeginRegion Columns --%>
             <Columns>
-                <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center">
+                <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="100">
                     <EditButton Visible="True" Text="修改管理员" />
                 </dxwgv:GridViewCommandColumn>
                 <dxwgv:GridViewDataComboBoxColumn FieldName="BusinessID" Caption="服务提供者" VisibleIndex="1" ReadOnly="true" Width="120px">
