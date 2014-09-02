@@ -91,7 +91,11 @@
                             <dxe:ASPxLabel ID="ASPxLabel3" Text="审批人:" runat="server" ></dxe:ASPxLabel>
                         </td>
                         <td class="buttonCell">
-                            <dxe:ASPxComboBox ID="cbConfirmPerson" runat="server" Width="130" DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName"></dxe:ASPxComboBox>
+                            <dxe:ASPxComboBox ID="cbConfirmPerson" runat="server" Width="130" DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName">
+                                <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
+                                    <RequiredField IsRequired="true" ErrorText="请选择审批人！" />
+                                </ValidationSettings>
+                            </dxe:ASPxComboBox>
                         </td>
                         <td class="buttonCell">
                             <dxe:ASPxLabel ID="ASPxLabel4" Text="审批时间:" runat="server"></dxe:ASPxLabel>
@@ -109,6 +113,14 @@
                         </td>
                         <td class="buttonCell" colspan="8">
                             <dxe:ASPxMemo ID="mmVersionDesc" Width="100%" runat="server" Height="80px"></dxe:ASPxMemo>
+                        </td>
+                    </tr>
+                    <tr style="<%=m_OpinionTrStyle%>">
+                        <td class="buttonCell" style="height:25px;">
+                            <dxe:ASPxLabel ID="ASPxLabel6" Text="评审意见:" runat="server"></dxe:ASPxLabel>
+                        </td>
+                        <td class="buttonCell" colspan="8">
+                            <dxe:ASPxTextBox ID="txtOpinion" Width="100%" runat="server" ></dxe:ASPxTextBox>
                         </td>
                     </tr>
                 </table>            

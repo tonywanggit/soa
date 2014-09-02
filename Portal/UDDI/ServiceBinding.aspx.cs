@@ -43,6 +43,7 @@ public partial class UDDI_ServiceBinding : BasePage
 
             cbProvider.Value = service.BusinessID;
             cbService.Value = service.ServiceID;
+            cbServiceVersion.SelectedIndex = 0;
         }
     }
 

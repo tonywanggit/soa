@@ -1,4 +1,5 @@
 ﻿using DevExpress.Web.ASPxGridView;
+using DevExpress.Web.ASPxPopupControl;
 using System;
 using System.Collections;
 using System.Configuration;
@@ -14,6 +15,9 @@ using System.Xml.Linq;
 
 public partial class UDDI_ServiceReg : BasePage
 {
+    ESB.UddiService uddiService = new ESB.UddiService();
+    ESB.ContractSerivce contractService = new ESB.ContractSerivce();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         InitPage();
@@ -50,8 +54,15 @@ public partial class UDDI_ServiceReg : BasePage
     protected void OdsService_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
     {
         ESB.BusinessService service = e.InputParameters["service"] as ESB.BusinessService;
-        service.DefaultVersion = 1;
 
+        //--检测是否存在相同名字的服务
+        ESB.BusinessService bs = uddiService.GetServiceByName(service.ServiceName);
+        if (bs != null)
+        {
+            e.Cancel = true;
+        }
+
+        service.DefaultVersion = 1;
         service.Category = AuthUser.UserID; //--利用Category字段传递UserID
     }
 
@@ -81,4 +92,55 @@ public partial class UDDI_ServiceReg : BasePage
     }
 
 
+    protected void grid_HtmlEditFormCreated(object sender, ASPxGridViewEditFormEventArgs e)
+    {
+    }
+
+
+    /// <summary>
+    /// 验证服务名字是否可用
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void grid_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+    {
+        //--如果是编辑状态，并且服务名称没有发生变化，则无需验证
+        if (!e.IsNewRow)
+        {
+            if (e.NewValues["ServiceName"].ToString() == e.OldValues["ServiceName"].ToString())
+                return;
+        }
+
+        //--检测是否存在相同名字的服务
+        ESB.BusinessService bs = uddiService.GetServiceByName(e.NewValues["ServiceName"].ToString());
+        if (bs != null)
+        {
+            e.Errors.Add(grid.Columns["ServiceName"], "服务名称已经被使用了！");
+        }
+    }
+    protected void grid_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+    {
+        e.NewValues["BusinessID"] = this.cbProvider.Value;
+        e.NewValues["PersonalID"] = AuthUser.UserID;
+    }
+
+    /// <summary>
+    /// 在删除服务前判断是否存在已经发布的版本
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void grid_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+    {
+        String serviceID = e.Values["ServiceID"].ToString();
+        ESB.BusinessServiceVersion[] svs = contractService.GetServiceVersionByServiceID(serviceID);
+
+        //--如果服务包含发布的版本则无法删除
+        if (svs.Where(x => x.Status == 2).Count() > 1)
+        {
+            e.Cancel = true;
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), System.DateTime.Now.Ticks.ToString(), "pcAlert.Show();", true);
+        }
+
+            
+    }
 }

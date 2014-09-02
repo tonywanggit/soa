@@ -36,7 +36,17 @@ public partial class Demo : System.Web.UI.MasterPage {
         get { return isHomePage; }
     }
     public string TitleImageUrl {
-        get { return titleImageUrl; }
+        get {
+            if (String.IsNullOrEmpty(titleImageUrl))
+            {
+                if (Session["ESB_PAGE_TITLE_IMAGE_URL"] != null)
+                    return Session["ESB_PAGE_TITLE_IMAGE_URL"].ToString();
+                else
+                    return null;
+            }
+            else
+                return titleImageUrl; 
+        }
     }
     public string Title {
         get { return title; }
@@ -57,7 +67,17 @@ public partial class Demo : System.Web.UI.MasterPage {
         get { return (nbMenu.SelectedItem != null) ? nbMenu.SelectedItem.Group.Name : "管理平台"; }
     }
     public string Name {
-        get { return (nbMenu.SelectedItem != null) ? nbMenu.SelectedItem.Name : "企业服务总线 - 管理平台"; }
+        get {
+            if (nbMenu.SelectedItem == null)
+            {
+                if (Session["ESB_PAGE_TITLE"] == null)
+                    return "企业服务总线 - 管理平台";
+                else
+                    return Session["ESB_PAGE_TITLE"].ToString();
+            }
+            else
+                return nbMenu.SelectedItem.Name;
+        }
     }
 
     public bool ShowCodePages {
@@ -75,7 +95,7 @@ public partial class Demo : System.Web.UI.MasterPage {
 
         /* Title Image */
         iTitleImage.ImageUrl = TitleImageUrl;
-        iTitleImage.AlternateText = GroupName + " - " + Name;
+        iTitleImage.AlternateText = GroupName + "" + Name;
 
         if (String.IsNullOrEmpty(TitleImageUrl)) {
             lGroupName.Style.Add(HtmlTextWriterStyle.MarginLeft, "11px");

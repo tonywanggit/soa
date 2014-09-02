@@ -37,7 +37,7 @@
                     </dxe:ASPxComboBox>
                 </td> 
                 <td class="buttonCell">
-                    <dxe:ASPxComboBox ID="cbServiceVersion" ClientInstanceName="cbService" runat="server" ReadOnly="true" ToolTip="请选择服务版本" AutoPostBack="true" DataSourceID="OdsServiceVersion" Width="120" 
+                    <dxe:ASPxComboBox ID="cbServiceVersion" ClientInstanceName="cbService" runat="server" ReadOnly="false" ToolTip="请选择服务版本" AutoPostBack="true" DataSourceID="OdsServiceVersion" Width="120" 
                         ValueField="OID" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" TextFormatString="{0}.{1}（{2}）"
                         OnSelectedIndexChanged="cbServiceVersion_SelectedIndexChanged" OnDataBound="cbServiceVersion_DataBound">
                         <Columns>
@@ -91,7 +91,8 @@
                             <dxe:ASPxLabel ID="ASPxLabel3" Text="审批人:" runat="server" ></dxe:ASPxLabel>
                         </td>
                         <td class="buttonCell">
-                            <dxe:ASPxComboBox ID="cbConfirmPerson" runat="server" Width="100" ReadOnly="true"  DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName"></dxe:ASPxComboBox>
+                            <dxe:ASPxComboBox ID="cbConfirmPerson" runat="server" Width="100" ReadOnly="true"  DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName">
+                            </dxe:ASPxComboBox>
                         </td>
                         <td class="buttonCell">
                             <dxe:ASPxLabel ID="ASPxLabel4" Text="审批时间:" runat="server"></dxe:ASPxLabel>

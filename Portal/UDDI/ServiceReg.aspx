@@ -5,6 +5,7 @@
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dxlp" %>
+<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="localCssPlaceholder" runat="server">
     <style type="text/css">
@@ -16,8 +17,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="phContent" Runat="Server">
     <asp:ScriptManager ID="ScriptManager" runat="server" />
+    <dxpc:ASPxPopupControl ClientInstanceName="pcAlert" Width="260px" ID="pcAlert" 
+        HeaderText="友情提示" runat="server" PopupVerticalAlign="WindowCenter" PopupHorizontalAlign="WindowCenter" ShowOnPageLoad="false" >
+        <ContentCollection>
+                <dxpc:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
+                    <asp:Label ID="Label1" runat="server" >该服务下已经有发布版本，无法删除！</asp:Label>
+                </dxpc:PopupControlContentControl>
+            </ContentCollection>
+        </dxpc:ASPxPopupControl>
     <dxlp:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel" Modal="False" />
-    <asp:UpdatePanel ID="UpdatePanel" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Always">
     <ContentTemplate>
         <table cellpadding="0" cellspacing="0">
             <tr>
@@ -26,22 +35,31 @@
                         ValueField="BusinessID" TextField="Description" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" />
                 </td>           
                 <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnAdd" runat="server" Text="新增服务" UseSubmitBehavior="False" AutoPostBack="false">
+                    <dxe:ASPxButton ID="btnAdd" runat="server" Text="新增服务" UseSubmitBehavior="false" AutoPostBack="false">
                         <ClientSideEvents Click="function(){ grid.AddNewRow(); }" />
                     </dxe:ASPxButton>
-                </td>     
+                </td>   
+                <td class="buttonCell"> 
+                    <asp:Label runat="server" ID="lblError" Text="" ></asp:Label>
+                </td>   
             </tr>
         </table>
         <br />
-        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="ServiceID" AutoGenerateColumns="False" Width="800px">
+        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="ServiceID" 
+            OnRowDeleting="grid_RowDeleting" OnRowValidating="grid_RowValidating" OnInitNewRow="grid_InitNewRow"
+            OnHtmlEditFormCreated="grid_HtmlEditFormCreated" AutoGenerateColumns="False" Width="800px" EnableCallBacks="false">
             <%-- BeginRegion Columns --%>
             <Columns>
-                <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center">
+                <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="80">
                     <EditButton Visible="True" Text="编辑" />
                     <DeleteButton Visible="true" Text="删除" />
                 </dxwgv:GridViewCommandColumn>
                 <dxwgv:GridViewDataComboBoxColumn FieldName="BusinessID" Caption="服务提供者" VisibleIndex="1" >
-                    <PropertiesComboBox TextField="Description" ValueField="BusinessID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider" />
+                    <PropertiesComboBox TextField="Description" ValueField="BusinessID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider">
+                        <ValidationSettings>
+                            <RequiredField IsRequired="true" />
+                        </ValidationSettings>
+                    </PropertiesComboBox>
                     <EditFormSettings Visible="True" VisibleIndex="1" />
                 </dxwgv:GridViewDataComboBoxColumn>
                 <dxwgv:GridViewDataHyperLinkColumn FieldName="ServiceID" Caption="服务名称" VisibleIndex="2" ReadOnly="true" >
@@ -49,15 +67,27 @@
                     </PropertiesHyperLinkEdit>
                     <EditFormSettings Visible="False" />
                 </dxwgv:GridViewDataHyperLinkColumn>
-                <dxwgv:GridViewDataColumn FieldName="ServiceName" VisibleIndex="3" Caption="服务名称" Visible="false">
+                <dxwgv:GridViewDataTextColumn FieldName="ServiceName" VisibleIndex="3" Caption="服务名称" Visible="false">
+                    <PropertiesTextEdit>
+                        <ValidationSettings>
+                            <RequiredField IsRequired="true" />
+                        </ValidationSettings>
+                    </PropertiesTextEdit>
                     <EditFormSettings Visible="true" VisibleIndex="3" ColumnSpan="2" />
-                </dxwgv:GridViewDataColumn>                
+                </dxwgv:GridViewDataTextColumn>                
                 <dxwgv:GridViewDataMemoColumn FieldName="Description" VisibleIndex="3" Caption="服务描述" >
                     <EditFormSettings Visible="true" VisibleIndex="4" ColumnSpan="2" />
-                    <PropertiesMemoEdit Height="80px" />
+                    <PropertiesMemoEdit Height="80px" >
+                        <ValidationSettings>
+                            <RequiredField IsRequired="true" />
+                        </ValidationSettings>
+                    </PropertiesMemoEdit>
                 </dxwgv:GridViewDataMemoColumn>
                 <dxwgv:GridViewDataComboBoxColumn FieldName="PersonalID" VisibleIndex="4" Caption="服务管理员">
                     <PropertiesComboBox TextField="PersonalName" ValueField="PersonalID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
+                        <ValidationSettings>
+                            <RequiredField IsRequired="true" />
+                        </ValidationSettings>
                     </PropertiesComboBox>
                     <EditFormSettings Visible="true" VisibleIndex="2" />
                 </dxwgv:GridViewDataComboBoxColumn>    
@@ -88,7 +118,7 @@
             <SettingsDetail ShowDetailRow="true" />
             <SettingsEditing Mode="EditFormAndDisplayRow"/>
             <SettingsPager AlwaysShowPager="true" />
-            <SettingsBehavior ConfirmDelete="true" />
+            <SettingsBehavior ConfirmDelete="true"  />
             <SettingsText EmptyDataRow="暂无数据！" CommandCancel="取消" CommandUpdate="保存" ConfirmDelete="您确定要删除这条记录吗？" />
         </dxwgv:ASPxGridView>   
         <script type="text/javascript">

@@ -168,7 +168,7 @@
     <asp:ObjectDataSource ID="OdsServiceVersion" runat="server" 
         TypeName="ESB.ContractSerivce"
         DataObjectTypeName="ESB.BusinessServiceVersion"
-        SelectMethod="GetServiceVersionByServiceID"
+        SelectMethod="GetServiceBigVersionByServiceID"
         OnSelecting="OdsServiceVersion_Selecting">
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="OdsBinding" runat="server" 

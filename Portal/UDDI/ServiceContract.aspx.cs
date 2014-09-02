@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 public partial class UDDI_ServiceContract : BasePage
 {
     ESB.ContractSerivce m_ContractSerivce = new ESB.ContractSerivce();
+    public String m_OpinionTrStyle = String.Empty;
 
     #region 初始化函数
     protected void Page_Load(object sender, EventArgs e)
@@ -121,6 +122,9 @@ public partial class UDDI_ServiceContract : BasePage
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
 
+            //--控制评审意见是否出现
+            this.m_OpinionTrStyle = String.Empty;
+
             //--控制修订版本、升级版本两个按钮
             SetPublishVersionUI();
 
@@ -138,6 +142,9 @@ public partial class UDDI_ServiceContract : BasePage
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
 
+            //--控制评审意见是否出现
+            this.m_OpinionTrStyle = "display:none;";
+
             grid.Columns[0].Visible = false;
         }
         else
@@ -151,6 +158,13 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnDelete.Enabled = true;
             this.cbConfirmPerson.ReadOnly = false;
             this.mmVersionDesc.ReadOnly = false;
+
+            //--控制评审意见是否出现
+            if (cbServiceVersion.Text.Contains("评审拒绝"))
+                this.m_OpinionTrStyle = String.Empty;
+            else
+                this.m_OpinionTrStyle = "display:none;";
+
 
             grid.Columns[0].Visible = true;
         }
@@ -177,6 +191,17 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnRevise.Enabled = false;
             this.btnUpdate.Enabled = false;
         }
+
+        //--如果存在大版本的非发布版，则不允许升级版本
+        foreach (ListEditItem item in this.cbServiceVersion.Items)
+        {
+            //--如果同一个大版本下有编辑中、提交审核、审核失败的版本，则不允许修订或升级版本
+            if (item.Text.Contains(".0") && !item.Text.Contains("已发布"))
+            {
+                this.btnUpdate.Enabled = false;
+                break;
+            }
+        }
     }
 
     /// <summary>
@@ -194,6 +219,7 @@ public partial class UDDI_ServiceContract : BasePage
             this.deCreateDateTime.Value = version.CreateDateTime;
             this.deConfirmDateTime.Value = version.ConfirmDateTime;
             this.mmVersionDesc.Value = version.Description;
+            this.txtOpinion.Value = version.Opinion;
         }
     }
 
@@ -205,7 +231,11 @@ public partial class UDDI_ServiceContract : BasePage
     protected void btnCommit_Click(object sender, EventArgs e)
     {
         if (this.btnCommit.Text == "提交评审")
+        {
+            //--提交评审前保存版本信息
+            btnSaveVersion_Click(null, null);
             m_ContractSerivce.UpdateServiceVersionStatus(cbServiceVersion.Value.ToString(), 1, String.Empty);
+        }
         else
             m_ContractSerivce.UpdateServiceVersionStatus(cbServiceVersion.Value.ToString(), 0, String.Empty);
 

@@ -18,6 +18,20 @@ namespace ESB.CallCenter.BasicService
     public class ContractSerivce : System.Web.Services.WebService
     {
         #region 服务版本
+        [WebMethod(Description = "获取到服务版本视图")]
+        public List<EsbView_ServiceVersion> GetServiceVersionViewByConfirmPerson(String personalID, Int32 status)
+        {
+            List<EsbView_ServiceVersion> lstVersionView = EsbView_ServiceVersion.FindAllByPersonalIDAndStatus(personalID, status);
+
+            return lstVersionView.OrderByDescending(x => x.CommitDateTime).ToList();
+        }
+
+        [WebMethod(Description = "根据版本ID获取到服务版本视图")]
+        public EsbView_ServiceVersion GetServiceVersionViewByID(String versionID)
+        {
+            return EsbView_ServiceVersion.FindAllByVersionID(versionID);
+        }
+
         [WebMethod(Description = "获取到服务的特定版本")]
         public BusinessServiceVersion GetServiceVersionByID(String versionID)
         {
@@ -29,6 +43,21 @@ namespace ESB.CallCenter.BasicService
         {
             List<BusinessServiceVersion> lstVersion = BusinessServiceVersion.FindAllByServiceID(serviceID);
             return lstVersion.OrderByDescending(x => x.CreateDateTime).ToList();
+        }
+
+        [WebMethod(Description = "获取到服务下的所有大版本")]
+        public List<BusinessServiceVersion> GetServiceBigVersionByServiceID(String serviceID)
+        {
+            List<BusinessServiceVersion> lstVersion = BusinessServiceVersion.FindAllByServiceID(serviceID);
+            List<BusinessServiceVersion> lstBigVerion = new List<BusinessServiceVersion>();
+            foreach (Int32 bigVer in lstVersion.Select(x => x.BigVer).Distinct())
+            {
+                BusinessServiceVersion sv = lstVersion.Where(x => x.BigVer == bigVer).OrderByDescending(x => x.CreateDateTime).First();
+                if (sv != null)
+                    lstBigVerion.Add(sv);
+            }
+
+            return lstBigVerion.OrderBy(x=>x.BigVer).ToList();
         }
 
         [WebMethod(Description = "修改服务版本的状态")]

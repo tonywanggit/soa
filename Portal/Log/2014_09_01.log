@@ -213,3 +213,12 @@
 #Fields: Time ThreadID IsPoolThread ThreadName Message
 17:30:03.880 34 Y - NewLife.Core v3.8.2012.0803 Build 2014-09-01 17:05:14
 17:30:03.888 34 Y - 与服务器成功建立连接！
+
+#Software: .
+#ProcessID: 17140
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-3-130540441411430543
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-09-01
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+19:22:27.746 10 Y - NewLife.Core v3.8.2012.0803 Build 2014-09-01 19:18:20
+19:22:27.752 10 Y - 与服务器成功建立连接！

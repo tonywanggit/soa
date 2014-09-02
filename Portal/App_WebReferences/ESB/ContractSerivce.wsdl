@@ -2,6 +2,71 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://esb.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://esb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://esb.com/">
+      <s:element name="GetServiceVersionViewByConfirmPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="personalID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceVersionViewByConfirmPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceVersionViewByConfirmPersonResult" type="tns:ArrayOfEsbView_ServiceVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEsbView_ServiceVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EsbView_ServiceVersion" nillable="true" type="tns:EsbView_ServiceVersion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EsbView_ServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EsbView_ServiceVersionOfEsbView_ServiceVersion" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EsbView_ServiceVersionOfEsbView_ServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfEsbView_ServiceVersion">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BigVer" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SmallVer" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConfirmPersonID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CommitDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreatePersionID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="VersionID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="VerStatus" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfEsbView_ServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityBase" abstract="true" />
+      <s:element name="GetServiceVersionViewByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="versionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceVersionViewByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceVersionViewByIDResult" type="tns:EsbView_ServiceVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetServiceVersionByID">
         <s:complexType>
           <s:sequence>
@@ -47,7 +112,6 @@
           <s:extension base="tns:EntityBase" />
         </s:complexContent>
       </s:complexType>
-      <s:complexType name="EntityBase" abstract="true" />
       <s:element name="GetServiceVersionByServiceID">
         <s:complexType>
           <s:sequence>
@@ -67,6 +131,20 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessServiceVersion" nillable="true" type="tns:BusinessServiceVersion" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetServiceBigVersionByServiceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceBigVersionByServiceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceBigVersionByServiceIDResult" type="tns:ArrayOfBusinessServiceVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="UpdateServiceVersionStatus">
         <s:complexType>
           <s:sequence>
@@ -231,6 +309,18 @@
       </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="GetServiceVersionViewByConfirmPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionViewByConfirmPerson" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceVersionViewByConfirmPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionViewByConfirmPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceVersionViewByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionViewByID" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceVersionViewByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceVersionViewByIDResponse" />
+  </wsdl:message>
   <wsdl:message name="GetServiceVersionByIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetServiceVersionByID" />
   </wsdl:message>
@@ -242,6 +332,12 @@
   </wsdl:message>
   <wsdl:message name="GetServiceVersionByServiceIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetServiceVersionByServiceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceBigVersionByServiceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceBigVersionByServiceID" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceBigVersionByServiceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceBigVersionByServiceIDResponse" />
   </wsdl:message>
   <wsdl:message name="UpdateServiceVersionStatusSoapIn">
     <wsdl:part name="parameters" element="tns:UpdateServiceVersionStatus" />
@@ -316,6 +412,16 @@
     <wsdl:part name="parameters" element="tns:DeleteServiceContractResponse" />
   </wsdl:message>
   <wsdl:portType name="ContractSerivceSoap">
+    <wsdl:operation name="GetServiceVersionViewByConfirmPerson">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务版本视图</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceVersionViewByConfirmPersonSoapIn" />
+      <wsdl:output message="tns:GetServiceVersionViewByConfirmPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceVersionViewByID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据版本ID获取到服务版本视图</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceVersionViewByIDSoapIn" />
+      <wsdl:output message="tns:GetServiceVersionViewByIDSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetServiceVersionByID">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务的特定版本</wsdl:documentation>
       <wsdl:input message="tns:GetServiceVersionByIDSoapIn" />
@@ -325,6 +431,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务下的所有版本</wsdl:documentation>
       <wsdl:input message="tns:GetServiceVersionByServiceIDSoapIn" />
       <wsdl:output message="tns:GetServiceVersionByServiceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceBigVersionByServiceID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务下的所有大版本</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceBigVersionByServiceIDSoapIn" />
+      <wsdl:output message="tns:GetServiceBigVersionByServiceIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateServiceVersionStatus">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改服务版本的状态</wsdl:documentation>
@@ -389,6 +500,24 @@
   </wsdl:portType>
   <wsdl:binding name="ContractSerivceSoap" type="tns:ContractSerivceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServiceVersionViewByConfirmPerson">
+      <soap:operation soapAction="http://esb.com/GetServiceVersionViewByConfirmPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceVersionViewByID">
+      <soap:operation soapAction="http://esb.com/GetServiceVersionViewByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetServiceVersionByID">
       <soap:operation soapAction="http://esb.com/GetServiceVersionByID" style="document" />
       <wsdl:input>
@@ -400,6 +529,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetServiceVersionByServiceID">
       <soap:operation soapAction="http://esb.com/GetServiceVersionByServiceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceBigVersionByServiceID">
+      <soap:operation soapAction="http://esb.com/GetServiceBigVersionByServiceID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -518,6 +656,24 @@
   </wsdl:binding>
   <wsdl:binding name="ContractSerivceSoap12" type="tns:ContractSerivceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServiceVersionViewByConfirmPerson">
+      <soap12:operation soapAction="http://esb.com/GetServiceVersionViewByConfirmPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceVersionViewByID">
+      <soap12:operation soapAction="http://esb.com/GetServiceVersionViewByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetServiceVersionByID">
       <soap12:operation soapAction="http://esb.com/GetServiceVersionByID" style="document" />
       <wsdl:input>
@@ -529,6 +685,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetServiceVersionByServiceID">
       <soap12:operation soapAction="http://esb.com/GetServiceVersionByServiceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceBigVersionByServiceID">
+      <soap12:operation soapAction="http://esb.com/GetServiceBigVersionByServiceID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

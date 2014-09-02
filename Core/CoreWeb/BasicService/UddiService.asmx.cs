@@ -57,6 +57,12 @@ namespace ESB.CallCenter.BasicService
             return BusinessService.FindByServiceID(serviceID);
         }
 
+        [WebMethod(Description = "根据ServiceID查找服务")]
+        public BusinessService GetServiceByName(String serviceName)
+        {
+            return BusinessService.FindByServiceName(serviceName);
+        }
+
         [WebMethod(Description = "获取到业务实体下所有的服务列表")]
         public List<BusinessService> GetBusinessServiceByBussinessID(String businessID)
         {

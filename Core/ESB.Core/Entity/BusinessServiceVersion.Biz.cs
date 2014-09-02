@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Linq;
 using System.Xml.Serialization;
 using NewLife.Log;
 using XCode;
@@ -258,21 +259,25 @@ namespace ESB.Core.Entity
         }
 
         /// <summary>
-        /// 审计版本
+        /// 升级版本
         /// </summary>
         /// <param name="versionID"></param>
         /// <param name="status"></param>
         public static void UpgradeServiceVersion(String versionID, String personalID)
         {
             TEntity versionBase = FindByOID(versionID);
+
             if (versionBase != null)
             {
+                List<TEntity> lstEntity = FindAllByServiceID(versionBase.ServiceID);
+                Int32 BigVer = lstEntity.Max(x => x.BigVer);
+
                 TEntity versionNew = new TEntity()
                 {
                     OID = Guid.NewGuid().ToString(),
                     CreatePersionID = personalID,
                     CreateDateTime = DateTime.Now,
-                    BigVer = versionBase.BigVer + 1,
+                    BigVer = BigVer + 1,
                     SmallVer = 0,
                     ServiceID = versionBase.ServiceID,
                     Description = String.Format("{0}.{1}的升级版本。", versionBase.BigVer, versionBase.SmallVer),

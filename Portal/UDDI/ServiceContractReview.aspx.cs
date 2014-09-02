@@ -22,7 +22,7 @@ public partial class UDDI_ServiceContractReview : BasePage
     }
     protected void InitPage()
     {
-        if (String.IsNullOrEmpty(Request["SID"]))
+        if (String.IsNullOrEmpty(Request["VID"]))
         {
             cbProvider.SelectedIndex = 0;
             cbService.SelectedIndex = 0;
@@ -30,12 +30,15 @@ public partial class UDDI_ServiceContractReview : BasePage
         }
         else
         {
-            string sid = Request["SID"];
-            ESB.UddiService uddiService = new ESB.UddiService();
-            ESB.BusinessService service = uddiService.GetServiceByID(sid);
+            string versionID = Request["VID"];
+            ESB.EsbView_ServiceVersion version = m_ContractSerivce.GetServiceVersionViewByID(versionID);
 
-            cbProvider.Value = service.BusinessID;
-            cbService.Value = service.ServiceID;
+            cbProvider.Value = version.BusinessID;
+            cbService.Value = version.ServiceID;
+            cbServiceVersion.Value = versionID;
+
+            Session["ESB_PAGE_TITLE"] = String.Format("服务契约评审 - {0}", version.ServiceName);
+            Session["ESB_PAGE_TITLE_IMAGE_URL"] = "~/Images/TitleImages/GridView.png";
         }
     }
 
@@ -113,6 +116,7 @@ public partial class UDDI_ServiceContractReview : BasePage
             this.btnPass.Enabled = true;
             this.btnRefuse.Enabled = true;
             this.mmVersionDesc.ReadOnly = false;
+            this.deConfirmDateTime.Value = DateTime.Now;
         }
         else
         {

@@ -154,6 +154,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetServiceByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceByNameResult" type="tns:BusinessService" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetBusinessServiceByBussinessID">
         <s:complexType>
           <s:sequence>
@@ -392,6 +406,12 @@
   <wsdl:message name="GetServiceByIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetServiceByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="GetServiceByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceByName" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceByNameResponse" />
+  </wsdl:message>
   <wsdl:message name="GetBusinessServiceByBussinessIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetBusinessServiceByBussinessID" />
   </wsdl:message>
@@ -512,6 +532,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据ServiceID查找服务</wsdl:documentation>
       <wsdl:input message="tns:GetServiceByIDSoapIn" />
       <wsdl:output message="tns:GetServiceByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据ServiceID查找服务</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceByNameSoapIn" />
+      <wsdl:output message="tns:GetServiceByNameSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetBusinessServiceByBussinessID">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到业务实体下所有的服务列表</wsdl:documentation>
@@ -638,6 +663,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetServiceByID">
       <soap:operation soapAction="http://esb.com/GetServiceByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByName">
+      <soap:operation soapAction="http://esb.com/GetServiceByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -830,6 +864,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetServiceByID">
       <soap12:operation soapAction="http://esb.com/GetServiceByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByName">
+      <soap12:operation soapAction="http://esb.com/GetServiceByName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

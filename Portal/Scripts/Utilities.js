@@ -401,7 +401,7 @@ function CorrectCodeRenderWidth(pageControl) {
 //调用条件：页面包含ASPxLoadingPanel ClientInstanceName="LoadingPanel"
 function InitCustomLoadingPanel(reqFunction){
     var prm = Sys.WebForms.PageRequestManager.getInstance();
-    
+
     if(reqFunction){
         prm.add_initializeRequest(reqFunction);
     }else{
