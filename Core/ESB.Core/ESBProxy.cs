@@ -209,7 +209,7 @@ namespace ESB.Core
                 if (getSyncESBConfig)//--如果已经获取过ESBConfig文件则直接抛出异常
                 {
                     m_ConfigurationManager.RemoveReference(serviceName, m_ConsumerConfig);
-                    throw new Exception(String.Format("请求的服务【{0}】的【{1}】版本没有注册或者已经废弃!", serviceName, version));
+                    throw new Exception(String.Format("请求的服务【{0}】的【{1}】版本没有注册或者已经废弃!", serviceName, version == 0 ? "默认" : version.ToString()));
                 }
                 else
                 {
@@ -219,7 +219,7 @@ namespace ESB.Core
                     if (si == null)
                     {
                         m_ConfigurationManager.RemoveReference(serviceName, m_ConsumerConfig);
-                        throw new Exception(String.Format("请求的服务【{0}】的【{1}】版本没有注册或者已经废弃!", serviceName, version));
+                        throw new Exception(String.Format("请求的服务【{0}】的【{1}】版本没有注册或者已经废弃!", serviceName, version == 0 ? "默认" : version.ToString()));
                     }
                 }
             }

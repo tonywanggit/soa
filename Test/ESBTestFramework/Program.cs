@@ -17,7 +17,7 @@ namespace ESB.TestFramework
         {
             //MonitorCenterTest.DoTest();
 
-            //TestEsbProxy("ESB_ServiceStack", "Hello", @"{""Name""=""Tony""}");
+            TestEsbProxy("ESB_ServiceStack1", "Hello", @"{""Name""=""Tony""}", 10, 2);
 
             //TestEsbProxy("ESB_ServiceStack", "POST:XML:Hello", @"<Hello xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/ESB.ServiceStack.ServiceModel""><Name>Ronger</Name></Hello>");
             //TestEsbProxy("WXSC_WeiXinServiceForApp", "GET:XML:CollocationDetailFilter", "collocationId=11");
@@ -26,14 +26,14 @@ namespace ESB.TestFramework
 
             //TestEsbProxy("ESB_WCF");
 
-            TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 1000);
+            //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 1000);
 
             //TestEsbProxy("ESB_WS");
 
             //TestWXSC();
         }
 
-        static void TestEsbProxy(String serviceName, String methodName = "HelloAction", String message = null, int callNum = 10)
+        static void TestEsbProxy(String serviceName, String methodName = "HelloAction", String message = null, int callNum = 10, Int32 version = 0)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -48,7 +48,7 @@ namespace ESB.TestFramework
 
             try
             {
-                String response = esbProxy.Invoke(serviceName, methodName, msgBody);
+                String response = esbProxy.Invoke(serviceName, methodName, msgBody, version);
             }
             catch (Exception ex)
             {
@@ -63,7 +63,7 @@ namespace ESB.TestFramework
             for (int i = 0; i < callNum; i++)
             {
                 stopWatch.Restart();
-                String ret = esbProxy.Invoke(serviceName, methodName, msgBody);
+                String ret = esbProxy.Invoke(serviceName, methodName, msgBody, version);
                 stopWatch.Stop();
 
                 elapsedMS += stopWatch.ElapsedMilliseconds;
