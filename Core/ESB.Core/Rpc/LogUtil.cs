@@ -52,7 +52,8 @@ namespace ESB.Core.Rpc
                 InvokeOrder = callState.TraceContext.InvokeOrder,
                 InvokeID = callState.TraceContext.InvokeID,
                 InvokeTimeSpan = ReqTimeSpan.TotalMilliseconds,
-                ConsumerIP = cm.LocalIP
+                ConsumerIP = cm.LocalIP,
+                Version = callState.ServiceVersion
             };
 
             //log.Insert();

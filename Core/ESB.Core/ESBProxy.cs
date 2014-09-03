@@ -177,10 +177,9 @@ namespace ESB.Core
         /// <param name="serviceName">服务名称</param>
         /// <param name="methodName">方法名称</param>
         /// <param name="message">消息内容</param>
-        /// <param name="traceContext">跟踪上下文</param>
-        /// <param name="esbTransaction">事务</param>
+        /// <param name="version">服务版本：0代表调用默认版本</param>
         /// <returns></returns>
-        public String Invoke(String serviceName, String methodName, String message, Int32 version)
+        public String Invoke(String serviceName, String methodName, String message, Int32 version = 0)
         {
             DateTime reqStartTime = DateTime.Now;
 
@@ -203,23 +202,24 @@ namespace ESB.Core
             if (ESBConfig == null)
                 throw new Exception("无法获取到有效的配置文件");
 
-            ServiceItem si = ESBConfig.Service.Find(x=>x.ServiceName == serviceName);
+            //--从ESBConfig中获取到服务版本信息
+            ServiceItem si = this.ESBConfig.GetInvokeServiceItem(serviceName, version);
             if (si == null)
             {
-                if (getSyncESBConfig)
+                if (getSyncESBConfig)//--如果已经获取过ESBConfig文件则直接抛出异常
                 {
                     m_ConfigurationManager.RemoveReference(serviceName, m_ConsumerConfig);
-                    throw new Exception(String.Format("请求的服务【{0}】没有注册!", serviceName));
+                    throw new Exception(String.Format("请求的服务【{0}】的【{1}】版本没有注册或者已经废弃!", serviceName, version));
                 }
                 else
                 {
                     SyncESBConfig(serviceName);
-                    si = ESBConfig.Service.Find(x => x.ServiceName == serviceName);
+                    si = this.ESBConfig.GetInvokeServiceItem(serviceName, version);
 
                     if (si == null)
                     {
                         m_ConfigurationManager.RemoveReference(serviceName, m_ConsumerConfig);
-                        throw new Exception(String.Format("请求的服务【{0}】没有注册!", serviceName));
+                        throw new Exception(String.Format("请求的服务【{0}】的【{1}】版本没有注册或者已经废弃!", serviceName, version));
                     }
                 }
             }

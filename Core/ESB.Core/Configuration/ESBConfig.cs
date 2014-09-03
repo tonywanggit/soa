@@ -27,6 +27,24 @@ namespace ESB.Core.Configuration
         }
 
         /// <summary>
+        /// 获取到指定的服务版本
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        public ServiceItem GetInvokeServiceItem(String serviceName, Int32 version)
+        {
+            List<ServiceItem> lstServiceItem = Service.FindAll(x => x.ServiceName == serviceName);
+
+            if (lstServiceItem == null || lstServiceItem.Count == 0) return null;
+
+            if (version < 1)//--所有小于1的版本调用都认为是调用默认版本
+                return lstServiceItem.Find(x => x.IsDefault);
+            else
+                return lstServiceItem.Find(x => x.Version == version);
+        }
+
+        /// <summary>
         /// 将配置对象序列化成XML
         /// </summary>
         /// <returns></returns>
@@ -50,6 +68,11 @@ namespace ESB.Core.Configuration
         /// 服务版本
         /// </summary>
         public Int32 Version { get; set; }
+
+        /// <summary>
+        /// 是否为默认版本
+        /// </summary>
+        public Boolean IsDefault { get; set; }
 
         private List<BindingTemplate> m_Binding = new List<BindingTemplate>();
         /// <summary>

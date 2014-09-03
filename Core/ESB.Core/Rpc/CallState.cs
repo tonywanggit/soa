@@ -18,6 +18,11 @@ namespace ESB.Core.Rpc
         public BindingTemplate Binding { get; set; }
 
         /// <summary>
+        /// 服务版本，用于审计
+        /// </summary>
+        public Int32 ServiceVersion { get; set; }
+
+        /// <summary>
         /// 请求信息
         /// </summary>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://schemas.jn.com/esb/request/20100329", ElementName = "服务请求")]

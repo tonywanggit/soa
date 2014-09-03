@@ -57,27 +57,40 @@ namespace ESB.Core.Rpc
                     Request = request,
                     RequestBeginTime = request.请求时间,
                     RequestEndTime = receiveDateTime,
-                    TraceContext = esbTraceContext
+                    TraceContext = esbTraceContext,
+                    ServiceVersion = version
                 };
 
                 return CallService(state);
             }
-            else //--如果有多个绑定则默认为发布、订阅模式，不需要将每个订阅则的结果都放回给调用方，或者指明是不需要返回结果的情况（单向调用）
+            else //--此处实现软负载均衡、队列调用等一系列功能
             {
-                foreach (BindingTemplate binding in bindings)
+                CallState state = new CallState()
                 {
-                    CallState state = new CallState()
-                    {
-                        Binding = binding,
-                        Request = request,
-                        RequestBeginTime = request.请求时间,
-                        RequestEndTime = receiveDateTime,
-                        TraceContext = esbTraceContext
-                    };
+                    Binding = bindings[0],
+                    Request = request,
+                    RequestBeginTime = request.请求时间,
+                    RequestEndTime = receiveDateTime,
+                    TraceContext = esbTraceContext,
+                    ServiceVersion = version
+                };
 
-                    ThreadPoolX.QueueUserWorkItem(() => CallService(state));
-                }
-                return GetMultiResponse();
+                return CallService(state);
+
+                //foreach (BindingTemplate binding in bindings)
+                //{
+                //    CallState state = new CallState()
+                //    {
+                //        Binding = binding,
+                //        Request = request,
+                //        RequestBeginTime = request.请求时间,
+                //        RequestEndTime = receiveDateTime,
+                //        TraceContext = esbTraceContext
+                //    };
+
+                //    ThreadPoolX.QueueUserWorkItem(() => CallService(state));
+                //}
+                //return GetMultiResponse();
             }
         }
 

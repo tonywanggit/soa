@@ -67,6 +67,7 @@ namespace Registry.WindowsService
                         si.ServiceName = bs.ServiceName;
                         si.Version = bs.BigVer;
                         si.Binding = bs.Binding;
+                        si.IsDefault = (bs.BigVer == bs.DefaultVersion);
 
                         esbConfig.Service.Add(si);
                     }
@@ -81,6 +82,7 @@ namespace Registry.WindowsService
                     si.ServiceName = bs.ServiceName;
                     si.Version = bs.BigVer;
                     si.Binding = bs.Binding;
+                    si.IsDefault = (bs.BigVer == bs.DefaultVersion);
 
                     esbConfig.Service.Add(si);
                 }

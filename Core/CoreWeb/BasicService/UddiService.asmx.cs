@@ -88,6 +88,7 @@ namespace ESB.CallCenter.BasicService
             //--借用Category字段传递用户ID
             String userID = service.Category;
             service.Category = String.Empty;
+            service.DefaultVersion = 1;     //新建服务时默认版本为1
             service.Insert();
 
             //--在新增服务时建立默认版本

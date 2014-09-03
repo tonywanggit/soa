@@ -159,6 +159,18 @@ namespace ESB.Core.Entity
             get { return _VerStatus; }
             set { if (OnPropertyChanging(__.VerStatus, value)) { _VerStatus = value; OnPropertyChanged(__.VerStatus); } }
         }
+
+        private Int32 _DefaultVersion;
+        /// <summary></summary>
+        [DisplayName("DefaultVersion")]
+        [Description("")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(13, "DefaultVersion", "", null, "int", 10, 0, false)]
+        public virtual Int32 DefaultVersion
+        {
+            get { return _DefaultVersion; }
+            set { if (OnPropertyChanging(__.DefaultVersion, value)) { _DefaultVersion = value; OnPropertyChanged(__.DefaultVersion); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -187,6 +199,7 @@ namespace ESB.Core.Entity
                     case __.ServiceID: return _ServiceID;
                     case __.VersionID: return _VersionID;
                     case __.VerStatus: return _VerStatus;
+                    case __.DefaultVersion: return _DefaultVersion;
                     default: return base[name];
                 }
             }
@@ -206,6 +219,7 @@ namespace ESB.Core.Entity
                     case __.ServiceID: _ServiceID = Convert.ToString(value); break;
                     case __.VersionID: _VersionID = Convert.ToString(value); break;
                     case __.VerStatus: _VerStatus = Convert.ToInt32(value); break;
+                    case __.DefaultVersion: _DefaultVersion = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -252,6 +266,9 @@ namespace ESB.Core.Entity
             ///<summary></summary>
             public static readonly Field VerStatus = FindByName(__.VerStatus);
 
+            ///<summary></summary>
+            public static readonly Field DefaultVersion = FindByName(__.DefaultVersion);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -293,6 +310,9 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public const String VerStatus = "VerStatus";
+
+            ///<summary></summary>
+            public const String DefaultVersion = "DefaultVersion";
 
         }
         #endregion
@@ -337,6 +357,9 @@ namespace ESB.Core.Entity
 
         /// <summary></summary>
         Int32 VerStatus { get; set; }
+
+        /// <summary></summary>
+        Int32 DefaultVersion { get; set; }
         #endregion
 
         #region 获取/设置 字段值
