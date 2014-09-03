@@ -229,7 +229,7 @@ namespace ESB.Core
 
 
             //Console.WriteLine("DynamicalCallWebService 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, version).消息内容;
+            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, si.Version).消息内容;
             //Console.WriteLine("DynamicalCallWebService 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             return msg;

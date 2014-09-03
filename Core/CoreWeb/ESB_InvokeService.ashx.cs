@@ -18,13 +18,14 @@ namespace ESB.CallCenter
         {
             String serviceName = context.Request["ServiceName"].Trim();
             String methodName = context.Request["MethodName"].Trim();
+            Int32 version = String.IsNullOrEmpty(context.Request["Version"]) ? 0 : Int32.Parse(context.Request["Version"]);
             String callback = context.Request["callback"];
             String message = GetMessageFromRequest(context.Request);
 
             String response = esbProxy.Invoke(serviceName, methodName, message);
             if (!String.IsNullOrEmpty(callback))
             {
-                response = String.Format("{0}({{message:'{1}'}})", callback, response);
+                response = String.Format("{0}({{message:'{1}'}})", callback, response, version);
             }
 
             context.Response.ContentType = "text/plain";
