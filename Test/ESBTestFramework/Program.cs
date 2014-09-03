@@ -17,7 +17,7 @@ namespace ESB.TestFramework
         {
             //MonitorCenterTest.DoTest();
 
-            TestEsbProxy("ESB_ServiceStack1", "Hello", @"{""Name""=""Tony""}", 10, 2);
+            TestEsbProxy("ESB_ServiceStack", "Hello", @"{""Name""=""Tony""}", 10, 2);
 
             //TestEsbProxy("ESB_ServiceStack", "POST:XML:Hello", @"<Hello xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/ESB.ServiceStack.ServiceModel""><Name>Ronger</Name></Hello>");
             //TestEsbProxy("WXSC_WeiXinServiceForApp", "GET:XML:CollocationDetailFilter", "collocationId=11");

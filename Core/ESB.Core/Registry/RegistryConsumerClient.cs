@@ -25,6 +25,11 @@ namespace ESB.Core.Registry
         private AutoResetEvent m_AutoResetEvent = new AutoResetEvent(false);
 
         /// <summary>
+        /// 定时器：用于检测注册中心是否可以使用
+        /// </summary>
+        private TimerX m_TimerX;
+
+        /// <summary>
         /// 注册中心消费者客户端
         /// </summary>
         /// <param name="esbProxy"></param>
@@ -49,6 +54,24 @@ namespace ESB.Core.Registry
 
             m_CometClient.OnReceiveNotify += m_CometClient_OnReceiveNotify;
             m_CometClient.Connect();
+
+            //--连接成功后,释放定时器
+            if (m_TimerX != null)
+            {
+                m_TimerX.Dispose();
+                m_TimerX = null;
+            }
+        }
+
+        /// <summary>
+        /// 重新连接到注册中心，采用定时器5秒后重连
+        /// </summary>
+        private void ReConnect()
+        {
+            if (m_CometClient != null)
+                m_CometClient.Dispose();
+
+            m_TimerX = new TimerX(x => Connect(), null, 5000, 5000);
         }
 
         /// <summary>
@@ -109,6 +132,7 @@ namespace ESB.Core.Registry
                 else if (e.Type == CometEventType.Lost)     // 当和注册中心断开连接时
                 {
                     Console.WriteLine("和注册中心断开连接。");
+                    ReConnect();
                 }
 
             }
