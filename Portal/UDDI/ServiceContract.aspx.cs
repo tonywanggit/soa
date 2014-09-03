@@ -1,4 +1,5 @@
 ﻿using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxHtmlEditor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -328,4 +329,27 @@ public partial class UDDI_ServiceContract : BasePage
         this.Page.DataBind();
     }
     #endregion
+    protected void grid_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+    {
+        e.NewValues["MethodContract"] = GetHtmlEditorText();
+        e.NewValues["CreateDateTime"] = DateTime.Now;
+    }
+
+    protected string GetHtmlEditorText()
+    {
+        ASPxHtmlEditor htmlEditor = grid.FindEditFormTemplateControl("HtmlEditor") as ASPxHtmlEditor;
+
+        return htmlEditor.Html;
+    }
+    protected void grid_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+    {
+        e.NewValues["MethodContract"] = GetHtmlEditorText();
+        e.NewValues["CreateDateTime"] = DateTime.Now;
+    }
+    protected void HtmlEditor_Init(object sender, EventArgs e)
+    {
+        ASPxHtmlEditor htmlEditor = sender as ASPxHtmlEditor;
+        //htmlEditor.DesignMode = false;
+        //htmlEditor.SetDefaultBooleanProperty("", DevExpress.Web.ASPxClasses.DefaultBoolean.
+    }
 }

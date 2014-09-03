@@ -8,6 +8,7 @@
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dxlp" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
+<%@ Register Assembly="DevExpress.Web.ASPxHtmlEditor.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxHtmlEditor" TagPrefix="dxhe" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="localCssPlaceholder" Runat="Server">
     <script type="text/javascript">
@@ -34,6 +35,11 @@
 
     </script>
     <style type="text/css">
+        body, body.dxheDesignViewArea_BlackGlass /* or body.dxhedesignviewarea_{themepostfix} for a themed control  */
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
         td.buttonCell {
             padding-right: 6px;
         }
@@ -73,7 +79,7 @@
                 </td>           
                 <td class="buttonCell">
                     <dxe:ASPxButton ID="btnAdd" runat="server" Text="新增契约" UseSubmitBehavior="False" AutoPostBack="false">
-                        <ClientSideEvents Click="function(){ 
+                        <ClientSideEvents GotFocus="cancelValidate" Click="function(){ 
                             grid.AddNewRow(); 
                         }" />
                     </dxe:ASPxButton>
@@ -159,7 +165,9 @@
             </dxp:PanelContent></PanelCollection>
         </dxrp:ASPxRoundPanel>
         <br />
-        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsServiceContract" KeyFieldName="OID" PreviewFieldName="MethodContract" AutoGenerateColumns="False" Width="900">
+        <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsServiceContract" KeyFieldName="OID" PreviewFieldName="MethodContract" 
+            OnRowInserting="grid_RowInserting" OnRowUpdating="grid_RowUpdating" 
+            AutoGenerateColumns="False" Width="900">
             <%-- BeginRegion Columns --%>
             <Columns>
                 <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="70">
@@ -171,7 +179,7 @@
                     <EditFormCaptionStyle VerticalAlign="Top" />
                 </dxwgv:GridViewDataTextColumn>      
                 <dxwgv:GridViewDataMemoColumn FieldName="MethodContract" VisibleIndex="2" Visible="false" Caption="契约描述" >
-                    <EditFormSettings ColumnSpan="2" VisibleIndex="2" CaptionLocation="Near" Visible="True" />
+                    <EditFormSettings ColumnSpan="2" VisibleIndex="2" CaptionLocation="Near" Visible="false" />
                     <EditFormCaptionStyle VerticalAlign="Top" />
                     <PropertiesMemoEdit Height="200px" />
                 </dxwgv:GridViewDataMemoColumn>    
@@ -190,11 +198,84 @@
                     <table style="border:none">
                         <tbody>
                             <tr>
-                                <td style="border:none;"><%# Container.Text %></td>
+                                <td>契约描述：</td>
+                                <td style="border:none;padding-left:10px;"><%# Container.Text %></td>
                             </tr>
                         </tbody>
                     </table>
                 </PreviewRow>
+                <EditForm>
+                    <div style="padding:4px 4px 3px 4px">
+                        <dxwgv:ASPxGridViewTemplateReplacement ID="Editors" ReplacementType="EditFormEditors" runat="server">
+                        </dxwgv:ASPxGridViewTemplateReplacement>
+                        <table cellspacing="0" cellpadding="0" width="100%">
+                            <tr>
+                                <td style="padding: 2px 4px 2px 10px;vertical-align:top;white-space: nowrap;">契约描述</td>
+                                <td style="padding: 2px 0px 2px 4px;">
+                                    <dxhe:ASPxHtmlEditor id="HtmlEditor" runat="server" OnInit="HtmlEditor_Init" height="300px" width="100%" Html='<%# Eval("MethodContract")%>'>
+                                        <Toolbars>
+                                            <dxhe:StandardToolbar2>
+                                                <Items>
+                                                    <dxhe:ToolbarParagraphFormattingEdit Width="120px">
+                                                        <Items>
+                                                            <dxhe:ToolbarListEditItem Text="Normal" Value="p"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Heading  1" Value="h1"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Heading  2" Value="h2"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Heading  3" Value="h3"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Heading  4" Value="h4"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Heading  5" Value="h5"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Heading  6" Value="h6"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Address" Value="address"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Normal (DIV)" Value="div"></dxhe:ToolbarListEditItem>
+                                                        </Items>
+                                                    </dxhe:ToolbarParagraphFormattingEdit>
+                                                    <dxhe:ToolbarFontNameEdit DefaultCaption="Courier">
+                                                        <Items>
+                                                            <dxhe:ToolbarListEditItem Text="Times New Roman" Value="Times New Roman"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Tahoma" Value="Tahoma"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Verdana" Value="Verdana"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Arial" Value="Arial"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="MS Sans Serif" Value="MS Sans Serif"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="Courier" Value="Courier"></dxhe:ToolbarListEditItem>
+                                                        </Items>
+                                                    </dxhe:ToolbarFontNameEdit>
+                                                    <dxhe:ToolbarFontSizeEdit>
+                                                        <Items>
+                                                            <dxhe:ToolbarListEditItem Text="1 (8pt)" Value="1"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="2 (10pt)" Value="2"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="3 (12pt)" Value="3"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="4 (14pt)" Value="4"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="5 (18pt)" Value="5"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="6 (24pt)" Value="6"></dxhe:ToolbarListEditItem>
+                                                            <dxhe:ToolbarListEditItem Text="7 (36pt)" Value="7"></dxhe:ToolbarListEditItem>
+                                                        </Items>
+                                                    </dxhe:ToolbarFontSizeEdit>
+                                                    <dxhe:ToolbarBoldButton BeginGroup="True" ></dxhe:ToolbarBoldButton>
+                                                    <dxhe:ToolbarItalicButton></dxhe:ToolbarItalicButton>
+                                                    <dxhe:ToolbarUnderlineButton></dxhe:ToolbarUnderlineButton>
+                                                    <dxhe:ToolbarStrikethroughButton></dxhe:ToolbarStrikethroughButton>
+                                                    <dxhe:ToolbarJustifyLeftButton BeginGroup="True"></dxhe:ToolbarJustifyLeftButton>
+                                                    <dxhe:ToolbarJustifyCenterButton></dxhe:ToolbarJustifyCenterButton>
+                                                    <dxhe:ToolbarJustifyRightButton></dxhe:ToolbarJustifyRightButton>
+                                                    <dxhe:ToolbarJustifyFullButton></dxhe:ToolbarJustifyFullButton>
+                                                    <dxhe:ToolbarBackColorButton BeginGroup="True"></dxhe:ToolbarBackColorButton>
+                                                    <dxhe:ToolbarFontColorButton></dxhe:ToolbarFontColorButton>
+                                                </Items>
+                                            </dxhe:StandardToolbar2>
+                                        </Toolbars>
+                                        <Settings AllowHtmlView="false" AllowContextMenu="False" />
+                                        <SettingsText DesignViewTab="撰写" PreviewTab="预览" />
+                                    </dxhe:ASPxHtmlEditor>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                    <div style="text-align:right; padding:2px 10px 2px 2px">
+                        <dxwgv:ASPxGridViewTemplateReplacement ID="UpdateButton" ReplacementType="EditFormUpdateButton" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
+                        <dxwgv:ASPxGridViewTemplateReplacement ID="CancelButton" ReplacementType="EditFormCancelButton" runat="server"></dxwgv:ASPxGridViewTemplateReplacement>
+                    </div>
+                </EditForm>
             </Templates>
             <%-- EndRegion --%>
             <Settings ShowPreview="true" />
