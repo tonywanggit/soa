@@ -41,17 +41,15 @@ namespace ESB.Core.Configuration
     /// </summary>
     public class ServiceItem
     {
-        public String ServiceName { get; set; }
-        public String Uri { get; set; }
-
-        private Boolean m_DirectInvokeEnabled = true;
         /// <summary>
-        /// 是否允许消费者直接调用服务提供者
+        /// 服务名称
         /// </summary>
-        public Boolean DirectInvokeEnabled { 
-            get { return m_DirectInvokeEnabled; }
-            set { m_DirectInvokeEnabled = value; }
-        }
+        public String ServiceName { get; set; }
+
+        /// <summary>
+        /// 服务版本
+        /// </summary>
+        public Int32 Version { get; set; }
 
         private List<BindingTemplate> m_Binding = new List<BindingTemplate>();
         /// <summary>

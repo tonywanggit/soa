@@ -59,11 +59,13 @@ namespace Registry.WindowsService
             {
                 foreach (var refService in consumerConfig.Reference)
                 {
-                    BusinessService bs = BusinessService.FindByServiceName(refService.ServiceName);
-                    if (bs != null)
+
+                    List<EsbView_ServiceVersion> lstBS = EsbView_ServiceVersion.FindAllPublish();
+                    foreach(EsbView_ServiceVersion bs in lstBS.Where(x=>x.ServiceName == refService.ServiceName))
                     {
                         ServiceItem si = new ServiceItem();
                         si.ServiceName = bs.ServiceName;
+                        si.Version = bs.BigVer;
                         si.Binding = bs.Binding;
 
                         esbConfig.Service.Add(si);
@@ -72,11 +74,12 @@ namespace Registry.WindowsService
             }
             else if(regClient.RegistryClientType == CometClientType.CallCenter)
             {
-                EntityList<BusinessService> lstBS = BusinessService.FindAll();
+                EntityList<EsbView_ServiceVersion> lstBS = EsbView_ServiceVersion.FindAllPublish();
                 foreach (var bs in lstBS)
                 {
                     ServiceItem si = new ServiceItem();
                     si.ServiceName = bs.ServiceName;
+                    si.Version = bs.BigVer;
                     si.Binding = bs.Binding;
 
                     esbConfig.Service.Add(si);

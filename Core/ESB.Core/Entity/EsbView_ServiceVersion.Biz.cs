@@ -1,4 +1,5 @@
 ﻿﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -81,6 +82,18 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展属性﻿
+        /// <summary>
+        /// 该服务版本下的所有启用的绑定地址
+        /// </summary>
+        public List<BindingTemplate> Binding
+        {
+            get
+            {
+                List<BindingTemplate> lstBinding = BindingTemplate.FindAllByServiceIDAndVersion(ServiceID, BigVer);
+
+                return lstBinding.Where(x => x.BindingStatus == 0).ToList();
+            }
+        }
         #endregion
 
         #region 扩展查询﻿
@@ -103,6 +116,16 @@ namespace ESB.Core.Entity
         {
             return Find(new String[] { _.VersionID }, new Object[] { versionID });
         }
+
+        /// <summary>
+        /// 获取到所有服务的发布版本
+        /// </summary>
+        /// <returns></returns>
+        public static EntityList<TEntity> FindAllPublish()
+        {
+            return FindAll(_.VerStatus, 2);
+        }
+
         #endregion
 
         #region 高级查询
