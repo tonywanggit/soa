@@ -135,7 +135,7 @@ public partial class UDDI_ServiceReg : BasePage
         ESB.BusinessServiceVersion[] svs = contractService.GetServiceVersionByServiceID(serviceID);
 
         //--如果服务包含发布的版本则无法删除
-        if (svs.Where(x => x.Status == 2).Count() > 1)
+        if (svs.Where(x => x.Status == 2).Count() > 0)
         {
             e.Cancel = true;
             ScriptManager.RegisterStartupScript(Page, this.GetType(), System.DateTime.Now.Ticks.ToString(), "pcAlert.Show();", true);

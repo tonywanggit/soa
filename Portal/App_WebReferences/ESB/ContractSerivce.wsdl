@@ -103,6 +103,8 @@
               <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="Opinion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ObsoletePersonID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ObsoleteDateTime" type="s:dateTime" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -219,6 +221,17 @@
         </s:complexType>
       </s:element>
       <s:element name="DeleteServiceVersionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObsoleteServiceVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="versionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="personalID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObsoleteServiceVersionResponse">
         <s:complexType />
       </s:element>
       <s:element name="DeleteServiceVersionAndContract">
@@ -381,6 +394,12 @@
   <wsdl:message name="DeleteServiceVersionSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteServiceVersionResponse" />
   </wsdl:message>
+  <wsdl:message name="ObsoleteServiceVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:ObsoleteServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="ObsoleteServiceVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:ObsoleteServiceVersionResponse" />
+  </wsdl:message>
   <wsdl:message name="DeleteServiceVersionAndContractSoapIn">
     <wsdl:part name="parameters" element="tns:DeleteServiceVersionAndContract" />
   </wsdl:message>
@@ -471,6 +490,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务版本</wsdl:documentation>
       <wsdl:input message="tns:DeleteServiceVersionSoapIn" />
       <wsdl:output message="tns:DeleteServiceVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObsoleteServiceVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">废弃服务版本</wsdl:documentation>
+      <wsdl:input message="tns:ObsoleteServiceVersionSoapIn" />
+      <wsdl:output message="tns:ObsoleteServiceVersionSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="DeleteServiceVersionAndContract">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务版本和服务契约</wsdl:documentation>
@@ -601,6 +625,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteServiceVersion">
       <soap:operation soapAction="http://esb.com/DeleteServiceVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObsoleteServiceVersion">
+      <soap:operation soapAction="http://esb.com/ObsoleteServiceVersion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -757,6 +790,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteServiceVersion">
       <soap12:operation soapAction="http://esb.com/DeleteServiceVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObsoleteServiceVersion">
+      <soap12:operation soapAction="http://esb.com/ObsoleteServiceVersion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

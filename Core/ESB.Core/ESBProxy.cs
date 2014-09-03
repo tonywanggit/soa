@@ -180,8 +180,7 @@ namespace ESB.Core
         /// <param name="traceContext">跟踪上下文</param>
         /// <param name="esbTransaction">事务</param>
         /// <returns></returns>
-        public String Invoke(String serviceName, String methodName, String message
-            , ESBTraceContext esbTraceContext = null, ESBTransaction esbTransaction = null)
+        public String Invoke(String serviceName, String methodName, String message, Int32 version)
         {
             DateTime reqStartTime = DateTime.Now;
 
@@ -230,7 +229,7 @@ namespace ESB.Core
 
 
             //Console.WriteLine("DynamicalCallWebService 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, esbTraceContext, esbTransaction).消息内容;
+            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, version).消息内容;
             //Console.WriteLine("DynamicalCallWebService 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             return msg;

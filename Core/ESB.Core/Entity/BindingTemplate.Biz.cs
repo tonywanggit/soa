@@ -174,6 +174,14 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展操作
+        /// <summary>
+        /// 将服务关联的地址绑定统一删除
+        /// </summary>
+        /// <param name="serviceID"></param>
+        public static void DeleteByServiceID(String serviceID)
+        {
+            Delete(new String[] { _.ServiceID }, new String[] { serviceID });
+        }
         #endregion
 
         #region 业务

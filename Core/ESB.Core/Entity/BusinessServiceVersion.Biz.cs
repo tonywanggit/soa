@@ -100,7 +100,7 @@ namespace ESB.Core.Entity
                     case 3:
                         return "评审拒绝";
                     case 9:
-                        return "版本废弃";
+                        return "已废弃";
                     default:
                         return "异常状态";
                 }
@@ -192,6 +192,15 @@ namespace ESB.Core.Entity
 
         #region 扩展操作
         /// <summary>
+        /// 将服务关联的服务版本统一删除
+        /// </summary>
+        /// <param name="serviceID"></param>
+        public static void DeleteByServiceID(String serviceID)
+        {
+            Delete(new String[] { _.ServiceID }, new String[] { serviceID });
+        }
+
+        /// <summary>
         /// 修改指定版本的状态
         /// </summary>
         /// <param name="versionID"></param>
@@ -209,9 +218,33 @@ namespace ESB.Core.Entity
                 {
                     version.ConfirmDateTime = DateTime.Now;
                     version.Opinion = opinion;
+
+                    //--当发布一个版本时需要将其修订版本的状态设置为已废弃
+                    if (status == 2)
+                        SetServiceVersionObsoleteWhenPublish(version);
                 }
                 version.Status = status;
                 version.Update();
+            }
+        }
+
+        /// <summary>
+        /// 当一个版本发布的同时需要将该版本下的所有修订版设置为已废弃
+        /// 例如版本5下有5.0版已发布，当发布5.1版时需要将5.0版设置为已废弃
+        /// </summary>
+        /// <param name="entity">需要发布的版本</param>
+        private static void SetServiceVersionObsoleteWhenPublish(TEntity entity)
+        {
+            EntityList<TEntity> lstEntity = FindAllByServiceID(entity.ServiceID);
+            foreach (var ver in lstEntity)
+            {
+                if (ver.BigVer == entity.BigVer && ver.OID != entity.OID)
+                {
+                    ver.Status = 9;//--将版本状态设置为已废弃
+                    ver.ObsoletePersonID = entity.CreatePersionID;//--默认为发布版本的创建人将修订版本废弃
+                    ver.ObsoleteDateTime = DateTime.Now;
+                    ver.Update();
+                }
             }
         }
 
@@ -299,6 +332,30 @@ namespace ESB.Core.Entity
         {
             ServiceContract.DeleteAllContract(versionID);
             Delete(new String[] { _.OID }, new Object[] { versionID });
+        }
+
+        /// <summary>
+        /// 废弃服务版本
+        /// 一但废弃一个版本，则相同大版本下的所有版本都将被置为已废弃
+        /// </summary>
+        /// <param name="versionID"></param>
+        public static void ObsoleteServiceVersion(String versionID, String personalID)
+        {
+            TEntity version = FindByOID(versionID);
+            if (version != null)
+            {
+                EntityList<TEntity> lstEntity = FindAllByServiceID(version.ServiceID);
+                foreach (var ver in lstEntity)
+                {
+                    if (ver.BigVer == version.BigVer)
+                    {
+                        ver.Status = 9;//--将版本状态设置为已废弃
+                        ver.ObsoletePersonID = personalID;
+                        ver.ObsoleteDateTime = DateTime.Now;
+                        ver.Update();
+                    }
+                }
+            }
         }
 
         #endregion

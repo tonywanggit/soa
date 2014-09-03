@@ -56,7 +56,7 @@
                     <EditFormSettings Visible="true" VisibleIndex="4" ColumnSpan="2" />
                     <PropertiesMemoEdit Height="80px" />
                 </dxwgv:GridViewDataMemoColumn>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="ConfirmPersonID" VisibleIndex="4" Caption="契约撰写人">
+                <dxwgv:GridViewDataComboBoxColumn FieldName="CreatePersionID" VisibleIndex="4" Caption="契约撰写人">
                     <PropertiesComboBox TextField="PersonalName" ValueField="PersonalID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
                     </PropertiesComboBox>
                     <EditFormSettings Visible="true" VisibleIndex="2" />

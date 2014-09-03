@@ -49,9 +49,10 @@ public partial class UDDI_ServiceBinding : BasePage
 
     protected void InitRight()
     {
-        this.grid.Columns[0].Visible = AuthUser.IsSystemAdmin;
         //this.grid.FindControl("gridTmodel").Visible = AuthUser.IsSystemAdmin;
         //this.grid.FindDetailRowTemplateControl(0, "gridTmodel").Visible = AuthUser.IsSystemAdmin;
+
+        this.grid.Columns[0].Visible = AuthUser.IsSystemAdmin;
         this.btnAdd.Visible = AuthUser.IsSystemAdmin;
         this.grid.SettingsDetail.ShowDetailRow = false;
     }
@@ -107,6 +108,13 @@ public partial class UDDI_ServiceBinding : BasePage
     }
 
     protected void cbServiceVersion_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        grid.Selection.UnselectAll();
+        grid.PageIndex = 0;
+        grid.DataBind();
+    }
+
+    protected void cbServiceVersion_DataBound(object sender, EventArgs e)
     {
         grid.Selection.UnselectAll();
         grid.PageIndex = 0;

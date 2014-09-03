@@ -119,6 +119,28 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnRevise.Enabled = true;
             this.btnUpdate.Enabled = true;
             this.btnDelete.Enabled = false;
+            this.btnObsolete.Enabled = true;
+            this.cbConfirmPerson.ReadOnly = true;
+            this.mmVersionDesc.ReadOnly = true;
+
+            //--控制评审意见是否出现
+            this.m_OpinionTrStyle = String.Empty;
+
+            //--控制修订版本、升级版本两个按钮
+            SetPublishVersionUI();
+
+            grid.Columns[0].Visible = false;
+        }
+        else if (cbServiceVersion.Text.Contains("已废弃"))
+        {
+            this.btnAdd.Enabled = false;
+            this.btnCommit.Enabled = false;
+            this.btnCommit.Text = "提交评审";
+            this.btnSaveVersion.Enabled = false;
+            this.btnRevise.Enabled = false;
+            this.btnUpdate.Enabled = true;
+            this.btnDelete.Enabled = false;
+            this.btnObsolete.Enabled = false;
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
 
@@ -139,6 +161,7 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnRevise.Enabled = false;
             this.btnUpdate.Enabled = false;
             this.btnDelete.Enabled = false;
+            this.btnObsolete.Enabled = false;
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
 
@@ -156,6 +179,7 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnRevise.Enabled = false;
             this.btnUpdate.Enabled = false;
             this.btnDelete.Enabled = true;
+            this.btnObsolete.Enabled = false;
             this.cbConfirmPerson.ReadOnly = false;
             this.mmVersionDesc.ReadOnly = false;
 
@@ -180,7 +204,7 @@ public partial class UDDI_ServiceContract : BasePage
         foreach (ListEditItem item in this.cbServiceVersion.Items)
         {
             //--如果同一个大版本下有编辑中、提交审核、审核失败的版本，则不允许修订或升级版本
-            if (item.Text.StartsWith(bigVer + ".") && !item.Text.Contains("已发布"))
+            if (item.Text.StartsWith(bigVer + ".") && !item.Text.Contains("已发布") && !item.Text.Contains("已废弃"))
             {
                 isEdit = true;
                 break;
@@ -196,7 +220,7 @@ public partial class UDDI_ServiceContract : BasePage
         foreach (ListEditItem item in this.cbServiceVersion.Items)
         {
             //--如果同一个大版本下有编辑中、提交审核、审核失败的版本，则不允许修订或升级版本
-            if (item.Text.Contains(".0") && !item.Text.Contains("已发布"))
+            if (item.Text.Contains(".0") && !item.Text.Contains("已发布") && !item.Text.Contains("已废弃"))
             {
                 this.btnUpdate.Enabled = false;
                 break;
@@ -290,6 +314,17 @@ public partial class UDDI_ServiceContract : BasePage
     {
         m_ContractSerivce.DeleteServiceVersionAndContract(cbServiceVersion.Value.ToString());
         InitPage();
+        this.Page.DataBind();
+    }
+
+    /// <summary>
+    /// 废弃版本
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnObsolete_Click(object sender, EventArgs e)
+    {
+        m_ContractSerivce.ObsoleteServiceVersion(cbServiceVersion.Value.ToString(), AuthUser.UserID);
         this.Page.DataBind();
     }
     #endregion

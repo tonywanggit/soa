@@ -17,7 +17,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phContent" Runat="Server">
-       <asp:ScriptManager ID="ScriptManager" runat="server" />
+    <asp:ScriptManager ID="ScriptManager" runat="server" />
     <dxlp:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel" Modal="False" />
     <asp:UpdatePanel ID="UpdatePanel" runat="server">
     <ContentTemplate>

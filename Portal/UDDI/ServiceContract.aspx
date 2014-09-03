@@ -10,6 +10,29 @@
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPopupControl" TagPrefix="dxpc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="localCssPlaceholder" Runat="Server">
+    <script type="text/javascript">
+        var validateConfirmPerson = true;
+
+        function cancelValidate(s, e) {
+            validateConfirmPerson = false;
+            e.processOnServer = true;
+        }
+
+        function onConfirmPersonValidation(s, e) {
+            if (!validateConfirmPerson) {
+                e.isValid = true;
+                e.errorText = null;
+
+                validateConfirmPerson = true;
+            } else {
+                if (!e.value) {
+                    e.isValid = false;
+                    e.errorText = "请选择审批人！";
+                }
+            }
+        }
+
+    </script>
     <style type="text/css">
         td.buttonCell {
             padding-right: 6px;
@@ -25,7 +48,7 @@
             <tr>
                 <td class="buttonCell">
                     <dxe:ASPxComboBox ID="cbProvider" runat="server" ToolTip="请选择服务提供者" AutoPostBack="true" DataSourceID="OdsProvider" 
-                        ValueField="BusinessID" TextField="Description" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" />
+                        ValueField="BusinessID" TextField="Description" OnSelectedIndexChanged="cbProvider_SelectedIndexChanged" Width="165" />
                 </td> 
                 <td class="buttonCell">
                     <dxe:ASPxComboBox ID="cbService" ClientInstanceName="cbService" runat="server" ToolTip="请选择具体服务" AutoPostBack="true" DataSourceID="OdsService" Width="150"
@@ -59,13 +82,21 @@
                     <dxe:ASPxButton ID="btnCommit" runat="server" Text="提交评审" AutoPostBack="true" OnClick="btnCommit_Click"></dxe:ASPxButton>
                 </td> 
                 <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnRevise" runat="server" Text="修订版本" AutoPostBack="true" OnClick="btnRevise_Click"></dxe:ASPxButton>
+                    <dxe:ASPxButton ID="btnRevise" runat="server" Text="修订版本" AutoPostBack="true" OnClick="btnRevise_Click">
+                    </dxe:ASPxButton>
                 </td>
                 <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnUpdate" runat="server" Text="升级版本" AutoPostBack="true" OnClick="btnUpdate_Click"></dxe:ASPxButton>
+                    <dxe:ASPxButton ID="btnUpdate" runat="server" Text="升级版本" AutoPostBack="true" OnClick="btnUpdate_Click">
+                        <ClientSideEvents GotFocus="cancelValidate" />
+                    </dxe:ASPxButton>
                 </td>
                 <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnDelete" runat="server" Text="删除版本" AutoPostBack="true" OnClick="btnDelete_Click"></dxe:ASPxButton>
+                    <dxe:ASPxButton ID="btnDelete" runat="server" Text="删除" AutoPostBack="true" OnClick="btnDelete_Click">
+                        <ClientSideEvents GotFocus="cancelValidate" />
+                    </dxe:ASPxButton>
+                </td>
+                <td class="buttonCell">
+                    <dxe:ASPxButton ID="btnObsolete" runat="server" Text="废弃" AutoPostBack="true" OnClick="btnObsolete_Click"></dxe:ASPxButton>
                 </td>
             </tr>
         </table>
@@ -91,10 +122,11 @@
                             <dxe:ASPxLabel ID="ASPxLabel3" Text="审批人:" runat="server" ></dxe:ASPxLabel>
                         </td>
                         <td class="buttonCell">
-                            <dxe:ASPxComboBox ID="cbConfirmPerson" runat="server" Width="130" DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName">
+                            <dxe:ASPxComboBox ID="cbConfirmPerson" ClientInstanceName="cbConfirmPerson" runat="server" Width="130" DataSourceID="OdsUser" ValueField="PersonalID" TextField="PersonalName">
                                 <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                                    <RequiredField IsRequired="true" ErrorText="请选择审批人！" />
+                                    <RequiredField IsRequired="false" ErrorText="请选择审批人！" />
                                 </ValidationSettings>
+                                <ClientSideEvents Validation="onConfirmPersonValidation" />
                             </dxe:ASPxComboBox>
                         </td>
                         <td class="buttonCell">

@@ -340,6 +340,18 @@ namespace ESB.Core.Entity
             get { return _ConsumerIP; }
             set { if (OnPropertyChanging(__.ConsumerIP, value)) { _ConsumerIP = value; OnPropertyChanged(__.ConsumerIP); } }
         }
+
+        private Int32 _Version;
+        /// <summary>服务版本</summary>
+        [DisplayName("服务版本")]
+        [Description("服务版本")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(28, "Version", "服务版本", "0", "int", 10, 0, false)]
+        public virtual Int32 Version
+        {
+            get { return _Version; }
+            set { if (OnPropertyChanging(__.Version, value)) { _Version = value; OnPropertyChanged(__.Version); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -383,6 +395,7 @@ namespace ESB.Core.Entity
                     case __.InvokeOrder: return _InvokeOrder;
                     case __.InvokeID: return _InvokeID;
                     case __.ConsumerIP: return _ConsumerIP;
+                    case __.Version: return _Version;
                     default: return base[name];
                 }
             }
@@ -417,6 +430,7 @@ namespace ESB.Core.Entity
                     case __.InvokeOrder: _InvokeOrder = Convert.ToInt32(value); break;
                     case __.InvokeID: _InvokeID = Convert.ToString(value); break;
                     case __.ConsumerIP: _ConsumerIP = Convert.ToString(value); break;
+                    case __.Version: _Version = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -508,6 +522,9 @@ namespace ESB.Core.Entity
             ///<summary>消费者IP</summary>
             public static readonly Field ConsumerIP = FindByName(__.ConsumerIP);
 
+            ///<summary>服务版本</summary>
+            public static readonly Field Version = FindByName(__.Version);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -594,6 +611,9 @@ namespace ESB.Core.Entity
 
             ///<summary>消费者IP</summary>
             public const String ConsumerIP = "ConsumerIP";
+
+            ///<summary>服务版本</summary>
+            public const String Version = "Version";
 
         }
         #endregion
@@ -683,6 +703,9 @@ namespace ESB.Core.Entity
 
         /// <summary>消费者IP</summary>
         String ConsumerIP { get; set; }
+
+        /// <summary>服务版本</summary>
+        Int32 Version { get; set; }
         #endregion
 
         #region 获取/设置 字段值

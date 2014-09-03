@@ -15,59 +15,6 @@
     </style>
     <script src="../Scripts/jquery.1.2.1.js" type="text/javascript"></script>
     <script type="text/javascript">
-        var url; // 服务绑定地址
-        var esbHostIp1 = "localhost"; // ESB主机1
-        var esbHostIp2 = "localhost"; // ESB主机2
-    
-        // 响应表格中的自定义按钮事件
-        function OnCustomButtonClick(s, e) {
-            grid.GetRowValues(e.visibleIndex, "访问地址;状态"
-                , function(values) {
-                    url = values[0];
-                    var status = values[1];
-
-                    if (status == 0) { // 启用
-                        popClearCache.Show();
-                    } else {
-                        alert("此地址已经被停用，无法清除其缓存！");
-                    }
-                }
-            ); 
-        
-        }
-
-        // 响应清除按钮单击事件
-        function OnClearCache(s, e) {
-            var serviceName = cbService.GetText();
-            var cmdName = s.name;
-            
-            if (/1$/.test(cmdName))
-                ClearAssemblyCache(esbHostIp1, url, serviceName, s);
-            else
-                ClearAssemblyCache(esbHostIp2, url, serviceName, s); 
-        }
-
-        // 一键清除
-        function OnClearAllCache(s, e) {
-            var serviceName = cbService.GetText();
-
-            ClearAssemblyCache(esbHostIp1, url, serviceName, cmdClearCache1);
-            ClearAssemblyCache(esbHostIp2, url, serviceName, cmdClearCache2); 
-        }
-
-        // 清除程序集缓存
-        function ClearAssemblyCache(hostName, url, serviceName, cmd) {
-            cmd.SetEnabled(false);
-            $.getJSON("http://" + hostName + "/EsbCore/ClearAssemblyCache.aspx?Action=RemoveCache&callback=?",
-                { Url: url, ServiceName: serviceName },
-                function(data) {
-                    var esbHostName = /1$/.test(cmd.name) ? "ESB主机一：" : "ESB主机二：";
-                    alert(esbHostName + data.result);
-                    
-                    cmd.SetEnabled(true);
-                }
-            );
-        }
     </script>
 </asp:Content>
 
@@ -92,8 +39,9 @@
                     </dxe:ASPxComboBox>
                 </td> 
                 <td class="buttonCell">
-                    <dxe:ASPxComboBox ID="cbServiceVersion" ClientInstanceName="cbService" runat="server" ToolTip="请选择服务版本" AutoPostBack="true" DataSourceID="OdsServiceVersion" Width="100" 
-                        ValueField="BigVer" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" OnSelectedIndexChanged="cbServiceVersion_SelectedIndexChanged" TextFormatString="{0}">
+                    <dxe:ASPxComboBox ID="cbServiceVersion" ClientInstanceName="cbServiceVersion" runat="server" ToolTip="请选择服务版本" AutoPostBack="true" DataSourceID="OdsServiceVersion" Width="100" 
+                        ValueField="BigVer" TextField="Description" AutoResizeWithContainer="true" DropDownStyle="DropDownList" TextFormatString="{0}"
+                        OnSelectedIndexChanged="cbServiceVersion_SelectedIndexChanged" OnDataBound="cbServiceVersion_DataBound" >
                         <Columns>
                             <dxe:ListBoxColumn Caption="版本号" FieldName="BigVer" ToolTip="版本号" Width="100px" />
                             <dxe:ListBoxColumn Caption="版本描述" FieldName="Description" ToolTip="版本描述" Width="200px" />
@@ -144,7 +92,6 @@
             <SettingsPager AlwaysShowPager="true" />
             <SettingsText EmptyDataRow="暂无数据！" CommandCancel="取消" CommandUpdate="保存" ConfirmDelete="您确定要删除这条记录吗？" />
             <SettingsBehavior ConfirmDelete="true" />
-            <ClientSideEvents CustomButtonClick="OnCustomButtonClick" />
         </dxwgv:ASPxGridView>   
         <script type="text/javascript">
             //调用条件：页面包含ASPxLoadingPanel ClientInstanceName="LoadingPanel"

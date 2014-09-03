@@ -34,8 +34,7 @@ namespace ESB.Core.Rpc
               Boolean needResponse
             , ESB.Core.Schema.服务请求 request
             , List<BindingTemplate> bindings
-            , ESBTraceContext esbTraceContext = null
-            , ESBTransaction esbTransaction = null)
+            , Int32 version)
         {
             //--记录接收时间并放在请求结束时间中，用于判读ESB在接到请求到开始调用的耗时
             DateTime receiveDateTime = DateTime.Now;
@@ -43,8 +42,7 @@ namespace ESB.Core.Rpc
             //--验证并预处理请求参数
             InvalidRequest(request);
 
-            if (esbTraceContext == null)
-                esbTraceContext = GetEsbTraceContext();
+            ESBTraceContext esbTraceContext = GetEsbTraceContext();
 
 
             //--获取到请求对应服务的绑定

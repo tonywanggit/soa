@@ -105,6 +105,12 @@ namespace ESB.CallCenter.BasicService
             entity.Delete();
         }
 
+        [WebMethod(Description = "废弃服务版本")]
+        public void ObsoleteServiceVersion(String versionID, String personalID)
+        {
+            BusinessServiceVersion.ObsoleteServiceVersion(versionID, personalID);
+        }
+
         [WebMethod(Description = "删除服务版本和服务契约")]
         public void DeleteServiceVersionAndContract(String versionID)
         {

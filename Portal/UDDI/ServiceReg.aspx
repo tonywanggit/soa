@@ -47,14 +47,14 @@
         <br />
         <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsService" KeyFieldName="ServiceID" 
             OnRowDeleting="grid_RowDeleting" OnRowValidating="grid_RowValidating" OnInitNewRow="grid_InitNewRow"
-            OnHtmlEditFormCreated="grid_HtmlEditFormCreated" AutoGenerateColumns="False" Width="800px" EnableCallBacks="false">
+            OnHtmlEditFormCreated="grid_HtmlEditFormCreated" AutoGenerateColumns="False" Width="900px" EnableCallBacks="false">
             <%-- BeginRegion Columns --%>
             <Columns>
                 <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="80">
                     <EditButton Visible="True" Text="编辑" />
                     <DeleteButton Visible="true" Text="删除" />
                 </dxwgv:GridViewCommandColumn>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="BusinessID" Caption="服务提供者" VisibleIndex="1" >
+                <dxwgv:GridViewDataComboBoxColumn FieldName="BusinessID" Caption="服务提供者" VisibleIndex="1" Width="150" ReadOnly="true">
                     <PropertiesComboBox TextField="Description" ValueField="BusinessID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsProvider">
                         <ValidationSettings>
                             <RequiredField IsRequired="true" />
@@ -62,7 +62,7 @@
                     </PropertiesComboBox>
                     <EditFormSettings Visible="True" VisibleIndex="1" />
                 </dxwgv:GridViewDataComboBoxColumn>
-                <dxwgv:GridViewDataHyperLinkColumn FieldName="ServiceID" Caption="服务名称" VisibleIndex="2" ReadOnly="true" >
+                <dxwgv:GridViewDataHyperLinkColumn FieldName="ServiceID" Caption="服务名称" VisibleIndex="2" ReadOnly="true" Width="150" >
                     <PropertiesHyperLinkEdit TextField="ServiceName" NavigateUrlFormatString="ServiceBinding.aspx?SID={0}" >
                     </PropertiesHyperLinkEdit>
                     <EditFormSettings Visible="False" />
@@ -83,7 +83,7 @@
                         </ValidationSettings>
                     </PropertiesMemoEdit>
                 </dxwgv:GridViewDataMemoColumn>
-                <dxwgv:GridViewDataComboBoxColumn FieldName="PersonalID" VisibleIndex="4" Caption="服务管理员">
+                <dxwgv:GridViewDataComboBoxColumn FieldName="PersonalID" VisibleIndex="4" Caption="服务管理员" Width="80">
                     <PropertiesComboBox TextField="PersonalName" ValueField="PersonalID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
                         <ValidationSettings>
                             <RequiredField IsRequired="true" />
@@ -97,13 +97,30 @@
                     <dxwgv:ASPxGridView ID="detailGrid" runat="server" DataSourceID="OdsServiceVersion" KeyFieldName="OID" Width="100%" 
                          OnBeforePerformDataSelect="detailGrid_DataSelect" >
                         <Columns>
-                            <dxwgv:GridViewDataColumn FieldName="BigVer" VisibleIndex="0" Caption="版本号">
+                            <dxwgv:GridViewDataColumn FieldName="BigVer" VisibleIndex="0" Caption="版本号" Width="40">
                                 <EditFormSettings ColumnSpan="1" VisibleIndex="0" />
                             </dxwgv:GridViewDataColumn>
-                            <dxwgv:GridViewDataColumn FieldName="SmallVer" VisibleIndex="0" Caption="修订号">
+                            <dxwgv:GridViewDataColumn FieldName="SmallVer" VisibleIndex="0" Caption="修订号" Width="40">
                                 <EditFormSettings ColumnSpan="1" VisibleIndex="0" />
                             </dxwgv:GridViewDataColumn>
-                            <dxwgv:GridViewDataMemoColumn FieldName="Description" VisibleIndex="1" Caption="服务版本描述">
+                            <dxwgv:GridViewDataColumn FieldName="StatusDesc" VisibleIndex="0" Caption="版本状态" Width="60">
+                                <EditFormSettings ColumnSpan="1" VisibleIndex="0" />
+                            </dxwgv:GridViewDataColumn>
+                            <dxwgv:GridViewDataDateColumn FieldName="CreateDateTime" Caption="创建时间" Width="100">
+                                <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm"></PropertiesDateEdit>
+                            </dxwgv:GridViewDataDateColumn>
+                            <dxwgv:GridViewDataDateColumn FieldName="ConfirmDateTime" Caption="审批时间" Width="100">
+                                <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm"></PropertiesDateEdit>
+                            </dxwgv:GridViewDataDateColumn>
+                            <dxwgv:GridViewDataDateColumn FieldName="ObsoleteDateTime" Caption="废弃时间" Width="100">
+                                <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm"></PropertiesDateEdit>
+                            </dxwgv:GridViewDataDateColumn>
+                            <dxwgv:GridViewDataComboBoxColumn FieldName="CreatePersionID" VisibleIndex="4" Caption="创建人" Width="70">
+                                <PropertiesComboBox TextField="PersonalName" ValueField="PersonalID" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="OdsUser">
+                                </PropertiesComboBox>
+                                <EditFormSettings Visible="true" VisibleIndex="2" />
+                            </dxwgv:GridViewDataComboBoxColumn>    
+                            <dxwgv:GridViewDataMemoColumn FieldName="Description" VisibleIndex="1" Caption="版本描述">
                                 <EditFormSettings ColumnSpan="2" VisibleIndex="1" CaptionLocation="Near" />
                                 <EditFormCaptionStyle VerticalAlign="Top" />
                                 <PropertiesMemoEdit Height="80px" />

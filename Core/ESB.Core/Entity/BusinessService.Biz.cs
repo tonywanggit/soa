@@ -23,6 +23,19 @@ namespace ESB.Core.Entity
             TEntity entity = new TEntity();
         }
 
+        /// <summary>
+        /// 服务删除之前将关联的服务版本、服务绑定和服务契约信息统一删除
+        /// </summary>
+        /// <returns></returns>
+        public override int Delete()
+        {
+            BusinessServiceVersion.DeleteByServiceID(ServiceID);
+            BindingTemplate.DeleteByServiceID(ServiceID);
+            ServiceContract.DeleteByServiceID(ServiceID);
+            
+            return base.Delete();
+        }
+
         ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
         ///// <returns></returns>
         //public override Int32 Insert()

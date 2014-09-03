@@ -160,6 +160,30 @@ namespace ESB.Core.Entity
             get { return _Opinion; }
             set { if (OnPropertyChanging(__.Opinion, value)) { _Opinion = value; OnPropertyChanged(__.Opinion); } }
         }
+
+        private String _ObsoletePersonID;
+        /// <summary>废弃人</summary>
+        [DisplayName("废弃人")]
+        [Description("废弃人")]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(13, "ObsoletePersonID", "废弃人", "", "nvarchar(50)", 0, 0, true)]
+        public virtual String ObsoletePersonID
+        {
+            get { return _ObsoletePersonID; }
+            set { if (OnPropertyChanging(__.ObsoletePersonID, value)) { _ObsoletePersonID = value; OnPropertyChanged(__.ObsoletePersonID); } }
+        }
+
+        private DateTime _ObsoleteDateTime;
+        /// <summary>废弃时间</summary>
+        [DisplayName("废弃时间")]
+        [Description("废弃时间")]
+        [DataObjectField(false, false, true, 3)]
+        [BindColumn(14, "ObsoleteDateTime", "废弃时间", null, "datetime", 3, 0, false)]
+        public virtual DateTime ObsoleteDateTime
+        {
+            get { return _ObsoleteDateTime; }
+            set { if (OnPropertyChanging(__.ObsoleteDateTime, value)) { _ObsoleteDateTime = value; OnPropertyChanged(__.ObsoleteDateTime); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -188,6 +212,8 @@ namespace ESB.Core.Entity
                     case __.Status: return _Status;
                     case __.Description: return _Description;
                     case __.Opinion: return _Opinion;
+                    case __.ObsoletePersonID: return _ObsoletePersonID;
+                    case __.ObsoleteDateTime: return _ObsoleteDateTime;
                     default: return base[name];
                 }
             }
@@ -207,6 +233,8 @@ namespace ESB.Core.Entity
                     case __.Status: _Status = Convert.ToInt32(value); break;
                     case __.Description: _Description = Convert.ToString(value); break;
                     case __.Opinion: _Opinion = Convert.ToString(value); break;
+                    case __.ObsoletePersonID: _ObsoletePersonID = Convert.ToString(value); break;
+                    case __.ObsoleteDateTime: _ObsoleteDateTime = Convert.ToDateTime(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -253,6 +281,12 @@ namespace ESB.Core.Entity
             ///<summary>审批意见</summary>
             public static readonly Field Opinion = FindByName(__.Opinion);
 
+            ///<summary>废弃人</summary>
+            public static readonly Field ObsoletePersonID = FindByName(__.ObsoletePersonID);
+
+            ///<summary>废弃时间</summary>
+            public static readonly Field ObsoleteDateTime = FindByName(__.ObsoleteDateTime);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -294,6 +328,12 @@ namespace ESB.Core.Entity
 
             ///<summary>审批意见</summary>
             public const String Opinion = "Opinion";
+
+            ///<summary>废弃人</summary>
+            public const String ObsoletePersonID = "ObsoletePersonID";
+
+            ///<summary>废弃时间</summary>
+            public const String ObsoleteDateTime = "ObsoleteDateTime";
 
         }
         #endregion
@@ -338,6 +378,12 @@ namespace ESB.Core.Entity
 
         /// <summary>审批意见</summary>
         String Opinion { get; set; }
+
+        /// <summary>废弃人</summary>
+        String ObsoletePersonID { get; set; }
+
+        /// <summary>废弃时间</summary>
+        DateTime ObsoleteDateTime { get; set; }
         #endregion
 
         #region 获取/设置 字段值
