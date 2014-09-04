@@ -206,6 +206,17 @@
       <s:element name="InsertBusinessServiceResponse">
         <s:complexType />
       </s:element>
+      <s:element name="SetServiceDefaultVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="version" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetServiceDefaultVersionResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="UpdateBusinessService">
         <s:complexType>
           <s:sequence>
@@ -430,6 +441,12 @@
   <wsdl:message name="InsertBusinessServiceSoapOut">
     <wsdl:part name="parameters" element="tns:InsertBusinessServiceResponse" />
   </wsdl:message>
+  <wsdl:message name="SetServiceDefaultVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:SetServiceDefaultVersion" />
+  </wsdl:message>
+  <wsdl:message name="SetServiceDefaultVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:SetServiceDefaultVersionResponse" />
+  </wsdl:message>
   <wsdl:message name="UpdateBusinessServiceSoapIn">
     <wsdl:part name="parameters" element="tns:UpdateBusinessService" />
   </wsdl:message>
@@ -552,6 +569,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增服务</wsdl:documentation>
       <wsdl:input message="tns:InsertBusinessServiceSoapIn" />
       <wsdl:output message="tns:InsertBusinessServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetServiceDefaultVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">设置服务的默认版本</wsdl:documentation>
+      <wsdl:input message="tns:SetServiceDefaultVersionSoapIn" />
+      <wsdl:output message="tns:SetServiceDefaultVersionSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdateBusinessService">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改服务</wsdl:documentation>
@@ -699,6 +721,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertBusinessService">
       <soap:operation soapAction="http://esb.com/InsertBusinessService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetServiceDefaultVersion">
+      <soap:operation soapAction="http://esb.com/SetServiceDefaultVersion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -900,6 +931,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertBusinessService">
       <soap12:operation soapAction="http://esb.com/InsertBusinessService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetServiceDefaultVersion">
+      <soap12:operation soapAction="http://esb.com/SetServiceDefaultVersion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

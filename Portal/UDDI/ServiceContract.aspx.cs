@@ -10,6 +10,11 @@ using System.Web.UI.WebControls;
 public partial class UDDI_ServiceContract : BasePage
 {
     ESB.ContractSerivce m_ContractSerivce = new ESB.ContractSerivce();
+    ESB.UddiService m_UddiService = new ESB.UddiService();
+
+    /// <summary>
+    /// 确定评审意见文本框是否出现
+    /// </summary>
     public String m_OpinionTrStyle = String.Empty;
 
     #region 初始化函数
@@ -121,6 +126,7 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnUpdate.Enabled = true;
             this.btnDelete.Enabled = false;
             this.btnObsolete.Enabled = true;
+            this.btnSetDefault.Enabled = true;
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
 
@@ -142,6 +148,7 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnUpdate.Enabled = true;
             this.btnDelete.Enabled = false;
             this.btnObsolete.Enabled = false;
+            this.btnSetDefault.Enabled = false;
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
 
@@ -163,6 +170,7 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnUpdate.Enabled = false;
             this.btnDelete.Enabled = false;
             this.btnObsolete.Enabled = false;
+            this.btnSetDefault.Enabled = false;
             this.cbConfirmPerson.ReadOnly = true;
             this.mmVersionDesc.ReadOnly = true;
 
@@ -181,6 +189,7 @@ public partial class UDDI_ServiceContract : BasePage
             this.btnUpdate.Enabled = false;
             this.btnDelete.Enabled = true;
             this.btnObsolete.Enabled = false;
+            this.btnSetDefault.Enabled = false;
             this.cbConfirmPerson.ReadOnly = false;
             this.mmVersionDesc.ReadOnly = false;
 
@@ -290,7 +299,9 @@ public partial class UDDI_ServiceContract : BasePage
     protected void btnRevise_Click(object sender, EventArgs e)
     {
         m_ContractSerivce.ReviseServiceVersion(cbServiceVersion.Value.ToString(), AuthUser.UserID);
-        InitPage();
+
+        this.cbServiceVersion.DataBind();
+        this.cbServiceVersion.SelectedIndex = 0;
         this.Page.DataBind();
     }
 
@@ -302,7 +313,8 @@ public partial class UDDI_ServiceContract : BasePage
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
         m_ContractSerivce.UpgradeServiceVersion(cbServiceVersion.Value.ToString(), AuthUser.UserID);
-        InitPage();
+        this.cbServiceVersion.DataBind();
+        this.cbServiceVersion.SelectedIndex = 0;
         this.Page.DataBind();
     }
 
@@ -314,7 +326,8 @@ public partial class UDDI_ServiceContract : BasePage
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         m_ContractSerivce.DeleteServiceVersionAndContract(cbServiceVersion.Value.ToString());
-        InitPage();
+        this.cbServiceVersion.DataBind();
+        this.cbServiceVersion.SelectedIndex = 0;
         this.Page.DataBind();
     }
 
@@ -327,6 +340,18 @@ public partial class UDDI_ServiceContract : BasePage
     {
         m_ContractSerivce.ObsoleteServiceVersion(cbServiceVersion.Value.ToString(), AuthUser.UserID);
         this.Page.DataBind();
+    }
+
+    /// <summary>
+    /// 设置服务的默认版本
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnSetDefault_Click(object sender, EventArgs e)
+    {
+        String version = cbServiceVersion.Text;
+
+        m_UddiService.SetServiceDefaultVersion(cbService.Value.ToString(), Int32.Parse(version.Split('.')[0]));
     }
     #endregion
     protected void grid_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)

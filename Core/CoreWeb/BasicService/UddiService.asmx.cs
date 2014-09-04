@@ -106,6 +106,15 @@ namespace ESB.CallCenter.BasicService
             version.Insert();
         }
 
+        [WebMethod(Description = "设置服务的默认版本")]
+        public void SetServiceDefaultVersion(String serviceID, Int32 version)
+        {
+            BusinessService service = BusinessService.FindByServiceID(serviceID);
+            service.DefaultVersion = version;
+
+            service.Update();
+        }
+
         [WebMethod(Description = "修改服务")]
         public void UpdateBusinessService(BusinessService service)
         {

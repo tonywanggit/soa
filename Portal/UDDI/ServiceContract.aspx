@@ -86,13 +86,16 @@
                 </td>    
                 <td class="buttonCell">
                     <dxe:ASPxButton ID="btnCommit" runat="server" Text="提交评审" AutoPostBack="true" OnClick="btnCommit_Click"></dxe:ASPxButton>
+                </td>  
+                <td class="buttonCell">
+                    <dxe:ASPxButton ID="btnSetDefault" runat="server" Text="设为默认" AutoPostBack="true" OnClick="btnSetDefault_Click"></dxe:ASPxButton>
                 </td> 
                 <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnRevise" runat="server" Text="修订版本" AutoPostBack="true" OnClick="btnRevise_Click">
+                    <dxe:ASPxButton ID="btnRevise" runat="server" Text="修订" AutoPostBack="true" OnClick="btnRevise_Click">
                     </dxe:ASPxButton>
                 </td>
                 <td class="buttonCell">
-                    <dxe:ASPxButton ID="btnUpdate" runat="server" Text="升级版本" AutoPostBack="true" OnClick="btnUpdate_Click">
+                    <dxe:ASPxButton ID="btnUpdate" runat="server" Text="升版" AutoPostBack="true" OnClick="btnUpdate_Click">
                         <ClientSideEvents GotFocus="cancelValidate" />
                     </dxe:ASPxButton>
                 </td>
@@ -108,7 +111,7 @@
         </table>
         <br />
         <dxrp:ASPxRoundPanel ID="rpServiceVersion" SkinID="RoundPanelGroupBox" runat="server" Width="100%" GroupBoxCaptionOffsetY="-20px" HeaderText="服务版本">
-            <ContentPaddings PaddingTop="10px" PaddingLeft="10px" PaddingBottom="10px" PaddingRight="2px" />
+            <ContentPaddings PaddingTop="10px" PaddingLeft="20px" PaddingBottom="10px" PaddingRight="2px" />
             <PanelCollection><dxp:PanelContent>
                 <table cellspacing="0" cellpadding="0">
                     <tr>
@@ -167,7 +170,7 @@
         <br />
         <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsServiceContract" KeyFieldName="OID" PreviewFieldName="MethodContract" 
             OnRowInserting="grid_RowInserting" OnRowUpdating="grid_RowUpdating" 
-            AutoGenerateColumns="False" Width="900">
+            AutoGenerateColumns="False" Width="940">
             <%-- BeginRegion Columns --%>
             <Columns>
                 <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="70">
