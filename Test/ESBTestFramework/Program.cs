@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.Reflection;
 using ESB.Core.Monitor;
 using System.Threading;
+using ESB.TestFramework.WinForm;
+using System.Windows.Forms;
 
 namespace ESB.TestFramework
 {
@@ -15,6 +17,8 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
+            ShowMainForm();
+
             //MBEmailTest.DoTest();
 
             //MonitorDataChartTest.DoTest();
@@ -34,6 +38,13 @@ namespace ESB.TestFramework
             //TestEsbProxy("ESB_WS");
 
             //TestWXSC();
+        }
+
+        static void ShowMainForm()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
         }
 
         static void TestEsbProxy(String serviceName, String methodName = "HelloAction", String message = null, int callNum = 10, Int32 version = 0)
