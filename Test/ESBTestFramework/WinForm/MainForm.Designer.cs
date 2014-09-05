@@ -46,6 +46,8 @@
             this.tbThreadNum = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.tabFunction = new System.Windows.Forms.TabPage();
+            this.lblInvokeNum = new System.Windows.Forms.Label();
+            this.lblThreadNum = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPressiure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbThreadNum)).BeginInit();
@@ -64,6 +66,8 @@
             // 
             // tabPressiure
             // 
+            this.tabPressiure.Controls.Add(this.lblThreadNum);
+            this.tabPressiure.Controls.Add(this.lblInvokeNum);
             this.tabPressiure.Controls.Add(this.btnStop);
             this.tabPressiure.Controls.Add(this.txtMessage);
             this.tabPressiure.Controls.Add(this.label6);
@@ -197,7 +201,7 @@
             // chkIsStepUp
             // 
             this.chkIsStepUp.AutoSize = true;
-            this.chkIsStepUp.Location = new System.Drawing.Point(591, 27);
+            this.chkIsStepUp.Location = new System.Drawing.Point(591, 29);
             this.chkIsStepUp.Name = "chkIsStepUp";
             this.chkIsStepUp.Size = new System.Drawing.Size(72, 16);
             this.chkIsStepUp.TabIndex = 2;
@@ -212,7 +216,8 @@
             this.tbThreadNum.Name = "tbThreadNum";
             this.tbThreadNum.Size = new System.Drawing.Size(471, 45);
             this.tbThreadNum.TabIndex = 1;
-            this.tbThreadNum.Value = 10;
+            this.tbThreadNum.Value = 1;
+            this.tbThreadNum.Scroll += new System.EventHandler(this.tbThreadNum_Scroll);
             // 
             // label1
             // 
@@ -232,6 +237,28 @@
             this.tabFunction.TabIndex = 1;
             this.tabFunction.Text = "功能测试";
             this.tabFunction.UseVisualStyleBackColor = true;
+            // 
+            // lblInvokeNum
+            // 
+            this.lblInvokeNum.AutoSize = true;
+            this.lblInvokeNum.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvokeNum.ForeColor = System.Drawing.Color.Red;
+            this.lblInvokeNum.Location = new System.Drawing.Point(564, 48);
+            this.lblInvokeNum.Name = "lblInvokeNum";
+            this.lblInvokeNum.Size = new System.Drawing.Size(14, 14);
+            this.lblInvokeNum.TabIndex = 15;
+            this.lblInvokeNum.Text = "0";
+            // 
+            // lblThreadNum
+            // 
+            this.lblThreadNum.AutoSize = true;
+            this.lblThreadNum.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThreadNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lblThreadNum.Location = new System.Drawing.Point(564, 17);
+            this.lblThreadNum.Name = "lblThreadNum";
+            this.lblThreadNum.Size = new System.Drawing.Size(14, 14);
+            this.lblThreadNum.TabIndex = 16;
+            this.lblThreadNum.Text = "1";
             // 
             // MainForm
             // 
@@ -270,5 +297,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Label lblInvokeNum;
+        private System.Windows.Forms.Label lblThreadNum;
     }
 }

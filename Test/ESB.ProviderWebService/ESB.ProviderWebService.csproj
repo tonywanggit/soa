@@ -265,6 +265,7 @@
     <Content Include="Handler\ESB_ASHX.ashx" />
     <Content Include="WebService\ESB_WS.asmx" />
     <Content Include="Composit\ESB_COMPOSIT.ashx" />
+    <None Include="Properties\PublishProfiles\ESB_ProviderService.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

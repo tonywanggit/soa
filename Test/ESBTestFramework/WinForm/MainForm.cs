@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ESB.TestFramework.Test;
+using NewLife.Threading;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +15,10 @@ namespace ESB.TestFramework.WinForm
 {
     public partial class MainForm : Form
     {
-        Boolean isStop = false;
+        delegate void UpdateLabel(Int32 value);
+
+        TestManager m_TestManager = new TestManager();
+        TimerX m_TimerX; 
 
         public MainForm()
         {
@@ -31,44 +36,40 @@ namespace ESB.TestFramework.WinForm
             btnStop.Enabled = true;
             //CallService();
 
-            while (!isStop)
+            m_TestManager.Start(new ESBInvokeParam()
             {
-                CallService();
-            }
+                CallCenterUrl = this.txtCallCenterUrl.Text,
+                ServiceName = this.txtServiceName.Text,
+                MethodName = this.txtMethodName.Text,
+                Message = this.txtMessage.Text,
+                Version = 1
+            });
+
+            m_TimerX = new TimerX(x =>
+            {
+                this.lblInvokeNum.Invoke(new UpdateLabel(UpdateInvokeNumLabel), m_TestManager.InvokeNum);
+            }, null, 1000, 1000);
+
+        }
+
+        private void UpdateInvokeNumLabel(int invokeNum)
+        {
+            this.lblInvokeNum.Text = invokeNum.ToString();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            m_TestManager.Stop();
+            m_TimerX.Dispose();
 
             btnStart.Enabled = true;
             btnStop.Enabled = false;
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
+        private void tbThreadNum_Scroll(object sender, EventArgs e)
         {
-            isStop = true;
-            btnStart.Enabled = false;
-            btnStop.Enabled = true;
-        }
-
-
-        private void CallService()
-        {
-            String uri = String.Format("{0}?ServiceName={1}&Version={2}&MethodName={3}&Message={4}",
-                txtCallCenterUrl.Text, txtServiceName.Text, txtVersion.Text, txtMethodName.Text, txtMessage.Text);
-
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(uri);
-            webRequest.Method = "GET";
-            webRequest.ContentType = "text/xml; charset=utf-8";
-
-
-            HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse();
-
-            using (Stream newstream = webResponse.GetResponseStream())
-            {
-                using (StreamReader srRead = new StreamReader(newstream, System.Text.Encoding.UTF8))
-                {
-                    String outString = srRead.ReadToEnd();
-
-                    //txtMessage.Text = outString;
-                }
-            }
+            this.lblThreadNum.Text = tbThreadNum.Value.ToString();
+            m_TestManager.SetThreadNum(tbThreadNum.Value);
         }
     }
 }
