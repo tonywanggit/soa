@@ -82,6 +82,8 @@ public partial class UDDI_ServiceBinding : BasePage
 
     protected void OdsBinding_Updating(object sender, ObjectDataSourceMethodEventArgs e)
     {
+        ESB.BindingTemplate template = e.InputParameters["entity"] as ESB.BindingTemplate;
+        template.Version = Int32.Parse(cbServiceVersion.Value.ToString());
     }
 
     protected void OdsBinding_Inserting(object sender, ObjectDataSourceMethodEventArgs e)

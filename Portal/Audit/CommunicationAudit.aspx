@@ -83,17 +83,17 @@
                     <EditFormSettings VisibleIndex="7" Visible="true" />
                 </dxwgv:GridViewDataColumn>
                 <dxwgv:GridViewDataColumn FieldName="ServiceName" VisibleIndex="2" Caption="调用服务" ReadOnly="true">
-                    <EditFormSettings VisibleIndex="8" CaptionLocation="Near"  Visible="true" />
+                    <EditFormSettings VisibleIndex="9" CaptionLocation="Near"  Visible="true" />
                     <EditFormCaptionStyle VerticalAlign="Top" />
                 </dxwgv:GridViewDataColumn>
                 <dxwgv:GridViewDataColumn FieldName="MethodName" VisibleIndex="3" Caption="调用方法" ReadOnly="true">
-                    <EditFormSettings VisibleIndex="9" Visible="true" />
+                    <EditFormSettings VisibleIndex="10" Visible="true" />
                 </dxwgv:GridViewDataColumn>
-                <dxwgv:GridViewDataDateColumn FieldName="ReqBeginTime" VisibleIndex="4" Caption="请求开始时间" Visible="false" ReadOnly="true">
+                <dxwgv:GridViewDataDateColumn FieldName="ReqBeginTime" VisibleIndex="4" Caption="入站时间" Visible="false" ReadOnly="true">
                     <EditFormSettings VisibleIndex="1" Visible="True" />
                     <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm:ss"></PropertiesDateEdit>
                 </dxwgv:GridViewDataDateColumn>
-                <dxwgv:GridViewDataDateColumn FieldName="ReqEndTime" VisibleIndex="4" Caption="总线接收时间" Visible="false" ReadOnly="true">
+                <dxwgv:GridViewDataDateColumn FieldName="ReqEndTime" VisibleIndex="4" Caption="出站时间" Visible="false" ReadOnly="true">
                     <EditFormSettings VisibleIndex="2" Visible="True"  />
                     <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm:ss" AllowUserInput="False"></PropertiesDateEdit>
                 </dxwgv:GridViewDataDateColumn>
@@ -104,15 +104,23 @@
                 <dxwgv:GridViewDataDateColumn FieldName="CallEndTime" VisibleIndex="4" Caption="调用结束时间" ReadOnly="true">
                     <EditFormSettings VisibleIndex="4"  />
                     <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm:ss"></PropertiesDateEdit>
+                </dxwgv:GridViewDataDateColumn> 
+                <dxwgv:GridViewDataDateColumn FieldName="ServiceBeginTime" VisibleIndex="4" Caption="服务开始时间" Visible="false" ReadOnly="true">
+                    <EditFormSettings VisibleIndex="5" Visible="True" />
+                    <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm:ss"></PropertiesDateEdit>
+                </dxwgv:GridViewDataDateColumn>
+                <dxwgv:GridViewDataDateColumn FieldName="ServiceEndTime" VisibleIndex="4" Caption="服务结束时间" Visible="false" ReadOnly="true">
+                    <EditFormSettings VisibleIndex="6" Visible="True"  />
+                    <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm:ss"></PropertiesDateEdit>
                 </dxwgv:GridViewDataDateColumn>  
                 <dxwgv:GridViewDataColumn FieldName="MessageID" VisibleIndex="5" Caption="消息编码" Visible="false" ReadOnly="true">
-                    <EditFormSettings VisibleIndex="5" Visible="true" ColumnSpan="2" />
+                    <EditFormSettings VisibleIndex="12" Visible="true" ColumnSpan="2" />
                 </dxwgv:GridViewDataColumn>
                 <dxwgv:GridViewDataColumn FieldName="HostName" VisibleIndex="5" Caption="调用主机" Visible="false" ReadOnly="true">
-                    <EditFormSettings VisibleIndex="6" Visible="true" />
+                    <EditFormSettings VisibleIndex="8" Visible="true" />
                 </dxwgv:GridViewDataColumn>
                 <dxwgv:GridViewDataColumn FieldName="BindingAddress" VisibleIndex="5" Caption="调用地址" Visible="false" ReadOnly="true">
-                    <EditFormSettings VisibleIndex="10" Visible="true" ColumnSpan="2" />
+                    <EditFormSettings VisibleIndex="11" Visible="true" ColumnSpan="2" />
                 </dxwgv:GridViewDataColumn>
             </Columns>
             <Templates>
