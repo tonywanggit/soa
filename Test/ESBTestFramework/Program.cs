@@ -17,7 +17,7 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
-            ShowMainForm();
+            //ShowMainForm();
 
             //MBEmailTest.DoTest();
 
@@ -31,7 +31,7 @@ namespace ESB.TestFramework
 
             //TestEsbProxy("ESB_COM_WS");
 
-            //TestEsbProxy("ESB_WCF");
+            TestEsbProxy("ESB_WCF");
 
             //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 1000);
 

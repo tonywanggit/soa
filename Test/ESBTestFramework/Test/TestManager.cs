@@ -20,7 +20,7 @@ namespace ESB.TestFramework.Test
         /// <summary>
         /// 调用次数
         /// </summary>
-        private Int32 m_InvokeNum = 0;
+        private static Int32 m_InvokeNum = 0;
         /// <summary>
         /// 调用次数
         /// </summary>
