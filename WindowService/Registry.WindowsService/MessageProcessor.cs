@@ -36,6 +36,11 @@ namespace Registry.WindowsService
                 ESBConfig esbConfig = GetESBConfig(consumerConfig, regClient);
                 m_RegistryCenter.SendData(regClient, CometMessageAction.ServiceConfig, esbConfig.ToXml(), regMessage.IsAsync);
             }
+            else if (regMessage.Action == CometMessageAction.ListRegistryClient)
+            {
+                String message = XmlUtil.SaveXmlFromObj<List<RegistryClient>>(m_RegistryCenter.RegistryClients);
+                m_RegistryCenter.SendData(regClient, CometMessageAction.ListRegistryClient, message);
+            }
         }
 
         /// <summary>

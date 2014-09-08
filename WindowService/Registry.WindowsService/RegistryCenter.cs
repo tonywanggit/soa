@@ -17,15 +17,44 @@ namespace Registry.WindowsService
     /// </summary>
     public class RegistryCenter
     {
+        /// <summary>
+        /// 客户端列表
+        /// </summary>
         List<RegistryClient> m_RegistryClients = new List<RegistryClient>();
+        /// <summary>
+        /// 监听器
+        /// </summary>
         TcpListener m_TcpListener;
+        /// <summary>
+        /// 守护线程
+        /// </summary>
         MonitorThread m_monitorThread;
+        /// <summary>
+        /// 消息处理器
+        /// </summary>
         MessageProcessor m_MessageProcessor;
 
+        /// <summary>
+        /// 连接到注册中心的客户端列表
+        /// </summary>
+        internal List<RegistryClient> RegistryClients
+        {
+            get
+            {
+                return m_RegistryClients;
+            }
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public RegistryCenter() {
             m_MessageProcessor = new MessageProcessor(this);
         }
 
+        /// <summary>
+        /// 启动服务
+        /// </summary>
         public void Start()
         {
             Int32 port = Config.GetConfig<Int32>("ESB.RegistryService.Port");
@@ -42,6 +71,10 @@ namespace Registry.WindowsService
             //m_monitorThread.Start();
         }
 
+        /// <summary>
+        /// 接收请求
+        /// </summary>
+        /// <param name="ar"></param>
         private void AcceptCallback(IAsyncResult ar)
         {
             try
@@ -70,6 +103,10 @@ namespace Registry.WindowsService
             }
         }
 
+        /// <summary>
+        /// 接收请求回调函数
+        /// </summary>
+        /// <param name="ar"></param>
         private void ReceiveCallback(IAsyncResult ar)
         {
             RegistryClient registryClient = (RegistryClient)ar.AsyncState;
@@ -79,7 +116,7 @@ namespace Registry.WindowsService
 
                 if(dataLength == 0)
                 {
-                    Console.WriteLine("接收客户端：{0}已经断开连接。", registryClient.Socket.RemoteEndPoint.ToString());
+                    Console.WriteLine("接收客户端：{0}已经断开连接。", registryClient.ClientIP);
                     lock(m_RegistryClients){
                         m_RegistryClients.Remove(registryClient);
                         registryClient.Dispose();
@@ -89,7 +126,7 @@ namespace Registry.WindowsService
                 {
                     String data = Encoding.UTF8.GetString(registryClient.ReceiveBuffer, 0, dataLength);
 
-                    Console.WriteLine("接收客户端：{0}发送的数据：{1}。", registryClient.Socket.RemoteEndPoint.ToString(), data);
+                    Console.WriteLine("接收客户端：{0}发送的数据：{1}。", registryClient.ClientIP, data);
 
                     //--解析来自客户端的类型
                     CometMessage regMessage = XmlUtil.LoadObjFromXML<CometMessage>(data);

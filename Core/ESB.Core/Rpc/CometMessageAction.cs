@@ -49,6 +49,10 @@ namespace ESB.Core.Rpc
         /// <summary>
         /// 发布监控数据
         /// </summary>
-        Publish
+        Publish,
+        /// <summary>
+        /// 列出连接到注册中心的客户端
+        /// </summary>
+        ListRegistryClient
     }
 }

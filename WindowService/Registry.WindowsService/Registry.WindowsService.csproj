@@ -49,7 +49,6 @@
     <Compile Include="MessageProcessor.cs" />
     <Compile Include="MonitorThread.cs" />
     <Compile Include="RegistryCenter.cs" />
-    <Compile Include="RegistryClient.cs" />
     <Compile Include="RegistryService.cs">
       <SubType>Component</SubType>
     </Compile>

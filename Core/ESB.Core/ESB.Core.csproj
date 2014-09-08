@@ -112,6 +112,7 @@
     <Compile Include="Monitor\RabbitMQClient.cs" />
     <Compile Include="Monitor\ESBTraceContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registry\RegistryClient.cs" />
     <Compile Include="Registry\RegistryConsumerClient.cs" />
     <Compile Include="Rpc\AssemblyType.cs" />
     <Compile Include="Rpc\BindingType.cs" />
