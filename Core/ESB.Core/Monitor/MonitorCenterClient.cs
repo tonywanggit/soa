@@ -115,6 +115,10 @@ namespace ESB.Core.Monitor
                         }
                     }
                 }
+                else if (e.Type == CometEventType.Connected) 
+                {
+                    XTrace.WriteLine("成功连接到监控中心。");
+                }
                 else if (e.Type == CometEventType.Lost)     // 当和监控中心断开连接时
                 {
                     Console.WriteLine("和监控中心断开连接, 5秒钟后将重新连接。");

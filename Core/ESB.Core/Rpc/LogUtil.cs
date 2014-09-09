@@ -60,7 +60,7 @@ namespace ESB.Core.Rpc
             //String mqHost = ESBProxy.GetInstance().ESBConfig.Monitor[0].Uri;
             //MSMQUtil.SendMessage<AuditBusiness>(log, String.Format(@"FormatName:DIRECT=TCP:{0}\Private$\EsbAuditQueue", "192.168.56.2"));
 
-            ESBProxy.GetInstance().MonitorClient.SendAuditMessage(log);
+            ESBProxy.GetInstance().MessageQueueClient.SendAuditMessage(log);
 
             //--每调用完一次需要增加调用次数
             callState.TraceContext.IncreaseInvokeOrder();
@@ -157,7 +157,7 @@ namespace ESB.Core.Rpc
             };
 
             //exception.Insert();
-            ESBProxy.GetInstance().MonitorClient.SendExceptionMessage(exception);
+            ESBProxy.GetInstance().MessageQueueClient.SendExceptionMessage(exception);
 
             return new Exception(message);
         }

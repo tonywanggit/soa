@@ -84,11 +84,17 @@ namespace Registry.WindowsService
                     case 0: //--注册中心
                         esbConfig.Registry.Add(new RegistryItem() { Uri = String.Format("{0}:{1}", uri.Uri, uri.Port), Load = 1 });
                         break;
-                    case 3: //--监控中心（RabbitMQ）
-                        esbConfig.Monitor.Add(new MonitorItem() { Uri = String.Format("{0}:{1}:{2}:{3}", uri.Uri, uri.Port, uri.UserName, uri.PassWord), Load = 1, Type = "RabbitMQ" });
+                    case 1: //--监控中心
+                        esbConfig.Monitor.Add(new MonitorItem() { Uri = String.Format("{0}:{1}", uri.Uri, uri.Port), Load = 1 });
                         break;
-                    case 2:
+                    case 2: //--调用中心
                         esbConfig.CallCenter.Add(new CallCenterItem() { Uri = uri.Uri, Load = 1 });
+                        break;
+                    case 3: //--队列中心
+                        esbConfig.MessageQueue.Add(new MessageQueueItem() { Uri = String.Format("{0}:{1}:{2}:{3}", uri.Uri, uri.Port, uri.UserName, uri.PassWord), Load = 1 });
+                        break;
+                    case 4: //--缓存中心
+                        esbConfig.Cache.Add(new CacheItem() { Uri = String.Format("{0}:{1}", uri.Uri, uri.Port), Load = 1 });
                         break;
                     default:
                         break;

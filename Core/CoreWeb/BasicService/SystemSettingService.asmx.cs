@@ -41,8 +41,13 @@ namespace ESB.CallCenter.BasicService
         [WebMethod(Description = "修改地址设置")]
         public void UpdateSettingUri(SettingUri entity)
         {
-            entity.Update();
+            if (entity.UserName == null)
+                entity.UserName = String.Empty;
 
+            if (entity.PassWord == null)
+                entity.PassWord = String.Empty;
+
+            entity.Update();
             esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 

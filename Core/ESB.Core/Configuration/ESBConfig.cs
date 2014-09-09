@@ -13,17 +13,42 @@ namespace ESB.Core.Configuration
     /// </summary>
     public class ESBConfig
     {
+        /// <summary>
+        /// 服务
+        /// </summary>
         public List<ServiceItem> Service { get; set; }
+        /// <summary>
+        /// 注册中心
+        /// </summary>
         public List<RegistryItem> Registry { get; set; }
+        /// <summary>
+        /// 调用中心
+        /// </summary>
         public List<CallCenterItem> CallCenter { get; set; }
+        /// <summary>
+        /// 监控中心
+        /// </summary>
         public List<MonitorItem> Monitor { get; set; }
+        /// <summary>
+        /// 队列中心
+        /// </summary>
+        public List<MessageQueueItem> MessageQueue { get; set; }
+        /// <summary>
+        /// 缓存中心
+        /// </summary>
+        public List<CacheItem> Cache { get; set; }
 
+        /// <summary>
+        /// 构造器
+        /// </summary>
         public ESBConfig()
         {
             Service = new List<ServiceItem>();
             Registry = new List<RegistryItem>();
             CallCenter = new List<CallCenterItem>();
             Monitor = new List<MonitorItem>();
+            MessageQueue = new List<MessageQueueItem>();
+            Cache = new List<CacheItem>();
         }
 
         /// <summary>
@@ -128,9 +153,35 @@ namespace ESB.Core.Configuration
         /// 负载：用监控中心的消息队列长度进行表示
         /// </summary>
         public Int32 Load { get; set; }
+    }
+
+    /// <summary>
+    /// 队列中心配置项
+    /// </summary>
+    public class MessageQueueItem
+    {        
         /// <summary>
-        /// 注册中心类型：RabbitMQ,MSMQ
+        /// 队列中心地址
         /// </summary>
-        public String Type { get; set; }
+        public String Uri { get; set; }
+        /// <summary>
+        /// 负载：用队列中心的消息队列长度进行表示
+        /// </summary>
+        public Int32 Load { get; set; }
+    }
+
+    /// <summary>
+    /// 缓存中心配置项
+    /// </summary>
+    public class CacheItem
+    {
+        /// <summary>
+        /// 缓存中心地址
+        /// </summary>
+        public String Uri { get; set; }
+        /// <summary>
+        /// 负载：用缓存中心的消息队列长度进行表示
+        /// </summary>
+        public Int32 Load { get; set; }
     }
 }

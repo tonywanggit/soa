@@ -28,7 +28,7 @@ namespace ESB.Core.Monitor
         /// <summary>
         /// 监控中心客户端
         /// </summary>
-        private MonitorConsumerClient m_MonitorClient = null;
+        private MessageQueueClient m_MonitorClient = null;
         /// <summary>
         /// 成功日志存储路径
         /// </summary>
@@ -46,7 +46,7 @@ namespace ESB.Core.Monitor
         /// <summary>
         /// 构造函数：需要异步获取到本地文件的数量
         /// </summary>
-        public LocalMQ(MonitorConsumerClient mc)
+        public LocalMQ(MessageQueueClient mc)
         {
             m_MonitorClient = mc;
             m_SuccessPath = Path.Combine(m_ConfigurationManager.ESBMonitorDataPath, "Success");

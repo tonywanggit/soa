@@ -21,11 +21,6 @@ public partial class Security_SettingUri : BasePage
         this.grid.Columns[0].Visible = AuthUser.IsSystemAdmin;
     }
 
-    void AddError(Dictionary<GridViewColumn, string> errors, GridViewColumn column, string errorText)
-    {
-        if (errors.ContainsKey(column)) return;
-        errors[column] = errorText;
-    }
     protected void grid_InitNewRow(object sender, ASPxDataInitNewRowEventArgs e)
     {
         e.NewValues["CreateDateTime"] = DateTime.Now;

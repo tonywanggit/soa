@@ -198,9 +198,20 @@
   </CallCenter>
   <Monitor>
     <MonitorItem>
-      <Uri>192.168.56.2:5672:soa:123456</Uri>
+      <Uri>192.168.56.2:5556</Uri>
       <Load>1</Load>
-      <Type>RabbitMQ</Type>
     </MonitorItem>
   </Monitor>
+  <MessageQueue>
+    <MessageQueueItem>
+      <Uri>192.168.56.2:5672:soa:123456</Uri>
+      <Load>1</Load>
+    </MessageQueueItem>
+  </MessageQueue>
+  <Cache>
+    <CacheItem>
+      <Uri>192.168.56.2:6379</Uri>
+      <Load>1</Load>
+    </CacheItem>
+  </Cache>
 </ESBConfig>

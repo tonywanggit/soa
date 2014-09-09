@@ -96,7 +96,7 @@ namespace ESB.Core
         }
         #endregion
 
-        #region 构造函数、注册中心、监控中心
+        #region 构造函数、注册中心、队列中心
         /// <summary>
         /// 注册中心客户端
         /// </summary>
@@ -115,13 +115,13 @@ namespace ESB.Core
         /// <summary>
         /// 监控中心客户端
         /// </summary>
-        private MonitorConsumerClient m_MonitorClient = null;
+        private MessageQueueClient m_MessageQueueClient = null;
         /// <summary>
-        /// 对内部类公开监控客户端
+        /// 对内部类公开消息队列客户端
         /// </summary>
-        internal MonitorConsumerClient MonitorClient
+        internal MessageQueueClient MessageQueueClient
         {
-            get { return m_MonitorClient; }
+            get { return m_MessageQueueClient; }
         }
 
         /// <summary>
@@ -191,10 +191,9 @@ namespace ESB.Core
             m_RegistryClient = new RegistryConsumerClient(this);
             m_RegistryClient.Connect();
 
-
-            //--STEP.4.连接监控中心
-            m_MonitorClient = new MonitorConsumerClient(this);
-            m_MonitorClient.Connect();
+            //--STEP.4.连接队列中心
+            m_MessageQueueClient = new MessageQueueClient(this);
+            m_MessageQueueClient.Connect();
 
 
             stopWatch.Stop();

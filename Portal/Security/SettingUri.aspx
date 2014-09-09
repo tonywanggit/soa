@@ -69,7 +69,7 @@
             </dxwgv:GridViewDataTextColumn>
             <dxwgv:GridViewDataTextColumn FieldName="PassWord" Caption="密码">
                 <EditFormSettings VisibleIndex="6" />
-                <PropertiesTextEdit Password="true">
+                <PropertiesTextEdit Password="false" >
                 </PropertiesTextEdit>
             </dxwgv:GridViewDataTextColumn>  
             <dxwgv:GridViewDataMemoColumn FieldName="Remark" Caption="备注">
