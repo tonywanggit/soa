@@ -84,7 +84,7 @@ namespace Registry.WindowsService
                     case 0: //--注册中心
                         esbConfig.Registry.Add(new RegistryItem() { Uri = String.Format("{0}:{1}", uri.Uri, uri.Port), Load = 1 });
                         break;
-                    case 1:
+                    case 3: //--监控中心（RabbitMQ）
                         esbConfig.Monitor.Add(new MonitorItem() { Uri = String.Format("{0}:{1}:{2}:{3}", uri.Uri, uri.Port, uri.UserName, uri.PassWord), Load = 1, Type = "RabbitMQ" });
                         break;
                     case 2:
