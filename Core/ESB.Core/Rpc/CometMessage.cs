@@ -20,13 +20,7 @@ namespace ESB.Core.Rpc
         /// ESB.Core-1.0.2014.0811
         /// NewLife.Core-1.0.2014.0811
         /// </summary>
-        public String ClientVersion
-        {
-            get
-            {
-                return ESBProxy.GetInstance().Version;
-            }
-        }
+        public String ClientVersion { get; set; }
 
         /// <summary>
         /// 表明和注册中心通讯的意图

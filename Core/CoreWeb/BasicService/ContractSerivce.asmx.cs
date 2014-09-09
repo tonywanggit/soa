@@ -1,4 +1,5 @@
-﻿using ESB.Core.Entity;
+﻿using ESB.Core;
+using ESB.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace ESB.CallCenter.BasicService
     // [System.Web.Script.Services.ScriptService]
     public class ContractSerivce : System.Web.Services.WebService
     {
+        ESBProxy esbProxy = ESBProxy.GetInstance();
+
         #region 服务版本
         [WebMethod(Description = "获取到服务版本视图")]
         public List<EsbView_ServiceVersion> GetServiceVersionViewByConfirmPerson(String personalID, Int32 status)
@@ -64,6 +67,8 @@ namespace ESB.CallCenter.BasicService
         public void UpdateServiceVersionStatus(String versionID, Int32 status, String opinion)
         {
             BusinessServiceVersion.UpdateServiceVersionStatus(versionID, status, opinion);
+
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         [WebMethod(Description = "修订版本")]
@@ -109,12 +114,16 @@ namespace ESB.CallCenter.BasicService
         public void ObsoleteServiceVersion(String versionID, String personalID)
         {
             BusinessServiceVersion.ObsoleteServiceVersion(versionID, personalID);
+
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         [WebMethod(Description = "删除服务版本和服务契约")]
         public void DeleteServiceVersionAndContract(String versionID)
         {
             BusinessServiceVersion.DeleteServiceVersionAndContract(versionID);
+
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
         #endregion
 

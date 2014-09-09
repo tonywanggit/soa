@@ -23,6 +23,10 @@ namespace ESB.Core.Rpc
         /// </summary>
         HeartBeat,
         /// <summary>
+        /// 重新发送配置文件：向所有客户端发送配置文件
+        /// </summary>
+        ResendConfig,
+        /// <summary>
         /// 服务配置
         /// </summary>
         ServiceConfig,

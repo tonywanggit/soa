@@ -1,4 +1,5 @@
-﻿using ESB.Core.Entity;
+﻿using ESB.Core;
+using ESB.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace ESB.CallCenter.BasicService
     // [System.Web.Script.Services.ScriptService]
     public class SystemSettingService : System.Web.Services.WebService
     {
+        ESBProxy esbProxy = ESBProxy.GetInstance();
+
         #region 地址设置
         [WebMethod(Description = "获取到所有的地址设置")]
         public List<SettingUri> GetAllSettingUri()
@@ -31,18 +34,24 @@ namespace ESB.CallCenter.BasicService
                 entity.OID = Guid.NewGuid().ToString();
 
             entity.Insert();
+
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         [WebMethod(Description = "修改地址设置")]
         public void UpdateSettingUri(SettingUri entity)
         {
             entity.Update();
+
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         [WebMethod(Description = "删除地址设置")]
         public void DeleteSettingUri(SettingUri entity)
         {
             entity.Delete();
+
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
         #endregion
     }

@@ -35,19 +35,9 @@
     </ServiceItem>
     <ServiceItem>
       <ServiceName>BG_Member</ServiceName>
-      <Version>1</Version>
+      <Version>2</Version>
       <IsDefault>true</IsDefault>
-      <Binding>
-        <BindingTemplate>
-          <TemplateID>b55037f8-8617-43fb-a3cf-0163e8a82248</TemplateID>
-          <ServiceID>824b149d-9c06-446c-807c-24b598cd4f53</ServiceID>
-          <Address>http://mb.com/1</Address>
-          <Description>1</Description>
-          <BindingStatus>0</BindingStatus>
-          <BindingType>0</BindingType>
-          <Version>1</Version>
-        </BindingTemplate>
-      </Binding>
+      <Binding />
     </ServiceItem>
     <ServiceItem>
       <ServiceName>Email</ServiceName>
@@ -130,6 +120,22 @@
       </Binding>
     </ServiceItem>
     <ServiceItem>
+      <ServiceName>BG_Member</ServiceName>
+      <Version>1</Version>
+      <IsDefault>false</IsDefault>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>b55037f8-8617-43fb-a3cf-0163e8a82248</TemplateID>
+          <ServiceID>824b149d-9c06-446c-807c-24b598cd4f53</ServiceID>
+          <Address>http://mb.com/1</Address>
+          <Description>1</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>0</BindingType>
+          <Version>1</Version>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
       <ServiceName>ESB_WS</ServiceName>
       <Version>1</Version>
       <IsDefault>true</IsDefault>
@@ -151,7 +157,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
-          <TemplateID>A6D8670B-CEDA-45D2-92F1-FFC3E1F67B62</TemplateID>
+          <TemplateID>c623022b-9bf0-4146-85b0-74e775f83091</TemplateID>
           <ServiceID>E5AC5B54-3F11-4D32-98B5-0C7C76234985</ServiceID>
           <Address>http://192.168.56.1/ProviderService/Handler/ESB_ASHX.ashx</Address>
           <Description>ASHX服务地址</Description>
@@ -180,13 +186,13 @@
   </Service>
   <Registry>
     <RegistryItem>
-      <Uri>192.168.56.2</Uri>
+      <Uri>192.168.56.1:5555</Uri>
       <Load>1</Load>
     </RegistryItem>
   </Registry>
   <CallCenter>
     <CallCenterItem>
-      <Uri>192.168.56.2</Uri>
+      <Uri>192.168.56.1</Uri>
       <Load>1</Load>
     </CallCenterItem>
   </CallCenter>

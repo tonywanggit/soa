@@ -1,4 +1,5 @@
-﻿using ESB.Core.Entity;
+﻿using ESB.Core;
+using ESB.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace ESB.CallCenter.BasicService
     // [System.Web.Script.Services.ScriptService]
     public class UddiService : System.Web.Services.WebService
     {
+        ESBProxy esbProxy = ESBProxy.GetInstance();
+
         #region 服务提供者
         [WebMethod(Description = "获得所有服务提供者")]
         public List<BusinessEntity> GetAllBusinessEntity()
@@ -113,18 +116,22 @@ namespace ESB.CallCenter.BasicService
             service.DefaultVersion = version;
 
             service.Update();
+
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         [WebMethod(Description = "修改服务")]
         public void UpdateBusinessService(BusinessService service)
         {
             service.Update();
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         [WebMethod(Description = "删除服务")]
         public void DeleteBusinessService(BusinessService service)
         {
             service.Delete();
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         #endregion
@@ -149,18 +156,21 @@ namespace ESB.CallCenter.BasicService
                 entity.TemplateID = Guid.NewGuid().ToString();
 
             entity.Insert();
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         [WebMethod(Description = "修改绑定地址")]
         public void UpdateBindingTemplate(BindingTemplate entity)
         {
             entity.Update();
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         [WebMethod(Description = "删除绑定地址")]
         public void DeleteBindingTemplate(BindingTemplate entity)
         {
             entity.Delete();
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
 
         #endregion

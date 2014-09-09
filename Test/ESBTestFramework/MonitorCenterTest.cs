@@ -12,7 +12,7 @@ namespace ESB.TestFramework
     {
         public static void DoTest()
         {
-            ESB.Core.Monitor.MonitorCenterClient mcClient = ESB.Core.Monitor.MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal);
+            ESB.Core.Monitor.MonitorCenterClient mcClient = ESB.Core.Monitor.MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal, "localhost:5556");
             mcClient.OnMonitorStatPublish += mcClient_OnMonitorStatPublish;
             mcClient.Connect();
 

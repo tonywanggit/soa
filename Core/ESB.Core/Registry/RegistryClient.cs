@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using ESB.Core.Registry;
 using ESB.Core.Rpc;
 using System.Xml.Serialization;
+using ESB.Core.Configuration;
 
 namespace ESB.Core.Registry
 {
@@ -35,11 +36,16 @@ namespace ESB.Core.Registry
         /// <summary>
         /// 客户端IP
         /// </summary>
-        public String ClientIP { get { return Socket.RemoteEndPoint.ToString(); } }
+        public String ClientIP { get; set; }
         /// <summary>
         /// 客户端的程序集版本
         /// </summary>
         public String ClientVersion { get; set; }
+        /// <summary>
+        /// 客户端配置文件
+        /// </summary>
+        [XmlIgnore]
+        public ConsumerConfig ConsumerConfig { get; set; }
 
         /// <summary>
         /// 构造函数
@@ -48,6 +54,14 @@ namespace ESB.Core.Registry
         public RegistryClient(Socket socket)
         {
             Socket = socket;
+        }
+
+        /// <summary>
+        /// 无参的构造函数用于序列化，禁止手工调用
+        /// </summary>
+        public RegistryClient()
+        {
+
         }
 
         /// <summary>

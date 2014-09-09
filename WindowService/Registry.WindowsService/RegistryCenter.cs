@@ -86,6 +86,7 @@ namespace Registry.WindowsService
                 RegistryClient registryClient = new RegistryClient(socket);
                 registryClient.ReceiveDateTime = DateTime.Now;
                 registryClient.RegistryClientType = CometClientType.AnKnown;
+                registryClient.ClientIP = registryClient.Socket.RemoteEndPoint.ToString();
                 registryClient.ClearBuffer();
                 registryClient.Socket.BeginReceive(registryClient.ReceiveBuffer, 0, registryClient.ReceiveBuffer.Length
                     , SocketFlags.None, new AsyncCallback(ReceiveCallback), registryClient);

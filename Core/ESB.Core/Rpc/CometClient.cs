@@ -59,7 +59,7 @@ namespace ESB.Core.Rpc
                 m_RecvBuff = new Byte[1024 * 100]; //设置缓冲区为100K
                 m_SocketClient.BeginReceive(m_RecvBuff, 0, m_RecvBuff.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), m_SocketClient);
 
-                XTrace.WriteLine("与服务器成功建立连接！");
+                Console.WriteLine("与服务器成功建立连接！");
 
                 ReceiveNotify(CometEventType.Connected, String.Empty);
 
@@ -115,6 +115,7 @@ namespace ESB.Core.Rpc
                     Action = action,
                     IsAsync = isAsync,
                     ClientType = m_ClientType,
+                    ClientVersion = ESBProxy.GetInstance().Version,
                     MessageBody = message
                 };
 

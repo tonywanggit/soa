@@ -40,7 +40,9 @@ namespace Registry.WindowsService
             if (regMessage.Action == CometMessageAction.Hello)
             {
                 ConsumerConfig consumerConfig = XmlUtil.LoadObjFromXML<ConsumerConfig>(regMessage.MessageBody);
-                ESBConfig esbConfig = GetESBConfig(consumerConfig, regClient);
+                regClient.ConsumerConfig = consumerConfig;
+
+                ESBConfig esbConfig = GetESBConfig(regClient);
                 m_RegistryCenter.SendData(regClient, CometMessageAction.ServiceConfig, esbConfig.ToXml(), regMessage.IsAsync);
             }
             else if (regMessage.Action == CometMessageAction.ListRegistryClient)
@@ -48,14 +50,28 @@ namespace Registry.WindowsService
                 String message = XmlUtil.SaveXmlFromObj<List<RegistryClient>>(m_RegistryCenter.RegistryClients);
                 m_RegistryCenter.SendData(regClient, CometMessageAction.ListRegistryClient, message, regMessage.IsAsync);
             }
+            else if (regMessage.Action == CometMessageAction.ResendConfig)//--管理中心向每个客户端发送配置文件
+            {
+                foreach (var item in m_RegistryCenter.RegistryClients)
+                {
+                    if (item.RegistryClientType == CometClientType.Consumer
+                        || item.RegistryClientType == CometClientType.CallCenter
+                        || item.RegistryClientType == CometClientType.Portal)
+                    {
+                        ESBConfig esbConfig = GetESBConfig(item);
+                        m_RegistryCenter.SendData(item, CometMessageAction.ServiceConfig, esbConfig.ToXml());
+                    }
+                }
+            }
         }
 
         /// <summary>
         /// 获取到ESBConfig
         /// </summary>
         /// <returns></returns>
-        private ESBConfig GetESBConfig(ConsumerConfig consumerConfig, RegistryClient regClient)
+        private ESBConfig GetESBConfig(RegistryClient regClient)
         {
+            ConsumerConfig consumerConfig = regClient.ConsumerConfig;
             ESBConfig esbConfig = new ESBConfig();
             //esbConfig.Monitor.Add(new MonitorItem() { Uri = "192.168.56.2:5672:soa:123456", Load = 1, Type = "RabbitMQ" });
             //esbConfig.Registry.Add(new RegistryItem() { Uri = "192.168.56.2", Load = 1 });

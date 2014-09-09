@@ -84,6 +84,7 @@
     <Content Include="Core_Service_Bus_MainBus_ReceiveSendPort.asmx" />
     <Content Include="Core_Service_Bus_OnewayMainBus_OneWayReceive.asmx" />
     <Content Include="Demo_InvokeService.aspx" />
+    <Content Include="ESBData\ConsumerConfig.xml" />
     <Content Include="Global.asax" />
     <Content Include="Script\jquery-2.1.0.min.js" />
     <Content Include="Script\mb-esb-1.0.0.js" />

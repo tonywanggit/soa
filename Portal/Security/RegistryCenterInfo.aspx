@@ -17,62 +17,27 @@
     <table cellpadding="0" cellspacing="0">
         <tr>
             <td class="buttonCell">
-                <dxe:ASPxButton ID="btnRefresh" runat="server" Text="刷新"></dxe:ASPxButton>
+                <dxe:ASPxButton ID="btnRefresh" runat="server" Text="刷新" OnClick="btnRefresh_Click"></dxe:ASPxButton>
             </td>
         </tr>
     </table>
     <br />
-    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" DataSourceID="OdsSettingUri" KeyFieldName="OID" AutoGenerateColumns="False" Width="900px"
-        OnInitNewRow="grid_InitNewRow">
+    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server"  AutoGenerateColumns="False" Width="900px" >
         <%-- BeginRegion Columns --%>
         <Columns>
-            <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center">
+            <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Visible="false">
                 <EditButton Visible="True" Text="编辑" />
                 <DeleteButton Visible="True" Text="删除" />
             </dxwgv:GridViewCommandColumn>
-            <dxwgv:GridViewDataComboBoxColumn FieldName="UriType" Caption="地址类型">
-                <PropertiesComboBox TextField="Text" ValueField="Value" EnableSynchronization="False" EnableIncrementalFiltering="False" DataSourceID="xdsUriType">
-                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                        <RequiredField IsRequired="true" ErrorText="请填写地址类型！" />
-                    </ValidationSettings>
-                </PropertiesComboBox>
-                <EditFormSettings VisibleIndex="1" />
-            </dxwgv:GridViewDataComboBoxColumn>
-            <dxwgv:GridViewDataDateColumn FieldName="CreateDateTime" Caption="创建时间" ReadOnly="true">
-                <EditFormSettings VisibleIndex="2" />
+            
+            <dxwgv:GridViewDataDateColumn FieldName="ReceiveDateTime" Caption="连接时间" ReadOnly="true">
                 <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm:ss" EditFormatString="yyyy-MM-dd HH:mm:ss" EditFormat="Custom">
-                    <ValidationSettings>
-                        <RequiredField IsRequired="true" />
-                    </ValidationSettings>
                 </PropertiesDateEdit>
             </dxwgv:GridViewDataDateColumn>
-            <dxwgv:GridViewDataTextColumn FieldName="Uri" Caption="地址" >
-                <PropertiesTextEdit>
-                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                        <RequiredField IsRequired="true" ErrorText="请填写地址！" />
-                    </ValidationSettings>
-                </PropertiesTextEdit>
-                <EditFormSettings VisibleIndex="3" />
-            </dxwgv:GridViewDataTextColumn>
-            <dxwgv:GridViewDataSpinEditColumn FieldName="Port" Caption="端口号">
-                <PropertiesSpinEdit NumberType="Integer">
-                    <ValidationSettings ErrorDisplayMode="ImageWithTooltip">
-                        <RequiredField IsRequired="true" ErrorText="请填写端口号！" />
-                    </ValidationSettings>
-                </PropertiesSpinEdit>
-                <EditFormSettings VisibleIndex="4" />
-            </dxwgv:GridViewDataSpinEditColumn>
-            <dxwgv:GridViewDataTextColumn FieldName="UserName" Caption="用户名">
-                <EditFormSettings VisibleIndex="5" />
-            </dxwgv:GridViewDataTextColumn>
-            <dxwgv:GridViewDataTextColumn FieldName="PassWord" Caption="密码">
-                <EditFormSettings VisibleIndex="6" />
-                <PropertiesTextEdit Password="true">
-                </PropertiesTextEdit>
-            </dxwgv:GridViewDataTextColumn>  
-            <dxwgv:GridViewDataMemoColumn FieldName="Remark" Caption="备注">
-                <EditFormSettings VisibleIndex="7" ColumnSpan="2" />
-            </dxwgv:GridViewDataMemoColumn>
+            
+            <dxwgv:GridViewDataTextColumn FieldName="ClientIP" Caption="客户端IP"></dxwgv:GridViewDataTextColumn>
+            <dxwgv:GridViewDataTextColumn FieldName="ClientVersion" Caption="版本"></dxwgv:GridViewDataTextColumn>
+            <dxwgv:GridViewDataTextColumn FieldName="RegistryClientType" Caption="类型"></dxwgv:GridViewDataTextColumn>
         </Columns>
         <ClientSideEvents RowDblClick="function(s, e){
             grid.StartEditRow(e.visibleIndex);

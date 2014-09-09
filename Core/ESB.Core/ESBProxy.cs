@@ -35,8 +35,12 @@ namespace ESB.Core
             //--http://www.cnblogs.com/summer_adai/archive/2013/04/26/3045274.html
             ServicePointManager.DefaultConnectionLimit = 10000;
 
+            //--创建客户端代理
             ESBProxy proxy = new ESBProxy();
             Interlocked.CompareExchange<ESBProxy>(ref m_Instance, proxy, null);
+
+            //--初始化客户端代理
+            proxy.Init();
 
             return m_Instance;
         }
@@ -97,6 +101,16 @@ namespace ESB.Core
         /// 注册中心客户端
         /// </summary>
         private RegistryConsumerClient m_RegistryClient = null;
+        /// <summary>
+        /// 注册中心客户端
+        /// </summary>
+        public RegistryConsumerClient RegistryConsumerClient
+        {
+            get
+            {
+                return m_RegistryClient;
+            }
+        }
 
         /// <summary>
         /// 监控中心客户端
@@ -147,6 +161,20 @@ namespace ESB.Core
         /// </summary>
         private ESBProxy()
         {
+        }
+
+        /// <summary>
+        /// 标识ESBProxy是否初始化过
+        /// </summary>
+        private Int32 m_Inited = 0;
+
+        /// <summary>
+        /// 初始化客户端代理
+        /// </summary>
+        private void Init()
+        {
+            if (m_Inited > 0 || Interlocked.CompareExchange(ref m_Inited, 1, 0) > 0) return;
+
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -171,7 +199,6 @@ namespace ESB.Core
 
             stopWatch.Stop();
             XTrace.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds); ;
-
         }
         #endregion
 
@@ -258,15 +285,6 @@ namespace ESB.Core
 
             //--采用同步机制到注册中心获取到服务配置信息
             m_RegistryClient.SyncESBConfig();
-        }
-
-        /// <summary>
-        /// 获取到注册中心上的客户端列表
-        /// </summary>
-        /// <returns></returns>
-        public List<RegistryClient> GetRegistryClientList()
-        {
-            return m_RegistryClient.GetRegistryClientList();
         }
 
         /// <summary>

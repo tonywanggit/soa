@@ -34,7 +34,7 @@ namespace ESB.Core.Registry
         /// 注册中心消费者客户端
         /// </summary>
         /// <param name="esbProxy"></param>
-        public RegistryConsumerClient(ESBProxy esbProxy)
+        internal RegistryConsumerClient(ESBProxy esbProxy)
         {
             m_ESBProxy = esbProxy;
             m_ConfigurationManager = ConfigurationManager.GetInstance();
@@ -44,7 +44,7 @@ namespace ESB.Core.Registry
         /// 连接到注册中心
         /// </summary>
         /// <returns></returns>
-        public void Connect()
+        internal void Connect()
         {
             String uri = m_ESBProxy.ConsumerConfig.Registry[0].Uri;
 
@@ -80,7 +80,7 @@ namespace ESB.Core.Registry
         /// <summary>
         /// 同步方法：获取到ESBConfig文件
         /// </summary>
-        public void SyncESBConfig()
+        internal void SyncESBConfig()
         {
             lock (m_SyncESBConfigLock)
             {
@@ -101,6 +101,14 @@ namespace ESB.Core.Registry
             }
 
             return m_RegistryClientList;
+        }
+
+        /// <summary>
+        /// 异步方法：将服务配置发送到所有客户端
+        /// </summary>
+        public void ResendServiceConfig()
+        {
+            m_CometClient.SendData(CometMessageAction.ResendConfig, String.Empty);
         }
 
         /// <summary>
@@ -127,6 +135,7 @@ namespace ESB.Core.Registry
                 }
                 else if (e.Type == CometEventType.Connected)   // 当和服务器取得联系时发送消费者配置文件到服务端
                 {
+                    XTrace.WriteLine("成功连接到注册中心。");
                     m_CometClient.SendData(CometMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml());
                 }
                 else if (e.Type == CometEventType.Lost)     // 当和注册中心断开连接时
