@@ -111,6 +111,11 @@ namespace ESB.Core
         }
 
         /// <summary>
+        /// ESBProxy代理类的版本
+        /// </summary>
+        internal String Version { get; set; }
+
+        /// <summary>
         /// ESBProxy状态枚举值
         /// </summary>
         internal enum ESBProxyStatus
@@ -148,8 +153,8 @@ namespace ESB.Core
             //--STEP.1.记录客户端版本信息
             Status = ESBProxyStatus.Init;
             var asm = AssemblyX.Create(System.Reflection.Assembly.GetExecutingAssembly());
-            String clientVersion = String.Format("{0} v{1} Build {2:yyyy-MM-dd HH:mm:ss}", asm.Name, asm.FileVersion, asm.Compile);
-            XTrace.WriteLine(clientVersion);
+            Version = String.Format("{0} v{1} Build {2:yyyy-MM-dd HH:mm:ss}", asm.Name, asm.FileVersion, asm.Compile);
+            XTrace.WriteLine(Version);
 
             //--STEP.2.加载配置文件
             LoadConfig();
@@ -253,6 +258,15 @@ namespace ESB.Core
 
             //--采用同步机制到注册中心获取到服务配置信息
             m_RegistryClient.SyncESBConfig();
+        }
+
+        /// <summary>
+        /// 获取到注册中心上的客户端列表
+        /// </summary>
+        /// <returns></returns>
+        public List<RegistryClient> GetRegistryClientList()
+        {
+            return m_RegistryClient.GetRegistryClientList();
         }
 
         /// <summary>

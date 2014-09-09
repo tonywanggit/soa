@@ -7,7 +7,7 @@ using ESB.Core.Registry;
 using ESB.Core.Rpc;
 using System.Xml.Serialization;
 
-namespace Registry.WindowsService
+namespace ESB.Core.Registry
 {
     /// <summary>
     /// 对连接到注册中心的Socket进行封装
@@ -36,6 +36,10 @@ namespace Registry.WindowsService
         /// 客户端IP
         /// </summary>
         public String ClientIP { get { return Socket.RemoteEndPoint.ToString(); } }
+        /// <summary>
+        /// 客户端的程序集版本
+        /// </summary>
+        public String ClientVersion { get; set; }
 
         /// <summary>
         /// 构造函数

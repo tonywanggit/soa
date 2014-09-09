@@ -29,11 +29,11 @@ namespace ESB.Core.Monitor
 
         private static MonitorCenterClient m_Instance;
 
-        public static MonitorCenterClient GetInstance(CometClientType ccType)
+        public static MonitorCenterClient GetInstance(CometClientType ccType, String monitorCenterUri)
         {
             if (m_Instance != null) return m_Instance;
 
-            MonitorCenterClient mcClient = new MonitorCenterClient(ccType);
+            MonitorCenterClient mcClient = new MonitorCenterClient(ccType, monitorCenterUri);
 
             Interlocked.CompareExchange<MonitorCenterClient>(ref m_Instance, mcClient, null);
 
@@ -44,9 +44,9 @@ namespace ESB.Core.Monitor
         /// 监控中心消费者客户端
         /// </summary>
         /// <param name="esbProxy"></param>
-        private MonitorCenterClient(CometClientType ccType)
+        private MonitorCenterClient(CometClientType ccType, String monitorCenterUri)
         {
-            m_MonitorCenterUri = Config.GetConfig<String>("ESB.MonitorCenter.Uri");
+            m_MonitorCenterUri = monitorCenterUri;
             m_CometClientType = ccType;
         }
 

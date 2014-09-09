@@ -131,6 +131,7 @@ namespace Registry.WindowsService
                     //--解析来自客户端的类型
                     CometMessage regMessage = XmlUtil.LoadObjFromXML<CometMessage>(data);
                     registryClient.RegistryClientType = regMessage.ClientType;
+                    registryClient.ClientVersion = regMessage.ClientVersion;
 
                     registryClient.ClearBuffer();
                     registryClient.Socket.BeginReceive(registryClient.ReceiveBuffer, 0, registryClient.ReceiveBuffer.Length

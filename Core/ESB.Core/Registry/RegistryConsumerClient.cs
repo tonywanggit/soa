@@ -23,6 +23,7 @@ namespace ESB.Core.Registry
         private ConfigurationManager m_ConfigurationManager = null;
         private Object m_SyncESBConfigLock = new Object();  //同步获取到ESBConfig配置锁
         private AutoResetEvent m_AutoResetEvent = new AutoResetEvent(false);
+        private List<RegistryClient> m_RegistryClientList = null;   //注册中心客户端
 
         /// <summary>
         /// 定时器：用于检测注册中心是否可以使用
@@ -47,8 +48,10 @@ namespace ESB.Core.Registry
         {
             String uri = m_ESBProxy.ConsumerConfig.Registry[0].Uri;
 
-            if(m_ESBProxy.ConsumerConfig.ApplicationName.StartsWith("ESB_CallCenter"))
+            if (m_ESBProxy.ConsumerConfig.ApplicationName.StartsWith("ESB_CallCenter"))
                 m_CometClient = new CometClient(uri, CometClientType.CallCenter);
+            else if (m_ESBProxy.ConsumerConfig.ApplicationName.StartsWith("ESB_Portal"))
+                m_CometClient = new CometClient(uri, CometClientType.Portal);
             else
                 m_CometClient = new CometClient(uri, CometClientType.Consumer);
 
@@ -75,7 +78,7 @@ namespace ESB.Core.Registry
         }
 
         /// <summary>
-        /// 同步获取到ESBConfig文件
+        /// 同步方法：获取到ESBConfig文件
         /// </summary>
         public void SyncESBConfig()
         {
@@ -84,6 +87,20 @@ namespace ESB.Core.Registry
                 m_CometClient.SendData(CometMessageAction.Hello, m_ESBProxy.ConsumerConfig.ToXml(), false);
                 m_AutoResetEvent.WaitOne();
             }
+        }
+
+        /// <summary>
+        /// 同步方法：列出注册中心上连接的客户端信息
+        /// </summary>
+        public List<RegistryClient> GetRegistryClientList()
+        {
+            lock (m_SyncESBConfigLock)
+            {
+                m_CometClient.SendData(CometMessageAction.ListRegistryClient, String.Empty, false);
+                m_AutoResetEvent.WaitOne();
+            }
+
+            return m_RegistryClientList;
         }
 
         /// <summary>
@@ -99,30 +116,13 @@ namespace ESB.Core.Registry
                 {
                     CometMessage rm = XmlUtil.LoadObjFromXML<CometMessage>(e.Response);
 
-                    if(rm.Action == CometMessageAction.ServiceConfig){
-
-                        //--如果ESBConfig为NULL，则说明注册中心还没连上
-                        if (m_ESBProxy.ESBConfig == null)
-                        {
-                            m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
-                            m_ESBProxy.MonitorClient.Connect();
-                        }
-                        else
-                        {
-                            //--从返回消息中加载ESBConfig配置文件
-                            m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
-                            if (m_ESBProxy.ESBConfig != null)
-                                m_ESBProxy.Status = ESBProxy.ESBProxyStatus.Ready;
-                        }
-
-                        //--如果是同步调用，则需要在消息返回时释放信号
-                        if (!rm.IsAsync) m_AutoResetEvent.Set();
-
-                        //--异步将配置文件序列化到本地存储
-                        ThreadPoolX.QueueUserWorkItem(x =>
-                        {
-                            m_ConfigurationManager.SaveESBConfig(m_ESBProxy.ESBConfig);
-                        });
+                    if(rm.Action == CometMessageAction.ServiceConfig)
+                    {
+                        OnReceiveServiceConfig(rm);
+                    }
+                    else if(rm.Action == CometMessageAction.ListRegistryClient)
+                    {
+                        OnListRegistryClient(rm);
                     }
                 }
                 else if (e.Type == CometEventType.Connected)   // 当和服务器取得联系时发送消费者配置文件到服务端
@@ -142,6 +142,46 @@ namespace ESB.Core.Registry
             }
         }
 
+        /// <summary>
+        /// 接收到服务配置信息
+        /// </summary>
+        private void OnReceiveServiceConfig(CometMessage rm)
+        {
+            //--如果ESBConfig为NULL，则说明注册中心还没连上
+            if (m_ESBProxy.ESBConfig == null)
+            {
+                m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
+                m_ESBProxy.MonitorClient.Connect();
+            }
+            else
+            {
+                //--从返回消息中加载ESBConfig配置文件
+                m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
+                if (m_ESBProxy.ESBConfig != null)
+                    m_ESBProxy.Status = ESBProxy.ESBProxyStatus.Ready;
+            }
+
+            //--如果是同步调用，则需要在消息返回时释放信号
+            if (!rm.IsAsync) m_AutoResetEvent.Set();
+
+            //--异步将配置文件序列化到本地存储
+            ThreadPoolX.QueueUserWorkItem(x =>
+            {
+                m_ConfigurationManager.SaveESBConfig(m_ESBProxy.ESBConfig);
+            });
+        }
+
+        /// <summary>
+        /// 接收到注册中心的连接客户端列表
+        /// </summary>
+        /// <param name="rm"></param>
+        private void OnListRegistryClient(CometMessage rm)
+        {
+            m_RegistryClientList = XmlUtil.LoadObjFromXML<List<RegistryClient>>(rm.MessageBody);
+
+            //--如果是同步调用，则需要在消息返回时释放信号
+            if (!rm.IsAsync) m_AutoResetEvent.Set();
+        }
     }
 
     /// <summary>

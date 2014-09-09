@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ConsumerConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationName>ESB_Portal_192.168.56.1</ApplicationName>
+  <Registry>
+    <RegistryItem>
+      <Uri>127.0.0.1:5555</Uri>
+    </RegistryItem>
+  </Registry>
+</ConsumerConfig>

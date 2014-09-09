@@ -115,5 +115,9 @@
             <Description>
             </Description>
         </Demo>
+        <Demo Text="注册中心详情" NavigateUrl="~/Security/RegistryCenterInfo.aspx" Title="企业服务总线 - 注册中心详情">
+            <Description>
+            </Description>
+        </Demo>
     </DemoGroup>
 </Demos>

@@ -16,6 +16,19 @@ namespace ESB.Core.Rpc
         public CometClientType ClientType { get; set; }
 
         /// <summary>
+        /// 向服务器汇报客户端的版本信息
+        /// ESB.Core-1.0.2014.0811
+        /// NewLife.Core-1.0.2014.0811
+        /// </summary>
+        public String ClientVersion
+        {
+            get
+            {
+                return ESBProxy.GetInstance().Version;
+            }
+        }
+
+        /// <summary>
         /// 表明和注册中心通讯的意图
         /// </summary>
         public CometMessageAction Action { get; set; }

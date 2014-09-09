@@ -2,7 +2,18 @@
 <script runat="server">
     void Application_Start(object sender, EventArgs e) 
     {
-        ESB.Core.Monitor.MonitorCenterClient mcClient = ESB.Core.Monitor.MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal);
+        ESB.Core.ESBProxy.GetInstance();
+        
+        ESB.SystemSettingService ssService = new ESB.SystemSettingService();
+        ESB.SettingUri mcUri = ssService.GetAllSettingUri().First(x => x.UriType == 1);//--查找数据库中的注册中心客户端
+
+        String monitorUri = "localhost:5556";
+        if (mcUri != null)
+        {
+            monitorUri = String.Format("{0}:{1}", mcUri.Uri, 5556);
+        }
+
+        ESB.Core.Monitor.MonitorCenterClient mcClient = ESB.Core.Monitor.MonitorCenterClient.GetInstance(ESB.Core.Rpc.CometClientType.Portal, monitorUri);
         mcClient.OnMonitorStatPublish += mcClient_OnMonitorStatPublish;
         mcClient.Connect();
     }

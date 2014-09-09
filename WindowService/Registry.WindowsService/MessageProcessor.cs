@@ -46,7 +46,7 @@ namespace Registry.WindowsService
             else if (regMessage.Action == CometMessageAction.ListRegistryClient)
             {
                 String message = XmlUtil.SaveXmlFromObj<List<RegistryClient>>(m_RegistryCenter.RegistryClients);
-                m_RegistryCenter.SendData(regClient, CometMessageAction.ListRegistryClient, message);
+                m_RegistryCenter.SendData(regClient, CometMessageAction.ListRegistryClient, message, regMessage.IsAsync);
             }
         }
 
@@ -85,7 +85,7 @@ namespace Registry.WindowsService
 
             //esbConfig.Service.Add(new ServiceItem() { ServiceName = "ESB_ASHX", DirectInvokeEnabled = true, Uri = "http://esb.jn.com" });
 
-            if (regClient.RegistryClientType == CometClientType.Consumer)
+            if (regClient.RegistryClientType == CometClientType.Consumer || regClient.RegistryClientType == CometClientType.Portal)
             {
                 foreach (var refService in consumerConfig.Reference)
                 {
