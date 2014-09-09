@@ -102,12 +102,16 @@
       </Description>
     </Demo>
   </DemoGroup>
-    <DemoGroup Text="用户管理" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" >
+    <DemoGroup Text="系统管理" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" >
         <Demo Text="新增管理员" NavigateUrl="~/Security/UserList.aspx" Title="企业服务总线 - 新增管理员">
             <Description>
             </Description>
         </Demo>
         <Demo Text="权限浏览" NavigateUrl="~/Security/UserRight.aspx" Title="企业服务总线 - 权限浏览">
+            <Description>
+            </Description>
+        </Demo>
+        <Demo Text="中心地址设置" NavigateUrl="~/Security/SettingUri.aspx" Title="企业服务总线 - 中心地址设置">
             <Description>
             </Description>
         </Demo>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://esb.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://esb.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://esb.com">
+      <s:element name="GetAllSettingUri">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllSettingUriResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllSettingUriResult" type="tns:ArrayOfSettingUri" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSettingUri">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SettingUri" nillable="true" type="tns:SettingUri" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SettingUri">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SettingUriOfSettingUri" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SettingUriOfSettingUri">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfSettingUri">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UriType" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Uri" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Port" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfSettingUri">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityBase" abstract="true" />
+      <s:element name="InsertSettingUri">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:SettingUri" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSettingUriResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateSettingUri">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:SettingUri" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSettingUriResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteSettingUri">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:SettingUri" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSettingUriResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllSettingUriSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllSettingUri" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSettingUriSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllSettingUriResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSettingUriSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertSettingUri" />
+  </wsdl:message>
+  <wsdl:message name="InsertSettingUriSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertSettingUriResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSettingUriSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSettingUri" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSettingUriSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSettingUriResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSettingUriSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSettingUri" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSettingUriSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteSettingUriResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SystemSettingServiceSoap">
+    <wsdl:operation name="GetAllSettingUri">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到所有的地址设置</wsdl:documentation>
+      <wsdl:input message="tns:GetAllSettingUriSoapIn" />
+      <wsdl:output message="tns:GetAllSettingUriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSettingUri">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增地址设置</wsdl:documentation>
+      <wsdl:input message="tns:InsertSettingUriSoapIn" />
+      <wsdl:output message="tns:InsertSettingUriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSettingUri">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改地址设置</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSettingUriSoapIn" />
+      <wsdl:output message="tns:UpdateSettingUriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSettingUri">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除地址设置</wsdl:documentation>
+      <wsdl:input message="tns:DeleteSettingUriSoapIn" />
+      <wsdl:output message="tns:DeleteSettingUriSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SystemSettingServiceSoap" type="tns:SystemSettingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllSettingUri">
+      <soap:operation soapAction="http://esb.com/GetAllSettingUri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSettingUri">
+      <soap:operation soapAction="http://esb.com/InsertSettingUri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSettingUri">
+      <soap:operation soapAction="http://esb.com/UpdateSettingUri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSettingUri">
+      <soap:operation soapAction="http://esb.com/DeleteSettingUri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SystemSettingServiceSoap12" type="tns:SystemSettingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllSettingUri">
+      <soap12:operation soapAction="http://esb.com/GetAllSettingUri" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSettingUri">
+      <soap12:operation soapAction="http://esb.com/InsertSettingUri" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSettingUri">
+      <soap12:operation soapAction="http://esb.com/UpdateSettingUri" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSettingUri">
+      <soap12:operation soapAction="http://esb.com/DeleteSettingUri" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SystemSettingService">
+    <wsdl:port name="SystemSettingServiceSoap" binding="tns:SystemSettingServiceSoap">
+      <soap:address location="http://localhost/CallCenter/BasicService/SystemSettingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SystemSettingServiceSoap12" binding="tns:SystemSettingServiceSoap12">
+      <soap12:address location="http://localhost/CallCenter/BasicService/SystemSettingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

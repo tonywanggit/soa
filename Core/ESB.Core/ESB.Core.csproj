@@ -100,6 +100,8 @@
     <Compile Include="Entity\ServiceContract.cs" />
     <Compile Include="Entity\ServiceMonitor.Biz.cs" />
     <Compile Include="Entity\ServiceMonitor.cs" />
+    <Compile Include="Entity\SettingUri.Biz.cs" />
+    <Compile Include="Entity\SettingUri.cs" />
     <Compile Include="Entity\ShowTodayWatch.Biz.cs" />
     <Compile Include="Entity\ShowTodayWatch.cs" />
     <Compile Include="Entity\TModel.Biz.cs" />

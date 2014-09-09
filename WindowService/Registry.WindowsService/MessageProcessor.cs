@@ -16,8 +16,15 @@ namespace Registry.WindowsService
     /// </summary>
     public class MessageProcessor
     {
+        /// <summary>
+        /// 注册中心
+        /// </summary>
         private RegistryCenter m_RegistryCenter = null;
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="regCenter">注册中心</param>
         public MessageProcessor(RegistryCenter regCenter)
         {
             m_RegistryCenter = regCenter;
@@ -50,9 +57,27 @@ namespace Registry.WindowsService
         private ESBConfig GetESBConfig(ConsumerConfig consumerConfig, RegistryClient regClient)
         {
             ESBConfig esbConfig = new ESBConfig();
-            esbConfig.Monitor.Add(new MonitorItem() { Uri = "192.168.56.2:5672:soa:123456", Load = 1, Type = "RabbitMQ" });
-            esbConfig.Registry.Add(new RegistryItem() { Uri = "192.168.56.2", Load = 1 });
-            esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "192.168.56.2", Load = 1 });
+            //esbConfig.Monitor.Add(new MonitorItem() { Uri = "192.168.56.2:5672:soa:123456", Load = 1, Type = "RabbitMQ" });
+            //esbConfig.Registry.Add(new RegistryItem() { Uri = "192.168.56.2", Load = 1 });
+            //esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "192.168.56.2", Load = 1 });
+
+            foreach (SettingUri uri in SettingUri.FindAll())
+            {
+                switch (uri.UriType)
+                {
+                    case 0: //--注册中心
+                        esbConfig.Registry.Add(new RegistryItem() { Uri = String.Format("{0}:{1}", uri.Uri, uri.Port), Load = 1 });
+                        break;
+                    case 1:
+                        esbConfig.Monitor.Add(new MonitorItem() { Uri = String.Format("{0}:{1}:{2}:{3}", uri.Uri, uri.Port, uri.UserName, uri.PassWord), Load = 1, Type = "RabbitMQ" });
+                        break;
+                    case 2:
+                        esbConfig.CallCenter.Add(new CallCenterItem() { Uri = uri.Uri, Load = 1 });
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             //esbConfig.Monitor.Add(new MonitorItem() { Uri = "10.100.20.100:5672:admin:osroot", Load = 1, Type = "RabbitMQ" });
             //esbConfig.Registry.Add(new RegistryItem() { Uri = "10.100.20.214", Load = 1 });

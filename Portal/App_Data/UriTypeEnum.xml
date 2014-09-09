@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UriTypeEnum>
+    <UriType Text="注册中心" Value="0" />
+    <UriType Text="监控中心" Value="1" />
+    <UriType Text="调用中心" Value="2" />
+</UriTypeEnum>

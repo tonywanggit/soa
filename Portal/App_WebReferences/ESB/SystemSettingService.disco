@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost/CallCenter/BasicService/SystemSettingService.asmx?wsdl" docRef="http://localhost/CallCenter/BasicService/SystemSettingService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost/CallCenter/BasicService/SystemSettingService.asmx" xmlns:q1="http://esb.com" binding="q1:SystemSettingServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost/CallCenter/BasicService/SystemSettingService.asmx" xmlns:q2="http://esb.com" binding="q2:SystemSettingServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
