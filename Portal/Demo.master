@@ -48,7 +48,7 @@
                     <dxrp:ASPxRoundPanel runat="server" ID="rpMenu" SkinID="RoundPanelNavigation" Width="100%" ShowHeader="False">
                         <PanelCollection>
                             <dxrp:PanelContent runat="server">
-                                <dxnb:ASPxNavBar runat="server" ID="nbMenu" SkinID="NavBarNavigation" Width="100%" AutoCollapse="True" EncodeHtml="False" DataSourceID="dsMenu" EnableViewState="False" OnItemDataBound="nbMenu_ItemDataBound" OnGroupDataBound="nbMenu_GroupDataBound" OnDataBound="nbMenu_DataBound">
+                                <dxnb:ASPxNavBar runat="server" ID="nbMenu" SkinID="NavBarNavigation" Width="100%" AutoCollapse="True" EncodeHtml="False"  EnableViewState="False" OnItemDataBound="nbMenu_ItemDataBound" OnGroupDataBound="nbMenu_GroupDataBound" OnDataBound="nbMenu_DataBound">
                                     <ClientSideEvents ExpandedChanged="function(s, e) {
                                             MoveFooter();
                                         }" />
@@ -113,34 +113,7 @@
                                 </tr></table>
                             </td>
                         </tr></table>
-                        <table width="100%" border="0" cellpadding="0" cellspacing="0" runat="server" EnableViewState="False" id="tblSourceCode">
-                            <tr><td class="DetailsPageLeftEdge"><div class="Spacer DetailsPageEdge"></div></td>
-                            <td valign="top" class="DetailsSorceCodeArea DetailsPageContent">
-                                <dxtc:ASPxPageControl Width="100%" ActiveTabIndex="0" EnableCallBacks="True" ID="pcSourceCode" runat="server" EnableViewState="False" OnActiveTabChanged="pcSourceCode_ActiveTabChanged">
-                                    <Paddings Padding="0px" />
-                                    <ContentStyle>
-                                        <Paddings Padding="0px" PaddingTop="3px" PaddingLeft="0px" />
-                                    </ContentStyle>
-                                    <TabPages>
-                                        <dxtc:TabPage Name="Description" Text="Description">
-                                        </dxtc:TabPage>
-                                        <dxtc:TabPage Name="C#" Text="C#">
-                                        </dxtc:TabPage>
-                                        <dxtc:TabPage Name="VB" Text="VB">
-                                        </dxtc:TabPage>
-                                        <dxtc:TabPage Name="ASPX" Text="ASPX">
-                                        </dxtc:TabPage>
-                                        <dxtc:TabPage Name="JS" Text="JS">
-                                        </dxtc:TabPage>
-                                    </TabPages>
-                                    <ClientSideEvents Init="function(s, e) { CorrectCodeRenderWidth(s); }"
-                                                      ActiveTabChanged="function(s, e) { CorrectCodeRenderWidth(s); }"
-                                    />
-                                </dxtc:ASPxPageControl>    
-                            </td>
-                            <td class="DetailsPageRightEdge"><div class="Spacer DetailsPageEdge"></div></td>
-                            </tr>
-                        </table>
+                        
                         <table runat="server" id="tblFooter" border="0" cellpadding="0" cellspacing="0" width="100%" EnableViewState="False"><tr>
                             <td><dxe:ASPxImage EnableViewState="False" ID="ImageRPBottomLeftCorner" runat="server" SkinID="BottomLeftCorner" /></td>
                             <td class="DetailsPageFooter"><div class="Spacer"></div></td>
@@ -170,7 +143,6 @@
                 </tr>
             </table>
             <dxsm:ASPxSiteMapDataSource ID="smdsIconMenu" runat="server" SiteMapProvider="FooterMenuSiteMapProvider" />
-            <asp:XmlDataSource ID="dsMenu" runat="server" DataFile="~/App_Data/Demos.xml" XPath="//DemoGroup" EnableViewState="False" />
         </form>
     </body>
 </html>

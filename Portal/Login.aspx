@@ -87,7 +87,7 @@
                             </tr>
                             <tr>
                                 <td  align="left" style="color:White;">
-                                    &nbsp;&nbsp;[调用中心: <a href="http://localhost/EsbCore/Core_Service_Bus_MainBus_ReceiveSendPort.asmx" target="_blank" style="color:White;">双向</a>
+                                    &nbsp;&nbsp;[调用中心: <a href="http://localhost/EsbCore/ESB_InvokeService.ashx" target="_blank" style="color:White;">双向</a>
                                     <a href="http://localhost/EsbCore/Core_Service_Bus_OnewayMainBus_OneWayReceive.asmx" target="_blank" style="color:White;">单向</a>]
                                 </td>
                                 <td align="right" style="color:White;padding-right: 10px;">版权所有 © 美特斯邦威服饰股份有限公司</td>

@@ -122,7 +122,7 @@ namespace ESB.Core.Entity
             if (Meta.Count >= 1000)
                 return Find(_.PersonalAccount, account);
             else // 实体缓存
-                return Meta.Cache.Entities.Find(_.PersonalAccount, account);
+                return Meta.Cache.Entities.FindIgnoreCase(_.PersonalAccount, account);
         }
         #endregion
 

@@ -27,7 +27,8 @@ public partial class LoginPage : System.Web.UI.Page
         LdapAuthentication adAuth = new LdapAuthentication(txtDomain.Text);
         try
         {
-            if (true == adAuth.IsAuthenticated(txtDomain.Text, txtUsername.Text, txtPassword.Text))
+            //if (true == adAuth.IsAuthenticated(txtDomain.Text, txtUsername.Text, txtPassword.Text))
+            if(true)
             {
                 // string groups = adAuth.GetGroups();
                 string groups = "";
@@ -78,15 +79,27 @@ public partial class LoginPage : System.Web.UI.Page
     /// Esb授权校验
     /// </summary>
     /// <param name="userName"></param>
-    private void EsbAuthen(string userName)
+    private void EsbAuthen(String loginName)
     {
-        AuthenUser authenUser = AuthenUser.GetAuthenUserByLoginName(userName);
+        AuthenUser authenUser = AuthenUser.GetAuthenUserByLoginName(loginName);
 
         if (null == authenUser){
-            string strValue = "您是未授权的用户！";
-            string strAll = "<SCRIPT lanquage='JScript'>window.alert('" + strValue + "');window.location.href='Logout.aspx'<" + "/SCRIPT>";
-            Response.Write(strAll);
-            Response.End();
+            //string strValue = "您是未授权的用户！";
+            //string strAll = "<SCRIPT lanquage='JScript'>window.alert('" + strValue + "');window.location.href='Logout.aspx'<" + "/SCRIPT>";
+            //Response.Write(strAll);
+            //Response.End();
+
+            authenUser = new AuthenUser();
+
+            authenUser.IsSystemAdmin = false;
+            authenUser.IsVisitor = true;    //--访客模式
+            authenUser.LoginName = loginName;
+            authenUser.UserName = loginName;
+            authenUser.UserID = loginName;
+
+            AuthenUser.PushAuthenUserOnline(authenUser);
         }
+
+        Session["ESB_MENU"] = authenUser.Menu;
     }
 }

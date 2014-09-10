@@ -46,7 +46,7 @@
         <SettingsBehavior ConfirmDelete="true" />
         <SettingsEditing Mode="PopupEditForm" PopupEditFormWidth="500px" NewItemRowPosition="Top" />
         <SettingsPager AlwaysShowPager="true" /> 
-        <SettingsText EmptyDataRow="暂无数据！" ConfirmDelete="您确定要删除吗！" CommandCancel="取消" CommandUpdate="保存" PopupEditFormCaption="编辑地址" />
+        <SettingsText EmptyDataRow="暂无数据，无法连接注册中心！" ConfirmDelete="您确定要删除吗！" CommandCancel="取消" CommandUpdate="保存" PopupEditFormCaption="编辑地址" />
     </dxwgv:ASPxGridView>
     <asp:ObjectDataSource ID="OdsSettingUri" runat="server" 
         TypeName="ESB.SystemSettingService" 

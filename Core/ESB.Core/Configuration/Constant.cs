@@ -42,7 +42,7 @@ namespace ESB.Core.Configuration
         /// <summary>
         /// ESB返回消息头信息-服务考核开始
         /// </summary>
-        public const String ESB_HEAD_SERVICE_BEGIN = "Esb-ServiceBegin";
+        public const String  ESB_HEAD_SERVICE_BEGIN = "Esb-ServiceBegin";
         /// <summary>
         /// ESB返回消息头信息-服务考核结束
         /// </summary>

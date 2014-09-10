@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Collections;
 using ESB;
+using System.Xml;
 
 /// <summary>
 /// 授权用户信息
@@ -25,6 +26,59 @@ public class AuthenUser
     public bool IsSystemAdmin;
     public string UserID;
     public string LoginName;
+    public bool IsVisitor;
+
+    private XmlDocument m_Menu;
+    public XmlDocument Menu
+    {
+        get
+        {
+            if (m_Menu == null)
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(HttpContext.Current.Server.MapPath("~/App_Data/Demos.xml"));
+
+                m_Menu = InitRightMenu(xmlDoc);
+            }
+
+            return m_Menu;
+        }
+    }
+
+        /// <summary>
+    /// 根据权限初始化菜单
+    /// </summary>
+    /// <param name="xmlDoc"></param>
+    private XmlDocument InitRightMenu(XmlDocument xmlDoc)
+    {
+        if (IsVisitor)//--如果是访客则只有总线概况、服务管理两个模块的权限
+        {
+            foreach (XmlNode node in xmlDoc.SelectNodes("/Demos/DemoGroup"))
+            {
+                if (node.Attributes["Text"].Value != "总线概况" &&
+                    node.Attributes["Text"].Value != "服务管理")
+                {
+                    node.ParentNode.RemoveChild(node);
+                }
+            }
+        }
+        else
+        {
+            if (!IsSystemAdmin)
+            {
+                foreach (XmlNode node in xmlDoc.SelectNodes("/Demos/DemoGroup"))
+                {
+                    if (node.Attributes["Text"].Value == "系统管理")
+                    {
+                        node.ParentNode.RemoveChild(node);
+                    }
+                }
+            }
+        }
+        
+
+        return xmlDoc;
+    }
 
     public static Hashtable OnlineAuthenUserList = new Hashtable();
 
@@ -41,6 +95,7 @@ public class AuthenUser
         authenUser.UserID = person.PersonalID;
         authenUser.UserName = person.PersonalName;
         authenUser.LoginName = person.PersonalAccount;
+        authenUser.IsVisitor = false;
 
         return authenUser;
     }

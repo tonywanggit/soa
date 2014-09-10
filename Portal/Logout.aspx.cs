@@ -19,6 +19,8 @@ public partial class Logout : System.Web.UI.Page
         FormsAuthenticationTicket authenTicket = FormsAuthentication.Decrypt(authCookies.Value);
         AuthenUser.RemoveAuthenUserOnline(authenTicket.Name);
 
+        Session.Abandon();
+
         System.Web.Security.FormsAuthentication.SignOut();
         System.Web.Security.FormsAuthentication.RedirectToLoginPage();
     }

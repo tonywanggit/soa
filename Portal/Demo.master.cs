@@ -27,7 +27,6 @@ public partial class Demo : System.Web.UI.MasterPage {
     private string generalTerms = "";
     private string titleImageUrl = "";
     private string demoName = "";
-    private CodeRender fCodeRender = new CodeRender();
     private bool showCodePages = true;
 
 	const string HighlightedFeaturesName = "Highlighted Features";
@@ -35,6 +34,7 @@ public partial class Demo : System.Web.UI.MasterPage {
     public bool IsHomePage {
         get { return isHomePage; }
     }
+
     public string TitleImageUrl {
         get {
             if (String.IsNullOrEmpty(titleImageUrl))
@@ -84,13 +84,21 @@ public partial class Demo : System.Web.UI.MasterPage {
         get { return showCodePages; }
         set { showCodePages = value; }
     }
-
+    
     /* Page Load */
     protected void Page_Load(object sender, EventArgs e) {
         //获取页面基页数据
         BasePage owner = (BasePage)Page;
 
+
+        XmlDataSource xmlDataSource = new XmlDataSource();
+        xmlDataSource.ID = Guid.NewGuid().ToString();
+        xmlDataSource.Data = (Session["ESB_MENU"] as XmlDocument).OuterXml;
+        xmlDataSource.XPath = "//DemoGroup";
+        xmlDataSource.DataBind(); 
+
         //菜单绑定
+        nbMenu.DataSource = xmlDataSource;
         nbMenu.DataBind();
 
         /* Title Image */
@@ -112,8 +120,11 @@ public partial class Demo : System.Web.UI.MasterPage {
         Logotype.ImageUrl = "~/App_Themes/" + Page.Theme + "/Demo/LogoESB.png";
 
         //UserName
+        String userName = owner.AuthUser.UserName;
+        if (owner.AuthUser.IsVisitor)
+            userName += "-访客";
 
-        lblUserName.Text = "【" + owner.AuthUser.UserName + "】已登陆";
+        lblUserName.Text = "【" + userName + "】已登陆";
 
         if (phOnceContent.Controls.Count != 0)
             tdFooter.Style.Add(HtmlTextWriterStyle.PaddingLeft, "37px");
@@ -123,7 +134,6 @@ public partial class Demo : System.Web.UI.MasterPage {
 
         if (phContent.Controls.Count == 0) {
             phContent.Visible = false;
-            tblSourceCode.Visible = false;
             phContent.EnableViewState = false;
             tblTitle.Visible = false;
             tblTitle.EnableViewState = false;
@@ -146,15 +156,6 @@ public partial class Demo : System.Web.UI.MasterPage {
             //pDescription.Controls.Add(new LiteralControl(demoMaster.Description));
         }
 
-        // SourceCode		
-        if (!ShowCodePages)
-            tblSourceCode.Visible = false;
-        SetDescriptionTabVisibility();
-        CreateCustomSourceCodeFilesTabs();
-        SetCustomSourceCodePanelWidth();
-        LoadActiveTabPageContent();
-        pcSourceCode.TabPages.FindByName("JS").Visible = IsJSIncludeInCurrentPage();
-
         // Title
         lGroupName.Text = Name;// GroupName;
         //lName.Text = Name;
@@ -162,14 +163,11 @@ public partial class Demo : System.Web.UI.MasterPage {
             hName.Visible = false;
             hName.EnableViewState = false;
         }
-
-        // Version
-        string[] versionInfo = AssemblyInfo.Version.Split('.');
-        lblVersion.Text = string.Format("v{0} vol {1}.{2}", 2000 + Int32.Parse(versionInfo[0]), versionInfo[1], versionInfo[2]);
     }
 
 	void CreateHighlightedFeatures() {
-		XmlDocument xmlDoc = BasePage.GetDemoXmlDocument(Page);
+        BasePage owner = (BasePage)Page;
+        XmlDocument xmlDoc = (Session["ESB_MENU"] as XmlDocument);
 
         int hfPosition = -1;
 		if(xmlDoc.DocumentElement.Attributes["HighlightedFeaturesPosition"] == null ||
@@ -181,7 +179,6 @@ public partial class Demo : System.Web.UI.MasterPage {
 		NavBarItem selectedItem = nbMenu.SelectedItem;
 
 		NavBarGroup hfGroup = new NavBarGroup(HighlightedFeaturesName);
-		BasePage owner = (BasePage)Page;
 		List<NavBarItem> items = new List<NavBarItem>();
 		SiteMapNode hfNode = null;
 		UnboundSiteMapProvider provider = null;
@@ -232,43 +229,7 @@ public partial class Demo : System.Web.UI.MasterPage {
         owner.EnsureSiteMapIsBound();
 	}
 
-    protected void CreateCustomSourceCodeFilesTabs() {
-        BasePage owner = (BasePage)Page;
-        NavBarItem selectedItem = nbMenu.SelectedItem;
-        List<string> sourceCodeFiles = owner.GetSourceCodeFiles(selectedItem);
 
-        if(sourceCodeFiles != null && sourceCodeFiles.Count > 0) {
-            foreach(string curFileName in sourceCodeFiles) {
-                string filePath = MapPath(curFileName);
-                if(!File.Exists(filePath)) {
-                    DirectoryInfo diAppPath = new DirectoryInfo(Page.Request.PhysicalApplicationPath);
-                    filePath = diAppPath.Parent.FullName;
-                    FileInfo fi = new FileInfo(curFileName);
-                    if(fi.Extension == ".cs")
-                        filePath += "\\" + "CS";
-                    else if(fi.Extension == ".vb")
-                        filePath += "\\" + "VB";
-                    filePath += Path.GetDirectoryName(curFileName).Replace("~", "");
-                    filePath += "\\" + Path.GetFileName(curFileName);
-                }
-                if(!string.IsNullOrEmpty(filePath) && File.Exists(filePath)) {
-                    Control control = CreateTabPageCustomContentControl(filePath);
-                    if (control != null) {
-                        TabPage page = new TabPage(Path.GetFileName(curFileName));
-                        page.Controls.Add(control);
-                        pcSourceCode.TabPages.Add(page);
-                    }
-                }
-            }
-        }
-    }
-    protected void SetCustomSourceCodePanelWidth() {
-        BasePage owner = (BasePage)Page;
-        NavBarItem selectedItem = nbMenu.SelectedItem;
-        Unit customWidth = owner.GetCustomSourceCodeWidth(selectedItem);
-        if(!customWidth.IsEmpty)
-            pcSourceCode.Width = customWidth;
-    }
 	private SiteMapNode CreateHFSiteMapNode(UnboundSiteMapProvider provider, SiteMapNode hfNode) {
 		SiteMapNode introductionNode = FindSiteMapNodeByTitle(provider, "Introduction");
 		if(introductionNode == null) return null;
@@ -276,6 +237,7 @@ public partial class Demo : System.Web.UI.MasterPage {
 		provider.AddSiteMapNode(hfNode, introductionNode.ParentNode);
 		return hfNode;
 	}
+
 	SiteMapNode FindSiteMapNodeByTitle(UnboundSiteMapProvider provider, string title) {
 		foreach(SiteMapNode node in provider.GetChildNodes(provider.RootNode)) {
 			if(node.Title == title) return node;
@@ -285,10 +247,6 @@ public partial class Demo : System.Web.UI.MasterPage {
 		return null;
 	}
 
-		/* Source Code */
-	protected void pcSourceCode_ActiveTabChanged(object source, DevExpress.Web.ASPxTabControl.TabControlEventArgs e) {
-        LoadActiveTabPageContent();
-    }
 
     /* Skins */
     protected void cbSkins_DataBound(object sender, EventArgs e) {
@@ -363,6 +321,8 @@ public partial class Demo : System.Web.UI.MasterPage {
 
         }
     }
+
+
     protected void nbMenu_GroupDataBound(object source, NavBarGroupEventArgs e) {
         IHierarchyData hierarchyData = (e.Group.DataItem as IHierarchyData);
         XmlElement xmlElement = hierarchyData.Item as XmlElement;
@@ -379,6 +339,8 @@ public partial class Demo : System.Web.UI.MasterPage {
         if (e.Group.Expanded && TitleImageUrl == "")
             this.titleImageUrl = xmlElement.Attributes["ImageUrl"] != null ? xmlElement.Attributes["ImageUrl"].Value : "";
     }
+
+
     protected string GetUrl(string url) {
         int i = url.IndexOf("?");
         if (i != -1) return url.Substring(0, i);
@@ -391,121 +353,21 @@ public partial class Demo : System.Web.UI.MasterPage {
         if(owner != null)
 			owner.PrepareStatusHeadlineGroups((ASPxHeadline)sender);
     }
+
     protected void hlItem_DataBinding(object sender, EventArgs e) {
         BasePage owner = Page as BasePage;
         if(owner != null)
 			owner.PrepareStatusHeadlineItems((ASPxHeadline)sender);
     }
-
-
-    // SourceCode
-    protected Control CreateNotAvailableTextControl() {
-        return new LiteralControl("<div class=\"cr-div-description\">File is not available</div>");
-    }
-    protected Control CreateTabPageContentControl(string name) {
-        switch (name) {
-            case "Description":
-                return GetDescriptionTextControl();
-            case "C#":
-                return GetCSharpLanguageCodeControl();
-            case "VB":
-                return GetVBLanguageCodeControl();
-            case "ASPX":
-                return GetASPXLanguageCodeControl();
-            case "JS":
-                return GetJSLanguageCodeControl();
-            default:
-                return null;
-        }
-    }
-    protected Control CreateTabPageCustomContentControl(string path) {
-        FileInfo fi = new FileInfo(path);
-        switch(fi.Extension) {
-            case ".aspx":
-            case ".ascx":
-                return fCodeRender.GetHTMLFormattedAspxFileControl(path);
-            case ".js":
-                return fCodeRender.GetHTMLFormattedJSFileControl(path);
-            case ".cs":
-                return fCodeRender.GetHTMLFormattedCSFileControl(path);
-            case ".vb":
-                return fCodeRender.GetHTMLFormattedVBFileControl(path);
-            default:
-                return fCodeRender.GetHTMLFormattedXmlFileControl(path);
-        }
-    }
-    protected Control GetJSLanguageCodeControl() {
-        return fCodeRender.GetHTMLFormattedJSFileControl(GetPhisicalASPXFileName());
-    }
-    protected Control GetASPXLanguageCodeControl() {
-        return fCodeRender.GetHTMLFormattedAspxFileControl(GetPhisicalASPXFileName());
-    }
-    protected Control GetCSharpLanguageCodeControl() {
-        string codeFileName = GetCodeFileName("CS");
-
-        if (!System.IO.File.Exists(codeFileName))
-            return CreateNotAvailableTextControl();
-        return fCodeRender.GetHTMLFormattedCSFileControl(codeFileName);
-    }
-    protected Control GetVBLanguageCodeControl() {
-        string codeFileName = GetCodeFileName("VB");
-
-        if (!System.IO.File.Exists(codeFileName))
-            return CreateNotAvailableTextControl();
-        return fCodeRender.GetHTMLFormattedVBFileControl(codeFileName);
-    }
-    protected Control GetDescriptionTextControl() {
-        return fCodeRender.GetDescriptionTextControl(Description);
-    }
+   
     protected string GetRootLanguageDemo(string physicalDir, string language) {
         while (!System.IO.Directory.Exists(physicalDir + "\\" + language) &&
                  physicalDir != Path.GetPathRoot(physicalDir))
             physicalDir = System.IO.Directory.GetParent(physicalDir).ToString();
         return physicalDir + "\\" + language;
     }
-    protected string GetCodeFileName(string language) {
-        string physicalPath = GetPhisicalASPXFileName();
 
-        string physicalDir = Path.GetDirectoryName(physicalPath);
-        string fileExtension = language == "CS" ? ".cs" : ".vb";
-        string physicalFile = Path.GetFileName(physicalPath) + fileExtension;
-
-        string currentDirectory = System.IO.Directory.CreateDirectory(physicalDir).Name;
-
-        if (System.IO.File.Exists(physicalDir + "\\" + physicalFile)) {
-            return physicalDir + "\\" + physicalFile;
-        } else {
-            physicalDir = GetRootLanguageDemo(physicalDir, language);
-
-            if (System.IO.File.Exists(physicalDir + "\\" + currentDirectory + "\\" + physicalFile)) {
-                return physicalDir + "\\" + currentDirectory + "\\" + physicalFile;
-            } else if (System.IO.Directory.Exists(physicalDir)) {
-                foreach (string dir in System.IO.Directory.GetDirectories(physicalDir)) {
-                    if (System.IO.File.Exists(dir + "\\" + currentDirectory + "\\" + physicalFile))
-                        return dir + "\\" + currentDirectory + "\\" + physicalFile;
-                }
-            }
-        }
-        return "";
-    }
-    protected string GetPhisicalASPXFileName() {
-        return MapPath(Request.AppRelativeCurrentExecutionFilePath.ToLower());
-    }
-    protected bool IsJSIncludeInCurrentPage() {
-        return GetJSLanguageCodeControl() != null;
-    }
-    protected void LoadActiveTabPageContent() {
-        if (pcSourceCode.ActiveTabPage.Controls.Count == 0) {
-            Control contentControl = CreateTabPageContentControl(pcSourceCode.ActiveTabPage.Name);
-            if (contentControl != null)
-                pcSourceCode.ActiveTabPage.Controls.Add(contentControl);
-        }
-    }
-    protected void SetDescriptionTabVisibility() {
-        if (string.IsNullOrEmpty(Description)) {
-            pcSourceCode.TabPages.FindByName("Description").Visible = false;
-        }
-    }
+   
 	protected void nbMenu_DataBound(object sender, EventArgs e) {
 		CreateHighlightedFeatures();
 	}

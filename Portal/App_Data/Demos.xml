@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Demos Name="ASPxGridView" ColumnCount="3" Title="企业服务总线" TitleFormatString="{2}">
-  <DemoGroup IsUpdated="true" Text="总线概况" Caption="连接应用 - 串起一颗颗信息化珍珠" BeginCategory="true">
+  <DemoGroup IsUpdated="false" Text="总线概况" Caption="连接应用 - 串起一颗颗信息化珍珠" BeginCategory="true">
     <Demo Text="关于总线" NavigateUrl="~/Default.aspx" UseFullTitle="false" Title="企业服务总线 - 总线概况">
       <GeneralTerms ShowHeader="true">
         <p style="font-size:14px">
@@ -20,7 +20,7 @@
         </p>
       </GeneralTerms>
     </Demo>
-    <Demo Text="服务一览表" NavigateUrl="~/UDDI/ServiceSummary.aspx" Title="企业服务总线 - 服务一览表" IsUpdated="true">
+    <Demo Text="服务一览表" NavigateUrl="~/UDDI/ServiceSummary.aspx" Title="企业服务总线 - 服务一览表" IsUpdated="false">
       <Description>
       </Description>
     </Demo>
@@ -54,7 +54,7 @@
       <Description>
       </Description>
     </Demo>
-    <Demo Text="异常历史检索" NavigateUrl="~/Exception/ExceptionSearch.aspx" Title="企业服务总线 - 异常历史检索" IsUpdated="true">
+    <Demo Text="异常历史检索" NavigateUrl="~/Exception/ExceptionSearch.aspx" Title="企业服务总线 - 异常历史检索" IsUpdated="false">
       <Description>
       </Description>
     </Demo>
@@ -72,8 +72,8 @@
   </DemoGroup>
 -->  
 
-  <DemoGroup Text="日志审计" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" IsNew="true" >
-    <Demo Text="通讯日志" NavigateUrl="~/Audit/CommunicationAudit.aspx" Title="企业服务总线 - 通讯日志" IsNew="true">
+  <DemoGroup Text="日志审计" ImageUrl="~/Images/TitleImages/GridView.png" ImageWidth="76px" ImageHeight="76px" IsNew="false" >
+    <Demo Text="通讯日志" NavigateUrl="~/Audit/CommunicationAudit.aspx" Title="企业服务总线 - 通讯日志" IsNew="false">
       <Description>
       </Description>
     </Demo>
@@ -84,20 +84,20 @@
     </Demo>-->
   </DemoGroup>
 
-  <DemoGroup Text="服务质量分析" ImageUrl="~/Images/TitleImages/CloudControl.png" ImageWidth="76px" ImageHeight="76px" BeginCategory="true" IsNew="true">
-    <Demo Text="调用频度分析" NavigateUrl="~/Analyse/CallNumAnalyse.aspx" Title="企业服务总线 - 调用次数分析" IsNew="true">
+  <DemoGroup Text="服务质量分析" ImageUrl="~/Images/TitleImages/CloudControl.png" ImageWidth="76px" ImageHeight="76px" BeginCategory="true" IsNew="false">
+    <Demo Text="调用频度分析" NavigateUrl="~/Analyse/CallNumAnalyse.aspx" Title="企业服务总线 - 调用次数分析" IsNew="false">
       <Description>
       </Description>
     </Demo>
-    <Demo Text="响应时间分析" NavigateUrl="~/Analyse/ResTimeAnalyse.aspx" Title="企业服务总线 - 响应时间分析" IsNew="true">
+    <Demo Text="响应时间分析" NavigateUrl="~/Analyse/ResTimeAnalyse.aspx" Title="企业服务总线 - 响应时间分析" IsNew="false">
       <Description>
       </Description>
     </Demo>
-    <Demo Text="实时流量分析" NavigateUrl="~/Analyse/RealTimeCallAnalyse.aspx" Title="企业服务总线 - 实时流量分析" IsNew="true">
+    <Demo Text="实时流量分析" NavigateUrl="~/Analyse/RealTimeCallAnalyse.aspx" Title="企业服务总线 - 实时流量分析" IsNew="false">
       <Description>
       </Description>
     </Demo>
-    <Demo Text="异常情况分析" NavigateUrl="~/Analyse/ExceptionAnalyse.aspx" Title="企业服务总线 - 异常情况分析" IsNew="true">
+    <Demo Text="异常情况分析" NavigateUrl="~/Analyse/ExceptionAnalyse.aspx" Title="企业服务总线 - 异常情况分析" IsNew="false">
       <Description>
       </Description>
     </Demo>

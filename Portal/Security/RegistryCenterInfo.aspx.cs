@@ -28,7 +28,15 @@ public partial class Security_RegistryCenterInfo : BasePage
 
     protected void btnRefresh_Click(object sender, EventArgs e)
     {
-        List<RegistryClient> lstRegistClient = esbProxy.RegistryConsumerClient.GetRegistryClientList();
+        List<RegistryClient> lstRegistClient = new List<RegistryClient>();
+        try
+        {
+            lstRegistClient = esbProxy.RegistryConsumerClient.GetRegistryClientList();
+        }
+        catch (Exception)
+        {
+            
+        }
         this.grid.DataSource = lstRegistClient;
         this.grid.DataBind();
     }

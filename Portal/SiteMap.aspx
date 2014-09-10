@@ -7,7 +7,7 @@
     <%-- BeginRegion DataSource --%>
     <dxsm:ASPxSiteMapDataSource ID="ASPxSiteMapDataSource1" runat="server"/>      
     <%-- EndRegion --%>
-    <dxsm:ASPxSiteMapControl Categorized="True" MaximumDisplayLevels="3" Width="100%" ID="ASPxSiteMapControl1" runat="server" DataSourceID="ASPxSiteMapDataSource1">
+    <dxsm:ASPxSiteMapControl Categorized="True" MaximumDisplayLevels="3" Width="800px" ID="ASPxSiteMapControl1" runat="server" DataSourceID="ASPxSiteMapDataSource1">
         <Columns>
             <dxsm:Column></dxsm:Column>
             <dxsm:Column></dxsm:Column>

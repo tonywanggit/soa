@@ -19,19 +19,21 @@ using DevExpress.Web.ASPxHeadline;
 using DevExpress.Web.ASPxSiteMapControl;
 using DevExpress.Web.ASPxEditors;
 
-public partial class BasePage : System.Web.UI.Page {
+public partial class BasePage : System.Web.UI.Page 
+{
 	protected enum DemoPageStatus { Default, New, Updated };
-    public const string DefaultThemeName = "Glass";
+
+    public const string DefaultThemeName = "BlackGlass";
+
 	const int InvalidHighlightIndex = Int32.MinValue;
 
     private Dictionary<string, DemoPageStatus> DemoPageGroupsStatus = null;
     private Dictionary<string, DemoPageStatus> DemoPageItemsStatus = null;
 	private Dictionary<string, int> DemoPageHighlightedIndex = null;
-    private Dictionary<string, List<string>> DemoPageSourceCodeFiles = null;
-    private Dictionary<string, Unit> DemoPageCustomSourceCodeWidth = null;
+    //private Dictionary<string, List<string>> DemoPageSourceCodeFiles = null;
+    //private Dictionary<string, Unit> DemoPageCustomSourceCodeWidth = null;
     private string cssLink = "";
     private string demoName = "";
-    private static XmlDocument demoXmlDocument = null;
     private AuthenUser authenUser = new AuthenUser();
 
     protected string CSSLink {
@@ -40,19 +42,12 @@ public partial class BasePage : System.Web.UI.Page {
     protected string DemoName {
         get { return demoName; }
     }
-    public static XmlDocument GetDemoXmlDocument(Page page) {
-        //if(BasePage.demoXmlDocument == null) {
-            BasePage.demoXmlDocument = new XmlDocument();
-			BasePage.demoXmlDocument.Load(page.MapPath("~/App_Data/Demos.xml"));
-        //}
-        return BasePage.demoXmlDocument;
-    }
 
 	public UnboundSiteMapProvider SiteMapProvider {
 		get {
 			//if(!IsSiteMapCreated)
-				Application["DemoUnboundProvider"] = CreateSiteMapProvider();
-			return (UnboundSiteMapProvider)Application["DemoUnboundProvider"];
+				Session["ESB_DemoUnboundProvider"] = CreateSiteMapProvider();
+                return (UnboundSiteMapProvider)Session["ESB_DemoUnboundProvider"];
 		}
 	}
 	public bool IsSiteMapCreated { get { return Application["DemoUnboundProvider"] != null; } }
@@ -89,13 +84,15 @@ public partial class BasePage : System.Web.UI.Page {
         this.Theme = themeName;
         
     }
+
+
 	/* Page Init */
 	protected override void OnInit(EventArgs e) {
-		base.OnInit(e);
-		ClearDemoProperties();
-        InitDemoProperties();        
+        base.OnInit(e);
         //Tony ≥ı ºªØ ⁄»®
         InitAuthenUser();
+		ClearDemoProperties();
+        InitDemoProperties();  
 
 	}
     /* Page Load */
@@ -137,7 +134,7 @@ public partial class BasePage : System.Web.UI.Page {
     /// </summary>
     protected void HideSourceCodeTable()
     {
-        Form.FindControl("tblSourceCode").Visible = false;
+        //Form.FindControl("tblSourceCode").Visible = false;
     }
 
     /// <summary>
@@ -163,9 +160,11 @@ public partial class BasePage : System.Web.UI.Page {
 	public void PrepareStatusHeadlineGroups(ASPxHeadline sender) {
 		PrepareStatusHeadlineCore(sender, this.DemoPageGroupsStatus);
     }
+
 	public void PrepareStatusHeadlineItems(ASPxHeadline sender) {
         PrepareStatusHeadlineCore(sender, this.DemoPageItemsStatus);
     }
+
     protected virtual bool IsCurrentPage(object oUrl) {
         if (oUrl == null)
             return false;
@@ -176,27 +175,8 @@ public partial class BasePage : System.Web.UI.Page {
             result = true;
         return result;
     }
-    /* Events */
-    protected virtual void TraceEvent(HtmlGenericControl memo, object sender, EventArgs args, string eventName) {
-        string s = "";
-        PropertyInfo[] properties = args.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
-        foreach (PropertyInfo propertyInfo in properties) {
-            s += propertyInfo.Name + " = " +
-                (propertyInfo.PropertyType.IsValueType ? propertyInfo.GetValue(args, null) : "[" + propertyInfo.PropertyType.Name + "]") + "<br />";
-        }
 
-        memo.InnerHtml += "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tr><td valign=\"top\" style=\"width: 100px;\">Sender:</td><td valign=\"top\">" +
-            (sender as Control).ID +
-            "</td></tr><tr><td valign=\"top\">EventType:</td><td valign=\"top\"><b>" +
-            eventName + "</b></td></tr><tr><td valign=\"top\">Arguments:</td><td valign=\"top\">" +
-            s + "</td></tr></table><br />";
-    }
-    protected virtual void ClearEvents(HtmlGenericControl memo) {
-        memo.InnerHtml = "";
-    }
-    protected virtual void InitEvents(HtmlGenericControl memo) {
-        Page.ClientScript.RegisterStartupScript(typeof(BasePage), "ScrollEvents", "document.getElementById('" + memo.ClientID + "').scrollTop = 100000;", true);
-    }
+
     protected virtual bool GetStatus(object dataItem, string name) {
         IHierarchyData hierarchyData = (dataItem as IHierarchyData);
         XmlElement xmlElement = hierarchyData.Item as XmlElement;
@@ -220,14 +200,17 @@ public partial class BasePage : System.Web.UI.Page {
             }
         }
     }
+
 	private string GetStatusKey(string text, string url) {
 		return text + "-" + url;
 	}
+
 	protected DemoPageStatus GetItemStatus(DevExpress.Web.ASPxNavBar.NavBarItem item) {
 		string key = GetStatusKey(item.Text, item.NavigateUrl);
 		if(DemoPageItemsStatus.ContainsKey(key)) return DemoPageItemsStatus[key];
 		return DemoPageStatus.Default;
 	}
+
 	public bool IsHighlighted(DevExpress.Web.ASPxNavBar.NavBarItem item) {
 		string key = GetStatusKey(item.Text, item.NavigateUrl);
 		return DemoPageHighlightedIndex.ContainsKey(key);
@@ -236,47 +219,37 @@ public partial class BasePage : System.Web.UI.Page {
 		string key = GetStatusKey(item.Text, item.NavigateUrl);
 		return DemoPageHighlightedIndex[key];
 	}
-    public List<string> GetSourceCodeFiles(DevExpress.Web.ASPxNavBar.NavBarItem item) {
-        if (item == null) return null;
-        string key = GetStatusKey(item.Text, item.NavigateUrl);
-        return DemoPageSourceCodeFiles.ContainsKey(key) ? DemoPageSourceCodeFiles[key] : null;
-    }
-    public Unit GetCustomSourceCodeWidth(DevExpress.Web.ASPxNavBar.NavBarItem item) {
-        if (item == null) return Unit.Empty;
-        string key = GetStatusKey(item.Text, item.NavigateUrl);
-        return DemoPageCustomSourceCodeWidth.ContainsKey(key) ? DemoPageCustomSourceCodeWidth[key] : Unit.Empty;
-    }
+
     private void ClearDemoProperties() {
         this.DemoPageGroupsStatus = null;
         this.DemoPageItemsStatus = null;
         this.DemoPageHighlightedIndex = null;
-        this.DemoPageSourceCodeFiles = null;
-        this.DemoPageCustomSourceCodeWidth = null;
     }
+
     private void InitDemoProperties() {
         this.DemoPageGroupsStatus = new Dictionary<string, DemoPageStatus>();
         this.DemoPageItemsStatus = new Dictionary<string, DemoPageStatus>();
         this.DemoPageHighlightedIndex = new Dictionary<string, int>();
-        this.DemoPageSourceCodeFiles = new Dictionary<string,List<string>>();
-        this.DemoPageCustomSourceCodeWidth = new Dictionary<string, Unit>();
 
-		XmlDocument xmlDoc = GetDemoXmlDocument(Page);
+        XmlDocument menuXmlDocument = (Session["ESB_MENU"] as XmlDocument);
+
         if (string.IsNullOrEmpty(DemoName)) {
             this.demoName = "ASPxperience";
-            if (xmlDoc.DocumentElement.Attributes["Name"] != null)
-                this.demoName = xmlDoc.DocumentElement.Attributes["Name"].Value;
+            if (menuXmlDocument.DocumentElement.Attributes["Name"] != null)
+                this.demoName = menuXmlDocument.DocumentElement.Attributes["Name"].Value;
         }
-        foreach (XmlNode node in xmlDoc.SelectNodes("//DemoGroup")) {
+
+        foreach (XmlNode node in menuXmlDocument.SelectNodes("//DemoGroup"))
+        {
             AddPageStatus(this.DemoPageGroupsStatus, node);
             foreach (XmlNode nodeItem in node.SelectNodes("Demo")) {
                 AddPageStatus(this.DemoPageItemsStatus, nodeItem);
                 AddPageHighlightedIndex(this.DemoPageHighlightedIndex, nodeItem);
-                AddPageSourceCodeFiles(this.DemoPageSourceCodeFiles, nodeItem);
-                AddPageCustomSourceCodeWidth(this.DemoPageCustomSourceCodeWidth, nodeItem);
             }
         }
 
     }
+
     private void AddPageStatus(Dictionary<string, DemoPageStatus> ret, XmlNode node) {
         string url = GetAttributeValue(node.Attributes, "NavigateUrl");
         string text = GetAttributeValue(node.Attributes, "Text");
@@ -288,6 +261,7 @@ public partial class BasePage : System.Web.UI.Page {
 
         ret.Add(GetStatusKey(text, url), status);
     }
+
 	private void AddPageHighlightedIndex(Dictionary<string, int> ret, XmlNode node) {
 		int index = GetHighlightedIndexCore(node, "HighlightedIndex");
 		if(index == InvalidHighlightIndex) return;
@@ -296,40 +270,7 @@ public partial class BasePage : System.Web.UI.Page {
 		string text = GetAttributeValue(node.Attributes, "Text");
 		ret.Add(GetStatusKey(text, url), index);
 	}
-    private void AddPageSourceCodeFiles(Dictionary<string, List<string>> ret, XmlNode node) {
-        List<string> files = null;
 
-        foreach(XmlNode nodeFiles in node.SelectNodes("SourceCodeFiles")) {
-            foreach(XmlNode nodeFile in nodeFiles.SelectNodes("File")) {
-                string fileName = GetAttributeValue(nodeFile.Attributes, "Name");
-                if(!string.IsNullOrEmpty(fileName)) {
-                    if(files == null)
-                        files = new List<string>();
-                    files.Add(fileName);
-                }
-            }
-        }
-
-        if(files != null) {
-            string url = GetAttributeValue(node.Attributes, "NavigateUrl");
-            string text = GetAttributeValue(node.Attributes, "Text");
-            ret.Add(GetStatusKey(text, url), files);
-        }
-    }
-    private void AddPageCustomSourceCodeWidth(Dictionary<string, Unit> ret, XmlNode node) {
-        foreach(XmlNode nodeFiles in node.SelectNodes("SourceCodeFiles")) {
-            XmlAttribute widthAttribute = nodeFiles.Attributes["PageControlWidth"];
-            if(widthAttribute != null) {
-                Unit width = Unit.Parse(widthAttribute.Value);
-                if(!width.IsEmpty) {
-                    string url = GetAttributeValue(node.Attributes, "NavigateUrl");
-                    string text = GetAttributeValue(node.Attributes, "Text");
-                    ret.Add(GetStatusKey(text, url), width);
-                    break;
-                }
-            }
-        }
-    }
     private bool GetStatusCore(XmlElement element, string name) {
         bool ret = false;
 
@@ -337,27 +278,32 @@ public partial class BasePage : System.Web.UI.Page {
         bool.TryParse(value, out ret);
         return ret;
     }
+
     private bool GetStatusCore(XmlNode node, string name) {
         bool ret = false;
         string value = GetAttributeValue(node.Attributes, name);
         bool.TryParse(value, out ret);
         return ret;
     }
+
 	private int GetHighlightedIndexCore(XmlNode node, string name) {
 		int ret = InvalidHighlightIndex;
 		string value = GetAttributeValue(node.Attributes, name);
 		if(!int.TryParse(value, out ret)) return InvalidHighlightIndex;
 		return ret;
 	}
+
     private string GetAttributeValue(XmlAttributeCollection attributes, string name) {
         if (attributes[name] != null)
             return attributes[name].Value;
         else
             return "";
     }
+
     private void RegisterScript(string key, string url) {
         Page.ClientScript.RegisterClientScriptInclude(key, Page.ResolveUrl(url));
     }
+
     private void RegisterCSSLink(string url) {
         HtmlLink link = new HtmlLink();
         Page.Header.Controls.Add(link);
@@ -366,11 +312,15 @@ public partial class BasePage : System.Web.UI.Page {
         link.Attributes.Add("rel", "stylesheet");
         link.Href = url;
     }
+
 	protected UnboundSiteMapProvider CreateSiteMapProvider() {
 		UnboundSiteMapProvider provider = new UnboundSiteMapProvider("", "");
 
 		SiteMapNode categoryDemoNode = provider.RootNode;
-		foreach(XmlNode groupNode in GetDemoXmlDocument(Page).SelectNodes("//DemoGroup[not(@Visible=\"false\")]")) {
+        XmlDocument xmlDoc = Session["ESB_MENU"] as XmlDocument;
+
+        foreach (XmlNode groupNode in xmlDoc.SelectNodes("//DemoGroup[not(@Visible=\"false\")]"))
+        {
 			bool groupIsNew = false;
 			if(groupNode.Attributes["IsNew"] != null) {
 				string value = groupNode.Attributes["IsNew"].Value;
