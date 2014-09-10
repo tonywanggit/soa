@@ -27,8 +27,8 @@ public partial class LoginPage : System.Web.UI.Page
         LdapAuthentication adAuth = new LdapAuthentication(txtDomain.Text);
         try
         {
-            //if (true == adAuth.IsAuthenticated(txtDomain.Text, txtUsername.Text, txtPassword.Text))
-            if(true)
+            if (true == adAuth.IsAuthenticated(txtDomain.Text, txtUsername.Text, txtPassword.Text))
+            //if(true)
             {
                 // string groups = adAuth.GetGroups();
                 string groups = "";
