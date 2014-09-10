@@ -34,15 +34,15 @@
   <ItemGroup>
     <Reference Include="MB.ESB.Core, Version=1.0.5366.28948, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ESBLIB\MB.ESB.Core.dll</HintPath>
+      <HintPath>..\ESB.LIB\MB.ESB.Core.dll</HintPath>
     </Reference>
     <Reference Include="NewLife.Core, Version=3.8.5365.39510, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ESBLIB\NewLife.Core.dll</HintPath>
+      <HintPath>..\ESB.LIB\NewLife.Core.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=3.3.5.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ESBLIB\RabbitMQ.Client.dll</HintPath>
+      <HintPath>..\ESB.LIB\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
