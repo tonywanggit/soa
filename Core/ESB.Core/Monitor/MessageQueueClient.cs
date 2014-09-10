@@ -62,9 +62,20 @@ namespace ESB.Core.Monitor
         }
 
         /// <summary>
+        /// 异步调用连接
+        /// </summary>
+        public void ConnectAsync()
+        {
+            ThreadPoolX.QueueUserWorkItem(x =>
+            {
+                Connect();
+            });
+        }
+
+        /// <summary>
         /// 连接到监控中心
         /// </summary>
-        public void Connect()
+        private void Connect()
         {
             if (m_ESBProxy.ESBConfig != null && m_ESBProxy.ESBConfig.MessageQueue != null && m_ESBProxy.ESBConfig.MessageQueue.Count > 0)
             {

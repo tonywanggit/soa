@@ -79,8 +79,11 @@ namespace ESB.Core.Registry
         {
             try
             {
-                Socket.Shutdown(SocketShutdown.Both);
-                Socket.Close();
+                if (Socket != null)
+                {
+                    Socket.Shutdown(SocketShutdown.Both);
+                    Socket.Close();
+                }
             }
             finally
             {

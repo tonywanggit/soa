@@ -160,7 +160,7 @@ namespace ESB.Core.Registry
             if (m_ESBProxy.ESBConfig == null)
             {
                 m_ESBProxy.ESBConfig = XmlUtil.LoadObjFromXML<ESBConfig>(rm.MessageBody);
-                m_ESBProxy.MessageQueueClient.Connect();
+                m_ESBProxy.MessageQueueClient.ConnectAsync();
             }
             else
             {

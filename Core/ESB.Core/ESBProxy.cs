@@ -193,7 +193,7 @@ namespace ESB.Core
 
             //--STEP.4.连接队列中心
             m_MessageQueueClient = new MessageQueueClient(this);
-            m_MessageQueueClient.Connect();
+            m_MessageQueueClient.ConnectAsync();
 
 
             stopWatch.Stop();
