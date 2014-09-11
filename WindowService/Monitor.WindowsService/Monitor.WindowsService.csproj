@@ -63,7 +63,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>Audit.WindowsService.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -78,6 +78,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Messaging" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -114,6 +115,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Audit.WindowsService_TemporaryKey.pfx" />
+    <None Include="Config\Database.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ProjectInstaller.resx">

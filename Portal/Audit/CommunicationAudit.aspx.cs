@@ -45,7 +45,6 @@ public partial class Audit_CommunicationAudit : BasePage
 
     protected void InitRight()
     {
-        this.grid.Columns[0].Visible = AuthUser.IsSystemAdmin;
     }
     #endregion
 

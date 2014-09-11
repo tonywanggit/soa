@@ -2430,6 +2430,13 @@
             <param name="connName">配置名，或链接字符串</param>
             <returns>对应于指定链接的全局唯一的数据访问层对象</returns>
         </member>
+        <member name="M:XCode.DataAccessLayer.DAL.GetConnectionStrings">
+            <summary>
+            Tony.2014.09.11
+            获取到连接字符串，如果配置了XCode.ConnConfigFile项则优先使用，否则使用ConnectionStrings节
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:XCode.DataAccessLayer.DAL.AddConnStr(System.String,System.String,System.Type,System.String)">
             <summary>添加连接字符串</summary>
             <param name="connName">连接名</param>

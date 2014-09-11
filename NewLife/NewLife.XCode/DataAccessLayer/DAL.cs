@@ -13,6 +13,7 @@ using NewLife.Reflection;
 using NewLife.Threading;
 using XCode.Code;
 using XCode.Exceptions;
+using NewLife.Configuration;
 
 namespace XCode.DataAccessLayer
 {
@@ -93,7 +94,7 @@ namespace XCode.DataAccessLayer
                     Dictionary<String, ConnectionStringSettings> cs = new Dictionary<String, ConnectionStringSettings>(StringComparer.OrdinalIgnoreCase);
 
                     // 读取配置文件
-                    ConnectionStringSettingsCollection css = ConfigurationManager.ConnectionStrings;
+                    ConnectionStringSettingsCollection css = GetConnectionStrings();
                     if (css != null && css.Count > 0)
                     {
                         foreach (ConnectionStringSettings set in css)
@@ -114,6 +115,45 @@ namespace XCode.DataAccessLayer
                     _connStrs = cs;
                 }
                 return _connStrs;
+            }
+        }
+
+        /// <summary>
+        /// Tony.2014.09.11
+        /// 获取到连接字符串，如果配置了XCode.ConnConfigFile项则优先使用，否则使用ConnectionStrings节
+        /// </summary>
+        /// <returns></returns>
+        private static ConnectionStringSettingsCollection GetConnectionStrings()
+        {
+            String connFile = Config.GetConfig<String>("XCode.ConnConfigFile");
+            if (String.IsNullOrWhiteSpace(connFile))
+            {
+                return ConfigurationManager.ConnectionStrings;
+            }
+            else
+            {
+                ConnectionStringSettingsCollection cnsc = new ConnectionStringSettingsCollection();
+                try
+                {
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load(connFile);
+
+                    foreach (XmlNode conn in xmlDoc.SelectNodes("/connectionStrings/add"))
+                    {
+                        ConnectionStringSettings css = new ConnectionStringSettings();
+                        css.Name = conn.Attributes["name"] == null ? String.Empty : conn.Attributes["name"].Value;
+                        css.ConnectionString = conn.Attributes["connectionString"] == null ? String.Empty : conn.Attributes["connectionString"].Value;
+                        css.ProviderName = conn.Attributes["providerName"] == null ? String.Empty : conn.Attributes["providerName"].Value;
+
+                        cnsc.Add(css);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XTrace.WriteLine("无法从XCode.ConnConfigFile配置节中获取到ConnectionStrings，异常详情：{0}", ex.ToString());
+                }
+
+                return cnsc;
             }
         }
 

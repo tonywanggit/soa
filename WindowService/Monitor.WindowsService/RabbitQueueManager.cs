@@ -74,6 +74,7 @@ namespace Monitor.WindowsService
         {
             try
             {
+
                 m_RabbitMQ.Listen<AuditBusiness>(Constant.ESB_AUDIT_QUEUE, x =>
                 {
                     if (x != null)
@@ -93,7 +94,7 @@ namespace Monitor.WindowsService
             }
             catch (Exception ex)
             {
-                XTrace.WriteLine("处理审计日志发生异常，消息将停止接收！");
+                XTrace.WriteLine("处理审计日志发生异常，消息将停止接收！异常详情：{0}", ex.ToString());
             }
         }
 
@@ -125,7 +126,7 @@ namespace Monitor.WindowsService
             }
             catch (Exception ex)
             {
-                XTrace.WriteLine("处理异常日志发生异常，消息将停止接收！");
+                XTrace.WriteLine("处理异常日志发生异常，消息将停止接收！异常详情：{0}", ex.ToString());
             }
         }
     }

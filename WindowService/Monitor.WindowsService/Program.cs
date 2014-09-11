@@ -16,24 +16,19 @@ namespace Audit.WindowsService
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[] 
-            { 
-                new StoreAuditService() 
-            };
-            ServiceBase.Run(ServicesToRun);
+            //ServiceBase[] ServicesToRun;
+            //ServicesToRun = new ServiceBase[] 
+            //{ 
+            //    new StoreAuditService() 
+            //};
+            //ServiceBase.Run(ServicesToRun);
 
-            //RabbitQueueManager rbQueueManager = new RabbitQueueManager();
-            //rbQueueManager.StartReceive();
+            Console.WriteLine("日志队列处理服务启动。");
 
-            //String m_ESBQueueName = Config.AppSettings["ESB.Queue.AuditName"];
-            //String m_ESBQueueName = Config.GetConfig<String>("ESB.Queue.AuditName");
+            RabbitQueueManager m_RabbitQueueManager = m_RabbitQueueManager = new RabbitQueueManager();
+            m_RabbitQueueManager.StartReceive();
 
-            //XTrace.WriteLine("读取到ESB队列名称：{0}", m_ESBQueueName);
-
-
-            //QueueManager m_QueueManager = new QueueManager();
-            //m_QueueManager.StartReceive();
+            Console.WriteLine("启动成功！");
         }
     }
 }

@@ -231,35 +231,16 @@ public partial class Exception_ExceptionList : BasePage
     {
         if (e.ButtonID != "btnPigeonhole") return;
 
-        if (!AuthUser.IsSystemAdmin)
-        {
-            throw new Exception("您不是系统管理员，不能进行归档操作！");
-        }
-        else
-        {
-            //错误消息服务 异常服务对象 = new 错误消息服务();
-            //异常信息对象 异常消息 = 异常服务对象.获得错误消息_异常编码(new Guid());
-            //try
-            //{
-            //    AuditServcie auditService = new AuditServcie();
-            //    auditService.ExceptionPigeonhole(new Guid(异常消息.消息编码.ToString()));
-            //}
-            //catch (Exception)
-            //{
-            //    throw new Exception("归档操作失败！");
-            //}
-                
-            String exceptionID = grid.GetRowValues(e.VisibleIndex, "ExceptionID").ToString();
-            String messageID = grid.GetRowValues(e.VisibleIndex, "MessageID").ToString();
+        String exceptionID = grid.GetRowValues(e.VisibleIndex, "ExceptionID").ToString();
+        String messageID = grid.GetRowValues(e.VisibleIndex, "MessageID").ToString();
 
-            ESB.ExceptionService exceptionService = new ESB.ExceptionService();
-            exceptionService.DeleteExceptionByID(exceptionID);
+        ESB.ExceptionService exceptionService = new ESB.ExceptionService();
+        exceptionService.DeleteExceptionByID(exceptionID);
 
-            ESB.AuditService auditService = new ESB.AuditService();
-            auditService.ExceptionPigeonhole(messageID);
+        ESB.AuditService auditService = new ESB.AuditService();
+        auditService.ExceptionPigeonhole(messageID);
 
-            grid.DataBind();
-        }
+        grid.DataBind();
     }
 
     protected void cbProvider_SelectedIndexChanged(object sender, EventArgs e)

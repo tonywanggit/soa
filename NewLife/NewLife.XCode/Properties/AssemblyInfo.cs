@@ -35,7 +35,7 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“修订号”和“内部版本号”的默认值，
 // 方法是按如下所示使用“*”:
 [assembly: AssemblyVersion("8.8.*")]
-[assembly: AssemblyFileVersion("8.8.2012.0828")]
+[assembly: AssemblyFileVersion("8.8.2014.0911")]
 
 /*
  * XCode的重大改进
@@ -52,6 +52,9 @@ using System.Runtime.InteropServices;
  * /
 
 /*
+ * v8.8.2014.0911   DAL中增加XCode.ConnConfigFile配置项，如果有此项配置则数据库连接优先使用配置值
+ * 
+ * 
  * v8.8.2012.0828   DAL中，把反向工程检查延迟到第一次数据库操作之前一刻
  *                  FieldItem的等于不等于大于小于等操作，支持两个操作数都是本表字段的情况
  * 

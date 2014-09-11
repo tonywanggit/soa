@@ -4,16 +4,21 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using NewLife.Log;
+using NewLife.Configuration;
+using System.Xml;
+using System.Configuration;
 
 namespace Registry.WindowsService
 {
     static class Program
     {
+      
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         static void Main()
         {
+
             /*ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
 			{ 

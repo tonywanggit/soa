@@ -20,7 +20,7 @@
     <ServiceItem>
       <ServiceName>GB_HELLO</ServiceName>
       <Version>1</Version>
-      <IsDefault>true</IsDefault>
+      <IsDefault>false</IsDefault>
       <Binding>
         <BindingTemplate>
           <TemplateID>1df2e46b-6037-4dda-9d3c-52e2cad29be7</TemplateID>

@@ -20,7 +20,10 @@ namespace ESB.CallCenter.BasicService
         [WebMethod(Description = "获取到用户的异常信息")]
         public List<ExceptionCoreTb> GetAllExceptionByPersonID(String personID)
         {
-            return ExceptionCoreTb.FindAll();
+            List<ExceptionCoreTb> lstException = ExceptionCoreTb.FindAll();
+
+            //lstException.Where(x=>x.
+            return lstException;
         }
 
         [WebMethod(Description = "根据异常编码获取到异常信息")]
