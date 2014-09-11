@@ -16,19 +16,19 @@ namespace Audit.WindowsService
         /// </summary>
         static void Main()
         {
-            //ServiceBase[] ServicesToRun;
-            //ServicesToRun = new ServiceBase[] 
-            //{ 
-            //    new StoreAuditService() 
-            //};
-            //ServiceBase.Run(ServicesToRun);
+            ServiceBase[] ServicesToRun;
+            ServicesToRun = new ServiceBase[] 
+            { 
+                new StoreAuditService() 
+            };
+            ServiceBase.Run(ServicesToRun);
 
-            Console.WriteLine("日志队列处理服务启动。");
+            //Console.WriteLine("日志队列处理服务启动。");
 
-            RabbitQueueManager m_RabbitQueueManager = m_RabbitQueueManager = new RabbitQueueManager();
-            m_RabbitQueueManager.StartReceive();
+            //RabbitQueueManager m_RabbitQueueManager = m_RabbitQueueManager = new RabbitQueueManager();
+            //m_RabbitQueueManager.StartReceive();
 
-            Console.WriteLine("启动成功！");
+            //Console.WriteLine("启动成功！");
         }
     }
 }
