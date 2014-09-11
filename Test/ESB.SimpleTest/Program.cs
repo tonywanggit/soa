@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ESB.Core;
+using ESB.Core.Monitor;
 
 namespace ESB.SimpleTest
 {
@@ -13,11 +14,15 @@ namespace ESB.SimpleTest
     {
         static void Main(string[] args)
         {
-            ESBProxy esbProxy = ESBProxy.GetInstance();
+            //ESBProxy esbProxy = ESBProxy.GetInstance();
 
-            String request = esbProxy.Invoke("ESB_ASHX", "MethodName", "你好，MBSOA！");
+            //String request = esbProxy.Invoke("ESB_ASHX", "MethodName", "你好，MBSOA！");
 
-            Console.ReadKey();
+            //Console.ReadKey();
+
+            RabbitMQClient mqClient = new RabbitMQClient("10.100.20.100", "admin", "osroot");
+
+
         }
     }
 }
