@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionStringSettingsCollection.cs" />
     <Compile Include="MessageProcessor.cs" />
     <Compile Include="MonitorThread.cs" />
     <Compile Include="RegistryCenter.cs" />
