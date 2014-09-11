@@ -191,6 +191,8 @@ namespace ESB.Core.Rpc
                     return HandlerClient.CallAshxService(callState);
                 case (int)BindingType.WCF_HTTP:
                     return WcfClient.CallWcfService(callState);
+                case (int)BindingType.DUBBO_JSON:
+                    return DubboClient.CallDubboService(callState);
                 default:
                     throw LogUtil.ExceptionAndLog(callState, "未知的绑定类型", callState.Binding.BindingType.ToString(), callState.Binding, callState.Request);
             }

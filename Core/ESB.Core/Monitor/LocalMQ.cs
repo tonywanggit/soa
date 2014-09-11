@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace ESB.Core.Monitor
 {
@@ -136,7 +137,7 @@ namespace ESB.Core.Monitor
         /// <param name="message"></param>
         public void QueueMessage<T>(String queueName, T message)
         {
-            ThreadPoolX.QueueUserWorkItem(x =>
+            ThreadPool.QueueUserWorkItem(x =>
             {
                 String filePath = Guid.NewGuid().ToString() + ".xml";
                 if (queueName == Constant.ESB_AUDIT_QUEUE)
@@ -146,6 +147,18 @@ namespace ESB.Core.Monitor
 
                 File.WriteAllText(filePath, XmlUtil.SaveXmlFromObj<T>(message));
             });
+
+
+            //ThreadPoolX.QueueUserWorkItem(x =>
+            //{
+            //    String filePath = Guid.NewGuid().ToString() + ".xml";
+            //    if (queueName == Constant.ESB_AUDIT_QUEUE)
+            //        filePath = Path.Combine(m_SuccessPath, filePath);
+            //    else
+            //        filePath = Path.Combine(m_FailurePath, filePath);
+
+            //    File.WriteAllText(filePath, XmlUtil.SaveXmlFromObj<T>(message));
+            //});
         }
     }
 }

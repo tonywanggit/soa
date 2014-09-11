@@ -14,15 +14,19 @@ namespace ESB.SimpleTest
     {
         static void Main(string[] args)
         {
-            //ESBProxy esbProxy = ESBProxy.GetInstance();
+            ESBProxy esbProxy = ESBProxy.GetInstance();
 
-            //String request = esbProxy.Invoke("ESB_ASHX", "MethodName", "你好，MBSOA！");
+            Console.ReadKey();
 
-            //Console.ReadKey();
+            String request = esbProxy.Invoke("BG_DUBBO", "histr", "['1=?*/&==\\/%中国2','2']");
 
-            RabbitMQClient mqClient = new RabbitMQClient("10.100.20.100", "admin", "osroot");
+            request = esbProxy.Invoke("BG_DUBBO", "histr", "['1=?*/&==\\/%中国2','2']");
 
 
+            //RabbitMQClient mqClient = new RabbitMQClient("10.100.20.100", "admin", "osroot");
+
+
+            Console.ReadKey();
         }
     }
 }

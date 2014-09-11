@@ -231,6 +231,11 @@ public partial class BasePage : System.Web.UI.Page
         this.DemoPageItemsStatus = new Dictionary<string, DemoPageStatus>();
         this.DemoPageHighlightedIndex = new Dictionary<string, int>();
 
+        if (Session["ESB_MENU"] == null)
+        {
+            this.Response.Redirect("~/Login.aspx");
+        }
+
         XmlDocument menuXmlDocument = (Session["ESB_MENU"] as XmlDocument);
 
         if (string.IsNullOrEmpty(DemoName)) {

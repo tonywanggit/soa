@@ -13,6 +13,7 @@ namespace ESB.Core.Rpc
         WebService = 0,
         WCF_HTTP = 1,
         REST = 2,
-        ASHX = 3
+        ASHX = 3,
+        DUBBO_JSON = 4
     }
 }

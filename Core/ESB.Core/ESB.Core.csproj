@@ -123,6 +123,7 @@
     <Compile Include="Rpc\CometClientType.cs" />
     <Compile Include="Rpc\CometMessage.cs" />
     <Compile Include="Rpc\CometMessageAction.cs" />
+    <Compile Include="Rpc\DubboClient.cs" />
     <Compile Include="Rpc\ESBTransaction.cs" />
     <Compile Include="Rpc\WebServiceClient.cs" />
     <Compile Include="Util\CommonUtil.cs" />

@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Xml.Serialization;
 
 namespace ESB.Core.Monitor
@@ -66,7 +67,7 @@ namespace ESB.Core.Monitor
         /// </summary>
         public void ConnectAsync()
         {
-            ThreadPoolX.QueueUserWorkItem(x =>
+            ThreadPool.QueueUserWorkItem(x =>
             {
                 Connect();
             });
