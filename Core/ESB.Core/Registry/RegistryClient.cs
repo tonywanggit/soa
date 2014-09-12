@@ -47,6 +47,17 @@ namespace ESB.Core.Registry
         public Int32 ProcessorID { get; set; }
 
         /// <summary>
+        /// .NET版本
+        /// </summary>
+        public String DotNetFramworkVersion { get; set; }
+
+        /// <summary>
+        /// OS版本
+        /// </summary>
+        public String OSVersion { get; set; }
+
+
+        /// <summary>
         /// 客户端配置文件
         /// </summary>
         [XmlIgnore]

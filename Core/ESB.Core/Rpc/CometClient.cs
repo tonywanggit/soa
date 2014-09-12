@@ -116,8 +116,10 @@ namespace ESB.Core.Rpc
                     Action = action,
                     IsAsync = isAsync,
                     ClientType = m_ClientType,
-                    ClientVersion = ESBProxy.GetInstance().Version,
+                    ClientVersion = ESBProxy.GetInstance().Version.Replace("MB.ESB.Core ", ""),
                     ProcessorID = Process.GetCurrentProcess().Id,
+                    DotNetFramworkVersion = Environment.Version.ToString(),
+                    OSVersion = Environment.OSVersion.ToString(),
                     MessageBody = message
                 };
 

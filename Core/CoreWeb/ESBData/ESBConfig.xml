@@ -202,7 +202,7 @@
   </Service>
   <Registry>
     <RegistryItem>
-      <Uri>192.168.56.1:5555</Uri>
+      <Uri>192.168.56.2:5555</Uri>
       <Load>1</Load>
     </RegistryItem>
   </Registry>

@@ -28,6 +28,16 @@ namespace ESB.Core.Rpc
         public Int32 ProcessorID { get; set; }
 
         /// <summary>
+        /// .NET版本
+        /// </summary>
+        public String DotNetFramworkVersion { get; set; }
+
+        /// <summary>
+        /// OS版本
+        /// </summary>
+        public String OSVersion { get; set; }
+
+        /// <summary>
         /// 表明和注册中心通讯的意图
         /// </summary>
         public CometMessageAction Action { get; set; }

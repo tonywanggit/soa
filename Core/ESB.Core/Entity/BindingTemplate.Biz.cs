@@ -96,7 +96,6 @@ namespace ESB.Core.Entity
                 }
                 return _Service;
             }
-            set { _Service = value; }
 
         }
         #endregion

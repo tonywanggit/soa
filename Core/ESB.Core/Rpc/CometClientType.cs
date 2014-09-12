@@ -35,6 +35,10 @@ namespace ESB.Core.Rpc
         /// </summary>
         RegistryCenter,
         /// <summary>
+        /// 队列服务处理中心
+        /// </summary>
+        QueueCenter,
+        /// <summary>
         /// 未知类型
         /// </summary>
         AnKnown

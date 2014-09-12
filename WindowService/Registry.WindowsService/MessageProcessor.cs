@@ -42,6 +42,8 @@ namespace Registry.WindowsService
                 ConsumerConfig consumerConfig = XmlUtil.LoadObjFromXML<ConsumerConfig>(regMessage.MessageBody);
                 regClient.ConsumerConfig = consumerConfig;
                 regClient.ProcessorID = regMessage.ProcessorID;
+                regClient.DotNetFramworkVersion = regMessage.DotNetFramworkVersion;
+                regClient.OSVersion = regMessage.OSVersion;
 
                 ESBConfig esbConfig = GetESBConfig(regClient);
                 m_RegistryCenter.SendData(regClient, CometMessageAction.ServiceConfig, esbConfig.ToXml(), regMessage.IsAsync);
@@ -57,6 +59,8 @@ namespace Registry.WindowsService
                 {
                     if (item.RegistryClientType == CometClientType.Consumer
                         || item.RegistryClientType == CometClientType.CallCenter
+                        || item.RegistryClientType == CometClientType.Monitor
+                        || item.RegistryClientType == CometClientType.QueueCenter
                         || item.RegistryClientType == CometClientType.Portal)
                     {
                         ESBConfig esbConfig = GetESBConfig(item);
@@ -108,7 +112,9 @@ namespace Registry.WindowsService
 
             //esbConfig.Service.Add(new ServiceItem() { ServiceName = "ESB_ASHX", DirectInvokeEnabled = true, Uri = "http://esb.jn.com" });
 
-            if (regClient.RegistryClientType == CometClientType.Consumer || regClient.RegistryClientType == CometClientType.Portal)
+            if (regClient.RegistryClientType == CometClientType.Consumer
+                || regClient.RegistryClientType == CometClientType.Portal
+                || regClient.RegistryClientType == CometClientType.Monitor)
             {
                 foreach (var refService in consumerConfig.Reference)
                 {
@@ -126,7 +132,8 @@ namespace Registry.WindowsService
                     }
                 }
             }
-            else if(regClient.RegistryClientType == CometClientType.CallCenter)
+            else if(regClient.RegistryClientType == CometClientType.CallCenter 
+                || regClient.RegistryClientType == CometClientType.QueueCenter)
             {
                 EntityList<EsbView_ServiceVersion> lstBS = EsbView_ServiceVersion.FindAllPublish();
                 foreach (var bs in lstBS)

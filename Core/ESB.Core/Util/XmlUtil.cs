@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
+using NewLife.Log;
 
 namespace ESB.Core.Util
 {
@@ -27,7 +28,10 @@ namespace ESB.Core.Util
             {
                 serializer.Serialize(stream, obj);
             }
-            catch { return null; }
+            catch(Exception ex) {
+                XTrace.WriteException(ex);
+                return null; 
+            }
 
             stream.Position = 0;
             StringBuilder returnStr = new StringBuilder();

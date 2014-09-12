@@ -52,6 +52,10 @@ namespace ESB.Core.Registry
                 m_CometClient = new CometClient(uri, CometClientType.CallCenter);
             else if (m_ESBProxy.ConsumerConfig.ApplicationName.StartsWith("ESB_Portal"))
                 m_CometClient = new CometClient(uri, CometClientType.Portal);
+            else if (m_ESBProxy.ConsumerConfig.ApplicationName.StartsWith("ESB_Monitor"))
+                m_CometClient = new CometClient(uri, CometClientType.Monitor);
+            else if (m_ESBProxy.ConsumerConfig.ApplicationName.StartsWith("ESB_QueueCenter"))
+                m_CometClient = new CometClient(uri, CometClientType.QueueCenter);
             else
                 m_CometClient = new CometClient(uri, CometClientType.Consumer);
 
@@ -118,6 +122,9 @@ namespace ESB.Core.Registry
         {
             get
             {
+                if (m_ESBProxy.ESBConfig == null)
+                    Thread.Sleep(1000);
+
                 return m_ESBProxy.ESBConfig;
             }
         }

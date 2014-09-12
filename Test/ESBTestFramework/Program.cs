@@ -37,11 +37,11 @@ namespace ESB.TestFramework
             //TestEsbProxy("ESB_COM_WS");
 
             //TestEsbProxy("BG_DUBBO", "GET:histr", "['中国1?=*&人','2']");
-            TestEsbProxy("BG_DUBBO", "histr", "['1=?*/&==\\/%中国2','2']");
+            //TestEsbProxy("BG_DUBBO", "histr", "['1=?*/&==\\/%中国2','2']");
 
             //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 1000);
 
-            //TestEsbProxy("ESB_WS");
+            TestEsbProxy("ESB_WS");
 
             //TestWXSC();
         }

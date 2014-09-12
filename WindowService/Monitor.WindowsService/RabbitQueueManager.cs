@@ -36,11 +36,13 @@ namespace Monitor.WindowsService
         /// </summary>
         public RabbitQueueManager()
         {
-            List<MessageQueueItem> lstMQ = m_ESBProxy.RegistryConsumerClient.ESBConfig.MessageQueue;
-            if (lstMQ.Count > 0)
+            ESBConfig esbConfig = m_ESBProxy.RegistryConsumerClient.ESBConfig;
+
+
+            if (esbConfig != null && esbConfig.MessageQueue.Count > 0)
             {
                 //String esbQueue = Config.GetConfig<String>("ESB.Queue");
-                String esbQueue = lstMQ[0].Uri;
+                String esbQueue = esbConfig.MessageQueue[0].Uri;
                 XTrace.WriteLine("读取到ESB队列地址：{0}", esbQueue);
 
                 String[] paramMQ = esbQueue.Split(':');
@@ -48,7 +50,9 @@ namespace Monitor.WindowsService
             }
             else
             {
-                throw new Exception("无法获取到有效的队列地址！");
+                String err = "无法获取到有效的队列地址！";
+                XTrace.WriteLine(err);
+                throw new Exception(err);
             }
         }
 

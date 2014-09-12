@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
-<ConsumerConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ApplicationName>ESB_CallCenter_1</ApplicationName>
+<ConsumerConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ApplicationName>ESB_CallCenter_192.168.56.1</ApplicationName>
   <Registry>
     <RegistryItem>
-      <Uri>127.0.0.1:5555</Uri>
+      <Uri>192.168.56.2:5555</Uri>
       <Load>1</Load>
     </RegistryItem>
   </Registry>
+  <Reference>
+    <ReferenceItem>
+      <ServiceName>ESB_ASHX</ServiceName>
+    </ReferenceItem>
+  </Reference>
 </ConsumerConfig>

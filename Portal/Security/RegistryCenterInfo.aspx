@@ -36,7 +36,10 @@
             </dxwgv:GridViewDataDateColumn>
             
             <dxwgv:GridViewDataTextColumn FieldName="ClientIP" Caption="客户端IP"></dxwgv:GridViewDataTextColumn>
-            <dxwgv:GridViewDataTextColumn FieldName="ClientVersion" Caption="版本"></dxwgv:GridViewDataTextColumn>
+            <dxwgv:GridViewDataTextColumn FieldName="ProcessorID" Caption="进程号"></dxwgv:GridViewDataTextColumn>
+            <dxwgv:GridViewDataTextColumn FieldName="ClientVersion" Caption="MB.ESB.Core版本"></dxwgv:GridViewDataTextColumn>
+            <dxwgv:GridViewDataTextColumn FieldName="DotNetFramworkVersion" Caption="Framework版本"></dxwgv:GridViewDataTextColumn>
+            <dxwgv:GridViewDataTextColumn FieldName="OSVersion" Caption="操作系统版本"></dxwgv:GridViewDataTextColumn>
             <dxwgv:GridViewDataTextColumn FieldName="RegistryClientType" Caption="类型"></dxwgv:GridViewDataTextColumn>
         </Columns>
         <ClientSideEvents RowDblClick="function(s, e){
