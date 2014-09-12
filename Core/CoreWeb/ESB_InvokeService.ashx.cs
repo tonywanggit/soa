@@ -16,21 +16,34 @@ namespace ESB.CallCenter
 
         public void ProcessRequest(HttpContext context)
         {
-            String serviceName = context.Request["ServiceName"].Trim();
-            String methodName = context.Request["MethodName"].Trim();
-            Int32 version = String.IsNullOrEmpty(context.Request["Version"]) ? 0 : Int32.Parse(context.Request["Version"]);
-            String callback = context.Request["callback"];
-            String message = GetMessageFromRequest(context.Request);
-
-            String response = esbProxy.Invoke(serviceName, methodName, message);
-            if (!String.IsNullOrEmpty(callback))
+            if (context.Request["ServiceName"] == null || context.Request["MethodName"] == null)
             {
-                response = String.Format("{0}({{message:'{1}'}})", callback, response, version);
+                //context.Response.ContentType = "text/plain";
+                context.Response.ContentEncoding = Encoding.UTF8;
+                context.Response.Write(@"<head runat=""server""><title>ESB调用中心</title></head>");
+                context.Response.Write("<h1>错误：请传入正确的参数信息！</h1>");
+                context.Response.Write(@"<h2>示例：<a target=""_blank"" href=""ESB_InvokeService.ashx?ServiceName=ESB_ASHX&MethodName=HelloWorld&Message=Demo"">ESB_InvokeService.ashx?ServiceName=ESB_ASHX&MethodName=HelloWorld&Message=Demo</a></h2>");
             }
+            else
+            {
+                String serviceName = context.Request["ServiceName"].Trim();
+                String methodName = context.Request["MethodName"].Trim();
 
-            context.Response.ContentType = "text/plain";
-            context.Response.ContentEncoding = Encoding.Default;
-            context.Response.Write(response);
+
+                Int32 version = String.IsNullOrEmpty(context.Request["Version"]) ? 0 : Int32.Parse(context.Request["Version"]);
+                String callback = context.Request["callback"];
+                String message = GetMessageFromRequest(context.Request);
+
+                String response = esbProxy.Invoke(serviceName, methodName, message);
+                if (!String.IsNullOrEmpty(callback))
+                {
+                    response = String.Format("{0}({{message:'{1}'}})", callback, response, version);
+                }
+
+                context.Response.ContentType = "text/plain";
+                context.Response.ContentEncoding = Encoding.Default;
+                context.Response.Write(response);
+            }
         }
 
         /// <summary>
