@@ -58,7 +58,8 @@ namespace ESB.Core.Rpc
                     RequestBeginTime = request.请求时间,
                     RequestEndTime = receiveDateTime,
                     TraceContext = esbTraceContext,
-                    ServiceVersion = version
+                    ServiceVersion = version,
+                    MessageID = Guid.NewGuid().ToString()
                 };
 
                 return CallService(state);
@@ -72,7 +73,8 @@ namespace ESB.Core.Rpc
                     RequestBeginTime = request.请求时间,
                     RequestEndTime = receiveDateTime,
                     TraceContext = esbTraceContext,
-                    ServiceVersion = version
+                    ServiceVersion = version,
+                    MessageID = Guid.NewGuid().ToString()
                 };
 
                 return CallService(state);

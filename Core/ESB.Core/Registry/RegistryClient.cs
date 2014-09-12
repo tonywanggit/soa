@@ -42,6 +42,11 @@ namespace ESB.Core.Registry
         /// </summary>
         public String ClientVersion { get; set; }
         /// <summary>
+        /// 客户端进程号
+        /// </summary>
+        public Int32 ProcessorID { get; set; }
+
+        /// <summary>
         /// 客户端配置文件
         /// </summary>
         [XmlIgnore]

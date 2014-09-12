@@ -1,4 +1,5 @@
-﻿using ESB.Core.Configuration;
+﻿using ESB.Core;
+using ESB.Core.Configuration;
 using ESB.Core.Entity;
 using ESB.Core.Monitor;
 using NewLife.Configuration;
@@ -6,6 +7,7 @@ using NewLife.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Messaging;
 using System.Text;
 using System.Threading;
 
@@ -24,17 +26,30 @@ namespace Monitor.WindowsService
         /// 实时监控管理器
         /// </summary>
         MonitorStatManager m_MonitorStatManager = MonitorStatManager.GetInstance();
+        /// <summary>
+        /// ESB代理类对象
+        /// </summary>
+        ESBProxy m_ESBProxy = ESBProxy.GetInstance();
 
         /// <summary>
         /// 构造器
         /// </summary>
         public RabbitQueueManager()
         {
-            String esbQueue = Config.GetConfig<String>("ESB.Queue");
-            XTrace.WriteLine("读取到ESB队列地址：{0}", esbQueue);
-            
-            String[] paramMQ = esbQueue.Split(':');
-            m_RabbitMQ = new RabbitMQClient(paramMQ[0], paramMQ[2], paramMQ[3], Int32.Parse(paramMQ[1]));
+            List<MessageQueueItem> lstMQ = m_ESBProxy.RegistryConsumerClient.ESBConfig.MessageQueue;
+            if (lstMQ.Count > 0)
+            {
+                //String esbQueue = Config.GetConfig<String>("ESB.Queue");
+                String esbQueue = lstMQ[0].Uri;
+                XTrace.WriteLine("读取到ESB队列地址：{0}", esbQueue);
+
+                String[] paramMQ = esbQueue.Split(':');
+                m_RabbitMQ = new RabbitMQClient(paramMQ[0], paramMQ[2], paramMQ[3], Int32.Parse(paramMQ[1]));
+            }
+            else
+            {
+                throw new Exception("无法获取到有效的队列地址！");
+            }
         }
 
         /// <summary>
@@ -121,7 +136,23 @@ namespace Monitor.WindowsService
                 m_RabbitMQ.Listen<ExceptionCoreTb>(Constant.ESB_EXCEPTION_QUEUE, x =>
                 {
                     if (x != null)
+                    {
+                        String bindingID = x.BindingTemplateID;
+                        if (!String.IsNullOrWhiteSpace(bindingID))
+                        {
+                            BindingTemplate binding = BindingTemplate.FindByTemplateID(bindingID);
+                            if (binding != null)
+                            {
+                                x.ServiceID = binding.ServiceID;
+                                if (binding.Service != null)
+                                {
+                                    x.BusinessID = binding.Service.BusinessID;
+                                }
+                            }
+                        }
+
                         x.Insert();
+                    }
                 });
             }
             catch (Exception ex)

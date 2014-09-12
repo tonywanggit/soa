@@ -35,7 +35,7 @@ namespace ESB.Core.Rpc
                 ReqBeginTime = callState.RequestBeginTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
                 ReqEndTime = callState.RequestEndTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
                 Status = status,
-                MessageID = Guid.NewGuid().ToString(),
+                MessageID = callState.MessageID,
                 MessageBody = request.消息内容,
                 CallBeginTime = callState.CallBeginTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
                 CallEndTime = callState.CallEndTime.ToString("yyyy-MM-dd HH:mm:ss.ffffff"),
@@ -65,7 +65,7 @@ namespace ESB.Core.Rpc
             //--每调用完一次需要增加调用次数
             callState.TraceContext.IncreaseInvokeOrder();
 
-            return log.MessageID;
+            return log.OID;
         }
 
 

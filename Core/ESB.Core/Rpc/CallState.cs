@@ -62,5 +62,10 @@ namespace ESB.Core.Rpc
         /// 跟踪上下文
         /// </summary>
         public ESBTraceContext TraceContext { get; set; }
+
+        /// <summary>
+        /// 如果一次调用涉及到多个提供者，则多条审计日志共享同一个MessageID
+        /// </summary>
+        public String MessageID { get; set; }
     }
 }

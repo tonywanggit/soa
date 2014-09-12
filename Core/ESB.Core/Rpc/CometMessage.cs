@@ -23,6 +23,11 @@ namespace ESB.Core.Rpc
         public String ClientVersion { get; set; }
 
         /// <summary>
+        /// 客户端进程号
+        /// </summary>
+        public Int32 ProcessorID { get; set; }
+
+        /// <summary>
         /// 表明和注册中心通讯的意图
         /// </summary>
         public CometMessageAction Action { get; set; }

@@ -126,11 +126,11 @@ namespace ESB.Core.Entity
         }
 
         private String _MessageID;
-        /// <summary></summary>
-        [DisplayName("MessageID")]
-        [Description("")]
+        /// <summary>关联到Audit.OID</summary>
+        [DisplayName("关联到Audit")]
+        [Description("关联到Audit.OID")]
         [DataObjectField(false, false, true, 50)]
-        [BindColumn(10, "MessageID", "", null, "nvarchar(50)", 0, 0, true)]
+        [BindColumn(10, "MessageID", "关联到Audit.OID", null, "nvarchar(50)", 0, 0, true)]
         public virtual String MessageID
         {
             get { return _MessageID; }
@@ -208,6 +208,30 @@ namespace ESB.Core.Entity
             get { return _RequestType; }
             set { if (OnPropertyChanging(__.RequestType, value)) { _RequestType = value; OnPropertyChanged(__.RequestType); } }
         }
+
+        private String _BusinessID;
+        /// <summary>业务实体ID</summary>
+        [DisplayName("业务实体ID")]
+        [Description("业务实体ID")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(17, "BusinessID", "业务实体ID", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String BusinessID
+        {
+            get { return _BusinessID; }
+            set { if (OnPropertyChanging(__.BusinessID, value)) { _BusinessID = value; OnPropertyChanged(__.BusinessID); } }
+        }
+
+        private String _ServiceID;
+        /// <summary>服务ID</summary>
+        [DisplayName("服务ID")]
+        [Description("服务ID")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(18, "ServiceID", "服务ID", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String ServiceID
+        {
+            get { return _ServiceID; }
+            set { if (OnPropertyChanging(__.ServiceID, value)) { _ServiceID = value; OnPropertyChanged(__.ServiceID); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -240,6 +264,8 @@ namespace ESB.Core.Entity
                     case __.BindingType: return _BindingType;
                     case __.RequestPwd: return _RequestPwd;
                     case __.RequestType: return _RequestType;
+                    case __.BusinessID: return _BusinessID;
+                    case __.ServiceID: return _ServiceID;
                     default: return base[name];
                 }
             }
@@ -263,6 +289,8 @@ namespace ESB.Core.Entity
                     case __.BindingType: _BindingType = Convert.ToInt32(value); break;
                     case __.RequestPwd: _RequestPwd = Convert.ToString(value); break;
                     case __.RequestType: _RequestType = Convert.ToInt32(value); break;
+                    case __.BusinessID: _BusinessID = Convert.ToString(value); break;
+                    case __.ServiceID: _ServiceID = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -300,7 +328,7 @@ namespace ESB.Core.Entity
             ///<summary></summary>
             public static readonly Field HostName = FindByName(__.HostName);
 
-            ///<summary></summary>
+            ///<summary>关联到Audit.OID</summary>
             public static readonly Field MessageID = FindByName(__.MessageID);
 
             ///<summary></summary>
@@ -320,6 +348,12 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public static readonly Field RequestType = FindByName(__.RequestType);
+
+            ///<summary>业务实体ID</summary>
+            public static readonly Field BusinessID = FindByName(__.BusinessID);
+
+            ///<summary>服务ID</summary>
+            public static readonly Field ServiceID = FindByName(__.ServiceID);
 
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
@@ -354,7 +388,7 @@ namespace ESB.Core.Entity
             ///<summary></summary>
             public const String HostName = "HostName";
 
-            ///<summary></summary>
+            ///<summary>关联到Audit.OID</summary>
             public const String MessageID = "MessageID";
 
             ///<summary></summary>
@@ -374,6 +408,12 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public const String RequestType = "RequestType";
+
+            ///<summary>业务实体ID</summary>
+            public const String BusinessID = "BusinessID";
+
+            ///<summary>服务ID</summary>
+            public const String ServiceID = "ServiceID";
 
         }
         #endregion
@@ -410,7 +450,7 @@ namespace ESB.Core.Entity
         /// <summary></summary>
         String HostName { get; set; }
 
-        /// <summary></summary>
+        /// <summary>关联到Audit.OID</summary>
         String MessageID { get; set; }
 
         /// <summary></summary>
@@ -430,6 +470,12 @@ namespace ESB.Core.Entity
 
         /// <summary></summary>
         Int32 RequestType { get; set; }
+
+        /// <summary>业务实体ID</summary>
+        String BusinessID { get; set; }
+
+        /// <summary>服务ID</summary>
+        String ServiceID { get; set; }
         #endregion
 
         #region 获取/设置 字段值

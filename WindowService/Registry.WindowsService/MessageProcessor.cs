@@ -41,6 +41,7 @@ namespace Registry.WindowsService
             {
                 ConsumerConfig consumerConfig = XmlUtil.LoadObjFromXML<ConsumerConfig>(regMessage.MessageBody);
                 regClient.ConsumerConfig = consumerConfig;
+                regClient.ProcessorID = regMessage.ProcessorID;
 
                 ESBConfig esbConfig = GetESBConfig(regClient);
                 m_RegistryCenter.SendData(regClient, CometMessageAction.ServiceConfig, esbConfig.ToXml(), regMessage.IsAsync);

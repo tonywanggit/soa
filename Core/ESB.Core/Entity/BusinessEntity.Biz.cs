@@ -88,12 +88,12 @@ namespace ESB.Core.Entity
         /// <param name="businessid"></param>
         /// <returns></returns>
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static EntityList<TEntity> FindAllByBusinessID(Guid businessid)
+        public static TEntity FindByBusinessID(String businessID)
         {
             if (Meta.Count >= 1000)
-                return FindAll(_.BusinessID, businessid);
+                return Find(_.BusinessID, businessID);
             else // 实体缓存
-                return Meta.Cache.Entities.FindAll(_.BusinessID, businessid);
+                return Meta.Cache.Entities.Find(_.BusinessID, businessID);
         }
         #endregion
 

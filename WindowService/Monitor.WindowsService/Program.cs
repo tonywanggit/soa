@@ -6,6 +6,7 @@ using System.Text;
 using NewLife.Log;
 using NewLife.Configuration;
 using Monitor.WindowsService;
+using ESB.Core;
 
 namespace Audit.WindowsService
 {
@@ -16,6 +17,9 @@ namespace Audit.WindowsService
         /// </summary>
         static void Main()
         {
+            //--初始化ESB代理类
+            ESBProxy.GetInstance();
+
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[] 
             { 

@@ -112,6 +112,17 @@ namespace ESB.Core.Registry
         }
 
         /// <summary>
+        /// 获取到ESBConfig配置文件
+        /// </summary>
+        public ESBConfig ESBConfig
+        {
+            get
+            {
+                return m_ESBProxy.ESBConfig;
+            }
+        }
+
+        /// <summary>
         /// 接收注册中心的消息
         /// </summary>
         /// <param name="sender"></param>

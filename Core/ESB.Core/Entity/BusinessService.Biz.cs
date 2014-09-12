@@ -111,6 +111,25 @@ namespace ESB.Core.Entity
         //    }
         //    set { _Personal = value; }
         //}
+
+        private BusinessEntity _BusinessEntity;
+        /// <summary>
+        /// 服务对应的业务实体
+        /// </summary>
+        public BusinessEntity BusinessEntity
+        {
+            get
+            {
+                if (_BusinessEntity == null && !String.IsNullOrWhiteSpace(BusinessID) && !Dirtys.ContainsKey("BusinessEntity"))
+                {
+                    _BusinessEntity = BusinessEntity.FindByBusinessID(BusinessID);
+                    Dirtys["BusinessEntity"] = true;
+                }
+                return _BusinessEntity;
+            }
+            set { _BusinessEntity = value; }
+        }
+
         /// <summary>
         /// 该服务的所有绑定地址
         /// </summary>

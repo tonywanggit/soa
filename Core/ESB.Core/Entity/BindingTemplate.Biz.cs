@@ -81,6 +81,24 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展属性﻿
+        private BusinessService _Service;
+        /// <summary>
+        /// 绑定地址对应的服务
+        /// </summary>
+        public BusinessService Service
+        {
+            get
+            {
+                if (_Service == null && !String.IsNullOrWhiteSpace(ServiceID) && !Dirtys.ContainsKey("Service"))
+                {
+                    _Service = BusinessService.FindByServiceID(ServiceID);
+                    Dirtys["Service"] = true;
+                }
+                return _Service;
+            }
+            set { _Service = value; }
+
+        }
         #endregion
 
         #region 扩展查询﻿

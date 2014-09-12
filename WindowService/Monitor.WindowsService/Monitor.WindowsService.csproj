@@ -115,7 +115,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Audit.WindowsService_TemporaryKey.pfx" />
-    <None Include="Config\Database.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ProjectInstaller.resx">
@@ -144,6 +143,9 @@
       <Project>{3a6fd2e3-189b-4217-b619-d4b3064fd53e}</Project>
       <Name>ESB.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ESBData\ConsumerConfig.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -202,6 +202,30 @@ public partial class UDDI_ServiceContract : BasePage
 
             grid.Columns[0].Visible = true;
         }
+
+        if (AuthUser.IsVisitor)
+        {
+            this.btnAdd.Enabled = false;
+            this.btnCommit.Enabled = false;
+            this.btnCommit.Text = "提交评审";
+            this.btnSaveVersion.Enabled = false;
+            this.btnRevise.Enabled = false;
+            this.btnUpdate.Enabled = false;
+            this.btnDelete.Enabled = false;
+            this.btnObsolete.Enabled = false;
+            this.btnSetDefault.Enabled = false;
+            this.cbConfirmPerson.ReadOnly = false;
+            this.mmVersionDesc.ReadOnly = false;
+
+            //--控制评审意见是否出现
+            if (cbServiceVersion.Text.Contains("评审拒绝"))
+                this.m_OpinionTrStyle = String.Empty;
+            else
+                this.m_OpinionTrStyle = "display:none;";
+
+
+            grid.Columns[0].Visible = false;
+        }
     }
 
     /// <summary>
