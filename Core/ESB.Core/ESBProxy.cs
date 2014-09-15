@@ -267,6 +267,25 @@ namespace ESB.Core
         }
 
         /// <summary>
+        /// 请求响应调用-队列化
+        /// </summary>
+        /// <param name="serviceName">服务名称</param>
+        /// <param name="methodName">方法名称</param>
+        /// <param name="message">消息内容</param>
+        /// <param name="version">服务版本：0代表调用默认版本</param>
+        /// <returns></returns>
+        public void InvokeQueue(String serviceName, String methodName, String message, Int32 version = 0, QueueParam queueParam = null)
+        {
+            QueueMessage qm = new QueueMessage();
+            qm.ServiceName = serviceName;
+            qm.MethodName = methodName;
+            qm.Message = message;
+            qm.Version = version;
+
+            m_MessageQueueClient.SendToInvokeQueue(qm);
+        }
+
+        /// <summary>
         /// 同步服务配置
         /// </summary>
         /// <param name="serviceName"></param>

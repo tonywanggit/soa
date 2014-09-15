@@ -46,6 +46,11 @@ namespace ESB.Core.Monitor
             IModel channelException = m_Connection.CreateModel();
             channelException.QueueDeclare(Constant.ESB_EXCEPTION_QUEUE, true, false, false, null);
             m_ChannelDict.Add(Constant.ESB_EXCEPTION_QUEUE, channelException);
+
+            //--声明Exchange通道
+            IModel channelExchange = m_Connection.CreateModel();
+            channelExchange.ExchangeDeclare(Constant.ESB_INVOKE_QUEUE, "topic", true);
+            m_ChannelDict.Add(Constant.ESB_INVOKE_QUEUE, channelExchange);
         }
 
         /// <summary>
@@ -98,6 +103,29 @@ namespace ESB.Core.Monitor
         }
 
         /// <summary>
+        /// 发送消息到ESB专用队列
+        /// </summary>
+        /// <param name="qm"></param>
+        public void SendToInvokeQueue(QueueMessage qm)
+        {
+            IModel channel = m_ChannelDict[Constant.ESB_INVOKE_QUEUE];
+            IBasicProperties properties = channel.CreateBasicProperties();
+            properties.DeliveryMode = 2;
+
+            //Console.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff"));
+            //序列化消息对象，RabbitMQ并不支持复杂对象的序列化，所以对于自定义的类型需要自己序列化
+            XmlSerializer xs = new XmlSerializer(typeof(QueueMessage));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                xs.Serialize(ms, qm);
+                byte[] bytes = ms.ToArray();
+                //指定发送的路由，通过默认的exchange直接发送到指定的队列中。
+                channel.BasicPublish(Constant.ESB_INVOKE_QUEUE, qm.GetRouteKey(), properties, bytes);
+            }
+
+        }
+
+        /// <summary>
         /// Rabbit客户端监听程序
         /// </summary>
         /// <typeparam name="T">队列中的消息类型</typeparam>
@@ -135,6 +163,53 @@ namespace ESB.Core.Monitor
                     throw ex;
                 }
             }
+        }
+
+        /// <summary>
+        /// 监听调用队列
+        /// </summary>
+        /// <param name="queueName"></param>
+        /// <param name="processMethod"></param>
+        public void ListenInvokeQueue(String queueName, Action<QueueMessage> processMethod)
+        {
+            IModel channel = m_ChannelDict[Constant.ESB_INVOKE_QUEUE];
+
+            String receiveQueueName;
+            String routeKey;
+            if(queueName == "#"){
+                receiveQueueName = Constant.ESB_INVOKE_QUEUE;
+                routeKey = Constant.ESB_INVOKE_QUEUE + "_#";
+            }
+            else{
+                receiveQueueName = Constant.ESB_CUST_INVOKE_QUEUE + "_" + queueName;
+                routeKey = receiveQueueName;
+            }
+
+            //--声明队列
+            channel.QueueDeclare(receiveQueueName, true, false, false, null);
+
+            //--声明队列绑定
+            channel.QueueBind(receiveQueueName, Constant.ESB_INVOKE_QUEUE, routeKey);
+
+            //在队列上定义一个消费者
+            QueueingBasicConsumer consumer = new QueueingBasicConsumer(channel);
+            channel.BasicConsume(receiveQueueName, false, consumer);
+
+            while (true)
+            {
+                var ea = (BasicDeliverEventArgs)consumer.Queue.Dequeue();
+                byte[] body = ea.Body;
+
+                XmlSerializer xs = new XmlSerializer(typeof(QueueMessage));
+                using (MemoryStream ms = new MemoryStream(body))
+                {
+                    QueueMessage message = (QueueMessage)xs.Deserialize(ms);
+                    processMethod(message);
+                }
+
+                channel.BasicAck(ea.DeliveryTag, false);
+            }
+
         }
     }
 }

@@ -111,6 +111,8 @@
     <Compile Include="Monitor\LocalMQ.cs" />
     <Compile Include="Monitor\MonitorCenterClient.cs" />
     <Compile Include="Monitor\MessageQueueClient.cs" />
+    <Compile Include="Monitor\QueueMessage.cs" />
+    <Compile Include="Rpc\QueueParam.cs" />
     <Compile Include="Monitor\RabbitMQClient.cs" />
     <Compile Include="Monitor\ESBTraceContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

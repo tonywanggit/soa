@@ -126,7 +126,10 @@ namespace ESB.Core.Monitor
             {
                 try
                 {
-                    m_RabbitMQ.SendMessage<T>(queueName, message);
+                    if (queueName == Constant.ESB_INVOKE_QUEUE)
+                        m_RabbitMQ.SendToInvokeQueue(message as QueueMessage);
+                    else
+                        m_RabbitMQ.SendMessage<T>(queueName, message);
                 }
                 catch (Exception ex)
                 {
@@ -163,6 +166,14 @@ namespace ESB.Core.Monitor
         public void SendExceptionMessage(ExceptionCoreTb exception)
         {
             SendMessage<ExceptionCoreTb>(Constant.ESB_EXCEPTION_QUEUE, exception);
+        }
+
+        /// <summary>
+        /// 发送消息到ESB专用队列
+        /// </summary>
+        public void SendToInvokeQueue(QueueMessage qm)
+        {
+            SendMessage<QueueMessage>(Constant.ESB_INVOKE_QUEUE, qm);
         }
     }
 }

@@ -18,6 +18,14 @@ namespace ESB.Core.Configuration
         /// ESB异常消息队列
         /// </summary>
         public const String ESB_EXCEPTION_QUEUE = "esb.exception";
+        /// <summary>
+        /// ESB队列专用交换机
+        /// </summary>
+        public const String ESB_INVOKE_QUEUE = "esb.invokeQueue";
+        /// <summary>
+        /// ESB队列自定义队列：消息需要自行处理
+        /// </summary>
+        public const String ESB_CUST_INVOKE_QUEUE = "esb.cust.invokeQueue";
 
 
         /// <summary>

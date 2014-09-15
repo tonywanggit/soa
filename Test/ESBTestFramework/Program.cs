@@ -17,6 +17,7 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
+            TestInvokeQueue();
 
             //ESBProxy esbProxy = ESBProxy.GetInstance();
 
@@ -41,7 +42,7 @@ namespace ESB.TestFramework
 
             //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 1000);
 
-            TestEsbProxy("ESB_WS");
+            //TestEsbProxy("ESB_WS");
 
             //TestWXSC();
         }
@@ -51,6 +52,23 @@ namespace ESB.TestFramework
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+        }
+
+        /// <summary>
+        /// 测试队列化调用
+        /// </summary>
+        static void TestInvokeQueue()
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            ESBProxy esbProxy = ESBProxy.GetInstance();
+            stopWatch.Stop();
+
+            Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds); ;
+            Console.ReadKey();
+
+
+            esbProxy.InvokeQueue("ESB_Queue", "HelloWorld", "Tony");
         }
 
         static void TestEsbProxy(String serviceName, String methodName = "HelloAction", String message = null, int callNum = 10, Int32 version = 0)

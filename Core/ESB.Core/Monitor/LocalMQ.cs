@@ -38,6 +38,10 @@ namespace ESB.Core.Monitor
         /// 失败日志存储路径
         /// </summary>
         private String m_FailurePath = null;
+        /// <summary>
+        /// 调用队列失败时的本地存储路径
+        /// </summary>
+        private String m_InvokeQueuePath = null;
 
         /// <summary>
         /// 配置管理器
@@ -52,6 +56,7 @@ namespace ESB.Core.Monitor
             m_MonitorClient = mc;
             m_SuccessPath = Path.Combine(m_ConfigurationManager.ESBMonitorDataPath, "Success");
             m_FailurePath = Path.Combine(m_ConfigurationManager.ESBMonitorDataPath, "Failure");
+            m_InvokeQueuePath = Path.Combine(m_ConfigurationManager.ESBMonitorDataPath, "InvokeQueue");
 
             CheckLocalMQ();
         }
@@ -66,6 +71,18 @@ namespace ESB.Core.Monitor
                 Directory.CreateDirectory(m_ConfigurationManager.ESBMonitorDataPath);
                 Directory.CreateDirectory(m_SuccessPath);
                 Directory.CreateDirectory(m_FailurePath);
+                Directory.CreateDirectory(m_InvokeQueuePath);
+            }
+            else
+            {
+                if (!Directory.Exists(m_SuccessPath))
+                    Directory.CreateDirectory(m_SuccessPath);
+
+                if (!Directory.Exists(m_FailurePath))
+                    Directory.CreateDirectory(m_FailurePath);
+
+                if (!Directory.Exists(m_InvokeQueuePath))
+                    Directory.CreateDirectory(m_InvokeQueuePath);
             }
 
             CheckAndResendMessage();
@@ -80,8 +97,9 @@ namespace ESB.Core.Monitor
             {
                 Int32 successFileNum = Directory.GetFiles(m_SuccessPath).Count();
                 Int32 failureFileNum = Directory.GetFiles(m_FailurePath).Count();
+                Int32 invokeQueueNum = Directory.GetFiles(m_InvokeQueuePath).Count();
 
-                m_LocalMessageNum = successFileNum + failureFileNum;
+                m_LocalMessageNum = successFileNum + failureFileNum + invokeQueueNum;
 
                 if (m_LocalMessageNum > 0 && m_MonitorClient.RabbitMQAvailable)
                 {
@@ -126,6 +144,21 @@ namespace ESB.Core.Monitor
                         File.Delete(failureFiles[i]);
                     }
                 }
+
+                //--检测调用队列，并重新发送
+                String[] invokeQueue = Directory.GetFiles(m_InvokeQueuePath);
+                if (invokeQueue.Length > 0)
+                {
+                    for (int i = 0; i < invokeQueue.Length; i++)
+                    {
+                        String message = File.ReadAllText(invokeQueue[i]);
+                        QueueMessage qm = XmlUtil.LoadObjFromXML<QueueMessage>(message);
+
+                        m_MonitorClient.SendToInvokeQueue(qm);
+
+                        File.Delete(invokeQueue[i]);
+                    }
+                }
             }
         }
 
@@ -140,10 +173,13 @@ namespace ESB.Core.Monitor
             ThreadPool.QueueUserWorkItem(x =>
             {
                 String filePath = Guid.NewGuid().ToString() + ".xml";
+
                 if (queueName == Constant.ESB_AUDIT_QUEUE)
                     filePath = Path.Combine(m_SuccessPath, filePath);
-                else
+                else if (queueName == Constant.ESB_EXCEPTION_QUEUE)
                     filePath = Path.Combine(m_FailurePath, filePath);
+                else
+                    filePath = Path.Combine(m_InvokeQueuePath, filePath);
 
                 File.WriteAllText(filePath, XmlUtil.SaveXmlFromObj<T>(message));
             });
