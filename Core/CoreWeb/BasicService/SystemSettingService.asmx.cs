@@ -26,6 +26,11 @@ namespace ESB.CallCenter.BasicService
         {
             return SettingUri.FindAll();
         }
+        [WebMethod(Description = "获取到所有的队列处理中心设置")]
+        public List<SettingUri> GetQueueCenter()
+        {
+            return GetAllSettingUri().FindAll(x => x.UriType == 5);
+        }
 
         [WebMethod(Description = "新增地址设置")]
         public void InsertSettingUri(SettingUri entity)

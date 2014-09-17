@@ -282,6 +282,12 @@ namespace ESB.Core
             qm.Message = message;
             qm.Version = version;
 
+            if (queueParam != null)
+            {    
+                qm.QueueName = queueParam.QueueName;
+                qm.Timeout = queueParam.Timeout;
+            };
+
             m_MessageQueueClient.SendToInvokeQueue(qm);
         }
 

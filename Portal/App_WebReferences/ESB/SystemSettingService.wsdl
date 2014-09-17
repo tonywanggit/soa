@@ -26,6 +26,7 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityOfSettingUri">
             <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UriPort" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="UriType" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="Uri" type="s:string" />
@@ -45,6 +46,16 @@
         </s:complexContent>
       </s:complexType>
       <s:complexType name="EntityBase" abstract="true" />
+      <s:element name="GetQueueCenter">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetQueueCenterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQueueCenterResult" type="tns:ArrayOfSettingUri" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="InsertSettingUri">
         <s:complexType>
           <s:sequence>
@@ -83,6 +94,12 @@
   <wsdl:message name="GetAllSettingUriSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllSettingUriResponse" />
   </wsdl:message>
+  <wsdl:message name="GetQueueCenterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetQueueCenter" />
+  </wsdl:message>
+  <wsdl:message name="GetQueueCenterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetQueueCenterResponse" />
+  </wsdl:message>
   <wsdl:message name="InsertSettingUriSoapIn">
     <wsdl:part name="parameters" element="tns:InsertSettingUri" />
   </wsdl:message>
@@ -107,6 +124,11 @@
       <wsdl:input message="tns:GetAllSettingUriSoapIn" />
       <wsdl:output message="tns:GetAllSettingUriSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetQueueCenter">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到所有的队列处理中心设置</wsdl:documentation>
+      <wsdl:input message="tns:GetQueueCenterSoapIn" />
+      <wsdl:output message="tns:GetQueueCenterSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="InsertSettingUri">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增地址设置</wsdl:documentation>
       <wsdl:input message="tns:InsertSettingUriSoapIn" />
@@ -127,6 +149,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllSettingUri">
       <soap:operation soapAction="http://esb.com/GetAllSettingUri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueueCenter">
+      <soap:operation soapAction="http://esb.com/GetQueueCenter" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -166,6 +197,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetAllSettingUri">
       <soap12:operation soapAction="http://esb.com/GetAllSettingUri" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueueCenter">
+      <soap12:operation soapAction="http://esb.com/GetQueueCenter" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

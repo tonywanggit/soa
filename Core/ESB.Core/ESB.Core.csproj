@@ -96,6 +96,8 @@
     <Compile Include="Entity\Personal.cs" />
     <Compile Include="Entity\ReturnResponse.Biz.cs" />
     <Compile Include="Entity\ReturnResponse.cs" />
+    <Compile Include="Entity\ServiceConfig.Biz.cs" />
+    <Compile Include="Entity\ServiceConfig.cs" />
     <Compile Include="Entity\ServiceContract.Biz.cs" />
     <Compile Include="Entity\ServiceContract.cs" />
     <Compile Include="Entity\ServiceMonitor.Biz.cs" />

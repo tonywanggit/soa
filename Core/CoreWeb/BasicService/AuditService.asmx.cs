@@ -51,7 +51,7 @@ namespace ESB.CallCenter.Audit
         [WebMethod(Description = "将日志标记为归档状态")]
         public void ExceptionPigeonhole(String messageID)
         {
-            AuditBusiness audit = AuditBusiness.Find(AuditBusiness._.MessageID, messageID);
+            AuditBusiness audit = AuditBusiness.Find(AuditBusiness._.OID, messageID);
             if (audit != null)
             {
                 audit.Status = 9;

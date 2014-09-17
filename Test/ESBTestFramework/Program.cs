@@ -67,8 +67,19 @@ namespace ESB.TestFramework
             Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds); ;
             Console.ReadKey();
 
+            stopWatch.Restart();
+            //esbProxy.InvokeQueue("ESB_Queue", "HelloWorld", "Tony", 0, new Core.Rpc.QueueParam()
+            //{
+            //    QueueName = "ERP.Order"
+            //});
 
-            esbProxy.InvokeQueue("ESB_Queue", "HelloWorld", "Tony");
+            esbProxy.InvokeQueue("ESB_WS", "HelloWorld", "Queue");
+
+
+            stopWatch.Stop();
+
+            Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
+            Console.ReadKey();
         }
 
         static void TestEsbProxy(String serviceName, String methodName = "HelloAction", String message = null, int callNum = 10, Int32 version = 0)

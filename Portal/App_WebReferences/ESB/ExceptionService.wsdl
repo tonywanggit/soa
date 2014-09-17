@@ -2,17 +2,17 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://esb.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://esb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://esb.com/">
-      <s:element name="GetAllExceptionByPersonID">
+      <s:element name="GetAllExceptionByBusinessID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="personID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bussinesID" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllExceptionByPersonIDResponse">
+      <s:element name="GetAllExceptionByBusinessIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllExceptionByPersonIDResult" type="tns:ArrayOfExceptionCoreTb" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllExceptionByBusinessIDResult" type="tns:ArrayOfExceptionCoreTb" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -46,6 +46,8 @@
               <s:element minOccurs="1" maxOccurs="1" name="BindingType" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="RequestPwd" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="RequestType" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -82,11 +84,11 @@
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetAllExceptionByPersonIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllExceptionByPersonID" />
+  <wsdl:message name="GetAllExceptionByBusinessIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllExceptionByBusinessID" />
   </wsdl:message>
-  <wsdl:message name="GetAllExceptionByPersonIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllExceptionByPersonIDResponse" />
+  <wsdl:message name="GetAllExceptionByBusinessIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllExceptionByBusinessIDResponse" />
   </wsdl:message>
   <wsdl:message name="GetExceptionByIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetExceptionByID" />
@@ -101,10 +103,10 @@
     <wsdl:part name="parameters" element="tns:DeleteExceptionByIDResponse" />
   </wsdl:message>
   <wsdl:portType name="ExceptionServiceSoap">
-    <wsdl:operation name="GetAllExceptionByPersonID">
+    <wsdl:operation name="GetAllExceptionByBusinessID">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到用户的异常信息</wsdl:documentation>
-      <wsdl:input message="tns:GetAllExceptionByPersonIDSoapIn" />
-      <wsdl:output message="tns:GetAllExceptionByPersonIDSoapOut" />
+      <wsdl:input message="tns:GetAllExceptionByBusinessIDSoapIn" />
+      <wsdl:output message="tns:GetAllExceptionByBusinessIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetExceptionByID">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据异常编码获取到异常信息</wsdl:documentation>
@@ -119,8 +121,8 @@
   </wsdl:portType>
   <wsdl:binding name="ExceptionServiceSoap" type="tns:ExceptionServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllExceptionByPersonID">
-      <soap:operation soapAction="http://esb.com/GetAllExceptionByPersonID" style="document" />
+    <wsdl:operation name="GetAllExceptionByBusinessID">
+      <soap:operation soapAction="http://esb.com/GetAllExceptionByBusinessID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -149,8 +151,8 @@
   </wsdl:binding>
   <wsdl:binding name="ExceptionServiceSoap12" type="tns:ExceptionServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllExceptionByPersonID">
-      <soap12:operation soapAction="http://esb.com/GetAllExceptionByPersonID" style="document" />
+    <wsdl:operation name="GetAllExceptionByBusinessID">
+      <soap12:operation soapAction="http://esb.com/GetAllExceptionByBusinessID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -5,4 +5,5 @@
     <UriType Text="调用中心" Value="2" />
     <UriType Text="队列中心" Value="3" />
     <UriType Text="缓存中心" Value="4" />
+    <UriType Text="队列服务中心" Value="5" />
 </UriTypeEnum>

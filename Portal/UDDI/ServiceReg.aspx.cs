@@ -1,5 +1,7 @@
-﻿using DevExpress.Web.ASPxGridView;
+﻿using DevExpress.Web.ASPxEditors;
+using DevExpress.Web.ASPxGridView;
 using DevExpress.Web.ASPxPopupControl;
+using DevExpress.Web.ASPxTabControl;
 using System;
 using System.Collections;
 using System.Configuration;
@@ -91,12 +93,6 @@ public partial class UDDI_ServiceReg : BasePage
         grid.DataBind();
     }
 
-
-    protected void grid_HtmlEditFormCreated(object sender, ASPxGridViewEditFormEventArgs e)
-    {
-    }
-
-
     /// <summary>
     /// 验证服务名字是否可用
     /// </summary>
@@ -142,5 +138,39 @@ public partial class UDDI_ServiceReg : BasePage
         }
 
             
+    }
+
+    protected void grdServiceConfig_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+    {
+        e.NewValues["MethodName"] = "*";
+        e.NewValues["Timeout"] = 100000;
+        e.NewValues["CacheDuration"] = 0;
+        e.NewValues["IsAudit"] = 1;
+        e.NewValues["HBPolicy"] = 1;
+    }
+    protected void grdServiceConfig_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+    {
+        ASPxGridView gridSC = sender as ASPxGridView;
+        e.NewValues["ServiceID"] = gridSC.GetMasterRowKeyValue();
+    }
+    protected void grdServiceConfig_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
+    {
+        //--如果是编辑状态，并且服务名称没有发生变化，则无需验证
+        if (!e.IsNewRow)
+        {
+            if (e.NewValues["MethodName"].ToString() == e.OldValues["MethodName"].ToString())
+                return;
+        }
+
+        ASPxGridView gridSC = sender as ASPxGridView;
+        String ServiceID = gridSC.GetMasterRowKeyValue().ToString();
+
+        //--检测是否存在相同名字的服务
+        ESB.ServiceConfig[] scs = contractService.GetServiceConfig(ServiceID);
+        if (scs != null && scs.Length > 0)
+        {
+            if(scs.Count(x=>x.MethodName == e.NewValues["MethodName"].ToString()) > 0)
+                e.Errors.Add(gridSC.Columns["MethodName"], "该方法已经被配置了！");
+        }
     }
 }

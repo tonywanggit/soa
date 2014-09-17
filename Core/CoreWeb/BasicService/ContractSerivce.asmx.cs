@@ -127,7 +127,6 @@ namespace ESB.CallCenter.BasicService
         }
         #endregion
 
-
         #region 服务契约
         /// <summary>
         /// 获取到服务版本下的所有契约
@@ -161,6 +160,38 @@ namespace ESB.CallCenter.BasicService
         public void DeleteServiceContract(ServiceContract entity)
         {
             entity.Delete();
+        }
+        #endregion
+
+        #region 服务配置
+        [WebMethod(Description = "获取服务配置信息")]
+        public List<ServiceConfig> GetServiceConfig(String serviceID)
+        {
+            return ServiceConfig.FindByServiceID(serviceID);
+        }
+
+        [WebMethod(Description = "新增服务配置")]
+        public void InsertServiceConfig(ServiceConfig entity)
+        {
+            if (String.IsNullOrEmpty(entity.OID))
+                entity.OID = Guid.NewGuid().ToString();
+
+            entity.Insert();
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
+        }
+
+        [WebMethod(Description = "修改服务配置")]
+        public void UpdateServiceConfig(ServiceConfig entity)
+        {
+            entity.Update();
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
+        }
+
+        [WebMethod(Description = "删除服务配置")]
+        public void DeleteServiceConfig(ServiceConfig entity)
+        {
+            entity.Delete();
+            esbProxy.RegistryConsumerClient.ResendServiceConfig();
         }
         #endregion
     }

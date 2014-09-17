@@ -9,15 +9,15 @@ using XCode.Configuration;
 
 namespace ESB.Core.Entity
 {
-    /// <summary></summary>
+    /// <summary>服务配置表</summary>
     [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
-    public class SettingUri : SettingUri<SettingUri> { }
+    public class ServiceConfig : ServiceConfig<ServiceConfig> { }
     
-    /// <summary></summary>
-    public partial class SettingUri<TEntity> : Entity<TEntity> where TEntity : SettingUri<TEntity>, new()
+    /// <summary>服务配置表</summary>
+    public partial class ServiceConfig<TEntity> : Entity<TEntity> where TEntity : ServiceConfig<TEntity>, new()
     {
         #region 对象操作﻿
-        static SettingUri()
+        static ServiceConfig()
         {
             // 用于引发基类的静态构造函数，所有层次的泛型实体类都应该有一个
             TEntity entity = new TEntity();
@@ -66,9 +66,9 @@ namespace ESB.Core.Entity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}SettingUri数据……", typeof(TEntity).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}服务配置表数据……", typeof(TEntity).Name);
 
-        //    var entity = new SettingUri();
+        //    var entity = new ServiceConfig();
         //    entity.Name = "admin";
         //    entity.Password = DataHelper.Hash("admin");
         //    entity.DisplayName = "管理员";
@@ -76,19 +76,40 @@ namespace ESB.Core.Entity
         //    entity.IsEnable = true;
         //    entity.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}SettingUri数据！", typeof(TEntity).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}服务配置表数据！", typeof(TEntity).Name);
         //}
         #endregion
 
         #region 扩展属性﻿
-        public String UriPort
+        private BusinessService _BusinessService;
+        /// <summary>
+        /// 服务对应的业务实体
+        /// </summary>
+        public BusinessService BusinessService
         {
-            get { return String.Format("{0}_{1}", Uri, Port); }
-            set { }
+            get
+            {
+                if (_BusinessService == null && !String.IsNullOrWhiteSpace(ServiceID) && !Dirtys.ContainsKey("BusinessService"))
+                {
+                    _BusinessService = BusinessService.FindByServiceID(ServiceID);
+                    Dirtys["BusinessService"] = true;
+                }
+                return _BusinessService;
+            }
         }
         #endregion
 
         #region 扩展查询﻿
+        /// <summary>
+        /// 根据服务ID查找
+        /// </summary>
+        /// <param name="servcieID"></param>
+        /// <returns></returns>
+        public static EntityList<TEntity> FindByServiceID(String servcieID)
+        {
+            return FindAll(_.ServiceID, servcieID);
+        }
+
         /// <summary>根据主键查找</summary>
         /// <param name="oid">主键</param>
         /// <returns></returns>

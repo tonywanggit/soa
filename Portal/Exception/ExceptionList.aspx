@@ -130,7 +130,7 @@
     <asp:ObjectDataSource ID="OdsException" runat="server"
         TypeName="ESB.ExceptionService"
         DataObjectTypeName="ESB.ExceptionCoreTb" 
-        SelectMethod="GetAllExceptionByPersonID" UpdateMethod="UpdateException"
+        SelectMethod="GetAllExceptionByBusinessID" UpdateMethod="UpdateException"
         OnSelecting="OdsException_Selecting" OnUpdating="OdsException_OnUpdating">
     </asp:ObjectDataSource>    
     <asp:XmlDataSource DataFile="~/App_Data/RequestTypeEnum.xml" XPath="//RequestType" ID="xdsRequestType" runat="server" />

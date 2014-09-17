@@ -352,6 +352,84 @@
       <s:element name="DeleteServiceContractResponse">
         <s:complexType />
       </s:element>
+      <s:element name="GetServiceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceConfigResult" type="tns:ArrayOfServiceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfServiceConfig">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceConfig" nillable="true" type="tns:ServiceConfig" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceConfig">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceConfigOfServiceConfig" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiceConfigOfServiceConfig">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfServiceConfig">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsAudit" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Timeout" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CacheDuration" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="QueueCenter" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="HBPolicy" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="WhiteList" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BlackList" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MockObject" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfServiceConfig">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="InsertServiceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:ServiceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertServiceConfigResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateServiceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:ServiceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateServiceConfigResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteServiceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:ServiceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteServiceConfigResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetServiceVersionViewByConfirmPersonSoapIn">
@@ -462,6 +540,30 @@
   <wsdl:message name="DeleteServiceContractSoapOut">
     <wsdl:part name="parameters" element="tns:DeleteServiceContractResponse" />
   </wsdl:message>
+  <wsdl:message name="GetServiceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceConfig" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertServiceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertServiceConfig" />
+  </wsdl:message>
+  <wsdl:message name="InsertServiceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertServiceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateServiceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateServiceConfig" />
+  </wsdl:message>
+  <wsdl:message name="UpdateServiceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateServiceConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteServiceConfig" />
+  </wsdl:message>
+  <wsdl:message name="DeleteServiceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteServiceConfigResponse" />
+  </wsdl:message>
   <wsdl:portType name="ContractSerivceSoap">
     <wsdl:operation name="GetServiceVersionViewByConfirmPerson">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务版本视图</wsdl:documentation>
@@ -552,6 +654,26 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务契约</wsdl:documentation>
       <wsdl:input message="tns:DeleteServiceContractSoapIn" />
       <wsdl:output message="tns:DeleteServiceContractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceConfig">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取服务配置信息</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceConfigSoapIn" />
+      <wsdl:output message="tns:GetServiceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceConfig">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增服务配置</wsdl:documentation>
+      <wsdl:input message="tns:InsertServiceConfigSoapIn" />
+      <wsdl:output message="tns:InsertServiceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceConfig">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改服务配置</wsdl:documentation>
+      <wsdl:input message="tns:UpdateServiceConfigSoapIn" />
+      <wsdl:output message="tns:UpdateServiceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceConfig">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除服务配置</wsdl:documentation>
+      <wsdl:input message="tns:DeleteServiceConfigSoapIn" />
+      <wsdl:output message="tns:DeleteServiceConfigSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ContractSerivceSoap" type="tns:ContractSerivceSoap">
@@ -718,6 +840,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetServiceConfig">
+      <soap:operation soapAction="http://esb.com/GetServiceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceConfig">
+      <soap:operation soapAction="http://esb.com/InsertServiceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceConfig">
+      <soap:operation soapAction="http://esb.com/UpdateServiceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceConfig">
+      <soap:operation soapAction="http://esb.com/DeleteServiceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ContractSerivceSoap12" type="tns:ContractSerivceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -876,6 +1034,42 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteServiceContract">
       <soap12:operation soapAction="http://esb.com/DeleteServiceContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceConfig">
+      <soap12:operation soapAction="http://esb.com/GetServiceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceConfig">
+      <soap12:operation soapAction="http://esb.com/InsertServiceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceConfig">
+      <soap12:operation soapAction="http://esb.com/UpdateServiceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceConfig">
+      <soap12:operation soapAction="http://esb.com/DeleteServiceConfig" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

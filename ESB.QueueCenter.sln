@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.Core", "Core\ESB.Core\ESB.Core.csproj", "{3A6FD2E3-189B-4217-B619-D4B3064FD53E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueCenter.WindowsService", "..\QueueCenter.WindowsService\QueueCenter.WindowsService.csproj", "{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewLife.Core", "NewLife\NewLife.Core\NewLife.Core.csproj", "{5813C22E-EEB3-4DEE-A45C-BB218041193A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewLife.XCode", "NewLife\NewLife.XCode\NewLife.XCode.csproj", "{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueCenter.WindowsService", "WindowService\QueueCenter.WindowsService\QueueCenter.WindowsService.csproj", "{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,6 @@ Global
 		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Net4Release|Any CPU.Build.0 = Release|Any CPU
 		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A6FD2E3-189B-4217-B619-D4B3064FD53E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Net4Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Net4Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Net4Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Net4Release|Any CPU.Build.0 = Release|Any CPU
-		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5813C22E-EEB3-4DEE-A45C-BB218041193A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5813C22E-EEB3-4DEE-A45C-BB218041193A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5813C22E-EEB3-4DEE-A45C-BB218041193A}.Net4Debug|Any CPU.ActiveCfg = Net4Debug|Any CPU
@@ -49,6 +41,14 @@ Global
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Net4Release|Any CPU.Build.0 = Net4Release|Any CPU
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49ABA5A-C5DA-45F4-87F1-B435EC51D710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Net4Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Net4Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Net4Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Net4Release|Any CPU.Build.0 = Release|Any CPU
+		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB757EA2-13FD-4523-BDDC-9AE9FD437AFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

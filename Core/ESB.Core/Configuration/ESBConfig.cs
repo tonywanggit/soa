@@ -18,6 +18,10 @@ namespace ESB.Core.Configuration
         /// </summary>
         public List<ServiceItem> Service { get; set; }
         /// <summary>
+        /// 服务配置
+        /// </summary>
+        public List<ServiceConfig> ServiceConfig { get; set; }
+        /// <summary>
         /// 注册中心
         /// </summary>
         public List<RegistryItem> Registry { get; set; }
@@ -44,6 +48,7 @@ namespace ESB.Core.Configuration
         public ESBConfig()
         {
             Service = new List<ServiceItem>();
+            ServiceConfig = new List<ServiceConfig>();
             Registry = new List<RegistryItem>();
             CallCenter = new List<CallCenterItem>();
             Monitor = new List<MonitorItem>();

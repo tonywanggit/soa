@@ -155,6 +155,9 @@ namespace Monitor.WindowsService
                             }
                         }
 
+                        if (x.ExceptionInfo.Contains("操作超时"))
+                            x.ExceptionCode = "操作超时";
+
                         x.Insert();
                     }
                 });

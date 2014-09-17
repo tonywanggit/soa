@@ -78,10 +78,8 @@ namespace Registry.WindowsService
         {
             ConsumerConfig consumerConfig = regClient.ConsumerConfig;
             ESBConfig esbConfig = new ESBConfig();
-            //esbConfig.Monitor.Add(new MonitorItem() { Uri = "192.168.56.2:5672:soa:123456", Load = 1, Type = "RabbitMQ" });
-            //esbConfig.Registry.Add(new RegistryItem() { Uri = "192.168.56.2", Load = 1 });
-            //esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "192.168.56.2", Load = 1 });
 
+            //--处理中心地址
             foreach (SettingUri uri in SettingUri.FindAll())
             {
                 switch (uri.UriType)
@@ -106,12 +104,7 @@ namespace Registry.WindowsService
                 }
             }
 
-            //esbConfig.Monitor.Add(new MonitorItem() { Uri = "10.100.20.100:5672:admin:osroot", Load = 1, Type = "RabbitMQ" });
-            //esbConfig.Registry.Add(new RegistryItem() { Uri = "10.100.20.214", Load = 1 });
-            //esbConfig.CallCenter.Add(new CallCenterItem() { Uri = "10.100.20.214", Load = 1 });
-
-            //esbConfig.Service.Add(new ServiceItem() { ServiceName = "ESB_ASHX", DirectInvokeEnabled = true, Uri = "http://esb.jn.com" });
-
+            //--处理服务
             if (regClient.RegistryClientType == CometClientType.Consumer
                 || regClient.RegistryClientType == CometClientType.Portal
                 || regClient.RegistryClientType == CometClientType.Monitor)
@@ -147,6 +140,28 @@ namespace Registry.WindowsService
                     esbConfig.Service.Add(si);
                 }
             }
+
+            //--处理服务配置
+            if (regClient.RegistryClientType == CometClientType.Consumer
+                || regClient.RegistryClientType == CometClientType.Portal
+                || regClient.RegistryClientType == CometClientType.Monitor)
+            {
+                
+                List<ServiceConfig> lstSC = ServiceConfig.FindAll();
+
+                foreach (var refService in consumerConfig.Reference)
+                {
+                    ServiceConfig sc = lstSC.Find(x => x.BusinessService.ServiceName == refService.ServiceName);
+                    if (sc != null)
+                        esbConfig.ServiceConfig.Add(sc);
+                }
+            }
+            else if (regClient.RegistryClientType == CometClientType.CallCenter
+                || regClient.RegistryClientType == CometClientType.QueueCenter)
+            {
+                esbConfig.ServiceConfig = ServiceConfig.FindAll();
+            }
+
 
             return esbConfig;
         }

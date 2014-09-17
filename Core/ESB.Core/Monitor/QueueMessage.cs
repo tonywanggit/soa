@@ -48,9 +48,9 @@ namespace ESB.Core.Monitor
         public String GetRouteKey()
         {
             if (String.IsNullOrWhiteSpace(QueueName))
-                return String.Format("{0}_{1}", Constant.ESB_INVOKE_QUEUE, ServiceName);
+                return String.Format("{0}.{1}", Constant.ESB_INVOKE_QUEUE, ServiceName);
             else
-                return String.Format("{0}_{1}", Constant.ESB_CUST_INVOKE_QUEUE, QueueName);
+                return String.Format("{0}.{1}", Constant.ESB_CUST_INVOKE_QUEUE, QueueName);
         }
     }
 }

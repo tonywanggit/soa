@@ -106,7 +106,7 @@
     <ServiceItem>
       <ServiceName>ESB_COM_WS</ServiceName>
       <Version>1</Version>
-      <IsDefault>true</IsDefault>
+      <IsDefault>false</IsDefault>
       <Binding>
         <BindingTemplate>
           <TemplateID>13EE831C-6F0C-4E9F-9D05-5F0F3431A052</TemplateID>
@@ -200,6 +200,18 @@
       </Binding>
     </ServiceItem>
   </Service>
+  <ServiceConfig>
+    <ServiceConfig>
+      <OID>736ae92b-570d-4aee-a495-6fa28bbb4400</OID>
+      <ServiceID>2ab0a467-fc6e-4741-ba06-ae843755063e</ServiceID>
+      <MethodName>*</MethodName>
+      <IsAudit>1</IsAudit>
+      <Timeout>100000</Timeout>
+      <CacheDuration>10</CacheDuration>
+      <QueueCenter>651bea34-1ef6-4099-8934-efda6ed0801d</QueueCenter>
+      <HBPolicy>1</HBPolicy>
+    </ServiceConfig>
+  </ServiceConfig>
   <Registry>
     <RegistryItem>
       <Uri>192.168.56.2:5555</Uri>

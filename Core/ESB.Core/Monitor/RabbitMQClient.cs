@@ -20,6 +20,11 @@ namespace ESB.Core.Monitor
         IConnection m_Connection;
         Dictionary<String, IModel> m_ChannelDict = new Dictionary<string, IModel>();
 
+        /// <summary>
+        /// 回调队列名称
+        /// </summary>
+        private string replyQueueName;
+
 
         /// <summary>
         /// RabbitMQ构造函数
@@ -178,10 +183,10 @@ namespace ESB.Core.Monitor
             String routeKey;
             if(queueName == "#"){
                 receiveQueueName = Constant.ESB_INVOKE_QUEUE;
-                routeKey = Constant.ESB_INVOKE_QUEUE + "_#";
+                routeKey = Constant.ESB_INVOKE_QUEUE + ".#";
             }
             else{
-                receiveQueueName = Constant.ESB_CUST_INVOKE_QUEUE + "_" + queueName;
+                receiveQueueName = Constant.ESB_CUST_INVOKE_QUEUE + "." + queueName;
                 routeKey = receiveQueueName;
             }
 
@@ -197,17 +202,25 @@ namespace ESB.Core.Monitor
 
             while (true)
             {
-                var ea = (BasicDeliverEventArgs)consumer.Queue.Dequeue();
-                byte[] body = ea.Body;
-
-                XmlSerializer xs = new XmlSerializer(typeof(QueueMessage));
-                using (MemoryStream ms = new MemoryStream(body))
+                try
                 {
-                    QueueMessage message = (QueueMessage)xs.Deserialize(ms);
-                    processMethod(message);
-                }
+                    var ea = (BasicDeliverEventArgs)consumer.Queue.Dequeue();
+                    byte[] body = ea.Body;
 
-                channel.BasicAck(ea.DeliveryTag, false);
+                    XmlSerializer xs = new XmlSerializer(typeof(QueueMessage));
+                    using (MemoryStream ms = new MemoryStream(body))
+                    {
+                        QueueMessage message = (QueueMessage)xs.Deserialize(ms);
+                        processMethod(message);
+                    }
+
+                    channel.BasicAck(ea.DeliveryTag, false);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                
             }
 
         }

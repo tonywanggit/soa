@@ -81,6 +81,7 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展属性﻿
+
         #endregion
 
         #region 扩展查询﻿

@@ -141,7 +141,7 @@ public partial class Exception_ExceptionList : BasePage
 
         //e.InputParameters["用户编码"] = AuthUser.UserID;
 
-        e.InputParameters["personID"] = AuthUser.UserID;
+        e.InputParameters["bussinesID"] = cbProvider.Value;
     }
 
     protected void OdsException_OnUpdating(object sender, ObjectDataSourceMethodEventArgs e)

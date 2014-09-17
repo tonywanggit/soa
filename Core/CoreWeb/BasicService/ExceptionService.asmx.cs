@@ -18,12 +18,12 @@ namespace ESB.CallCenter.BasicService
     public class ExceptionService : System.Web.Services.WebService
     {
         [WebMethod(Description = "获取到用户的异常信息")]
-        public List<ExceptionCoreTb> GetAllExceptionByPersonID(String personID)
+        public List<ExceptionCoreTb> GetAllExceptionByBusinessID(String bussinesID)
         {
-            List<ExceptionCoreTb> lstException = ExceptionCoreTb.FindAll();
-
-            //lstException.Where(x=>x.
-            return lstException;
+            if (String.IsNullOrEmpty(bussinesID))
+                return ExceptionCoreTb.FindAll();
+            else
+                return ExceptionCoreTb.FindAll(ExceptionCoreTb._.BusinessID, bussinesID);
         }
 
         [WebMethod(Description = "根据异常编码获取到异常信息")]
