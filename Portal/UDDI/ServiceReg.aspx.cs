@@ -118,6 +118,7 @@ public partial class UDDI_ServiceReg : BasePage
     {
         e.NewValues["BusinessID"] = this.cbProvider.Value;
         e.NewValues["PersonalID"] = AuthUser.UserID;
+        e.NewValues["DefaultVersion"] = 1;
     }
 
     /// <summary>
