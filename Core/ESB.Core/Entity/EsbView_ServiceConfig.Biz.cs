@@ -9,15 +9,15 @@ using XCode.Configuration;
 
 namespace ESB.Core.Entity
 {
-    /// <summary>服务配置表</summary>
+    /// <summary></summary>
     [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
-    public class ServiceConfig : ServiceConfig<ServiceConfig> { }
+    public class EsbView_ServiceConfig : EsbView_ServiceConfig<EsbView_ServiceConfig> { }
     
-    /// <summary>服务配置表</summary>
-    public partial class ServiceConfig<TEntity> : Entity<TEntity> where TEntity : ServiceConfig<TEntity>, new()
+    /// <summary></summary>
+    public partial class EsbView_ServiceConfig<TEntity> : Entity<TEntity> where TEntity : EsbView_ServiceConfig<TEntity>, new()
     {
         #region 对象操作﻿
-        static ServiceConfig()
+        static EsbView_ServiceConfig()
         {
             // 用于引发基类的静态构造函数，所有层次的泛型实体类都应该有一个
             TEntity entity = new TEntity();
@@ -66,9 +66,9 @@ namespace ESB.Core.Entity
         //    if (Meta.Count > 0) return;
 
         //    // 需要注意的是，如果该方法调用了其它实体类的首次数据库操作，目标实体类的数据初始化将会在同一个线程完成
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}服务配置表数据……", typeof(TEntity).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化{0}EsbView_ServiceConfig数据……", typeof(TEntity).Name);
 
-        //    var entity = new ServiceConfig();
+        //    var entity = new EsbView_ServiceConfig();
         //    entity.Name = "admin";
         //    entity.Password = DataHelper.Hash("admin");
         //    entity.DisplayName = "管理员";
@@ -76,36 +76,11 @@ namespace ESB.Core.Entity
         //    entity.IsEnable = true;
         //    entity.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}服务配置表数据！", typeof(TEntity).Name);
+        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化{0}EsbView_ServiceConfig数据！", typeof(TEntity).Name);
         //}
         #endregion
 
         #region 扩展属性﻿
-        private BusinessService _BusinessService;
-        /// <summary>
-        /// 服务对应的业务实体
-        /// </summary>
-        public BusinessService BusinessService
-        {
-            get
-            {
-                if (_BusinessService == null && !String.IsNullOrWhiteSpace(ServiceID) && !Dirtys.ContainsKey("BusinessService"))
-                {
-                    _BusinessService = BusinessService.FindByServiceID(ServiceID);
-                    Dirtys["BusinessService"] = true;
-                }
-                return _BusinessService;
-            }
-        }
-
-        /// <summary>
-        /// 服务名称
-        /// </summary>
-        public String ServcieName
-        {
-            get { return BusinessService.ServiceName; }
-            set { }
-        }
         #endregion
 
         #region 扩展查询﻿
@@ -117,20 +92,6 @@ namespace ESB.Core.Entity
         public static EntityList<TEntity> FindByServiceID(String servcieID)
         {
             return FindAll(_.ServiceID, servcieID);
-        }
-
-        /// <summary>根据主键查找</summary>
-        /// <param name="oid">主键</param>
-        /// <returns></returns>
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public static TEntity FindByOID(String oid)
-        {
-            if (Meta.Count >= 1000)
-                return Find(_.OID, oid);
-            else // 实体缓存
-                return Meta.Cache.Entities.Find(_.OID, oid);
-            // 单对象缓存
-            //return Meta.SingleCache[oid];
         }
         #endregion
 

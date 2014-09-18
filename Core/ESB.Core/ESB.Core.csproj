@@ -84,6 +84,8 @@
     <Compile Include="Entity\BusinessService.cs" />
     <Compile Include="Entity\BusinessServiceVersion.Biz.cs" />
     <Compile Include="Entity\BusinessServiceVersion.cs" />
+    <Compile Include="Entity\EsbView_ServiceConfig.Biz.cs" />
+    <Compile Include="Entity\EsbView_ServiceConfig.cs" />
     <Compile Include="Entity\EsbView_ServiceVersion.Biz.cs" />
     <Compile Include="Entity\EsbView_ServiceVersion.cs" />
     <Compile Include="Entity\EsbView_UDDI.Biz.cs" />

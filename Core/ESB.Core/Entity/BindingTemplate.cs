@@ -23,6 +23,7 @@ namespace ESB.Core.Entity
         [Description("")]
         [DataObjectField(true, false, false, 50)]
         [BindColumn(1, "TemplateID", "", "newid()", "nvarchar(50)", 0, 0, true)]
+        [XmlIgnore]
         public virtual String TemplateID
         {
             get { return _TemplateID; }
@@ -35,6 +36,7 @@ namespace ESB.Core.Entity
         [Description("")]
         [DataObjectField(false, false, true, 50)]
         [BindColumn(2, "ServiceID", "", null, "nvarchar(50)", 0, 0, true)]
+        [XmlIgnore]
         public virtual String ServiceID
         {
             get { return _ServiceID; }

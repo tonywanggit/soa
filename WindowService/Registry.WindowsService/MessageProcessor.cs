@@ -147,7 +147,7 @@ namespace Registry.WindowsService
                 || regClient.RegistryClientType == CometClientType.Monitor)
             {
                 
-                List<ServiceConfig> lstSC = ServiceConfig.FindAll();
+                List<ServiceConfig> lstSC = EsbView_ServiceConfig.FindAll();
 
                 foreach (var refService in consumerConfig.Reference)
                 {

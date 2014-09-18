@@ -1,5 +1,6 @@
 ﻿using ESB.Core;
 using ESB.Core.Configuration;
+using ESB.Core.Entity;
 using ESB.Core.Monitor;
 using NewLife.Log;
 using System;
@@ -21,9 +22,9 @@ namespace QueueCenter.WindowsService
         RabbitMQClient m_RabbitMQ;
 
         /// <summary>
-        /// 队列服务处理进程
+        /// 队列服务处理进程组
         /// </summary>
-        Thread m_ThreadQC;
+        List<QueueThread> m_QueueThreadList;
 
         /// <summary>
         /// ESB代理类对象
@@ -31,16 +32,27 @@ namespace QueueCenter.WindowsService
         ESBProxy m_ESBProxy = ESBProxy.GetInstance();
 
         /// <summary>
+        /// ESBConfig文件
+        /// </summary>
+        ESBConfig m_EsbConfig;
+
+        /// <summary>
+        /// ConsumerConfig文件
+        /// </summary>
+        ConsumerConfig m_ConsumerConfig;
+
+        /// <summary>
         /// 构造器
         /// </summary>
         public RabbitQueueManager()
         {
-            ESBConfig esbConfig = m_ESBProxy.RegistryConsumerClient.ESBConfig;
+            m_EsbConfig = m_ESBProxy.RegistryConsumerClient.ESBConfig;
+            m_ConsumerConfig = m_ESBProxy.RegistryConsumerClient.ConsumerConfig;
 
-            if (esbConfig != null && esbConfig.MessageQueue.Count > 0)
+            if (m_EsbConfig != null && m_EsbConfig.MessageQueue.Count > 0)
             {
                 //String esbQueue = Config.GetConfig<String>("ESB.Queue");
-                String esbQueue = esbConfig.MessageQueue[0].Uri;
+                String esbQueue = m_EsbConfig.MessageQueue[0].Uri;
                 XTrace.WriteLine("读取到ESB队列地址：{0}", esbQueue);
 
                 String[] paramMQ = esbQueue.Split(':');
@@ -59,12 +71,16 @@ namespace QueueCenter.WindowsService
         /// </summary>
         public void StartReceive()
         {
-            m_ThreadQC = new Thread(x =>
-            {
-                ProcessInvokeQueueMessage();
+            String appName = m_ConsumerConfig.ApplicationName;
 
-            });
-            m_ThreadQC.Start();
+            if (m_EsbConfig.ServiceConfig != null && m_EsbConfig.ServiceConfig.Count > 0)
+            {
+                List<ServiceConfig> lstServcieConfig = m_EsbConfig.ServiceConfig.FindAll(x => appName.EndsWith(x.QueueCenter));
+                foreach (ServiceConfig sc in lstServcieConfig)
+                {
+                    //QueueThread qt = new QueueThread(sc.ser   
+                }
+            }
         }
 
         /// <summary>
@@ -75,20 +91,6 @@ namespace QueueCenter.WindowsService
             if (m_RabbitMQ != null)
                 m_RabbitMQ.Dispose();
 
-            if (m_ThreadQC != null)
-                m_ThreadQC.Abort();
-        }
-
-        /// <summary>
-        /// 处理队列调用消息
-        /// </summary>
-        public void ProcessInvokeQueueMessage()
-        {
-            //--#代表ESB专用队列
-            m_RabbitMQ.ListenInvokeQueue("#", x =>
-            {
-                m_ESBProxy.Invoke(x.ServiceName, x.MethodName, x.Message, x.Version);
-            });
         }
     }
 }

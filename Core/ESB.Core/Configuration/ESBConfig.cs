@@ -48,7 +48,7 @@ namespace ESB.Core.Configuration
         public ESBConfig()
         {
             Service = new List<ServiceItem>();
-            ServiceConfig = new List<ServiceConfig>();
+            ServiceConfig = new List<EsbView_ServiceConfig>();
             Registry = new List<RegistryItem>();
             CallCenter = new List<CallCenterItem>();
             Monitor = new List<MonitorItem>();

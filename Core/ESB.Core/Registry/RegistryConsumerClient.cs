@@ -130,6 +130,17 @@ namespace ESB.Core.Registry
         }
 
         /// <summary>
+        /// 获取到ConsumerConfig配置文件
+        /// </summary>
+        public ConsumerConfig ConsumerConfig
+        {
+            get
+            {
+                return m_ESBProxy.ConsumerConfig;
+            }
+        }
+
+        /// <summary>
         /// 接收注册中心的消息
         /// </summary>
         /// <param name="sender"></param>
