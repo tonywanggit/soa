@@ -17,6 +17,21 @@
       </Binding>
     </ServiceItem>
     <ServiceItem>
+      <ServiceName>ESB_QUEUE_20</ServiceName>
+      <Version>1</Version>
+      <IsDefault>true</IsDefault>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>95654d8e-1e5b-4be4-9628-ee30059462c5</TemplateID>
+          <Address>http://192.168.56.1/ProviderService/Handler/ESB_QUEUE_20.ashx</Address>
+          <Description>20s的延时地址</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>3</BindingType>
+          <Version>1</Version>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
       <ServiceName>GB_HELLO</ServiceName>
       <Version>1</Version>
       <IsDefault>true</IsDefault>
@@ -204,6 +219,15 @@
     </ServiceItem>
   </Service>
   <ServiceConfig>
+    <EsbView_ServiceConfig>
+      <ServiceName>ESB_QUEUE_20</ServiceName>
+      <QueueCenterUri>192.168.56.1_1</QueueCenterUri>
+      <MethodName>*</MethodName>
+      <IsAudit>1</IsAudit>
+      <Timeout>100000</Timeout>
+      <CacheDuration>0</CacheDuration>
+      <HBPolicy>1</HBPolicy>
+    </EsbView_ServiceConfig>
     <EsbView_ServiceConfig>
       <ServiceName>ESB_QUEUE_10</ServiceName>
       <QueueCenterUri>192.168.56.1_1</QueueCenterUri>

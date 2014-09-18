@@ -148,11 +148,13 @@ public partial class UDDI_ServiceReg : BasePage
         e.NewValues["IsAudit"] = 1;
         e.NewValues["HBPolicy"] = 1;
     }
+
     protected void grdServiceConfig_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
     {
         ASPxGridView gridSC = sender as ASPxGridView;
         e.NewValues["ServiceID"] = gridSC.GetMasterRowKeyValue();
     }
+
     protected void grdServiceConfig_RowValidating(object sender, DevExpress.Web.Data.ASPxDataValidationEventArgs e)
     {
         //--如果是编辑状态，并且服务名称没有发生变化，则无需验证

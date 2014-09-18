@@ -25,6 +25,10 @@ namespace ESB.Core.Registry
         private AutoResetEvent m_AutoResetEvent = new AutoResetEvent(false);
         private List<RegistryClient> m_RegistryClientList = null;   //注册中心客户端
 
+        //--当收到服务端的配置文件ESBConfig发生变化时，产生事件
+        //--QueueCenter会响应这个事件，并监听不同的队列
+        public event EventHandler<RegistryEventArgs> OnServiceConfigChange;
+
         /// <summary>
         /// 定时器：用于检测注册中心是否可以使用
         /// </summary>
@@ -207,6 +211,12 @@ namespace ESB.Core.Registry
             {
                 m_ConfigurationManager.SaveESBConfig(m_ESBProxy.ESBConfig);
             });
+
+            //--如果客户端订阅了这个事件，则触发并送上最新的ESBConfig
+            if (OnServiceConfigChange != null)
+            {
+                OnServiceConfigChange(this, new RegistryEventArgs() { ESBConfig = m_ESBProxy.ESBConfig });
+            }
         }
 
         /// <summary>
@@ -225,7 +235,7 @@ namespace ESB.Core.Registry
     /// <summary>
     /// 注册中心变化事件
     /// </summary>
-    internal class RegistryEventArgs : EventArgs
+    public class RegistryEventArgs : EventArgs
     {
         public ESBConfig ESBConfig { get; set; }
     }

@@ -20,6 +20,17 @@ namespace ESB.Core.Monitor
         private RabbitMQClient m_RabbitMQ;
 
         /// <summary>
+        /// 服务名称
+        /// </summary>
+        public String ServiceName
+        {
+            get
+            {
+                return m_ServiceName;
+            }
+        }
+
+        /// <summary>
         /// ESB代理类对象
         /// </summary>
         private ESBProxy m_ESBProxy = ESBProxy.GetInstance();
@@ -53,6 +64,7 @@ namespace ESB.Core.Monitor
         public void Stop()
         {
             m_Thread.Abort();
+            m_RabbitMQ.Dispose();
             XTrace.WriteLine("线程[{0}]关闭对服务[{1}]的队列操作。", m_Thread.ManagedThreadId, m_ServiceName);
         }
 

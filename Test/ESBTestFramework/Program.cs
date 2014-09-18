@@ -73,7 +73,7 @@ namespace ESB.TestFramework
             //    QueueName = "ERP.Order"
             //});
 
-            esbProxy.InvokeQueue("ESB_QUEUE_10", "HelloWorld", "Queue");
+            esbProxy.InvokeQueue("ESB_QUEUE_20", "HelloWorld", "Queue");
 
 
             stopWatch.Stop();

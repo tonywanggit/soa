@@ -23,7 +23,6 @@ namespace ESB.Core.Entity
         [Description("主键")]
         [DataObjectField(true, false, false, 50)]
         [BindColumn(1, "OID", "主键", null, "nvarchar(50)", 0, 0, true)]
-        [XmlIgnore]
         public virtual String OID
         {
             get { return _OID; }
@@ -36,7 +35,6 @@ namespace ESB.Core.Entity
         [Description("服务ID")]
         [DataObjectField(false, false, false, 50)]
         [BindColumn(2, "ServiceID", "服务ID", null, "nvarchar(50)", 0, 0, true)]
-        [XmlIgnore]
         public virtual String ServiceID
         {
             get { return _ServiceID; }

@@ -35,7 +35,6 @@ namespace ESB.Core.Entity
         [Description("")]
         [DataObjectField(false, false, true, 50)]
         [BindColumn(2, "ServiceID", "", null, "nvarchar(50)", 0, 0, true)]
-        [XmlIgnore]
         public virtual String ServiceID
         {
             get { return _ServiceID; }
