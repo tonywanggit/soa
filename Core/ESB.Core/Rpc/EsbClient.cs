@@ -34,7 +34,9 @@ namespace ESB.Core.Rpc
               Boolean needResponse
             , ESB.Core.Schema.服务请求 request
             , List<BindingTemplate> bindings
-            , Int32 version)
+            , Int32 version
+            , EsbView_ServiceConfig serviceConfig
+            , AdvanceInvokeParam invokeParam)
         {
             //--记录接收时间并放在请求结束时间中，用于判读ESB在接到请求到开始调用的耗时
             DateTime receiveDateTime = DateTime.Now;
@@ -54,6 +56,8 @@ namespace ESB.Core.Rpc
                 CallState state = new CallState()
                 {
                     Binding = bindings[0],
+                    ServiceConfig = serviceConfig,
+                    InvokeParam = invokeParam,
                     Request = request,
                     RequestBeginTime = request.请求时间,
                     RequestEndTime = receiveDateTime,
@@ -69,6 +73,7 @@ namespace ESB.Core.Rpc
                 CallState state = new CallState()
                 {
                     Binding = bindings[0],
+                    ServiceConfig = serviceConfig,
                     Request = request,
                     RequestBeginTime = request.请求时间,
                     RequestEndTime = receiveDateTime,

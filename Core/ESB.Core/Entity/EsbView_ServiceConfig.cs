@@ -120,6 +120,7 @@ namespace ESB.Core.Entity
         [Description("")]
         [DataObjectField(false, false, false, 50)]
         [BindColumn(9, "QueueCenter", "", null, "nvarchar(50)", 0, 0, true)]
+        [XmlIgnore]
         public virtual String QueueCenter
         {
             get { return _QueueCenter; }

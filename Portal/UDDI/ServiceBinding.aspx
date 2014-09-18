@@ -87,7 +87,6 @@
                 </dxwgv:GridViewDataComboBoxColumn>    
             </Columns>
             <%-- EndRegion --%>
-            <SettingsDetail ShowDetailRow="false"/>
             <SettingsEditing Mode="EditFormAndDisplayRow"/>
             <SettingsPager AlwaysShowPager="true" />
             <SettingsText EmptyDataRow="暂无数据！" CommandCancel="取消" CommandUpdate="保存" ConfirmDelete="您确定要删除这条记录吗？" />

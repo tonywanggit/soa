@@ -146,12 +146,12 @@ namespace Registry.WindowsService
                 || regClient.RegistryClientType == CometClientType.Portal
                 || regClient.RegistryClientType == CometClientType.Monitor)
             {
-                
-                List<ServiceConfig> lstSC = EsbView_ServiceConfig.FindAll();
+
+                List<EsbView_ServiceConfig> lstSC = EsbView_ServiceConfig.FindAll();
 
                 foreach (var refService in consumerConfig.Reference)
                 {
-                    ServiceConfig sc = lstSC.Find(x => x.BusinessService.ServiceName == refService.ServiceName);
+                    EsbView_ServiceConfig sc = lstSC.Find(x => x.ServiceName == refService.ServiceName);
                     if (sc != null)
                         esbConfig.ServiceConfig.Add(sc);
                 }
@@ -159,7 +159,7 @@ namespace Registry.WindowsService
             else if (regClient.RegistryClientType == CometClientType.CallCenter
                 || regClient.RegistryClientType == CometClientType.QueueCenter)
             {
-                esbConfig.ServiceConfig = ServiceConfig.FindAll();
+                esbConfig.ServiceConfig = EsbView_ServiceConfig.FindAll();
             }
 
 

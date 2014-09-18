@@ -44,6 +44,7 @@ namespace ESB.Core.Rpc
                 webRequest.Accept = contentType;
                 webRequest.Method = "POST";
                 webRequest.ContentType = contentType;
+                webRequest.Timeout = callState.ServiceConfig.Timeout;
                 webRequest.Headers.Add("Accept-Encoding", "gzip");
                 webRequest.Headers.Add(Constant.ESB_HEAD_TRACE_CONTEXT, callState.TraceContext.ToString());
                 webRequest.Headers.Add(Constant.ESB_HEAD_ANVOKE_ACTION, callState.Request.方法名称);

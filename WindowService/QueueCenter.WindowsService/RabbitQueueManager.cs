@@ -48,6 +48,7 @@ namespace QueueCenter.WindowsService
         {
             m_EsbConfig = m_ESBProxy.RegistryConsumerClient.ESBConfig;
             m_ConsumerConfig = m_ESBProxy.RegistryConsumerClient.ConsumerConfig;
+            m_QueueThreadList = new List<QueueThread>();
 
             if (m_EsbConfig != null && m_EsbConfig.MessageQueue.Count > 0)
             {
@@ -75,10 +76,13 @@ namespace QueueCenter.WindowsService
 
             if (m_EsbConfig.ServiceConfig != null && m_EsbConfig.ServiceConfig.Count > 0)
             {
-                List<ServiceConfig> lstServcieConfig = m_EsbConfig.ServiceConfig.FindAll(x => appName.EndsWith(x.QueueCenter));
-                foreach (ServiceConfig sc in lstServcieConfig)
+                List<EsbView_ServiceConfig> lstServcieConfig = m_EsbConfig.ServiceConfig.FindAll(x => appName.EndsWith(x.QueueCenterUri));
+                foreach (EsbView_ServiceConfig sc in lstServcieConfig)
                 {
-                    //QueueThread qt = new QueueThread(sc.ser   
+                    QueueThread qt = new QueueThread(sc.ServiceName, m_RabbitMQ);
+                    qt.Start();
+
+                    m_QueueThreadList.Add(qt);
                 }
             }
         }

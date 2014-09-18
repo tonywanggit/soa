@@ -49,12 +49,8 @@ public partial class UDDI_ServiceBinding : BasePage
 
     protected void InitRight()
     {
-        //this.grid.FindControl("gridTmodel").Visible = AuthUser.IsSystemAdmin;
-        //this.grid.FindDetailRowTemplateControl(0, "gridTmodel").Visible = AuthUser.IsSystemAdmin;
-
         this.grid.Columns[0].Visible = AuthUser.IsSystemAdmin;
         this.btnAdd.Visible = AuthUser.IsSystemAdmin;
-        this.grid.SettingsDetail.ShowDetailRow = false;
     }
     #endregion
 

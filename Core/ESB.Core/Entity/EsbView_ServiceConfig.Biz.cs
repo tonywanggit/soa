@@ -81,6 +81,28 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展属性﻿
+        private static EsbView_ServiceConfig _Default;
+        /// <summary>
+        /// 服务默认配置
+        /// </summary>
+        public static EsbView_ServiceConfig Default
+        {
+            get
+            {
+                if (_Default == null)
+                {
+                    _Default = new EsbView_ServiceConfig()
+                    {
+                        MethodName="*",
+                        IsAudit = 1,            //开启审计
+                        Timeout = 100 * 1000,   //超时100s
+                        CacheDuration = 0,      //关闭缓存
+                        HBPolicy = 1,           //负载均衡策略：轮询
+                    };
+                }
+                return _Default;
+            }
+        }
         #endregion
 
         #region 扩展查询﻿
@@ -150,6 +172,7 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 业务
+
         #endregion
     }
 }

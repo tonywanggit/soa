@@ -7,6 +7,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>CB0DC8ED-B208-4084-AEC1-8C910E091C78</TemplateID>
           <Address>http://192.168.56.1/ProviderService/Composit/ESB_Composit.ashx</Address>
           <Description>ESB组合服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -18,11 +19,12 @@
     <ServiceItem>
       <ServiceName>GB_HELLO</ServiceName>
       <Version>1</Version>
-      <IsDefault>false</IsDefault>
+      <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>1df2e46b-6037-4dda-9d3c-52e2cad29be7</TemplateID>
           <Address>11</Address>
-          <Description>11</Description>
+          <Description>99999</Description>
           <BindingStatus>0</BindingStatus>
           <BindingType>1</BindingType>
           <Version>1</Version>
@@ -32,7 +34,7 @@
     <ServiceItem>
       <ServiceName>BG_Member</ServiceName>
       <Version>2</Version>
-      <IsDefault>true</IsDefault>
+      <IsDefault>false</IsDefault>
       <Binding />
     </ServiceItem>
     <ServiceItem>
@@ -41,6 +43,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>17C451DA-558F-438A-A22E-28BBBEC6F9F5</TemplateID>
           <Address>http://localhost/OAWeb/EmailService.asmx</Address>
           <Description>OA邮件服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -55,6 +58,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>1DD4B44C-072C-4F80-9C14-670F65E82D13</TemplateID>
           <Address>http://192.168.56.1/ProviderService/Wcf/ESB_WCF.svc</Address>
           <Description>WCF绑定地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -69,6 +73,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>0F6A276C-5733-4FED-8CE9-7FBAE408C5C6</TemplateID>
           <Address>http://192.168.56.1/ServiceStackDemo</Address>
           <Description>ServiceStack演示地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -83,6 +88,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>401F6E05-BE6A-4D8A-8EA3-0422C04747BD</TemplateID>
           <Address>http://10.100.20.180:8016/</Address>
           <Description>微信商城服务</Description>
           <BindingStatus>0</BindingStatus>
@@ -94,9 +100,10 @@
     <ServiceItem>
       <ServiceName>ESB_COM_WS</ServiceName>
       <Version>1</Version>
-      <IsDefault>false</IsDefault>
+      <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>13EE831C-6F0C-4E9F-9D05-5F0F3431A052</TemplateID>
           <Address>http://192.168.56.1/ProviderService/Composit/ESB_COM_WS.asmx</Address>
           <Description>ESB二级组合服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -108,9 +115,10 @@
     <ServiceItem>
       <ServiceName>BG_Member</ServiceName>
       <Version>1</Version>
-      <IsDefault>false</IsDefault>
+      <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>b55037f8-8617-43fb-a3cf-0163e8a82248</TemplateID>
           <Address>http://mb.com/1</Address>
           <Description>1</Description>
           <BindingStatus>0</BindingStatus>
@@ -125,6 +133,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>18b4cf3e-421e-4532-ba1e-c55593bb0f28</TemplateID>
           <Address>http://10.100.200.38/dubbo-json/com.tony.service.TestService</Address>
           <Description>Dubbo测试服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -139,6 +148,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>5DB79830-47ED-49AB-8E14-3324E2B3A9DF</TemplateID>
           <Address>http://192.168.56.1/ProviderService/WebService/ESB_WS.asmx</Address>
           <Description>WebService地址绑定</Description>
           <BindingStatus>0</BindingStatus>
@@ -153,8 +163,24 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>c623022b-9bf0-4146-85b0-74e775f83091</TemplateID>
           <Address>http://192.168.56.1/ProviderService/Handler/ESB_ASHX.ashx</Address>
           <Description>ASHX服务地址</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>3</BindingType>
+          <Version>1</Version>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
+      <ServiceName>ESB_QUEUE_10</ServiceName>
+      <Version>1</Version>
+      <IsDefault>true</IsDefault>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>695d1785-5bb8-43e5-b606-95a1618a7bfc</TemplateID>
+          <Address>http://192.168.56.1/ProviderService/Handler/ESB_QUEUE_10.ashx</Address>
+          <Description>延迟10s的服务</Description>
           <BindingStatus>0</BindingStatus>
           <BindingType>3</BindingType>
           <Version>1</Version>
@@ -167,6 +193,7 @@
       <IsDefault>true</IsDefault>
       <Binding>
         <BindingTemplate>
+          <TemplateID>4936E3FA-BBE0-40A1-AF65-35C3BA5E0A6A</TemplateID>
           <Address>http://192.168.56.1/HelloWebAPI/api/products</Address>
           <Description>产品目录地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -177,21 +204,15 @@
     </ServiceItem>
   </Service>
   <ServiceConfig>
-    <ServiceConfig>
-      <MethodName>*</MethodName>
-      <IsAudit>1</IsAudit>
-      <Timeout>100000</Timeout>
-      <CacheDuration>10</CacheDuration>
-      <QueueCenter>651bea34-1ef6-4099-8934-efda6ed0801d</QueueCenter>
-      <HBPolicy>1</HBPolicy>
-    </ServiceConfig>
-    <ServiceConfig>
+    <EsbView_ServiceConfig>
+      <ServiceName>ESB_QUEUE_10</ServiceName>
+      <QueueCenterUri>192.168.56.1_1</QueueCenterUri>
       <MethodName>*</MethodName>
       <IsAudit>1</IsAudit>
       <Timeout>100000</Timeout>
       <CacheDuration>0</CacheDuration>
       <HBPolicy>1</HBPolicy>
-    </ServiceConfig>
+    </EsbView_ServiceConfig>
   </ServiceConfig>
   <Registry>
     <RegistryItem>

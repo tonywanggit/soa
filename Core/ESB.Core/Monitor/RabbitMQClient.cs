@@ -179,16 +179,8 @@ namespace ESB.Core.Monitor
         {
             IModel channel = m_ChannelDict[Constant.ESB_INVOKE_QUEUE];
 
-            String receiveQueueName;
-            String routeKey;
-            if(queueName == "#"){
-                receiveQueueName = Constant.ESB_INVOKE_QUEUE;
-                routeKey = Constant.ESB_INVOKE_QUEUE + ".#";
-            }
-            else{
-                receiveQueueName = Constant.ESB_CUST_INVOKE_QUEUE + "." + queueName;
-                routeKey = receiveQueueName;
-            }
+            String receiveQueueName = Constant.ESB_INVOKE_QUEUE + "." + queueName;
+            String routeKey = receiveQueueName;
 
             //--声明队列
             channel.QueueDeclare(receiveQueueName, true, false, false, null);

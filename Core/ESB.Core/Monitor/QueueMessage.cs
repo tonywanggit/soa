@@ -27,6 +27,16 @@ namespace ESB.Core.Monitor
         public String Message { get; set; }
 
         /// <summary>
+        /// 主机名称：使用Consumer.Config中的ApplicationName
+        /// </summary>
+        public String ConsumerAppName { get; set; }
+
+        /// <summary>
+        /// 主机名称：客户端IP
+        /// </summary>
+        public String ConsumerIP { get; set; }
+
+        /// <summary>
         /// 版本
         /// </summary>
         public Int32 Version { get; set; }

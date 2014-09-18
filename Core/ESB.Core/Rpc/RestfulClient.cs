@@ -71,6 +71,7 @@ namespace ESB.Core.Rpc
                 webRequest.Accept = contentType;
                 webRequest.Method = method;
                 webRequest.ContentType = contentType;
+                webRequest.Timeout = callState.ServiceConfig.Timeout;
                 webRequest.Headers.Add(Constant.ESB_HEAD_TRACE_CONTEXT, callState.TraceContext.ToString());
 
 

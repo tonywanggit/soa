@@ -63,8 +63,6 @@ namespace ESB.Core.Monitor
             //--#代表ESB专用队列
             m_RabbitMQ.ListenInvokeQueue(m_ServiceName, x =>
             {
-                
-
                 m_ESBProxy.Invoke(x.ServiceName, x.MethodName, x.Message, x.Version);
             });
         }

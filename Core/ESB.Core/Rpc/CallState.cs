@@ -16,6 +16,15 @@ namespace ESB.Core.Rpc
         /// 服务绑定
         /// </summary>
         public BindingTemplate Binding { get; set; }
+        /// <summary>
+        /// 服务配置
+        /// </summary>
+        public EsbView_ServiceConfig ServiceConfig { get; set; }
+
+        /// <summary>
+        /// 客户端传递的调用参数，用于覆盖默认配置
+        /// </summary>
+        public AdvanceInvokeParam InvokeParam { get; set; }
 
         /// <summary>
         /// 服务版本，用于审计

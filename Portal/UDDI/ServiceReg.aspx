@@ -97,6 +97,14 @@
                     </PropertiesComboBox>
                     <EditFormSettings Visible="true" VisibleIndex="2" />
                 </dxwgv:GridViewDataComboBoxColumn>    
+                <dxwgv:GridViewDataTextColumn FieldName="DefaultVersion" Caption="默认版本" ReadOnly="true" Width="60">
+                    <EditFormSettings ColumnSpan ="2" />
+                    <PropertiesTextEdit>
+                        <ValidationSettings>
+                            <RequiredField IsRequired="true" />
+                        </ValidationSettings>
+                    </PropertiesTextEdit>
+                </dxwgv:GridViewDataTextColumn>
             </Columns>
             <Templates>
                 <EditForm>

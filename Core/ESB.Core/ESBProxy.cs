@@ -12,6 +12,7 @@ using System.Net;
 using ESB.Core.Monitor;
 using NewLife.Threading;
 using System.Diagnostics;
+using ESB.Core.Entity;
 
 namespace ESB.Core
 {
@@ -210,19 +211,41 @@ namespace ESB.Core
         /// <param name="message">消息内容</param>
         /// <param name="version">服务版本：0代表调用默认版本</param>
         /// <returns></returns>
-        public String Invoke(String serviceName, String methodName, String message, Int32 version = 0)
+        public String Invoke(String serviceName, String methodName, String message, Int32 version = 0, AdvanceInvokeParam invokeParam = null)
         {
             DateTime reqStartTime = DateTime.Now;
+
+            String hostName = m_ConsumerConfig.ApplicationName;
+            if (invokeParam != null && !String.IsNullOrWhiteSpace(invokeParam.ConsumerAppName))
+                hostName = invokeParam.ConsumerAppName;
 
             ESB.Core.Schema.服务请求 req = new ESB.Core.Schema.服务请求();
             req.服务名称 = serviceName;
             req.方法名称 = methodName;
             req.请求时间 = reqStartTime;
-            req.主机名称 = m_ConsumerConfig.ApplicationName;
+            req.主机名称 = hostName;
             req.消息内容 = message;
             req.消息编码 = "";
             req.密码 = "";
 
+            //--从ESBConfig中获取到服务版本信息
+            ServiceItem si = GetServiceItem(serviceName, version);
+
+            //--从ESBConfig中获取到服务版本信息
+            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName);
+            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, si.Version, sc, invokeParam).消息内容;
+
+            return msg;
+        }
+
+        /// <summary>
+        /// 获取到服务版本信息
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        private ServiceItem GetServiceItem(String serviceName, Int32 version)
+        {
             Boolean getSyncESBConfig = false;
             if (ESBConfig == null)
             {
@@ -255,15 +278,10 @@ namespace ESB.Core
                 }
             }
 
-            if(si.Binding == null || si.Binding.Count == 0)
+            if (si.Binding == null || si.Binding.Count == 0)
                 throw new Exception(String.Format("请求的服务【{0}】没有有效的绑定地址!", serviceName));
 
-
-            //Console.WriteLine("DynamicalCallWebService 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, si.Version).消息内容;
-            //Console.WriteLine("DynamicalCallWebService 完成：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-
-            return msg;
+            return si;
         }
 
         /// <summary>
@@ -276,7 +294,18 @@ namespace ESB.Core
         /// <returns></returns>
         public void InvokeQueue(String serviceName, String methodName, String message, Int32 version = 0, QueueParam queueParam = null)
         {
+            //--从ESBConfig中获取到服务版本信息
+            ServiceItem si = GetServiceItem(serviceName, version);
+
+            //--从ESBConfig中获取到服务配置信息
+            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName);
+
+            if (String.IsNullOrWhiteSpace(sc.QueueCenterUri)) 
+                throw new Exception("服务需要在管理中心配置队列服务地址才能通过队列调用！");
+            
             QueueMessage qm = new QueueMessage();
+            qm.ConsumerAppName = m_ConsumerConfig.ApplicationName;
+            qm.ConsumerIP = m_ConfigurationManager.LocalIP;
             qm.ServiceName = serviceName;
             qm.MethodName = methodName;
             qm.Message = message;

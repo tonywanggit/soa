@@ -25,6 +25,9 @@ namespace ESB.Core.Rpc
             TimeSpan ReqTimeSpan = callState.RequestEndTime.Subtract(callState.RequestBeginTime);
 
             ConfigurationManager cm = ConfigurationManager.GetInstance();
+            String consumerIP = cm.LocalIP;
+            if (callState.InvokeParam != null && !String.IsNullOrWhiteSpace(callState.InvokeParam.ConsumerIP))
+                consumerIP = callState.InvokeParam.ConsumerIP;
 
             AuditBusiness log = new AuditBusiness()
             {
@@ -52,7 +55,7 @@ namespace ESB.Core.Rpc
                 InvokeOrder = callState.TraceContext.InvokeOrder,
                 InvokeID = callState.TraceContext.InvokeID,
                 InvokeTimeSpan = ReqTimeSpan.TotalMilliseconds,
-                ConsumerIP = cm.LocalIP,
+                ConsumerIP = consumerIP,
                 Version = callState.ServiceVersion
             };
 

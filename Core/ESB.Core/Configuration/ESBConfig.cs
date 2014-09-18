@@ -20,7 +20,7 @@ namespace ESB.Core.Configuration
         /// <summary>
         /// 服务配置
         /// </summary>
-        public List<ServiceConfig> ServiceConfig { get; set; }
+        public List<EsbView_ServiceConfig> ServiceConfig { get; set; }
         /// <summary>
         /// 注册中心
         /// </summary>
@@ -72,6 +72,25 @@ namespace ESB.Core.Configuration
                 return lstServiceItem.Find(x => x.IsDefault);
             else
                 return lstServiceItem.Find(x => x.Version == version);
+        }
+
+        /// <summary>
+        /// 获取到服务配置信息
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <returns></returns>
+        public EsbView_ServiceConfig GetServiceConfig(String serviceName)
+        {
+            if (ServiceConfig == null || ServiceConfig.Count == 0)
+                return EsbView_ServiceConfig.Default;
+            else
+            {
+                EsbView_ServiceConfig sc = ServiceConfig.Find(x => x.ServiceName == serviceName);
+                if (sc == null)
+                    return EsbView_ServiceConfig.Default;
+                else
+                    return sc;
+            }
         }
 
         /// <summary>
