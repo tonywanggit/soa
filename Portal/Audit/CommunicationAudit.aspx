@@ -114,7 +114,7 @@
                     <PropertiesDateEdit DisplayFormatString="yyyy-MM-dd HH:mm:ss"></PropertiesDateEdit>
                 </dxwgv:GridViewDataDateColumn>  
                 <dxwgv:GridViewDataColumn FieldName="MessageID" VisibleIndex="5" Caption="消息编码" Visible="false" ReadOnly="true">
-                    <EditFormSettings VisibleIndex="12" Visible="true" ColumnSpan="2" />
+                    <EditFormSettings VisibleIndex="13" Visible="true" />
                 </dxwgv:GridViewDataColumn>
                 <dxwgv:GridViewDataColumn FieldName="HostName" VisibleIndex="5" Caption="调用主机" Visible="false" ReadOnly="true">
                     <EditFormSettings VisibleIndex="8" Visible="true" />
@@ -122,6 +122,9 @@
                 <dxwgv:GridViewDataColumn FieldName="BindingAddress" VisibleIndex="5" Caption="调用地址" Visible="false" ReadOnly="true">
                     <EditFormSettings VisibleIndex="11" Visible="true" ColumnSpan="2" />
                 </dxwgv:GridViewDataColumn>
+                <dxwgv:GridViewDataTextColumn FieldName="ConsumerIP" Caption="消费者IP" Visible="true" ReadOnly="true">
+                    <EditFormSettings VisibleIndex="12" Visible="true"/>
+                </dxwgv:GridViewDataTextColumn>
             </Columns>
             <Templates>
                 <EditForm>

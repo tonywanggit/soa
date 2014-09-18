@@ -13,7 +13,7 @@ namespace ESB.Core.Rpc
     /// <summary>
     /// ASHX一般服务接口程序调用客户端
     /// </summary>
-    public class HandlerClient
+    internal class HandlerClient
     {
         /// <summary>
         /// 调用Handler服务

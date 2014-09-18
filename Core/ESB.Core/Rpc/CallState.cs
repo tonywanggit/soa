@@ -10,7 +10,7 @@ namespace ESB.Core.Rpc
     /// <summary>
     /// 线程调用时
     /// </summary>
-    public class CallState
+    internal class CallState
     {
         /// <summary>
         /// 服务绑定

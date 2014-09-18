@@ -1,5 +1,6 @@
 ﻿using ESB.Core;
 using ESB.Core.Monitor;
+using ESB.Core.Rpc;
 using NewLife.Log;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace ESB.Core.Monitor
     /// <summary>
     /// 队列服务处理线程
     /// </summary>
-    internal class QueueThread
+    public class QueueThread
     {
         private Thread m_Thread;
         private String m_ServiceName;
@@ -63,7 +64,11 @@ namespace ESB.Core.Monitor
             //--#代表ESB专用队列
             m_RabbitMQ.ListenInvokeQueue(m_ServiceName, x =>
             {
-                m_ESBProxy.Invoke(x.ServiceName, x.MethodName, x.Message, x.Version);
+                AdvanceInvokeParam invokeParam = new AdvanceInvokeParam();
+                invokeParam.ConsumerAppName = x.ConsumerAppName;
+                invokeParam.ConsumerIP = x.ConsumerIP;
+
+                m_ESBProxy.Invoke(x.ServiceName, x.MethodName, x.Message, x.Version, invokeParam);
             });
         }
     }

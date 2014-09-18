@@ -116,6 +116,7 @@
     <Compile Include="Monitor\MonitorCenterClient.cs" />
     <Compile Include="Monitor\MessageQueueClient.cs" />
     <Compile Include="Monitor\QueueMessage.cs" />
+    <Compile Include="Monitor\QueueThread.cs" />
     <Compile Include="Rpc\AdvanceInvokeParam.cs" />
     <Compile Include="Rpc\QueueParam.cs" />
     <Compile Include="Monitor\RabbitMQClient.cs" />

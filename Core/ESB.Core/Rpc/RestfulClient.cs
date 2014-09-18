@@ -13,7 +13,7 @@ namespace ESB.Core.Rpc
     /// <summary>
     /// Restful服务调用客户端
     /// </summary>
-    public class RestfulClient
+    internal class RestfulClient
     {
 
         public static ESB.Core.Schema.服务响应 CallRestfulService(CallState callState)

@@ -13,7 +13,7 @@ namespace ESB.Core.Rpc
     /// <summary>
     /// Dubbo调用客户端
     /// </summary>
-    public class DubboClient
+    internal class DubboClient
     {
         public static ESB.Core.Schema.服务响应 CallDubboService(CallState callState)
         {

@@ -8,7 +8,7 @@ namespace ESB.Core.Rpc
     /// <summary>
     /// 内部的调用参数
     /// </summary>
-    internal class AdvanceInvokeParam
+    public class AdvanceInvokeParam
     {
         /// <summary>
         /// 客户端应用名称
