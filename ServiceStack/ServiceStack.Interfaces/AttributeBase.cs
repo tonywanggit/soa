@@ -1,0 +1,29 @@
+﻿// Copyright (c) Service Stack LLC. All Rights Reserved.
+// License: https://raw.github.com/ServiceStack/ServiceStack/master/license.txt
+
+
+using System;
+
+namespace ServiceStack
+{
+    public class AttributeBase : Attribute
+    {
+
+#if !(NETFX_CORE || WP || SL5 || PCL)
+        public AttributeBase()
+        {
+            this.typeId = Guid.NewGuid();
+        }
+
+        /// <summary>
+        /// Required when using a TypeDescriptor to make it unique
+        /// </summary>
+        protected readonly Guid typeId;
+        public override object TypeId
+        {
+            get { return this.typeId; }
+        }
+#endif
+        
+    }
+}

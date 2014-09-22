@@ -184,7 +184,7 @@
             <%-- EndRegion --%>
             <SettingsEditing Mode="PopupEditForm" PopupEditFormWidth="600px" />
             <SettingsPager AlwaysShowPager="true" Mode="ShowPager" />
-            <SettingsText EmptyDataRow="暂无数据！" CommandCancel="取消" CommandUpdate="保存" PopupEditFormCaption="查看异常" />
+            <SettingsText EmptyDataRow="暂无数据！" CommandCancel="取消" CommandUpdate="保存" PopupEditFormCaption="查看详情" />
         </dxwgv:ASPxGridView>   
         <script type="text/javascript">
             //调用条件：页面包含ASPxLoadingPanel ClientInstanceName="LoadingPanel"

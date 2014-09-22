@@ -14,7 +14,7 @@ namespace ESB.ProviderWebService.Handler
     {
         protected override string DoEsbAction(string esbAction, string request)
         {
-            Thread.Sleep(1000 * 20);
+            Thread.Sleep(1000 * 100);
 
             return String.Format("收到参数：{0}={1}。", esbAction, request);
         }
