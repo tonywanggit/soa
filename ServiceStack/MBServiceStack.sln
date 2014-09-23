@@ -1,0 +1,173 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack", "ServiceStack\ServiceStack.csproj", "{680A1709-25EB-4D52-A87F-EE03FFD94BAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Interfaces", "ServiceStack.Interfaces\ServiceStack.Interfaces.csproj", "{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Text", "ServiceStack.Text\ServiceStack.Text.csproj", "{579B3FDB-CDAD-44E1-8417-885C38E49A0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Common", "ServiceStack.Common\ServiceStack.Common.csproj", "{982416DB-C143-4028-A0C3-CF41892D18D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Client", "ServiceStack.Client\ServiceStack.Client.csproj", "{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.Redis", "ServiceStack.Redis\ServiceStack.Redis.csproj", "{AF99F19B-4C04-4F58-81EF-B092F1FCC540}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStack.OrmLite", "ServiceStack.OrmLite\ServiceStack.OrmLite.csproj", "{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.125.206:8089/tfs/mb.cloud.baseframe
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ServiceStack.Client\\ServiceStack.Client.csproj
+		SccProjectName1 = ServiceStack.Client
+		SccLocalPath1 = ServiceStack.Client
+		SccProjectUniqueName2 = ServiceStack.Common\\ServiceStack.Common.csproj
+		SccProjectName2 = ServiceStack.Common
+		SccLocalPath2 = ServiceStack.Common
+		SccProjectUniqueName3 = ServiceStack.Interfaces\\ServiceStack.Interfaces.csproj
+		SccProjectName3 = ServiceStack.Interfaces
+		SccLocalPath3 = ServiceStack.Interfaces
+		SccProjectUniqueName4 = ServiceStack.OrmLite\\ServiceStack.OrmLite.csproj
+		SccProjectName4 = ServiceStack.OrmLite
+		SccLocalPath4 = ServiceStack.OrmLite
+		SccProjectUniqueName5 = ServiceStack.Redis\\ServiceStack.Redis.csproj
+		SccProjectName5 = ServiceStack.Redis
+		SccLocalPath5 = ServiceStack.Redis
+		SccProjectUniqueName6 = ServiceStack.Text\\ServiceStack.Text.csproj
+		SccProjectName6 = ServiceStack.Text
+		SccLocalPath6 = ServiceStack.Text
+		SccProjectUniqueName7 = ServiceStack\\ServiceStack.csproj
+		SccProjectName7 = ServiceStack
+		SccLocalPath7 = ServiceStack
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		MonoTouch|Any CPU = MonoTouch|Any CPU
+		MonoTouch|x86 = MonoTouch|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+		Signed|Any CPU = Signed|Any CPU
+		Signed|x86 = Signed|x86
+		STATIC_ONLY NO_EXPRESSIONS|Any CPU = STATIC_ONLY NO_EXPRESSIONS|Any CPU
+		STATIC_ONLY NO_EXPRESSIONS|x86 = STATIC_ONLY NO_EXPRESSIONS|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.MonoTouch|Any CPU.ActiveCfg = Signed|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.MonoTouch|Any CPU.Build.0 = Signed|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.MonoTouch|x86.ActiveCfg = Signed|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Release|x86.ActiveCfg = Release|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Signed|Any CPU.ActiveCfg = Signed|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Signed|Any CPU.Build.0 = Signed|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.Signed|x86.ActiveCfg = Signed|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Signed|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Signed|Any CPU
+		{680A1709-25EB-4D52-A87F-EE03FFD94BAA}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.MonoTouch|Any CPU.ActiveCfg = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.MonoTouch|Any CPU.Build.0 = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.MonoTouch|x86.ActiveCfg = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Release|x86.ActiveCfg = Release|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Signed|Any CPU.ActiveCfg = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Signed|Any CPU.Build.0 = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.Signed|x86.ActiveCfg = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Signed|Any CPU
+		{42E1C8C0-A163-44CC-92B1-8F416F2C0B01}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = Signed|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.MonoTouch|Any CPU.ActiveCfg = MonoTouch|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.MonoTouch|Any CPU.Build.0 = MonoTouch|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.MonoTouch|x86.ActiveCfg = MonoTouch|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Release|x86.ActiveCfg = Release|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Signed|Any CPU.ActiveCfg = Signed|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Signed|Any CPU.Build.0 = Signed|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.Signed|x86.ActiveCfg = Signed|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Signed|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Signed|Any CPU
+		{579B3FDB-CDAD-44E1-8417-885C38E49A0E}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.MonoTouch|Any CPU.ActiveCfg = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.MonoTouch|Any CPU.Build.0 = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.MonoTouch|x86.ActiveCfg = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Release|x86.ActiveCfg = Release|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Signed|Any CPU.ActiveCfg = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Signed|Any CPU.Build.0 = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.Signed|x86.ActiveCfg = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Signed|Any CPU
+		{982416DB-C143-4028-A0C3-CF41892D18D3}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.MonoTouch|Any CPU.ActiveCfg = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.MonoTouch|Any CPU.Build.0 = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.MonoTouch|x86.ActiveCfg = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Release|x86.ActiveCfg = Release|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Signed|Any CPU.ActiveCfg = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Signed|Any CPU.Build.0 = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.Signed|x86.ActiveCfg = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = Signed|Any CPU
+		{C43F583F-ABDE-4DD4-BBE3-66322817A6AD}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = Signed|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Debug|x86.ActiveCfg = Debug|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Debug|x86.Build.0 = Debug|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.MonoTouch|Any CPU.ActiveCfg = MonoTouch|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.MonoTouch|Any CPU.Build.0 = MonoTouch|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.MonoTouch|x86.ActiveCfg = MonoTouch|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.MonoTouch|x86.Build.0 = MonoTouch|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Release|x86.ActiveCfg = Release|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Release|x86.Build.0 = Release|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Signed|Any CPU.ActiveCfg = Signed|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Signed|Any CPU.Build.0 = Signed|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Signed|x86.ActiveCfg = Signed|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.Signed|x86.Build.0 = Signed|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = STATIC_ONLY NO_EXPRESSIONS|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = STATIC_ONLY NO_EXPRESSIONS|Any CPU
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = STATIC_ONLY NO_EXPRESSIONS|x86
+		{AF99F19B-4C04-4F58-81EF-B092F1FCC540}.STATIC_ONLY NO_EXPRESSIONS|x86.Build.0 = STATIC_ONLY NO_EXPRESSIONS|x86
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.MonoTouch|Any CPU.ActiveCfg = MonoTouch|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.MonoTouch|Any CPU.Build.0 = MonoTouch|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.MonoTouch|x86.ActiveCfg = MonoTouch|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Release|x86.ActiveCfg = Release|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Signed|Any CPU.ActiveCfg = Signed|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Signed|Any CPU.Build.0 = Signed|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.Signed|x86.ActiveCfg = Signed|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.ActiveCfg = STATIC_ONLY NO_EXPRESSIONS|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.STATIC_ONLY NO_EXPRESSIONS|Any CPU.Build.0 = STATIC_ONLY NO_EXPRESSIONS|Any CPU
+		{96179AC6-F6F1-40C3-9FDD-4F6582F54C5C}.STATIC_ONLY NO_EXPRESSIONS|x86.ActiveCfg = STATIC_ONLY NO_EXPRESSIONS|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
