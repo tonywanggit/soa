@@ -56,6 +56,10 @@ namespace ESB.Core.Registry
         /// </summary>
         public String OSVersion { get; set; }
 
+        /// <summary>
+        /// Consumer.config中配置的ApplicationName
+        /// </summary>
+        public String ClientApplicationName { get; set; }
 
         /// <summary>
         /// 客户端配置文件

@@ -44,6 +44,7 @@ namespace Registry.WindowsService
                 regClient.ProcessorID = regMessage.ProcessorID;
                 regClient.DotNetFramworkVersion = regMessage.DotNetFramworkVersion;
                 regClient.OSVersion = regMessage.OSVersion;
+                regClient.ClientApplicationName = consumerConfig.ApplicationName;
 
                 ESBConfig esbConfig = GetESBConfig(regClient);
                 m_RegistryCenter.SendData(regClient, CometMessageAction.ServiceConfig, esbConfig.ToXml(), regMessage.IsAsync);

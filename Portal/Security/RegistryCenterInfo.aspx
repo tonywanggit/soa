@@ -41,6 +41,7 @@
             <dxwgv:GridViewDataTextColumn FieldName="DotNetFramworkVersion" Caption="Framework版本"></dxwgv:GridViewDataTextColumn>
             <dxwgv:GridViewDataTextColumn FieldName="OSVersion" Caption="操作系统版本"></dxwgv:GridViewDataTextColumn>
             <dxwgv:GridViewDataTextColumn FieldName="RegistryClientType" Caption="类型"></dxwgv:GridViewDataTextColumn>
+            <dxwgv:GridViewDataTextColumn FieldName="ClientApplicationName" Caption="应用名称"></dxwgv:GridViewDataTextColumn>
         </Columns>
         <ClientSideEvents RowDblClick="function(s, e){
             grid.StartEditRow(e.visibleIndex);

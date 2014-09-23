@@ -53,6 +53,7 @@ namespace Monitor.WindowsService
                         smOneMinute.CallLevel3Num += sm.CallLevel3Num;
                         smOneMinute.InBytes += sm.InBytes;
                         smOneMinute.OutBytes += sm.OutBytes;
+                        smOneMinute.CallHitCacheNum += sm.CallHitCacheNum;
 
                         if (smOneMinute.TpsPeak < sm.TpsPeak)
                             smOneMinute.TpsPeak = sm.TpsPeak;
@@ -137,7 +138,7 @@ namespace Monitor.WindowsService
         }
 
         /// <summary>
-        /// 记录一条监控日志
+        /// 记录一条监控日志，统计维度已经在Push方法中划分好了
         /// </summary>
         /// <param name="ab"></param>
         /// <param name="serviceMonitorArray"></param>
@@ -165,6 +166,7 @@ namespace Monitor.WindowsService
                     CallLevel1Num = (ab.InvokeTimeSpan > 20 && ab.InvokeTimeSpan < 100) ? 1 : 0,
                     CallLevel2Num = (ab.InvokeTimeSpan > 100 && ab.InvokeTimeSpan < 200) ? 1 : 0,
                     CallLevel3Num = (ab.InvokeTimeSpan > 200) ? 1 : 0,
+                    CallHitCacheNum = ab.IsCache,
                     InBytes = ab.InBytes,
                     OutBytes = ab.OutBytes,
                     TpsPeak = 1
@@ -187,7 +189,7 @@ namespace Monitor.WindowsService
 
                 serviceMonitor.InBytes += ab.InBytes;
                 serviceMonitor.OutBytes += ab.OutBytes;
-
+                serviceMonitor.CallHitCacheNum += ab.IsCache;
                 serviceMonitor.TpsPeak++;
             }
         }

@@ -40,13 +40,24 @@ namespace ESB.Core.Entity
             set { if (OnPropertyChanging(__.QueueCenterUri, value)) { _QueueCenterUri = value; OnPropertyChanged(__.QueueCenterUri); } }
         }
 
+        private String _BusinessID;
+        /// <summary></summary>
+        [DisplayName("BusinessID")]
+        [Description("")]
+        [DataObjectField(false, false, true, 50)]
+        [BindColumn(3, "BusinessID", "", null, "nvarchar(50)", 0, 0, true)]
+        public virtual String BusinessID
+        {
+            get { return _BusinessID; }
+            set { if (OnPropertyChanging(__.BusinessID, value)) { _BusinessID = value; OnPropertyChanged(__.BusinessID); } }
+        }
+
         private String _OID;
         /// <summary></summary>
         [DisplayName("OID")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(3, "OID", "", null, "nvarchar(50)", 0, 0, true)]
-        [XmlIgnore]
+        [BindColumn(4, "OID", "", null, "nvarchar(50)", 0, 0, true)]
         public virtual String OID
         {
             get { return _OID; }
@@ -58,8 +69,7 @@ namespace ESB.Core.Entity
         [DisplayName("ServiceID")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(4, "ServiceID", "", null, "nvarchar(50)", 0, 0, true)]
-        [XmlIgnore]
+        [BindColumn(5, "ServiceID", "", null, "nvarchar(50)", 0, 0, true)]
         public virtual String ServiceID
         {
             get { return _ServiceID; }
@@ -71,7 +81,7 @@ namespace ESB.Core.Entity
         [DisplayName("MethodName")]
         [Description("")]
         [DataObjectField(false, false, false, 100)]
-        [BindColumn(5, "MethodName", "", null, "nvarchar(100)", 0, 0, true)]
+        [BindColumn(6, "MethodName", "", null, "nvarchar(100)", 0, 0, true)]
         public virtual String MethodName
         {
             get { return _MethodName; }
@@ -83,7 +93,7 @@ namespace ESB.Core.Entity
         [DisplayName("IsAudit")]
         [Description("")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(6, "IsAudit", "", null, "int", 10, 0, false)]
+        [BindColumn(7, "IsAudit", "", null, "int", 10, 0, false)]
         public virtual Int32 IsAudit
         {
             get { return _IsAudit; }
@@ -95,7 +105,7 @@ namespace ESB.Core.Entity
         [DisplayName("Timeout")]
         [Description("")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(7, "Timeout", "", null, "int", 10, 0, false)]
+        [BindColumn(8, "Timeout", "", null, "int", 10, 0, false)]
         public virtual Int32 Timeout
         {
             get { return _Timeout; }
@@ -107,7 +117,7 @@ namespace ESB.Core.Entity
         [DisplayName("CacheDuration")]
         [Description("")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(8, "CacheDuration", "", null, "int", 10, 0, false)]
+        [BindColumn(9, "CacheDuration", "", null, "int", 10, 0, false)]
         public virtual Int32 CacheDuration
         {
             get { return _CacheDuration; }
@@ -119,8 +129,7 @@ namespace ESB.Core.Entity
         [DisplayName("QueueCenter")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(9, "QueueCenter", "", null, "nvarchar(50)", 0, 0, true)]
-        [XmlIgnore]
+        [BindColumn(10, "QueueCenter", "", null, "nvarchar(50)", 0, 0, true)]
         public virtual String QueueCenter
         {
             get { return _QueueCenter; }
@@ -132,7 +141,7 @@ namespace ESB.Core.Entity
         [DisplayName("HBPolicy")]
         [Description("")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(10, "HBPolicy", "", null, "int", 10, 0, false)]
+        [BindColumn(11, "HBPolicy", "", null, "int", 10, 0, false)]
         public virtual Int32 HBPolicy
         {
             get { return _HBPolicy; }
@@ -144,7 +153,7 @@ namespace ESB.Core.Entity
         [DisplayName("WhiteList")]
         [Description("")]
         [DataObjectField(false, false, true, 300)]
-        [BindColumn(11, "WhiteList", "", null, "nvarchar(300)", 0, 0, true)]
+        [BindColumn(12, "WhiteList", "", null, "nvarchar(300)", 0, 0, true)]
         public virtual String WhiteList
         {
             get { return _WhiteList; }
@@ -156,7 +165,7 @@ namespace ESB.Core.Entity
         [DisplayName("BlackList")]
         [Description("")]
         [DataObjectField(false, false, true, 300)]
-        [BindColumn(12, "BlackList", "", null, "nvarchar(300)", 0, 0, true)]
+        [BindColumn(13, "BlackList", "", null, "nvarchar(300)", 0, 0, true)]
         public virtual String BlackList
         {
             get { return _BlackList; }
@@ -168,7 +177,7 @@ namespace ESB.Core.Entity
         [DisplayName("MockObject")]
         [Description("")]
         [DataObjectField(false, false, true, 300)]
-        [BindColumn(13, "MockObject", "", null, "nvarchar(300)", 0, 0, true)]
+        [BindColumn(14, "MockObject", "", null, "nvarchar(300)", 0, 0, true)]
         public virtual String MockObject
         {
             get { return _MockObject; }
@@ -190,19 +199,20 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.ServiceName : return _ServiceName;
-                    case __.QueueCenterUri : return _QueueCenterUri;
-                    case __.OID : return _OID;
-                    case __.ServiceID : return _ServiceID;
-                    case __.MethodName : return _MethodName;
-                    case __.IsAudit : return _IsAudit;
-                    case __.Timeout : return _Timeout;
-                    case __.CacheDuration : return _CacheDuration;
-                    case __.QueueCenter : return _QueueCenter;
-                    case __.HBPolicy : return _HBPolicy;
-                    case __.WhiteList : return _WhiteList;
-                    case __.BlackList : return _BlackList;
-                    case __.MockObject : return _MockObject;
+                    case __.ServiceName: return _ServiceName;
+                    case __.QueueCenterUri: return _QueueCenterUri;
+                    case __.BusinessID: return _BusinessID;
+                    case __.OID: return _OID;
+                    case __.ServiceID: return _ServiceID;
+                    case __.MethodName: return _MethodName;
+                    case __.IsAudit: return _IsAudit;
+                    case __.Timeout: return _Timeout;
+                    case __.CacheDuration: return _CacheDuration;
+                    case __.QueueCenter: return _QueueCenter;
+                    case __.HBPolicy: return _HBPolicy;
+                    case __.WhiteList: return _WhiteList;
+                    case __.BlackList: return _BlackList;
+                    case __.MockObject: return _MockObject;
                     default: return base[name];
                 }
             }
@@ -210,19 +220,20 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.ServiceName : _ServiceName = Convert.ToString(value); break;
-                    case __.QueueCenterUri : _QueueCenterUri = Convert.ToString(value); break;
-                    case __.OID : _OID = Convert.ToString(value); break;
-                    case __.ServiceID : _ServiceID = Convert.ToString(value); break;
-                    case __.MethodName : _MethodName = Convert.ToString(value); break;
-                    case __.IsAudit : _IsAudit = Convert.ToInt32(value); break;
-                    case __.Timeout : _Timeout = Convert.ToInt32(value); break;
-                    case __.CacheDuration : _CacheDuration = Convert.ToInt32(value); break;
-                    case __.QueueCenter : _QueueCenter = Convert.ToString(value); break;
-                    case __.HBPolicy : _HBPolicy = Convert.ToInt32(value); break;
-                    case __.WhiteList : _WhiteList = Convert.ToString(value); break;
-                    case __.BlackList : _BlackList = Convert.ToString(value); break;
-                    case __.MockObject : _MockObject = Convert.ToString(value); break;
+                    case __.ServiceName: _ServiceName = Convert.ToString(value); break;
+                    case __.QueueCenterUri: _QueueCenterUri = Convert.ToString(value); break;
+                    case __.BusinessID: _BusinessID = Convert.ToString(value); break;
+                    case __.OID: _OID = Convert.ToString(value); break;
+                    case __.ServiceID: _ServiceID = Convert.ToString(value); break;
+                    case __.MethodName: _MethodName = Convert.ToString(value); break;
+                    case __.IsAudit: _IsAudit = Convert.ToInt32(value); break;
+                    case __.Timeout: _Timeout = Convert.ToInt32(value); break;
+                    case __.CacheDuration: _CacheDuration = Convert.ToInt32(value); break;
+                    case __.QueueCenter: _QueueCenter = Convert.ToString(value); break;
+                    case __.HBPolicy: _HBPolicy = Convert.ToInt32(value); break;
+                    case __.WhiteList: _WhiteList = Convert.ToString(value); break;
+                    case __.BlackList: _BlackList = Convert.ToString(value); break;
+                    case __.MockObject: _MockObject = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -238,6 +249,9 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public static readonly Field QueueCenterUri = FindByName(__.QueueCenterUri);
+
+            ///<summary></summary>
+            public static readonly Field BusinessID = FindByName(__.BusinessID);
 
             ///<summary></summary>
             public static readonly Field OID = FindByName(__.OID);
@@ -285,6 +299,9 @@ namespace ESB.Core.Entity
             public const String QueueCenterUri = "QueueCenterUri";
 
             ///<summary></summary>
+            public const String BusinessID = "BusinessID";
+
+            ///<summary></summary>
             public const String OID = "OID";
 
             ///<summary></summary>
@@ -330,6 +347,9 @@ namespace ESB.Core.Entity
 
         /// <summary></summary>
         String QueueCenterUri { get; set; }
+
+        /// <summary></summary>
+        String BusinessID { get; set; }
 
         /// <summary></summary>
         String OID { get; set; }

@@ -78,6 +78,7 @@
     <Content Include="BasicService\AuditService.asmx" />
     <Content Include="BasicService\ExceptionService.asmx" />
     <Content Include="BasicService\ContractSerivce.asmx" />
+    <Content Include="BasicService\MonitorStatService.asmx" />
     <Content Include="BasicService\SystemSettingService.asmx" />
     <Content Include="BasicService\UddiService.asmx" />
     <Content Include="ClearAssemblyCache.aspx" />
@@ -103,6 +104,10 @@
     </Compile>
     <Compile Include="BasicService\ContractSerivce.asmx.cs">
       <DependentUpon>ContractSerivce.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BasicService\MonitorStatService.asmx.cs">
+      <DependentUpon>MonitorStatService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BasicService\SystemSettingService.asmx.cs">

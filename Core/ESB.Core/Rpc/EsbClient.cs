@@ -210,7 +210,7 @@ namespace ESB.Core.Rpc
                     ESB.Core.Schema.服务响应 res = new Schema.服务响应() { 消息内容 = message };
                     callState.CallBeginTime = callBeginTime;
                     callState.CallEndTime = callEndTime;
-                    LogUtil.AddAuditLog(1, callState.Binding, callState, "<来自缓存>" + message, callState.Request, 1);
+                    LogUtil.AddAuditLog(1, callState.Binding, callState, message, callState.Request, 1);
 
                     return res;
                 }

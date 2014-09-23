@@ -103,6 +103,21 @@ namespace ESB.Core.Entity
                 return _Default;
             }
         }
+
+        /// <summary>
+        /// 缓存Key的数量
+        /// </summary>
+        /// <returns></returns>
+        public Int32 CacheKeyNum
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 缓存命中率
+        /// </summary>
+        public float CacheHitRate { get; set; }
         #endregion
 
         #region 扩展查询﻿
@@ -114,6 +129,21 @@ namespace ESB.Core.Entity
         public static EntityList<TEntity> FindByServiceID(String servcieID)
         {
             return FindAll(_.ServiceID, servcieID);
+        }
+
+        /// <summary>
+        /// 查找所有缓存时间大于0的服务配置文件
+        /// </summary>
+        /// <returns></returns>
+        public static EntityList<TEntity> FindAllCachedService()
+        {
+            var exp = new WhereExpression();
+            exp &= _.CacheDuration > 0;
+
+            var expOrder = new OrderExpression();
+            expOrder &= _.ServiceName.Asc() & _.MethodName.Asc();
+
+            return FindAll(exp, expOrder, null, 0, 0);
         }
         #endregion
 

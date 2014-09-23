@@ -31,7 +31,7 @@
       <Description>
       </Description>
     </Demo>
-    <Demo Text="服务注册" NavigateUrl="~/UDDI/ServiceReg.aspx" Title="企业服务总线 - 服务注册">
+    <Demo Text="服务注册配置" NavigateUrl="~/UDDI/ServiceReg.aspx" Title="企业服务总线 - 服务注册配置">
       <Description>
       </Description>
     </Demo>
@@ -116,6 +116,10 @@
             </Description>
         </Demo>
         <Demo Text="注册中心详情" NavigateUrl="~/Security/RegistryCenterInfo.aspx" Title="企业服务总线 - 注册中心详情">
+            <Description>
+            </Description>
+        </Demo>
+        <Demo Text="缓存管理" NavigateUrl="~/Security/CacheList.aspx" Title="企业服务总线 - 缓存管理">
             <Description>
             </Description>
         </Demo>

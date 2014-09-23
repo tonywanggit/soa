@@ -170,6 +170,15 @@ namespace ESB.CallCenter.BasicService
             return ServiceConfig.FindByServiceID(serviceID);
         }
 
+        [WebMethod(Description = "获取缓存的服务配置信息")]
+        public List<EsbView_ServiceConfig> GetCachedServiceConfig(String businessID)
+        {
+            if(String.IsNullOrEmpty(businessID))
+                return EsbView_ServiceConfig.FindAllCachedService();
+            else
+                return EsbView_ServiceConfig.FindAllCachedService().FindAll(x=>x.BusinessID == businessID);
+        }
+
         [WebMethod(Description = "新增服务配置")]
         public void InsertServiceConfig(ServiceConfig entity)
         {

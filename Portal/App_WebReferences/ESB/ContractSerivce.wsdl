@@ -380,6 +380,7 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityOfServiceConfig">
             <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ServcieName" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
@@ -396,6 +397,59 @@
         </s:complexContent>
       </s:complexType>
       <s:complexType name="EntityOfServiceConfig">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetCachedServiceConfig">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCachedServiceConfigResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCachedServiceConfigResult" type="tns:ArrayOfEsbView_ServiceConfig" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEsbView_ServiceConfig">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EsbView_ServiceConfig" nillable="true" type="tns:EsbView_ServiceConfig" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EsbView_ServiceConfig">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EsbView_ServiceConfigOfEsbView_ServiceConfig" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EsbView_ServiceConfigOfEsbView_ServiceConfig">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfEsbView_ServiceConfig">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CacheKeyNum" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CacheHitRate" type="s:float" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="QueueCenterUri" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsAudit" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Timeout" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CacheDuration" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="QueueCenter" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="HBPolicy" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="WhiteList" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BlackList" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MockObject" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfEsbView_ServiceConfig">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityBase" />
         </s:complexContent>
@@ -546,6 +600,12 @@
   <wsdl:message name="GetServiceConfigSoapOut">
     <wsdl:part name="parameters" element="tns:GetServiceConfigResponse" />
   </wsdl:message>
+  <wsdl:message name="GetCachedServiceConfigSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCachedServiceConfig" />
+  </wsdl:message>
+  <wsdl:message name="GetCachedServiceConfigSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCachedServiceConfigResponse" />
+  </wsdl:message>
   <wsdl:message name="InsertServiceConfigSoapIn">
     <wsdl:part name="parameters" element="tns:InsertServiceConfig" />
   </wsdl:message>
@@ -659,6 +719,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取服务配置信息</wsdl:documentation>
       <wsdl:input message="tns:GetServiceConfigSoapIn" />
       <wsdl:output message="tns:GetServiceConfigSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCachedServiceConfig">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取缓存的服务配置信息</wsdl:documentation>
+      <wsdl:input message="tns:GetCachedServiceConfigSoapIn" />
+      <wsdl:output message="tns:GetCachedServiceConfigSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="InsertServiceConfig">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增服务配置</wsdl:documentation>
@@ -842,6 +907,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetServiceConfig">
       <soap:operation soapAction="http://esb.com/GetServiceConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCachedServiceConfig">
+      <soap:operation soapAction="http://esb.com/GetCachedServiceConfig" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1043,6 +1117,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetServiceConfig">
       <soap12:operation soapAction="http://esb.com/GetServiceConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCachedServiceConfig">
+      <soap12:operation soapAction="http://esb.com/GetCachedServiceConfig" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -54,6 +54,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="InvokeID" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="ConsumerIP" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsCache" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>

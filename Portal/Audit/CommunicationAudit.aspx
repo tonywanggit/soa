@@ -79,7 +79,7 @@
                <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="50">
                     <EditButton Visible="True" Text="查看" />
                 </dxwgv:GridViewCommandColumn>
-                <dxwgv:GridViewDataColumn FieldName="BusinessName" Caption="调用系统" VisibleIndex="1" ReadOnly="true" Width="180">
+                <dxwgv:GridViewDataColumn FieldName="BusinessName" Caption="调用系统" VisibleIndex="1" ReadOnly="true" >
                     <EditFormSettings VisibleIndex="7" Visible="true" />
                 </dxwgv:GridViewDataColumn>
                 <dxwgv:GridViewDataColumn FieldName="ServiceName" VisibleIndex="2" Caption="调用服务" ReadOnly="true">
@@ -125,6 +125,15 @@
                 <dxwgv:GridViewDataTextColumn FieldName="ConsumerIP" Caption="消费者IP" Visible="true" ReadOnly="true">
                     <EditFormSettings VisibleIndex="12" Visible="true"/>
                 </dxwgv:GridViewDataTextColumn>
+                <dxwgv:GridViewDataComboBoxColumn FieldName="IsCache" Caption="命中缓存" ReadOnly="true" CellStyle-HorizontalAlign="Center">
+                    <EditFormSettings Visible="false" />
+                    <PropertiesComboBox>
+                        <Items>
+                            <dxe:ListEditItem Value="0" Text="" />
+                            <dxe:ListEditItem Value="1" Text="*" />
+                        </Items>
+                    </PropertiesComboBox>
+                </dxwgv:GridViewDataComboBoxColumn>
             </Columns>
             <Templates>
                 <EditForm>

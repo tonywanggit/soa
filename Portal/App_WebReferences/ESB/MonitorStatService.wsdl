@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://esb.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://esb.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://esb.com">
+      <s:element name="GetMonitorServiceStatic">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMonitorServiceStaticResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMonitorServiceStaticResult" type="tns:ArrayOfServiceMonitor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfServiceMonitor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceMonitor" nillable="true" type="tns:ServiceMonitor" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceMonitor">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ServiceMonitorOfServiceMonitor" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiceMonitorOfServiceMonitor">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfServiceMonitor">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MonitorStamp" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BindingAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConsumerIP" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CallSuccessNum" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CallFailureNum" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="InBytes" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="OutBytes" type="s:long" />
+              <s:element minOccurs="1" maxOccurs="1" name="CallLevel1Num" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CallLevel2Num" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CallLevel3Num" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TpsPeak" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="CallHitCacheNum" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfServiceMonitor">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityBase" abstract="true" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMonitorServiceStaticSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMonitorServiceStatic" />
+  </wsdl:message>
+  <wsdl:message name="GetMonitorServiceStaticSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMonitorServiceStaticResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MonitorStatServiceSoap">
+    <wsdl:operation name="GetMonitorServiceStatic">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取通讯日志的统计信息</wsdl:documentation>
+      <wsdl:input message="tns:GetMonitorServiceStaticSoapIn" />
+      <wsdl:output message="tns:GetMonitorServiceStaticSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MonitorStatServiceSoap" type="tns:MonitorStatServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMonitorServiceStatic">
+      <soap:operation soapAction="http://esb.com/GetMonitorServiceStatic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MonitorStatServiceSoap12" type="tns:MonitorStatServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMonitorServiceStatic">
+      <soap12:operation soapAction="http://esb.com/GetMonitorServiceStatic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MonitorStatService">
+    <wsdl:port name="MonitorStatServiceSoap" binding="tns:MonitorStatServiceSoap">
+      <soap:address location="http://192.168.56.1/CallCenter/BasicService/MonitorStatService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MonitorStatServiceSoap12" binding="tns:MonitorStatServiceSoap12">
+      <soap12:address location="http://192.168.56.1/CallCenter/BasicService/MonitorStatService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

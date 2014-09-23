@@ -184,6 +184,18 @@ namespace ESB.Core.Entity
             get { return _TpsPeak; }
             set { if (OnPropertyChanging(__.TpsPeak, value)) { _TpsPeak = value; OnPropertyChanged(__.TpsPeak); } }
         }
+
+        private Int32 _CallHitCacheNum;
+        /// <summary>命中缓存的调用次数</summary>
+        [DisplayName("命中缓存的调用次数")]
+        [Description("命中缓存的调用次数")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(15, "CallHitCacheNum", "命中缓存的调用次数", "0", "int", 10, 0, false)]
+        public virtual Int32 CallHitCacheNum
+        {
+            get { return _CallHitCacheNum; }
+            set { if (OnPropertyChanging(__.CallHitCacheNum, value)) { _CallHitCacheNum = value; OnPropertyChanged(__.CallHitCacheNum); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -200,20 +212,21 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.OID : return _OID;
-                    case __.MonitorStamp : return _MonitorStamp;
-                    case __.ServiceName : return _ServiceName;
-                    case __.MethodName : return _MethodName;
-                    case __.BindingAddress : return _BindingAddress;
-                    case __.ConsumerIP : return _ConsumerIP;
-                    case __.CallSuccessNum : return _CallSuccessNum;
-                    case __.CallFailureNum : return _CallFailureNum;
-                    case __.InBytes : return _InBytes;
-                    case __.OutBytes : return _OutBytes;
-                    case __.CallLevel1Num : return _CallLevel1Num;
-                    case __.CallLevel2Num : return _CallLevel2Num;
-                    case __.CallLevel3Num : return _CallLevel3Num;
-                    case __.TpsPeak : return _TpsPeak;
+                    case __.OID: return _OID;
+                    case __.MonitorStamp: return _MonitorStamp;
+                    case __.ServiceName: return _ServiceName;
+                    case __.MethodName: return _MethodName;
+                    case __.BindingAddress: return _BindingAddress;
+                    case __.ConsumerIP: return _ConsumerIP;
+                    case __.CallSuccessNum: return _CallSuccessNum;
+                    case __.CallFailureNum: return _CallFailureNum;
+                    case __.InBytes: return _InBytes;
+                    case __.OutBytes: return _OutBytes;
+                    case __.CallLevel1Num: return _CallLevel1Num;
+                    case __.CallLevel2Num: return _CallLevel2Num;
+                    case __.CallLevel3Num: return _CallLevel3Num;
+                    case __.TpsPeak: return _TpsPeak;
+                    case __.CallHitCacheNum: return _CallHitCacheNum;
                     default: return base[name];
                 }
             }
@@ -221,20 +234,21 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.OID : _OID = Convert.ToString(value); break;
-                    case __.MonitorStamp : _MonitorStamp = Convert.ToDateTime(value); break;
-                    case __.ServiceName : _ServiceName = Convert.ToString(value); break;
-                    case __.MethodName : _MethodName = Convert.ToString(value); break;
-                    case __.BindingAddress : _BindingAddress = Convert.ToString(value); break;
-                    case __.ConsumerIP : _ConsumerIP = Convert.ToString(value); break;
-                    case __.CallSuccessNum : _CallSuccessNum = Convert.ToInt32(value); break;
-                    case __.CallFailureNum : _CallFailureNum = Convert.ToInt32(value); break;
-                    case __.InBytes : _InBytes = Convert.ToInt64(value); break;
-                    case __.OutBytes : _OutBytes = Convert.ToInt64(value); break;
-                    case __.CallLevel1Num : _CallLevel1Num = Convert.ToInt32(value); break;
-                    case __.CallLevel2Num : _CallLevel2Num = Convert.ToInt32(value); break;
-                    case __.CallLevel3Num : _CallLevel3Num = Convert.ToInt32(value); break;
-                    case __.TpsPeak : _TpsPeak = Convert.ToDouble(value); break;
+                    case __.OID: _OID = Convert.ToString(value); break;
+                    case __.MonitorStamp: _MonitorStamp = Convert.ToDateTime(value); break;
+                    case __.ServiceName: _ServiceName = Convert.ToString(value); break;
+                    case __.MethodName: _MethodName = Convert.ToString(value); break;
+                    case __.BindingAddress: _BindingAddress = Convert.ToString(value); break;
+                    case __.ConsumerIP: _ConsumerIP = Convert.ToString(value); break;
+                    case __.CallSuccessNum: _CallSuccessNum = Convert.ToInt32(value); break;
+                    case __.CallFailureNum: _CallFailureNum = Convert.ToInt32(value); break;
+                    case __.InBytes: _InBytes = Convert.ToInt64(value); break;
+                    case __.OutBytes: _OutBytes = Convert.ToInt64(value); break;
+                    case __.CallLevel1Num: _CallLevel1Num = Convert.ToInt32(value); break;
+                    case __.CallLevel2Num: _CallLevel2Num = Convert.ToInt32(value); break;
+                    case __.CallLevel3Num: _CallLevel3Num = Convert.ToInt32(value); break;
+                    case __.TpsPeak: _TpsPeak = Convert.ToDouble(value); break;
+                    case __.CallHitCacheNum: _CallHitCacheNum = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -287,6 +301,9 @@ namespace ESB.Core.Entity
             ///<summary>统计时间内的TPS峰值</summary>
             public static readonly Field TpsPeak = FindByName(__.TpsPeak);
 
+            ///<summary>命中缓存的调用次数</summary>
+            public static readonly Field CallHitCacheNum = FindByName(__.CallHitCacheNum);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -334,6 +351,9 @@ namespace ESB.Core.Entity
 
             ///<summary>统计时间内的TPS峰值</summary>
             public const String TpsPeak = "TpsPeak";
+
+            ///<summary>命中缓存的调用次数</summary>
+            public const String CallHitCacheNum = "CallHitCacheNum";
 
         }
         #endregion
@@ -384,6 +404,9 @@ namespace ESB.Core.Entity
 
         /// <summary>统计时间内的TPS峰值</summary>
         Double TpsPeak { get; set; }
+
+        /// <summary>命中缓存的调用次数</summary>
+        Int32 CallHitCacheNum { get; set; }
         #endregion
 
         #region 获取/设置 字段值

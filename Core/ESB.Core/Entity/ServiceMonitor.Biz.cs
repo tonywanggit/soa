@@ -154,6 +154,20 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 业务
+        /// <summary>
+        /// 根据服务和方法名称统计监控数据
+        /// </summary>
+        /// <returns></returns>
+        public static List<TEntity> GetMonitorServiceStatic()
+        {
+            var whereExp = new WhereExpression();
+            whereExp &= _.MonitorStamp < DateTime.Now & _.MonitorStamp > DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+
+            String where = whereExp + " Group by " + _.ServiceName + ", " + _.MethodName;
+            String select = " ServiceName, MethodName, SUM(CallSuccessNum) AS CallSuccessNum, SUM(CallHitCacheNum) AS CallHitCacheNum ";
+
+            return FindAll(where, null, select, 0, 0);
+        }
         #endregion
     }
 }
