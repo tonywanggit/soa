@@ -13,6 +13,7 @@ using ESB.Core.Monitor;
 using NewLife.Threading;
 using System.Diagnostics;
 using ESB.Core.Entity;
+using ESB.Core.Cache;
 
 namespace ESB.Core
 {
@@ -126,9 +127,32 @@ namespace ESB.Core
         }
 
         /// <summary>
+        /// 缓存管理器
+        /// </summary>
+        private CacheManager m_CacheManager = null;
+        /// <summary>
+        /// 对内部类公开缓存管理器
+        /// </summary>
+        internal CacheManager CacheManager
+        {
+            get { return m_CacheManager; }
+        }
+
+        /// <summary>
         /// ESBProxy代理类的版本
         /// </summary>
         internal String Version { get; set; }
+
+        /// <summary>
+        /// 获取到本机的IP地址
+        /// </summary>
+        internal String ClientIP
+        {
+            get
+            {
+                return m_ConfigurationManager.LocalIP;
+            }
+        }
 
         /// <summary>
         /// ESBProxy状态枚举值
@@ -196,6 +220,10 @@ namespace ESB.Core
             m_MessageQueueClient = new MessageQueueClient(this);
             m_MessageQueueClient.ConnectAsync();
 
+            //--STEP.5.连接缓存中心
+            m_CacheManager = new CacheManager(this);
+            m_CacheManager.ConnectAsync();
+
 
             stopWatch.Stop();
             XTrace.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds); ;
@@ -232,7 +260,7 @@ namespace ESB.Core
             ServiceItem si = GetServiceItem(serviceName, version);
 
             //--从ESBConfig中获取到服务版本信息
-            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName);
+            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName, methodName);
             String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, si.Version, sc, invokeParam).消息内容;
 
             return msg;
@@ -298,7 +326,7 @@ namespace ESB.Core
             ServiceItem si = GetServiceItem(serviceName, version);
 
             //--从ESBConfig中获取到服务配置信息
-            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName);
+            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName, methodName);
 
             if (String.IsNullOrWhiteSpace(sc.QueueCenterUri)) 
                 throw new Exception("服务需要在管理中心配置队列服务地址才能通过队列调用！");

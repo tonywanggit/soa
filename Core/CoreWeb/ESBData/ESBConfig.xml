@@ -8,6 +8,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>CB0DC8ED-B208-4084-AEC1-8C910E091C78</TemplateID>
+          <ServiceID>42BDB21A-C262-46EC-9AA0-A7E4B6AFE30A</ServiceID>
           <Address>http://192.168.56.1/ProviderService/Composit/ESB_Composit.ashx</Address>
           <Description>ESB组合服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -23,6 +24,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>95654d8e-1e5b-4be4-9628-ee30059462c5</TemplateID>
+          <ServiceID>85889e0f-c0b2-480d-8755-ef52a53d25ed</ServiceID>
           <Address>http://192.168.56.1/ProviderService/Handler/ESB_QUEUE_20.ashx</Address>
           <Description>20s的延时地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -38,6 +40,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>1df2e46b-6037-4dda-9d3c-52e2cad29be7</TemplateID>
+          <ServiceID>2ab0a467-fc6e-4741-ba06-ae843755063e</ServiceID>
           <Address>11</Address>
           <Description>99999</Description>
           <BindingStatus>0</BindingStatus>
@@ -59,6 +62,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>17C451DA-558F-438A-A22E-28BBBEC6F9F5</TemplateID>
+          <ServiceID>912ECE57-B8EC-4756-9B0F-5D1DB4131960</ServiceID>
           <Address>http://localhost/OAWeb/EmailService.asmx</Address>
           <Description>OA邮件服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -74,6 +78,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>1DD4B44C-072C-4F80-9C14-670F65E82D13</TemplateID>
+          <ServiceID>A736D31D-C7A2-48A3-B7C0-ADF07B2C42E5</ServiceID>
           <Address>http://192.168.56.1/ProviderService/Wcf/ESB_WCF.svc</Address>
           <Description>WCF绑定地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -89,6 +94,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>0F6A276C-5733-4FED-8CE9-7FBAE408C5C6</TemplateID>
+          <ServiceID>730B6A47-93E1-4763-8E07-2A7A8C6E9351</ServiceID>
           <Address>http://192.168.56.1/ServiceStackDemo</Address>
           <Description>ServiceStack演示地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -104,6 +110,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>401F6E05-BE6A-4D8A-8EA3-0422C04747BD</TemplateID>
+          <ServiceID>1A5F1711-1602-4781-9234-48B26EE09679</ServiceID>
           <Address>http://10.100.20.180:8016/</Address>
           <Description>微信商城服务</Description>
           <BindingStatus>0</BindingStatus>
@@ -119,6 +126,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>13EE831C-6F0C-4E9F-9D05-5F0F3431A052</TemplateID>
+          <ServiceID>1BA3C30D-0F0D-4E17-BFFD-7D6B92F644B3</ServiceID>
           <Address>http://192.168.56.1/ProviderService/Composit/ESB_COM_WS.asmx</Address>
           <Description>ESB二级组合服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -134,6 +142,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>b55037f8-8617-43fb-a3cf-0163e8a82248</TemplateID>
+          <ServiceID>824b149d-9c06-446c-807c-24b598cd4f53</ServiceID>
           <Address>http://mb.com/1</Address>
           <Description>1</Description>
           <BindingStatus>0</BindingStatus>
@@ -149,6 +158,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>18b4cf3e-421e-4532-ba1e-c55593bb0f28</TemplateID>
+          <ServiceID>4ebf7e05-cea0-4ec7-9d2d-132387c08f24</ServiceID>
           <Address>http://10.100.200.38/dubbo-json/com.tony.service.TestService</Address>
           <Description>Dubbo测试服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -164,6 +174,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>5DB79830-47ED-49AB-8E14-3324E2B3A9DF</TemplateID>
+          <ServiceID>10ECCB0F-260B-41BE-BF93-79BB80A74A36</ServiceID>
           <Address>http://192.168.56.1/ProviderService/WebService/ESB_WS.asmx</Address>
           <Description>WebService地址绑定</Description>
           <BindingStatus>0</BindingStatus>
@@ -179,6 +190,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>c623022b-9bf0-4146-85b0-74e775f83091</TemplateID>
+          <ServiceID>E5AC5B54-3F11-4D32-98B5-0C7C76234985</ServiceID>
           <Address>http://192.168.56.1/ProviderService/Handler/ESB_ASHX.ashx</Address>
           <Description>ASHX服务地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -194,6 +206,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>695d1785-5bb8-43e5-b606-95a1618a7bfc</TemplateID>
+          <ServiceID>c0d33766-f959-4409-ab6a-48b55495c496</ServiceID>
           <Address>http://192.168.56.1/ProviderService/Handler/ESB_QUEUE_10.ashx</Address>
           <Description>延迟10s的服务</Description>
           <BindingStatus>0</BindingStatus>
@@ -209,6 +222,7 @@
       <Binding>
         <BindingTemplate>
           <TemplateID>4936E3FA-BBE0-40A1-AF65-35C3BA5E0A6A</TemplateID>
+          <ServiceID>02837C4A-85D0-45CA-9D18-4ACDB84A40E2</ServiceID>
           <Address>http://192.168.56.1/HelloWebAPI/api/products</Address>
           <Description>产品目录地址</Description>
           <BindingStatus>0</BindingStatus>
@@ -220,12 +234,20 @@
   </Service>
   <ServiceConfig>
     <EsbView_ServiceConfig>
+      <ServiceName>WXSC_WeiXinServiceForApp</ServiceName>
+      <MethodName>*</MethodName>
+      <IsAudit>1</IsAudit>
+      <Timeout>100000</Timeout>
+      <CacheDuration>3000</CacheDuration>
+      <HBPolicy>1</HBPolicy>
+    </EsbView_ServiceConfig>
+    <EsbView_ServiceConfig>
       <ServiceName>ESB_QUEUE_20</ServiceName>
       <QueueCenterUri>192.168.56.1_1</QueueCenterUri>
       <MethodName>*</MethodName>
       <IsAudit>1</IsAudit>
       <Timeout>100000</Timeout>
-      <CacheDuration>0</CacheDuration>
+      <CacheDuration>200</CacheDuration>
       <HBPolicy>1</HBPolicy>
     </EsbView_ServiceConfig>
     <EsbView_ServiceConfig>
@@ -235,6 +257,14 @@
       <IsAudit>1</IsAudit>
       <Timeout>100000</Timeout>
       <CacheDuration>0</CacheDuration>
+      <HBPolicy>1</HBPolicy>
+    </EsbView_ServiceConfig>
+    <EsbView_ServiceConfig>
+      <ServiceName>ESB_ASHX</ServiceName>
+      <MethodName>*</MethodName>
+      <IsAudit>1</IsAudit>
+      <Timeout>100000</Timeout>
+      <CacheDuration>200</CacheDuration>
       <HBPolicy>1</HBPolicy>
     </EsbView_ServiceConfig>
   </ServiceConfig>

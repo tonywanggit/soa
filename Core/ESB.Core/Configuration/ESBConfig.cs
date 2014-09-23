@@ -78,14 +78,22 @@ namespace ESB.Core.Configuration
         /// 获取到服务配置信息
         /// </summary>
         /// <param name="serviceName"></param>
+        /// <param name="methodName"></param>
         /// <returns></returns>
-        public EsbView_ServiceConfig GetServiceConfig(String serviceName)
+        public EsbView_ServiceConfig GetServiceConfig(String serviceName, String methodName)
         {
             if (ServiceConfig == null || ServiceConfig.Count == 0)
                 return EsbView_ServiceConfig.Default;
             else
             {
-                EsbView_ServiceConfig sc = ServiceConfig.Find(x => x.ServiceName == serviceName);
+                //--首先查找是否存在方法上的配置信息
+                EsbView_ServiceConfig sc = ServiceConfig.Find(x => x.ServiceName == serviceName && x.MethodName == methodName);
+
+                //--如果不存在方法上的配置信息，则查看是否有服务上的配置信息
+                if (sc == null)
+                    sc = ServiceConfig.Find(x => x.ServiceName == serviceName && x.MethodName == "*");
+
+                //--如果都没有找到，则返回默认配置
                 if (sc == null)
                     return EsbView_ServiceConfig.Default;
                 else

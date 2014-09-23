@@ -10,6 +10,7 @@ using ESB.Core.Monitor;
 using System.Threading;
 using ESB.TestFramework.WinForm;
 using System.Windows.Forms;
+using ESB.TestFramework.Test;
 
 namespace ESB.TestFramework
 {
@@ -18,6 +19,10 @@ namespace ESB.TestFramework
         static void Main(string[] args)
         {
             //TestInvokeQueue();
+
+            RedisTest.DoTest();
+
+            //MD5Test.DoTest();
 
             //ESBProxy esbProxy = ESBProxy.GetInstance();
 
@@ -33,14 +38,14 @@ namespace ESB.TestFramework
             //TestEsbProxy("ESB_ServiceStack", "Hello", @"{""Name""=""Tony""}", 10, 2);
 
             //TestEsbProxy("ESB_ServiceStack", "POST:XML:Hello", @"<Hello xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.datacontract.org/2004/07/ESB.ServiceStack.ServiceModel""><Name>Ronger</Name></Hello>");
-            //TestEsbProxy("WXSC_WeiXinServiceForApp", "GET:XML:CollocationDetailFilter", "collocationId=11");
+            //TestEsbProxy("WXSC_WeiXinServiceForApp", "GET:XML:CollocationDetailFilter", "collocationId=11", 10);
 
             //TestEsbProxy("ESB_COM_WS");
 
             //TestEsbProxy("BG_DUBBO", "GET:histr", "['中国1?=*&人','2']");
             //TestEsbProxy("BG_DUBBO", "histr", "['1=?*/&==\\/%中国2','2']");
 
-            TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 1);
+            //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 10);
 
             //TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 1);
 

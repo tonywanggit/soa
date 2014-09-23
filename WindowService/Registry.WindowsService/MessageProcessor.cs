@@ -151,9 +151,11 @@ namespace Registry.WindowsService
 
                 foreach (var refService in consumerConfig.Reference)
                 {
-                    EsbView_ServiceConfig sc = lstSC.Find(x => x.ServiceName == refService.ServiceName);
-                    if (sc != null)
+                    List<EsbView_ServiceConfig> scs = lstSC.FindAll(x => x.ServiceName == refService.ServiceName);
+                    foreach (EsbView_ServiceConfig sc in scs)
+                    {
                         esbConfig.ServiceConfig.Add(sc);
+                    }
                 }
             }
             else if (regClient.RegistryClientType == CometClientType.CallCenter

@@ -352,6 +352,18 @@ namespace ESB.Core.Entity
             get { return _Version; }
             set { if (OnPropertyChanging(__.Version, value)) { _Version = value; OnPropertyChanged(__.Version); } }
         }
+
+        private Int32 _IsCache;
+        /// <summary>是否为缓存调用：0-否，1-是，用于统计缓存命中率</summary>
+        [DisplayName("是否为缓存调用：0-否，1-是，用于统计缓存命中率")]
+        [Description("是否为缓存调用：0-否，1-是，用于统计缓存命中率")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(29, "IsCache", "是否为缓存调用：0-否，1-是，用于统计缓存命中率", "0", "int", 10, 0, false)]
+        public virtual Int32 IsCache
+        {
+            get { return _IsCache; }
+            set { if (OnPropertyChanging(__.IsCache, value)) { _IsCache = value; OnPropertyChanged(__.IsCache); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -396,6 +408,7 @@ namespace ESB.Core.Entity
                     case __.InvokeID: return _InvokeID;
                     case __.ConsumerIP: return _ConsumerIP;
                     case __.Version: return _Version;
+                    case __.IsCache: return _IsCache;
                     default: return base[name];
                 }
             }
@@ -431,6 +444,7 @@ namespace ESB.Core.Entity
                     case __.InvokeID: _InvokeID = Convert.ToString(value); break;
                     case __.ConsumerIP: _ConsumerIP = Convert.ToString(value); break;
                     case __.Version: _Version = Convert.ToInt32(value); break;
+                    case __.IsCache: _IsCache = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -525,6 +539,9 @@ namespace ESB.Core.Entity
             ///<summary>服务版本</summary>
             public static readonly Field Version = FindByName(__.Version);
 
+            ///<summary>是否为缓存调用：0-否，1-是，用于统计缓存命中率</summary>
+            public static readonly Field IsCache = FindByName(__.IsCache);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -614,6 +631,9 @@ namespace ESB.Core.Entity
 
             ///<summary>服务版本</summary>
             public const String Version = "Version";
+
+            ///<summary>是否为缓存调用：0-否，1-是，用于统计缓存命中率</summary>
+            public const String IsCache = "IsCache";
 
         }
         #endregion
@@ -706,6 +726,9 @@ namespace ESB.Core.Entity
 
         /// <summary>服务版本</summary>
         Int32 Version { get; set; }
+
+        /// <summary>是否为缓存调用：0-否，1-是，用于统计缓存命中率</summary>
+        Int32 IsCache { get; set; }
         #endregion
 
         #region 获取/设置 字段值

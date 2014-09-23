@@ -16,6 +16,7 @@ using NewLife.Threading;
 using NewLife.Log;
 using ESB.Core.Monitor;
 using ESB.Core.Configuration;
+using NewLife.Security;
 
 namespace ESB.Core.Rpc
 {
@@ -24,7 +25,6 @@ namespace ESB.Core.Rpc
     /// </summary>
     internal class EsbClient
     {
-
         /// <summary>
         /// 动态调用WebService主函数
         /// </summary>
@@ -187,6 +187,45 @@ namespace ESB.Core.Rpc
         /// <param name="state"></param>
         /// <returns></returns>
         private static ESB.Core.Schema.服务响应 CallService(CallState callState)
+        {
+            ESBProxy esbProxy = ESBProxy.GetInstance();
+
+            //--如果缓存失效时间大于0，则优先从缓存中获取数据
+            if (callState.ServiceConfig.CacheDuration > 0)
+            {
+                String key = String.Format("MBSOA:{0}:{1}:{2}", callState.Request.服务名称, callState.Request.方法名称, DataHelper.Hash(callState.Request.消息内容));
+                DateTime callBeginTime = DateTime.Now;
+                String message = esbProxy.CacheManager.GetCache(key);
+                DateTime callEndTime = DateTime.Now;
+
+                if (String.IsNullOrEmpty(message))
+                {
+                    ESB.Core.Schema.服务响应 res = CallProxy(callState);
+                    esbProxy.CacheManager.SetCache(key, res.消息内容, callState.ServiceConfig.CacheDuration);
+
+                    return res;
+                }
+                else
+                {
+                    ESB.Core.Schema.服务响应 res = new Schema.服务响应() { 消息内容 = message };
+                    callState.CallBeginTime = callBeginTime;
+                    callState.CallEndTime = callEndTime;
+                    LogUtil.AddAuditLog(1, callState.Binding, callState, "<来自缓存>" + message, callState.Request, 1);
+
+                    return res;
+                }
+            }
+            else{
+                return CallProxy(callState);
+            }
+        }
+
+        /// <summary>
+        /// 根据绑定的不同类型调用相关代理获取服务返回值
+        /// </summary>
+        /// <param name="callState"></param>
+        /// <returns></returns>
+        private static ESB.Core.Schema.服务响应 CallProxy(CallState callState)
         {
             switch (callState.Binding.BindingType)
             {

@@ -19,7 +19,8 @@ namespace ESB.Core.Rpc
             , String address
             , CallState callState
             , String message
-            , ESB.Core.Schema.服务请求 request)
+            , ESB.Core.Schema.服务请求 request
+            , Int32 isCache = 0)
         {
             callState.RequestEndTime = DateTime.Now;
             TimeSpan ReqTimeSpan = callState.RequestEndTime.Subtract(callState.RequestBeginTime);
@@ -79,11 +80,12 @@ namespace ESB.Core.Rpc
             , BindingTemplate binding
             , CallState callState
             , String message
-            , ESB.Core.Schema.服务请求 request)
+            , ESB.Core.Schema.服务请求 request
+            , Int32 isCache = 0)
         {
             return AddAuditLog(status, binding.TemplateID, binding.ServiceID, binding.Address
              , callState
-             , message, request);
+             , message, request, isCache);
         }
 
         /// <summary>
