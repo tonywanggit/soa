@@ -197,6 +197,10 @@
       <DependentUpon>ESB_WS.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WebService\ESB_WS_1.asmx.cs">
+      <DependentUpon>ESB_WS_1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -274,6 +278,7 @@
     <Content Include="Composit\ESB_COMPOSIT.ashx" />
     <Content Include="Handler\ESB_QUEUE_10.ashx" />
     <Content Include="Handler\ESB_QUEUE_20.ashx" />
+    <Content Include="WebService\ESB_WS_1.asmx" />
     <None Include="Properties\PublishProfiles\ESB_ProviderService.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />

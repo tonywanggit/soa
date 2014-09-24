@@ -17,6 +17,7 @@ using NewLife.Log;
 using ESB.Core.Monitor;
 using ESB.Core.Configuration;
 using NewLife.Security;
+using ESB.Core.Cluster;
 
 namespace ESB.Core.Rpc
 {
@@ -44,61 +45,27 @@ namespace ESB.Core.Rpc
             //--验证并预处理请求参数
             InvalidRequest(request);
 
+            //--获取跟踪上下文
             ESBTraceContext esbTraceContext = GetEsbTraceContext();
 
-
             //--获取到请求对应服务的绑定
-            //EntityList<BindingTemplate> bindings = GetBindings(request);
+            BindingTemplate binding = LoadBalance.GetBinding(bindings, serviceConfig.HBPolicy);
 
-            //--如果只有一个绑定，且需要返回结果
-            if (bindings.Count == 1 && needResponse == true)
+            //--构造调用参数
+            CallState state = new CallState()
             {
-                CallState state = new CallState()
-                {
-                    Binding = bindings[0],
-                    ServiceConfig = serviceConfig,
-                    InvokeParam = invokeParam,
-                    Request = request,
-                    RequestBeginTime = request.请求时间,
-                    RequestEndTime = receiveDateTime,
-                    TraceContext = esbTraceContext,
-                    ServiceVersion = version,
-                    MessageID = Guid.NewGuid().ToString()
-                };
+                Binding = binding,
+                ServiceConfig = serviceConfig,
+                InvokeParam = invokeParam,
+                Request = request,
+                RequestBeginTime = request.请求时间,
+                RequestEndTime = receiveDateTime,
+                TraceContext = esbTraceContext,
+                ServiceVersion = version,
+                MessageID = Guid.NewGuid().ToString()
+            };
 
-                return CallService(state);
-            }
-            else //--此处实现软负载均衡、队列调用等一系列功能
-            {
-                CallState state = new CallState()
-                {
-                    Binding = bindings[0],
-                    ServiceConfig = serviceConfig,
-                    Request = request,
-                    RequestBeginTime = request.请求时间,
-                    RequestEndTime = receiveDateTime,
-                    TraceContext = esbTraceContext,
-                    ServiceVersion = version,
-                    MessageID = Guid.NewGuid().ToString()
-                };
-
-                return CallService(state);
-
-                //foreach (BindingTemplate binding in bindings)
-                //{
-                //    CallState state = new CallState()
-                //    {
-                //        Binding = binding,
-                //        Request = request,
-                //        RequestBeginTime = request.请求时间,
-                //        RequestEndTime = receiveDateTime,
-                //        TraceContext = esbTraceContext
-                //    };
-
-                //    ThreadPoolX.QueueUserWorkItem(() => CallService(state));
-                //}
-                //return GetMultiResponse();
-            }
+            return CallService(state);
         }
 
         /// <summary>

@@ -58,6 +58,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Cache\CacheManager.cs" />
+    <Compile Include="Cluster\LoadBalance.cs" />
     <Compile Include="Common\EsbConfig.cs" />
     <Compile Include="Common\Settings.cs" />
     <Compile Include="Common\UDDI对象.cs" />

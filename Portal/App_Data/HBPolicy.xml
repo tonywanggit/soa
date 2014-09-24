@@ -2,5 +2,4 @@
 <HBPolicy>
     <Item Text="随机" Value="0" />
     <Item Text="轮询" Value="1" />
-    <Item Text="最少并发" Value="2" />
 </HBPolicy>

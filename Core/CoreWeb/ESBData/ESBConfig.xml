@@ -181,6 +181,15 @@
           <BindingType>0</BindingType>
           <Version>1</Version>
         </BindingTemplate>
+        <BindingTemplate>
+          <TemplateID>8e8522c8-015b-42d5-9e20-293f1e9fee1d</TemplateID>
+          <ServiceID>10ECCB0F-260B-41BE-BF93-79BB80A74A36</ServiceID>
+          <Address>http://192.168.56.1/ProviderService/WebService/ESB_WS_1.asmx</Address>
+          <Description>用于测试软负载均衡</Description>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>0</BindingType>
+          <Version>1</Version>
+        </BindingTemplate>
       </Binding>
     </ServiceItem>
     <ServiceItem>
@@ -273,6 +282,19 @@
       <CacheDuration>200</CacheDuration>
       <QueueCenter>651bea34-1ef6-4099-8934-efda6ed0801d</QueueCenter>
       <HBPolicy>1</HBPolicy>
+    </EsbView_ServiceConfig>
+    <EsbView_ServiceConfig>
+      <CacheKeyNum>0</CacheKeyNum>
+      <CacheHitRate>0</CacheHitRate>
+      <ServiceName>ESB_WS</ServiceName>
+      <BusinessID>E7B6F9F0-E69E-4E86-B41D-C0D0692BE30A</BusinessID>
+      <OID>30f3e855-f6d0-445a-b38e-5909136845cd</OID>
+      <ServiceID>10ECCB0F-260B-41BE-BF93-79BB80A74A36</ServiceID>
+      <MethodName>*</MethodName>
+      <IsAudit>1</IsAudit>
+      <Timeout>100000</Timeout>
+      <CacheDuration>400</CacheDuration>
+      <HBPolicy>0</HBPolicy>
     </EsbView_ServiceConfig>
     <EsbView_ServiceConfig>
       <CacheKeyNum>0</CacheKeyNum>

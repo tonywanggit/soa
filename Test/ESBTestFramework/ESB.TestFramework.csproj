@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Test\ESBInvokeParam.cs" />
     <Compile Include="Test\MD5Test.cs" />
+    <Compile Include="Test\RandomTest.cs" />
     <Compile Include="Test\RedisTest.cs" />
     <Compile Include="Test\TestManager.cs" />
     <Compile Include="WinForm\MainForm.cs">
