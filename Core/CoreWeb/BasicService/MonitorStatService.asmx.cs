@@ -23,5 +23,11 @@ namespace ESB.CallCenter.BasicService
         {
             return ServiceMonitor.GetMonitorServiceStatic();
         }
+
+        [WebMethod(Description = "根据服务名和方法名查找服务当天监控数据")]
+        public List<ServiceMonitor> GetAllByServiceAndMethodToday(String serviceName, String methodName)
+        {
+            return ServiceMonitor.FindAllByServiceAndMethodToday(serviceName, methodName);
+        }
     }
 }

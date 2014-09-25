@@ -22,7 +22,7 @@
         </tr>
     </table>
     <br />
-    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server"  AutoGenerateColumns="False" Width="900px" >
+    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server"  AutoGenerateColumns="False" Width="900px" KeyFieldName="ID">
         <%-- BeginRegion Columns --%>
         <Columns>
             <dxwgv:GridViewCommandColumn VisibleIndex="0" Caption="操作" HeaderStyle-HorizontalAlign="Center" Visible="false">
@@ -38,15 +38,36 @@
             <dxwgv:GridViewDataTextColumn FieldName="ClientIP" Caption="客户端IP"></dxwgv:GridViewDataTextColumn>
             <dxwgv:GridViewDataTextColumn FieldName="ProcessorID" Caption="进程号"></dxwgv:GridViewDataTextColumn>
             <dxwgv:GridViewDataTextColumn FieldName="ClientVersion" Caption="MB.ESB.Core版本"></dxwgv:GridViewDataTextColumn>
-            <dxwgv:GridViewDataTextColumn FieldName="DotNetFramworkVersion" Caption="Framework版本"></dxwgv:GridViewDataTextColumn>
-            <dxwgv:GridViewDataTextColumn FieldName="OSVersion" Caption="操作系统版本"></dxwgv:GridViewDataTextColumn>
             <dxwgv:GridViewDataTextColumn FieldName="RegistryClientType" Caption="类型"></dxwgv:GridViewDataTextColumn>
             <dxwgv:GridViewDataTextColumn FieldName="ClientApplicationName" Caption="应用名称"></dxwgv:GridViewDataTextColumn>
         </Columns>
+        <Templates>
+            <DetailRow>
+                <table>
+                    <tr>
+                        <td>
+                            <dxe:ASPxLabel ID="ASPxLabel1" Text="操作系统版本: " runat="server"></dxe:ASPxLabel>
+                        </td>
+                        <td>
+                            <%# Eval("OSVersion") %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dxe:ASPxLabel ID="ASPxLabel2" Text=".Net Framework版本: " runat="server"></dxe:ASPxLabel>
+                        </td>
+                        <td>
+                            <%# Eval("DotNetFramworkVersion") %>
+                        </td>
+                    </tr>
+                </table>
+            </DetailRow>
+        </Templates>
         <ClientSideEvents RowDblClick="function(s, e){
             grid.StartEditRow(e.visibleIndex);
         }" />
         <%-- EndRegion --%>
+        <SettingsDetail ShowDetailRow="true" />
         <SettingsBehavior ConfirmDelete="true" />
         <SettingsEditing Mode="PopupEditForm" PopupEditFormWidth="500px" NewItemRowPosition="Top" />
         <SettingsPager AlwaysShowPager="true" /> 

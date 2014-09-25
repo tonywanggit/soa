@@ -51,6 +51,21 @@
         </s:complexContent>
       </s:complexType>
       <s:complexType name="EntityBase" abstract="true" />
+      <s:element name="GetAllByServiceAndMethodToday">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="methodName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllByServiceAndMethodTodayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllByServiceAndMethodTodayResult" type="tns:ArrayOfServiceMonitor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetMonitorServiceStaticSoapIn">
@@ -59,11 +74,22 @@
   <wsdl:message name="GetMonitorServiceStaticSoapOut">
     <wsdl:part name="parameters" element="tns:GetMonitorServiceStaticResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllByServiceAndMethodTodaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllByServiceAndMethodToday" />
+  </wsdl:message>
+  <wsdl:message name="GetAllByServiceAndMethodTodaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllByServiceAndMethodTodayResponse" />
+  </wsdl:message>
   <wsdl:portType name="MonitorStatServiceSoap">
     <wsdl:operation name="GetMonitorServiceStatic">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取通讯日志的统计信息</wsdl:documentation>
       <wsdl:input message="tns:GetMonitorServiceStaticSoapIn" />
       <wsdl:output message="tns:GetMonitorServiceStaticSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllByServiceAndMethodToday">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据服务名和方法名查找服务当天监控数据</wsdl:documentation>
+      <wsdl:input message="tns:GetAllByServiceAndMethodTodaySoapIn" />
+      <wsdl:output message="tns:GetAllByServiceAndMethodTodaySoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MonitorStatServiceSoap" type="tns:MonitorStatServiceSoap">
@@ -77,11 +103,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllByServiceAndMethodToday">
+      <soap:operation soapAction="http://esb.com/GetAllByServiceAndMethodToday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MonitorStatServiceSoap12" type="tns:MonitorStatServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetMonitorServiceStatic">
       <soap12:operation soapAction="http://esb.com/GetMonitorServiceStatic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllByServiceAndMethodToday">
+      <soap12:operation soapAction="http://esb.com/GetAllByServiceAndMethodToday" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

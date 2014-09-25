@@ -258,19 +258,6 @@
     <EsbView_ServiceConfig>
       <CacheKeyNum>0</CacheKeyNum>
       <CacheHitRate>0</CacheHitRate>
-      <ServiceName>ESB_ASHX</ServiceName>
-      <BusinessID>E7B6F9F0-E69E-4E86-B41D-C0D0692BE30A</BusinessID>
-      <OID>20ceb0e9-c9e0-4d1d-b8c0-bb761c655bf0</OID>
-      <ServiceID>E5AC5B54-3F11-4D32-98B5-0C7C76234985</ServiceID>
-      <MethodName>HelloWorld</MethodName>
-      <IsAudit>1</IsAudit>
-      <Timeout>100000</Timeout>
-      <CacheDuration>300</CacheDuration>
-      <HBPolicy>1</HBPolicy>
-    </EsbView_ServiceConfig>
-    <EsbView_ServiceConfig>
-      <CacheKeyNum>0</CacheKeyNum>
-      <CacheHitRate>0</CacheHitRate>
       <ServiceName>ESB_QUEUE_20</ServiceName>
       <QueueCenterUri>192.168.56.1_1</QueueCenterUri>
       <BusinessID>E7B6F9F0-E69E-4E86-B41D-C0D0692BE30A</BusinessID>
@@ -309,32 +296,6 @@
       <Timeout>100000</Timeout>
       <CacheDuration>0</CacheDuration>
       <QueueCenter>651bea34-1ef6-4099-8934-efda6ed0801d</QueueCenter>
-      <HBPolicy>1</HBPolicy>
-    </EsbView_ServiceConfig>
-    <EsbView_ServiceConfig>
-      <CacheKeyNum>0</CacheKeyNum>
-      <CacheHitRate>0</CacheHitRate>
-      <ServiceName>ESB_ASHX</ServiceName>
-      <BusinessID>E7B6F9F0-E69E-4E86-B41D-C0D0692BE30A</BusinessID>
-      <OID>cf9cd3bf-9749-490c-b646-409ee97cae3e</OID>
-      <ServiceID>E5AC5B54-3F11-4D32-98B5-0C7C76234985</ServiceID>
-      <MethodName>HelloAction</MethodName>
-      <IsAudit>1</IsAudit>
-      <Timeout>100000</Timeout>
-      <CacheDuration>500</CacheDuration>
-      <HBPolicy>1</HBPolicy>
-    </EsbView_ServiceConfig>
-    <EsbView_ServiceConfig>
-      <CacheKeyNum>0</CacheKeyNum>
-      <CacheHitRate>0</CacheHitRate>
-      <ServiceName>ESB_ASHX</ServiceName>
-      <BusinessID>E7B6F9F0-E69E-4E86-B41D-C0D0692BE30A</BusinessID>
-      <OID>e9cbf50b-7424-400c-a18c-9f069756683e</OID>
-      <ServiceID>E5AC5B54-3F11-4D32-98B5-0C7C76234985</ServiceID>
-      <MethodName>*</MethodName>
-      <IsAudit>1</IsAudit>
-      <Timeout>100000</Timeout>
-      <CacheDuration>200</CacheDuration>
       <HBPolicy>1</HBPolicy>
     </EsbView_ServiceConfig>
   </ServiceConfig>

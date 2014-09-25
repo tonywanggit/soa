@@ -4,6 +4,9 @@
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTabControl" TagPrefix="dxtc" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxClasses" tagprefix="dxw" %>
 <%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxLoadingPanel" TagPrefix="dxlp" %>
+<%@ Register Assembly="DevExpress.Web.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxRoundPanel" TagPrefix="dxrp" %>
+<%@ Register Assembly="DevExpress.XtraCharts.v9.1, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraCharts" TagPrefix="cc1" %>
+<%@ Register Assembly="DevExpress.XtraCharts.v9.1.Web, Version=9.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraCharts.Web" TagPrefix="dxchartsui" %>    
 
 <asp:Content ID="Content2" ContentPlaceHolderID="localCssPlaceholder" runat="server">
     <style type="text/css">
@@ -27,7 +30,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="phContent" Runat="Server">
     <asp:ScriptManager ID="ScriptManager" runat="server" />
     <dxlp:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel" Modal="False" />
-    <asp:UpdatePanel ID="UpdatePanel" runat="server" UpdateMode="Always">
+    <asp:UpdatePanel ID="UpdatePanel" runat="server">
     <ContentTemplate>
 <%-- EndRegion --%>
     <table cellpadding="0" cellspacing="0">
@@ -42,11 +45,15 @@
             </td>
         </tr>
     </table>
+    <%-- 这个WebChartControl用于修复DetailRow中无法显示图表的BUG --%>
+    <dxchartsui:WebChartControl ID="chartRepaire" runat="server" Height="200px" Width="800px" DiagramTypeName="XYDiagram" Visible="false">
+    </dxchartsui:WebChartControl>
     <br />
-    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server"  AutoGenerateColumns="False" Width="900px" OnCustomButtonCallback="grid_CustomButtonCallback" DataSourceID="OdsServiceConfig">
+    <dxwgv:ASPxGridView ID="grid" ClientInstanceName="grid" runat="server" KeyFieldName="OID" AutoGenerateColumns="False" Width="900px" 
+        OnCustomButtonCallback="grid_CustomButtonCallback" DataSourceID="OdsServiceConfig">
         <%-- BeginRegion Columns --%>
         <Columns>         
-            <dxwgv:GridViewCommandColumn Caption="操作" HeaderStyle-HorizontalAlign="Center">
+            <dxwgv:GridViewCommandColumn Caption="操作" HeaderStyle-HorizontalAlign="Center" Width="60">
                 <CustomButtons>
                     <dxwgv:GridViewCommandColumnCustomButton Text="清空缓存"></dxwgv:GridViewCommandColumnCustomButton>
                 </CustomButtons>
@@ -61,10 +68,18 @@
             <dxwgv:GridViewDataProgressBarColumn Caption="缓存命中率(近1小时)" FieldName="CacheHitRate" Width="110" Visible="false"></dxwgv:GridViewDataProgressBarColumn>
             <dxwgv:GridViewDataProgressBarColumn Caption="缓存命中率(当天)" FieldName="CacheHitRate" Width="90"></dxwgv:GridViewDataProgressBarColumn>
         </Columns>
+        <Templates>
+            <DetailRow>
+                 <dxchartsui:WebChartControl ID="chart" runat="server" Height="200px" Width="870px" DiagramTypeName="XYDiagram" OnInit="chart_Init">
+                     
+                </dxchartsui:WebChartControl>
+            </DetailRow>
+        </Templates>
         <ClientSideEvents CustomButtonClick="OnRemoveCache" RowDblClick="function(s, e){
             grid.StartEditRow(e.visibleIndex);
         }" />
         <%-- EndRegion --%>
+        <SettingsDetail ShowDetailRow="true" />
         <SettingsBehavior ConfirmDelete="true" />
         <SettingsEditing Mode="PopupEditForm" PopupEditFormWidth="500px" NewItemRowPosition="Top" />
         <SettingsPager AlwaysShowPager="true" /> 

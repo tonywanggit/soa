@@ -97,6 +97,28 @@ namespace ESB.Core.Entity
             // 单对象缓存
             //return Meta.SingleCache[oid];
         }
+
+        /// <summary>
+        /// 根据服务名和方法名查找服务当天监控数据
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <param name="methodName"></param>
+        /// <returns></returns>
+        public static EntityList<TEntity> FindAllByServiceAndMethodToday(String serviceName, String methodName)
+        {
+            var whereExp = new WhereExpression();
+            whereExp &= _.MonitorStamp < DateTime.Now & _.MonitorStamp > DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd")) & _.ServiceName == serviceName;
+
+            var orderExp = new OrderExpression();
+            orderExp &= _.MonitorStamp.Asc();
+
+            if (methodName != "*")
+            {
+                whereExp &= _.MethodName == methodName;
+            }
+
+            return FindAll(whereExp, orderExp, null, 0, 0);
+        }
         #endregion
 
         #region 高级查询

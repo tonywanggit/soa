@@ -50,7 +50,7 @@ namespace ESB.TestFramework
             //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 10);
 
             TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
-            TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
+            //TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
 
             //TestWXSC();
         }

@@ -16,6 +16,11 @@ namespace ESB.Core.Registry
     public class RegistryClient
     {
         /// <summary>
+        /// ID-用于标识唯一的Client
+        /// </summary>
+        public String ID { get; set; }
+
+        /// <summary>
         /// 客户端Socket
         /// </summary>
         [XmlIgnore]
