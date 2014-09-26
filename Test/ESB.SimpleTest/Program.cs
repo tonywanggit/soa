@@ -15,21 +15,37 @@ namespace ESB.SimpleTest
     {
         static void Main(string[] args)
         {
-            //ESBProxy esbProxy = ESBProxy.GetInstance();
 
-            //Console.ReadKey();
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            ESBProxy esbProxy = ESBProxy.GetInstance();
+            stopWatch.Stop();
 
-            //String request = esbProxy.Invoke("BG_DUBBO", "histr", "['1=?*/&==\\/%中国2','2']");
+            Console.WriteLine("ESBProxy Init 耗时：{0}ms。", stopWatch.ElapsedMilliseconds); ;
+            Console.ReadKey();
 
-            //request = esbProxy.Invoke("BG_DUBBO", "histr", "['1=?*/&==\\/%中国2','2']");
+            stopWatch.Restart();
+            String request = esbProxy.Invoke("ESB_ASHX", "MethodName", "你好，MBSOA！");
+            stopWatch.Stop();
+
+            Console.WriteLine("第1次调用 耗时：{0}ms。", stopWatch.ElapsedMilliseconds);
+            Console.ReadKey();
 
 
-            ////RabbitMQClient mqClient = new RabbitMQClient("10.100.20.100", "admin", "osroot");
+            Int64 elapsedMS = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                stopWatch.Restart();
+                String ret = esbProxy.Invoke("ESB_ASHX", "MethodName", "你好，MBSOA！");
+                stopWatch.Stop();
 
+                elapsedMS += stopWatch.ElapsedMilliseconds;
 
-            //Console.ReadKey();
+                Console.WriteLine("第{0}次调用 耗时：{1}ms。", i + 2, stopWatch.ElapsedMilliseconds);
+            }
 
-            TestInvokeQueue();
+            Console.WriteLine("排除第一次后 {0} 平均耗时：{1}ms。", 10, elapsedMS / 10);
+            Console.ReadKey();
         }
 
         /// <summary>
