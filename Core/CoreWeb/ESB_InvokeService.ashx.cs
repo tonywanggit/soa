@@ -1,4 +1,5 @@
 ﻿using ESB.Core;
+using ESB.Core.Rpc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,12 @@ namespace ESB.CallCenter
 
         public void ProcessRequest(HttpContext context)
         {
+            context.Response.ContentType = "text/plain";
+            context.Response.ContentEncoding = Encoding.UTF8;
+
             if (context.Request["ServiceName"] == null || context.Request["MethodName"] == null)
             {
-                //context.Response.ContentType = "text/plain";
+                context.Response.ContentType = "text/html";
                 context.Response.ContentEncoding = Encoding.UTF8;
                 context.Response.Write(@"<head runat=""server""><title>ESB调用中心</title></head>");
                 context.Response.Write("<h1>错误：请传入正确的参数信息！</h1>");
@@ -28,21 +32,38 @@ namespace ESB.CallCenter
             {
                 String serviceName = context.Request["ServiceName"].Trim();
                 String methodName = context.Request["MethodName"].Trim();
-
+                String isQueue = context.Request["IsQueue"];
 
                 Int32 version = String.IsNullOrEmpty(context.Request["Version"]) ? 0 : Int32.Parse(context.Request["Version"]);
                 String callback = context.Request["callback"];
                 String message = GetMessageFromRequest(context.Request);
+                String consumerIP = context.Request.UserHostAddress;
+                AdvanceInvokeParam aiParam = new AdvanceInvokeParam();
+                aiParam.ConsumerIP = consumerIP;
 
-                String response = esbProxy.Invoke(serviceName, methodName, message);
-                if (!String.IsNullOrEmpty(callback))
+                Int32 queue = 0;
+                if (String.IsNullOrEmpty(isQueue) || !Int32.TryParse(isQueue, out queue) || queue < 1)
                 {
-                    response = String.Format("{0}({{message:'{1}'}})", callback, response, version);
+                    String response = esbProxy.Invoke(serviceName, methodName, message, version, aiParam);
+                    if (!String.IsNullOrEmpty(callback))
+                    {
+                        response = String.Format("{0}({{message:'{1}'}})", callback, response, version);
+                    }
+                    context.Response.Write(response);
+                }
+                else
+                {
+                    try
+                    {
+                        esbProxy.InvokeQueue(serviceName, methodName, message, version, aiParam);
+                        context.Response.Write("OK");
+                    }
+                    catch (Exception ex)
+                    {
+                        context.Response.Write(ex.Message);
+                    }
                 }
 
-                context.Response.ContentType = "text/plain";
-                context.Response.ContentEncoding = Encoding.Default;
-                context.Response.Write(response);
             }
         }
 

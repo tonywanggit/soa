@@ -260,10 +260,23 @@ namespace ESB.Core
             ServiceItem si = GetServiceItem(serviceName, version);
 
             //--从ESBConfig中获取到服务版本信息
-            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName, methodName);
+            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName, GetMethodName(methodName));
             String msg = EsbClient.DynamicalCallWebService(true, req, si.Binding, si.Version, sc, invokeParam).消息内容;
 
             return msg;
+        }
+
+        /// <summary>
+        /// 从类似GET:JSON:MethodName的字符串中抽取到MethodName
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <returns></returns>
+        private String GetMethodName(String methodName)
+        {
+            if (!methodName.Contains(":")) return methodName;
+
+            String[] methodParams = methodName.Split(":");
+            return methodParams[methodParams.Length - 1];
         }
 
         /// <summary>
@@ -320,7 +333,7 @@ namespace ESB.Core
         /// <param name="message">消息内容</param>
         /// <param name="version">服务版本：0代表调用默认版本</param>
         /// <returns></returns>
-        public void InvokeQueue(String serviceName, String methodName, String message, Int32 version = 0, QueueParam queueParam = null)
+        public void InvokeQueue(String serviceName, String methodName, String message, Int32 version = 0, AdvanceInvokeParam invokeParam = null)
         {
             //--从ESBConfig中获取到服务版本信息
             ServiceItem si = GetServiceItem(serviceName, version);
@@ -333,17 +346,21 @@ namespace ESB.Core
             
             QueueMessage qm = new QueueMessage();
             qm.ConsumerAppName = m_ConsumerConfig.ApplicationName;
-            qm.ConsumerIP = m_ConfigurationManager.LocalIP;
+
+            if (invokeParam != null && !String.IsNullOrEmpty(invokeParam.ConsumerIP))
+            {
+                qm.ConsumerIP = invokeParam.ConsumerIP;
+            }
+            else
+            {
+                qm.ConsumerIP = m_ConfigurationManager.LocalIP;
+            }
+
             qm.ServiceName = serviceName;
             qm.MethodName = methodName;
             qm.Message = message;
             qm.Version = version;
 
-            if (queueParam != null)
-            {    
-                qm.QueueName = queueParam.QueueName;
-                qm.Timeout = queueParam.Timeout;
-            };
 
             m_MessageQueueClient.SendToInvokeQueue(qm);
         }

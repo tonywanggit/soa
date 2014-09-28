@@ -85,7 +85,9 @@ namespace QueueCenter.WindowsService
             if (m_EsbConfig.ServiceConfig != null && m_EsbConfig.ServiceConfig.Count > 0)
             {
                 //--根据QueueCenter的消费者配置文件中的ApplicationName找到和本机相关的配置文件
-                List<EsbView_ServiceConfig> lstServcieConfig = m_EsbConfig.ServiceConfig.FindAll(x => appName.EndsWith(x.QueueCenterUri));
+                List<EsbView_ServiceConfig> lstServcieConfig = m_EsbConfig.ServiceConfig.FindAll(x =>{
+                    return !String.IsNullOrEmpty(x.QueueCenterUri) && appName.EndsWith(x.QueueCenterUri);
+                });
 
                 //--删除不应该由本机消费的队列并停用相关线程
                 DeleteQueueThread(lstServcieConfig);

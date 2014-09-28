@@ -17,6 +17,6 @@ namespace ESB.Core.Rpc
         /// <summary>
         /// 客户端IP:队列服务调用时需要传递
         /// </summary>
-        internal String ConsumerIP { get; set; }
+        public String ConsumerIP { get; set; }
     }
 }
