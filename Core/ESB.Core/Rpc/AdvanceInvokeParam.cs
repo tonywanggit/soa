@@ -18,5 +18,10 @@ namespace ESB.Core.Rpc
         /// 客户端IP:队列服务调用时需要传递
         /// </summary>
         public String ConsumerIP { get; set; }
+
+        /// <summary>
+        /// 强制不用缓存
+        /// </summary>
+        public Boolean NoCache { get; set; }
     }
 }

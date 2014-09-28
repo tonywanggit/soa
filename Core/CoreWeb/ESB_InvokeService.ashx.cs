@@ -33,6 +33,7 @@ namespace ESB.CallCenter
                 String serviceName = context.Request["ServiceName"].Trim();
                 String methodName = context.Request["MethodName"].Trim();
                 String isQueue = context.Request["IsQueue"];
+                String noCache = context.Request["NoCache"];
 
                 Int32 version = String.IsNullOrEmpty(context.Request["Version"]) ? 0 : Int32.Parse(context.Request["Version"]);
                 String callback = context.Request["callback"];
@@ -41,10 +42,33 @@ namespace ESB.CallCenter
                 AdvanceInvokeParam aiParam = new AdvanceInvokeParam();
                 aiParam.ConsumerIP = consumerIP;
 
+                //--判断是否需要强制弃用缓存
+                Int32 cache = 0;
+                if (String.IsNullOrEmpty(noCache) || !Int32.TryParse(noCache, out cache) || cache < 1)
+                {
+                    aiParam.NoCache = false;
+                }
+                else
+                {
+                    aiParam.NoCache = true;
+                }
+
+                //--判断是否为队列调用
                 Int32 queue = 0;
                 if (String.IsNullOrEmpty(isQueue) || !Int32.TryParse(isQueue, out queue) || queue < 1)
                 {
-                    String response = esbProxy.Invoke(serviceName, methodName, message, version, aiParam);
+                    String response;
+                    try 
+	                {	        
+		                response= esbProxy.Invoke(serviceName, methodName, message, version, aiParam);
+	                }
+	                catch (Exception ex)
+	                {
+                        response = String.Format("MBSOA-CallCenter-Error:{0}", ex.Message);
+	                }
+
+
+                    //--判断是否为JSONP调用
                     if (!String.IsNullOrEmpty(callback))
                     {
                         response = String.Format("{0}({{message:'{1}'}})", callback, response, version);

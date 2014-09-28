@@ -37,6 +37,23 @@ namespace MB.ESB.CallCenterTest
                 Console.WriteLine("特殊字符测试成功，特殊字符：{0}", messageNoEncode);
             }
 
+            //--传参不对造成的异常：版本号不对
+            try
+            {
+                ccProxy.Invoke(servieName, methodName, messageNoEncode, 2);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("异常测试：{0}", ex.Message);
+            }
+
+            //--强制弃用缓存用例
+            ccProxy.Invoke(servieName, methodName, messageNoEncode, 0, true);
+
+            //--重新使用缓存用例
+            ccProxy.Invoke(servieName, methodName, messageNoEncode, 0, false);
+
+
             //--队列调用测试:失败用例
             try
             {

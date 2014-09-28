@@ -157,12 +157,17 @@ namespace ESB.Core.Rpc
         {
             ESBProxy esbProxy = ESBProxy.GetInstance();
 
+            Boolean noCache = false;
+            if (callState.InvokeParam != null) noCache = callState.InvokeParam.NoCache;
+
             //--如果缓存失效时间大于0，则优先从缓存中获取数据
             if (callState.ServiceConfig.CacheDuration > 0)
             {
                 String key = String.Format("MBSOA:{0}:{1}:{2}", callState.Request.服务名称, callState.Request.方法名称, DataHelper.Hash(callState.Request.消息内容));
+
                 DateTime callBeginTime = DateTime.Now;
-                String message = esbProxy.CacheManager.GetCache(key);
+                //--如果noCache为True则强制调用后台服务，刷新缓存
+                String message = noCache ? String.Empty : esbProxy.CacheManager.GetCache(key);
                 DateTime callEndTime = DateTime.Now;
 
                 if (String.IsNullOrEmpty(message))

@@ -95,6 +95,9 @@ namespace MB.ESB.CallCenterTest
                 }
             }
 
+            if (!String.IsNullOrEmpty(response) && response.StartsWith("MBSOA-CallCenter-Error:"))
+                throw new Exception(response.Substring(23));
+
             return response;
         }
 
@@ -106,12 +109,13 @@ namespace MB.ESB.CallCenterTest
         /// <param name="message"></param>
         /// <param name="Version"></param>
         /// <returns></returns>
-        public String Invoke(String serviceName, String methodName, String message, Int32 version = 0)
+        public String Invoke(String serviceName, String methodName, String message, Int32 version = 0, Boolean noCache = false)
         {
-            String request = String.Format("ServiceName={0}&MethodName={1}&Message={2}&Version={3}"
+            String request = String.Format("ServiceName={0}&MethodName={1}&Message={2}&Version={3}&NoCache={4}"
                 , HttpUtility.UrlEncode(serviceName)
                 , HttpUtility.UrlEncode(methodName)
-                , HttpUtility.UrlEncode(message), version);
+                , HttpUtility.UrlEncode(message), version
+                , noCache ? 1 : 0);
 
             String response = CallWebRequet(request);
 

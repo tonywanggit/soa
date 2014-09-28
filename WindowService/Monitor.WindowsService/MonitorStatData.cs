@@ -98,7 +98,6 @@ namespace Monitor.WindowsService
             ServiceMonitor[] serviceMonitorArray;
             MonitorStatDimension msDimension = GetMonitorStatDimension(ab);
 
-
             //--如果统计中没有相应维度的数据，则创建
             if (msDimension == null)
             {
@@ -107,7 +106,7 @@ namespace Monitor.WindowsService
                 {
                     ServiceName = ab.ServiceName,
                     BindingAddress = ab.BindingAddress,
-                    MethodName = ab.MethodName
+                    MethodName = GetMethodName(ab.MethodName)
                 };
                 m_ServiceMonitor.Add(msDimension, serviceMonitorArray);
             }
@@ -120,15 +119,30 @@ namespace Monitor.WindowsService
         }
 
         /// <summary>
+        /// 从类似GET:JSON:MethodName的字符串中抽取到MethodName
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <returns></returns>
+        private String GetMethodName(String methodName)
+        {
+            if (!methodName.Contains(":")) return methodName;
+
+            String[] methodParams = methodName.Split(":");
+            return methodParams[methodParams.Length - 1];
+        }
+
+        /// <summary>
         /// 从监控数据中查找是否有审计日志对应维度的数据
         /// </summary>
         /// <param name="ab"></param>
         /// <returns></returns>
         private MonitorStatDimension GetMonitorStatDimension(AuditBusiness ab)
         {
+            String methodName = GetMethodName(ab.MethodName);
+
             foreach (var item in m_ServiceMonitor.Keys)
             {
-                if (item.ServiceName == ab.ServiceName && item.MethodName == ab.MethodName && item.BindingAddress == ab.BindingAddress)
+                if (item.ServiceName == ab.ServiceName && item.MethodName == methodName && item.BindingAddress == ab.BindingAddress)
                 {
                     return item;
                 }
@@ -157,7 +171,7 @@ namespace Monitor.WindowsService
                 serviceMonitor = new ServiceMonitor(){
                     OID = Guid.NewGuid().ToString(),
                     ServiceName = ab.ServiceName,
-                    MethodName = ab.MethodName,
+                    MethodName = GetMethodName(ab.MethodName),
                     MonitorStamp = monitorStamp,
                     ConsumerIP = ab.ConsumerIP,
                     BindingAddress = ab.BindingAddress,
