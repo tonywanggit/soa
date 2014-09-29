@@ -1,0 +1,411 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+.btn-no-radius > .btn {
+    border-radius: 0;
+    border-right:none;
+}
+
+.btn-no-radius > .form-control {
+    border-radius: 0;
+    border-right:none;
+}
+
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+/* general purpose block with css3 gradient background */
+.stat-block {
+  background-color: #F6F6F6;
+  border: 1px solid #dedede;
+ -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;  
+  line-height: 18px;
+  margin: 0 0 20px 0;
+  padding: 10px;
+}
+
+/***
+Dashboard stats
+***/
+
+.stats-overview-cont {
+  padding-top:0px;
+  margin-bottom: 15px;
+} 
+.stats-overview {
+  clear: both;
+  padding: 10px 10px 0px 10px;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.stats-overview .display {
+  margin-right: 5px;
+  float: left;
+}
+
+.stats-overview .details {
+  color:#888;  
+}
+
+.stats-overview .details .title {
+  color: #777;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 3px;
+}
+.stats-overview .details .title i {
+  color: #999;
+  margin-right: 2px;
+}
+.stats-overview .details .numbers {
+  color: #777;
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+.stats-overview .progress {
+  height: 10px;
+  margin-bottom:10px !important; 
+  background: #e6e6e6;
+}
+
+/* charts & stats */
+.chart, .pie, .bars {
+  overflow: hidden;
+  height: 300px;
+}
+
+.stat {
+  margin: 0px; 
+  padding: 0px;
+}
+
+.item-list.table .percent {
+  width: 30px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.item-list.table .title {
+  padding-top: -5px;
+}
+
+.stat .title {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size1: 13px;
+} 
+
+.stat.good .percent  {
+  color: #52e136;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.stat.bad .percent {
+  color: #d12610;
+  font-size: 16px;
+  font-weight: bold;
+ } 
+
+.stat.ok .percent {
+  color: #37b7f3;
+  font-size: 16px;
+  font-weight: bold;
+ } 
+
+/***
+Portlets
+***/
+
+.portlet  {
+  clear: both;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  padding: 0px;
+  -webkit-box-shadow1: 0 1px 4px rgba(0, 0, 0, 0.07);
+          box-shadow1: 0 1px 4px rgba(0, 0, 0, 0.07);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.portlet > .portlet-title { 
+  background-color: #eee;
+  border-radius: 4px 4px 0 0;
+  padding:10px 10px 2px 10px;
+  height: 38px;
+}
+
+.portlet > .portlet-title:after,
+.portlet > .portlet-title:before {
+  content: "";
+  display: table;
+  line-height: 0;
+}
+
+.portlet > .portlet-title:after {
+  clear: both;
+}
+
+.portlet > .portlet-title > .caption {
+  color: #333;
+  float: left;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  margin-top: 1px; 
+}
+
+.portlet > .portlet-title .bootstrap-switch {   
+  margin-top: -10px !important;
+}
+
+.portlet > .portlet-title > .caption > i {
+  float: left;
+  margin-top: 2px;
+  display: inline-block !important;
+  font-size: 13px;
+  margin-right: 5px;
+  color: #666;
+}
+
+.portlet > .portlet-title > .tools,
+.portlet > .portlet-title > .actions
+ {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  margin-top: 3px;
+  float: right;
+}
+
+.portlet > .portlet-title > .tools {
+  margin-top: 0px;
+}
+
+.portlet > .portlet-title > .tools > a {
+  display: inline-block;
+  height: 16px;
+  margin-left:5px;
+}
+
+.portlet > .portlet-title > .actions > .dropdown-menu i {
+  color: #000 !important;
+}
+
+.portlet > .portlet-title > .tools > a.remove {
+  margin-bottom: 2px;
+  background-image:url(../img/portlet-remove-icon.png);
+  background-repeat: no-repeat;
+  width: 11px;
+}
+
+.portlet > .portlet-title > .tools > a.config {
+  margin-bottom: 2px;
+  background-image:url(../img/portlet-config-icon.png);
+  background-repeat: no-repeat;
+  width: 12px;
+}
+
+.portlet > .portlet-title > .tools > a.reload {
+  margin-bottom: 2px;
+  background-image:url(../img/portlet-reload-icon.png);
+  width: 13px;
+}
+
+.portlet > .portlet-title > .tools > a.expand {
+  margin-bottom: 2px;
+  background-image:url(../img/portlet-expand-icon.png);
+  width: 14px;
+}
+
+.portlet > .portlet-title > .tools > a.collapse {
+  margin-bottom: 2px;
+  background-image:url(../img/portlet-collapse-icon.png);
+  width: 14px;
+}
+
+.portlet > .portlet-title > .tools > a:hover {
+  text-decoration: none;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  opacity:.6;  
+  filter:'alpha(opacity=60)';
+}
+
+.portlet > .portlet-title > .actions > .btn-group {
+  margin-top: -8px;
+}
+
+.portlet > .portlet-title > .actions > .btn {
+  padding: 4px 10px;
+  margin-top: -10px;
+}
+
+.portlet > .portlet-title > .actions > .btn-group > .btn {
+  padding: 4px 10px;
+  margin-top: -1px;
+}
+
+.portlet > .portlet-title > .actions > .btn.btn-sm {
+  padding: 3px 8px;
+  margin-top: -10px;
+}
+
+.portlet > .portlet-title > .actions > .btn-group > .btn-sm {
+  padding: 3px 8px;
+  margin-top: -1px;
+}
+
+.portlet > .portlet-title > .pagination.pagination-sm {
+  float: right !important;
+  display: inline-block !important;
+  margin: 0px;
+  margin-top: -6px;
+}
+
+.portlet > .portlet-body {
+  clear: both;  
+  padding: 10px;    
+  background-color: #fff;  
+  border-radius: 0px 0px 4px 4px;
+}
+
+
+/***
+Font Awesome Icons
+***/
+[class^="fa-"],
+[class*=" fa-"] {
+  display: inline-block;
+  margin-top: 1px;
+  font-size: 14px;
+  *margin-right: .3em;
+  line-height: 14px;
+}
+
+/***
+Make font awesome icons fixed width(latest version issue)
+***/
+li [class^="fa-"],
+li [class*=" fa-"] {
+  display: inline-block;
+  width: 1.25em;
+  text-align: center;
+}
+li [class^="fa-"].icon-large,
+li [class*=" fa-"].icon-large {
+  /* increased font size for icon-large */
+  width: 1.5625em;
+}

@@ -18,6 +18,8 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(DateTime.Now.AddDays(-1).ToString("yyyy年MM月dd日 星期ddd"));
+
             //RandomTest.DoTest();
 
             //TestInvokeQueue();
@@ -49,7 +51,7 @@ namespace ESB.TestFramework
 
             //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 10);
 
-            TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
+            //TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
             //TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
 
             //TestWXSC();
