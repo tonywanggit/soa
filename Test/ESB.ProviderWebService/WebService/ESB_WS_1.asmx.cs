@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Services;
 
@@ -15,6 +16,8 @@ namespace ESB.ProviderWebService.WebService
     {
         protected override string DoEsbAction(string esbAction, string request)
         {
+            Thread.Sleep(200);
+
             return String.Format("收到参数：{0}={1}。", esbAction, request);
         }
     }

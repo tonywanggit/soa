@@ -77,17 +77,24 @@ namespace ESB.CallCenter
                 }
                 else
                 {
+                    String response;
                     try
                     {
                         esbProxy.InvokeQueue(serviceName, methodName, message, version, aiParam);
-                        context.Response.Write("OK");
+                        response = "OK";
                     }
                     catch (Exception ex)
                     {
-                        context.Response.Write(ex.Message);
+                        response = String.Format("MBSOA-CallCenter-Error:{0}", ex.Message);
                     }
-                }
 
+                    //--判断是否为JSONP调用
+                    if (!String.IsNullOrEmpty(callback))
+                    {
+                        response = String.Format("{0}({{message:'{1}'}})", callback, response, version);
+                    }
+                    context.Response.Write(response);
+                }
             }
         }
 
@@ -109,8 +116,12 @@ namespace ESB.CallCenter
             //--如果表单上无法取到Message，则表示请求为GET请求，直接从URL上获取数据
             String rawUrl = request.Url.ToString();
 
+            //--取消JSONP的尾部参数
             if (rawUrl.Contains("&Message="))
-                return rawUrl.Substring(rawUrl.IndexOf("&Message=") + 9);
+            {
+                String message = rawUrl.Substring(rawUrl.IndexOf("&Message=") + 9);
+                return message.Split("&_=")[0];
+            }
 
             throw new Exception("无效的调用方式！");
         }

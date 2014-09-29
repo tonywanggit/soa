@@ -281,7 +281,7 @@
       <IsAudit>1</IsAudit>
       <Timeout>100000</Timeout>
       <CacheDuration>400</CacheDuration>
-      <HBPolicy>0</HBPolicy>
+      <HBPolicy>1</HBPolicy>
     </EsbView_ServiceConfig>
     <EsbView_ServiceConfig>
       <CacheKeyNum>0</CacheKeyNum>

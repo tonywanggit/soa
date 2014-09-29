@@ -16,15 +16,37 @@ jQuery.esb = {
     /*
      *  请求响应调用 JSONP
      */
-    invoke: function (serviceName, methodName, message, fn) {
+    invoke: function (serviceName, methodName, message, fn, noCache, version) {
         var response;
         var invokeUrl = jQuery.esb.baseurl + "ESB_InvokeService.ashx?callback=?";
+        if (noCache == null) noCache = 0;
+        if (version == null) version = 0;
+
         $.ajax({
             url: invokeUrl,
             async: false,
             crossDomain: true,
             dataType: "jsonp",
-            data: "ServiceName=" + serviceName + "&MethodName=" + methodName + "&Message=" + message,
+            data: "ServiceName=" + serviceName + "&MethodName=" + methodName + "&Version=" + version + "&NoCache=" + noCache + "&Message=" + message,
+            success: function (msg) {
+                response = msg.message;
+                fn(response);
+            }
+        });
+    },
+    /*
+     *  请求响应调用 JSONP
+     */
+    invokeQueue: function (serviceName, methodName, message, fn, version) {
+        var response;
+        var invokeUrl = jQuery.esb.baseurl + "ESB_InvokeService.ashx?callback=?";
+        if (version == null) version = 0;
+        $.ajax({
+            url: invokeUrl,
+            async: false,
+            crossDomain: true,
+            dataType: "jsonp",
+            data: "ServiceName=" + serviceName + "&MethodName=" + methodName + "&Version=" + version + "&IsQueue=1&Message=" + message,
             success: function (msg) {
                 response = msg.message;
                 fn(response);

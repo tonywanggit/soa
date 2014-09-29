@@ -94,7 +94,7 @@ $(document).ready(function () {
             return (Math.floor(Math.random() * (1 + 100 - 20))) + 20;
         }
 
-        var nowTime = "12:20";
+        var nowTime = "8:20";
 
         var pageviews = [
             [1, randValue()],
@@ -220,6 +220,9 @@ $(document).ready(function () {
                         minute += 60;
                         hour -= 1;
                     }
+
+                    if (minute < 10) minute = "0" + minute;
+                    if (hour < 10) hour = "0" + hour;
 
                     return hour + ":" + minute;
                 },

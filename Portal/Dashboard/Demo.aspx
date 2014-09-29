@@ -124,9 +124,9 @@
                                 <div class="input-group-addon">服务名称：</div>
                                 <input type="text" class="form-control" id="txtServiceName" placeholder="服务名称" value="MBSOA_Demo" />
                                 <div class="input-group-btn btn-no-radius">
-                                    <select class="form-control" style="width:140px;border-left:none">
-                                        <option selected="selected">Enable Cache</option>
-                                        <option>NoCache</option>
+                                    <select id="selNoCache" class="form-control" style="width:140px;border-left:none">
+                                        <option selected="selected" value="0">Enable Cache</option>
+                                        <option value="1">NoCache</option>
                                     </select>
                                 </div>
                                 <div class="input-group-btn btn-no-radius">
@@ -145,18 +145,19 @@
                                 
                                 <div class="input-group-btn btn-no-radius">
                                     <select id="selMethodType" class="form-control" style="width:90px;">
-                                        <option selected="selected">GET</option>
-                                        <option>POST</option>
+                                        <option selected="selected" value="GET">GET</option>
+                                        <option value="POST">POST</option>
                                     </select>
                                 </div>
                                 
                                 <div class="input-group-btn btn-no-radius">
                                     <select id="selDataType" class="form-control" style="width:90px;">
-                                        <option selected="selected">JSON</option>
-                                        <option>XML</option>
+                                        <option selected="selected" value="JSON">JSON</option>
+                                        <option value="XML">XML</option>
                                     </select>
                                 </div>
                                 <input type="text" class="form-control" id="txtMethodName" placeholder="方法名称" value="Echo">
+                                <div id="lblDuration" class="input-group-addon">耗时</div>
                             </div>
                         </div>
                     </div>
@@ -188,7 +189,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="http://10.100.20.214/CallCenter/Script/mb-esb-1.0.0.js" type="text/javascript"></script>
+    <script src="http://192.168.56.1/CallCenter/Script/mb-esb-1.0.0.js" type="text/javascript"></script>
     <script src="js/demo.js" type="text/javascript"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
