@@ -158,7 +158,8 @@ namespace ESB.Core.Rpc
             ESBProxy esbProxy = ESBProxy.GetInstance();
 
             Boolean noCache = false;
-            if (callState.InvokeParam != null) noCache = callState.InvokeParam.NoCache;
+            if (callState.InvokeParam != null) 
+                noCache = (callState.InvokeParam.NoCache == 1);
 
             //--如果缓存失效时间大于0，则优先从缓存中获取数据
             if (callState.ServiceConfig.CacheDuration > 0)

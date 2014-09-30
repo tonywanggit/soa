@@ -186,7 +186,8 @@ namespace ESB.Core.Entity
             whereExp &= _.MonitorStamp < DateTime.Now & _.MonitorStamp > DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
 
             String where = whereExp + " Group by " + _.ServiceName + ", " + _.MethodName;
-            String select = " ServiceName, MethodName, SUM(CallSuccessNum) AS CallSuccessNum, SUM(CallHitCacheNum) AS CallHitCacheNum ";
+            String select = @" ServiceName, MethodName, SUM(CallSuccessNum) AS CallSuccessNum, SUM(CallHitCacheNum) AS CallHitCacheNum
+                , SUM(CallFailureNum) AS CallFailureNum, SUM(CallQueueNum) AS CallQueueNum ";
 
             return FindAll(where, null, select, 0, 0);
         }

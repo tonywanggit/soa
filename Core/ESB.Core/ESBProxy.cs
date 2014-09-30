@@ -276,7 +276,12 @@ namespace ESB.Core
             if (!methodName.Contains(":")) return methodName;
 
             String[] methodParams = methodName.Split(":");
-            return methodParams[methodParams.Length - 1];
+            String rowMethodName = methodParams[methodParams.Length - 1];
+
+            if (rowMethodName.StartsWith("/"))
+                throw new Exception("方法名称不允许以/开头");
+
+            return rowMethodName;
         }
 
         /// <summary>
@@ -338,8 +343,8 @@ namespace ESB.Core
             //--从ESBConfig中获取到服务版本信息
             ServiceItem si = GetServiceItem(serviceName, version);
 
-            //--从ESBConfig中获取到服务配置信息
-            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName, methodName);
+            //--从ESBConfig中获取到服务配置信息            
+            EsbView_ServiceConfig sc = this.ESBConfig.GetServiceConfig(serviceName, GetMethodName(methodName));
 
             if (String.IsNullOrWhiteSpace(sc.QueueCenterUri)) 
                 throw new Exception("服务需要在管理中心配置队列服务地址才能通过队列调用！");

@@ -13,7 +13,7 @@ namespace ESB.Core.Entity
     [DataObject]
     [Description("")]
     [BindIndex("PK_AuditBusiness", true, "OID")]
-    [BindTable("AuditBusiness", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
+    [BindTable("AuditBusiness", Description = "", ConnName = "EsbAuditDB", DbType = DatabaseType.SqlServer)]
     public partial class AuditBusiness<TEntity> : IAuditBusiness
     {
         #region 属性

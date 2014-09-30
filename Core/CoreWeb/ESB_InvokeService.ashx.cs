@@ -46,11 +46,11 @@ namespace ESB.CallCenter
                 Int32 cache = 0;
                 if (String.IsNullOrEmpty(noCache) || !Int32.TryParse(noCache, out cache) || cache < 1)
                 {
-                    aiParam.NoCache = false;
+                    aiParam.NoCache = 0;
                 }
                 else
                 {
-                    aiParam.NoCache = true;
+                    aiParam.NoCache = 1;
                 }
 
                 //--判断是否为队列调用
@@ -120,7 +120,17 @@ namespace ESB.CallCenter
             if (rawUrl.Contains("&Message="))
             {
                 String message = rawUrl.Substring(rawUrl.IndexOf("&Message=") + 9);
-                return message.Split("&_=")[0];
+
+                if (message.Contains("&_="))
+                {
+                    int pos = message.IndexOf("&_=");
+                    if(pos == 0)
+                        message = "";
+                    else
+                        message = message.Substring(0, pos);
+                }
+
+                return message;
             }
 
             throw new Exception("无效的调用方式！");

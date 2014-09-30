@@ -41,6 +41,7 @@
               <s:element minOccurs="1" maxOccurs="1" name="CallLevel3Num" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="TpsPeak" type="s:double" />
               <s:element minOccurs="1" maxOccurs="1" name="CallHitCacheNum" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CallQueueNum" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>

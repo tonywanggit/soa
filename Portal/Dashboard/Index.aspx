@@ -114,7 +114,7 @@
 								 Invoke
 							</div>
 							<div class="numbers">
-								 509
+								 <%= m_CallSuccessNum %>
 							</div>
 							<div class="progress">
 								<span style="width: 16%;" class="progress-bar progress-bar-success" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100">
@@ -139,7 +139,7 @@
 								 InvokeQueue
 							</div>
 							<div class="numbers">
-								 1550
+								 <%= m_CallQueueNum %>
 							</div>
 							<div class="progress">
 								<span style="width: 56%;" class="progress-bar progress-bar-warning" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100">
@@ -164,7 +164,7 @@
 								 CacheHit
 							</div>
 							<div class="numbers">
-								 9600
+								 <%= m_CallHitCacheNum %>
 							</div>
 							<div class="progress">
 								<span style="width: 72%;" class="progress-bar progress-bar-danger" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
@@ -189,7 +189,7 @@
 								 Exception
 							</div>
 							<div class="numbers">
-								 2090
+								 <%= m_CallFailureNum %>
 							</div>
 							<div class="progress">
 								<span style="width: 15%;" class="progress-bar progress-bar-success" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">

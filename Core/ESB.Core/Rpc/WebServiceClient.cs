@@ -49,7 +49,7 @@ namespace ESB.Core.Rpc
                 }
 
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去
-                if (!String.IsNullOrEmpty(message))
+                //if (!String.IsNullOrEmpty(message))
                 {
                     String reqMessage = CommonUtil.XmlEncoding(request.消息内容);
                     String esbAction = request.方法名称;

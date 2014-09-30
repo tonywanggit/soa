@@ -13,7 +13,7 @@ namespace ESB.Core.Entity
     [DataObject]
     [Description("")]
     [BindIndex("PK_ServiceMonitor", true, "OID")]
-    [BindTable("ServiceMonitor", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
+    [BindTable("ServiceMonitor", Description = "", ConnName = "EsbMonitorDB", DbType = DatabaseType.SqlServer)]
     public partial class ServiceMonitor<TEntity> : IServiceMonitor
     {
         #region 属性
