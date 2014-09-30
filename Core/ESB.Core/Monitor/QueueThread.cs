@@ -79,6 +79,7 @@ namespace ESB.Core.Monitor
                 AdvanceInvokeParam invokeParam = new AdvanceInvokeParam();
                 invokeParam.ConsumerAppName = x.ConsumerAppName;
                 invokeParam.ConsumerIP = x.ConsumerIP;
+                invokeParam.IsQueue = 1;
 
                 m_ESBProxy.Invoke(x.ServiceName, x.MethodName, x.Message, x.Version, invokeParam);
             });

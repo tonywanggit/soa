@@ -54,6 +54,7 @@ namespace Monitor.WindowsService
                         smOneMinute.InBytes += sm.InBytes;
                         smOneMinute.OutBytes += sm.OutBytes;
                         smOneMinute.CallHitCacheNum += sm.CallHitCacheNum;
+                        smOneMinute.CallQueueNum += sm.CallQueueNum;
 
                         if (smOneMinute.TpsPeak < sm.TpsPeak)
                             smOneMinute.TpsPeak = sm.TpsPeak;
@@ -183,7 +184,8 @@ namespace Monitor.WindowsService
                     CallHitCacheNum = ab.IsCache,
                     InBytes = ab.InBytes,
                     OutBytes = ab.OutBytes,
-                    TpsPeak = 1
+                    TpsPeak = 1,
+                    CallQueueNum = ab.IsQueue
                 };
                 serviceMonitorArray[second] = serviceMonitor;
             }
@@ -204,6 +206,7 @@ namespace Monitor.WindowsService
                 serviceMonitor.InBytes += ab.InBytes;
                 serviceMonitor.OutBytes += ab.OutBytes;
                 serviceMonitor.CallHitCacheNum += ab.IsCache;
+                serviceMonitor.CallQueueNum += ab.IsQueue;
                 serviceMonitor.TpsPeak++;
             }
         }

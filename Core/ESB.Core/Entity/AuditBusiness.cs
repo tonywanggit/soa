@@ -13,7 +13,7 @@ namespace ESB.Core.Entity
     [DataObject]
     [Description("")]
     [BindIndex("PK_AuditBusiness", true, "OID")]
-    [BindTable("AuditBusiness", Description = "", ConnName = "EsbAuditDB", DbType = DatabaseType.SqlServer)]
+    [BindTable("AuditBusiness", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class AuditBusiness<TEntity> : IAuditBusiness
     {
         #region 属性
@@ -364,6 +364,18 @@ namespace ESB.Core.Entity
             get { return _IsCache; }
             set { if (OnPropertyChanging(__.IsCache, value)) { _IsCache = value; OnPropertyChanged(__.IsCache); } }
         }
+
+        private Int32 _IsQueue;
+        /// <summary>是否为队列调用：0-否，1-是</summary>
+        [DisplayName("是否为队列调用：0-否，1-是")]
+        [Description("是否为队列调用：0-否，1-是")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(30, "IsQueue", "是否为队列调用：0-否，1-是", "0", "int", 10, 0, false)]
+        public virtual Int32 IsQueue
+        {
+            get { return _IsQueue; }
+            set { if (OnPropertyChanging(__.IsQueue, value)) { _IsQueue = value; OnPropertyChanged(__.IsQueue); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -409,6 +421,7 @@ namespace ESB.Core.Entity
                     case __.ConsumerIP: return _ConsumerIP;
                     case __.Version: return _Version;
                     case __.IsCache: return _IsCache;
+                    case __.IsQueue: return _IsQueue;
                     default: return base[name];
                 }
             }
@@ -445,6 +458,7 @@ namespace ESB.Core.Entity
                     case __.ConsumerIP: _ConsumerIP = Convert.ToString(value); break;
                     case __.Version: _Version = Convert.ToInt32(value); break;
                     case __.IsCache: _IsCache = Convert.ToInt32(value); break;
+                    case __.IsQueue: _IsQueue = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -542,6 +556,9 @@ namespace ESB.Core.Entity
             ///<summary>是否为缓存调用：0-否，1-是，用于统计缓存命中率</summary>
             public static readonly Field IsCache = FindByName(__.IsCache);
 
+            ///<summary>是否为队列调用：0-否，1-是</summary>
+            public static readonly Field IsQueue = FindByName(__.IsQueue);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -634,6 +651,9 @@ namespace ESB.Core.Entity
 
             ///<summary>是否为缓存调用：0-否，1-是，用于统计缓存命中率</summary>
             public const String IsCache = "IsCache";
+
+            ///<summary>是否为队列调用：0-否，1-是</summary>
+            public const String IsQueue = "IsQueue";
 
         }
         #endregion
@@ -729,6 +749,9 @@ namespace ESB.Core.Entity
 
         /// <summary>是否为缓存调用：0-否，1-是，用于统计缓存命中率</summary>
         Int32 IsCache { get; set; }
+
+        /// <summary>是否为队列调用：0-否，1-是</summary>
+        Int32 IsQueue { get; set; }
         #endregion
 
         #region 获取/设置 字段值

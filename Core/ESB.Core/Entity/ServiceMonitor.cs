@@ -13,7 +13,7 @@ namespace ESB.Core.Entity
     [DataObject]
     [Description("")]
     [BindIndex("PK_ServiceMonitor", true, "OID")]
-    [BindTable("ServiceMonitor", Description = "", ConnName = "EsbMonitorDB", DbType = DatabaseType.SqlServer)]
+    [BindTable("ServiceMonitor", Description = "", ConnName = "EsbServiceDirectoryDB", DbType = DatabaseType.SqlServer)]
     public partial class ServiceMonitor<TEntity> : IServiceMonitor
     {
         #region 属性
@@ -196,6 +196,18 @@ namespace ESB.Core.Entity
             get { return _CallHitCacheNum; }
             set { if (OnPropertyChanging(__.CallHitCacheNum, value)) { _CallHitCacheNum = value; OnPropertyChanged(__.CallHitCacheNum); } }
         }
+
+        private Int32 _CallQueueNum;
+        /// <summary>队列调用次数</summary>
+        [DisplayName("队列调用次数")]
+        [Description("队列调用次数")]
+        [DataObjectField(false, false, false, 10)]
+        [BindColumn(16, "CallQueueNum", "队列调用次数", "0", "int", 10, 0, false)]
+        public virtual Int32 CallQueueNum
+        {
+            get { return _CallQueueNum; }
+            set { if (OnPropertyChanging(__.CallQueueNum, value)) { _CallQueueNum = value; OnPropertyChanged(__.CallQueueNum); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -227,6 +239,7 @@ namespace ESB.Core.Entity
                     case __.CallLevel3Num: return _CallLevel3Num;
                     case __.TpsPeak: return _TpsPeak;
                     case __.CallHitCacheNum: return _CallHitCacheNum;
+                    case __.CallQueueNum: return _CallQueueNum;
                     default: return base[name];
                 }
             }
@@ -249,6 +262,7 @@ namespace ESB.Core.Entity
                     case __.CallLevel3Num: _CallLevel3Num = Convert.ToInt32(value); break;
                     case __.TpsPeak: _TpsPeak = Convert.ToDouble(value); break;
                     case __.CallHitCacheNum: _CallHitCacheNum = Convert.ToInt32(value); break;
+                    case __.CallQueueNum: _CallQueueNum = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -304,6 +318,9 @@ namespace ESB.Core.Entity
             ///<summary>命中缓存的调用次数</summary>
             public static readonly Field CallHitCacheNum = FindByName(__.CallHitCacheNum);
 
+            ///<summary>队列调用次数</summary>
+            public static readonly Field CallQueueNum = FindByName(__.CallQueueNum);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -354,6 +371,9 @@ namespace ESB.Core.Entity
 
             ///<summary>命中缓存的调用次数</summary>
             public const String CallHitCacheNum = "CallHitCacheNum";
+
+            ///<summary>队列调用次数</summary>
+            public const String CallQueueNum = "CallQueueNum";
 
         }
         #endregion
@@ -407,6 +427,9 @@ namespace ESB.Core.Entity
 
         /// <summary>命中缓存的调用次数</summary>
         Int32 CallHitCacheNum { get; set; }
+
+        /// <summary>队列调用次数</summary>
+        Int32 CallQueueNum { get; set; }
         #endregion
 
         #region 获取/设置 字段值

@@ -30,6 +30,10 @@ namespace ESB.Core.Rpc
             if (callState.InvokeParam != null && !String.IsNullOrWhiteSpace(callState.InvokeParam.ConsumerIP))
                 consumerIP = callState.InvokeParam.ConsumerIP;
 
+            Int32 isQueue = 0;
+            if (callState.InvokeParam != null)
+                isQueue = callState.InvokeParam.IsQueue;
+
             AuditBusiness log = new AuditBusiness()
             {
                 OID = Guid.NewGuid().ToString(),
@@ -58,7 +62,8 @@ namespace ESB.Core.Rpc
                 InvokeTimeSpan = ReqTimeSpan.TotalMilliseconds,
                 ConsumerIP = consumerIP,
                 Version = callState.ServiceVersion,
-                IsCache = isCache
+                IsCache = isCache,
+                IsQueue = isQueue
             };
 
             //log.Insert();

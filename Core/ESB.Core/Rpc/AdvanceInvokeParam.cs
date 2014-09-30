@@ -20,8 +20,13 @@ namespace ESB.Core.Rpc
         public String ConsumerIP { get; set; }
 
         /// <summary>
-        /// 强制不用缓存
+        /// 强制不用缓存: 0 -否，1-是
         /// </summary>
-        public Boolean NoCache { get; set; }
+        public Int32 NoCache { get; set; }
+
+        /// <summary>
+        /// 是否为队列调用: 0 -否，1-是
+        /// </summary>
+        internal Int32 IsQueue { get; set; }
     }
 }
