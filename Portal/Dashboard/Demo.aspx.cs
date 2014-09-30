@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 public partial class Dashboard_Demo : System.Web.UI.Page
 {
     public String m_Today = String.Empty;
+    public String m_LeftNav = String.Empty;
 
     protected void Page_Load(object sender, EventArgs e)
     {

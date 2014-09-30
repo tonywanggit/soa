@@ -488,6 +488,9 @@
         <member name="P:NewLife.Collections.SafeStack`1.Capacity">
             <summary>最大容量</summary>
         </member>
+        <member name="P:NewLife.Collections.SafeStack`1.Avg">
+            <summary>平均</summary>
+        </member>
         <member name="T:NewLife.Collections.ISafeStackItem">
             <summary>安全栈项接口。采用安全栈存储的数据必须实现该接口</summary>
         </member>
@@ -6127,6 +6130,17 @@
         <member name="F:NewLife.Serialization.Json.SimpleJsonType.Undefined">
             <summary>未初始化的值,用于处理不严谨的json字符串,比如[,,]</summary>
         </member>
+        <member name="T:NewLife.Serialization.Json.SimpleJsonUtilTest">
+            <summary></summary>
+        </member>
+        <member name="M:NewLife.Serialization.Json.SimpleJsonUtilTest.Main(System.String[])">
+            <summary></summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:NewLife.Serialization.Json.SimpleJsonUtilTest.assert(System.Boolean)">
+            <summary></summary>
+            <param name="b"></param>
+        </member>
         <member name="T:NewLife.Serialization.NameValueReader">
             <summary>名值读取器。用于Http请求、Http接口响应、Cookie值等读写操作。</summary>
         </member>
@@ -7768,6 +7782,36 @@
             <param name="paramIndex"></param>
             <param name="paramTypes"></param>
             <returns></returns>
+        </member>
+        <member name="T:NewLife.Reflection.FastTest">
+            <summary>快速反射测试</summary>
+        </member>
+        <member name="M:NewLife.Reflection.FastTest.Test">
+            <summary></summary>
+        </member>
+        <member name="M:NewLife.Reflection.FastTest.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:NewLife.Reflection.FastTest.#ctor(System.Int32)">
+            <summary></summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:NewLife.Reflection.FastTest.#ctor(System.Int32,System.String)">
+            <summary></summary>
+            <param name="id"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:NewLife.Reflection.FastTest.GetFullName(System.Int32,System.String)">
+            <summary></summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NewLife.Reflection.FastTest.ID">
+            <summary>编号</summary>
+        </member>
+        <member name="P:NewLife.Reflection.FastTest.Name">
+            <summary>名称</summary>
         </member>
         <member name="T:NewLife.Reflection.DynamicAssembly">
             <summary>全局方法程序集</summary>

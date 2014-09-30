@@ -1,4 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Demo.aspx.cs" Inherits="Dashboard_Demo" %>
+
+<%@ Register Src="~/Dashboard/ctl/LeftNav.ascx" TagPrefix="uc1" TagName="LeftNav" %>
+<%@ Register Src="~/Dashboard/ctl/InnerNav.ascx" TagPrefix="uc1" TagName="InnerNav" %>
+<%@ Register Src="~/Dashboard/ctl/TopNav.ascx" TagPrefix="uc1" TagName="TopNav" %>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,89 +36,17 @@
     </head>
 
     <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#" style="color:white">MBSOA</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-            <li><a href="Index.aspx">看板</a></li>
-            <li><a href="#">演示</a></li>
-            <li><a href="../Default.aspx">管理</a></li>
-            </ul>
-        </div>
-        </div>
-    </nav>
+        
+    <uc1:TopNav runat="server" ID="TopNav" />
 
     <div class="container-fluid">
         <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">概览</a></li>
-            <li><a href="#">微信商城</a></li>
-            <li><a href="#">企业服务总线</a></li>
-            <li><a href="#">邦购网</a></li>
-            </ul>
+            <uc1:LeftNav runat="server" id="LeftNav" />
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">演示中心</h1>
-
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 演示 <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="Index.aspx"> 看板 </a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 概览 <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">微信商城</a></li>
-                        <li><a href="#">邦购网</a></li>
-                        <li><a href="#">企业服务总线</a></li>
-                        </ul>
-                    </li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <div class="input-group">
-                          <input type="text" class="form-control" placeholder="请输入服务名称">
-                          <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button">查找</button>
-                          </span>
-                        </div><!-- /input-group -->
-                    </div>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><% Response.Write(m_Today); %></a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
-
+            <uc1:InnerNav runat="server" ID="InnerNav" />
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">SOA实验室</h3>
@@ -189,7 +124,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="http://192.168.56.1/CallCenter/Script/mb-esb-1.0.0.js" type="text/javascript"></script>
+    <script src="/CallCenter/Script/mb-esb-1.0.0.js" type="text/javascript"></script>
     <script src="js/demo.js" type="text/javascript"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
