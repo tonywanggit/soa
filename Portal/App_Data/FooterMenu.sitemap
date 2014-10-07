@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
   <siteMapNode url="" title="Home">
-    <siteMapNode url="~/Default.aspx" title="首页" />
-    <siteMapNode url="~/SiteMap.aspx" title="站点导航" />
-    <siteMapNode url="~/Logout.aspx" title="安全退出" />
+      <siteMapNode url="~/Default.aspx" title="首页" />
+      <siteMapNode url="~/Dashboard" title="看板" />
+      <siteMapNode url="~/Dashboard/Demo.aspx" title="演示" />
+      <siteMapNode url="~/SiteMap.aspx" title="站点导航" />
+      <siteMapNode url="~/Logout.aspx" title="安全退出" />
   </siteMapNode>
 </siteMap>

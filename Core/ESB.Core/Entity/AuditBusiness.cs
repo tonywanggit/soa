@@ -65,12 +65,24 @@ namespace ESB.Core.Entity
             set { if (OnPropertyChanging(__.MethodName, value)) { _MethodName = value; OnPropertyChanged(__.MethodName); } }
         }
 
+        private String _RowMethodName;
+        /// <summary>原始方法名，不带修饰符</summary>
+        [DisplayName("原始方法名，不带修饰符")]
+        [Description("原始方法名，不带修饰符")]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(5, "RowMethodName", "原始方法名，不带修饰符", "", "nvarchar(50)", 0, 0, true)]
+        public virtual String RowMethodName
+        {
+            get { return _RowMethodName; }
+            set { if (OnPropertyChanging(__.RowMethodName, value)) { _RowMethodName = value; OnPropertyChanged(__.RowMethodName); } }
+        }
+
         private String _ReqBeginTime;
         /// <summary></summary>
         [DisplayName("ReqBeginTime")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(5, "ReqBeginTime", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(6, "ReqBeginTime", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String ReqBeginTime
         {
             get { return _ReqBeginTime; }
@@ -82,7 +94,7 @@ namespace ESB.Core.Entity
         [DisplayName("ReqEndTime")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(6, "ReqEndTime", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(7, "ReqEndTime", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String ReqEndTime
         {
             get { return _ReqEndTime; }
@@ -94,7 +106,7 @@ namespace ESB.Core.Entity
         [DisplayName("Status")]
         [Description("")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(7, "Status", "", "0", "int", 10, 0, false)]
+        [BindColumn(8, "Status", "", "0", "int", 10, 0, false)]
         public virtual Int32 Status
         {
             get { return _Status; }
@@ -106,7 +118,7 @@ namespace ESB.Core.Entity
         [DisplayName("MessageID")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(8, "MessageID", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(9, "MessageID", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String MessageID
         {
             get { return _MessageID; }
@@ -118,7 +130,7 @@ namespace ESB.Core.Entity
         [DisplayName("MessageBody")]
         [Description("")]
         [DataObjectField(false, false, false, 1073741823)]
-        [BindColumn(9, "MessageBody", "", "", "ntext", 0, 0, true)]
+        [BindColumn(10, "MessageBody", "", "", "ntext", 0, 0, true)]
         public virtual String MessageBody
         {
             get { return _MessageBody; }
@@ -130,7 +142,7 @@ namespace ESB.Core.Entity
         [DisplayName("CallBeginTime")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(10, "CallBeginTime", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(11, "CallBeginTime", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String CallBeginTime
         {
             get { return _CallBeginTime; }
@@ -142,7 +154,7 @@ namespace ESB.Core.Entity
         [DisplayName("CallEndTime")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(11, "CallEndTime", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(12, "CallEndTime", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String CallEndTime
         {
             get { return _CallEndTime; }
@@ -154,7 +166,7 @@ namespace ESB.Core.Entity
         [DisplayName("BindingAddress")]
         [Description("")]
         [DataObjectField(false, false, false, 200)]
-        [BindColumn(12, "BindingAddress", "", "", "nvarchar(200)", 0, 0, true)]
+        [BindColumn(13, "BindingAddress", "", "", "nvarchar(200)", 0, 0, true)]
         public virtual String BindingAddress
         {
             get { return _BindingAddress; }
@@ -166,7 +178,7 @@ namespace ESB.Core.Entity
         [DisplayName("BindingTemplateID")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(13, "BindingTemplateID", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(14, "BindingTemplateID", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String BindingTemplateID
         {
             get { return _BindingTemplateID; }
@@ -178,7 +190,7 @@ namespace ESB.Core.Entity
         [DisplayName("ReturnMessageBody")]
         [Description("")]
         [DataObjectField(false, false, true, 1073741823)]
-        [BindColumn(14, "ReturnMessageBody", "", "", "ntext", 0, 0, true)]
+        [BindColumn(15, "ReturnMessageBody", "", "", "ntext", 0, 0, true)]
         public virtual String ReturnMessageBody
         {
             get { return _ReturnMessageBody; }
@@ -190,7 +202,7 @@ namespace ESB.Core.Entity
         [DisplayName("BusinessID")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(15, "BusinessID", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(16, "BusinessID", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String BusinessID
         {
             get { return _BusinessID; }
@@ -202,7 +214,7 @@ namespace ESB.Core.Entity
         [DisplayName("BusinessName")]
         [Description("")]
         [DataObjectField(false, false, false, 100)]
-        [BindColumn(16, "BusinessName", "", "", "nvarchar(100)", 0, 0, true)]
+        [BindColumn(17, "BusinessName", "", "", "nvarchar(100)", 0, 0, true)]
         public virtual String BusinessName
         {
             get { return _BusinessName; }
@@ -214,7 +226,7 @@ namespace ESB.Core.Entity
         [DisplayName("ServiceID")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(17, "ServiceID", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(18, "ServiceID", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String ServiceID
         {
             get { return _ServiceID; }
@@ -226,7 +238,7 @@ namespace ESB.Core.Entity
         [DisplayName("ServiceBeginTime")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(18, "ServiceBeginTime", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(19, "ServiceBeginTime", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String ServiceBeginTime
         {
             get { return _ServiceBeginTime; }
@@ -238,7 +250,7 @@ namespace ESB.Core.Entity
         [DisplayName("ServiceEndTime")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(19, "ServiceEndTime", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(20, "ServiceEndTime", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String ServiceEndTime
         {
             get { return _ServiceEndTime; }
@@ -250,7 +262,7 @@ namespace ESB.Core.Entity
         [DisplayName("InvokeTimeSpan")]
         [Description("")]
         [DataObjectField(false, false, false, 53)]
-        [BindColumn(20, "InvokeTimeSpan", "", "0", "float", 53, 0, false)]
+        [BindColumn(21, "InvokeTimeSpan", "", "0", "float", 53, 0, false)]
         public virtual Double InvokeTimeSpan
         {
             get { return _InvokeTimeSpan; }
@@ -262,7 +274,7 @@ namespace ESB.Core.Entity
         [DisplayName("InBytes")]
         [Description("")]
         [DataObjectField(false, false, false, 19)]
-        [BindColumn(21, "InBytes", "", "0", "bigint", 19, 0, false)]
+        [BindColumn(22, "InBytes", "", "0", "bigint", 19, 0, false)]
         public virtual Int64 InBytes
         {
             get { return _InBytes; }
@@ -274,7 +286,7 @@ namespace ESB.Core.Entity
         [DisplayName("OutBytes")]
         [Description("")]
         [DataObjectField(false, false, false, 19)]
-        [BindColumn(22, "OutBytes", "", "0", "bigint", 19, 0, false)]
+        [BindColumn(23, "OutBytes", "", "0", "bigint", 19, 0, false)]
         public virtual Int64 OutBytes
         {
             get { return _OutBytes; }
@@ -286,7 +298,7 @@ namespace ESB.Core.Entity
         [DisplayName("TraceID")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(23, "TraceID", "", "0", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(24, "TraceID", "", "0", "nvarchar(50)", 0, 0, true)]
         public virtual String TraceID
         {
             get { return _TraceID; }
@@ -298,7 +310,7 @@ namespace ESB.Core.Entity
         [DisplayName("InvokeLevel")]
         [Description("")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(24, "InvokeLevel", "", "0", "int", 10, 0, false)]
+        [BindColumn(25, "InvokeLevel", "", "0", "int", 10, 0, false)]
         public virtual Int32 InvokeLevel
         {
             get { return _InvokeLevel; }
@@ -310,7 +322,7 @@ namespace ESB.Core.Entity
         [DisplayName("InvokeOrder")]
         [Description("")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(25, "InvokeOrder", "", "0", "int", 10, 0, false)]
+        [BindColumn(26, "InvokeOrder", "", "0", "int", 10, 0, false)]
         public virtual Int32 InvokeOrder
         {
             get { return _InvokeOrder; }
@@ -322,7 +334,7 @@ namespace ESB.Core.Entity
         [DisplayName("InvokeID")]
         [Description("")]
         [DataObjectField(false, false, false, 50)]
-        [BindColumn(26, "InvokeID", "", "", "nvarchar(50)", 0, 0, true)]
+        [BindColumn(27, "InvokeID", "", "", "nvarchar(50)", 0, 0, true)]
         public virtual String InvokeID
         {
             get { return _InvokeID; }
@@ -334,7 +346,7 @@ namespace ESB.Core.Entity
         [DisplayName("消费者IP")]
         [Description("消费者IP")]
         [DataObjectField(false, false, false, 30)]
-        [BindColumn(27, "ConsumerIP", "消费者IP", "", "nvarchar(30)", 0, 0, true)]
+        [BindColumn(28, "ConsumerIP", "消费者IP", "", "nvarchar(30)", 0, 0, true)]
         public virtual String ConsumerIP
         {
             get { return _ConsumerIP; }
@@ -346,7 +358,7 @@ namespace ESB.Core.Entity
         [DisplayName("服务版本")]
         [Description("服务版本")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(28, "Version", "服务版本", "0", "int", 10, 0, false)]
+        [BindColumn(29, "Version", "服务版本", "0", "int", 10, 0, false)]
         public virtual Int32 Version
         {
             get { return _Version; }
@@ -358,7 +370,7 @@ namespace ESB.Core.Entity
         [DisplayName("是否为缓存调用：0-否，1-是，用于统计缓存命中率")]
         [Description("是否为缓存调用：0-否，1-是，用于统计缓存命中率")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(29, "IsCache", "是否为缓存调用：0-否，1-是，用于统计缓存命中率", "0", "int", 10, 0, false)]
+        [BindColumn(30, "IsCache", "是否为缓存调用：0-否，1-是，用于统计缓存命中率", "0", "int", 10, 0, false)]
         public virtual Int32 IsCache
         {
             get { return _IsCache; }
@@ -370,7 +382,7 @@ namespace ESB.Core.Entity
         [DisplayName("是否为队列调用：0-否，1-是")]
         [Description("是否为队列调用：0-否，1-是")]
         [DataObjectField(false, false, false, 10)]
-        [BindColumn(30, "IsQueue", "是否为队列调用：0-否，1-是", "0", "int", 10, 0, false)]
+        [BindColumn(31, "IsQueue", "是否为队列调用：0-否，1-是", "0", "int", 10, 0, false)]
         public virtual Int32 IsQueue
         {
             get { return _IsQueue; }
@@ -392,36 +404,37 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.OID: return _OID;
-                    case __.HostName: return _HostName;
-                    case __.ServiceName: return _ServiceName;
-                    case __.MethodName: return _MethodName;
-                    case __.ReqBeginTime: return _ReqBeginTime;
-                    case __.ReqEndTime: return _ReqEndTime;
-                    case __.Status: return _Status;
-                    case __.MessageID: return _MessageID;
-                    case __.MessageBody: return _MessageBody;
-                    case __.CallBeginTime: return _CallBeginTime;
-                    case __.CallEndTime: return _CallEndTime;
-                    case __.BindingAddress: return _BindingAddress;
-                    case __.BindingTemplateID: return _BindingTemplateID;
-                    case __.ReturnMessageBody: return _ReturnMessageBody;
-                    case __.BusinessID: return _BusinessID;
-                    case __.BusinessName: return _BusinessName;
-                    case __.ServiceID: return _ServiceID;
-                    case __.ServiceBeginTime: return _ServiceBeginTime;
-                    case __.ServiceEndTime: return _ServiceEndTime;
-                    case __.InvokeTimeSpan: return _InvokeTimeSpan;
-                    case __.InBytes: return _InBytes;
-                    case __.OutBytes: return _OutBytes;
-                    case __.TraceID: return _TraceID;
-                    case __.InvokeLevel: return _InvokeLevel;
-                    case __.InvokeOrder: return _InvokeOrder;
-                    case __.InvokeID: return _InvokeID;
-                    case __.ConsumerIP: return _ConsumerIP;
-                    case __.Version: return _Version;
-                    case __.IsCache: return _IsCache;
-                    case __.IsQueue: return _IsQueue;
+                    case __.OID : return _OID;
+                    case __.HostName : return _HostName;
+                    case __.ServiceName : return _ServiceName;
+                    case __.MethodName : return _MethodName;
+                    case __.RowMethodName : return _RowMethodName;
+                    case __.ReqBeginTime : return _ReqBeginTime;
+                    case __.ReqEndTime : return _ReqEndTime;
+                    case __.Status : return _Status;
+                    case __.MessageID : return _MessageID;
+                    case __.MessageBody : return _MessageBody;
+                    case __.CallBeginTime : return _CallBeginTime;
+                    case __.CallEndTime : return _CallEndTime;
+                    case __.BindingAddress : return _BindingAddress;
+                    case __.BindingTemplateID : return _BindingTemplateID;
+                    case __.ReturnMessageBody : return _ReturnMessageBody;
+                    case __.BusinessID : return _BusinessID;
+                    case __.BusinessName : return _BusinessName;
+                    case __.ServiceID : return _ServiceID;
+                    case __.ServiceBeginTime : return _ServiceBeginTime;
+                    case __.ServiceEndTime : return _ServiceEndTime;
+                    case __.InvokeTimeSpan : return _InvokeTimeSpan;
+                    case __.InBytes : return _InBytes;
+                    case __.OutBytes : return _OutBytes;
+                    case __.TraceID : return _TraceID;
+                    case __.InvokeLevel : return _InvokeLevel;
+                    case __.InvokeOrder : return _InvokeOrder;
+                    case __.InvokeID : return _InvokeID;
+                    case __.ConsumerIP : return _ConsumerIP;
+                    case __.Version : return _Version;
+                    case __.IsCache : return _IsCache;
+                    case __.IsQueue : return _IsQueue;
                     default: return base[name];
                 }
             }
@@ -429,36 +442,37 @@ namespace ESB.Core.Entity
             {
                 switch (name)
                 {
-                    case __.OID: _OID = Convert.ToString(value); break;
-                    case __.HostName: _HostName = Convert.ToString(value); break;
-                    case __.ServiceName: _ServiceName = Convert.ToString(value); break;
-                    case __.MethodName: _MethodName = Convert.ToString(value); break;
-                    case __.ReqBeginTime: _ReqBeginTime = Convert.ToString(value); break;
-                    case __.ReqEndTime: _ReqEndTime = Convert.ToString(value); break;
-                    case __.Status: _Status = Convert.ToInt32(value); break;
-                    case __.MessageID: _MessageID = Convert.ToString(value); break;
-                    case __.MessageBody: _MessageBody = Convert.ToString(value); break;
-                    case __.CallBeginTime: _CallBeginTime = Convert.ToString(value); break;
-                    case __.CallEndTime: _CallEndTime = Convert.ToString(value); break;
-                    case __.BindingAddress: _BindingAddress = Convert.ToString(value); break;
-                    case __.BindingTemplateID: _BindingTemplateID = Convert.ToString(value); break;
-                    case __.ReturnMessageBody: _ReturnMessageBody = Convert.ToString(value); break;
-                    case __.BusinessID: _BusinessID = Convert.ToString(value); break;
-                    case __.BusinessName: _BusinessName = Convert.ToString(value); break;
-                    case __.ServiceID: _ServiceID = Convert.ToString(value); break;
-                    case __.ServiceBeginTime: _ServiceBeginTime = Convert.ToString(value); break;
-                    case __.ServiceEndTime: _ServiceEndTime = Convert.ToString(value); break;
-                    case __.InvokeTimeSpan: _InvokeTimeSpan = Convert.ToDouble(value); break;
-                    case __.InBytes: _InBytes = Convert.ToInt64(value); break;
-                    case __.OutBytes: _OutBytes = Convert.ToInt64(value); break;
-                    case __.TraceID: _TraceID = Convert.ToString(value); break;
-                    case __.InvokeLevel: _InvokeLevel = Convert.ToInt32(value); break;
-                    case __.InvokeOrder: _InvokeOrder = Convert.ToInt32(value); break;
-                    case __.InvokeID: _InvokeID = Convert.ToString(value); break;
-                    case __.ConsumerIP: _ConsumerIP = Convert.ToString(value); break;
-                    case __.Version: _Version = Convert.ToInt32(value); break;
-                    case __.IsCache: _IsCache = Convert.ToInt32(value); break;
-                    case __.IsQueue: _IsQueue = Convert.ToInt32(value); break;
+                    case __.OID : _OID = Convert.ToString(value); break;
+                    case __.HostName : _HostName = Convert.ToString(value); break;
+                    case __.ServiceName : _ServiceName = Convert.ToString(value); break;
+                    case __.MethodName : _MethodName = Convert.ToString(value); break;
+                    case __.RowMethodName : _RowMethodName = Convert.ToString(value); break;
+                    case __.ReqBeginTime : _ReqBeginTime = Convert.ToString(value); break;
+                    case __.ReqEndTime : _ReqEndTime = Convert.ToString(value); break;
+                    case __.Status : _Status = Convert.ToInt32(value); break;
+                    case __.MessageID : _MessageID = Convert.ToString(value); break;
+                    case __.MessageBody : _MessageBody = Convert.ToString(value); break;
+                    case __.CallBeginTime : _CallBeginTime = Convert.ToString(value); break;
+                    case __.CallEndTime : _CallEndTime = Convert.ToString(value); break;
+                    case __.BindingAddress : _BindingAddress = Convert.ToString(value); break;
+                    case __.BindingTemplateID : _BindingTemplateID = Convert.ToString(value); break;
+                    case __.ReturnMessageBody : _ReturnMessageBody = Convert.ToString(value); break;
+                    case __.BusinessID : _BusinessID = Convert.ToString(value); break;
+                    case __.BusinessName : _BusinessName = Convert.ToString(value); break;
+                    case __.ServiceID : _ServiceID = Convert.ToString(value); break;
+                    case __.ServiceBeginTime : _ServiceBeginTime = Convert.ToString(value); break;
+                    case __.ServiceEndTime : _ServiceEndTime = Convert.ToString(value); break;
+                    case __.InvokeTimeSpan : _InvokeTimeSpan = Convert.ToDouble(value); break;
+                    case __.InBytes : _InBytes = Convert.ToInt64(value); break;
+                    case __.OutBytes : _OutBytes = Convert.ToInt64(value); break;
+                    case __.TraceID : _TraceID = Convert.ToString(value); break;
+                    case __.InvokeLevel : _InvokeLevel = Convert.ToInt32(value); break;
+                    case __.InvokeOrder : _InvokeOrder = Convert.ToInt32(value); break;
+                    case __.InvokeID : _InvokeID = Convert.ToString(value); break;
+                    case __.ConsumerIP : _ConsumerIP = Convert.ToString(value); break;
+                    case __.Version : _Version = Convert.ToInt32(value); break;
+                    case __.IsCache : _IsCache = Convert.ToInt32(value); break;
+                    case __.IsQueue : _IsQueue = Convert.ToInt32(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -480,6 +494,9 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public static readonly Field MethodName = FindByName(__.MethodName);
+
+            ///<summary>原始方法名，不带修饰符</summary>
+            public static readonly Field RowMethodName = FindByName(__.RowMethodName);
 
             ///<summary></summary>
             public static readonly Field ReqBeginTime = FindByName(__.ReqBeginTime);
@@ -576,6 +593,9 @@ namespace ESB.Core.Entity
 
             ///<summary></summary>
             public const String MethodName = "MethodName";
+
+            ///<summary>原始方法名，不带修饰符</summary>
+            public const String RowMethodName = "RowMethodName";
 
             ///<summary></summary>
             public const String ReqBeginTime = "ReqBeginTime";
@@ -674,6 +694,9 @@ namespace ESB.Core.Entity
 
         /// <summary></summary>
         String MethodName { get; set; }
+
+        /// <summary>原始方法名，不带修饰符</summary>
+        String RowMethodName { get; set; }
 
         /// <summary></summary>
         String ReqBeginTime { get; set; }

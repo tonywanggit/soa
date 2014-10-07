@@ -1,6 +1,7 @@
 ﻿using ESB.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -28,6 +29,12 @@ namespace ESB.CallCenter.BasicService
         public List<ServiceMonitor> GetAllByServiceAndMethodToday(String serviceName, String methodName)
         {
             return ServiceMonitor.FindAllByServiceAndMethodToday(serviceName, methodName);
+        }
+
+        [WebMethod(Description="获取到看板的统计数据")]
+        public DataSet GetDashboardOverview(String businessID)
+        {
+            return AuditBusiness.GetDashboardOverview(businessID);
         }
     }
 }

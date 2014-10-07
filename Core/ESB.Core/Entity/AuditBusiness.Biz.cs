@@ -278,6 +278,21 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 业务
+        /// <summary>
+        /// 获取到看板的统计数据
+        /// </summary>
+        /// <param name="businessID"></param>
+        /// <returns></returns>
+        public static DataSet GetDashboardOverview(String businessID)
+        {
+            String sql = String.Format("EXEC AuditDashboard '{0}','{1}', '{2}'"
+                , DateTime.Now.ToString("yyyy-MM-dd 00:00:00")
+                , DateTime.Now.ToString("yyyy-MM-dd 23:59:59")
+                , businessID);
+
+
+            return Meta.Query(sql);
+        }
         #endregion
     }
 }

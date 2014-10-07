@@ -67,6 +67,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetDashboardOverview">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDashboardOverviewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDashboardOverviewResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetMonitorServiceStaticSoapIn">
@@ -81,6 +102,12 @@
   <wsdl:message name="GetAllByServiceAndMethodTodaySoapOut">
     <wsdl:part name="parameters" element="tns:GetAllByServiceAndMethodTodayResponse" />
   </wsdl:message>
+  <wsdl:message name="GetDashboardOverviewSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDashboardOverview" />
+  </wsdl:message>
+  <wsdl:message name="GetDashboardOverviewSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDashboardOverviewResponse" />
+  </wsdl:message>
   <wsdl:portType name="MonitorStatServiceSoap">
     <wsdl:operation name="GetMonitorServiceStatic">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取通讯日志的统计信息</wsdl:documentation>
@@ -91,6 +118,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据服务名和方法名查找服务当天监控数据</wsdl:documentation>
       <wsdl:input message="tns:GetAllByServiceAndMethodTodaySoapIn" />
       <wsdl:output message="tns:GetAllByServiceAndMethodTodaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboardOverview">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到看板的统计数据</wsdl:documentation>
+      <wsdl:input message="tns:GetDashboardOverviewSoapIn" />
+      <wsdl:output message="tns:GetDashboardOverviewSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MonitorStatServiceSoap" type="tns:MonitorStatServiceSoap">
@@ -113,6 +145,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetDashboardOverview">
+      <soap:operation soapAction="http://esb.com/GetDashboardOverview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MonitorStatServiceSoap12" type="tns:MonitorStatServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -127,6 +168,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllByServiceAndMethodToday">
       <soap12:operation soapAction="http://esb.com/GetAllByServiceAndMethodToday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboardOverview">
+      <soap12:operation soapAction="http://esb.com/GetDashboardOverview" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

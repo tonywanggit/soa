@@ -107,7 +107,7 @@ namespace Monitor.WindowsService
                 {
                     ServiceName = ab.ServiceName,
                     BindingAddress = ab.BindingAddress,
-                    MethodName = GetMethodName(ab.MethodName)
+                    MethodName = ab.RowMethodName
                 };
                 m_ServiceMonitor.Add(msDimension, serviceMonitorArray);
             }
@@ -120,26 +120,13 @@ namespace Monitor.WindowsService
         }
 
         /// <summary>
-        /// 从类似GET:JSON:MethodName的字符串中抽取到MethodName
-        /// </summary>
-        /// <param name="methodName"></param>
-        /// <returns></returns>
-        private String GetMethodName(String methodName)
-        {
-            if (!methodName.Contains(":")) return methodName;
-
-            String[] methodParams = methodName.Split(":");
-            return methodParams[methodParams.Length - 1];
-        }
-
-        /// <summary>
         /// 从监控数据中查找是否有审计日志对应维度的数据
         /// </summary>
         /// <param name="ab"></param>
         /// <returns></returns>
         private MonitorStatDimension GetMonitorStatDimension(AuditBusiness ab)
         {
-            String methodName = GetMethodName(ab.MethodName);
+            String methodName = ab.RowMethodName;
 
             foreach (var item in m_ServiceMonitor.Keys)
             {
@@ -172,7 +159,7 @@ namespace Monitor.WindowsService
                 serviceMonitor = new ServiceMonitor(){
                     OID = Guid.NewGuid().ToString(),
                     ServiceName = ab.ServiceName,
-                    MethodName = GetMethodName(ab.MethodName),
+                    MethodName = ab.RowMethodName,
                     MonitorStamp = monitorStamp,
                     ConsumerIP = ab.ConsumerIP,
                     BindingAddress = ab.BindingAddress,

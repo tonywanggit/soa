@@ -3,9 +3,7 @@
 <%@ Register Src="~/Dashboard/ctl/LeftNav.ascx" TagPrefix="uc1" TagName="LeftNav" %>
 <%@ Register Src="~/Dashboard/ctl/InnerNav.ascx" TagPrefix="uc1" TagName="InnerNav" %>
 <%@ Register Src="~/Dashboard/ctl/TopNav.ascx" TagPrefix="uc1" TagName="TopNav" %>
-
-
-
+<%@ Register Src="~/Dashboard/ctl/OverviewStat.ascx" TagPrefix="uc1" TagName="OverviewStat" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,150 +53,22 @@
 
             <div class="row stats-overview-cont">
 				<div class="col-md-2 col-sm-4">
-					<div class="stats-overview stat-block">
-						<div class="display stat ok huge">
-							<span class="line-chart" style="display: inline;"><span style="display: none;"><span style="display: none;"><span style="display: none;">
-							5, 6, 7, 11, 14, 10, 15, 19, 15, 2 </span><canvas width="50" height="20"></canvas></span><canvas width="50" height="20"></canvas></span><canvas width="40" height="20"></canvas></span>
-							<div class="percent">
-								 +66%
-							</div>
-						</div>
-						<div class="details">
-							<div class="title">Service</div>
-							<div class="numbers">4</div>
-						</div>
-						<div class="progress">
-							<span style="width: 40%;" class="progress-bar progress-bar-info" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">
-							<span class="sr-only">
-							66% Complete </span>
-							</span>
-						</div>
-					</div>
+                    <uc1:OverviewStat runat="server" ID="osService" />
 				</div>
 				<div class="col-md-2 col-sm-4">
-					<div class="stats-overview stat-block">
-						<div class="display stat good huge">
-							<span class="line-chart" style="display: inline;"><span style="display: none;"><span style="display: none;"><span style="display: none;">
-							2,6,8,12, 11, 15, 16, 11, 16, 11, 10, 3, 7, 8, 12, 19 </span><canvas width="50" height="20"></canvas></span><canvas width="50" height="20"></canvas></span><canvas width="40" height="20"></canvas></span>
-							<div class="percent">
-								 +16%
-							</div>
-						</div>
-						<div class="details">
-							<div class="title">
-								 Contract
-							</div>
-							<div class="numbers">
-								 100
-							</div>
-							<div class="progress">
-								<span style="width: 16%;" class="progress-bar progress-bar-warning" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100">
-								<span class="sr-only">
-								16% Complete </span>
-								</span>
-							</div>
-						</div>
-					</div>
+                    <uc1:OverviewStat runat="server" ID="osContract" />
 				</div>
 				<div class="col-md-2 col-sm-4">
-					<div class="stats-overview stat-block">
-						<div class="display stat bad huge">
-							<span class="line-chart" style="display: inline;"><span style="display: none;"><span style="display: none;"><span style="display: none;">
-							2,6,8,11, 14, 11, 12, 13, 15, 12, 9, 5, 11, 12, 15, 9,3 </span><canvas width="50" height="20"></canvas></span><canvas width="50" height="20"></canvas></span><canvas width="40" height="20"></canvas></span>
-							<div class="percent">
-								 +6%
-							</div>
-						</div>
-						<div class="details">
-							<div class="title">
-								 Invoke
-							</div>
-							<div class="numbers">
-								 <%= m_CallSuccessNum %>
-							</div>
-							<div class="progress">
-								<span style="width: 16%;" class="progress-bar progress-bar-success" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100">
-								<span class="sr-only">
-								16% Complete </span>
-								</span>
-							</div>
-						</div>
-					</div>
+                    <uc1:OverviewStat runat="server" ID="osInvoke" />
 				</div>
 				<div class="col-md-2 col-sm-4">
-					<div class="stats-overview stat-block">
-						<div class="display stat good huge">
-							<span class="bar-chart" style="display: inline;"><span style="display: none;"><span style="display: none;"><span style="display: none;">
-							1,4,9,12, 10, 11, 12, 15, 12, 11, 9, 12, 15, 19, 14, 13, 15 </span><canvas width="50" height="20"></canvas></span><canvas width="50" height="20"></canvas></span><canvas width="40" height="20"></canvas></span>
-							<div class="percent">
-								 +86%
-							</div>
-						</div>
-						<div class="details">
-							<div class="title" style="font-size:13px">
-								 InvokeQueue
-							</div>
-							<div class="numbers">
-								 <%= m_CallQueueNum %>
-							</div>
-							<div class="progress">
-								<span style="width: 56%;" class="progress-bar progress-bar-warning" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100">
-								<span class="sr-only">
-								56% Complete </span>
-								</span>
-							</div>
-						</div>
-					</div>
+                    <uc1:OverviewStat runat="server" ID="osInvokeQueue" />
 				</div>
 				<div class="col-md-2 col-sm-4">
-					<div class="stats-overview stat-block">
-						<div class="display stat ok huge">
-							<span class="line-chart" style="display: inline;"><span style="display: none;"><span style="display: none;"><span style="display: none;">
-							2,6,8,12, 11, 15, 16, 17, 14, 12, 10, 8, 10, 2, 4, 12, 19 </span><canvas width="50" height="20"></canvas></span><canvas width="50" height="20"></canvas></span><canvas width="40" height="20"></canvas></span>
-							<div class="percent">
-								 +72%
-							</div>
-						</div>
-						<div class="details">
-							<div class="title">
-								 CacheHit
-							</div>
-							<div class="numbers">
-								 <%= m_CallHitCacheNum %>
-							</div>
-							<div class="progress">
-								<span style="width: 72%;" class="progress-bar progress-bar-danger" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
-								<span class="sr-only">
-								72% Complete </span>
-								</span>
-							</div>
-						</div>
-					</div>
+                    <uc1:OverviewStat runat="server" ID="osCache" />
 				</div>
 				<div class="col-md-2 col-sm-4">
-					<div class="stats-overview stat-block">
-						<div class="display stat bad huge">
-							<span class="line-chart" style="display: inline;"><span style="display: none;"><span style="display: none;"><span style="display: none;">
-							1,7,9,11, 14, 12, 6, 7, 4, 2, 9, 8, 11, 12, 14, 12, 10 </span><canvas width="50" height="20"></canvas></span><canvas width="50" height="20"></canvas></span><canvas width="40" height="20"></canvas></span>
-							<div class="percent">
-								 +15%
-							</div>
-						</div>
-						<div class="details">
-							<div class="title">
-								 Exception
-							</div>
-							<div class="numbers">
-								 <%= m_CallFailureNum %>
-							</div>
-							<div class="progress">
-								<span style="width: 15%;" class="progress-bar progress-bar-success" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
-								<span class="sr-only">
-								15% Complete </span>
-								</span>
-							</div>
-						</div>
-					</div>
+                    <uc1:OverviewStat runat="server" ID="osException" />
 				</div>
 			</div>
 
@@ -209,10 +79,7 @@
 						<i class="fa fa-reorder"></i>服务调用情况分析
 					</div>
 					<div class="tools">
-						<a href="javascript:;" class="collapse"></a>
-						<a href="#portlet-config" data-toggle="modal" class="config"></a>
 						<a href="javascript:;" class="reload"></a>
-						<a href="javascript:;" class="remove"></a>
 					</div>
 				</div>
 				<div class="portlet-body" style="display: block;">

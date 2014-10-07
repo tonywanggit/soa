@@ -100,12 +100,27 @@ namespace Monitor.WindowsService
                     {
                         x.InBytes = GetStringByteLength(x.MessageBody);
                         x.OutBytes = GetStringByteLength(x.ReturnMessageBody);
-
+                        x.RowMethodName = GetMethodName(x.MethodName);
+                        
                         m_MonitorStatManager.Record(x);
 
                         //--采用线程池将数据提交到数据库中，增加统计发布的速度。
                         ThreadPool.QueueUserWorkItem(y =>
                         {
+                            String bindingID = x.BindingTemplateID;
+                            if (!String.IsNullOrWhiteSpace(bindingID))
+                            {
+                                BindingTemplate binding = BindingTemplate.FindByTemplateID(bindingID);
+                                if (binding != null)
+                                {
+                                    x.ServiceID = binding.ServiceID;
+                                    if (binding.Service != null)
+                                    {
+                                        x.BusinessID = binding.Service.BusinessID;
+                                    }
+                                }
+                            }
+
                             x.Insert();
                         });
                     }
@@ -129,6 +144,21 @@ namespace Monitor.WindowsService
             else
                 return Encoding.Default.GetByteCount(message);
         }
+
+        /// <summary>
+        /// 从类似GET:JSON:MethodName的字符串中抽取到MethodName
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <returns></returns>
+        private String GetMethodName(String methodName)
+        {
+            if (!methodName.Contains(":")) return methodName;
+
+            String[] methodParams = methodName.Split(":");
+            return methodParams[methodParams.Length - 1];
+        }
+
+
 
         /// <summary>
         /// 处理异常消息
