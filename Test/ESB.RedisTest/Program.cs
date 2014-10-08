@@ -23,7 +23,7 @@ namespace ESB.RedisTest
             while(true)
             {
                 String messageIn = new String('T', rnd.Next(1024, 1024 * 1024));
-                String key = "mbsoa:soa:" + rnd.Next(1, 1000);
+                String key = "mbsoa:soa:" + rnd.Next(1, 3000);
                 Int64 messageLen = GetStringByteLength(messageIn);
 
                 try

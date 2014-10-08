@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using NewLife.Log;
 using XCode;
 using XCode.Configuration;
+using System.Data;
 
 namespace ESB.Core.Entity
 {
@@ -81,6 +82,14 @@ namespace ESB.Core.Entity
         #endregion
 
         #region 扩展属性﻿
+        /// <summary>
+        /// 小时
+        /// </summary>
+        public Int32 Hour { get; set; }
+        /// <summary>
+        /// 分钟
+        /// </summary>
+        public Int32 Minute { get; set; }
         #endregion
 
         #region 扩展查询﻿
@@ -190,6 +199,23 @@ namespace ESB.Core.Entity
                 , SUM(CallFailureNum) AS CallFailureNum, SUM(CallQueueNum) AS CallQueueNum ";
 
             return FindAll(where, null, select, 0, 0);
+        }
+
+        /// <summary>
+        /// 调用延时分析的统计数据
+        /// </summary>
+        /// <param name="businessID"></param>
+        /// <returns></returns>
+        public static EntityList<ServiceMonitor> GetInvokeAnalyse(String businessID)
+        {
+            String sql = String.Format("EXEC InvokeAnalyse '{0}','{1}', '{2}'"
+                , DateTime.Now.ToString("yyyy-MM-dd 00:00:00")
+                , DateTime.Now.ToString("yyyy-MM-dd 23:59:59")
+                , businessID);
+
+            DataSet dsMonitor = Meta.Query(sql);
+
+            return ServiceMonitor.LoadData(dsMonitor);
         }
         #endregion
     }

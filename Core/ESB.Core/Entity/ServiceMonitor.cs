@@ -208,6 +208,30 @@ namespace ESB.Core.Entity
             get { return _CallQueueNum; }
             set { if (OnPropertyChanging(__.CallQueueNum, value)) { _CallQueueNum = value; OnPropertyChanged(__.CallQueueNum); } }
         }
+
+        private Double _MaxInovkeTimeSpan;
+        /// <summary></summary>
+        [DisplayName("MaxInovkeTimeSpan")]
+        [Description("")]
+        [DataObjectField(false, false, false, 53)]
+        [BindColumn(17, "MaxInovkeTimeSpan", "", "0", "float", 53, 0, false)]
+        public virtual Double MaxInovkeTimeSpan
+        {
+            get { return _MaxInovkeTimeSpan; }
+            set { if (OnPropertyChanging(__.MaxInovkeTimeSpan, value)) { _MaxInovkeTimeSpan = value; OnPropertyChanged(__.MaxInovkeTimeSpan); } }
+        }
+
+        private String _BusinessID;
+        /// <summary></summary>
+        [DisplayName("BusinessID")]
+        [Description("")]
+        [DataObjectField(false, false, false, 50)]
+        [BindColumn(18, "BusinessID", "", "", "nvarchar(50)", 0, 0, true)]
+        public virtual String BusinessID
+        {
+            get { return _BusinessID; }
+            set { if (OnPropertyChanging(__.BusinessID, value)) { _BusinessID = value; OnPropertyChanged(__.BusinessID); } }
+        }
         #endregion
 
         #region 获取/设置 字段值
@@ -240,6 +264,8 @@ namespace ESB.Core.Entity
                     case __.TpsPeak: return _TpsPeak;
                     case __.CallHitCacheNum: return _CallHitCacheNum;
                     case __.CallQueueNum: return _CallQueueNum;
+                    case __.MaxInovkeTimeSpan: return _MaxInovkeTimeSpan;
+                    case __.BusinessID: return _BusinessID;
                     default: return base[name];
                 }
             }
@@ -263,6 +289,8 @@ namespace ESB.Core.Entity
                     case __.TpsPeak: _TpsPeak = Convert.ToDouble(value); break;
                     case __.CallHitCacheNum: _CallHitCacheNum = Convert.ToInt32(value); break;
                     case __.CallQueueNum: _CallQueueNum = Convert.ToInt32(value); break;
+                    case __.MaxInovkeTimeSpan: _MaxInovkeTimeSpan = Convert.ToDouble(value); break;
+                    case __.BusinessID: _BusinessID = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -321,6 +349,12 @@ namespace ESB.Core.Entity
             ///<summary>队列调用次数</summary>
             public static readonly Field CallQueueNum = FindByName(__.CallQueueNum);
 
+            ///<summary></summary>
+            public static readonly Field MaxInovkeTimeSpan = FindByName(__.MaxInovkeTimeSpan);
+
+            ///<summary></summary>
+            public static readonly Field BusinessID = FindByName(__.BusinessID);
+
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
         }
 
@@ -374,6 +408,12 @@ namespace ESB.Core.Entity
 
             ///<summary>队列调用次数</summary>
             public const String CallQueueNum = "CallQueueNum";
+
+            ///<summary></summary>
+            public const String MaxInovkeTimeSpan = "MaxInovkeTimeSpan";
+
+            ///<summary></summary>
+            public const String BusinessID = "BusinessID";
 
         }
         #endregion
@@ -430,6 +470,12 @@ namespace ESB.Core.Entity
 
         /// <summary>队列调用次数</summary>
         Int32 CallQueueNum { get; set; }
+
+        /// <summary></summary>
+        Double MaxInovkeTimeSpan { get; set; }
+
+        /// <summary></summary>
+        String BusinessID { get; set; }
         #endregion
 
         #region 获取/设置 字段值

@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Collections.Generic;
 using JN.Esb.Portal.ServiceMgt.服务目录服务;
 using System.DirectoryServices;
+using System.Threading;
 
 public partial class LoginPage : System.Web.UI.Page
 {

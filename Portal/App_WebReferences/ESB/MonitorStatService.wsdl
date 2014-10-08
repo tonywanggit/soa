@@ -26,6 +26,8 @@
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityOfServiceMonitor">
             <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Hour" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Minute" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="MonitorStamp" type="s:dateTime" />
               <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
@@ -42,6 +44,8 @@
               <s:element minOccurs="1" maxOccurs="1" name="TpsPeak" type="s:double" />
               <s:element minOccurs="1" maxOccurs="1" name="CallHitCacheNum" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="CallQueueNum" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxInovkeTimeSpan" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessID" type="s:string" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -88,6 +92,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetInvokeAnalyse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvokeAnalyseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvokeAnalyseResult" type="tns:ArrayOfServiceMonitor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetMonitorServiceStaticSoapIn">
@@ -108,6 +126,12 @@
   <wsdl:message name="GetDashboardOverviewSoapOut">
     <wsdl:part name="parameters" element="tns:GetDashboardOverviewResponse" />
   </wsdl:message>
+  <wsdl:message name="GetInvokeAnalyseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvokeAnalyse" />
+  </wsdl:message>
+  <wsdl:message name="GetInvokeAnalyseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvokeAnalyseResponse" />
+  </wsdl:message>
   <wsdl:portType name="MonitorStatServiceSoap">
     <wsdl:operation name="GetMonitorServiceStatic">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取通讯日志的统计信息</wsdl:documentation>
@@ -123,6 +147,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到看板的统计数据</wsdl:documentation>
       <wsdl:input message="tns:GetDashboardOverviewSoapIn" />
       <wsdl:output message="tns:GetDashboardOverviewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvokeAnalyse">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到调用延时分析的统计数据</wsdl:documentation>
+      <wsdl:input message="tns:GetInvokeAnalyseSoapIn" />
+      <wsdl:output message="tns:GetInvokeAnalyseSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MonitorStatServiceSoap" type="tns:MonitorStatServiceSoap">
@@ -154,6 +183,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetInvokeAnalyse">
+      <soap:operation soapAction="http://esb.com/GetInvokeAnalyse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MonitorStatServiceSoap12" type="tns:MonitorStatServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -177,6 +215,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDashboardOverview">
       <soap12:operation soapAction="http://esb.com/GetDashboardOverview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvokeAnalyse">
+      <soap12:operation soapAction="http://esb.com/GetInvokeAnalyse" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

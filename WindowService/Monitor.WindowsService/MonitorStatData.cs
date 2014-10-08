@@ -172,7 +172,9 @@ namespace Monitor.WindowsService
                     InBytes = ab.InBytes,
                     OutBytes = ab.OutBytes,
                     TpsPeak = 1,
-                    CallQueueNum = ab.IsQueue
+                    CallQueueNum = ab.IsQueue,
+                    MaxInovkeTimeSpan = ab.InvokeTimeSpan,
+                    BusinessID = ab.BusinessID
                 };
                 serviceMonitorArray[second] = serviceMonitor;
             }
@@ -195,6 +197,9 @@ namespace Monitor.WindowsService
                 serviceMonitor.CallHitCacheNum += ab.IsCache;
                 serviceMonitor.CallQueueNum += ab.IsQueue;
                 serviceMonitor.TpsPeak++;
+
+                if (ab.InvokeTimeSpan > serviceMonitor.MaxInovkeTimeSpan)
+                    serviceMonitor.MaxInovkeTimeSpan = ab.InvokeTimeSpan;
             }
         }
     }

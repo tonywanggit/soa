@@ -30,8 +30,16 @@ public partial class Dashboard_Index : System.Web.UI.Page
     protected Int32 m_CachePercent = 0;     //--缓存命中百分比
     protected Int32 m_ExceptionPercent = 0; //--异常百分比
 
+    protected String m_BusinessID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        m_BusinessID = "All";
+        if (!String.IsNullOrEmpty(Request["BusinessID"]))
+        {
+            m_BusinessID = Request["BusinessID"];
+        }
+
         if (Request["Action"] == "GetChartData")
         {
             Response.ContentEncoding = Encoding.UTF8;
@@ -107,13 +115,7 @@ public partial class Dashboard_Index : System.Web.UI.Page
     /// </summary>
     private void InitOverviewData()
     {
-        String businessID = "All";
-        if (!String.IsNullOrEmpty(Request["BusinessID"]))
-        {
-            businessID = Request["BusinessID"];
-        }
-
-        DataSet dsOverView = msService.GetDashboardOverview(businessID);
+        DataSet dsOverView = msService.GetDashboardOverview(m_BusinessID);
 
         //--获取到非队列的调用数量
         Int32 rowsCount1 = dsOverView.Tables[0].Rows.Count;
@@ -238,9 +240,17 @@ public partial class Dashboard_Index : System.Web.UI.Page
     /// <returns></returns>
     private String GetChartData()
     {
-        String[] Service ={"ESB_ASHX", "ESB_WS"};
         StringBuilder sbServiceData = new StringBuilder();
-        foreach (String serviceName in Service)
+        DateTime now = DateTime.Now;
+
+        ESB.ServiceMonitor[] lstSM = msService.GetInvokeAnalyse(m_BusinessID);
+
+        var expTopSM = from sm in lstSM
+                       group sm by sm.ServiceName into g
+                       orderby g.Max(x => x.MaxInovkeTimeSpan) descending
+                       select new { ServiceName = g.Key, MaxInovkeTimeSpan = g.Max(x => x.MaxInovkeTimeSpan) };
+
+        foreach (var item in expTopSM)
         {
             sbServiceData.AppendFormat(@"{{
                     ""data"": {0},
@@ -249,16 +259,15 @@ public partial class Dashboard_Index : System.Web.UI.Page
                         ""lineWidth"": 1
                     }},
                     ""shadowSize"": 0
-                }},", GetServiceData(serviceName), serviceName);
+                }},", GetServiceData(item.ServiceName, lstSM, now), item.ServiceName);
         }
-
 
         String chartData = String.Format(@"{{
             ""nowTime"": ""{0}"",
             ""data"":[
                 {1}
             ]
-        }}", DateTime.Now.ToString("hh:mm"), sbServiceData.ToString().TrimEnd(','));
+        }}", now.ToString("hh:mm"), sbServiceData.ToString().TrimEnd(','));
 
         return chartData;
     }
@@ -268,18 +277,42 @@ public partial class Dashboard_Index : System.Web.UI.Page
     /// </summary>
     /// <param name="serviceName"></param>
     /// <returns></returns>
-    private String GetServiceData(String serviceName)
+    private String GetServiceData(String serviceName, ESB.ServiceMonitor[] lstSM, DateTime now)
     {
         StringBuilder sbServiceData = new StringBuilder();
-        Random random = new Random(serviceName.Length);
+        ///Random random = new Random(serviceName.Length * DateTime.Now.Millisecond);
         sbServiceData.Append("[");
+
+        List<ESB.ServiceMonitor> lstSMService = lstSM.Where(x => x.ServiceName == serviceName).ToList();
 
         for (int i = 0; i < 30; i++)
         {
+            Int32 invokeTimeSpan = 0;
+            Int32 callSuccessNum = 0;
+            Int32 callFailureNum = 0;
+            Int32 callLevel1Num = 0;
+            Int32 callLevel2Num = 0;
+            Int32 callLevel3Num = 0;
+
+            if (lstSMService != null || lstSMService.Count > 0)
+            {
+                DateTime dtStat = now.AddMinutes(i - 30 + 1);
+                ESB.ServiceMonitor sm = lstSMService.FirstOrDefault(x => x.Hour == dtStat.Hour && x.Minute == dtStat.Minute);
+                if (sm != null)
+                {
+                    invokeTimeSpan = (Int32)sm.MaxInovkeTimeSpan;
+                    callSuccessNum = sm.CallSuccessNum;
+                    callFailureNum = sm.CallFailureNum;
+                    callLevel1Num = sm.CallLevel1Num;
+                    callLevel2Num = sm.CallLevel2Num;
+                    callLevel3Num = sm.CallLevel3Num;
+                }
+            }
+
             if(i == 29)
-                sbServiceData.AppendFormat("[{0},{1}]", i + 1, random.Next(300));
+                sbServiceData.AppendFormat(@"[{0}, {1}, {2}]", i + 1, invokeTimeSpan, callLevel2Num + callLevel3Num);
             else
-                sbServiceData.AppendFormat("[{0},{1}],", i + 1, random.Next(300));
+                sbServiceData.AppendFormat(@"[{0}, {1}, {2}],", i + 1, invokeTimeSpan, callLevel2Num + callLevel3Num);
         }
 
         sbServiceData.Append("]");

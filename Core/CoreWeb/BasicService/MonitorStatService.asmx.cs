@@ -36,5 +36,11 @@ namespace ESB.CallCenter.BasicService
         {
             return AuditBusiness.GetDashboardOverview(businessID);
         }
+
+        [WebMethod(Description = "获取到调用延时分析的统计数据")]
+        public List<ServiceMonitor> GetInvokeAnalyse(String businessID)
+        {
+            return ServiceMonitor.GetInvokeAnalyse(businessID);
+        }
     }
 }

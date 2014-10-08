@@ -101,26 +101,26 @@ namespace Monitor.WindowsService
                         x.InBytes = GetStringByteLength(x.MessageBody);
                         x.OutBytes = GetStringByteLength(x.ReturnMessageBody);
                         x.RowMethodName = GetMethodName(x.MethodName);
-                        
+
+                        String bindingID = x.BindingTemplateID;
+                        if (!String.IsNullOrWhiteSpace(bindingID))
+                        {
+                            BindingTemplate binding = BindingTemplate.FindByTemplateID(bindingID);
+                            if (binding != null)
+                            {
+                                x.ServiceID = binding.ServiceID;
+                                if (binding.Service != null)
+                                {
+                                    x.BusinessID = binding.Service.BusinessID;
+                                }
+                            }
+                        }
+
                         m_MonitorStatManager.Record(x);
 
                         //--采用线程池将数据提交到数据库中，增加统计发布的速度。
                         ThreadPool.QueueUserWorkItem(y =>
                         {
-                            String bindingID = x.BindingTemplateID;
-                            if (!String.IsNullOrWhiteSpace(bindingID))
-                            {
-                                BindingTemplate binding = BindingTemplate.FindByTemplateID(bindingID);
-                                if (binding != null)
-                                {
-                                    x.ServiceID = binding.ServiceID;
-                                    if (binding.Service != null)
-                                    {
-                                        x.BusinessID = binding.Service.BusinessID;
-                                    }
-                                }
-                            }
-
                             x.Insert();
                         });
                     }

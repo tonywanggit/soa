@@ -92,6 +92,8 @@ $(document).ready(function () {
     function chartServiceInvoke(chartData) {
         var nowTime = chartData.nowTime;
 
+        if (chartData.data.length == 0) return;
+
         var plot = $.plot($("#chart_2"), chartData.data, {
             series: {
                 lines: {
@@ -179,9 +181,13 @@ $(document).ready(function () {
 
                     $("#tooltip").remove();
                     var x = timeFormatter(item.datapoint[0]),
-                        y = item.datapoint[1] + "ms"
+                        y = item.datapoint[1] + "ms";
 
-                    showTooltip(item.pageX, item.pageY, item.series.label + " of " + x + " = " + y);
+                    if (item.datapoint[1] > 0)
+                        console.log(item.datapoint);
+                    var content = item.series.label + "（" + x + "）<br> 最长延时：" + y
+                        + "<br>>100ms：" + item.datapoint[2];
+                    showTooltip(item.pageX, item.pageY, content);
                 }
             } else {
                 $("#tooltip").remove();
@@ -199,7 +205,7 @@ $(document).ready(function () {
         url: "Index.aspx",
         async: true,
         dataType: 'json',
-        data: "Action=GetChartData",
+        data: "Action=GetChartData&BusinessID=" + BusinessID,
         success: function (msg) {
             chartServiceInvoke(msg);
         },
@@ -214,7 +220,7 @@ $(document).ready(function () {
             url: "Index.aspx",
             async: true,
             dataType: 'json',
-            data: "Action=GetChartData",
+            data: "Action=GetChartData&BusinessID=" + BusinessID,
             success: function (msg) {
                 chartServiceInvoke(msg);
             },
