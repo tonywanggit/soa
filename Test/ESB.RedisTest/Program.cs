@@ -23,7 +23,7 @@ namespace ESB.RedisTest
             while(true)
             {
                 String messageIn = new String('T', rnd.Next(1024, 1024 * 1024));
-                String key = "mbsoa:soa:" + rnd.Next(1, 100000);
+                String key = "mbsoa:soa:" + rnd.Next(1, 1000);
                 Int64 messageLen = GetStringByteLength(messageIn);
 
                 try
@@ -43,7 +43,7 @@ namespace ESB.RedisTest
                     stopWatch.Stop();
                     Console.WriteLine("第{0}次调用 Set, 长度：{1}, 耗时：{2}ms。", cnt, messageLen, stopWatch.ElapsedMilliseconds);
 
-                    if (stopWatch.ElapsedMilliseconds > 1000)
+                    if (stopWatch.ElapsedMilliseconds > 500)
                     {
                         XTrace.WriteLine("[信息]-[次数：{0}]-[动作：GET]-[长度：{1}]-[耗时：{2}]", cnt, messageLen, stopWatch.ElapsedMilliseconds);
                     }
