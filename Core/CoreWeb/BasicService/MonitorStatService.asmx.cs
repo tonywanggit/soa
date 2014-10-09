@@ -42,5 +42,11 @@ namespace ESB.CallCenter.BasicService
         {
             return ServiceMonitor.GetInvokeAnalyse(businessID);
         }
+
+        [WebMethod(Description = "获取到服务调用排行榜")]
+        public List<ServiceMonitor> GetInvokeTopService(String businessID)
+        {
+            return ServiceMonitor.GetInvokeTopService(businessID);
+        }
     }
 }

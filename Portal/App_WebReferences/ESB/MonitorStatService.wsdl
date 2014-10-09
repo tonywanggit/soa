@@ -28,6 +28,7 @@
             <s:sequence>
               <s:element minOccurs="1" maxOccurs="1" name="Hour" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="Minute" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessName" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="MonitorStamp" type="s:dateTime" />
               <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
@@ -106,6 +107,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetInvokeTopService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInvokeTopServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInvokeTopServiceResult" type="tns:ArrayOfServiceMonitor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetMonitorServiceStaticSoapIn">
@@ -132,6 +147,12 @@
   <wsdl:message name="GetInvokeAnalyseSoapOut">
     <wsdl:part name="parameters" element="tns:GetInvokeAnalyseResponse" />
   </wsdl:message>
+  <wsdl:message name="GetInvokeTopServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInvokeTopService" />
+  </wsdl:message>
+  <wsdl:message name="GetInvokeTopServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInvokeTopServiceResponse" />
+  </wsdl:message>
   <wsdl:portType name="MonitorStatServiceSoap">
     <wsdl:operation name="GetMonitorServiceStatic">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取通讯日志的统计信息</wsdl:documentation>
@@ -152,6 +173,11 @@
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到调用延时分析的统计数据</wsdl:documentation>
       <wsdl:input message="tns:GetInvokeAnalyseSoapIn" />
       <wsdl:output message="tns:GetInvokeAnalyseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvokeTopService">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到服务调用排行榜</wsdl:documentation>
+      <wsdl:input message="tns:GetInvokeTopServiceSoapIn" />
+      <wsdl:output message="tns:GetInvokeTopServiceSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MonitorStatServiceSoap" type="tns:MonitorStatServiceSoap">
@@ -192,6 +218,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetInvokeTopService">
+      <soap:operation soapAction="http://esb.com/GetInvokeTopService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MonitorStatServiceSoap12" type="tns:MonitorStatServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -224,6 +259,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetInvokeAnalyse">
       <soap12:operation soapAction="http://esb.com/GetInvokeAnalyse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInvokeTopService">
+      <soap12:operation soapAction="http://esb.com/GetInvokeTopService" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

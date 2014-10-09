@@ -3,6 +3,8 @@
 <%@ Register Src="~/Dashboard/ctl/LeftNav.ascx" TagPrefix="uc1" TagName="LeftNav" %>
 <%@ Register Src="~/Dashboard/ctl/InnerNav.ascx" TagPrefix="uc1" TagName="InnerNav" %>
 <%@ Register Src="~/Dashboard/ctl/TopNav.ascx" TagPrefix="uc1" TagName="TopNav" %>
+<%@ Register Src="~/Dashboard/ctl/ServiceVersionTable.ascx" TagPrefix="uc1" TagName="ServiceVersionTable" %>
+
 
 
 
@@ -57,7 +59,7 @@
                         <div class="col-sm-12">
                             <div class="input-group">
                                 <div class="input-group-addon">服务名称：</div>
-                                <input type="text" class="form-control" id="txtServiceName" placeholder="服务名称" value="MBSOA_Demo" />
+                                <input type="text" class="form-control" id="txtServiceName" placeholder="服务名称" value="<%=m_ServiceName %>" />
                                 <div class="input-group-btn btn-no-radius">
                                     <select id="selNoCache" class="form-control" style="width:140px;border-left:none">
                                         <option selected="selected" value="0">Enable Cache</option>
@@ -91,7 +93,7 @@
                                         <option value="XML">XML</option>
                                     </select>
                                 </div>
-                                <input type="text" class="form-control" id="txtMethodName" placeholder="方法名称" value="Echo">
+                                <input type="text" class="form-control" id="txtMethodName" placeholder="方法名称" value="<%=m_MethodName %>">
                                 <div id="lblDuration" class="input-group-addon">耗时</div>
                             </div>
                         </div>
@@ -114,6 +116,11 @@
                     </div>
                     </form>
                 </div>
+            </div>
+
+            <h2 class="sub-header">服务一览表</h2>
+            <div class="table-responsive">
+                <uc1:ServiceVersionTable runat="server" ID="ServiceVersionTable" />
             </div>
         </div>
         </div>

@@ -90,6 +90,10 @@ namespace ESB.Core.Entity
         /// 分钟
         /// </summary>
         public Int32 Minute { get; set; }
+        /// <summary>
+        /// 服务提供者
+        /// </summary>
+        public String BusinessName { get; set; }
         #endregion
 
         #region 扩展查询﻿
@@ -216,6 +220,23 @@ namespace ESB.Core.Entity
             DataSet dsMonitor = Meta.Query(sql);
 
             return ServiceMonitor.LoadData(dsMonitor);
+        }
+
+        /// <summary>
+        /// 调用延时分析的统计数据
+        /// </summary>
+        /// <param name="businessID"></param>
+        /// <returns></returns>
+        public static EntityList<ServiceMonitor> GetInvokeTopService(String businessID)
+        {
+            String sql = String.Format("EXEC InvokeTopService '{0}','{1}', '{2}'"
+                , DateTime.Now.ToString("yyyy-MM-dd 00:00:00")
+                , DateTime.Now.ToString("yyyy-MM-dd 23:59:59")
+                , businessID);
+
+            DataSet dsTopServcie = Meta.Query(sql);
+
+            return ServiceMonitor.LoadData(dsTopServcie);
         }
         #endregion
     }

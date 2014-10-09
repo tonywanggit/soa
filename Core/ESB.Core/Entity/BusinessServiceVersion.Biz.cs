@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using NewLife.Log;
 using XCode;
 using XCode.Configuration;
+using System.Data;
 
 namespace ESB.Core.Entity
 {
@@ -107,6 +108,26 @@ namespace ESB.Core.Entity
             }
             set { }
         }
+        /// <summary>
+        /// 服务提供者
+        /// </summary>
+        public String BusinessName{ get; set; }
+        /// <summary>
+        /// 服务描述
+        /// </summary>
+        public String ServiceDesc { get; set; }
+        /// <summary>
+        /// 服务名称
+        /// </summary>
+        public String ServiceName { get; set; }
+        /// <summary>
+        /// 服务管理员
+        /// </summary>
+        public String Manager { get; set; }
+        /// <summary>
+        /// 默认版本
+        /// </summary>
+        public Int32 DefaultVersion { get; set; }
         #endregion
 
         #region 扩展查询﻿
@@ -356,6 +377,19 @@ namespace ESB.Core.Entity
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 获取到所有发布的服务版本
+        /// </summary>
+        /// <param name="businessID"></param>
+        /// <returns></returns>
+        public static EntityList<BusinessServiceVersion> GetPublishServiceVersion(String businessID)
+        {
+            String sql = String.Format("EXEC GetPublishServiceVersion '{0}'", businessID);
+            DataSet ds = Meta.Query(sql);
+
+            return BusinessServiceVersion.LoadData(ds);
         }
 
         #endregion

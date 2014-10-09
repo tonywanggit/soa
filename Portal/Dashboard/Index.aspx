@@ -4,6 +4,8 @@
 <%@ Register Src="~/Dashboard/ctl/InnerNav.ascx" TagPrefix="uc1" TagName="InnerNav" %>
 <%@ Register Src="~/Dashboard/ctl/TopNav.ascx" TagPrefix="uc1" TagName="TopNav" %>
 <%@ Register Src="~/Dashboard/ctl/OverviewStat.ascx" TagPrefix="uc1" TagName="OverviewStat" %>
+<%@ Register Src="~/Dashboard/ctl/InvovkeServiceTable.ascx" TagPrefix="uc1" TagName="InvovkeServiceTable" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,45 +94,7 @@
 
             <h2 class="sub-header">服务调用排行榜</h2>
             <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>Top10</th>
-                    <th>服务提供者</th>
-                    <th>服务名称</th>
-                    <th>调用次数</th>
-                    <th>调用次数（>200ms）</th>
-                    <th>缓存命中率</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>邦购网</td>
-                    <td>BG_ORDER</td>
-                    <td>100</td>
-                    <th>30</th>
-                    <th>40%</th>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>邦购网</td>
-                    <td>BG_ORDER</td>
-                    <td>100</td>
-                    <th>30</th>
-                    <th>40%</th>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>邦购网</td>
-                    <td>BG_ORDER</td>
-                    <td>100</td>
-                    <th>30</th>
-                    <th>40%</th>
-                </tr>
-                
-                </tbody>
-            </table>
+                <uc1:InvovkeServiceTable runat="server" ID="InvovkeServiceTable" />
             </div>
         </div>
         </div>

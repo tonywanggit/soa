@@ -4,10 +4,15 @@ $(document).ready(function () {
     function Invoke() {
         var methodType = $("#selMethodType").val();
         var dataType = $("#selDataType").val();
-        var methodName = $("#txtMethodName").val();
+        var methodName = $.trim($("#txtMethodName").val());
         var serviceName = $("#txtServiceName").val();
         var message = $("#txtRequest").val();
         var noCache = $("#selNoCache").val();
+
+        if (!methodName) {
+            alert("请输入方法名称！");
+            $("#txtMethodName").select();
+        }
 
         methodName = methodType + ":" + dataType + ":" + methodName;
 

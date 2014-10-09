@@ -30,6 +30,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RowMethodName" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="ReqBeginTime" type="s:string" />
               <s:element minOccurs="0" maxOccurs="1" name="ReqEndTime" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
@@ -55,6 +56,7 @@
               <s:element minOccurs="0" maxOccurs="1" name="ConsumerIP" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="IsCache" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsQueue" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>

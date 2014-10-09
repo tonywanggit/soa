@@ -29,6 +29,12 @@ namespace ESB.CallCenter.BasicService
             return lstVersionView.OrderByDescending(x => x.CommitDateTime).ToList();
         }
 
+        [WebMethod(Description = "获取到所有发布的服务版本")]
+        public List<BusinessServiceVersion> GetPublishServiceVersion(String businessID)
+        {
+            return BusinessServiceVersion.GetPublishServiceVersion(businessID);
+        }
+
         [WebMethod(Description = "根据版本ID获取到服务版本视图")]
         public EsbView_ServiceVersion GetServiceVersionViewByID(String versionID)
         {

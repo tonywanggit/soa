@@ -85,6 +85,63 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="BindingTemplate" nillable="true" type="tns:BindingTemplate" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetPublishServiceVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="businessID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublishServiceVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPublishServiceVersionResult" type="tns:ArrayOfBusinessServiceVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusinessServiceVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessServiceVersion" nillable="true" type="tns:BusinessServiceVersion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BusinessServiceVersionOfBusinessServiceVersion" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BusinessServiceVersionOfBusinessServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityOfBusinessServiceVersion">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="StatusDesc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceDesc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Manager" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DefaultVersion" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BigVer" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SmallVer" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreatePersionID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConfirmPersonID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CommitDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="ConfirmDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Opinion" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ObsoletePersonID" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ObsoleteDateTime" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityOfBusinessServiceVersion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase" />
+        </s:complexContent>
+      </s:complexType>
       <s:element name="GetServiceVersionViewByID">
         <s:complexType>
           <s:sequence>
@@ -113,39 +170,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="BusinessServiceVersion">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:BusinessServiceVersionOfBusinessServiceVersion" />
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="BusinessServiceVersionOfBusinessServiceVersion">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityOfBusinessServiceVersion">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="StatusDesc" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="OID" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="BigVer" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="SmallVer" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="CreatePersionID" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="ConfirmPersonID" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="CommitDateTime" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="ConfirmDateTime" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Opinion" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="ObsoletePersonID" type="s:string" />
-              <s:element minOccurs="1" maxOccurs="1" name="ObsoleteDateTime" type="s:dateTime" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
-      </s:complexType>
-      <s:complexType name="EntityOfBusinessServiceVersion">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:EntityBase" />
-        </s:complexContent>
-      </s:complexType>
       <s:element name="GetServiceVersionByServiceID">
         <s:complexType>
           <s:sequence>
@@ -160,11 +184,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfBusinessServiceVersion">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessServiceVersion" nillable="true" type="tns:BusinessServiceVersion" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetServiceBigVersionByServiceID">
         <s:complexType>
           <s:sequence>
@@ -492,6 +511,12 @@
   <wsdl:message name="GetServiceVersionViewByConfirmPersonSoapOut">
     <wsdl:part name="parameters" element="tns:GetServiceVersionViewByConfirmPersonResponse" />
   </wsdl:message>
+  <wsdl:message name="GetPublishServiceVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublishServiceVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetPublishServiceVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublishServiceVersionResponse" />
+  </wsdl:message>
   <wsdl:message name="GetServiceVersionViewByIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetServiceVersionViewByID" />
   </wsdl:message>
@@ -630,6 +655,11 @@
       <wsdl:input message="tns:GetServiceVersionViewByConfirmPersonSoapIn" />
       <wsdl:output message="tns:GetServiceVersionViewByConfirmPersonSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetPublishServiceVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取到所有发布的服务版本</wsdl:documentation>
+      <wsdl:input message="tns:GetPublishServiceVersionSoapIn" />
+      <wsdl:output message="tns:GetPublishServiceVersionSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetServiceVersionViewByID">
       <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据版本ID获取到服务版本视图</wsdl:documentation>
       <wsdl:input message="tns:GetServiceVersionViewByIDSoapIn" />
@@ -745,6 +775,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetServiceVersionViewByConfirmPerson">
       <soap:operation soapAction="http://esb.com/GetServiceVersionViewByConfirmPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublishServiceVersion">
+      <soap:operation soapAction="http://esb.com/GetPublishServiceVersion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -955,6 +994,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetServiceVersionViewByConfirmPerson">
       <soap12:operation soapAction="http://esb.com/GetServiceVersionViewByConfirmPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublishServiceVersion">
+      <soap12:operation soapAction="http://esb.com/GetPublishServiceVersion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

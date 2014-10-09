@@ -31,7 +31,7 @@
         </li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
+        <div class="form-group" style="display:none;">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="请输入服务名称">
                 <span class="input-group-btn">
