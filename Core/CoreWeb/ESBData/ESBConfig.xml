@@ -50,6 +50,21 @@
       </Binding>
     </ServiceItem>
     <ServiceItem>
+      <ServiceName>WXSC_Product</ServiceName>
+      <Version>1</Version>
+      <IsDefault>true</IsDefault>
+      <Binding>
+        <BindingTemplate>
+          <TemplateID>85094bc9-6533-4161-8eb0-1cc8b940f174</TemplateID>
+          <ServiceID>32a0eff7-b658-466c-aa93-dff02e7c7059</ServiceID>
+          <Address>http://10.100.20.180:8015/</Address>
+          <BindingStatus>0</BindingStatus>
+          <BindingType>2</BindingType>
+          <Version>1</Version>
+        </BindingTemplate>
+      </Binding>
+    </ServiceItem>
+    <ServiceItem>
       <ServiceName>BG_Member</ServiceName>
       <Version>2</Version>
       <IsDefault>false</IsDefault>

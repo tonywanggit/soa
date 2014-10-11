@@ -94,6 +94,16 @@ namespace MB.ESB.CallCenterTest
             Console.WriteLine("微信商城POST服务返回：{0}", responseWX);
 
 
+            //--WXSC_Product测试用例POST用例
+            servieName = "WXSC_Product";
+            methodName = "GET:JSON:ProductCategoryClsFilter";
+            messageWX = @"{""Route"":""ProductCategoryClsFilter"",""CategoryId"":10,""PageIndex"":0,""PageSize"":50}";
+
+            responseWX = ccProxy.Invoke(servieName, methodName, messageWX);
+            Console.WriteLine("微信商城POST服务返回：{0}", responseWX);
+
+
+
             Console.ReadKey();
         }
     }

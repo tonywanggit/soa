@@ -18,7 +18,11 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(DateTime.Now.AddDays(-1).ToString("yyyy年MM月dd日 星期ddd"));
+            TestEsbProxy("WXSC_Product", "ProductCategoryClsFilter"
+                , @"{""Route"":""ProductCategoryClsFilter"",""CategoryId"":10,""PageIndex"":1,""PageSize"":20}");
+
+
+            //Console.WriteLine(DateTime.Now.AddDays(-1).ToString("yyyy年MM月dd日 星期ddd"));
 
             //RandomTest.DoTest();
 
