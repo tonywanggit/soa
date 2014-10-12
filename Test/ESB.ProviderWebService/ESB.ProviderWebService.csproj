@@ -278,6 +278,7 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Handler\ESB_ASHX.ashx" />
     <Content Include="Wcf\ESB_WCF_Exception.svc" />
+    <Content Include="Wcf\WCF_DEMO.svc" />
     <Content Include="WebService\ESB_WS.asmx" />
     <Content Include="Composit\ESB_COMPOSIT.ashx" />
     <Content Include="Handler\ESB_QUEUE_10.ashx" />
@@ -344,6 +345,14 @@
     <ProjectReference Include="..\..\NewLife\NewLife.Core\NewLife.Core.csproj">
       <Project>{5813c22e-eeb3-4dee-a45c-bb218041193a}</Project>
       <Name>NewLife.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESB.WCF.DemoService\ESB.WCF.DemoService.csproj">
+      <Project>{50402431-481e-4e19-b252-c0423ed40046}</Project>
+      <Name>ESB.WCF.DemoService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESB.WCF.IDemo\ESB.WCF.IDemo.csproj">
+      <Project>{d94434fb-e699-4f8e-acbc-74f23f3d6d2e}</Project>
+      <Name>ESB.WCF.IDemo</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

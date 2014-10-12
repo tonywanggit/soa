@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.Core", "Core\ESB.Core\E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewLife.Core", "NewLife\NewLife.Core\NewLife.Core.csproj", "{5813C22E-EEB3-4DEE-A45C-BB218041193A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.WCF.IDemo", "Test\ESB.WCF.IDemo\ESB.WCF.IDemo.csproj", "{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESB.WCF.DemoService", "Test\ESB.WCF.DemoService\ESB.WCF.DemoService.csproj", "{50402431-481E-4E19-B252-C0423ED40046}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,22 @@ Global
 		{5813C22E-EEB3-4DEE-A45C-BB218041193A}.Net4Release|Any CPU.Build.0 = Net4Release|Any CPU
 		{5813C22E-EEB3-4DEE-A45C-BB218041193A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5813C22E-EEB3-4DEE-A45C-BB218041193A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}.Net4Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}.Net4Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}.Net4Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}.Net4Release|Any CPU.Build.0 = Release|Any CPU
+		{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94434FB-E699-4F8E-ACBC-74F23F3D6D2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50402431-481E-4E19-B252-C0423ED40046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50402431-481E-4E19-B252-C0423ED40046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50402431-481E-4E19-B252-C0423ED40046}.Net4Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50402431-481E-4E19-B252-C0423ED40046}.Net4Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50402431-481E-4E19-B252-C0423ED40046}.Net4Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50402431-481E-4E19-B252-C0423ED40046}.Net4Release|Any CPU.Build.0 = Release|Any CPU
+		{50402431-481E-4E19-B252-C0423ED40046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50402431-481E-4E19-B252-C0423ED40046}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
