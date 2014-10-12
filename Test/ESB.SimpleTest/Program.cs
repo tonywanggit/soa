@@ -16,6 +16,7 @@ namespace ESB.SimpleTest
         static void Main(string[] args)
         {
 
+            /*
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             ESBProxy esbProxy = ESBProxy.GetInstance();
@@ -46,6 +47,7 @@ namespace ESB.SimpleTest
 
             Console.WriteLine("排除第一次后 {0} 平均耗时：{1}ms。", 10, elapsedMS / 10);
             Console.ReadKey();
+             * */
         }
 
         /// <summary>

@@ -60,7 +60,7 @@ namespace ESB.Core.Rpc
                     String reqMessage = CommonUtil.XmlEncoding(request.消息内容);
                     String esbAction = request.方法名称;
                     String soapMessage = String.Format(SOAP_MESSAGE_TEMPLATE, Constant.COMPANY_URL, reqMessage);
-                    byte[] data = System.Text.Encoding.Default.GetBytes(soapMessage);
+                    byte[] data = System.Text.Encoding.UTF8.GetBytes(soapMessage);
                     //Console.WriteLine("webRequest.GetRequestStream 开始：{0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     using (Stream stream = webRequest.GetRequestStream())
                     {

@@ -52,7 +52,7 @@ namespace ESB.Core.Rpc
                 //--STEP.3.1.如果是POST请求，则需要将消息内容发送出去
                 if (!String.IsNullOrEmpty(message))
                 {
-                    byte[] data = System.Text.Encoding.Default.GetBytes(message);
+                    byte[] data = System.Text.Encoding.UTF8.GetBytes(message);
                     using (Stream stream = webRequest.GetRequestStream())
                     {
                         stream.Write(data, 0, data.Length);
