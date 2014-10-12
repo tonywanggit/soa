@@ -127,7 +127,7 @@ namespace ESB.Core.Registry
             get
             {
                 if (m_ESBProxy.ESBConfig == null)
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
 
                 return m_ESBProxy.ESBConfig;
             }

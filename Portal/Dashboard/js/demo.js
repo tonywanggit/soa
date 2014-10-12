@@ -12,6 +12,7 @@ $(document).ready(function () {
         if (!methodName) {
             alert("请输入方法名称！");
             $("#txtMethodName").select();
+            return;
         }
 
         methodName = methodType + ":" + dataType + ":" + methodName;
