@@ -193,6 +193,9 @@
     <Compile Include="Wcf\ESB_WCF.svc.cs">
       <DependentUpon>ESB_WCF.svc</DependentUpon>
     </Compile>
+    <Compile Include="Wcf\ESB_WCF_Exception.svc.cs">
+      <DependentUpon>ESB_WCF_Exception.svc</DependentUpon>
+    </Compile>
     <Compile Include="WebService\ESB_WS.asmx.cs">
       <DependentUpon>ESB_WS.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -274,6 +277,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Handler\ESB_ASHX.ashx" />
+    <Content Include="Wcf\ESB_WCF_Exception.svc" />
     <Content Include="WebService\ESB_WS.asmx" />
     <Content Include="Composit\ESB_COMPOSIT.ashx" />
     <Content Include="Handler\ESB_QUEUE_10.ashx" />
