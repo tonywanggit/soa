@@ -16,6 +16,22 @@ namespace ESB.Core.Rpc
     internal class HandlerClient
     {
         /// <summary>
+        /// 从类似GET:JSON:MethodName的字符串中抽取到MethodName
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <returns></returns>
+        private static String GetMethodName(String methodName)
+        {
+            if (!methodName.Contains(":")) return methodName;
+
+            String[] methodParams = methodName.Split(":");
+            String rowMethodName = methodParams[methodParams.Length - 1];
+
+            return rowMethodName;
+        }
+
+
+        /// <summary>
         /// 调用Handler服务
         /// </summary>
         /// <param name="callState"></param>
@@ -29,6 +45,8 @@ namespace ESB.Core.Rpc
             String uri = callState.Binding.Address;
             String contentType = String.Equals(callState.Request.消息编码, "XML", StringComparison.OrdinalIgnoreCase)
                 ? Constant.CONTENT_TYPE_XML : Constant.CONTENT_TYPE_JSON;
+            callState.Request.方法名称 = GetMethodName(callState.Request.方法名称);
+
 
             //--STEP.2.根据method拼接URL
             if (String.IsNullOrEmpty(callState.Request.方法名称))

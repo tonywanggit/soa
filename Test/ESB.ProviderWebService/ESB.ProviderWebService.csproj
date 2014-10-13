@@ -277,6 +277,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Handler\ESB_ASHX.ashx" />
+    <Content Include="Wcf\ESB_WCF_DEMO.svc" />
     <Content Include="Wcf\ESB_WCF_Exception.svc" />
     <Content Include="Wcf\WCF_DEMO.svc" />
     <Content Include="WebService\ESB_WS.asmx" />
@@ -349,6 +350,10 @@
     <ProjectReference Include="..\ESB.WCF.DemoService\ESB.WCF.DemoService.csproj">
       <Project>{50402431-481e-4e19-b252-c0423ed40046}</Project>
       <Name>ESB.WCF.DemoService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESB.WCF.EsbDemoService\ESB.WCF.EsbDemoService.csproj">
+      <Project>{ce6e65e8-fed4-4eff-b64f-5a19850db459}</Project>
+      <Name>ESB.WCF.EsbDemoService</Name>
     </ProjectReference>
     <ProjectReference Include="..\ESB.WCF.IDemo\ESB.WCF.IDemo.csproj">
       <Project>{d94434fb-e699-4f8e-acbc-74f23f3d6d2e}</Project>

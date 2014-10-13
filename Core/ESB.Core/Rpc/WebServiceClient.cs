@@ -19,6 +19,21 @@ namespace ESB.Core.Rpc
     {
         private const String SOAP_MESSAGE_TEMPLATE = @"<s:Envelope xmlns:s=""http://schemas.xmlsoap.org/soap/envelope/""><s:Body><EsbAction xmlns=""{0}""><request>{1}</request></EsbAction></s:Body></s:Envelope>";
 
+        /// <summary>
+        /// 从类似GET:JSON:MethodName的字符串中抽取到MethodName
+        /// </summary>
+        /// <param name="methodName"></param>
+        /// <returns></returns>
+        private static String GetMethodName(String methodName)
+        {
+            if (!methodName.Contains(":")) return methodName;
+
+            String[] methodParams = methodName.Split(":");
+            String rowMethodName = methodParams[methodParams.Length - 1];
+
+            return rowMethodName;
+        }
+
         public static ESB.Core.Schema.服务响应 CallWebService(CallState callState)
         {
             //--STEP.1.从CallState中获取到需要的信息
@@ -26,6 +41,8 @@ namespace ESB.Core.Rpc
             String message = callState.Request.消息内容;
             BindingTemplate binding = callState.Binding;
             String uri = callState.Binding.Address;
+            callState.Request.方法名称 = GetMethodName(callState.Request.方法名称);
+
 
             //--STEP.3.构造HTTP请求并调用ASHX服务
             ESB.Core.Schema.服务响应 response = new ESB.Core.Schema.服务响应();

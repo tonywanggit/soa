@@ -36,7 +36,7 @@ namespace ESB.TestFramework
 
             //Console.ReadKey();
 
-            ShowMainForm();
+            //ShowMainForm();
 
             //MBEmailTest.DoTest();
 
@@ -56,7 +56,7 @@ namespace ESB.TestFramework
             //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 10);
 
             //TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
-            //TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
+            TestEsbProxy("ESB_WCF", "HelloAction", "Hello World", 10);
 
             //TestWXSC();
         }
