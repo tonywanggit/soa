@@ -1,0 +1,81 @@
+﻿#Software: .
+#ProcessID: 10372
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130561843224003132
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-09-26
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+13:52:14.115 1 N - NewLife.Core v3.8.2012.0803 Build 2014-09-25 19:09:28
+13:52:14.124 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-09-25 19:13:00
+13:52:14.228 1 N - ESBProxy Init 耗时：144ms。
+13:52:35.277 11 Y - 无法连接到消息队列：None of the specified endpoints were reachable
+Endpoints attempted:
+------------------------------------------------
+endpoint=amqp-0-9://192.168.56.2:5672, attempts=1
+RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed ---> System.Net.Sockets.SocketException: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5672
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 System.Net.Sockets.TcpClient.EndConnect(IAsyncResult asyncResult)
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9.Connect(TcpClient socket, AmqpTcpEndpoint endpoint, Int32 timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9.Connect(TcpClient socket, AmqpTcpEndpoint endpoint, Int32 timeout)
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9..ctor(AmqpTcpEndpoint endpoint, ObtainSocket socketFactory, Int32 timeout)
+   在 RabbitMQ.Client.Framing.Impl.v0_9_1.ProtocolBase.CreateFrameHandler(AmqpTcpEndpoint endpoint, ObtainSocket socketFactory, Int32 timeout)
+   在 RabbitMQ.Client.ConnectionFactory.FollowRedirectChain(Int32 maxRedirects, IDictionary`2 connectionAttempts, IDictionary`2 connectionErrors, AmqpTcpEndpoint[]& mostRecentKnownHosts, AmqpTcpEndpoint endpoint)
+================================================
+Stack trace:
+   在 RabbitMQ.Client.ConnectionFactory.CreateConnection(Int32 maxRedirects)
+   在 ESB.Core.Monitor.RabbitMQClient..ctor(String hostName, String userName, String passWord, Int32 port) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Monitor\RabbitMQClient.cs:行号 43
+   在 ESB.Core.Monitor.MessageQueueClient.Connect() 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Monitor\MessageQueueClient.cs:行号 86
+13:52:35.281 7 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5555
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+13:52:35.290 12 Y - 无法连接到缓存中心：could not connect to redis Instance at 192.168.56.2:6379
+13:53:01.279 6 N T 第0次重连消息队列失败, 抛出异常：None of the specified endpoints were reachable
+Endpoints attempted:
+------------------------------------------------
+endpoint=amqp-0-9://192.168.56.2:5672, attempts=1
+RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed ---> System.Net.Sockets.SocketException: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5672
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 System.Net.Sockets.TcpClient.EndConnect(IAsyncResult asyncResult)
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9.Connect(TcpClient socket, AmqpTcpEndpoint endpoint, Int32 timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9.Connect(TcpClient socket, AmqpTcpEndpoint endpoint, Int32 timeout)
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9..ctor(AmqpTcpEndpoint endpoint, ObtainSocket socketFactory, Int32 timeout)
+   在 RabbitMQ.Client.Framing.Impl.v0_9_1.ProtocolBase.CreateFrameHandler(AmqpTcpEndpoint endpoint, ObtainSocket socketFactory, Int32 timeout)
+   在 RabbitMQ.Client.ConnectionFactory.FollowRedirectChain(Int32 maxRedirects, IDictionary`2 connectionAttempts, IDictionary`2 connectionErrors, AmqpTcpEndpoint[]& mostRecentKnownHosts, AmqpTcpEndpoint endpoint)
+================================================
+Stack trace:
+   在 RabbitMQ.Client.ConnectionFactory.CreateConnection(Int32 maxRedirects)
+   在 ESB.Core.Monitor.RabbitMQClient..ctor(String hostName, String userName, String passWord, Int32 port) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Monitor\RabbitMQClient.cs:行号 43
+   在 ESB.Core.Monitor.MessageQueueClient.Connect() 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Monitor\MessageQueueClient.cs:行号 86
+13:53:22.280 22 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5555
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+13:53:22.291 11 Y - 第0次重连缓存中心失败, 抛出异常：could not connect to redis Instance at 192.168.56.2:6379
+13:53:27.297 6 N T 第1次重连消息队列失败, 抛出异常：None of the specified endpoints were reachable
+Endpoints attempted:
+------------------------------------------------
+endpoint=amqp-0-9://192.168.56.2:5672, attempts=1
+RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed ---> System.Net.Sockets.SocketException: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5672
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 System.Net.Sockets.TcpClient.EndConnect(IAsyncResult asyncResult)
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9.Connect(TcpClient socket, AmqpTcpEndpoint endpoint, Int32 timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9.Connect(TcpClient socket, AmqpTcpEndpoint endpoint, Int32 timeout)
+   在 RabbitMQ.Client.Impl.SocketFrameHandler_0_9..ctor(AmqpTcpEndpoint endpoint, ObtainSocket socketFactory, Int32 timeout)
+   在 RabbitMQ.Client.Framing.Impl.v0_9_1.ProtocolBase.CreateFrameHandler(AmqpTcpEndpoint endpoint, ObtainSocket socketFactory, Int32 timeout)
+   在 RabbitMQ.Client.ConnectionFactory.FollowRedirectChain(Int32 maxRedirects, IDictionary`2 connectionAttempts, IDictionary`2 connectionErrors, AmqpTcpEndpoint[]& mostRecentKnownHosts, AmqpTcpEndpoint endpoint)
+================================================
+Stack trace:
+   在 RabbitMQ.Client.ConnectionFactory.CreateConnection(Int32 maxRedirects)
+   在 ESB.Core.Monitor.RabbitMQClient..ctor(String hostName, String userName, String passWord, Int32 port) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Monitor\RabbitMQClient.cs:行号 43
+   在 ESB.Core.Monitor.MessageQueueClient.Connect() 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Monitor\MessageQueueClient.cs:行号 86
+13:53:48.308 12 Y - 第1次重连缓存中心失败, 抛出异常：could not connect to redis Instance at 192.168.56.2:6379
+13:53:48.309 21 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5555
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+13:53:52.376 6 N T 第2次重连消息队列失败, 抛出异常：System.Threading.ThreadAbortException: 正在中止线程。
+   在 RabbitMQ.Client.ConnectionFactory.FollowRedirectChain(Int32 maxRedirects, IDictionary`2 connectionAttempts, IDictionary`2 connectionErrors, AmqpTcpEndpoint[]& mostRecentKnownHosts, AmqpTcpEndpoint endpoint)
+   在 RabbitMQ.Client.ConnectionFactory.CreateConnection(Int32 maxRedirects, IDictionary`2 connectionAttempts, IDictionary`2 connectionErrors, AmqpTcpEndpoint[] endpoints)
+   在 RabbitMQ.Client.ConnectionFactory.CreateConnection(Int32 maxRedirects)
+   在 ESB.Core.Monitor.RabbitMQClient..ctor(String hostName, String userName, String passWord, Int32 port) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Monitor\RabbitMQClient.cs:行号 43
+   在 ESB.Core.Monitor.MessageQueueClient.Connect() 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Monitor\MessageQueueClient.cs:行号 86

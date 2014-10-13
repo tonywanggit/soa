@@ -18,8 +18,8 @@ namespace ESB.TestFramework
     {
         static void Main(string[] args)
         {
-            //TestEsbProxy("WXSC_Product", "ProductCategoryClsFilter"
-            //    , @"{""Route"":""ProductCategoryClsFilter"",""CategoryId"":10,""PageIndex"":1,""PageSize"":20}");
+            TestEsbProxy("WXSC_Product", "POST:JSON:ProductCategoryClsFilter"
+                , @"{""Route"":""ProductCategoryClsFilter"",""CategoryId"":10,""PageIndex"":1,""PageSize"":20}");
 
 
             //Console.WriteLine(DateTime.Now.AddDays(-1).ToString("yyyy年MM月dd日 星期ddd"));
@@ -56,7 +56,7 @@ namespace ESB.TestFramework
             //TestEsbProxy("ESB_ASHX", "HelloAction", "Hello World", 10);
 
             //TestEsbProxy("ESB_WS", "HelloAction", "Hello World", 10);
-            TestEsbProxy("ESB_WCF", "HelloAction", "Hello World", 10);
+            //TestEsbProxy("ESB_WCF", "HelloAction", "Hello World", 10);
 
             //TestWXSC();
         }

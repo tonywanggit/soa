@@ -7,6 +7,7 @@ using System.IO;
 using ESB.Core.Entity;
 using System.Text;
 using ESB.Core.Configuration;
+using Newtonsoft.Json;
 
 namespace ESB.Core.Rpc
 {
@@ -15,7 +16,38 @@ namespace ESB.Core.Rpc
     /// </summary>
     internal class RestfulClient
     {
+        /// <summary>
+        /// 把JSON转成URL参数
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private static String JsonToQueryString(string message)
+        {
+            Dictionary<string, string> dic = JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
+            bool flag = true;
+            string quaryString = "";
+            foreach (string key in dic.Keys)
+            {
+                if(dic[key].IsNullOrWhiteSpace()) continue;
 
+                if (flag)
+                {
+                    quaryString += key + "=" + HttpUtility.UrlEncode(dic[key]);
+                    flag = false;
+                }
+                else
+                {
+                    quaryString += "&" + key + "=" + HttpUtility.UrlEncode(dic[key]);
+                }
+            }
+            return quaryString;
+        }
+
+        /// <summary>
+        /// 调用主流程
+        /// </summary>
+        /// <param name="callState"></param>
+        /// <returns></returns>
         public static ESB.Core.Schema.服务响应 CallRestfulService(CallState callState)
         {
             //--STEP.1.从CallState中获取到需要的信息
@@ -53,6 +85,10 @@ namespace ESB.Core.Rpc
             //--STEP.2.根据method拼接URL
             if (method.ToUpper() == "GET")
             {
+                message = message.Trim();
+                if (message.StartsWith("{"))//--如果参数以大括弧开头，说明是JSON参数，需要转化成QueryString
+                    message = JsonToQueryString(message);
+
                 uri = uri + "/" + methodName + "?" + message;
             }
             else

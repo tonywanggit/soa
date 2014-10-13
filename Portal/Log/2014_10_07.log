@@ -1,0 +1,215 @@
+﻿#Software: .
+#ProcessID: 9000
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130571240113989838
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+10:53:36.239 1 N - NewLife.Core v3.8.2012.0803 Build 2014-09-30 16:18:44
+10:53:36.254 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-09-30 18:00:26
+10:53:36.445 9 Y - 成功连接到注册中心。
+10:53:36.520 1 N - ESBProxy Init 耗时：449ms。
+10:53:37.090 13 Y - 成功连接到消息队列。
+10:53:38.161 10 Y - 成功连接到缓存中心。
+10:53:45.087 9 Y - 成功连接到监控中心。
+10:54:17.390 9 Y - NewLife.XCode v8.8.2014.0911 Build 2014-09-30 16:18:46
+10:54:17.393 9 Y - 开始初始化实体类ServiceMonitor
+10:54:17.405 9 Y - 完成初始化实体类ServiceMonitor
+
+#Software: .
+#ProcessID: 10104
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130571293649468660
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+12:23:00.480 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+12:23:00.486 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 12:20:40
+12:23:00.594 11 Y - 成功连接到注册中心。
+12:23:00.595 1 N - ESBProxy Init 耗时：165ms。
+12:23:00.728 7 Y - 成功连接到缓存中心。
+12:23:00.801 5 Y - 成功连接到消息队列。
+12:23:04.156 11 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 8672
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130571363631176340
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+14:19:23.304 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+14:19:23.313 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 12:20:40
+14:19:23.518 8 Y - 成功连接到注册中心。
+14:19:23.519 1 N - ESBProxy Init 耗时：254ms。
+14:19:23.687 11 Y - 成功连接到缓存中心。
+14:19:24.054 13 Y - 成功连接到消息队列。
+14:19:25.030 8 Y - 成功连接到监控中心。
+14:20:58.486 8 Y - 与服务器失去联系：System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ReceiveCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 83
+14:21:06.522 8 Y - 成功连接到监控中心。
+14:21:06.783 8 Y - NewLife.XCode v8.8.2014.0911 Build 2014-10-07 12:20:20
+14:21:06.784 8 Y - 开始初始化实体类ServiceMonitor
+14:21:06.786 8 Y - 完成初始化实体类ServiceMonitor
+
+#Software: .
+#ProcessID: 4428
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130571399554037964
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+15:19:26.093 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+15:19:26.099 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+15:19:26.227 11 Y - 成功连接到注册中心。
+15:19:26.227 1 N - ESBProxy Init 耗时：168ms。
+15:19:26.376 7 Y - 成功连接到缓存中心。
+15:19:26.512 9 Y - 成功连接到消息队列。
+15:19:27.384 11 Y - 成功连接到监控中心。
+15:19:48.142 11 Y - NewLife.XCode v8.8.2014.0911 Build 2014-10-07 12:20:20
+15:19:48.144 11 Y - 开始初始化实体类ServiceMonitor
+15:19:48.147 11 Y - 完成初始化实体类ServiceMonitor
+
+#Software: .
+#ProcessID: 8960
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130571424914438326
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+16:01:31.594 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+16:01:31.600 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+16:01:31.755 8 Y - 成功连接到注册中心。
+16:01:31.759 1 N - ESBProxy Init 耗时：192ms。
+16:01:31.845 13 Y - 成功连接到缓存中心。
+16:01:31.988 10 Y - 成功连接到消息队列。
+16:01:32.851 7 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 8516
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130571580388283750
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+20:20:39.401 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+20:20:39.402 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+20:20:39.595 10 Y - 成功连接到注册中心。
+20:20:39.595 1 N - ESBProxy Init 耗时：229ms。
+20:20:39.699 9 Y - 成功连接到缓存中心。
+20:20:39.984 7 Y - 成功连接到消息队列。
+20:20:40.896 11 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 8516
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-3-130571600496487167
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+20:54:09.760 16 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+20:54:09.765 16 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+20:54:09.858 37 Y - 成功连接到注册中心。
+20:54:09.858 16 N - ESBProxy Init 耗时：114ms。
+20:54:09.963 38 Y - 成功连接到缓存中心。
+20:54:09.966 35 Y - 成功连接到监控中心。
+20:54:10.028 21 Y - 成功连接到消息队列。
+
+#Software: .
+#ProcessID: 3088
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130571636947145813
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+21:54:54.902 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+21:54:54.909 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+21:54:55.113 8 Y - 成功连接到注册中心。
+21:54:55.114 1 N - ESBProxy Init 耗时：243ms。
+21:54:55.257 9 Y - 成功连接到缓存中心。
+21:54:55.318 10 Y - 成功连接到消息队列。
+21:54:56.496 8 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 3088
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-3-130571648147713105
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+22:13:35.004 31 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+22:13:35.005 31 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+22:13:35.147 19 Y - 成功连接到注册中心。
+22:13:35.148 31 N - ESBProxy Init 耗时：167ms。
+22:13:35.245 13 Y - 成功连接到缓存中心。
+22:13:35.275 30 Y - 成功连接到监控中心。
+22:13:35.326 12 Y - 成功连接到消息队列。
+
+#Software: .
+#ProcessID: 3088
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-4-130571660177730723
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+22:33:37.984 31 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+22:33:37.985 31 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+22:33:38.077 31 N - ESBProxy Init 耗时：109ms。
+22:33:38.095 13 Y - 成功连接到注册中心。
+22:33:38.182 19 Y - 成功连接到缓存中心。
+22:33:38.204 35 Y - 成功连接到监控中心。
+22:33:38.233 28 Y - 成功连接到消息队列。
+23:04:54.372 11 Y - 与服务器失去联系：System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ReceiveCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 83
+23:05:02.413 11 Y - 成功连接到监控中心。
+23:41:12.560 31 Y - NewLife.XCode v8.8.2014.0911 Build 2014-10-07 12:20:20
+23:41:12.561 31 Y - 开始初始化实体类ServiceMonitor
+23:41:12.564 31 Y - 完成初始化实体类ServiceMonitor
+
+#Software: .
+#ProcessID: 3088
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-5-130571705767709915
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+23:49:36.961 32 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+23:49:36.962 32 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+23:49:37.116 32 N - ESBProxy Init 耗时：185ms。
+23:49:37.133 31 Y - 成功连接到注册中心。
+23:49:37.261 36 Y - 成功连接到缓存中心。
+23:49:37.316 8 Y - 成功连接到消息队列。
+23:49:37.848 31 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 3088
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-7-130571706867729600
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+23:51:26.891 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+23:51:26.898 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+23:51:27.002 1 N - ESBProxy Init 耗时：134ms。
+23:51:27.007 11 Y - 成功连接到注册中心。
+23:51:27.110 48 Y - 成功连接到缓存中心。
+23:51:27.158 31 Y - 成功连接到监控中心。
+23:51:27.231 46 Y - 成功连接到消息队列。
+
+#Software: .
+#ProcessID: 3088
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-8-130571707654914559
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+23:52:45.599 40 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+23:52:45.600 40 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+23:52:45.701 40 N - ESBProxy Init 耗时：119ms。
+23:52:45.717 11 Y - 成功连接到注册中心。
+23:52:45.792 48 Y - 成功连接到缓存中心。
+23:52:45.899 47 Y - 成功连接到消息队列。
+23:52:45.947 10 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 2096
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130571709522726741
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-07
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+23:55:52.412 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-07 12:20:18
+23:55:52.418 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-07 14:50:10
+23:55:52.577 8 Y - 成功连接到注册中心。
+23:55:52.577 1 N - ESBProxy Init 耗时：194ms。
+23:55:52.753 11 Y - 成功连接到缓存中心。
+23:55:53.057 10 Y - 成功连接到消息队列。
+23:55:53.627 8 Y - 成功连接到监控中心。

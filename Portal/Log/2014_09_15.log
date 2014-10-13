@@ -1,0 +1,15 @@
+﻿#Software: .
+#ProcessID: 12468
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130552408043471143
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-09-15
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+15:46:46.871 1 N - NewLife.Core v3.8.2012.0803 Build 2014-09-12 23:57:34
+15:46:46.941 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-09-13 00:20:58
+15:46:47.672 1 N - ESBProxy Init 耗时：1102ms。
+15:46:47.696 6 Y - 成功连接到注册中心。
+15:46:49.424 11 Y - 成功连接到消息队列。
+15:46:52.546 7 Y - 成功连接到监控中心。
+15:47:39.868 7 Y - NewLife.XCode v8.8.2014.0911 Build 2014-09-12 23:57:38
+15:47:39.870 7 Y - 开始初始化实体类ServiceMonitor
+15:47:39.873 7 Y - 完成初始化实体类ServiceMonitor

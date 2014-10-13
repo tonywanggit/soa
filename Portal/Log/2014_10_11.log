@@ -1,0 +1,133 @@
+﻿#Software: .
+#ProcessID: 588
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130574707652042445
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-11
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+11:12:45.804 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-09 22:37:36
+11:12:45.814 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-09 22:40:28
+11:12:46.056 9 Y - 成功连接到注册中心。
+11:12:46.056 1 N - ESBProxy Init 耗时：337ms。
+11:12:46.346 12 Y - 成功连接到消息队列。
+11:12:46.365 10 Y - 成功连接到缓存中心。
+11:12:47.977 9 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 8716
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130574724934747070
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-11
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+11:41:33.609 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-09 22:37:36
+11:41:33.610 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-09 22:40:28
+11:41:33.754 1 N - ESBProxy Init 耗时：171ms。
+11:41:33.758 10 Y - 成功连接到注册中心。
+11:41:33.866 7 Y - 成功连接到缓存中心。
+11:41:33.905 9 Y - 成功连接到消息队列。
+11:41:34.591 10 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 8368
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130574770216377107
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-11
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+12:57:01.778 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-09 22:37:36
+12:57:01.779 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-09 22:40:28
+12:57:01.920 1 N - ESBProxy Init 耗时：169ms。
+12:57:01.923 11 Y - 成功连接到注册中心。
+12:57:02.050 10 Y - 成功连接到缓存中心。
+12:57:02.099 9 Y - 成功连接到消息队列。
+12:57:02.745 11 Y - 成功连接到监控中心。
+12:58:01.355 11 Y - NewLife.XCode v8.8.2014.0911 Build 2014-10-09 22:37:38
+12:58:01.357 11 Y - 开始初始化实体类ServiceMonitor
+12:58:01.359 11 Y - 完成初始化实体类ServiceMonitor
+
+#Software: .
+#ProcessID: 7272
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130574785234024106
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-11
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+13:22:03.535 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-09 22:37:36
+13:22:03.535 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-09 22:40:28
+13:22:03.682 1 N - ESBProxy Init 耗时：173ms。
+13:22:03.718 13 Y - 成功连接到注册中心。
+13:22:03.798 7 Y - 成功连接到缓存中心。
+13:22:03.852 9 Y - 成功连接到消息队列。
+13:22:04.551 13 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 7172
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130574817685079866
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-11
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+14:16:08.653 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-09 22:37:36
+14:16:08.653 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-09 22:40:28
+14:16:08.794 1 N - ESBProxy Init 耗时：169ms。
+14:16:08.827 13 Y - 成功连接到注册中心。
+14:16:08.907 7 Y - 成功连接到缓存中心。
+14:16:08.960 10 Y - 成功连接到消息队列。
+14:16:09.648 12 Y - 成功连接到监控中心。
+14:26:45.878 13 Y - NewLife.XCode v8.8.2014.0911 Build 2014-10-09 22:37:38
+14:26:45.880 13 Y - 开始初始化实体类ServiceMonitor
+14:26:45.883 13 Y - 完成初始化实体类ServiceMonitor
+
+#Software: .
+#ProcessID: 9220
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130574855330340207
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-11
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+15:19:05.475 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-11 14:49:38
+15:19:05.485 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-11 14:49:42
+15:19:05.637 1 N - ESBProxy Init 耗时：477ms。
+15:19:05.643 11 Y - 成功连接到注册中心。
+15:19:05.860 8 Y - 成功连接到消息队列。
+15:19:05.904 6 Y - 成功连接到缓存中心。
+15:19:07.081 12 Y - 成功连接到监控中心。
+
+#Software: .
+#ProcessID: 14788
+#AppDomain: /LM/W3SVC/1/ROOT/Portal-1-130575042406943812
+#BaseDirectory: F:\Tony\MyCode\SOA\LIB\SRC\Portal\
+#Date: 2014-10-11
+#Fields: Time ThreadID IsPoolThread ThreadName Message
+20:30:55.597 1 N - NewLife.Core v3.8.2012.0803 Build 2014-10-11 14:49:38
+20:30:55.605 1 N - MB.ESB.Core v1.0.2014.0910 Build 2014-10-11 20:25:06
+20:30:55.801 1 N - ESBProxy Init 耗时：267ms。
+20:30:55.803 8 Y - 成功连接到注册中心。
+20:30:55.967 6 Y - 成功连接到消息队列。
+20:30:56.063 9 Y - 成功连接到缓存中心。
+20:30:59.189 8 Y - 成功连接到监控中心。
+20:52:23.755 12 Y - 与服务器失去联系：System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ReceiveCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 83
+20:52:36.949 12 Y - 与服务器失去联系：System.Net.Sockets.SocketException (0x80004005): 远程主机强迫关闭了一个现有的连接。
+   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ReceiveCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 83
+20:52:49.782 12 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5555
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+20:53:02.951 12 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5556
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+20:53:15.783 7 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5555
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+20:53:28.956 7 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5556
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+20:53:41.788 7 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5555
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+20:53:54.970 7 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5556
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+20:54:07.814 35 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5555
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
+20:54:20.996 35 Y - 与服务器失去联系：无法与服务器建立连接：System.Net.Sockets.SocketException (0x80004005): 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.56.2:5556
+   在 System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   在 ESB.Core.Rpc.CometClient.ConnectCallback(IAsyncResult ar) 位置 f:\Tony\MyCode\SOA\LIB\SRC\Core\ESB.Core\Rpc\CometClient.cs:行号 60
