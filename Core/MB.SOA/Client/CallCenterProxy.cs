@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Web;
 
-namespace MB.ESB.CallCenterTest
+namespace MB.SOA.Client
 {
     /// <summary>
     /// 调用中心代理类
@@ -20,7 +20,13 @@ namespace MB.ESB.CallCenterTest
         /// </summary>
         private static Dictionary<String, CallCenterProxy> m_InstanceDict = new Dictionary<String,CallCenterProxy>();
 
+        /// <summary>
+        /// 调用中心地址
+        /// </summary>
         private String m_CallCenterUri;
+        /// <summary>
+        /// 超时配置：默认100s
+        /// </summary>
         private Int32 m_Timeout ;
 
         /// <summary>
@@ -29,6 +35,9 @@ namespace MB.ESB.CallCenterTest
         /// <param name="callCenterUri"></param>
         private CallCenterProxy(String callCenterUri)
         {
+            if (String.IsNullOrEmpty(callCenterUri))
+                throw new Exception("传入有效的调用中心地址。");
+
             m_CallCenterUri = callCenterUri;
 
             //--默认100S, 因为IIS的executionTimeout默认配置为110S, 考虑网络因素100S较为安全
@@ -43,6 +52,9 @@ namespace MB.ESB.CallCenterTest
         /// <returns></returns>
         public static CallCenterProxy GetInstance(String callCenterUrl)
         {
+            if (m_InstanceDict.ContainsKey(callCenterUrl))
+                return m_InstanceDict[callCenterUrl];
+
             //if (m_Instance != null) return m_Instance;
 
             //--此处可以降低第一次调用的时间：2~3秒减少到200ms左右
@@ -55,13 +67,17 @@ namespace MB.ESB.CallCenterTest
 
             //--创建客户端代理
             //String ccUri = ConfigurationManager.AppSettings["MB.SOA.CallCenterUri"];
-            if (String.IsNullOrEmpty(callCenterUrl))
+            CallCenterProxy proxy;
+            lock (m_InstanceDict)
             {
-                throw new Exception("传入有效的调用中心地址。");
+                if (m_InstanceDict.ContainsKey(callCenterUrl))
+                    proxy = m_InstanceDict[callCenterUrl];
+                else
+                {
+                    proxy = new CallCenterProxy(callCenterUrl);
+                    m_InstanceDict[callCenterUrl] = proxy;
+                }
             }
-
-            CallCenterProxy proxy = new CallCenterProxy(callCenterUrl);
-            Interlocked.CompareExchange<CallCenterProxy>(ref m_Instance, proxy, null);
 
             return proxy;
         }

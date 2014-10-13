@@ -301,6 +301,19 @@
     <EsbView_ServiceConfig>
       <CacheKeyNum>0</CacheKeyNum>
       <CacheHitRate>0</CacheHitRate>
+      <ServiceName>ESB_WCF</ServiceName>
+      <BusinessID>E7B6F9F0-E69E-4E86-B41D-C0D0692BE30A</BusinessID>
+      <OID>88dd4081-5c4e-4890-a8b7-ad8647571af2</OID>
+      <ServiceID>A736D31D-C7A2-48A3-B7C0-ADF07B2C42E5</ServiceID>
+      <MethodName>Echo</MethodName>
+      <IsAudit>1</IsAudit>
+      <Timeout>200000</Timeout>
+      <CacheDuration>0</CacheDuration>
+      <HBPolicy>1</HBPolicy>
+    </EsbView_ServiceConfig>
+    <EsbView_ServiceConfig>
+      <CacheKeyNum>0</CacheKeyNum>
+      <CacheHitRate>0</CacheHitRate>
       <ServiceName>ESB_QUEUE_10</ServiceName>
       <QueueCenterUri>192.168.56.1_1</QueueCenterUri>
       <BusinessID>E7B6F9F0-E69E-4E86-B41D-C0D0692BE30A</BusinessID>

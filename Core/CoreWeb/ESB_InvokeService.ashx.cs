@@ -71,7 +71,7 @@ namespace ESB.CallCenter
                     //--判断是否为JSONP调用
                     if (!String.IsNullOrEmpty(callback))
                     {
-                        response = String.Format("{0}({{message:'{1}'}})", callback, response, version);
+                        response = String.Format(@"{0}({{message:""{1}""}})", callback, JsonEncoding(response));
                     }
                     context.Response.Write(response);
                 }
@@ -91,7 +91,7 @@ namespace ESB.CallCenter
                     //--判断是否为JSONP调用
                     if (!String.IsNullOrEmpty(callback))
                     {
-                        response = String.Format("{0}({{message:'{1}'}})", callback, response, version);
+                        response = String.Format(@"{0}({{message:""{1}""}})", callback, JsonEncoding(response));
                     }
                     context.Response.Write(response);
                 }
@@ -134,6 +134,18 @@ namespace ESB.CallCenter
             }
 
             throw new Exception("无效的调用方式！");
+        }
+
+        /// <summary>
+        /// Json编码
+        /// </summary>
+        /// <returns></returns>
+        private String JsonEncoding(String message)
+        {
+            if (message.IsNullOrWhiteSpace()) 
+                return message;
+            else
+                return message.Replace("\"", "'");
         }
 
         public bool IsReusable

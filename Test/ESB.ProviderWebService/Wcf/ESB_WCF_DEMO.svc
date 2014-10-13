@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Service="ESB.WCF.EsbDemoService.ESB_WCF_DEMO" %>
+

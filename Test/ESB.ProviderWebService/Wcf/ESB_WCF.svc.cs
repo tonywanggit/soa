@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 
 namespace ESB.ProviderWebService.Wcf
 {
@@ -14,6 +15,7 @@ namespace ESB.ProviderWebService.Wcf
     {
         protected override string DoEsbAction(string esbAction, string request)
         {
+            //throw new FaultException("Falut");
             return String.Format("收到参数：{0}={1}。", esbAction, request);
         }
     }

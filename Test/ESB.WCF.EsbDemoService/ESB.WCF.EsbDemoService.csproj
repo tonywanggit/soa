@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D48C0794-B2C4-4933-A4FC-51528B66070B}</ProjectGuid>
+    <ProjectGuid>{CE6E65E8-FED4-4EFF-B64F-5A19850DB459}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MB.SOA</RootNamespace>
-    <AssemblyName>MB.SOA</AssemblyName>
+    <RootNamespace>ESB.WCF.EsbDemoService</RootNamespace>
+    <AssemblyName>ESB.WCF.EsbDemoService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,15 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MB.Dep.DataPort">
-      <HintPath>R:\MB.Dep.DataPort.dll</HintPath>
-    </Reference>
-    <Reference Include="MB.Dep.DataTransferObjects">
-      <HintPath>R:\MB.Dep.DataTransferObjects.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,9 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\CallCenterAgent.cs" />
-    <Compile Include="Client\CallCenterProxy.cs" />
+    <Compile Include="ESB_WCF_DEMO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\ESB.Core\ESB.Core.csproj">
+      <Project>{3a6fd2e3-189b-4217-b619-d4b3064fd53e}</Project>
+      <Name>ESB.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESB.WCF.DemoService\ESB.WCF.DemoService.csproj">
+      <Project>{50402431-481e-4e19-b252-c0423ed40046}</Project>
+      <Name>ESB.WCF.DemoService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ESB.WCF.IDemo\ESB.WCF.IDemo.csproj">
+      <Project>{d94434fb-e699-4f8e-acbc-74f23f3d6d2e}</Project>
+      <Name>ESB.WCF.IDemo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
